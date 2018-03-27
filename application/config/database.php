@@ -71,8 +71,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-if (file_exists('../database.php')) 
-	require_once '../database.php';
+if (file_exists('db_environment.php'))
+    require 'db_environment.php';
+
+
 
 $active_group = 'default';
 $query_builder = TRUE;
