@@ -17,7 +17,7 @@ class Pessoa extends CI_Controller {
 	/**
 	* @author: Tiago Villalobos
 	* Este método tem como finalidade validar os campos de pessoa, 
-	* salvar no campo e retornar um último id inserido.
+	* salvar no banco e retornar um último id inserido.
 	*
 	* @return integer último id inserido no banco
 	*/
@@ -40,9 +40,23 @@ class Pessoa extends CI_Controller {
 
 	}
 
+	/**
+	* @author: Tiago Villalobos
+	* Este método tem como finalidade validar os campos de pessoa, 
+	* e atualizar os dados no banco.
+	*
+	*/
 	public function update()
 	{
-
+		if(!$this->form_validation->run())
+		{
+			$this->index();
+		}
+		else
+		{
+			$this->db->where('id_pessoa', $this->input->post('id_pessoa'));
+			$this->db->update('pessoa', $this->input->post());
+		}
 	}
 
 	public function delete()
