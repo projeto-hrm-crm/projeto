@@ -53,6 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['pessoa/salvar']    = 'pessoa/save';
-$route['pessoa/atualizar'] = 'pessoa/update';
-$route['pessoa/deletar']   = 'pessoa/delete';
+$route['pessoa/salvar']         = 'pessoa/save';
+$route['pessoa/atualizar']      = 'pessoa/update';
+$route['pessoa/editar/(:num)']  = 'pessoa/index/$1';
+$route['pessoa/remover/(:num)'] = 'pessoa/delete/$1';
