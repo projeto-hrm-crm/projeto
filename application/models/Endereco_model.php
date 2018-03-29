@@ -12,6 +12,14 @@ class Endereco_model extends CI_Model {
 	public $complemento;
 	public $id_pessoa;
 	
+
+	/**
+	* @author: Tiago Villalobos
+	* Salva um endereço associado à uma pessoa
+	* 
+	* 
+	* @param integer $id_pessoa
+	*/
 	public function insert($id_pessoa)
 	{
 		$this->cep         = $this->input->post('cep');
@@ -27,9 +35,16 @@ class Endereco_model extends CI_Model {
 		$this->db->insert('endereco', $this);
 	}
 
+
 	public function get(){}	
 
-	
+
+	/**
+	* @author: Tiago Villalobos
+	* Atualiza um endereço associado à uma pessoa
+	* 
+	* 
+	*/
 	public function update()
 	{
 		$this->cep         = $this->input->post('cep');
@@ -39,14 +54,22 @@ class Endereco_model extends CI_Model {
 		$this->logradouro  = $this->input->post('logradouro');
 		$this->numero      = $this->input->post('endereco_numero');
 		$this->complemento = $this->input->post('complemento');
+		$this->id_pessoa   = $this->input->post('id_pessoa');
 		
-		$this->db->update('endereco', $this, array('id_pessoa' => $this->input->post('id_pessoa')));
+		$this->db->update('endereco', $this, array('id_pessoa' => $this->id_pessoa));
 	}	
 
 	
-	public function remove()
+	/**
+	* @author: Tiago Villalobos
+	* Remove um endereço associado à uma pessoa
+	* 
+	* 
+	* @param integer $id_pessoa
+	*/
+	public function remove($id_pessoa)
 	{
-		$this->db->where('id_pessoa', $this->input->post('id_pessoa'));
+		$this->db->where('id_pessoa', $id_pessoa);
 		$this->db->delete('endereco');
 	}	
 

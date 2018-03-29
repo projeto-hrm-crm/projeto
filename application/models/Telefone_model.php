@@ -5,7 +5,13 @@ class Telefone_model extends CI_Model {
 
 	public $numero;
 	public $id_pessoa;
-	
+
+	/**
+	* @author: Tiago Villalobos
+	* Salva telefone associado à pessoa.
+	*
+	* @param integer $id_pessoa
+	*/
 	public function insert($id_pessoa)
 	{
 		$this->numero    = $this->input->post('telefone_numero');
@@ -16,20 +22,33 @@ class Telefone_model extends CI_Model {
 
 	public function get(){}	
 
-	
+
+	/**
+	* @author: Tiago Villalobos
+	* Permite atualização de telefone associado à uma pessoa
+	*
+	* 
+	*/
 	public function update()
 	{
-		$this->numero  = $this->input->post('telefone_numero');
+		$this->numero    = $this->input->post('telefone_numero');
+		$this->id_pessoa = $this->input->post('id_pessoa');
 		
-		$this->db->update('telefone', $this, array('id_pessoa' => $this->input->post('id_pessoa')));
+		$this->db->update('telefone', $this, array('id_pessoa' => $this->id_pessoa));
 	}	
-
 	
-	public function remove()
+
+	/**
+	* @author: Tiago Villalobos
+	* Remove o telefone associado à uma pessoa
+	*
+	* @param integer $id_pessoa
+	*/
+	public function remove($id_pessoa)
 	{
-		$this->db->where('id_pessoa', $this->input->post('id_pessoa'));
+		$this->db->where('id_pessoa', $id_pessoa);
 		$this->db->delete('telefone');
 	}	
-	
+
 
 }
