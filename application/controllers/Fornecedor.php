@@ -12,11 +12,15 @@ class Fornecedor extends CI_Controller
     $data = [];
 
     $data['title'] = 'Fornecedores';
+<<<<<<< HEAD
     $data['fornecedores'] = $this->fornecedor->get();
+=======
+>>>>>>> 66eb316325f9ad4dea1d60901dd0ed744888ab18
 
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
 
+<<<<<<< HEAD
   public function create()
   {
     $data = $this->input->post();
@@ -28,6 +32,9 @@ class Fornecedor extends CI_Controller
 
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer');
   }
+=======
+  public function create(){}
+>>>>>>> 66eb316325f9ad4dea1d60901dd0ed744888ab18
 
   public function save(){}
 
