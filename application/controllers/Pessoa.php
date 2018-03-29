@@ -59,9 +59,15 @@ class Pessoa extends CI_Controller {
 		}
 	}
 
+	/**
+	* @author: Tiago Villalobos
+	* Este método tem como finalidade remover um registro de pessoa do banco.
+	*
+	*/
 	public function delete()
 	{
-
+		$this->db->where('id_pessoa', $this->input->post('id_pessoa'));
+		$this->db->delete('pessoa');
 	}
 
 }
