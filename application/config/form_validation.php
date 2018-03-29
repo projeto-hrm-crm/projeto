@@ -51,5 +51,17 @@ $config = array(
 */
 
 $config = array(
+    'pessoa/salvar' => 
+    
+    array(
+        'field' => 'nome',
+        'label' => 'Nome',
+        'rules' => 'required'
+    ),
 
+    array(
+        'field' => 'email',
+        'label' => 'E-Mail',
+        'rules' => 'valid_email'
+    ),
 );
