@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['pessoa/salvar']    = 'pessoa/save';
 $route['pessoa/atualizar'] = 'pessoa/update';
+$route['pessoa/deletar']   = 'pessoa/delete';
