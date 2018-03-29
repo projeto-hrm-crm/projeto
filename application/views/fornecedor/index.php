@@ -7,8 +7,8 @@
   <body>
     View Fornecedores
 
-    <!-- <?php foreach $data['fornecedores'] as $fornecedor: ?>
-      <?php echo $fornecedor->nome ?>
-    <?php endforeach ?> -->
+    <?php foreach ($fornecedores as $fornecedor): ?>
+      <?php echo $fornecedor->nome ?><br>
+    <?php endforeach ?>
   </body>
 </html>

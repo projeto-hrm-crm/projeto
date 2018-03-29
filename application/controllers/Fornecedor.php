@@ -12,11 +12,22 @@ class Fornecedor extends CI_Controller
     $data = [];
 
     $data['title'] = 'Fornecedores';
+    $data['fornecedores'] = $this->fornecedor->get();
 
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
 
-  public function create(){}
+  public function create()
+  {
+    $data = $this->input->post();
+
+    if ($this->form_validation->run('fornecedor'))
+    {
+      $this->fornecedor->insert($data);
+    }
+
+    loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer');
+  }
 
   public function save(){}
 

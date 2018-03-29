@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Rotas Fornecedores
 $route['fornecedor'] = 'Fornecedor';
+$route['fornecedor/cadastrar'] = 'Fornecedor/create';

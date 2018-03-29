@@ -51,5 +51,21 @@ $config = array(
 */
 
 $config = array(
-
+  'fornecedor' => array(
+          array(
+                  'field' => 'nome',
+                  'label' => 'Nome',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'razao_social',
+                  'label' => 'Razão Social',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'cnpj',
+                  'label' => 'CNPJ',
+                  'rules' => 'required|integer'
+          ),
+    )
 );
