@@ -52,3 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['pessoa_fisica/salvar']         = 'PessoaFisica/save';
+$route['pessoa_fisica/atualizar']      = 'PessoaFisica/update';
+$route['pessoa_fisica/editar/(:num)']  = 'pessoa_fisica/index/$1';
+$route['pessoa_fisica/remover/(:num)'] = 'pessoa_fisica/delete/$1';
