@@ -42,6 +42,7 @@ class PessoaFisica_model extends CI_Model{
       exit;
     }
   }
+
   /**
 	* @author: Rodrigo Alves
 	* Retorna todas as pessoas fisicas pessoas fisicas pelo Id.
@@ -59,6 +60,7 @@ class PessoaFisica_model extends CI_Model{
       exit;
     }
   }
+
 	/**
 	* @author: Camila Sales
 	* Este método tem como finalidade atualizar os dados
