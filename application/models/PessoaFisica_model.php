@@ -32,9 +32,16 @@ class PessoaFisica_model extends CI_Model{
 	* @return mixed array de objetos
 	*/
 	public function get()
-	{
-		$this->db->select('*')->from('pessoa_fisica')->get()->result();
-	}
+  {
+    $query = $this->db->get('pessoa_fisica');
+    if ($query)
+    {
+      return $query->result();
+    }else{
+      echo 'Não existem dados';
+      exit;
+    }
+  }
 	/**
 	* @author: Camila Sales
 	* Este método tem como finalidade atualizar os dados
