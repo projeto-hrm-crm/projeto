@@ -42,6 +42,23 @@ class PessoaFisica_model extends CI_Model{
       exit;
     }
   }
+  /**
+	* @author: Rodrigo Alves
+	* Retorna todas as pessoas fisicas pessoas fisicas pelo Id.
+	* @return mixed array de objetos
+	*/
+	public function getId($id)
+  {
+    $this->db->get('pessoa_fisica');
+    $query = $this->db->where('id_pessoa_fisica', $id_pessoa);
+    if ($query)
+    {
+      return $query->result();
+    }else{
+      echo 'Não existem dados';
+      exit;
+    }
+  }
 	/**
 	* @author: Camila Sales
 	* Este método tem como finalidade atualizar os dados
