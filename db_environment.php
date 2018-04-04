@@ -9,11 +9,6 @@
 $database_config = [
     'host' 		=> 'localhost',
     'user'		=> 'root',
-    'password' 	=> 'aluno123',
-<<<<<<< HEAD
+    'password' 	=> '',
     'database'	=> 'projeto',
 ];
-=======
-    'database'	=> 'exemplo',
-];
->>>>>>> 66eb316325f9ad4dea1d60901dd0ed744888ab18

@@ -5,11 +5,32 @@
     <title></title>
   </head>
   <body>
-    View Fornecedores
+    <a class="btn btn-primary" title="cadastrar" href="<?= site_url('fornecedor/create')?>">Cadastrar</a>
+    <table id="fornecedorTable" class="table table-striped">
+  		<thead>
+  			<tr>
+  				<th class="text-center">ID</th>
+  				<th class="text-center">Nome</th>
+  				<th class="text-center">Razao Social</th>
+  				<th class="text-center">CNPJ</th>
+  				<th class="text-center">Ações</th>
+  			</tr>
+  		</thead>
 
-    <?php foreach ($fornecedores as $fornecedor): ?>
-      <?php echo $fornecedor->nome ?><br>
-    <?php endforeach ?>
-
+  		<tbody>
+  			<?php foreach ($fornecedores as $fornecedor): ?>
+  				<tr>
+  					<td class="text-center"><?= $fornecedor->id; ?></td>
+  					<td class="text-center"><?= $fornecedor->nome; ?></td>
+  					<td class="text-center"><?= $fornecedor->razao_social; ?></td>
+            <td class="text-center"><?= $fornecedor->cnpj; ?></td>
+  					<td class="text-center">
+  						<a title="Editar" href="<?= site_url('fornecedor/edit/'.$fornecedor->id)?>">Editar</a> |
+              <a title="Excluir" href="<?= site_url('fornecedor/delete/'.$fornecedor->id)?>">Excluir</a>
+  					</td>
+  				</tr>
+        <?php endforeach ?>
+  		</tbody>
+    </table>
   </body>
 </html>
