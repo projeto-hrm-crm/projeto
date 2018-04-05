@@ -96,25 +96,13 @@ $config = array(
         ),
 
         array(
-            'field' => 'endereco_numero',
+            'field' => 'numero',
             'label' => 'Número',
             'rules' => 'required'
         ),
 
         array(
-            'field' => 'documento_numero',
-            'label' => 'Documento',
-            'rules' => 'required'
-        ),
-
-        array(
-            'field' => 'tipo',
-            'label' => 'Tipo',
-            'rules' => 'required'
-        ),
-
-        array(
-            'field' => 'telefone_numero',
+            'field' => 'tel',
             'label' => 'Telefone',
             'rules' => 'required'
         ),
