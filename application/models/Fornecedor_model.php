@@ -5,43 +5,57 @@ class Fornecedor_model extends CI_Model
 
   public function get()
   {
-    $query = $this->db->get('fornecedor');
-    if ($query)
-    {
-      return $query->result();
-    }else{
-      echo 'Não existem dados';
-      exit;
-    }
+    try {
+      $query = $this->db->get('fornecedor');
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        echo 'Não existem dados';
+        exit;
+      }
+    } catch (\Exception $e) {}
   }
+
 
   public function insert($data)
   {
-    $this->db->insert('fornecedor', $data);
+    try {
+      $this->db->insert('fornecedor', $data);
+    } catch (\Exception $e) {}
   }
+
 
   public function find($id)
   {
-    $fornecedor = $this->db->select('*')->from('fornecedor')->where('id', $id)->get();
-    if ($fornecedor)
-    {
-      return $fornecedor->result();
-    }else{
-      echo 'Fornecedor não existe';
-      exit;
-    }
+    try {
+      $fornecedor = $this->db->select('*')->from('fornecedor')->where('id', $id)->get();
+      if ($fornecedor)
+      {
+        return $fornecedor->result();
+      }else{
+        echo 'Fornecedor não existe';
+        return 1;
+      }
+    } catch (\Exception $e) {}
   }
+
 
   public function update($id, $data)
   {
-    $this->db->where('id', $id);
-    $this->db->update('fornecedor', $data);
+    try {
+      $this->db->where('id', $id);
+      $this->db->update('fornecedor', $data);
+    } catch (\Exception $e) {}
   }
+
 
   public function delete($id)
   {
-    $this->db->where('id', $id);
-    $this->db->delete('fornecedor');
+    try {
+      $this->db->where('id', $id);
+      $this->db->delete('fornecedor');
+    } catch (\Exception $e) {}
   }
 
 }

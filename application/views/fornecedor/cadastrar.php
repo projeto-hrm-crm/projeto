@@ -3,6 +3,19 @@
     <div class="card-header">
       <strong>Cadastro de Fornecedores</strong>
     </div>
+    <div class="row" style="margin-top: 5px;">
+			<div class="col-md-12">
+				<?php if ($this->session->flashdata('success')) : ?>
+					<div class="alert alert-success">
+						<p><span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?></p>
+					</div>
+				<?php elseif ($this->session->flashdata('danger')) : ?>
+					<div class="alert alert-danger">
+						<p><span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?></p>
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
     <div class="card-body card-block">
       <form action="<?php echo site_url('fornecedor/create'); ?>" method="POST" class="form-horizontal">
         <div class="row form-group">
