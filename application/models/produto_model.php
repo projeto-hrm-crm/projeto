@@ -14,6 +14,11 @@ class Produto_model extends CI_Model
         parent::__construct();
     }
     
+    /*
+    *@author: Dhiego Balthazar
+    *
+    *
+    */
     public function get(){
         $query = $this->db->get('produto');
         return $query->result();
@@ -24,11 +29,11 @@ class Produto_model extends CI_Model
     }
     
     public function update($dados){
-        $this->db->update('produto', $dados);
+        return $this->db->update('produto', $dados);
     }
     
     public function delete($id){
         $this->db->where('id_produto', $id);
-        $this->db->delete('produto');
+        return $this->db->delete('produto');
     }
 }

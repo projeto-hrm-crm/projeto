@@ -49,8 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['produto/view/deletar'] = 'Produto_controller/teste_delete_produto';
 $route['produto/view/cadastro'] = 'Produto_controller/teste_cadastro_produto';
+
 $route['produto'] = 'Produto_controller/index';
+$route['produto/deletar'] = 'Produto_controller/deletar';
 $route['produto/cadastrar'] = 'Produto_controller/cadastrar';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
