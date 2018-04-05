@@ -12,11 +12,15 @@ class Login extends CI_Controller
     public function index()
     {
         $data = $this->input->post();
-
-        if ($this->form_validation->run('login')) 
-            $this->Usuario_model->login($data);
-        else
-            $this->load->view('login/index.php');
+        if ($this->form_validation->run('login')) {
+           if (!$this->usuario->login($data)) {
+                $this->session->set_flashdata('login_error', 'Erro ao logar: Usuário e/ou senha inválidos');
+            } else {
+                redirect(base_url());
+            }
+          
+        }
+        $this->load->view('login/index.php');
     }
 
     /**
@@ -27,6 +31,6 @@ class Login extends CI_Controller
      */
     public function logout()
     {
-        $this->session->unset_userdata('login');
+        $this->session->unset_userdata('user_login');
     }
 }

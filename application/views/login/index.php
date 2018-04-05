@@ -29,16 +29,19 @@
 
 </head>
 <body class="bg-dark">
-
-
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
                 <div class="login-form">
                     <form method="post">
+
+                        <?php if ($this->session->flashdata('login_error')): ?>
+                            <div class="alert alert-danger"><?php echo $this->session->flashdata('login_error');?></div>
+                        <?php endif;?>
                         <?php if (validation_errors()) : ?>
                             <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
                         <?php endif;?>
+
                         <div class="form-group">
                             <label class="text-lowercase">E-mail</label>
                             <input type="email" class="form-control" placeholder="Email" name="email">
@@ -61,12 +64,9 @@
             </div>
         </div>
     </div>
-
-
     <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-
 </body>
 </html>
