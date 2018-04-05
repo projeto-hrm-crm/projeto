@@ -14,7 +14,7 @@ class Telefone_model extends CI_Model {
 	*/
 	public function insert($id_pessoa)
 	{
-		$this->numero    = $this->input->post('telefone_numero');
+		$this->numero    = $this->input->post('tel');
 		$this->id_pessoa = $id_pessoa;
 
 		$this->db->insert('telefone', $this);
@@ -31,7 +31,7 @@ class Telefone_model extends CI_Model {
 	*/
 	public function update()
 	{
-		$this->numero    = $this->input->post('telefone_numero');
+		$this->numero    = $this->input->post('tel');
 		$this->id_pessoa = $this->input->post('id_pessoa');
 		
 		$this->db->update('telefone', $this, array('id_pessoa' => $this->id_pessoa));

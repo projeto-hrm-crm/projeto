@@ -27,7 +27,7 @@ class Endereco_model extends CI_Model {
 		$this->cidade      = $this->input->post('cidade');
 		$this->bairro      = $this->input->post('bairro');
 		$this->logradouro  = $this->input->post('logradouro');
-		$this->numero      = $this->input->post('endereco_numero');
+		$this->numero      = $this->input->post('numero');
 		$this->complemento = $this->input->post('complemento');
 		$this->id_pessoa   = $id_pessoa;
 	
@@ -52,7 +52,7 @@ class Endereco_model extends CI_Model {
 		$this->cidade      = $this->input->post('cidade');
 		$this->bairro      = $this->input->post('bairro');
 		$this->logradouro  = $this->input->post('logradouro');
-		$this->numero      = $this->input->post('endereco_numero');
+		$this->numero      = $this->input->post('numero');
 		$this->complemento = $this->input->post('complemento');
 		$this->id_pessoa   = $this->input->post('id_pessoa');
 		

@@ -16,8 +16,8 @@ class Documento_model extends CI_Model {
 	*/
 	public function insert($id_pessoa)
 	{
-		$this->numero    = $this->input->post('documento_numero');
-		$this->tipo      = $this->input->post('tipo');
+		$this->numero    = $this->input->post('cpf') ? $this->input->post('cpf') : $this->input->post('cnpj');
+		$this->tipo      = $this->input->post('cpf') ? 'CPF' : 'CNPJ';
 		$this->id_pessoa = $id_pessoa;
 
 		$this->db->insert('documento', $this);
@@ -34,8 +34,8 @@ class Documento_model extends CI_Model {
 	*/	
 	public function update()
 	{
-		$this->numero    = $this->input->post('documento_numero');
-		$this->tipo      = $this->input->post('tipo');
+		$this->numero    = $this->input->post('cpf') ? $this->input->post('cpf') : $this->input->post('cnpj');
+		$this->tipo      = $this->input->post('cpf') ? 'CPF' : 'CNPJ';
 		$this->id_pessoa = $this->input->post('id_pessoa');
 		
 		$this->db->update('documento', $this, array('id_pessoa' => $this->id_pessoa));
