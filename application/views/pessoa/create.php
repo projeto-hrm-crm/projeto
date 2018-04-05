@@ -13,9 +13,15 @@
   </head>
   <body>
     <div class="container-fluid">
+        <?php 
+            if ($this->session->flashdata('erros_pessoa')): 
+                $erros   = $this->session->flashdata('erros_pessoa');
+                $valores =  $this->session->flashdata('valores_antigos');
+            endif;
+        ?>
       <div class="row justify-content-center full-height">
         <div class="col-10 col-xm-8">
-          <form action="#" method="post">
+          <form action="<?php echo base_url('pessoa/salvar'); ?>" method="post">
             <div class="card">
               <div class="card-header">
                 <h1 class="card-title">Cadastrar Pessoa</h1>
@@ -34,7 +40,10 @@
                         <label for="ck-pj">Pessoa Juridica</label>
                       </div>
                       <div class="form-group">
-                        <input class="form-control" type="text" name="name" placeholder="Nome...">
+                        <input class="form-control  <?php echo isset($erros['nome']) ? 'is-invalid' : '' ?>" type="text" name="nome" placeholder="Nome..." value="<?php echo isset($valores['nome']) ? $valores['nome'] : '' ?>">
+                        <span class="invalid-feedback">
+                            <?php echo isset($erros['nome']) ? $erros['nome'] : '' ?>
+                        </span>
                       </div>
                       <div class="pf-form">
                         <div class="row">
@@ -71,10 +80,16 @@
                     <div class="contact-form">
                       <h2>Informações de Contato</h2>
                       <div class="form-group">
-                        <input class="form-control" type="email" name="email" placeholder="email@exemplo.com">
+                        <input class="form-control <?php echo isset($erros['email']) ? 'is-invalid' : '' ?>" type="email" name="email" placeholder="email@exemplo.com" value="<?php echo isset($valores['email']) ? $valores['email'] : '' ?>">
+                        <span class="invalid-feedback">
+                            <?php echo isset($erros['email']) ? $erros['email'] : '' ?>
+                        </span>
                       </div>
                       <div class="form-group">
-                        <input class="form-control" type="text" name="tel" placeholder="Telefone...">
+                        <input class="form-control <?php echo isset($erros['tel']) ? 'is-invalid' : '' ?>" type="text" name="tel" placeholder="Telefone..." value="<?php echo isset($valores['tel']) ? $valores['tel'] : '' ?>">
+                        <span class="invalid-feedback">
+                            <?php echo isset($erros['tel']) ? $erros['tel'] : '' ?>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -104,42 +119,61 @@
                       <div class="row">
                         <div class="col-8">
                           <div class="form-group">
-                            <input class="form-control" type="text" name="cep" placeholder="CEP...">
+                            <input class="form-control <?php echo isset($erros['cep']) ? 'is-invalid' : '' ?>" type="text" name="cep" placeholder="CEP..." value="<?php echo isset($valores['cep']) ? $valores['cep'] : '' ?>">
+                            <span class="invalid-feedback">
+                                <?php echo isset($erros['cep']) ? $erros['cep'] : '' ?>
+                            </span>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <input class="form-control" type="text" name="estado" placeholder="Estado...">
+                            <input class="form-control <?php echo isset($erros['estado']) ? 'is-invalid' : '' ?>" type="text" name="estado" placeholder="Estado..." value="<?php echo isset($valores['estado']) ? $valores['estado'] : '' ?>">
+                            <span class="invalid-feedback">
+                                <?php echo isset($erros['estado']) ? $erros['estado'] : '' ?>
+                            </span>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
                           <div class="form-group">
-                            <input class="form-control" type="text" name="cidade" placeholder="Cidade...">
+                            <input class="form-control <?php echo isset($erros['cidade']) ? 'is-invalid' : '' ?>" type="text" name="cidade" placeholder="Cidade..." value="<?php echo isset($valores['cidade']) ? $valores['cidade'] : '' ?>">
+                            <span class="invalid-feedback">
+                                <?php echo isset($erros['cidade']) ? $erros['cidade'] : '' ?>
+                            </span>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <input class="form-control" type="text" name="bairro" placeholder="Bairro...">
+                            <input class="form-control <?php echo isset($erros['bairro']) ? 'is-invalid' : '' ?>" type="text" name="bairro" placeholder="Bairro..." value="<?php echo isset($valores['bairro']) ? $valores['bairro'] : '' ?>">
+                            <span class="invalid-feedback">
+                                <?php echo isset($erros['bairro']) ? $erros['bairro'] : '' ?>
+                            </span>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-8">
                           <div class="form-group">
-                            <input class="form-control" type="text" name="logradouro" placeholder="Logradouro...">
+                            <input class="form-control <?php echo isset($erros['logradouro']) ? 'is-invalid' : '' ?>" type="text" name="logradouro" placeholder="Logradouro..." value="<?php echo isset($valores['logradouro']) ? $valores['logradouro'] : '' ?>">
+                            <span class="invalid-feedback">
+                                <?php echo isset($erros['logradouro']) ? $erros['logradouro'] : '' ?>
+                            </span>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <input class="form-control" type="text" name="numero" placeholder="Número...">
+                            <input class="form-control <?php echo isset($erros['numero']) ? 'is-invalid' : '' ?>" type="text" name="numero" placeholder="Número..." value="<?php echo isset($valores['numero']) ? $valores['numero'] : '' ?>">
+                            <span class="invalid-feedback">
+                                <?php echo isset($erros['numero']) ? $erros['numero'] : '' ?>
+                            </span>
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <input class="form-control" type="text" name="complemento" placeholder="Complemento...">
+                        <input class="form-control" type="text" name="complemento" placeholder="Complemento..." value="<?php echo isset($valores['complemento']) ? $valores['complemento'] : '' ?>">
                       </div>
+                      <button type="">Salvar</button>
                     </div>
                   </div>
                 </div>
