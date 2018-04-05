@@ -1,0 +1,14 @@
+.container-fluid {
+  background: rgb(204, 201, 255);
+}
+.full-height {
+  min-height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+.card {
+  margin: 20px 0;
+}
