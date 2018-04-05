@@ -30,14 +30,19 @@ class Pessoa extends CI_Controller
 	* Este método tem como finalidade validar os campos de pessoa, 
 	* e permitir que o model insira estes dados no banco, respeitando a ordem de inserção.
 	*
-	* @return integer último id inserido no banco
+	* 
 	*/
 	public function save()
 	{
 
 		if(!$this->form_validation->run())
 		{
-			echo validation_errors();
+			//Esta parte deverá ser alterada no caso da utilização de ajax
+			$this->session->set_flashdata('erros_pessoa', $this->form_validation->error_array());
+			$this->session->set_flashdata('valores_antigos', $this->input->post());
+
+			redirect('pessoa/create');
+			//
 		}
 		else
 		{
@@ -47,7 +52,7 @@ class Pessoa extends CI_Controller
 			$this->documento->insert($id_pessoa);
 			$this->endereco->insert($id_pessoa);
 
-			//redirect('pessoa');
+			redirect('pessoa/create');
 		}
 
 	}
