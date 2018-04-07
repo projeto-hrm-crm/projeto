@@ -20,5 +20,10 @@
             <input type="submit" value="testar">
         </form>
         
+        <div>
+            <?php
+                echo $this->session->flashdata('message');
+            ?>
+        </div>
     </body>
 </html>

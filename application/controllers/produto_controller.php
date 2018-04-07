@@ -29,37 +29,84 @@ class Produto_controller extends CI_Controller
      */
     public function cadastrar()
     {
-        
-
         $this->load->helper('form','url');
         $this->load->library('form_validation');
         
         
         if($this->form_validation->run('produto')){
+            $array = array(
+                'nome' => $this->input->post('nome'),
+                'codigo' => $this->input->post('codigo'),
+                'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+                'validate' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validate')))),
+                'lote' => $this->input->post('lote'),
+                'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+            );
             
-            $this->produto->nome = $this->input->post('nome');
-            $this->produto->codigo = $this->input->post('codigo');
-            $this->produto->fabricacao = date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao'))));
-            $this->produto->validate = date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validate'))));
-            $this->produto->lote = $this->input->post('lote');
-            $this->produto->recebimento = date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento'))));
-        
-            if($this->produto->insert()){
-                $dados['msg'] = 'Produto cadastrado com sucesso';
-                $this->load->view('produto/success', $dados);
+            if($this->produto->insert($array)){
+                $this->session->set_flashdata('message','Cadastrado com sucesso');
             }else{
-                $this->session->set_flashdata('message', 'Não foi possível cadastrar!');
+                $this->session->set_flashdata('message', 'Não foi possível cadastrar no banco de dados!');
             }
         }else{
-            $this->session->set_flashdata('message', 'Não foi possível cadastrar!');
-            $dados['errors'] = validation_errors();
-            $dados['msg'] = 'não foi possivel cadastrar';
-            $this->load->view('produto/problem', $dados);
+            $dados = validation_errors();
+            $this->session->set_flashdata('message', $dados);
         }
         redirect('/produto/view/cadastro');
         
-    }
+    }    
     
+     /**
+     * @author: Dhiego Balthazar
+     * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
+     * 
+     * Rota: http://localhost/projeto/produto/atualizar
+     */
+    public function atualizar(){
+       $this->load->helper('form','url');
+        $this->load->library('form_validation');
+        
+        
+        if($this->form_validation->run('produto')){
+            $array = array(
+                'nome' => $this->input->post('nome'),
+                'codigo' => $this->input->post('codigo'),
+                'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+                'validate' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validate')))),
+                'lote' => $this->input->post('lote'),
+                'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+            );
+            
+            if($this->produto->update($array)){
+                $this->session->set_flashdata('message','Atualizado com sucesso');
+            }else{
+                $this->session->set_flashdata('message', 'Não foi possível atualizar o banco de dados!');
+            }
+        }else{
+            $dados = validation_errors();
+            $this->session->set_flashdata('message', $dados);
+        }
+        redirect('/produto/view/atualizar');
+    }
+        
+    /**
+     * @author: Dhiego Balthazar
+     * Esse método tem a finalidade de deletar um elemento pelo $id. ID é recebido através de um formulario da view delete.php
+     * 
+     * Rota: http://localhost/projeto/produto/
+     */
+    public function deletar(){
+            
+        $id = $this->input->post('id');
+        
+        if($this->produto->delete($id)){
+            $this->session->set_flashdata('message', 'Cadastro com sucesso!<br>Id: ' . $id);
+            
+        }else{
+            $this->session->set_flashdata('message', 'não foi possível deletar!<br>' . $id);
+        }
+    
+    }
     
     /**
       *@author: Dhiego Balthazar
@@ -82,30 +129,5 @@ class Produto_controller extends CI_Controller
       */
     public function teste_delete_produto(){
         $this->load->view('produto/delete');
-    }
-    
-    /**
-     * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de deletar um elemento pelo $id. ID é recebido através de um formulario da view delete.php
-     * 
-     * Rota: http://localhost/projeto/produto/
-     */
-    public function deletar(){
-            
-        $id = $this->input->post('id');
-        
-        if($this->produto->delete($id)){
-            $dados['msg'] = "elemento deletado com sucesso!";
-            $this->load->view('produto/success', $dados);
-            
-        }else{
-            $dados['msg'] = "Impossível deletar";
-            $this->load->view('produto/problem', $dados);
-        }
-            
-    }
-    
-    public function atualizar(){
-        
     }
 }

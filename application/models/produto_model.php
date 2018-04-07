@@ -17,23 +17,52 @@ class Produto_model extends CI_Model
     /*
     *@author: Dhiego Balthazar
     *
-    *
+    *@return: mixed
     */
     public function get(){
         $query = $this->db->get('produto');
         return $query->result();
     }
     
-    public function insert() {
-        return $this->db->insert('produto', $this);        
+    /*
+     *@author: Dhiego Balthazar
+     * 
+     *@params: array - com dados do produto 
+     *@return: boolean
+    */
+    public function insert($array) {
+        $this->db->set('nome', $array['nome']);
+        $this->db->set('codigo', $array['codigo']);
+        $this->db->set('fabricacao', $array['fabricacao']);
+        $this->db->set('validate', $array['validate']);
+        $this->db->set('lote', $array['lote']);
+        $this->db->set('recebimento', $array['recebimento']);
+        return $this->db->insert('produto');        
     }
     
-    public function update($dados){
-        return $this->db->update('produto', $dados);
+    /*
+     *@author: Dhiego Balthazar
+     * 
+     *@params: mixed com dados do produto 
+     *@return: boolean
+    */
+    public function update($array){
+        $this->db->set('nome', $array['nome']);
+        $this->db->set('codigo', $array['codigo']);
+        $this->db->set('fabricacao', $array['fabricacao']);
+        $this->db->set('validate', $array['validate']);
+        $this->db->set('lote', $array['lote']);
+        $this->db->set('recebimento', $array['recebimento']);
+        return $this->db->update('produto');        
     }
     
     public function delete($id){
         $this->db->where('id_produto', $id);
         return $this->db->delete('produto');
+    }
+    
+    public function getByName($nome){
+        $this->db->where('nome', $nome);
+        $this->db->get('produto');
     }
 }
