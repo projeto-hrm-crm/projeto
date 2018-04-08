@@ -60,9 +60,9 @@ class Produto_controller extends CI_Controller
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
      * 
-     * Rota: http://localhost/projeto/produto/atualizar
+     * Rota: http://localhost/projeto/produto/alterar
      */
-    public function atualizar(){
+    public function alterar(){
        $this->load->helper('form','url');
         $this->load->library('form_validation');
         
@@ -93,7 +93,7 @@ class Produto_controller extends CI_Controller
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de deletar um elemento pelo $id. ID é recebido através de um formulario da view delete.php
      * 
-     * Rota: http://localhost/projeto/produto/
+     * Rota: http://localhost/projeto/produto/deletar
      */
     public function deletar(){
             
@@ -106,28 +106,5 @@ class Produto_controller extends CI_Controller
             $this->session->set_flashdata('message', 'não foi possível deletar!<br>' . $id);
         }
     
-    }
-    
-    /**
-      *@author: Dhiego Balthazar
-      * Esse método tem a finalidade de abrir uma view para testar a inserção de elemento
-      *
-      * 
-      * Rota: http://localhost/projeto/produto/view/cadastro
-      */
-    public function teste_cadastro_produto()
-    {
-        $this->load->view('produto/insert');
-    }
-    
-    /**
-      *@author: Dhiego Balthazar
-      * Esse método tem a finalidade de abrir uma view para testar a exclusão de elementos
-      *
-      * 
-      * Rota: http://localhost/projeto/produto/view/deletar
-      */
-    public function teste_delete_produto(){
-        $this->load->view('produto/delete');
     }
 }
