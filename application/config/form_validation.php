@@ -106,4 +106,39 @@ $config = array(
             'label' => 'Telefone',
             'rules' => 'required'
         ),
+
+        requeridoSe(),
 );
+
+
+/**
+* @author: Tiago Villalobos
+* Método palhiativo para lidar com a validação de cpf ou cnpj
+*
+* 
+*/
+function requeridoSe()
+{
+    if(isset($_POST['tipo-pessoa']))
+    {
+        if($_POST['tipo-pessoa'] == 'pf')
+        {
+            return 
+                array(
+                    'field' => 'cpf',
+                    'label' => 'CPF',
+                    'rules' => 'required'
+                );
+        }
+
+        if($_POST['tipo-pessoa'] == 'pj')
+        {
+            return 
+                array(
+                    'field' => 'cnpj',
+                    'label' => 'CNPJ',
+                    'rules' => 'required'
+                );   
+        }
+    }
+}
