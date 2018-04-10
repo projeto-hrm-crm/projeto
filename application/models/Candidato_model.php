@@ -2,16 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Candidato_model extends CI_Model {
 
-	public $id_pessoa_fisica;
+	public $id_pessoa;
 	/**
 	* @author: Camila Sales
 	* Salva o registro de candidato associado à uma pessoa fisica
 	*
-	* @param integer $id_pessoa_fisica
+	* @param integer $id_pessoa
 	*/
-	public function insert($id_pessoa_fisica)
+	public function insert($id_pessoa)
 	{
-		$this->id_pessoa = $id_pessoa_fisica;
+		$this->id_pessoa = $id_pessoa;
 		$this->db->insert('candidato', $this);
 	}
 
@@ -19,11 +19,11 @@ class Candidato_model extends CI_Model {
 	* @author: Camila Sales
 	* Remove o registro de candidato associado à uma pessoa fisica
 	*
-	* @param integer $id_pessoa_fisica
+	* @param integer $id_pessoa
 	*/
-	public function remove($id_pessoa_fisica)
+	public function remove($id_pessoa)
 	{
-		$this->db->where('id_pessoa_fisica', $id_pessoa_fisica);
+		$this->db->where('id_pessoa', $id_pessoa);
 		$this->db->delete('candidato');
 		// delete pessoa fisica;
 	}

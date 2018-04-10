@@ -9,34 +9,39 @@ class PessoaFisica_model extends CI_Model{
   public $id_pessoa;
 
   /**
-	* @author: Camila Sales
-	* Este método tem como finalidade salvar um registro de pessoa
-	* física no banco
-	*
-	*/
-	public function insert()
-	{
-    // insert pessoa;
-    $this->email  = $this->input->post('email');
-		$this->$dataNascimento  = $this->input->post('data_nascimento');
-    $this->sexo = $this->input->post('sexo');
-		$this->id_pessoa = 1;
-    // $this->id_pessoa = $this->input->post('id_pessoa');
-
-		$this->db->insert('pessoa_fisica', $this);
-    return $this->db->insert_id();
-	}
-	/**
-	* @author: Camila Sales
-	* Retorna todas as pessoas fisicas pessoas fisicas.
-	* @return mixed array de objetos
-	*/
-	public function get()
+  * @author: Camila Sales
+  * Este método tem como finalidade salvar um registro de pessoa
+  * física no banco
+  *
+  */
+  public function insert($id_pessoa)
   {
-    $query = $this->db->get('pessoa_fisica');
+    // function insert pessoa;
+    // $this->$dataNascimento  = $this->input->post('data_nascimento');
+    // $this->sexo = $this->input->post('sexo');
+    // $this->id_pessoa = $id_pessoa;
+    $dados = ['data_nascimento' => '2000-05-05','sexo' => 1, 'id_pessoa' => $id_pessoa];
+    $this->db->insert('pessoa_fisica', $dados);
+    return $this->db->insert_id();
+  }
+
+  /**
+  * @author: Rodrigo Alves
+  * Retorna todas a pessoa fisica corespondentes ao $id ou todas, caso o id for nullo
+  * @return mixed array de objetos
+  */
+  public function get($id)
+  {
+    if (is_null($id)) {
+      $query = $this->db->select("*")->from("pessoa")
+      ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa');
+    }else {
+      $query = $this->db->select("*")->from("pessoa")
+      ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')->where('pessoa.id_pessoa', $id);
+    }
     if ($query)
     {
-      return $query->result();
+      return $query->get()->result();
     }else{
       echo 'Não existem dados';
       exit;
@@ -44,48 +49,29 @@ class PessoaFisica_model extends CI_Model{
   }
 
   /**
-	* @author: Rodrigo Alves
-	* Retorna todas as pessoas fisicas pessoas fisicas pelo Id.
-	* @return mixed array de objetos
-	*/
-	public function getId($id)
+  * @author: Camila Sales
+  * Este método tem como finalidade atualizar os dados
+  * de um registro de pessoa no banco pelo id do mesmo.
+  *
+  */
+  public function update($id)
   {
-    $this->db->get('pessoa_fisica');
-    $query = $this->db->where('id_pessoa_fisica', $id_pessoa);
-    if ($query)
-    {
-      return $query->result();
-    }else{
-      echo 'Não existem dados';
-      exit;
-    }
-  }
-
-	/**
-	* @author: Camila Sales
-	* Este método tem como finalidade atualizar os dados
-	* de um registro de pessoa no banco pelo id do mesmo.
-	*
-	*/
-	public function update()
-	{
     // update pessoa
-    $this->email  = $this->input->post('email');
     $this->$dataNascimento  = $this->input->post('data_nascimento');
     $this->sexo = $this->input->post('sexo');
 
-		$this->db->update('pessoa_fisica', $this, array('id_pessoa_fisica' => $this->input->post('id_pessoa_fisica')));
-	}
-	/**
-	* @author: Camila Sales
-	* Este método tem como finalidade remover um registro de pessoa do banco
-	* pelo id do mesmo.
-	*
-	*/
-	public function remove()
-	{
-		$this->db->where('id_pessoa_fisica', $this->input->post('id_pessoa_fisica'));
-		$this->db->delete('pessoa');
+    $this->db->update('pessoa_fisica', $this, array('id_pessoa' => $this->input->post('id_pessoa')));
+  }
+  /**
+  * @author: Camila Sales
+  * Este método tem como finalidade remover um registro de pessoa do banco
+  * pelo id do mesmo.
+  *
+  */
+  public function remove($id_pessoa)
+  {
+    $this->db->where('id_pessoa', $id_pessoa);
+    $this->db->delete('pessoa_fisica');
     // remove pessoa
-	}
+  }
 }
