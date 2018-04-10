@@ -49,7 +49,10 @@
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
-                              <input class="form-control" type="text" name="cpf" placeholder="CPF...">
+                              <input class="form-control <?php echo isset($erros['cpf']) ? 'is-invalid' : '' ?>" type="text" name="cpf" placeholder="CPF...">
+                              <span class="invalid-feedback">
+                                <?php echo isset($erros['cpf']) ? $erros['cpf'] : '' ?>
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -73,7 +76,10 @@
                       </div>
                       <div class="pj-form hide">
                         <div class="form-group">
-                          <input class="form-control" type="text" name="cnpj" placeholder="CNPJ...">
+                          <input class="form-control <?php echo isset($erros['cnpj']) ? 'is-invalid' : '' ?>" type="text" name="cnpj" placeholder="CNPJ...">
+                          <span class="invalid-feedback">
+                            <?php echo isset($erros['cnpj']) ? $erros['cnpj'] : '' ?>
+                          </span>
                         </div>
                       </div>
                     </div>
