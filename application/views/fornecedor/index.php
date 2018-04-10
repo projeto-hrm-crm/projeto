@@ -12,7 +12,7 @@
   				<th class="text-center">ID</th>
   				<th class="text-center">Nome</th>
   				<th class="text-center">Razao Social</th>
-  				<th class="text-center">CNPJ</th>
+  				<!-- <th class="text-center">CNPJ</th> -->
   				<th class="text-center">Ações</th>
   			</tr>
   		</thead>
@@ -23,7 +23,7 @@
   					<td class="text-center"><?= $fornecedor->id; ?></td>
   					<td class="text-center"><?= $fornecedor->nome; ?></td>
   					<td class="text-center"><?= $fornecedor->razao_social; ?></td>
-            <td class="text-center"><?= $fornecedor->cnpj; ?></td>
+            <!-- <td class="text-center"><?= $fornecedor->cnpj; ?></td> -->
   					<td class="text-center">
   						<a title="Editar" href="<?= site_url('fornecedor/edit/'.$fornecedor->id)?>">Editar</a> |
               <a title="Excluir" href="<?= site_url('fornecedor/delete/'.$fornecedor->id)?>">Excluir</a>
