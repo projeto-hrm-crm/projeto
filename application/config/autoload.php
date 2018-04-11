@@ -62,6 +62,7 @@ $autoload['libraries'] = array(
     'database',
     'form_validation',
     'session',
+
 );
 
 /*
@@ -140,5 +141,12 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-  'Fornecedor_model' => 'fornecedor',
+
+                    'Fornecedor_model'           => 'fornecedor',
+                    'PessoaFisica_model'         => 'pessoa_fisica',
+                    'Cliente_model'              => 'cliente',
+                    'Funcionario_model'          => 'funcionario',
+                    'Candidato_model'            => 'candidato',
+                    'Usuario_model'              => 'usuario',
+
 );
