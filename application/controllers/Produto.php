@@ -50,7 +50,7 @@ class Produto extends CI_Controller
             $dados = validation_errors();
             $this->session->set_flashdata('message', $dados);
         }
-        redirect('/produto/view/cadastro');
+        redirect('/produto/cadastrar');
         
     }    
     
@@ -73,15 +73,15 @@ class Produto extends CI_Controller
             );
             
             if($this->produto->update($array)){
-                $this->session->set_flashdata('message','Atualizado com sucesso');
+                $this->session->set_flashdata('sucsses','Atualizado com sucesso');
             }else{
-                $this->session->set_flashdata('message', 'Não foi possível atualizar o banco de dados!');
+                $this->session->set_flashdata('danger', 'Não foi possível atualizar o banco de dados!');
             }
         }else{
             $dados = validation_errors();
-            $this->session->set_flashdata('message', $dados);
+            $this->session->set_flashdata('danger', $dados);
         }
-        redirect('/produto/view/atualizar');
+        redirect('/produto/index');
     }
         
     /**
@@ -93,11 +93,12 @@ class Produto extends CI_Controller
     public function delete($id){
         
         if($this->produto->delete($id)){
-            $this->session->set_flashdata('message', 'Cadastro com sucesso!<br>Id: ' . $id);
+            $this->session->set_flashdata('sucsses', 'Cadastro com sucesso!<br>Id: ' . $id);
             
         }else{
-            $this->session->set_flashdata('message', 'não foi possível deletar!<br>Id: ' . $id);
+            $this->session->set_flashdata('danger', 'não foi possível deletar!<br>Id: ' . $id);
         }
+        redirect('/produto/index');
     
     }
 }
