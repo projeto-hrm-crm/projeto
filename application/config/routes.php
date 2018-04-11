@@ -57,6 +57,12 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+
+$route['produto/index'] = 'produto/index';
+$route['produto/cadastrar'] = 'produto/create';
+$route['produto/editar/(:num)'] = 'produto/edit/$1';
+
 //Rotas Pessoa
 $route['pessoa/salvar']         = 'pessoa/save';
 $route['pessoa/atualizar']      = 'pessoa/update';
@@ -79,3 +85,4 @@ $route['pessoa_fisica/remover/(:num)'] = 'PessoaFisica/delete/$1';
 /** LOGIN */
 $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
+

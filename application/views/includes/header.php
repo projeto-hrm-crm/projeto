@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
   <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
   <link href="<?php echo base_url();?>assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
@@ -41,7 +42,7 @@
         <i class="fa fa-bars"></i>
       </button>
       <a class="navbar-brand" href="./"><img src="<?php echo base_url();?>assets/images/theme/logo.png" alt="Logo"></a>
-      <a class="navbar-brand hidden" href="./"><img src="<?php echo base_url();?>assets/images/theme/images/logo2.png" alt="Logo"></a>
+      <a class="navbar-brand hidden" href="./"><img src="<?php echo base_url();?>assets/images/theme/logo2.png" alt="Logo"></a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -74,10 +75,10 @@
           </ul>
         </li>
         <li class="menu-item-has-children dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Produto</a>
           <ul class="sub-menu children dropdown-menu">
-            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('produto/cadastrar');?>">Cadastrar</a></li>
+            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('produto/index');?>">Listar</a></li>
           </ul>
         </li>
 
