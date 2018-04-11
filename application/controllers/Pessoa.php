@@ -4,27 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pessoa extends CI_Controller 
 {
 
-	
-	public function index(){}
-
-
-	public function create()
-	{
-	  	if($this->input->post)
-	  	{
-	    	print_r($_POST);
-	  	}
-	  	else
-	  	{
-	    	$this->load->helper('url');
-	    	// $this->load->view('includes/header.php');
-
-	    	$this->load->view('pessoa/create.php');
-	    	// $this->load->view('includes/footer.php');
-	  	}
-	}
-
-
 	/**
 	* @author: Tiago Villalobos
 	* Este método tem como finalidade validar os campos de pessoa, 
@@ -37,12 +16,10 @@ class Pessoa extends CI_Controller
 
 		if(!$this->form_validation->run())
 		{
-			//Esta parte deverá ser alterada no caso da utilização de ajax
 			$this->session->set_flashdata('erros_pessoa', $this->form_validation->error_array());
 			$this->session->set_flashdata('valores_antigos', $this->input->post());
 
 			redirect('pessoa/create');
-			//
 		}
 		else
 		{
@@ -82,7 +59,8 @@ class Pessoa extends CI_Controller
 	{
 		if(!$this->form_validation->run())
 		{
-			echo validation_errors();
+			$this->session->set_flashdata('erros_pessoa', $this->form_validation->error_array());
+			$this->session->set_flashdata('valores_antigos', $this->input->post());
 		}
 		else
 		{

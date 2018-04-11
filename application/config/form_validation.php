@@ -51,7 +51,7 @@ $config = array(
 */
 
 $config = array(
-    'pessoa/salvar' => 
+    'pessoa' => array( 
     
         array(
             'field' => 'nome',
@@ -107,38 +107,36 @@ $config = array(
             'rules' => 'required'
         ),
 
-        requeridoSe(),
+        array(
+            'field' => 'cpf',
+            'label' => 'CPF',
+            'rules' => requeridoSe('tipo-pessoa', 'pf').''
+        ),
+
+        array(
+            'field' => 'cnpj',
+            'label' => 'CNPJ',
+            'rules' => requeridoSe('tipo-pessoa', 'pj').''
+        )
+    )
+
 );
 
 
 /**
 * @author: Tiago Villalobos
-* Método palhiativo para lidar com a validação de cpf ou cnpj
+* Método para tratar a validação de cpf ou cnpj
 *
 * 
 */
-function requeridoSe()
+function requeridoSe($campo, $valor)
 {
-    if(isset($_POST['tipo-pessoa']))
+    if(isset($_POST[$campo]))
     {
-        if($_POST['tipo-pessoa'] == 'pf')
+        if($_POST[$campo] == $valor)
         {
-            return 
-                array(
-                    'field' => 'cpf',
-                    'label' => 'CPF',
-                    'rules' => 'required'
-                );
-        }
-
-        if($_POST['tipo-pessoa'] == 'pj')
-        {
-            return 
-                array(
-                    'field' => 'cnpj',
-                    'label' => 'CNPJ',
-                    'rules' => 'required'
-                );   
-        }
+            return 'required|';
+        }    
     }
+
 }
