@@ -49,11 +49,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['produto'] = 'Produto/index';
+$route['produto/deletar/(:num)'] = 'Produto/delete/$1';
+$route['produto/cadastrar'] = 'Produto/create';
+$route['produto/alterar'] = 'Produto/update';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
+
 $route['produto/index'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
+
+//Rotas Pessoa
+$route['pessoa/salvar']         = 'pessoa/save';
+$route['pessoa/atualizar']      = 'pessoa/update';
+$route['pessoa/editar/(:num)']  = 'pessoa/index/$1';
+$route['pessoa/remover/(:num)'] = 'pessoa/delete/$1';
+
+//Rotas Fornecedores
+$route['fornecedor'] = 'Fornecedor';
+$route['fornecedor/cadastrar'] = 'Fornecedor/create';
+$route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
+$route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
+
+//Rotas Pessoa Fisica
+$route['pessoa_fisica/salvar']         = 'PessoaFisica/save';
+$route['pessoa_fisica/listar']         = 'PessoaFisica/listar';
+$route['pessoa_fisica/atualizar']      = 'PessoaFisica/update';
+$route['pessoa_fisica/editar/(:num)']  = 'PessoaFisica/index/$1';
+$route['pessoa_fisica/remover/(:num)'] = 'PessoaFisica/delete/$1';
+
+/** LOGIN */
+$route['login'] = 'Login/index';
+$route['logout'] = 'Login/logout';
+

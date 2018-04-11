@@ -12,3 +12,4 @@ $database_config = [
     'password' 	=> 'aluno123',
     'database'	=> 'database',
 ];
+

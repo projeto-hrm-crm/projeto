@@ -257,8 +257,8 @@
   </header><!-- /header -->
   <!-- Header-->
 
-  <!-- CONTENT -->
-  <div class="breadcrumbs">
+  <! -- CONTENT -->
+  <!-- <div class="breadcrumbs">
     <div class="col-sm-4">
       <div class="page-header float-left">
         <div class="page-title">
@@ -275,6 +275,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="content mt-3">
