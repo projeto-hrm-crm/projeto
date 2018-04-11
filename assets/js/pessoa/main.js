@@ -1,4 +1,10 @@
 $(document).ready(() => {
+  $("[name='cpf']")         .mask('000.000.000-00', {reverse:false});
+  $("[name='cnpj']")        .mask('00.000.000/0000-00', {reverse:false});
+  $("[name='nascimento']")  .mask('00-00-0000', {reverse:false});
+  $("[name='telefone']")    .mask('(00) 00000-0000', {reverse:false});
+  $("[name='cep']")         .mask('00000-000', {reverse:false});
+
   $('#ck-pf').change((e) => {
     $('.pj-form').hide();
     $('.pf-form').show();
@@ -10,13 +16,16 @@ $(document).ready(() => {
   $('#ck-user').change((e) => {
     toggleForm(e, $('.user-form'));
   });
+
   $('#use-email').change((e) => {
     if(e.target.checked) {
-      var email = $('input[name="email"]').val();
-      e.target.value = email;
+      var email_value = $("[name='email']").val();
+      $("[name='login']").val(email_value);
+      $("[name='login']").prop('disabled', true);
     }
     else {
-      e.target.value = '';
+      $("[name='login']").val('');
+      $("[name='login']").prop('disabled', false);
     }
   });
 });

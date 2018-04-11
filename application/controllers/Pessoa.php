@@ -1,9 +1,10 @@
 <?php
 /**
- *
- */
+*
+*/
 class Pessoa extends CI_Controller
 {
+
 
   function create()
   {
@@ -13,11 +14,22 @@ class Pessoa extends CI_Controller
     }
     else
     {
-      $this->load->helper('url');
-      // $this->load->view('includes/header.php');
+      $data['title'] = 'Cadastrar Pessoa';
+      $data['assets'] = array(
+        'css' => array('pessoa/style.css'),
+        'js' => array(
+          'lib/jquery/jquery.mask.min.js',
+          'pessoa/main.js',
+          'pessoa/validate-form.js',
+        ),
+      );
 
-      $this->load->view('pessoa/create.php');
-      // $this->load->view('includes/footer.php');
+      loadTemplate(
+        'includes/header',
+        'pessoa/create-form',
+        'includes/footer',
+        $data
+      );
     }
   }
 }

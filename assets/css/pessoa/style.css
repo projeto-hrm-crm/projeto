@@ -1,14 +1,8 @@
-.container-fluid {
-  background: rgb(204, 201, 255);
+.content h1, .content h2 {
+  color: rgb(107, 107, 107);
+  margin: 10px 0;
 }
-.full-height {
-  min-height: 100vh;
-}
-
-.hide {
-  display: none;
-}
-
-.card {
-  margin: 20px 0;
-}
+.content h1 { font-size: 36px }
+.content h2 { font-size: 28px }
+.content .card { margin: 20px 0 }
+.hide { display: none }
