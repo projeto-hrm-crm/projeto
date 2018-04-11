@@ -29,12 +29,12 @@
                                         <td><?= $produto->lote;?></td>
                                         <td><?= $produto->recebimento;?></td>
                                         <td>
-                                            <button type="button" name="editar" class="btn btn-primary">
+                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
-                                            </button>
-                                            <button type="button" name="remover" class="btn btn-danger">
+                                            </a>
+                                            <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">
                                                 <span class="fa fa-close"></span>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -43,9 +43,26 @@
                     </table>
                 </div>
             </div>
+            <?php if($this->session->flashdata('success')): ?>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('success'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <?php if($this->session->flashdata('danger')): ?>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('danger'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+
 
     <script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
     <script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>

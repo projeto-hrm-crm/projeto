@@ -47,5 +47,21 @@
                 </div>
             </form>
         </div>
+        <?php if($this->session->flashdata('success')): ?>
+            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                    <?php echo $this->session->flashdata('success'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php if($this->session->flashdata('danger')): ?>
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    <?php echo $this->session->flashdata('danger'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
