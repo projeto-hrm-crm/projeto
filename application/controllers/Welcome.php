@@ -8,7 +8,7 @@ class Welcome extends CI_Controller {
 	    $data = [];
 
 	    $data['title'] = 'Página inicial';
-		loadTemplate('includes/header', 'welcome_message', 'includes/footer', $data);
+			loadTemplate('includes/header', 'welcome_message', 'includes/footer', $data);
 	}
 
 }

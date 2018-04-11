@@ -11,4 +11,5 @@ $database_config = [
     'user'		=> 'root',
     'password' 	=> 'aluno123',
     'database'	=> 'projeto',
+
 ];
