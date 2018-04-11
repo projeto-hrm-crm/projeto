@@ -51,5 +51,16 @@ $config = array(
 */
 
 $config = array(
-
+        'login' => array(
+                array(
+                        'field' => 'email',
+                        'label' => 'E-mail',
+                        'rules' => 'required|valid_email'
+                ),
+                array(
+                        'field' => 'senha',
+                        'label' => 'senha',
+                        'rules' => 'required'
+                )
+        )
 );
