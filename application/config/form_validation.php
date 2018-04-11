@@ -51,6 +51,41 @@ $config = array(
 */
 
 $config = array(
+
+    'produto' => 
+    array(
+        array(
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required|alpha_numeric_spaces'
+        ),
+        array(
+            'field' => 'codigo',
+            'label' => 'Codigo',
+            'rules' => 'required|numeric'
+        ),
+        array(
+            'field' => 'fabricacao',
+            'label' => 'Fabricacao',
+            'rules' => 'required|exact_length[10]'
+        ),
+        array(
+            'field' => 'validate',
+            'label' => 'Validate',
+            'rules' => 'required|exact_length[10]'
+        ),
+        array(
+            'field' => 'lote',
+            'label' => 'Lote',
+            'rules' => 'required|numeric'
+        ),
+        array(
+            'field' => 'recebimento',
+            'label' => 'Recebimento',
+            'rules' => 'required|exact_length[10]'
+        ),
+    )
+);
     'pessoa' => array( 
     
         array(
@@ -174,5 +209,4 @@ function requeridoSe($campo, $valor)
                 )
         )
 );
-
 

@@ -62,7 +62,6 @@ $autoload['libraries'] = array(
     'database',
     'form_validation',
     'session',
-
 );
 
 /*
@@ -141,16 +140,15 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-
-                    'pessoa_model'               => 'pessoa',
-                    'endereco_model'             => 'endereco',
-                    'documento_model'            => 'documento',
-                    'telefone_model'             => 'telefone',
+                    'Produto_model' => 'produto',
+                    'Pessoa_model'               => 'pessoa',
+                    'Endereco_model'             => 'endereco',
+                    'Documento_model'            => 'documento',
+                    'Telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',
                     'PessoaFisica_model'         => 'pessoa_fisica',
                     'Cliente_model'              => 'cliente',
                     'Funcionario_model'          => 'funcionario',
                     'Candidato_model'            => 'candidato',
                     'Usuario_model'              => 'usuario',
-
 );
