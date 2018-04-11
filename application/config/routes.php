@@ -56,3 +56,26 @@ $route['produto/alterar'] = 'Produto/update';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//Rotas Pessoa
+$route['pessoa/salvar']         = 'pessoa/save';
+$route['pessoa/atualizar']      = 'pessoa/update';
+$route['pessoa/editar/(:num)']  = 'pessoa/index/$1';
+$route['pessoa/remover/(:num)'] = 'pessoa/delete/$1';
+
+//Rotas Fornecedores
+$route['fornecedor'] = 'Fornecedor';
+$route['fornecedor/cadastrar'] = 'Fornecedor/create';
+$route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
+$route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
+
+//Rotas Pessoa Fisica
+$route['pessoa_fisica/salvar']         = 'PessoaFisica/save';
+$route['pessoa_fisica/listar']         = 'PessoaFisica/listar';
+$route['pessoa_fisica/atualizar']      = 'PessoaFisica/update';
+$route['pessoa_fisica/editar/(:num)']  = 'PessoaFisica/index/$1';
+$route['pessoa_fisica/remover/(:num)'] = 'PessoaFisica/delete/$1';
+
+/** LOGIN */
+$route['login'] = 'Login/index';
+$route['logout'] = 'Login/logout';

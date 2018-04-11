@@ -51,6 +51,7 @@ $config = array(
 */
 
 $config = array(
+
     'produto' => 
     array(
         array(
@@ -85,3 +86,127 @@ $config = array(
         ),
     )
 );
+    'pessoa' => array( 
+    
+        array(
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'email',
+            'label' => 'E-Mail',
+            'rules' => 'valid_email|max_length[100]'
+        ),
+
+        array(
+            'field' => 'cep',
+            'label' => 'CEP',
+            'rules' => 'required|min_length[11]'
+        ),
+
+        array(
+            'field' => 'estado',
+            'label' => 'Estado',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'cidade',
+            'label' => 'Cidade',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'bairro',
+            'label' => 'Bairro',
+            'rules' => 'required'
+        ),        
+
+        array(
+            'field' => 'logradouro',
+            'label' => 'Logradouro',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'numero',
+            'label' => 'Número',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'tel',
+            'label' => 'Telefone',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'cpf',
+            'label' => 'CPF',
+            'rules' => requeridoSe('tipo-pessoa', 'pf').''
+        ),
+
+        array(
+            'field' => 'cnpj',
+            'label' => 'CNPJ',
+            'rules' => requeridoSe('tipo-pessoa', 'pj').''
+        )
+    )
+
+);
+
+
+/**
+* @author: Tiago Villalobos
+* Método para tratar a validação de cpf ou cnpj
+*
+* 
+*/
+function requeridoSe($campo, $valor)
+{
+    if(isset($_POST[$campo]))
+    {
+        if($_POST[$campo] == $valor)
+        {
+            return 'required|';
+        }    
+    }
+
+
+}
+
+  'fornecedor' => array(
+          array(
+                  'field' => 'nome',
+                  'label' => 'Nome',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'razao_social',
+                  'label' => 'Razão Social',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'cnpj',
+                  'label' => 'CNPJ',
+                  'rules' => 'required|integer'
+          ),
+    )
+);
+
+        'login' => array(
+                array(
+                        'field' => 'email',
+                        'label' => 'E-mail',
+                        'rules' => 'required|valid_email'
+                ),
+                array(
+                        'field' => 'senha',
+                        'label' => 'senha',
+                        'rules' => 'required'
+                )
+        )
+);
+
