@@ -6,7 +6,7 @@ class Produto_model extends CI_Model
     public $nome;
     public $codigo;
     public $fabricacao;
-    public $validate;
+    public $validade;
     public $lote;
     public $recebimento;
     
@@ -34,7 +34,7 @@ class Produto_model extends CI_Model
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validate', $array['validate']);
+        $this->db->set('validade', $array['validate']);
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->insert('produto');        
@@ -50,19 +50,21 @@ class Produto_model extends CI_Model
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validate', $array['validate']);
+        $this->db->set('validade', $array['validate']);
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->update('produto');        
     }
     
+
+    /*
+     *@author: Dhiego Balthazar
+     * 
+     *@params: mixed com dados do produto 
+     *@return: boolean
+    */
     public function delete($id){
         $this->db->where('id_produto', $id);
         return $this->db->delete('produto');
-    }
-    
-    public function getByName($nome){
-        $this->db->where('nome', $nome);
-        $this->db->get('produto');
     }
 }

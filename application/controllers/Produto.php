@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * http://localhost/projeto/produto
  */
 
-class Produto_controller extends CI_Controller
+class Produto extends CI_Controller
 {
     /**
       *@author: Dhiego Balthazar
@@ -27,11 +27,9 @@ class Produto_controller extends CI_Controller
      * 
      * Rota: http://localhost/projeto/produto/cadastrar
      */
-    public function cadastrar()
-    {
-        $this->load->helper('form','url');
-        $this->load->library('form_validation');
-        
+
+    public function create()
+    {      
         
         if($this->form_validation->run('produto')){
             $array = array(
@@ -62,17 +60,14 @@ class Produto_controller extends CI_Controller
      * 
      * Rota: http://localhost/projeto/produto/alterar
      */
-    public function alterar(){
-       $this->load->helper('form','url');
-        $this->load->library('form_validation');
-        
+    public function update(){        
         
         if($this->form_validation->run('produto')){
             $array = array(
                 'nome' => $this->input->post('nome'),
                 'codigo' => $this->input->post('codigo'),
                 'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-                'validate' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validate')))),
+                'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
                 'lote' => $this->input->post('lote'),
                 'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
             );
@@ -95,15 +90,13 @@ class Produto_controller extends CI_Controller
      * 
      * Rota: http://localhost/projeto/produto/deletar
      */
-    public function deletar(){
-            
-        $id = $this->input->post('id');
+    public function delete($id){
         
         if($this->produto->delete($id)){
             $this->session->set_flashdata('message', 'Cadastro com sucesso!<br>Id: ' . $id);
             
         }else{
-            $this->session->set_flashdata('message', 'não foi possível deletar!<br>' . $id);
+            $this->session->set_flashdata('message', 'não foi possível deletar!<br>Id: ' . $id);
         }
     
     }
