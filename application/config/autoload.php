@@ -142,6 +142,10 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
 
+                    'pessoa_model'               => 'pessoa',
+                    'endereco_model'             => 'endereco',
+                    'documento_model'            => 'documento',
+                    'telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',
                     'PessoaFisica_model'         => 'pessoa_fisica',
                     'Cliente_model'              => 'cliente',
