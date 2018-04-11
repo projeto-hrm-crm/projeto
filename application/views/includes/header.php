@@ -24,6 +24,30 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
   <link href="<?php echo base_url();?>assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
+  <script src="<?= base_url();?>assets/js/lib/jquery/jquery.js"></script>
+
+  <!-- inserção dinâmica de arquivos CSS -->
+  <?php if (isset($assets['css'])): ?>
+    <?php foreach ($assets['css'] as $css_file): ?>
+      <link
+        rel="stylesheet"
+        href="<?= base_url().'assets/css/'.$css_file ?>"
+      >
+    <?php endforeach; ?>
+  <?php endif; ?>
+  <!-- fim da inserção -->
+
+  <!-- inserção dinamica de arquivos JS -->
+  <?php if (isset($assets['js'])): ?>
+    <?php foreach ($assets['js'] as $js_file): ?>
+      <script
+        src="<?= base_url().'assets/js/'.$js_file ?>"
+        charset="utf-8"
+      ></script>
+    <?php endforeach; ?>
+  <?php endif; ?>
+  <!-- fim da inserção -->
+
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
