@@ -84,8 +84,7 @@ $config = array(
             'label' => 'Recebimento',
             'rules' => 'required|exact_length[10]'
         ),
-    )
-);
+    ),
     'pessoa' => array( 
     
         array(
@@ -153,10 +152,38 @@ $config = array(
             'label' => 'CNPJ',
             'rules' => requeridoSe('tipo-pessoa', 'pj').''
         )
-    )
+    ),
 
+  'fornecedor' => array(
+          array(
+                  'field' => 'nome',
+                  'label' => 'Nome',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'razao_social',
+                  'label' => 'Razão Social',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'cnpj',
+                  'label' => 'CNPJ',
+                  'rules' => 'required|integer'
+          ),
+    ),
+        'login' => array(
+                array(
+                        'field' => 'email',
+                        'label' => 'E-mail',
+                        'rules' => 'required|valid_email'
+                ),
+                array(
+                        'field' => 'senha',
+                        'label' => 'senha',
+                        'rules' => 'required'
+                )
+        )
 );
-
 
 /**
 * @author: Tiago Villalobos
@@ -176,37 +203,3 @@ function requeridoSe($campo, $valor)
 
 
 }
-
-  'fornecedor' => array(
-          array(
-                  'field' => 'nome',
-                  'label' => 'Nome',
-                  'rules' => 'required'
-          ),
-          array(
-                  'field' => 'razao_social',
-                  'label' => 'Razão Social',
-                  'rules' => 'required'
-          ),
-          array(
-                  'field' => 'cnpj',
-                  'label' => 'CNPJ',
-                  'rules' => 'required|integer'
-          ),
-    )
-);
-
-        'login' => array(
-                array(
-                        'field' => 'email',
-                        'label' => 'E-mail',
-                        'rules' => 'required|valid_email'
-                ),
-                array(
-                        'field' => 'senha',
-                        'label' => 'senha',
-                        'rules' => 'required'
-                )
-        )
-);
-

@@ -20,7 +20,7 @@ class Produto extends CI_Controller
         $produtos = $this->produto->get();
         $this->load->view('produto/index', array('produtos'=>$produtos));
     }
-    
+
     /**
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
@@ -43,14 +43,16 @@ class Produto extends CI_Controller
             
             if($this->produto->insert($array)){
                 $this->session->set_flashdata('message','Cadastrado com sucesso');
+                redirect('/produto');
             }else{
                 $this->session->set_flashdata('message', 'Não foi possível cadastrar no banco de dados!');
+                redirect('/produto');
             }
         }else{
             $dados = validation_errors();
             $this->session->set_flashdata('message', $dados);
+            redirect('/produto/cadastrar');
         }
-        redirect('/produto/cadastrar');
         
     }    
     
