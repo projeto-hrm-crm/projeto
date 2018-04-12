@@ -28,7 +28,7 @@ class Produto extends CI_Controller
      * Rota: http://localhost/projeto/produto/cadastrar
      */
 
-    public function create()
+    public function save()
     {      
         
         if($this->form_validation->run('produto')){
@@ -36,21 +36,21 @@ class Produto extends CI_Controller
                 'nome' => $this->input->post('nome'),
                 'codigo' => $this->input->post('codigo'),
                 'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-                'validate' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validate')))),
+                'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
                 'lote' => $this->input->post('lote'),
                 'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
             );
             
             if($this->produto->insert($array)){
-                $this->session->set_flashdata('message','Cadastrado com sucesso');
+                $this->session->set_flashdata('success','Cadastrado com sucesso');
                 redirect('/produto');
             }else{
-                $this->session->set_flashdata('message', 'Não foi possível cadastrar no banco de dados!');
-                redirect('/produto');
+                $this->session->set_flashdata('danger', 'Não foi possível cadastrar no banco de dados!');
+                redirect('/produto/cadastrar');
             }
         }else{
             $dados = validation_errors();
-            $this->session->set_flashdata('message', $dados);
+            $this->session->set_flashdata('danger', $dados);
             redirect('/produto/cadastrar');
         }
         
@@ -76,14 +76,16 @@ class Produto extends CI_Controller
             
             if($this->produto->update($array)){
                 $this->session->set_flashdata('sucsses','Atualizado com sucesso');
+                redirect('/produto');
             }else{
                 $this->session->set_flashdata('danger', 'Não foi possível atualizar o banco de dados!');
+                redirect('/produto/editar');
             }
         }else{
             $dados = validation_errors();
             $this->session->set_flashdata('danger', $dados);
         }
-        redirect('/produto/index');
+        redirect('/produto/editar');
     }
         
     /**
@@ -96,12 +98,11 @@ class Produto extends CI_Controller
         
         if($this->produto->delete($id)){
             $this->session->set_flashdata('sucsses', 'Cadastro com sucesso!<br>Id: ' . $id);
-            
+            redirect('/produto/');
         }else{
             $this->session->set_flashdata('danger', 'não foi possível deletar!<br>Id: ' . $id);
-        }
-        redirect('/produto/index');
-    
+            redirect('/produto/index');
+        }    
     }
 }
 

@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Novo Produto</strong>
             </div>
-            <form action="" method="post" novalidate="novalidate">
+            <form action="/produto/cadastrar" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">

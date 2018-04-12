@@ -34,7 +34,7 @@ class Produto_model extends CI_Model
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validade', $array['validate']);
+        $this->db->set('validade', $array['validade']);
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->insert('produto');        
@@ -50,7 +50,7 @@ class Produto_model extends CI_Model
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validade', $array['validate']);
+        $this->db->set('validade', $array['validade']);
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->update('produto');        
