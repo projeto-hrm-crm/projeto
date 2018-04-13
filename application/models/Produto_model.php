@@ -20,8 +20,12 @@ class Produto_model extends CI_Model
     *@return: mixed
     */
     public function get(){
-        $query = $this->db->get('produto');
-        return $query->result();
+        try{
+            $query = $this->db->get('produto');
+            return $query->result();
+        }catch (\Exception $e) {
+
+        }
     }
     
     /*
@@ -66,5 +70,11 @@ class Produto_model extends CI_Model
     public function delete($id){
         $this->db->where('id_produto', $id);
         return $this->db->delete('produto');
+    }
+
+    public function findById($id){
+      $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
+      $this->db->where('id_produto', $id);
+      return $this->db->get('produto');
     }
 }

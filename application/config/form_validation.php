@@ -70,8 +70,8 @@ $config = array(
             'rules' => 'required|exact_length[10]'
         ),
         array(
-            'field' => 'validate',
-            'label' => 'Validate',
+            'field' => 'validade',
+            'label' => 'Validade',
             'rules' => 'required|exact_length[10]'
         ),
         array(
