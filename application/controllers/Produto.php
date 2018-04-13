@@ -22,6 +22,12 @@ class Produto extends CI_Controller
       loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
 
+    public function create()
+  {
+      $dados['title'] = 'Cadastrar produto';
+      loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
+  }
+
     /**
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
@@ -46,11 +52,8 @@ class Produto extends CI_Controller
         redirect('produto/index');
       }else{
         $this->session->set_flashdata('danger','Não foi possível cadastrar o produto');
-        redirect('produto/cadastrar');
+        redirect('produto/create');
       }
-
-      $dados['title'] = 'Cadastrar produto';
-      loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
     }
 
     
@@ -93,9 +96,9 @@ class Produto extends CI_Controller
       $produto = $this->produto->findById($id);
       if($produto){
         $this->produto->delete($id);
-        $this->session->set_flashdata('sucsses', 'Deletado com sucesso.<br>Id: ' . $id);
+        $this->session->set_flashdata('success', 'Produto deletado com sucesso.');
       }else{
-        $this->session->set_flashdata('danger', 'Impossível Deletar!<br>Id: ' . $id);
+        $this->session->set_flashdata('danger', 'Impossível Deletar!');
       }
       redirect('produto/index');
     }

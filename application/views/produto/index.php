@@ -32,7 +32,7 @@
                                             <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">
+                                            <a href="deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">
                                                 <span class="fa fa-close"></span>
                                             </a>
                                         </td>
