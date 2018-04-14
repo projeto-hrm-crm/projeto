@@ -22,15 +22,16 @@
                             </div>
                             <div class="form-group col-6">
                                 <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
-                                <input id="recebimento" name="recebimento" type="text" class="form-control cc-exp" required>
+                                <input id="recebimento" name="recebimento" type="text" class="form-control cc-exp data" required>
                             </div>
                             <div class="form-group col-6">
                                 <label for="fabricacao" class="control-label mb-1">Data de Fabricação</label>
-                                <input id="fabricacao" name="fabricacao" type="text" class="form-control cc-number" required>
+                                <input id="fabricacao" name="fabricacao" type="text" class="form-control cc-number data" required>
                             </div>
                             <div class="form-group col-6">
                                 <label for="validade" class="control-label mb-1">Data de Validade</label>
-                                <input id="validade" name="validade" type="text" class="form-control cc-exp" required>
+                                <input id="validade" name="validade" type="text" class="form-control cc-exp data" required>
+                                <span class="invalid-feedback"></span>
                             </div>
                         </div>
                     </div>
@@ -62,6 +63,6 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <?php endif; ?>    
+        <?php endif; ?>
     </div>
 </div>
