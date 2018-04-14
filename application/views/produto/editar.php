@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Editar Produto</strong>
             </div>
-            <form action="<?php echo base_url().'produto/alterar/'.$produto->id_produto;?>" method="GET" novalidate="novalidate">
+            <form action="<?php echo base_url().'produto/alterar/'.$produto->id_produto;?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
@@ -22,15 +22,15 @@
                             </div>
                             <div class="form-group col-6">
                                 <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
-                                <input name="recebimento" id="recebimento" value="<?= $produto->recebimento;?>" type="text" class="form-control cc-exp" required>
+                                <input name="recebimento" id="recebimento" value="<?= $produto->recebimento;?>" type="text" class="form-control cc-exp data" required>
                             </div>
                             <div class="form-group col-6">
                                 <label for="fabricacao" class="control-label mb-1">Data de Fabricação</label>
-                                <input name="fabricacao" id="fabricacao" value="<?= $produto->fabricacao;?>" type="text" class="form-control cc-number" required>
+                                <input name="fabricacao" id="fabricacao" value="<?= $produto->fabricacao;?>" type="text" class="form-control cc-number data" required>
                             </div>
                             <div class="form-group col-6">
                                 <label for="validade" class="control-label mb-1">Data de Validade</label>
-                                <input name="validade" id="validade" value="<?= $produto->validade;?>" type="text" class="form-control cc-exp" required>
+                                <input name="validade" id="validade" value="<?= $produto->validade;?>" type="text" class="form-control cc-exp data" required>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                     </button>
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-check"></i>
-                        Cadastrar
+                        Editar
                     </button>
                 </div>
             </form>
