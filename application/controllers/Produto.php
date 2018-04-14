@@ -25,7 +25,7 @@ class Produto extends CI_Controller
     /**
       * @author: Dhiego Balthazar
       * Esse metodo abre a view produto/cadastrar
-      * 
+      *
       */
     public function create()
     {
@@ -36,26 +36,26 @@ class Produto extends CI_Controller
     /**
       * @author: Dhiego Balthazar
       * Esse metodo abre a view produto/editar
-      * 
+      *
       */
     public function edit($id)
     {
       $data['title'] = 'Alterar Produto';
       $data['produto'] = $this->produto->getById($id);
       loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
-    } 
+    }
 
     /**
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de cadastrar um produto
      * Se der certo ele redireciona para a lista de produtos
      * Se der errado ele aciona um danger na pagina de cadastro
-     * 
+     *
      * Rota: http://localhost/projeto/produto/salvar
      */
 
     public function save()
-    {      
+    {
 
       if($this->form_validation->run('produto')){
         $array = array(
@@ -77,16 +77,16 @@ class Produto extends CI_Controller
       }
     }
 
-    
+
      /**
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de cadastrar um produto
      * Se der certo ele redireciona para a lista de produtos
      * Se der errado ele aciona um danger na pagina de cadastro
-     * 
+     *
      * Rota: http://localhost/projeto/produto/alterar
      */
-     public function update($id){        
+     public function update($id){
       if($this->form_validation->run('produto')){
         $array = array(
          'id_produto' => $id,
@@ -102,14 +102,14 @@ class Produto extends CI_Controller
         redirect('produto/index');
       }else{
         $errors = validation_errors();
-        $this->session->set_flashdata('danger', $errors));
+        $this->session->set_flashdata('danger', $errors);
         redirect('produto/editar/'.$id);
       }
     }
 
     /**
      * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de deletar 
+     * Esse método tem a finalidade de deletar
      * Se der certo ele lança um succes na lista de produtos
      * Se der errado ele lança um danger na lista de produtos
      * @param: $id
