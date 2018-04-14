@@ -9,7 +9,6 @@
   <title><?php echo $title;?></title>
   <meta name="description" content="Sufee Admin - HTML5 Admin Template">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="apple-touch-icon" href="apple-icon.png">
   <link rel="shortcut icon" href="favicon.ico">
 
@@ -24,31 +23,34 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
   <link href="<?php echo base_url();?>assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
-  <script src="<?= base_url();?>assets/js/lib/jquery/jquery.js"></script>
 
   <!-- inserção dinâmica de arquivos CSS -->
   <?php if (isset($assets['css'])): ?>
     <?php foreach ($assets['css'] as $css_file): ?>
       <link
         rel="stylesheet"
-        href="<?= base_url().'assets/css/'.$css_file ?>"
+        href="<?php echo base_url().'assets/css/'.$css_file; ?>"
       >
     <?php endforeach; ?>
   <?php endif; ?>
   <!-- fim da inserção -->
 
   <!-- inserção dinamica de arquivos JS -->
+
+  <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js">
+
+  </script>
   <?php if (isset($assets['js'])): ?>
     <?php foreach ($assets['js'] as $js_file): ?>
       <script
-        src="<?= base_url().'assets/js/'.$js_file ?>"
+        src="<?php echo base_url().'assets/js/'.$js_file; ?>"
         charset="utf-8"
       ></script>
     <?php endforeach; ?>
   <?php endif; ?>
   <!-- fim da inserção -->
 
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
 
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
