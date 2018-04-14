@@ -57,9 +57,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Rotas Produtos
 $route['produto'] = 'Produto/index';
+$route['produto/cadastrar'] = 'Produto/create';//Aciona a view produto/cadastrar
+$route['produto/editar/(:num)'] = 'Produto/edit/$1';//Aciona a view produto/editar
 $route['produto/salvar'] = 'Produto/save';
-$route['produto/cadastrar'] = 'Produto/create';
-$route['produto/editar/(:num)'] = 'Produto/edit/$1';
 $route['produto/alterar/(:num)'] = 'Produto/update/$1';
 $route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 

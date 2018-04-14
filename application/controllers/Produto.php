@@ -22,22 +22,34 @@ class Produto extends CI_Controller
       loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
 
+    /**
+      * @author: Dhiego Balthazar
+      * Esse metodo abre a view produto/cadastrar
+      * 
+      */
     public function create()
-  {
+    {
       $dados['title'] = 'Cadastrar produto';
       loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
-  }
+    }
 
-  public function edit($id)
-  {
-    $data['title'] = 'Alterar Produto';
-    $data['produto'] = $this->produto->getById($id);
-    loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
-  }
+    /**
+      * @author: Dhiego Balthazar
+      * Esse metodo abre a view produto/editar
+      * 
+      */
+    public function edit($id)
+    {
+      $data['title'] = 'Alterar Produto';
+      $data['produto'] = $this->produto->getById($id);
+      loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
+    } 
 
     /**
      * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
+     * Esse método tem a finalidade de cadastrar um produto
+     * Se der certo ele redireciona para a lista de produtos
+     * Se der errado ele aciona um danger na pagina de cadastro
      * 
      * Rota: http://localhost/projeto/produto/salvar
      */
@@ -66,7 +78,9 @@ class Produto extends CI_Controller
     
      /**
      * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de alterar um produto
+     * Esse método tem a finalidade de cadastrar um produto
+     * Se der certo ele redireciona para a lista de produtos
+     * Se der errado ele aciona um danger na pagina de cadastro
      * 
      * Rota: http://localhost/projeto/produto/alterar
      */
@@ -92,12 +106,14 @@ class Produto extends CI_Controller
 
     /**
      * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de deletar um elemento pelo $id. ID é recebido através de um formulario da view delete.php
-     * 
+     * Esse método tem a finalidade de deletar 
+     * Se der certo ele lança um succes na lista de produtos
+     * Se der errado ele lança um danger na lista de produtos
+     * @param: $id
      * Rota: http://localhost/projeto/produto/deletar
      */
     public function delete($id){
-      $produto = $this->produto->findById($id);
+      $produto = $this->produto->getById($id);
       if($produto){
         $this->produto->delete($id);
         $this->session->set_flashdata('success', 'Produto deletado com sucesso.');
