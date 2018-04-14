@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Editar Produto</strong>
             </div>
-            <form action="" method="post" novalidate="novalidate">
+            <form action="<?php echo base_url().'produto/alterar'?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">

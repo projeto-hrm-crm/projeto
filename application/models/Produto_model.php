@@ -72,9 +72,9 @@ class Produto_model extends CI_Model
         return $this->db->delete('produto');
     }
 
-    public function findById($id){
+    public function getById($id){
       $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
       $this->db->where('id_produto', $id);
-      return $this->db->get('produto');
+      return $this->db->get('produto')->row();
     }
 }

@@ -29,7 +29,7 @@
                                         <td><?= $produto->lote;?></td>
                                         <td><?= $produto->recebimento;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary">
+                                            <a href="editar/<?php echo $produto->id_produto?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
                                             </a>
                                             <a href="deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">

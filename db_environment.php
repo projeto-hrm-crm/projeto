@@ -9,7 +9,7 @@
 $database_config = [
     'host' 		=> 'localhost',
     'user'		=> 'root',
-    'password' 	=> '',
+    'password' 	=> 'aluno123',
     'database'	=> 'database',
 ];
 

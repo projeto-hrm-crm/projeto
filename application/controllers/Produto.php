@@ -28,6 +28,13 @@ class Produto extends CI_Controller
       loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
   }
 
+  public function edit($id)
+  {
+    $data['title'] = 'Alterar Produto';
+    $data['produto'] = $this->produto->getById($id);
+    loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
+  }
+
     /**
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
@@ -51,7 +58,7 @@ class Produto extends CI_Controller
         $this->session->set_flashdata('success','Cadastrado com sucesso');
         redirect('produto/index');
       }else{
-        $this->session->set_flashdata('danger','Não foi possível cadastrar o produto');
+        $this->session->set_flashdata('danger', validation_errors());
         redirect('produto/create');
       }
     }
@@ -64,7 +71,6 @@ class Produto extends CI_Controller
      * Rota: http://localhost/projeto/produto/alterar
      */
      public function update(){        
-
       if($this->form_validation->run('produto')){
         $array = array(
          'nome' => $this->input->post('nome'),
@@ -78,12 +84,9 @@ class Produto extends CI_Controller
         $this->session->set_flashdata('success','Alterado com sucesso.');
         redirect('produto/index');
       }else{
-        $this->session->set_flashdata('danger','Não foi possível Alterar o produto.');
-        redirect('produto/editar');
+        $this->session->set_flashdata('danger',validation_errors());
+        redirect('produto/edit');
       }
-
-      $dados['title'] = 'Alterar produto';
-      loadTemplate('includes/header', 'produto/editar', 'includes/footer', $dados);
     }
 
     /**
