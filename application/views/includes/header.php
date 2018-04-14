@@ -101,8 +101,8 @@
         <li class="menu-item-has-children dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Produto</a>
           <ul class="sub-menu children dropdown-menu">
-            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('produto/cadastrar');?>">Cadastrar</a></li>
-            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('produto/index');?>">Listar</a></li>
+            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('cadastrar/produto');?>">Cadastrar</a></li>
+            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('produto');?>">Listar</a></li>
           </ul>
         </li>
 
