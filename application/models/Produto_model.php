@@ -73,12 +73,26 @@ class Produto_model extends CI_Model
         return $this->db->delete('produto');
     }
 
+    /*
+     * @author: Dhiego Balthazar
+     * Esse método retorna um objeto Produto através de seu $id
+     * 
+     * @params: $id
+     * @return: object Produto
+     */
     public function getById($id){
       $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
       $this->db->where('id_produto', $id);
       return $this->db->get('produto')->row();
     }
 
+    /*
+     * @author: Dhiego Balthazar
+     * Esse método retorna um objeto Produto através de seu $nome como parametro de entrada
+     * 
+     * @params: $nome
+     * @return: object Produto
+     */
     public function getByName($nome){
       $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
       $this->db->where('nome', $nome);
