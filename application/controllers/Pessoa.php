@@ -2,33 +2,11 @@
 class Pessoa extends CI_Controller
 {
 
-  public function create()
-  {
-    if($this->input->post)
-    {
-      print_r($_POST);
-    }
-    else
-    {
-      $data['title'] = 'Cadastrar Pessoa';
-      $data['assets'] = array(
-        'css' => array('pessoa/style.css'),
-        'js' => array(
-          'lib/jquery/jquery.mask.min.js',
-          'pessoa/main.js',
-          'pessoa/validate-form.js',
-        ),
-      );
 
-      loadTemplate(
-        'includes/header',
-        'pessoa/create-form',
-        'includes/footer',
-        $data
-      );
-    }
-  }
-
+	public function index()
+	{
+		$this->create();
+	}
 
 
 	/**
@@ -38,28 +16,59 @@ class Pessoa extends CI_Controller
 	*
 	* 
 	*/
-	public function save()
-	{
+  	public function create()
+  	{
+		if($this->input->post())
+		{	
+			if(!$this->form_validation->run('pessoa'))
+			{
+				$this->session->set_flashdata('errors', $this->form_validation->error_array());
+				$this->session->set_flashdata('old_values', $this->input->post());
+				
+				redirect('pessoa');
+			}
+			else
+			{
+				$id_pessoa = $this->pessoa->insert();
 
-		if(!$this->form_validation->run())
-		{
-			$this->session->set_flashdata('erros_pessoa', $this->form_validation->error_array());
-			$this->session->set_flashdata('valores_antigos', $this->input->post());
+				$this->telefone->insert($id_pessoa);
+				$this->documento->insert($id_pessoa);
+				$this->endereco->insert($id_pessoa);
 
-			redirect('pessoa/create');
+				$this->session->set_flashdata('success', 'Cadastro efetuado com sucesso');
+
+				redirect('pessoa');
+			}
 		}
 		else
 		{
-			$id_pessoa = $this->pessoa->insert();
+			$data['title']       = 'Cadastrar Pessoa';
+			$data['estados']     = $this->estado->get();
+			$data['errors']      = $this->session->flashdata('errors');
+			$data['old_values']  = $this->session->flashdata('old_values');
+			$data['message']     = $this->session->flashdata('success');
 
-			$this->telefone->insert($id_pessoa);
-			$this->documento->insert($id_pessoa);
-			$this->endereco->insert($id_pessoa);
+			$data['assets'] = array(
+				'css' => array('pessoa/style.css'),
+				'js' => array(
+					'lib/jquery/jquery.mask.min.js',
+					'pessoa/main.js',
+					'pessoa/validate-form.js',
+				),
+			);
 
-			redirect('pessoa/create');
+			loadTemplate(
+				'includes/header',
+				'pessoa/create-form',
+				'includes/footer',
+				$data
+			);
 		}
+  	}
 
-	}
+
+
+	
 
 
 	/**
@@ -69,36 +78,66 @@ class Pessoa extends CI_Controller
 	* @todo retornar a view com o formulário
 	* @param integer $id_pessoa
 	*/
-	public function edit($id_pessoa)
-	{
-		$this->pessoa->get($id_pessoa);
-	}
-
-
-	/**
+		/**
 	* @author: Tiago Villalobos
 	* Este método tem como finalidade validar os campos de pessoa, 
 	* e permitir que o model atualize este registro no banco.
 	*
 	* @todo criar o formulário e apresentar os erros
 	*/
-	public function update()
-	{
-		if(!$this->form_validation->run())
-		{
-			$this->session->set_flashdata('erros_pessoa', $this->form_validation->error_array());
-			$this->session->set_flashdata('valores_antigos', $this->input->post());
-		}
-		else
-		{
-			$this->pessoa->update();
-			$this->documento->update();
-			$this->telefone->update();
-			$this->endereco->update();
 
-			//redirect('pessoa');
+	public function edit($id)
+	{
+		
+		if($this->input->post)
+		{
+			if(!$this->form_validation->run('pessoa'))
+			{
+				$this->session->set_flashdata('errors', $this->form_validation->error_array());
+				$this->session->set_flashdata('old_values', $this->input->post());
+
+				redirect('pessoa/edit/'.$id);
+			}
+			else
+			{
+				$this->pessoa->update($id);
+				$this->documento->update($id);
+				$this->telefone->update($id);
+				$this->endereco->update($id);
+
+				$this->session->set_flashdata('success', 'Cadastro editado com sucesso');
+
+				redirect('pessoa');
+			}
 		}
+
+		//TODO
+		$data['pessoa']      = $this->pessoa->find($id);
+		$data['title']       = 'Editar Cadastro';
+		$data['errors']      = $this->session->flashdata('errors');
+		$data['old_values']  = $this->session->flashdata('old_values');
+		$data['message']     = $this->session->flashdata('success');
+
+		$data['assets'] = array(
+			'css' => array('pessoa/style.css'),
+			'js' => array(
+				'lib/jquery/jquery.mask.min.js',
+				'pessoa/main.js',
+				'pessoa/validate-form.js',
+			),
+		);
+
+		loadTemplate(
+			'includes/header',
+			'pessoa/create-form',
+			'includes/footer',
+			$data
+		);
+
+		
 	}
+
+
 
 
 	/**
@@ -108,16 +147,18 @@ class Pessoa extends CI_Controller
 	*
 	* @param integer $id_pessoa
 	*/
-	public function delete($id_pessoa)
+	public function delete($id)
 	{
 		
-		$this->telefone->remove($id_pessoa);
-		$this->documento->remove($id_pessoa);
-		$this->endereco->remove($id_pessoa);
+		$this->telefone->remove($id);
+		$this->documento->remove($id);
+		$this->endereco->remove($id);
 
 		$this->pessoa->remove();
 
-		//redirect('pessoa');
+		$this->session->set_flashdata('success', 'Cadastro removido com sucesso');
+
+		redirect('pessoa');
 	}
 
 }

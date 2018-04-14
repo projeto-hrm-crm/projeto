@@ -32,11 +32,11 @@ class Documento_model extends CI_Model {
 	* 
 	* 
 	*/	
-	public function update()
+	public function update($id)
 	{
 		$this->numero    = $this->input->post('cpf') ? $this->input->post('cpf') : $this->input->post('cnpj');
 		$this->tipo      = $this->input->post('cpf') ? 'CPF' : 'CNPJ';
-		$this->id_pessoa = $this->input->post('id_pessoa');
+		$this->id_pessoa = $id;
 		
 		$this->db->update('documento', $this, array('id_pessoa' => $this->id_pessoa));
 	}	
