@@ -4,13 +4,13 @@
             <div class="card-header">
                 <strong class="card-title">Editar Produto</strong>
             </div>
-            <form action="<?php echo base_url().'produto/alterar'?>" method="post" novalidate="novalidate">
+            <form action="<?php echo base_url().'produto/alterar/'.$produto->id_produto;?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="nome" class="control-label mb-1">Nome do Produto</label>
-                                <input name="produto"  id="nome" value="<?= $produto->nome;?>" type="text" class="form-control" required>
+                                <input name="nome"  id="nome" value="<?= $produto->nome;?>" type="text" class="form-control" required>
                             </div>
                             <div class="form-group col-6">
                                 <label for="lote" class="control-label mb-1">Lote</label>

@@ -60,7 +60,7 @@ $route['produto'] = 'Produto/index';
 $route['produto/salvar'] = 'Produto/save';
 $route['produto/cadastrar'] = 'Produto/create';
 $route['produto/editar/(:num)'] = 'Produto/edit/$1';
-$route['produto/alterar'] = 'Produto/update';
+$route['produto/alterar/(:num)'] = 'Produto/update/$1';
 $route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 
 //Rotas Pessoa

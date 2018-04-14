@@ -51,6 +51,7 @@ class Produto_model extends CI_Model
      *@return: boolean
     */
     public function update($array){
+        $this->db->where('id_produto', $array['id_produto']);
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
@@ -75,6 +76,12 @@ class Produto_model extends CI_Model
     public function getById($id){
       $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
       $this->db->where('id_produto', $id);
+      return $this->db->get('produto')->row();
+    }
+
+    public function getByName($nome){
+      $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
+      $this->db->where('nome', $nome);
       return $this->db->get('produto')->row();
     }
 }

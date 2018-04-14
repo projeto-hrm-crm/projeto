@@ -70,9 +70,10 @@ class Produto extends CI_Controller
      * 
      * Rota: http://localhost/projeto/produto/alterar
      */
-     public function update(){        
+     public function update($id){        
       if($this->form_validation->run('produto')){
         $array = array(
+         'id_produto' => $id,
          'nome' => $this->input->post('nome'),
          'codigo' => $this->input->post('codigo'),
          'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
@@ -85,7 +86,7 @@ class Produto extends CI_Controller
         redirect('produto/index');
       }else{
         $this->session->set_flashdata('danger',validation_errors());
-        redirect('produto/edit');
+        redirect('produto/editar/'.$id);
       }
     }
 
