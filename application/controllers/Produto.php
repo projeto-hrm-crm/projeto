@@ -70,7 +70,9 @@ class Produto extends CI_Controller
         $this->session->set_flashdata('success','Cadastrado com sucesso');
         redirect('produto/index');
       }else{
-        $this->session->set_flashdata('danger', validation_errors());
+        $errors = validation_errors();
+        $this->session->set_flashdata('danger', $errors);
+        $this->session->set_flashdata('old_data', $this->input->post());
         redirect('produto/create');
       }
     }
@@ -99,7 +101,8 @@ class Produto extends CI_Controller
         $this->session->set_flashdata('success','Alterado com sucesso.');
         redirect('produto/index');
       }else{
-        $this->session->set_flashdata('danger',validation_errors());
+        $errors = validation_errors();
+        $this->session->set_flashdata('danger', $errors));
         redirect('produto/editar/'.$id);
       }
     }
