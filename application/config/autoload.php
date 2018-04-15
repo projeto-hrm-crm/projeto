@@ -151,4 +151,5 @@ $autoload['model'] = array(
                     'Funcionario_model'          => 'funcionario',
                     'Candidato_model'            => 'candidato',
                     'Usuario_model'              => 'usuario',
+                    'Setor_model'              => 'setor',
 );
