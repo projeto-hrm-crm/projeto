@@ -144,13 +144,13 @@ $config = array(
         array(
             'field' => 'cpf',
             'label' => 'CPF',
-            'rules' => required_if('tipo_pessoa', 'pf').''
+            'rules' => requiredIf('tipo_pessoa', 'pf')
         ),
 
         array(
             'field' => 'cnpj',
             'label' => 'CNPJ',
-            'rules' => required_if('tipo_pessoa', 'pj').''
+            'rules' => requiredIf('tipo_pessoa', 'pj')
         ),
 
         array(
@@ -210,11 +210,11 @@ $config = array(
 *
 * 
 */
-function required_if($campo, $valor)
+function requiredIf($field, $value)
 {
-    if(isset($_POST[$campo]))
+    if(isset($_POST[$field]))
     {
-        if($_POST[$campo] == $valor)
+        if($_POST[$field] == $value)
         {
             return 'required';
         }    
