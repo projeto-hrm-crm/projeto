@@ -43,17 +43,43 @@ class Pessoa_model extends CI_Model {
 	* pelo id do mesmo.
 	*
 	*/
-	public function remove()
+	public function remove($id)
 	{
-		$this->db->where('id_pessoa', $this->input->post('id_pessoa'));
-		$this->db->delete('pessoa');
+		$query = $this->db->where('id_pessoa', $id);
+		$query->delete('pessoa');
+
+		return $query->affected_rows() > 0 ? true : false; 
 	}	
 
-	public function find($id)
+
+	/**
+	* @author Tiago Villalobos
+	* Retorna uma stdClass com dados da pessoa pesquisada pelo id da mesma, tabelas relacionadas tabém são retornadas
+	* 	
+	* Formato retornado:
+	* stdClass Object ( 
+	* [id_pessoa] => 7 
+	* [nome] => Paula Villalobos 
+	* [email] => asassas@asasas.com 
+	* [numero_documento] => 340.124.578-37 
+	* [tipo] => CPF 
+	* [numero_telefone] => (12) 54514-5000 
+	* [cep] => 11541-251 
+	* [logradouro] => Rua Treze 
+	* [numero_endereco] => 52 
+	* [complemento] => apto 1
+	* [id_estado] => 15 
+	* [nome_bairro] => Estrada do Lago )
+	* 
+	* @param  integer id identificação da pessoa
+	* @return mixed
+	
+	*/
+	public function getById($id)
 	{
 		$this->db->select(
-			'pessoa.id, pessoa.nome, pessoa.email,
-			documento.numero AS numero_documento, documento.tipo
+			'pessoa.id_pessoa, pessoa.nome, pessoa.email,
+			documento.numero AS numero_documento, documento.tipo,
 			telefone.numero AS numero_telefone,
 			endereco.cep, endereco.logradouro, endereco.numero AS numero_endereco, endereco.complemento,
 			estado.id_estado,
@@ -67,7 +93,7 @@ class Pessoa_model extends CI_Model {
 		$this->db->join('cidade',    'bairro.id_cidade = cidade.id_cidade');
 		$this->db->join('estado',    'cidade.id_estado = estado.id_estado');
 
-		$this->db->where('pessoa.id', $id);
+		$this->db->where('pessoa.id_pessoa', $id);
 
 		return $this->db->get('pessoa')->row();
 	}
