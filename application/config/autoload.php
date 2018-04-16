@@ -153,5 +153,4 @@ $autoload['model'] = array(
     'Usuario_model'      => 'usuario',
     'Estado_model'       => 'estado',
     'Cidade_model'       => 'cidade',
-    'Bairro_model'       => 'bairro',
 );
