@@ -2,7 +2,12 @@
 class Pessoa extends CI_Controller
 {
 
-
+	/**
+	* @author Tiago Villalobos
+	* Chama o método create, formulário de pessoa.
+	* 
+	* 
+	*/
 	public function index()
 	{
 		$this->create();
@@ -12,7 +17,8 @@ class Pessoa extends CI_Controller
 	/**
 	* @author: Tiago Villalobos
 	* Cria o formulário para cadastro de pessoa ou submete uma nova pessoa, caso seja enviada uma requisão POST.
-	* 
+	* Retorna messagem de erro ou sucesso por flashdata que são inseridos em variáveis para facilitar o 
+	* trabalho na view.
 	*
 	* 
 	*/
@@ -67,7 +73,7 @@ class Pessoa extends CI_Controller
 
 			loadTemplate(
 				'includes/header',
-				'pessoa/create-form',
+				'pessoa/create',
 				'includes/footer',
 				$data
 			);
@@ -77,10 +83,10 @@ class Pessoa extends CI_Controller
 	/**
 	* @author: Tiago Villalobos
 	* Utiliza um id para buscar uma pessoa no banco e preencher o formulário de edição 
-	*
+	* Retorna messagem de erro ou sucesso por flashdata que são inseridos em variáveis para facilitar o 
+	* trabalho na view.
 	* 
 	* @param integer $id identificação da pessoa
-	* @todo mudar o formulário de edição
 	*/
 	public function edit($id)
 	{
@@ -136,7 +142,7 @@ class Pessoa extends CI_Controller
 			//Mudar para o formulário de edição
 			loadTemplate(
 				'includes/header',
-				'pessoa/create-form',
+				'pessoa/edit',
 				'includes/footer',
 				$data
 			);
