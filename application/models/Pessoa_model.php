@@ -59,7 +59,7 @@ class Pessoa_model extends CI_Model {
 	* Formato retornado:
 	* stdClass Object ( 
 	* [id_pessoa] => 7 
-	* [nome] => Paula Villalobos 
+	* [nome] => Tiago Villalobos 
 	* [email] => asassas@asasas.com 
 	* [numero_documento] => 340.124.578-37 
 	* [tipo] => CPF 
@@ -72,7 +72,7 @@ class Pessoa_model extends CI_Model {
 	* [nome_bairro] => Estrada do Lago )
 	* 
 	* @param  integer id identificação da pessoa
-	* @return mixed
+	* @return mixed objeto 
 	
 	*/
 	public function getById($id)
