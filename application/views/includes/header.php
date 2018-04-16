@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php echo $title;?></title>
-  <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+  <meta name="description" content="Projeto de PR1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-icon.png">
   <link rel="shortcut icon" href="favicon.ico">
@@ -67,8 +67,8 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="./"><img src="<?php echo base_url();?>assets/images/theme/logo.png" alt="Logo"></a>
-      <a class="navbar-brand hidden" href="./"><img src="<?php echo base_url();?>assets/images/theme/logo2.png" alt="Logo"></a>
+      <a class="navbar-brand" href="./">Lambda</a>
+      <a class="navbar-brand hidden" href="./">L</a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -243,7 +243,7 @@
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/images/admin.jpg" alt="User Avatar">
+            <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/admin.jpg" alt="User Avatar">
           </a>
 
           <div class="user-menu dropdown-menu">
