@@ -7,14 +7,10 @@ class Setor extends CI_Controller
     $data['title'] = 'Setores';
     loadTemplate('includes/header', 'setor/index', 'includes/footer', $data);
   }
-  // 
-  // public function teste(){
-  //   $this->load->view("setor/cadastrar");
-  // }
 
   /**
   * @author: Matheus Ladislau
-  *Realizar o cadastro de um setor, dados recebidos da view setor/cadastro.php
+  * Realiza o cadastro de um setor, dados recebidos da view setor/cadastro.php
   */
   public function create()
   {
@@ -22,18 +18,27 @@ class Setor extends CI_Controller
     $this->setor->insert($data);
   }
 
-  public function edit()
+  /**
+  * @author: Matheus Ladislau
+  *Realiza edição de registro de um setor pelo id, dados recebidos pela view setor/editar.php
+  *
+  *@param integer: referen-se ao id do setor a ser alterado
+  */
+  public function edit($id)
   {
-
+    $id_setor=$id;
+    $data["nome"]=$this->input->post("nome");
+    $this->setor->update($data,$id_setor);
   }
 
+  /**
+  * @author: Matheus Ladislau
+  *Realiza remoção de registro de um setor pelo id, dados recebidos pela view setor/delete.php
+  *
+  *@param integer: referen-se ao id do setor a ser alterado
+  */
   public function delete($id_setor)
   {
-
+    $this->setor->remove($id_setor);
   }
-    //
-    // echo "<pre>";
-    // print_r($setores);
-    // echo "</pre>";
-
 }
