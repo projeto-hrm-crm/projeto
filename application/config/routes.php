@@ -77,6 +77,12 @@ $route['fornecedor/cadastrar'] = 'Fornecedor/create';
 $route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
 $route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
 
+//Rotas cliente
+$route['funcionario'] = 'Funcionario';
+$route['funcionario/cadastrar'] = 'Funcionario/create';
+$route['funcionario/editar/(:num)'] = 'Funcionario/edit/$1';
+$route['funcionario/excluir/(:num)'] = 'Funcionario/delete/$1';
+
 //Rotas Pessoa Fisica
 $route['pessoa_fisica/salvar']         = 'PessoaFisica/save';
 $route['pessoa_fisica/listar']         = 'PessoaFisica/listar';
@@ -87,4 +93,3 @@ $route['pessoa_fisica/remover/(:num)'] = 'PessoaFisica/delete/$1';
 /** LOGIN */
 $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
-
