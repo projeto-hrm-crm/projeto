@@ -14,30 +14,28 @@ class PessoaFisica_model extends CI_Model{
   * física no banco
   *
   */
-  public function insert($id_pessoa)
+  public function insert($data)
   {
-    // function insert pessoa;
-    // $this->$dataNascimento  = $this->input->post('data_nascimento');
-    // $this->sexo = $this->input->post('sexo');
-    // $this->id_pessoa = $id_pessoa;
-    $dados = ['data_nascimento' => '2000-05-05','sexo' => 1, 'id_pessoa' => $id_pessoa];
-    $this->db->insert('pessoa_fisica', $dados);
-    return $this->db->insert_id();
+    try{
+      $this->db->insert('pessoa_fisica', $data);
+      return $this->db->insert_id();
+    } catch (\Exception $e) {
+
+    }
   }
 
   /**
   * @author: Rodrigo Alves
-  * Retorna todas a pessoa fisica corespondentes ao $id ou todas, caso o id for nullo
+  * Retorna todas os registros de pessoa_fisica
   * @return mixed array de objetos
   */
-  public function get($id)
+  public function get()
   {
-    if (is_null($id)) {
+    try {
       $query = $this->db->select("*")->from("pessoa")
       ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa');
-    }else {
-      $query = $this->db->select("*")->from("pessoa")
-      ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')->where('pessoa.id_pessoa', $id);
+    } catch (\Exception $e) {
+
     }
     if ($query)
     {
@@ -51,27 +49,27 @@ class PessoaFisica_model extends CI_Model{
   /**
   * @author: Camila Sales
   * Este método tem como finalidade atualizar os dados
-  * de um registro de pessoa no banco pelo id do mesmo.
+  * de um registro de pessoa_fisica no banco pelo id do mesmo.
   *
   */
-  public function update($id)
+  public function update($id, $data)
   {
-    // update pessoa
-    $this->$dataNascimento  = $this->input->post('data_nascimento');
-    $this->sexo = $this->input->post('sexo');
-
-    $this->db->update('pessoa_fisica', $this, array('id_pessoa' => $this->input->post('id_pessoa')));
+    try {
+      $this->db->update('pessoa_fisica', $data, "id_pessoa_fisica = ".$id);
+    } catch (\Exception $e) {}
   }
+
   /**
   * @author: Camila Sales
-  * Este método tem como finalidade remover um registro de pessoa do banco
+  * Este método tem como finalidade remover um registro de pessoa_fisica do banco
   * pelo id do mesmo.
   *
   */
   public function remove($id_pessoa)
   {
-    $this->db->where('id_pessoa', $id_pessoa);
-    $this->db->delete('pessoa_fisica');
-    // remove pessoa
+    try {
+      $this->db->where('id_pessoa', $id_pessoa);
+      $this->db->delete('pessoa_fisica');
+    } catch (\Exception $e) {}
   }
 }
