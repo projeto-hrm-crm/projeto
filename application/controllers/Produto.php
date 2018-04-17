@@ -24,7 +24,7 @@ class Produto extends CI_Controller
           $produto->fabricacao = switchDate($produto->fabricacao);
           $produto->validade = switchDate($produto->validade);
           $produto->recebimento = switchDate($produto->recebimento);
-          
+
       }
       loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
@@ -53,12 +53,12 @@ class Produto extends CI_Controller
          );
           $this->produto->insert($array);
           $this->session->set_flashdata('success','Cadastrado com sucesso');
-          redirect('produto/index');
+          redirect('produto');
         }else{
           $errors = validation_errors();
           $this->session->set_flashdata('danger', $errors);
           $this->session->set_flashdata('old_data', $this->input->post());
-          redirect('produto/create');
+          redirect('cadastrar/produto');
         }
       }else{
       $dados['title'] = 'Cadastrar produto';
@@ -90,11 +90,11 @@ class Produto extends CI_Controller
          );
           $this->produto->update($array);
           $this->session->set_flashdata('success','Alterado com sucesso.');
-          redirect('produto/index');
+          redirect('produto');
         }else{
           $errors = validation_errors();
           $this->session->set_flashdata('danger', $errors);
-          redirect('produto/edit/'.$id);
+          redirect('editar/produto/'.$id);
         }
       }else{
         $data['title'] = 'Alterar Produto';
@@ -122,6 +122,6 @@ class Produto extends CI_Controller
       }else{
         $this->session->set_flashdata('danger', 'Impossível Deletar!');
       }
-      redirect('produto/index');
+      redirect('produto');
     }
 }
