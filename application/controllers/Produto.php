@@ -19,6 +19,13 @@ class Produto extends CI_Controller
     {
       $dados['title'] = 'Produtos';
       $dados['produtos'] = $this->produto->get();
+      $produtos = $dados['produtos'];
+      foreach($produtos as $produto){
+          $produto->fabricacao = switchDate($produto->fabricacao);
+          $produto->validade = switchDate($produto->validade);
+          $produto->recebimento = switchDate($produto->recebimento);
+          
+      }
       loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
 
@@ -92,6 +99,9 @@ class Produto extends CI_Controller
       }else{
         $data['title'] = 'Alterar Produto';
         $data['produto'] = $this->produto->getById($id);
+        $data['produto']->fabricacao = switchDate($data['produto']->fabricacao);
+        $data['produto']->validade = switchDate($data['produto']->validade);
+        $data['produto']->recebimento = switchDate($data['produto']->recebimento);
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
       }
     }

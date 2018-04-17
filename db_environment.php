@@ -7,9 +7,9 @@
  */
 
 $database_config = [
-    'host' 		=> 'localhost',
+    'host'      => 'localhost',
     'user'		=> 'root',
-    'password' 	=> 'aluno123',
+    'password' 	=> '',
     'database'	=> 'database',
 ];
 
