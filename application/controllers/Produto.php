@@ -94,7 +94,7 @@ class Produto extends CI_Controller
         }else{
           $errors = validation_errors();
           $this->session->set_flashdata('danger', $errors);
-          redirect('produto/editar/'.$id);
+          redirect('produto/edit/'.$id);
         }
       }else{
         $data['title'] = 'Alterar Produto';

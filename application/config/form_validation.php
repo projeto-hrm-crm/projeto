@@ -57,7 +57,7 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|alpha_numeric_spaces'
+            'rules' => 'required|regex_match[/[a-zA-zà-úÀ-Ú][^!@#$%&]/]'
         ),
         array(
             'field' => 'codigo',
