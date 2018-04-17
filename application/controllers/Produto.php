@@ -55,15 +55,15 @@ class Produto extends CI_Controller
           $this->session->set_flashdata('success','Cadastrado com sucesso');
           redirect('produto');
         }else{
-          $errors = validation_errors();
-          $this->session->set_flashdata('danger', $errors);
-          $this->session->set_flashdata('old_data', $this->input->post());
-          redirect('cadastrar/produto');
+            $dados['errors'] = $this->form_validation->error_array();
+            redirect('cadastrar/produto');
         }
       }else{
-      $dados['title'] = 'Cadastrar produto';
-      loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
-    }
+        $dados['title'] = 'Cadastrar produto';
+        loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
+      }
+        $dados['old_data'] = $this->input->post();
+        $this->session->set_flashdata('old_data', $dados);
     }
 
     /**
