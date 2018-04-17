@@ -50,20 +50,20 @@ class Produto extends CI_Controller
            'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'lote' => $this->input->post('lote'),
            'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-         );
-          $this->produto->insert($array);
-          $this->session->set_flashdata('success','Cadastrado com sucesso');
-          redirect('produto');
+          );
+            $this->produto->insert($array);
+            $this->session->set_flashdata('success','Cadastrado com sucesso');
+            redirect('produto');
         }else{
             $dados['errors'] = $this->form_validation->error_array();
+            $dados['old_data'] = $this->input->post();
+            $this->session->set_flashdata('old_data', $dados);
             redirect('cadastrar/produto');
         }
       }else{
         $dados['title'] = 'Cadastrar produto';
         loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
       }
-        $dados['old_data'] = $this->input->post();
-        $this->session->set_flashdata('old_data', $dados);
     }
 
     /**
