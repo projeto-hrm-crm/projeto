@@ -17,91 +17,112 @@ class Produto extends CI_Controller
     // Rota: http://localhost/projeto/produto
     public function index()
     {
-        $produtos = $this->produto->get();
-        $this->load->view('produto/index', array('produtos'=>$produtos));
+      $dados['title'] = 'Produtos';
+      $dados['produtos'] = $this->produto->get();
+      $produtos = $dados['produtos'];
+      foreach($produtos as $produto){
+          $produto->fabricacao = switchDate($produto->fabricacao);
+          $produto->validade = switchDate($produto->validade);
+          $produto->recebimento = switchDate($produto->recebimento);
+
+      }
+      loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
+
 
     /**
      * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
-     * 
+     * Se não houver post ele carrega a pagina cadastrar
+     * Esse método tem a finalidade de cadastrar um produto
+     * Se der certo ele redireciona para a lista de produtos
+     * Se der errado ele aciona um danger na pagina de cadastro
+     *
      * Rota: http://localhost/projeto/produto/cadastrar
      */
-
     public function create()
-    {      
-        
+    {
+      if($this->input->post()){
         if($this->form_validation->run('produto')){
-            $array = array(
-                'nome' => $this->input->post('nome'),
-                'codigo' => $this->input->post('codigo'),
-                'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-                'validate' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validate')))),
-                'lote' => $this->input->post('lote'),
-                'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-            );
-            
-            if($this->produto->insert($array)){
-                $this->session->set_flashdata('message','Cadastrado com sucesso');
-                redirect('/produto');
-            }else{
-                $this->session->set_flashdata('message', 'Não foi possível cadastrar no banco de dados!');
-                redirect('/produto');
-            }
+          $array = array(
+           'nome' => $this->input->post('nome'),
+           'codigo' => $this->input->post('codigo'),
+           'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+           'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+           'lote' => $this->input->post('lote'),
+           'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+          );
+            $this->produto->insert($array);
+            $this->session->set_flashdata('success','Cadastrado com sucesso');
+            redirect('produto');
         }else{
-            $dados = validation_errors();
-            $this->session->set_flashdata('message', $dados);
-            redirect('/produto/cadastrar');
+            $this->session->set_flashdata('errors', $this->form_validation->error_array());
+            $this->session->set_flashdata('old_data', $this->input->post());
+            redirect('cadastrar/produto');
         }
-        
-    }    
-    
-     /**
-     * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de cadastrar um produto, cujo os dados são recebidos de um formularios da view insert.php
-     * 
-     * Rota: http://localhost/projeto/produto/alterar
-     */
-    public function update(){        
-        
-        if($this->form_validation->run('produto')){
-            $array = array(
-                'nome' => $this->input->post('nome'),
-                'codigo' => $this->input->post('codigo'),
-                'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-                'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
-                'lote' => $this->input->post('lote'),
-                'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-            );
-            
-            if($this->produto->update($array)){
-                $this->session->set_flashdata('sucsses','Atualizado com sucesso');
-            }else{
-                $this->session->set_flashdata('danger', 'Não foi possível atualizar o banco de dados!');
-            }
-        }else{
-            $dados = validation_errors();
-            $this->session->set_flashdata('danger', $dados);
-        }
-        redirect('/produto/index');
+      }else{
+        $dados['title'] = 'Cadastrar produto';
+        $dados['errors'] = $this->session->flashdata('errors');
+        $dados['old_data'] = $this->session->flashdata('old_data');
+        loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
+      }
     }
-        
+
     /**
      * @author: Dhiego Balthazar
-     * Esse método tem a finalidade de deletar um elemento pelo $id. ID é recebido através de um formulario da view delete.php
-     * 
+     * Se não houver post ele carrega a pagina editar
+     * Esse método tem a finalidade de cadastrar um produto
+     * Se der certo ele redireciona para a lista de produtos
+     * Se der errado ele aciona um danger na pagina de cadastro
+     *
+     * Rota: http://localhost/projeto/produto/editar
+     */
+    public function edit($id)
+    {
+      if($this->input->post()){
+        if($this->form_validation->run('produto')){
+          $array = array(
+           'id_produto' => $id,
+           'nome' => $this->input->post('nome'),
+           'codigo' => $this->input->post('codigo'),
+           'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+           'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+           'lote' => $this->input->post('lote'),
+           'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+         );
+          $this->produto->update($array);
+          $this->session->set_flashdata('success','Alterado com sucesso.');
+          redirect('produto');
+        }else{
+          $this->session->set_flashdata('errors', $this->form_validation->error_array());
+          redirect('editar/produto/'.$id);
+        }
+      }else{
+        $data['errors'] = $this->session->flashdata('errors');
+        $data['title'] = 'Alterar Produto';
+        $data['produto'] = $this->produto->getById($id);
+        $data['produto']->fabricacao = switchDate($data['produto']->fabricacao);
+        $data['produto']->validade = switchDate($data['produto']->validade);
+        $data['produto']->recebimento = switchDate($data['produto']->recebimento);
+        loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
+      }
+    }
+
+    /**
+     * @author: Dhiego Balthazar
+     * Esse método tem a finalidade de deletar
+     * Se der certo ele lança um succes na lista de produtos
+     * Se der errado ele lança um danger na lista de produtos
+     * @param: $id
      * Rota: http://localhost/projeto/produto/deletar
      */
     public function delete($id){
-        
-        if($this->produto->delete($id)){
-            $this->session->set_flashdata('sucsses', 'Cadastro com sucesso!<br>Id: ' . $id);
-            
-        }else{
-            $this->session->set_flashdata('danger', 'não foi possível deletar!<br>Id: ' . $id);
-        }
-        redirect('/produto/index');
-    
+      $produto = $this->produto->getById($id);
+      if($produto){
+        $this->produto->delete($id);
+        $this->session->set_flashdata('success', 'Produto deletado com sucesso.');
+      }else{
+        $this->session->set_flashdata('danger', 'Impossível Deletar!');
+      }
+      redirect('produto');
     }
 }
-

@@ -95,7 +95,8 @@ $autoload['drivers'] = array();
 */
 $autoload['helper'] = array(
     'url',
-    'loadTemplate'
+    'loadTemplate',
+    'switchDate'
 );
 
 /*
@@ -140,6 +141,7 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
+
                     'Produto_model' => 'produto',
                     'Pessoa_model'               => 'pessoa',
                     'Endereco_model'             => 'endereco',
@@ -151,5 +153,6 @@ $autoload['model'] = array(
                     'Funcionario_model'          => 'funcionario',
                     'Candidato_model'            => 'candidato',
                     'Usuario_model'              => 'usuario',
-                    'Setor_model'              => 'setor',
+                    'Setor_model'                => 'setor',
+  
 );

@@ -55,27 +55,32 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-//Rotas Produtos 
-$route['produto/index'] = 'produto/index';
-$route['produto/cadastrar'] = 'produto/create';
-$route['produto/editar/(:num)'] = 'produto/edit/$1';
-
+//Rotas Produtos
 $route['produto'] = 'Produto/index';
-$route['produto/deletar/(:num)'] = 'Produto/delete/$1';
-$route['produto/cadastrar'] = 'Produto/create';
-$route['produto/alterar'] = 'Produto/update';
+$route['cadastrar/produto'] = 'Produto/create';
+$route['editar/produto/(:num)'] = 'Produto/edit/$1';
+$route['deletar/produto/(:num)'] = 'Produto/delete/$1';
 
 //Rotas Pessoa
-$route['pessoa/salvar']         = 'pessoa/save';
-$route['pessoa/atualizar']      = 'pessoa/update';
-$route['pessoa/editar/(:num)']  = 'pessoa/index/$1';
-$route['pessoa/remover/(:num)'] = 'pessoa/delete/$1';
+$route['pessoa']                = 'Pessoa/index';
+$route['cadastrar/pessoa']      = 'Pessoa/create';
+$route['editar/pessoa/(:num)']  = 'Pessoa/edit/$1';
+$route['remover/pessoa/(:num)'] = 'Pessoa/delete/$1';
+
+//Rotas Cidade
+$route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
 //Rotas Fornecedores
 $route['fornecedor'] = 'Fornecedor';
 $route['fornecedor/cadastrar'] = 'Fornecedor/create';
 $route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
 $route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
+
+//Rotas cliente
+$route['funcionario'] = 'Funcionario';
+$route['funcionario/cadastrar'] = 'Funcionario/create';
+$route['funcionario/editar/(:num)'] = 'Funcionario/edit/$1';
+$route['funcionario/excluir/(:num)'] = 'Funcionario/delete/$1';
 
 //Rotas Pessoa Fisica
 $route['pessoa_fisica/salvar']         = 'PessoaFisica/save';
@@ -90,3 +95,4 @@ $route['logout'] = 'Login/logout';
 
 //Rotas Setores
 $route['setor']='Setor';
+

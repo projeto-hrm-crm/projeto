@@ -11,15 +11,10 @@ class PessoaFisica extends CI_Controller
   * Este método tem como finalidade salvar um registro de pessoa fisica.
   *
   */
-  public function save()
+  public function save($id_pessoa)
   {
-    $id_pessoa = $this->pessoa_fisica->insert(5);
+    $id_pessoa_fisica = $this->pessoa_fisica->insert(5);
 
-    $this->cliente->insert($id_pessoa);
-
-    $this->funcionario->insert($id_pessoa);
-    
-    $this->candidato->insert($id_pessoa);
   }
 
   /**
@@ -29,7 +24,7 @@ class PessoaFisica extends CI_Controller
   */
   public function listar()
   {
-    var_dump($this->pessoa_fisica->get(null));
+    var_dump($this->pessoa_fisica->get());
   }
 
   /**
@@ -40,7 +35,7 @@ class PessoaFisica extends CI_Controller
   */
   public function listarId($id_pessoa)
   {
-    var_dump($this->pessoa_fisica->get($id_pessoa));
+    var_dump($this->pessoa_fisica->get());
   }
 
   /**

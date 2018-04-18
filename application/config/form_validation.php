@@ -57,7 +57,7 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|alpha_numeric_spaces'
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
             'field' => 'codigo',
@@ -70,8 +70,8 @@ $config = array(
             'rules' => 'required|exact_length[10]'
         ),
         array(
-            'field' => 'validate',
-            'label' => 'Validate',
+            'field' => 'validade',
+            'label' => 'Validade',
             'rules' => 'required|exact_length[10]'
         ),
         array(
@@ -96,25 +96,25 @@ $config = array(
         array(
             'field' => 'email',
             'label' => 'E-Mail',
-            'rules' => 'valid_email|max_length[100]'
+            'rules' => 'valid_email'
         ),
 
         array(
             'field' => 'cep',
             'label' => 'CEP',
-            'rules' => 'required|min_length[11]'
+            'rules' => 'required'
         ),
 
         array(
             'field' => 'estado',
             'label' => 'Estado',
-            'rules' => 'required'
+            'rules' => 'required|integer'
         ),
 
         array(
             'field' => 'cidade',
             'label' => 'Cidade',
-            'rules' => 'required'
+            'rules' => 'required|integer'
         ),
 
         array(
@@ -136,7 +136,7 @@ $config = array(
         ),
 
         array(
-            'field' => 'tel',
+            'field' => 'telefone',
             'label' => 'Telefone',
             'rules' => 'required'
         ),
@@ -144,14 +144,33 @@ $config = array(
         array(
             'field' => 'cpf',
             'label' => 'CPF',
-            'rules' => requeridoSe('tipo-pessoa', 'pf').''
+            'rules' => requiredIf('tipo_pessoa', 'pf')
         ),
 
         array(
             'field' => 'cnpj',
             'label' => 'CNPJ',
-            'rules' => requeridoSe('tipo-pessoa', 'pj').''
-        )
+            'rules' => requiredIf('tipo_pessoa', 'pj')
+        ),
+
+        array(
+            'field' => 'estado',
+            'label' => 'Estado',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'cidade',
+            'label' => 'Cidade',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'bairro',
+            'label' => 'Bairro',
+            'rules' => 'required'
+        ),
+
     ),
 
   'fornecedor' => array(
@@ -191,13 +210,13 @@ $config = array(
 *
 * 
 */
-function requeridoSe($campo, $valor)
+function requiredIf($field, $value)
 {
-    if(isset($_POST[$campo]))
+    if(isset($_POST[$field]))
     {
-        if($_POST[$campo] == $valor)
+        if($_POST[$field] == $value)
         {
-            return 'required|';
+            return 'required';
         }    
     }
 
