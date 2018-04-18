@@ -33,10 +33,10 @@ class Pessoa extends CI_Controller
 
 	/**
 	* @author: Tiago Villalobos
-	* Este método tem como finalidade validar os campos de pessoa, 
+	* Este método tem como finalidade validar os campos de pessoa,
 	* e permitir que o model insira estes dados no banco, respeitando a ordem de inserção.
 	*
-	* 
+	*
 	*/
 	public function save()
 	{
@@ -64,7 +64,7 @@ class Pessoa extends CI_Controller
 
 	/**
 	* @author: Tiago Villalobos
-	* Utiliza um id para buscar uma pessoa no banco e preencher o formulário de edição 
+	* Utiliza um id para buscar uma pessoa no banco e preencher o formulário de edição
 	*
 	* @todo retornar a view com o formulário
 	* @param integer $id_pessoa
@@ -77,7 +77,7 @@ class Pessoa extends CI_Controller
 
 	/**
 	* @author: Tiago Villalobos
-	* Este método tem como finalidade validar os campos de pessoa, 
+	* Este método tem como finalidade validar os campos de pessoa,
 	* e permitir que o model atualize este registro no banco.
 	*
 	* @todo criar o formulário e apresentar os erros
@@ -110,7 +110,7 @@ class Pessoa extends CI_Controller
 	*/
 	public function delete($id_pessoa)
 	{
-		
+
 		$this->telefone->remove($id_pessoa);
 		$this->documento->remove($id_pessoa);
 		$this->endereco->remove($id_pessoa);
@@ -121,4 +121,3 @@ class Pessoa extends CI_Controller
 	}
 
 }
-

@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="col">
-    <form action="#" method="post">
+    <form method="post" >
       <div class="card">
         <div class="card-header">
           <h1 class="card-title">Formulário de Cadastro</h1>

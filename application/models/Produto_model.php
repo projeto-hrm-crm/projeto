@@ -56,6 +56,7 @@ class Produto_model extends CI_Model
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
         $this->db->set('validade', $array['validade']);
+
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->update('produto');        
@@ -98,4 +99,5 @@ class Produto_model extends CI_Model
       $this->db->where('nome', $nome);
       return $this->db->get('produto')->row();
     }
+
 }
