@@ -37,13 +37,9 @@ class Iteracao_model extends CI_Model {
   * Este método atualiza as informações da iteracao referenciado pelo id
   *
   */
-  public function update() {
-    $this->id_produto  = $this->input->post('id_iteracao');
-    $this->id_cliente = $this->input->post('mensagem');
-    $this->abertura = $this->input->post('data');
-    $this->fechamento = $this->input->post('id_sac');
-    $this->encerrado = $this->input->post('id_funcionario');
-    $this->db->update('iteracao', $this, array('id_iteracao' => $this->input->post('id_iteracao')));
+  public function update($data, $id_iteracao) {
+    $this->db->where('id_iteracao', $id_iteracao);
+    $this->db->update('iteracao', $data);
   }
     
   /**
@@ -54,7 +50,6 @@ class Iteracao_model extends CI_Model {
   public function remove($id) {
     $this->db->where('id_iteracao', $id);
     $this->db->delete('iteracao');
-    // remove pessoa
   }
     
 }
