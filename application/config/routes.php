@@ -92,3 +92,7 @@ $route['pessoa_fisica/remover/(:num)'] = 'PessoaFisica/delete/$1';
 /** LOGIN */
 $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
+
+//Rotas Setores
+$route['setor']='Setor';
+
