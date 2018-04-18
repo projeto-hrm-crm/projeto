@@ -7,9 +7,8 @@
  */
 
 $database_config = [
-    'host' 		=> 'localhost',
+    'host'      => 'localhost',
     'user'		=> 'root',
     'password' 	=> '',
-    'database'	=> 'pr1',
+    'database'	=> 'teste',
 ];
-

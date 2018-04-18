@@ -19,8 +19,9 @@ class Pessoa extends CI_Controller
 	* Cria o formulário para cadastro de pessoa ou submete uma nova pessoa, caso seja enviada uma requisão POST.
 	* Retorna messagem de erro ou sucesso por flashdata que são inseridos em variáveis para facilitar o 
 	* trabalho na view.
+
 	*
-	* 
+	*
 	*/
   	public function create()
   	{	
@@ -225,4 +226,3 @@ class Pessoa extends CI_Controller
 	}
 
 }
-

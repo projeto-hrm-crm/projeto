@@ -57,7 +57,7 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|alpha_numeric_spaces'
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
             'field' => 'codigo',
@@ -70,8 +70,8 @@ $config = array(
             'rules' => 'required|exact_length[10]'
         ),
         array(
-            'field' => 'validate',
-            'label' => 'Validate',
+            'field' => 'validade',
+            'label' => 'Validade',
             'rules' => 'required|exact_length[10]'
         ),
         array(
