@@ -81,10 +81,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => isset($database_config) ? $database_config['host'] 		: 'localhost',
-	'username' => isset($database_config) ? $database_config['user'] 		: 'root',
-	'password' => isset($database_config) ? $database_config['password'] 	: 'aluno123',
-	'database' => isset($database_config) ? $database_config['database']	: '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'projeto',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -3,28 +3,28 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">sac</strong>
+                    <strong class="card-title">Ordens</strong>
                 </div>
                 <div class="card-body">
                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>titulo</th>
-                                <th>ação</th>
+                                <th>Titulo</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(isset($sac)): ?>
                                 <?php foreach($sac as $item): ?>
                                     <tr>
-                                        <td><?=$item->id;?></td>
+                                        <td><?=$item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
                                         <td>
-                                            <a href="item/editar/<?php echo $item->id?>" class="btn btn-primary">
+                                            <a href="item/editar/<?php echo $item->id_sac?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <a href="item/deletar/<?php echo $item->id?>" class="btn btn-danger">
+                                            <a href="item/deletar/<?php echo $item->id_sac?>" class="btn btn-danger">
                                                 <span class="fa fa-close"></span>
                                             </a>
                                         </td>

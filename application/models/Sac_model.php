@@ -17,10 +17,9 @@ class Sac_model extends CI_Model {
   * listar todas as ordens
   *
   */
-  public function getAll() {    
-    $this->db->select('*');
-    $this->db->from('sac');
-    return $this->db->get();
+  public function get() {    
+    $query = $this->db->select('*')->from('sac');
+    return $query->get()->result();
   }
     
   /**

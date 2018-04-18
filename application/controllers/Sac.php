@@ -3,7 +3,10 @@ class Sac extends CI_Controller
 {
 
   public function index(){
+      $data['title'] = 'Solicitações SAC';
+      $data['sac'] = $this->sac->get();
 
+      loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
   }
 
   /**

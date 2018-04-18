@@ -88,5 +88,4 @@ $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
 
 //Rotas SAC
-$route['sac/salvar']         = 'sac/save';
-$route['sac/listar']         = 'sac/index';
+$route['sac/listar'] = 'sac/index';
