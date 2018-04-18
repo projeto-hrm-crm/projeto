@@ -11,11 +11,22 @@ class Sac extends CI_Controller
 
   /**
   * @author: Rodrigo Alves
-  * Este método tem como finalidade criar uma ordem de SAC.
+  * Página de cadastro.
   *
   */
-  public function save() {
-      
+  public function create() {
+     
+     $data = $this->input->post();
+
+       if($data){
+          
+           $this->sac->insert($data);
+           redirect('sac/index');
+        
+       }
+     
+      $data['title'] = 'Cadastrar SAC';
+      loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
   }
 
   /**

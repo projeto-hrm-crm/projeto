@@ -6,6 +6,11 @@
                     <strong class="card-title">Ordens</strong>
                 </div>
                 <div class="card-body">
+                   
+                   <a href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                     <i class="fa fa-check"></i> Cadastrar
+                   </a><br />
+                   <br />
                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
