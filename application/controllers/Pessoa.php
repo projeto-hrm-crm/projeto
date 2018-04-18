@@ -23,7 +23,7 @@ class Pessoa extends CI_Controller
 	* 
 	*/
   	public function create()
-  	{
+  	{	
 		if($this->input->post())
 		{	
 			if(!$this->form_validation->run('pessoa'))
@@ -40,11 +40,34 @@ class Pessoa extends CI_Controller
 			}
 			else
 			{
-				$id_pessoa = $this->pessoa->insert();
 
-				$this->telefone->insert($id_pessoa);
-				$this->documento->insert($id_pessoa);
-				$this->endereco->insert($id_pessoa);
+				$pessoa = array();
+				$pessoa['nome']  = $this->input->post('nome');
+				$pessoa['email'] = $this->input->post('email');
+				$id_pessoa = $this->pessoa->insert($pessoa);
+
+				$endereco = array();
+				$endereco['cep']         = $this->input->post('cep');
+				$endereco['bairro']      = $this->input->post('bairro');
+				$endereco['logradouro']  = $this->input->post('logradouro');
+				$endereco['numero']      = $this->input->post('numero');
+				$endereco['complemento'] = $this->input->post('complemento');
+				$endereco['id_pessoa']   = $id_pessoa;
+				$endereco['id_cidade']   = $this->input->post('cidade');
+				$this->endereco->insert($endereco);
+
+				$documento = array();
+				$documento['numero']    = $this->input->post('tipo_pessoa') === 'pf' ?
+					$this->input->post('cpf') : $this->input->post('cnpj');
+				$documento['tipo']      = $this->input->post('tipo_pessoa') === 'pf' ? 
+					'CPF' : 'CNPJ';
+				$documento['id_pessoa'] = $id_pessoa;
+				$this->documento->insert($documento);
+
+				$telefone = array();
+				$telefone['numero']    = $this->input->post('telefone');
+				$telefone['id_pessoa'] = $id_pessoa;
+				$this->telefone->insert($telefone);
 
 				$this->session->set_flashdata('success', 'Cadastro efetuado com sucesso');
 
@@ -73,7 +96,7 @@ class Pessoa extends CI_Controller
 
 			loadTemplate(
 				'includes/header',
-				'pessoa/create',
+				'pessoa/cadastrar',
 				'includes/footer',
 				$data
 			);
@@ -88,7 +111,7 @@ class Pessoa extends CI_Controller
 	* 
 	* @param integer $id identificação da pessoa
 	*/
-	public function edit($id)
+	public function edit($id_pessoa)
 	{
 		
 		if($this->input->post())
@@ -103,24 +126,49 @@ class Pessoa extends CI_Controller
 					'Não foi possível atualizar o cadastro<br>Verifique os campos abaixo'
 				);
 
-				redirect('editar/pessoa/'.$id);
+				redirect('editar/pessoa/'.$id_pessoa);
 			}
 			else
 			{
-				$this->pessoa->update($id);
-				$this->documento->update($id);
-				$this->telefone->update($id);
-				$this->endereco->update($id);
+
+				$pessoa = array();
+				$pessoa['nome']      = $this->input->post('nome');
+				$pessoa['email']     = $this->input->post('email');
+				$pessoa['id_pessoa'] = $id_pessoa;
+				$this->pessoa->update($pessoa);
+
+				$endereco = array();
+				$endereco['cep']         = $this->input->post('cep');
+				$endereco['bairro']      = $this->input->post('bairro');
+				$endereco['logradouro']  = $this->input->post('logradouro');
+				$endereco['numero']      = $this->input->post('numero');
+				$endereco['complemento'] = $this->input->post('complemento');
+				$endereco['id_pessoa']   = $id_pessoa;
+				$endereco['id_cidade']   = $this->input->post('cidade');
+				$this->endereco->update($endereco);
+
+				$documento = array();
+				$documento['numero']    = $this->input->post('tipo_pessoa') === 'pf' ?
+					$this->input->post('cpf') : $this->input->post('cnpj');
+				$documento['tipo']      = $this->input->post('tipo_pessoa') === 'pf' ? 
+					'CPF' : 'CNPJ';
+				$documento['id_pessoa'] = $id_pessoa;
+				$this->documento->update($documento);
+
+				$telefone = array();
+				$telefone['numero']    = $this->input->post('telefone');
+				$telefone['id_pessoa'] = $id_pessoa;
+				$this->telefone->update($telefone);
 
 				$this->session->set_flashdata('success', 'Cadastro editado com sucesso');
 
-				redirect('cadastrar/pessoa');
+				redirect('pessoa');
 			}
 		}
 		else
 		{
 
-			$data['pessoa']        = $this->pessoa->getById($id);
+			$data['pessoa']        = $this->pessoa->getById($id_pessoa);
 			$data['title']         = 'Editar Cadastro';
 			$data['estados']       = $this->estado->get();
 
@@ -139,18 +187,14 @@ class Pessoa extends CI_Controller
 				),
 			);
 
-			//Mudar para o formulário de edição
 			loadTemplate(
 				'includes/header',
-				'pessoa/edit',
+				'pessoa/editar',
 				'includes/footer',
 				$data
 			);
 			
 		}
-
-		
-
 		
 	}
 
@@ -161,13 +205,13 @@ class Pessoa extends CI_Controller
 	*
 	* @param integer $id_pessoa
 	*/
-	public function delete($id)
+	public function delete($id_pessoa)
 	{
-		$this->telefone->remove($id);
-		$this->documento->remove($id);
-		$this->endereco->remove($id);
+		$this->telefone->remove($id_pessoa);
+		$this->documento->remove($id_pessoa);
+		$this->endereco->remove($id_pessoa);
 
-		if($this->pessoa->remove($id))
+		if($this->pessoa->remove($id_pessoa))
 		{
 			$this->session->set_flashdata('success', 'Cadastro removido com sucesso!');
 		}
@@ -177,7 +221,7 @@ class Pessoa extends CI_Controller
 		}
 
 
-		redirect('cadastrar/pessoa');
+		redirect('pessoa');
 	}
 
 }
