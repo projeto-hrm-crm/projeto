@@ -3,15 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Endereco_model extends CI_Model {
 
-	public $cep;
-	public $bairro;
-	public $logradouro;
-	public $numero;
-	public $complemento;
-	public $id_pessoa;
-	public $id_cidade;
-	
-
 	/**
 	* @author: Tiago Villalobos
 	* Salva um endereço associado à uma pessoa
@@ -19,19 +10,9 @@ class Endereco_model extends CI_Model {
 	* 
 	* @param integer $id_pessoa
 	*/
-	public function insert($id_pessoa)
+	public function insert($endereco)
 	{
-		$this->cep         = $this->input->post('cep');
-		$this->bairro      = $this->input->post('bairro');
-		$this->logradouro  = $this->input->post('logradouro');
-		$this->numero      = $this->input->post('numero');
-		$this->complemento = $this->input->post('complemento');
-		$this->id_pessoa   = $id_pessoa;
-		$this->id_cidade   = $this->input->post('cidade');
-	
-
-		$this->db->insert('endereco', $this);
-
+		$this->db->insert('endereco', $endereco);
 	}
 
 
@@ -44,17 +25,20 @@ class Endereco_model extends CI_Model {
 	* 
 	* 
 	*/
-	public function update($id_pessoa)
+	public function update($endereco)
 	{
-		$this->cep         = $this->input->post('cep');
-		$this->bairro      = $this->input->post('bairro');
-		$this->logradouro  = $this->input->post('logradouro');
-		$this->numero      = $this->input->post('numero');
-		$this->complemento = $this->input->post('complemento');
-		$this->id_pessoa   = $id_pessoa;
-		$this->id_cidade   = $this->input->post('cidade');
+
+		$this->db->where('endereco.id_pessoa', $endereco['id_pessoa']);
 		
-		$this->db->update('endereco', $this, array('id_pessoa' => $this->id_pessoa));
+		$this->db->set('endereco.cep',         $endereco['cep']);
+		$this->db->set('endereco.bairro',      $endereco['bairro']);
+		$this->db->set('endereco.logradouro',  $endereco['logradouro']);
+		$this->db->set('endereco.numero',      $endereco['numero']);
+		$this->db->set('endereco.complemento', $endereco['complemento']);
+		$this->db->set('endereco.id_cidade',   $endereco['id_cidade']);
+		
+
+		$this->db->update('endereco');
 	}	
 
 	

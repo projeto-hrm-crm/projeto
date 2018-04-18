@@ -12,12 +12,9 @@ class Telefone_model extends CI_Model {
 	*
 	* @param integer $id_pessoa
 	*/
-	public function insert($id_pessoa)
+	public function insert($telefone)
 	{
-		$this->numero    = $this->input->post('telefone');
-		$this->id_pessoa = $id_pessoa;
-
-		$this->db->insert('telefone', $this);
+		$this->db->insert('telefone', $telefone);
 	}
 
 	public function get(){}	
@@ -29,12 +26,13 @@ class Telefone_model extends CI_Model {
 	*
 	* 
 	*/
-	public function update($id)
+	public function update($telefone)
 	{
-		$this->numero    = $this->input->post('telefone');
-		$this->id_pessoa = $id;
+		$this->db->where('telefone.id_pessoa', $telefone['id_pessoa']);
 		
-		$this->db->update('telefone', $this, array('id_pessoa' => $this->id_pessoa));
+		$this->db->set('telefone.numero', $telefone['numero']);
+
+		$this->db->update('telefone');
 	}	
 	
 

@@ -8,12 +8,13 @@ class Estado_model extends CI_Model
 
 	/**
 	* @author Tiago Villalobos
-	* Retorna todos os estados do banco
+	* Retorna todos os estados do banco, ordenados pelo nome do estado
 	* 
 	* @return mixed array de objetos
 	*/
 	public function get()
-	{
+	{	
+		$this->db->order_by('estado.nome', 'ASC');
 		return $this->db->get('estado')->result();
 	}
 

@@ -3,10 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Documento_model extends CI_Model {
 	
-	public $numero;
-	public $tipo;
-	public $id_pessoa;
-	
 	/**
 	* @author: Tiago Villalobos
 	* Salva um documento associado à uma pessoa
@@ -14,13 +10,9 @@ class Documento_model extends CI_Model {
 	* 
 	* @param integer $id_pessoa
 	*/
-	public function insert($id_pessoa)
+	public function insert($documento)
 	{
-		$this->numero    = $this->input->post('cpf') ? $this->input->post('cpf') : $this->input->post('cnpj');
-		$this->tipo      = $this->input->post('cpf') ? 'CPF' : 'CNPJ';
-		$this->id_pessoa = $id_pessoa;
-
-		$this->db->insert('documento', $this);
+		$this->db->insert('documento', $documento);
 	}
 
 
@@ -32,13 +24,14 @@ class Documento_model extends CI_Model {
 	* 
 	* 
 	*/	
-	public function update($id)
+	public function update($documento)
 	{
-		$this->numero    = $this->input->post('cpf') ? $this->input->post('cpf') : $this->input->post('cnpj');
-		$this->tipo      = $this->input->post('cpf') ? 'CPF' : 'CNPJ';
-		$this->id_pessoa = $id;
+		$this->db->where('documento.id_pessoa', $documento['id_pessoa']);
 		
-		$this->db->update('documento', $this, array('id_pessoa' => $this->id_pessoa));
+		$this->db->set('documento.numero', $documento['numero']);
+		$this->db->set('documento.tipo',   $documento['tipo']);
+
+		$this->db->update('documento');
 	}	
 
 
