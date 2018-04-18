@@ -62,10 +62,13 @@ $route['editar/produto/(:num)'] = 'Produto/edit/$1';
 $route['deletar/produto/(:num)'] = 'Produto/delete/$1';
 
 //Rotas Pessoa
-$route['pessoa/salvar']         = 'pessoa/save';
-$route['pessoa/atualizar']      = 'pessoa/update';
-$route['pessoa/editar/(:num)']  = 'pessoa/index/$1';
-$route['pessoa/remover/(:num)'] = 'pessoa/delete/$1';
+$route['pessoa']                = 'Pessoa/index';
+$route['cadastrar/pessoa']      = 'Pessoa/create';
+$route['editar/pessoa/(:num)']  = 'Pessoa/edit/$1';
+$route['remover/pessoa/(:num)'] = 'Pessoa/delete/$1';
+
+//Rotas Cidade
+$route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
 //Rotas Fornecedores
 $route['fornecedor'] = 'Fornecedor';
