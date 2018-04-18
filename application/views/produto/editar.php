@@ -10,12 +10,12 @@
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="nome" class="control-label mb-1">Nome do Produto</label>
-                                <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome '] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+                                <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Nome inválido.</span>
                             </div>
                             <div class="form-group col-6">
                                 <label for="lote" class="control-label mb-1">Lote</label>
-                                <input name="lote" id="lote" value="<?php echo isset($old_data['lote']) ? $old_data['lote '] : $produto->lote;?>" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
+                                <input name="lote" id="lote" value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : $produto->lote;?>" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Lote inválido.</span>
                             </div>
                             <div class="form-group col-6">
