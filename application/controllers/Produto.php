@@ -93,11 +93,11 @@ class Produto extends CI_Controller
           $this->session->set_flashdata('success','Alterado com sucesso.');
           redirect('produto');
         }else{
-          $errors = validation_errors();
-          $this->session->set_flashdata('danger', $errors);
+          $this->session->set_flashdata('errors', $this->form_validation->error_array());
           redirect('editar/produto/'.$id);
         }
       }else{
+        $data['errors'] = $this->session->flashdata('errors');
         $data['title'] = 'Alterar Produto';
         $data['produto'] = $this->produto->getById($id);
         $data['produto']->fabricacao = switchDate($data['produto']->fabricacao);
