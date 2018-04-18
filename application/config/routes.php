@@ -55,7 +55,11 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-//Rotas Produtos
+//Rotas Produtos 
+$route['produto/index'] = 'produto/index';
+$route['produto/cadastrar'] = 'produto/create';
+$route['produto/editar/(:num)'] = 'produto/edit/$1';
+
 $route['produto'] = 'Produto/index';
 $route['cadastrar/produto'] = 'Produto/create';
 $route['editar/produto/(:num)'] = 'Produto/edit/$1';
@@ -92,6 +96,10 @@ $route['pessoa_fisica/remover/(:num)'] = 'PessoaFisica/delete/$1';
 /** LOGIN */
 $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
+
+//Rotas SAC
+$route['sac/listar'] = 'sac/index';
+$route['sac/cadastrar'] = 'sac/create';
 
 //Rotas Setores
 $route['setor']='Setor';
