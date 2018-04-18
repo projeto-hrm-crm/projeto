@@ -20,8 +20,12 @@ class Produto_model extends CI_Model
     *@return: mixed
     */
     public function get(){
-        $query = $this->db->get('produto');
-        return $query->result();
+        try{
+            $query = $this->db->get('produto');
+            return $query->result();
+        }catch (\Exception $e) {
+
+        }
     }
     
     /*
@@ -34,7 +38,7 @@ class Produto_model extends CI_Model
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validade', $array['validate']);
+        $this->db->set('validade', $array['validade']);
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->insert('produto');        
@@ -47,10 +51,12 @@ class Produto_model extends CI_Model
      *@return: boolean
     */
     public function update($array){
+        $this->db->where('id_produto', $array['id_produto']);
         $this->db->set('nome', $array['nome']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validade', $array['validate']);
+        $this->db->set('validade', $array['validade']);
+
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
         return $this->db->update('produto');        
@@ -67,4 +73,31 @@ class Produto_model extends CI_Model
         $this->db->where('id_produto', $id);
         return $this->db->delete('produto');
     }
+
+    /*
+     * @author: Dhiego Balthazar
+     * Esse método retorna um objeto Produto através de seu $id
+     * 
+     * @params: $id
+     * @return: object Produto
+     */
+    public function getById($id){
+      $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
+      $this->db->where('id_produto', $id);
+      return $this->db->get('produto')->row();
+    }
+
+    /*
+     * @author: Dhiego Balthazar
+     * Esse método retorna um objeto Produto através de seu $nome como parametro de entrada
+     * 
+     * @params: $nome
+     * @return: object Produto
+     */
+    public function getByName($nome){
+      $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento');
+      $this->db->where('nome', $nome);
+      return $this->db->get('produto')->row();
+    }
+
 }
