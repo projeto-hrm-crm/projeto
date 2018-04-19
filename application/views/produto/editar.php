@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Editar Produto</strong>
             </div>
-            <form action="<?php echo base_url('editar/produto/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('editar/produto/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
@@ -42,10 +42,10 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <button type="reset" class="btn btn-danger btn-sm">
-                        <i class="fa fa-ban"></i>
-                        Cancelar
-                    </button>
+                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-arrow-left"></i>
+                        Voltar
+                    </a>
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-check"></i>
                         Editar
