@@ -1,6 +1,6 @@
 jQuery().ready(function() {;
 
-    jQuery("#teste").validate({
+    jQuery("#form_produto").validate({
         rules: {
             nome: "required",
 
@@ -50,6 +50,4 @@ jQuery().ready(function() {;
 
     });
 
-})
-
-  // jQuery("#teste").validate();
+});
