@@ -26,39 +26,28 @@ class Fornecedor_model extends CI_Model
 
   public function insert($data)
   {
-    $pessoa['nome'] = $data['nome'];
-    $pessoa['email'] = $data['email'];
-
-    // $documento['numero'] = $data['cnpj'];
-    // $documento['tipo'] = 2;
-    //
-    // $telefone['telefone'] = $data['telefone'];
-    //
-    // $endereco['cep'] = $data['cep'];
-    // $endereco['estado'] = $data['estado'];
-    // $endereco['cidade'] = $data['cidade'];
-    // $endereco['bairro'] = $data['bairro'];
-    // $endereco['logradouro'] = $data['logradouro'];
-    // $endereco['numero'] = $data['numero'];
-    // $endereco['complemento'] = $data['complemento'];
-
-    $pessoa_juridica['razao_social'] = $data['razao_social'];
+    $cleaned = data_preparation($data);
 
     try {
-      $id = $this->pessoa->insert($pessoa);
-      // $documento['id_pessoa'] = $id;
-      // $telefone['id_pessoa'] = $id;
-      // $endereco['id_pessoa'] = $id;
-      $pessoa_juridica['id_pessoa'] = $id;
+      $id = $this->pessoa->insert($cleaned['pessoa']);
+
+      $cleaned['documento']['id_pessoa'] = $id;
+      $cleaned['telefone']['id_pessoa'] = $id;
+      $cleaned['endereco']['id_pessoa'] = $id;
+      $cleaned['pessoa_juridica']['id_pessoa'] = $id;
+
+      // print_r($cleaned['pessoa_juridica']);
+      // exit();
 
       // $this->Documento->insert($documento);
       // $this->Telefone->insert($telefone);
       // $this->Endereco->insert($endereco);
-      $id2['id_pessoa_juridica'] = $this->pessoa_juridica->insert($pessoa_juridica);
-      // print_r($id2);
-      // exit();
+      // print_r($cleaned['pessoa_juridica']);
+      $aux['id_pessoa_juridica'] = $this->pessoa_juridica->insert($cleaned['pessoa_juridica']);
+      print_r($aux);
+      exit();
 
-      $this->db->insert('fornecedor', $id2);
+      $this->db->insert('fornecedor', $aux);
       return $this->db->insert_id();
     } catch (\Exception $e) {}
   }

@@ -41,6 +41,10 @@
 		<div class="card-header">
 			<strong>Endereço</strong>
 		</div><br>
+    <div class="row form-group">
+      <div class="col col-md-3"><label class=" form-control-label">CEP</label></div>
+      <div class="col-12 col-md-9"><input type="num" id="cep" name="cep" placeholder="CEP" class="form-control"></div>
+    </div>
 		<div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Estado</label></div>
           <div class="col-12 col-md-9"><input type="text" id="estado" name="estado" placeholder="São Paulo" class="form-control"></div>
@@ -52,10 +56,18 @@
 		<div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Bairro</label></div>
           <div class="col-12 col-md-9"><input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"></div>
-        </div>
+    </div>
 		<div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Número</label></div>
           <div class="col-12 col-md-9"><input type="num" id="numero" name="numero" placeholder="CNPJ" class="form-control"></div>
+    </div>
+    <div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">Logradouro</label></div>
+          <div class="col-12 col-md-9"><input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"></div>
+    </div>
+    <div class="row form-group">
+      <div class="col col-md-3"><label class=" form-control-label">Complemento</label></div>
+      <div class="col-12 col-md-9"><textarea name="complemento" id="complemento" rows="9" placeholder="Complemento..." class="form-control"></textarea></div>
     </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-primary btn-sm">

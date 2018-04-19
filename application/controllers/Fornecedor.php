@@ -15,8 +15,8 @@ class Fornecedor extends CI_Controller
   {
     $data['title'] = 'Fornecedores';
     $data['fornecedores'] = $this->fornecedor->get();
-    print_r($data);
-    exit();
+    // print_r($data);
+    // exit();
 
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
@@ -37,7 +37,7 @@ class Fornecedor extends CI_Controller
 
     if($data){
       // print_r($data);
-      // // print_r($data['nome']);
+      // print_r($data['nome']);
       // exit();
       if ($this->form_validation->run('fornecedor'))
       {
@@ -108,4 +108,3 @@ class Fornecedor extends CI_Controller
     }
   }
 }
-
