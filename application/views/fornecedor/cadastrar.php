@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-12">
   <div class="card">
     <div class="card-header">
       <strong>Cadastro de Fornecedores</strong>
@@ -23,8 +23,8 @@
           <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" placeholder="Nome" class="form-control"></div>
         </div>
         <div class="row form-group">
-          <div class="col col-md-3"><label for="email-input" class=" form-control-label">Pessoa Juridica</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="id_pessoa_juridica" name="id_pessoa_juridica" placeholder="Pessoa 01" class="form-control"></div>
+          <div class="col col-md-3"><label for="email-input" class=" form-control-label">E-mail</label></div>
+          <div class="col-12 col-md-9"><input type="email" id="email" name="email" placeholder="e-mail" class="form-control"></div>
         </div>
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Razão Social</label></div>
@@ -34,6 +34,29 @@
           <div class="col col-md-3"><label class=" form-control-label">CNPJ</label></div>
           <div class="col-12 col-md-9"><input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" class="form-control"></div>
         </div>
+		<div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
+          <div class="col-12 col-md-9"><input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control"></div>
+        </div>
+		<div class="card-header">
+			<strong>Endereço</strong>
+		</div><br>
+		<div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">Estado</label></div>
+          <div class="col-12 col-md-9"><input type="text" id="estado" name="estado" placeholder="São Paulo" class="form-control"></div>
+        </div>
+		<div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">Cidade</label></div>
+          <div class="col-12 col-md-9"><input type="text" id="cidade" name="cidade" placeholder="Caraguatuba" class="form-control"></div>
+        </div>
+		<div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">Bairro</label></div>
+          <div class="col-12 col-md-9"><input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"></div>
+        </div>
+		<div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">Número</label></div>
+          <div class="col-12 col-md-9"><input type="num" id="numero" name="numero" placeholder="CNPJ" class="form-control"></div>
+    </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Enviar
