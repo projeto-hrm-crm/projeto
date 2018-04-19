@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Novo Produto</strong>
             </div>
-            <form action="<?php echo base_url('cadastrar/produto'); ?>" method="post" novalidate="novalidate">
+            <form id="teste" action="<?php echo base_url('cadastrar/produto'); ?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
