@@ -104,3 +104,9 @@ $route['sac/cadastrar'] = 'sac/create';
 //Rotas Setores
 $route['setor']='Setor';
 
+//Rotas Vagas
+$route['vagas']               = 'Vaga/index';
+$route['cadastrar/vaga']      = 'Vaga/create';
+$route['editar/vaga/(:num)']  = 'Vaga/edit/$1';
+$route['remover/vaga/(:num)'] = 'Vaga/delete/$1';
+
