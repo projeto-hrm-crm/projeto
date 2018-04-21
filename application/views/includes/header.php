@@ -143,6 +143,17 @@
             <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
             <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
             <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- INCLUÍDO PARA TESTE! -->
+            <li>
+              <a href="<?php echo base_url('Funcionario') ?>">Funcionário</a>
+              <a href="<?php echo base_url('Fornecedor') ?>">Fornecedor</a>
+              <a href="<?php echo base_url('Candidato') ?>">Candidato</a>
+            </li>
+            <!-- FIM INCLUÍDO PARA TESTE -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
           </ul>
         </li>
       </ul>

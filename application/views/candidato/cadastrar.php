@@ -1,9 +1,9 @@
-<!-- FUNCIONÁRIO -->
+<!-- CLIENTE -->
 
 <div class="col-lg-6">
   <div class="card">
     <div class="card-header">
-      <strong>Cadastro de Funcionario</strong>
+      <strong>Cadastro de Candidato</strong>
     </div>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
@@ -19,7 +19,7 @@
 			</div>
 		</div>
     <div class="card-body card-block">
-      <form action="<?php echo site_url('funcionario/create'); ?>" method="POST" class="form-horizontal">
+      <form action="<?php echo site_url('candidato/create'); ?>" method="POST" class="form-horizontal">
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
           <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" placeholder="Nome" class="form-control"></div>
@@ -33,8 +33,9 @@
           <div class="col-12 col-md-9"><input type="text" id="data_nacimento" name="data_nacimento" placeholder="Data Nascimento" class="form-control"></div>
         </div>
         <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Data Nascimento</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="sexo" name="sexo" placeholder="Data Nascimento" class="form-control"></div>
+          <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
+          <div class="col-12 col-md-9"><input type="radio" name="sexo" id="sexo_masc" value="homem" /><label for="sexo_masc">Masculino</label>
+            <input type="radio" name="sexo" id="sexo_fem" value="mulher" /><label for="sexo_fem">Feminino</label></div>
         </div>
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
@@ -43,7 +44,7 @@
           <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Enviar
           </button>
-          <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
+          <a href="<?= site_url('candidato')?>" class="btn btn-danger btn-sm">
           <i class="fa fa-ban"></i> Cancelar
           </a>
         </div>
