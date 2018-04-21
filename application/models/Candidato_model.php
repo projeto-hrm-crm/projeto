@@ -7,13 +7,14 @@ class Candidato_model extends CI_Model {
 	* @author: Camila Sales
 	* Salva o registro de candidato associado à uma pessoa fisica
 	*
-	* @param integer $id_pessoa
 	*/
-	public function insert($id_pessoa)
-	{
-		$this->id_pessoa = $id_pessoa;
-		$this->db->insert('candidato', $this);
-	}
+	public function insert($data)
+  {
+ 	try {
+ 		$this->db->insert('candidato', $data);
+ 	} catch (\Exception $e) {}
+  }
+
 
 	/**
 	* @author: Camila Sales
@@ -44,14 +45,6 @@ class Candidato_model extends CI_Model {
 		exit;
 	}
 	}
-
-  // // ERRO -- Message: Cannot redeclare Candidato_model::insert()
-	//  public function insert($data)
-	//  {
-	//  	try {
-	//  		$this->db->insert('candidato', $data);
-	//  	} catch (\Exception $e) {}
-	//  }
 
 	public function find($id)
 	{

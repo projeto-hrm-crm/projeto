@@ -36,7 +36,7 @@ class Funcionario extends CI_Controller
     if($data){
       // if ($this->form_validation->run('funcionario'))
       // {
-        $id_pessoa = $this->pessoa->insert();
+        $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->funcionario->insert(['id_pessoa_fisica' => $id_pessoa_fisica]);
         $this->session->set_flashdata('success', 'Funcionario cadastrado com sucesso.');
@@ -66,13 +66,13 @@ class Funcionario extends CI_Controller
   {
     if ($this->input->post())
     {
-      $data['funcionario'] = $this->input->post();
+      $data = $this->input->post();
       // if ($this->form_validation->run('funcionario'))
       // {
         $funcionario = $this->funcionario->find($id_funcionario);
-
-        $this->pessoa->update();
-        $this->pessoa_fisica->update($funcionario[0]->id_pessoa_fisica,['data_nascimento'=> $data['funcionario']['data_nascimento'],'sexo'=>$data['funcionario']['sexo']]);
+        
+        $this->pessoa->update(['id_pessoa' => $funcionario[0]->id_pessoa, 'nome'=> $data['nome'],'email'=>$data['email']]);
+        $this->pessoa_fisica->update($funcionario[0]->id_pessoa_fisica,['data_nascimento'=> $data['data_nascimento'],'sexo'=>$data['sexo']]);
         $this->session->set_flashdata('success', 'Funcionario editado com sucesso.');
         redirect('funcionario');
       // }else{
