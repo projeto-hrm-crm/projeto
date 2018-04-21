@@ -20,11 +20,11 @@ class Candidato_model extends CI_Model {
 	* @author: Camila Sales
 	* Remove o registro de candidato associado à uma pessoa fisica
 	*
-	* @param integer $id_pessoa
+	* @param integer $id_candidato
 	*/
-	public function remove($id_pessoa)
+	public function remove($id_candidato)
 	{
-		$this->db->where('id_pessoa', $id_pessoa);
+		$this->db->where('id_candidato', $id_candidato);
 		$this->db->delete('candidato');
 		// delete pessoa fisica;
 	}
@@ -46,10 +46,12 @@ class Candidato_model extends CI_Model {
 	}
 	}
 
-	public function find($id)
+	public function find($id_candidato)
 	{
 		try {
-			$candidato = $this->db->select('*')->from('candidato')->where('id', $id)->get();
+			$candidato = $this->db->select("*")->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('candidato', 'pessoa_fisica.id_pessoa_fisica = candidato.id_pessoa_fisica')->where('candidato.id_candidato', $id_candidato)->get();
 			if ($candidato)
 			{
 				return $candidato->result();
@@ -60,19 +62,11 @@ class Candidato_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function update($id, $data)
+	public function update($id_candidato, $data)
 	{
 		try {
-			$this->db->where('id', $id);
+			$this->db->where('id_candidato', $id_candidato);
 			$this->db->update('candidato', $data);
-		} catch (\Exception $e) {}
-	}
-
-	public function delete($id)
-	{
-		try {
-			$this->db->where('id', $id);
-			$this->db->delete('candidato');
 		} catch (\Exception $e) {}
 	}
 

@@ -63,12 +63,11 @@ class Candidato extends CI_Controller
   {
     if ($this->input->post())
     {
-      $data['candidato'] = $this->input->post();
+      $data = $this->input->post();
       // if ($this->form_validation->run('candidato'))
       // {
         $candidato = $this->candidato->find($id_candidato);
-        print_r($candidato);
-return $candidato;
+
         $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['nome'],'email'=>$data['email']]);
         $this->pessoa_fisica->update($candidato[0]->id_pessoa_fisica,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['funcionario']['sexo']]);
         $this->session->set_flashdata('success', 'Candidato editado com sucesso.');

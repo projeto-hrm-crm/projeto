@@ -1,6 +1,3 @@
-<!-- <pre>
-  <?php print_r((array)$candidato[0]->nome); ?>
-</pre> -->
 <div class="col-lg-6">
   <div class="card">
     <div class="card-header">
@@ -36,7 +33,7 @@
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
           <div class="col-12 col-md-9"><input type="radio" name="sexo" id="sexo_masc" value="homem" class="form-control" /><label for="sexo_masc">Masculino</label>
-            <input type="radio" name="sexo" id="sexo_fem" value="mulher" class="form-control" /><label for="sexo_fem">Feminino</label>            
+            <input type="radio" name="sexo" id="sexo_fem" value="mulher" class="form-control" /><label for="sexo_fem">Feminino</label>
         </div>
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
