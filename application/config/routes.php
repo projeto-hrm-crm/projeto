@@ -106,3 +106,9 @@ $route['setor']='Setor';
 $route['setor/cadastrar']='Setor/create';
 $route['setor/editar/(:num)']='Setor/edit/$1';
 $route['setor/excluir/(:num)']='Setor/delete/$1';
+
+//Rotas Cargo
+$route['cargo']='Cargo';
+$route['cargo/cadastrar']='Cargo/create';
+$route['cargo/editar/(:num)']='Cargo/edit/$1';
+$route['cargo/excluir/(:num)']='Cargo/delete/$1';
