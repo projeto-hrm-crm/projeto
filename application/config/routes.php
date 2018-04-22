@@ -55,7 +55,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-//Rotas Produtos 
+//Rotas Produtos
 $route['produto/index'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
@@ -103,4 +103,6 @@ $route['sac/cadastrar'] = 'sac/create';
 
 //Rotas Setores
 $route['setor']='Setor';
-
+$route['setor/cadastrar']='Setor/create';
+$route['setor/editar/(:num)']='Setor/edit/$1';
+$route['setor/excluir/(:num)']='Setor/delete/$1';
