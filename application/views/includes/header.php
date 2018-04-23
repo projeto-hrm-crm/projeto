@@ -107,6 +107,13 @@
             <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('produto');?>">Listar</a></li>
           </ul>
         </li>
+         <li class="menu-item-has-children dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Fornecedores</a>
+          <ul class="sub-menu children dropdown-menu">
+            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('fornecedor/cadastrar');?>">Cadastrar</a></li>
+            <li><i class="menu-icon fa fa-th"></i><a href="<?= base_url('fornecedor');?>">Listar</a></li>
+          </ul>
+        </li>
 
         <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
 
