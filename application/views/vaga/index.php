@@ -6,7 +6,7 @@
 					<strong class="card-title">Vagas</strong>
 				</div>
 				<div class="card-body">
-					<table id="bootstrap-data-table" class="table table-striped table-bordered">
+					<table id="vagas" class="table table-striped table-bordered">
 						
 						<thead>
 							<tr>
@@ -55,11 +55,3 @@
 
 	</div>
 </div>
-
-
-<!-- JS EXTERNO -->
-<script>
-	$(document).ready(function() {
-		$('#bootstrap-data-table').DataTable();
-	});
-</script>
