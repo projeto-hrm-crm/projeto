@@ -10,17 +10,16 @@ function data_preparation($data)
 
     'documento' => array(
       'numero' => $data['cnpj'],
-      'tipo' => 2,
+      'tipo' => 'cnpj',
     ),
 
     'telefone' => array(
-      'telefone' => $data['telefone'],
+      'numero' => $data['telefone'],
     ),
 
     'endereco' => array(
       'cep' => $data['cep'],
-      'estado' => $data['estado'],
-      'cidade' => $data['cidade'],
+      'id_cidade' => 10,//$data['cidade'], FIXME ACERTAR O ID QUANDO O FRONT ESTIVER PRONTO
       'bairro' => $data['bairro'],
       'logradouro' => $data['logradouro'],
       'numero' => $data['numero'],

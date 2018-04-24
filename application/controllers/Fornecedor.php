@@ -35,10 +35,8 @@ class Fornecedor extends CI_Controller
   {
     $data = $this->input->post();
 
-    if($data){
-      // print_r($data);
-      // print_r($data['nome']);
-      // exit();
+    if($data)
+    {
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->insert($data);

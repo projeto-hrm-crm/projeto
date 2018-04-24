@@ -10,9 +10,9 @@ class Fornecedor_model extends CI_Model
   		->from('fornecedor')
       ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
       ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
-  		// ->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
-  		// ->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
-  		// ->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
+  		->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
+  		->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
+  		->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
   		->get();
       if ($query)
       {
@@ -26,29 +26,27 @@ class Fornecedor_model extends CI_Model
 
   public function insert($data)
   {
-    $cleaned = data_preparation($data);
 
     try {
-      $id = $this->pessoa->insert($cleaned['pessoa']);
+      $cleaned = data_preparation($data);
 
-      $cleaned['documento']['id_pessoa'] = $id;
-      $cleaned['telefone']['id_pessoa'] = $id;
-      $cleaned['endereco']['id_pessoa'] = $id;
-      $cleaned['pessoa_juridica']['id_pessoa'] = $id;
+      if($cleaned)
+      {
+        $id = $this->pessoa->insert($cleaned['pessoa']);
 
-      // print_r($cleaned['pessoa_juridica']);
-      // exit();
+        $cleaned['documento']['id_pessoa'] = $id;
+        $cleaned['telefone']['id_pessoa'] = $id;
+        $cleaned['endereco']['id_pessoa'] = $id;
+        $cleaned['pessoa_juridica']['id_pessoa'] = $id;
 
-      // $this->Documento->insert($documento);
-      // $this->Telefone->insert($telefone);
-      // $this->Endereco->insert($endereco);
-      // print_r($cleaned['pessoa_juridica']);
-      $aux['id_pessoa_juridica'] = $this->pessoa_juridica->insert($cleaned['pessoa_juridica']);
-      print_r($aux);
-      exit();
+        $this->documento->insert($cleaned['documento']);
+        $this->telefone->insert($cleaned['telefone']);
+        $this->endereco->insert($cleaned['endereco']);
+        $aux['id_pessoa_juridica'] = $this->pessoa_juridica->insert($cleaned['pessoa_juridica']);
 
-      $this->db->insert('fornecedor', $aux);
-      return $this->db->insert_id();
+        $this->db->insert('fornecedor', $aux);
+        return $this->db->insert_id();
+      }
     } catch (\Exception $e) {}
   }
 

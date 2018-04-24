@@ -1,4 +1,4 @@
-use teste;
+
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
 id_usuario int(11) NOT NULL AUTO_INCREMENT,
