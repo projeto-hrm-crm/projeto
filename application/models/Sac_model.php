@@ -44,7 +44,7 @@ class Sac_model extends CI_Model {
    
   /**
   * @author: Rodrigo Alves
-  * Alterar estatus sac
+  * Alterar estatus sac a
   *
   */
   public function changeStatus($status, $id_sac) {
