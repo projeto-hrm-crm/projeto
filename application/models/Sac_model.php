@@ -41,6 +41,17 @@ class Sac_model extends CI_Model {
     $this->db->where('id_sac', $id_sac);
     $this->db->update('sac', $data);
   }
+   
+  /**
+  * @author: Rodrigo Alves
+  * Alterar estatus sac
+  *
+  */
+  public function changeStatus($status, $id_sac) {
+    $this->db->set('encerrado', $status);
+    $this->db->where('id_sac', $id_sac);
+    $this->db->update('sac');
+  }
     
   /**
   * @author: Rodrigo Alves
