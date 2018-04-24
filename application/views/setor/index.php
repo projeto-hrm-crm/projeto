@@ -20,8 +20,8 @@
   				<tr>
   					<td class="text-center"><?= $setor->id; ?></td>
             <td class="text-center"><?= $setor->nome; ?></td>
+              <p>teste</p>
 
-           
   					<td class="text-center">
   						<a title="Editar" href="<?= site_url('setor/update/'.$setor->id)?>">Editar</a> |
               <a title="Excluir" href="<?= site_url('setor/remove/'.$setor->id)?>">Excluir</a>
