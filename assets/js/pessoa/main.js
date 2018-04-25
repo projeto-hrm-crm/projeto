@@ -7,10 +7,16 @@ $(document).ready(() => {
   $('#ck-pf').change((e) => {
     $('.pj-form').hide();
     $('.pf-form').show();
+
+    $("[name='cnpj']").attr('required', false);
+    $("[name='cpf']").attr('required', true);
   });
   $('#ck-pj').change((e) => {
     $('.pf-form').hide();
     $('.pj-form').show();
+
+    $("[name='cpf']").attr('required', false);
+    $("[name='cnpj']").attr('required', true);
   });
 
   $("[name='estado']").change((e) => {
@@ -28,7 +34,3 @@ $(document).ready(() => {
     });
   });
 });
-
-function toggleForm(e, form) {
-  e.target.checked ? form.show() : form.hide();
-}
