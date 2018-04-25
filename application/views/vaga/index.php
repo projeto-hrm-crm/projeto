@@ -1,18 +1,26 @@
 <div class="animated fadeIn">
 	<div class="row">
-
 		<div class="col-md-12">
+			<?php if(isset($success_message)): ?>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                    <?php echo $success_message; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
 			<div class="card">
 				<div class="card-header">
 					<strong class="card-title">Vagas</strong>
 				</div>
 				<div class="card-body">
-					<table id="bootstrap-data-table" class="table table-striped table-bordered">
+					<table id="vagas" class="table table-striped table-bordered">
 						
 						<thead>
 							<tr>
 								<th>Cargo</th>
 								<th>Setor</th>
+								<th>Quantidade</th>
 								<th>Data de Oferta</th>
 								<th>Opções</th>
 							</tr>
@@ -24,7 +32,8 @@
 									<tr>
 										<td><?php echo $vaga->cargo; ?></td>
 										<td><?php echo $vaga->setor; ?></td>
-										<td><?php echo $vaga->data_oferta; ?></td>
+										<td><?php echo $vaga->quantidade; ?></td>
+										<td><?php echo switchDate($vaga->data_oferta); ?></td>
 										<td>
 										    <a href="editar/vaga/<?php echo $vaga->id_vaga ?>" class="btn btn-primary">
 										        <span class="fa fa-edit"></span>
@@ -41,16 +50,9 @@
 					</table>
 				</div>
 			</div>
+			
 		</div>
 
 
 	</div>
 </div>
-
-
-<!-- JS EXTERNO -->
-<script>
-	$(document).ready(function() {
-		$('#bootstrap-data-table').DataTable();
-	});
-</script>

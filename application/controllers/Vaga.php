@@ -45,8 +45,10 @@ class Vaga extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('vaga')){
           $array = array(
-           'cargo' => $this->input->post('cargo'),
-           'setor' => $this->input->post('setor'),
+           'id_cargo' => $this->input->post('id_cargo'),
+           'quantidade' => $this->input->post('quantidade'),
+           'requisitos' => $this->input->post('requisitos'),
+
            'data_oferta' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('data_oferta')))),
            
           );
@@ -56,7 +58,7 @@ class Vaga extends CI_Controller
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             $this->session->set_flashdata('old_data', $this->input->post());
-            redirect('vaga/cadastrar');
+            redirect('cadastrar/vaga');
         }
       }else{
         $data['title'] = 'Cadastrar vaga';

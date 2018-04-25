@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vaga_model extends CI_Model
 {   
-    public $cargo;
-    public $setor;
-    public $data_oferta;
     
     
     public function __construct(){
@@ -18,12 +15,15 @@ class Vaga_model extends CI_Model
     *@return: mixed
     */
     public function get(){
-        try{
-            $query = $this->db->get('vaga');
-            return $query->result();
-        }catch (\Exception $e) {
-
-        }
+        $this->db->select(
+            'vaga.id_vaga, vaga.data_oferta, vaga.quantidade,
+            cargo.nome AS cargo,
+            setor.nome AS setor'
+        );
+        $this->db->join('cargo', 'vaga.id_cargo = cargo.id_cargo');
+        $this->db->join('setor', 'cargo.id_setor = setor.id_setor');
+        
+        return $this->db->get('vaga')->result();
     }
      /*
      *@author: Lucilene Fidelis
@@ -32,10 +32,9 @@ class Vaga_model extends CI_Model
      *@return: boolean
     */
     public function insert($array) {
-        $this->db->set('cargo', $array['cargo']);
-        $this->db->set('setor', $array['setor']);
-        $this->db->set('data_oferta', $array['data_oferta']);
-        return $this->db->insert('vaga');        
+        
+        $this->db->insert('vaga', $vaga);
+        return $this->db->insert_id();        
     }
      /*
      *@author: Lucilene Fidelis
@@ -45,10 +44,12 @@ class Vaga_model extends CI_Model
     */
     public function update($array){
         $this->db->where('id_vaga', $array['id_vaga']);
-        $this->db->set('cargo', $array['cargo']);
-        $this->db->set('setor', $array['setor']);
-        $this->db->set('data_oferta', $array['data_oferta']);
-        return $this->db->update('vaga');        
+        
+        $this->db->set('vaga.data_oferta', $vaga['data_oferta']);
+        $this->db->set('vaga.quantidade',  $vaga['quantidade']);
+        $this->db->set('vaga.requisitos',  $vaga['requisitos']);
+        $this->db->set('vaga.id_cargo',    $vaga['id_cargo']);
+        $this->db->update('vaga');    
     }
     
 
@@ -59,8 +60,9 @@ class Vaga_model extends CI_Model
      *@return: boolean
     */
     public function remove($id){
-        $this->db->where('vaga.id_vaga', $id);
-        return $this->db->delete('vaga');
+        $query = $this->db->where('vaga.id_vaga', $id);
+        $query = $this->db->delete('vaga');
+        return $query->affected_rows() > 0 ? true : false;
     }
 
     /*
@@ -71,22 +73,12 @@ class Vaga_model extends CI_Model
      * @return: object Vaga
      */
     public function getById($id){
-      $this->db->select('id_vaga, cargo, setor, data_oferta');
-      $this->db->where('id_vaga', $id);
+      
+      $this->db->where('vaga.id_vaga', $id);
       return $this->db->get('vaga')->row();
     }
 
-    /*
-     * @author:Lucilene Fidelis
-     * Esse método retorna um objeto Vaga através de seu $cargo como parametro de entrada
-     * 
-     * @params: $cargo
-     * @return: object Vaga
-     */
-    public function getByName($nome){
-       $this->db->select('id_vaga, cargo, setor, data_oferta');
-      $this->db->where('vaga.cargo', $cargo);
-      return $this->db->get('vaga')->row();
-    }
+    
+    
 
 }
