@@ -201,14 +201,44 @@ $config = array(
                         'label' => 'senha',
                         'rules' => 'required'
                 )
-        )
+        ),
+
+    'vaga' => array(
+        
+        array(
+            'field' => 'id_cargo',
+            'label' => 'Cargo',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field'  => 'data_oferta',
+            'label'  => 'Data da Oferta',
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter um data válida'
+            ),
+        ),
+
+        array(
+            'field' => 'quantidade',
+            'label' => 'Quantidade',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'requisitos',
+            'label' => 'Requisitos',
+            'rules' => 'required'
+        ),
+
+
+    ),
 );
 
 /**
 * @author: Tiago Villalobos
 * Método para tratar a validação de cpf ou cnpj
-*
-* 
 */
 function requiredIf($field, $value)
 {
@@ -220,5 +250,22 @@ function requiredIf($field, $value)
         }    
     }
 
+
+}
+
+/**
+* @author: Tiago Villalobos
+* Utiliza o checkdate para validar um campo de data
+*/
+function validDate($date) 
+{ 
+    
+    $date_array = explode('/', $date); 
+
+    $dd   = $date_array[0]; 
+    $mm   = $date_array[1]; 
+    $yyyy = $date_array[2];
+
+    return checkdate($mm, $dd, $yyyy);
 
 }

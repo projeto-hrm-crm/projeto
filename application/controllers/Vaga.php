@@ -6,27 +6,22 @@ class Vaga extends CI_Controller
 
 		/**
 		* @author Tiago Villalobos
-		* Chama o método create, formulário de pessoa.
-		* 
-		* 
+		* Listagem das vagas.
 		*/
 		public function index()
 		{
 			$data['title'] = 'Vagas';
+			$data['vagas'] = $this->vaga->get();
+
+			$data['success_message'] = $this->session->flashdata('success');
+			$data['error_message']   = $this->session->flashdata('danger');
+
 
 			$data['assets'] = array(
 				'js' => array(
 					'lib/data-table/datatables.min.js',
 					'lib/data-table/dataTables.bootstrap.min.js',
-					'lib/data-table/dataTables.buttons.min.js',
-					'lib/data-table/buttons.bootstrap.min.js',
-					'lib/data-table/jszip.min.js',
-					'lib/data-table/pdfmake.min.js',
-					'lib/data-table/vfs_fonts.js',
-					'lib/data-table/buttons.html5.min.js',
-					'lib/data-table/buttons.print.min.js',
-					'lib/data-table/buttons.colVis.min.js',
-					'lib/data-table/datatables-init.js',
+					'vaga/main.js',
 				),
 			);
 
@@ -41,11 +36,7 @@ class Vaga extends CI_Controller
 
 		/**
 		* @author: Tiago Villalobos
-		* Cria o formulário para cadastro de pessoa ou submete uma nova pessoa, caso seja enviada uma requisão POST.
-		* Retorna messagem de erro ou sucesso por flashdata que são inseridos em variáveis para facilitar o 
-		* trabalho na view.
-
-		*
+		* Carrega o formulário para inserção de vaga ou insere a vaga no caso de haver um post.
 		*
 		*/
 	  	public function create()
@@ -53,10 +44,10 @@ class Vaga extends CI_Controller
 
 	  		if($this->input->post())
 			{	
-				if(!$this->form_validation->run())//vaga
+				if(!$this->form_validation->run('vaga'))
 				{
 					$this->session->set_flashdata('errors', $this->form_validation->error_array());
-					$this->session->set_flashdata('old_values', $this->input->post());
+					$this->session->set_flashdata('old_data', $this->input->post());
 					
 					$this->session->set_flashdata(
 						'danger', 
@@ -69,7 +60,7 @@ class Vaga extends CI_Controller
 				{
 
 					$vaga = array();
-					$vaga['data_oferta'] = $this->input->post('data_oferta');
+					$vaga['data_oferta'] = switchDate($this->input->post('data_oferta'));
 					$vaga['quantidade']  = $this->input->post('quantidade');
 					$vaga['requisitos']  = $this->input->post('requisitos');
 					$vaga['id_cargo']    = $this->input->post('id_cargo');
@@ -86,14 +77,14 @@ class Vaga extends CI_Controller
 
 				//Cria váriaveis com os flashdata para facilitar a manipulação na view 
 				$data['errors']          = $this->session->flashdata('errors');
-				$data['old_values']      = $this->session->flashdata('old_values');
+				$data['old_data']        = $this->session->flashdata('old_data');
 				$data['success_message'] = $this->session->flashdata('success');
 				$data['error_message']   = $this->session->flashdata('danger');
 
 				$data['title']  = 'Cadastro de Vaga';
 				$data['cargos'] = array();
 
-				for($i = 1; $i <= 5; $i++)
+				for($i = 1; $i <= 4; $i++)
 				{
 					$cargo = new stdClass;
 
@@ -102,6 +93,14 @@ class Vaga extends CI_Controller
 
 					array_push($data['cargos'], $cargo);
 				}
+
+
+				$data['assets'] = array(
+					'js' => array(
+						'vaga/validate.js',
+					),
+				);
+
 
 				loadTemplate(
 					'includes/header',
@@ -115,25 +114,25 @@ class Vaga extends CI_Controller
 
 		/**
 		* @author: Tiago Villalobos
-		* Utiliza um id para buscar uma pessoa no banco e preencher o formulário de edição 
+		* Utiliza um id para buscar uma vaga no banco e preencher o formulário de edição 
 		* Retorna messagem de erro ou sucesso por flashdata que são inseridos em variáveis para facilitar o 
 		* trabalho na view.
 		* 
-		* @param integer $id identificação da pessoa
+		* @param integer $id_vaga identificação da vaga
 		*/
 		public function edit($id_vaga)
 		{
 			
 	  		if($this->input->post())
 			{	
-				if(!$this->form_validation->run())//vaga
+				if(!$this->form_validation->run('vaga'))
 				{
 					$this->session->set_flashdata('errors', $this->form_validation->error_array());
-					$this->session->set_flashdata('old_values', $this->input->post());
+					$this->session->set_flashdata('old_data', $this->input->post());
 					
 					$this->session->set_flashdata(
 						'danger', 
-						'Não foi possível realizar o cadastro<br>Verifique os campos abaixo'
+						'Não foi possível atualizar a vaga<br>Verifique os campos abaixo'
 					);
 
 					redirect('editar/vaga/'.$id_vaga);
@@ -143,7 +142,7 @@ class Vaga extends CI_Controller
 
 					$vaga = array();
 					$vaga['id_vaga']     = $id_vaga;
-					$vaga['data_oferta'] = $this->input->post('data_oferta');
+					$vaga['data_oferta'] = switchDate($this->input->post('data_oferta'));
 					$vaga['quantidade']  = $this->input->post('quantidade');
 					$vaga['requisitos']  = $this->input->post('requisitos');
 					$vaga['id_cargo']    = $this->input->post('id_cargo');
@@ -160,14 +159,16 @@ class Vaga extends CI_Controller
 
 				//Cria váriaveis com os flashdata para facilitar a manipulação na view 
 				$data['errors']          = $this->session->flashdata('errors');
-				$data['old_values']      = $this->session->flashdata('old_values');
+				$data['old_data']        = $this->session->flashdata('old_data');
 				$data['success_message'] = $this->session->flashdata('success');
 				$data['error_message']   = $this->session->flashdata('danger');
 
+				$data['vaga']   = $this->vaga->getById($id_vaga);
+				$data['vaga']->data_oferta = switchDate($data['vaga']->data_oferta);
 				$data['title']  = 'Edição de Vaga';
 				$data['cargos'] = array();
 
-				for($i = 1; $i <= 5; $i++)
+				for($i = 1; $i <= 4; $i++)
 				{
 					$cargo = new stdClass;
 
@@ -177,9 +178,15 @@ class Vaga extends CI_Controller
 					array_push($data['cargos'], $cargo);
 				}
 
+				$data['assets'] = array(
+					'js' => array(
+						'vaga/validate.js',
+					),
+				);
+
 				loadTemplate(
 					'includes/header',
-					'vaga/cadastrar',
+					'vaga/editar',
 					'includes/footer',
 					$data
 				);
@@ -190,10 +197,10 @@ class Vaga extends CI_Controller
 
 		/**
 		* @author: Tiago Villalobos
-		* Este método tem como finalidade remover um registro de pessoa do banco com base no id passado.
+		* Este método tem como finalidade remover um registro de vaga do banco com base no id passado.
 		* Seguindo a ordem de dependência.
 		*
-		* @param integer $id_pessoa
+		* @param integer $id_vaga
 		*/
 		public function delete($id_vaga)
 		{

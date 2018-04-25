@@ -145,6 +145,7 @@ $autoload['model'] = array(
                     'Produto_model' => 'produto',
                     'Pessoa_model'               => 'pessoa',
                     'Endereco_model'             => 'endereco',
+                    'Estado_model'               => 'estado',
                     'Documento_model'            => 'documento',
                     'Telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',
@@ -155,5 +156,6 @@ $autoload['model'] = array(
                     'Usuario_model'              => 'usuario',
                     'Sac_model'                  => 'sac',
                     'Setor_model'                => 'setor',
+                    'Vaga_model'                 => 'vaga',
 
 );
