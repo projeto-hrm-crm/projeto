@@ -24,11 +24,11 @@
         <div class="card-body">
           <div class="row form-group">
             <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
-            <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($cliente[0]->nome)?>" required></div>
+            <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($cliente[0]->nome)?>" title="Campo obrigatório" required></div>
           </div> <!-- FIM NOME -->
           <div class="row form-group">
             <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email</label></div>
-            <div class="col-12 col-md-9"><input type="text" id="email" name="email" value="<?= htmlspecialchars($cliente[0]->email)?>" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" required></div>
+            <div class="col-12 col-md-9"><input type="text" id="email" name="email" value="<?= htmlspecialchars($cliente[0]->email)?>" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" title="Digite um e-mail válido" required></div>
           </div> <!-- FIM EMAIL -->
           <div class="row form-group">
             <div class="col col-md-3"><label class=" form-control-label">Data de Nascimento</label></div>
