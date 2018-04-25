@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Editar Produto</strong>
             </div>
-            <form action="<?php echo base_url('editar/produto/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('editar/produto/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
@@ -38,14 +38,19 @@
                                 <input name="validade" id="validade" value="<?php echo isset($old_data['validade']) ? $old_data['validade'] : $produto->validade;?>" type="text" class="form-control data <?php echo isset($errors['validade']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Data de Validade inválida.</span>
                             </div>
+                            <div class="form-group col-6">
+                                <label for="fornecedor" class="control-label mb-1">Fornecedor</label>
+                                <input id="fornecedor" value="<?php echo isset($old_data['fornecedor']) ? $old_data['fornecedor']: null;?>" name="fornecedor" type="text" class="form-control <?php echo isset($errors['fornecedor']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Fornecedor inválido.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <button type="reset" class="btn btn-danger btn-sm">
-                        <i class="fa fa-ban"></i>
-                        Cancelar
-                    </button>
+                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-arrow-left"></i>
+                        Voltar
+                    </a>
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-check"></i>
                         Editar
