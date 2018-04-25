@@ -18,18 +18,22 @@
   		</thead>
 
   		<tbody>
-  			<?php foreach ($fornecedores as $fornecedor): ?>
-  				<tr>
-  					<td class="text-center"><?= $fornecedor->id; ?></td>
-  					<td class="text-center"><?= $fornecedor->nome; ?></td>
-  					<td class="text-center"><?= $fornecedor->razao_social; ?></td>
-            <!-- <td class="text-center"><?= $fornecedor->cnpj; ?></td> -->
-  					<td class="text-center">
-  						<a title="Editar" href="<?= site_url('fornecedor/edit/'.$fornecedor->id)?>">Editar</a> |
-              <a title="Excluir" href="<?= site_url('fornecedor/delete/'.$fornecedor->id)?>">Excluir</a>
-  					</td>
-  				</tr>
-        <?php endforeach ?>
+        <?php if($fornecedores):?>
+    			<?php foreach ($fornecedores as $fornecedor): ?>
+    				<tr>
+    					<td class="text-center"><?= $fornecedor->id; ?></td>
+    					<td class="text-center"><?= $fornecedor->nome; ?></td>
+    					<td class="text-center"><?= $fornecedor->razao_social; ?></td>
+              <!-- <td class="text-center"><?= $fornecedor->cnpj; ?></td> -->
+    					<td class="text-center">
+    						<a title="Editar" href="<?= site_url('fornecedor/edit/'.$fornecedor->id)?>">Editar</a> |
+                <a title="Excluir" href="<?= site_url('fornecedor/delete/'.$fornecedor->id)?>">Excluir</a>
+    					</td>
+    				</tr>
+          <?php endforeach ?>
+        <?php else:?>
+          <?php echo '<p>Não há fornecedores cadastrados!</p>'; ?>
+        <?php endif?>
   		</tbody>
     </table>
   </body>
