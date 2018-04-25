@@ -96,7 +96,8 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array(
     'url',
     'loadTemplate',
-    'switchDate'
+    'switchDate',
+    'dataprep_fornecedor',
 );
 
 /*
@@ -149,6 +150,7 @@ $autoload['model'] = array(
                     'Documento_model'            => 'documento',
                     'Telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',
+                    'PessoaJuridica_model'       => 'pessoa_juridica',
                     'PessoaFisica_model'         => 'pessoa_fisica',
                     'Cliente_model'              => 'cliente',
                     'Funcionario_model'          => 'funcionario',
