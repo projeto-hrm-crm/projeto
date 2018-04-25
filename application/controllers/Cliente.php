@@ -48,22 +48,23 @@ class Cliente extends CI_Controller
 
   /**
   * @author Mayra Bueno
+  * @author Camila Sales
   * Metodo edit, apresenta o formulario de edição, com os dados do cliente a ser editado,
   * recebe os dados e envia para função update de Cliente_model
   *
   * Se cadastrar com sucesso, redireciona para pagina index de cliente
   * Se não, mostra msg de erro e redireciona para a mesma pagina
   *
-  * @param $id int, id do cliente
+  * @param $id_cliente int
   **/
   public function edit($id_cliente)
   {
     if ($this->input->post())
     {
-      $data = $this->input->post();
+      $data['cliente'] = $this->input->post();
         $cliente = $this->cliente->find($id_cliente);
 
-        $this->pessoa->update(['id_pessoa' => $cliente[0]->id_pessoa, 'nome'=> $data['nome'],'email'=>$data['email']]);
+        $this->pessoa->update(['id_pessoa' => $cliente[0]->id_pessoa, 'nome'=> $data['cliente']['nome'],'email'=>$data['cliente']['email']]);
         $this->pessoa_fisica->update($cliente[0]->id_pessoa_fisica,['data_nascimento'=> $data['cliente']['data_nascimento'],'sexo'=>$data['cliente']['sexo']]);
         $this->session->set_flashdata('success', 'Cliente editado com sucesso.');
         redirect('cliente');
