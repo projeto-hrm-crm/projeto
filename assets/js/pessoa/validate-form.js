@@ -19,10 +19,10 @@ $(document).ready(() => {
   $("[name='cep']").on('focusout keyup', (e) => {
     validateField(e, $("[name='cep']"), $("#invalid-cep"));
   });
-  $("[name='estado']").on('focusout keyup', (e) => {
-    validateField(e, $("[name='estado']"), $("#invalid-estado"));
+  $("[name='estado']").on('change', (e) => {
+    validateField(e, $("[name='cidade']"), $("#invalid-cidade"));
   });
-  $("[name='cidade']").on('focusout keyup', (e) => {
+  $("[name='cidade']").on('focusout', (e) => {
     validateField(e, $("[name='cidade']"), $("#invalid-cidade"));
   });
   $("[name='bairro']").on('focusout keyup', (e) => {

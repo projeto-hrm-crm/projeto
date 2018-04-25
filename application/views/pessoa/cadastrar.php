@@ -88,9 +88,6 @@
                   <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
                 <?php endforeach; ?>
               </select>
-              <span class="invalid-feedback" id="invalid-estado">
-                Selecione um estado
-              </span>
             </div>
             <div class="form-group">
               <label class="form-control-label">Cidade</label>
