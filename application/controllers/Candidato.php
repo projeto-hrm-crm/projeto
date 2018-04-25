@@ -21,7 +21,7 @@ class Candidato extends CI_Controller
 
   /**
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
-  * e envia para função insert de Funcionario_model
+  * e envia para função insert de candidato_model
   *
   * Se cadastrar com sucesso, redireciona para pagina index de candidato
   * Se não, mostra msg de erro e redireciona para a mesma pagina
@@ -32,17 +32,11 @@ class Candidato extends CI_Controller
     $data = $this->input->post();
 
     if($data){
-      // if ($this->form_validation->run('candidato'))
-      // {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa_fisica' => $id_pessoa_fisica]);
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
-      // }else{
-      //   $this->session->set_flashdata('danger', 'Candidato não pode ser cadastrado');
-      //   redirect('candidato/create');
-      // }
     }
 
     $data['title'] = 'Cadastrar Candidato';
@@ -52,7 +46,7 @@ class Candidato extends CI_Controller
 
   /**
   * Metodo edit, apresenta o formulario de edição, com os dados do candidato a ser editado,
-  * recebe os dados e envia para função update de Funcionario_model
+  * recebe os dados e envia para função update de candidato_model
   *
   * Se cadastrar com sucesso, redireciona para pagina index de candidato
   * Se não, mostra msg de erro e redireciona para a mesma pagina
@@ -64,18 +58,12 @@ class Candidato extends CI_Controller
     if ($this->input->post())
     {
       $data = $this->input->post();
-      // if ($this->form_validation->run('candidato'))
-      // {
         $candidato = $this->candidato->find($id_candidato);
 
         $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['nome'],'email'=>$data['email']]);
-        $this->pessoa_fisica->update($candidato[0]->id_pessoa_fisica,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['funcionario']['sexo']]);
+        $this->pessoa_fisica->update($candidato[0]->id_pessoa_fisica,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['candidato']['sexo']]);
         $this->session->set_flashdata('success', 'Candidato editado com sucesso.');
         redirect('candidato');
-      // }else{
-      //   $this->session->set_flashdata('danger', 'Candidato não pode ser cadastrado');
-      //   redirect('candidato/edit/'.$id_candidato);
-      // }
     }
 
     $data['candidato'] = $this->candidato->find($id_candidato);
