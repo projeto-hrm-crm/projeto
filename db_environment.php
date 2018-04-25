@@ -10,5 +10,5 @@ $database_config = [
     'host'      => 'localhost',
     'user'		=> 'root',
     'password' 	=> '',
-    'database'	=> 'pr1',
+    'database'	=> 'projeto',
 ];
