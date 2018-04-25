@@ -1,17 +1,41 @@
 $(document).ready(() => {
   $("[name='nome']").on('focusout keyup', (e) => {
-    validateField(e, $("[name='nome']"), $("#nome-feedback"));
+    validateField(e, $("[name='nome']"), $("#invalid-nome"));
   });
-
+  $("[name='email']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='email']"), $("#invalid-email"));
+  });
   $("[name='cpf']").on('focusout', (e) => {
 
     isValidCPF($("[name='cpf']").cleanVal())
       ? e.target.setCustomValidity('')
-      : e.target.setCustomValidity('invalid');
+      : e.target.setCustomValidity('CPF inválido');
 
-    validateField(e, $("[name='cpf']"), $("#cpf-feedback"));
+    validateField(e, $("[name='cpf']"), $("#invalid-cpf"));
+  });
+  $("[name='cnpj']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='cnpj']"), $("#invalid-cnpj"));
+  });
+  $("[name='cep']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='cep']"), $("#invalid-cep"));
+  });
+  $("[name='estado']").on('change', (e) => {
+    validateField(e, $("[name='cidade']"), $("#invalid-cidade"));
+  });
+  $("[name='cidade']").on('focusout', (e) => {
+    validateField(e, $("[name='cidade']"), $("#invalid-cidade"));
+  });
+  $("[name='bairro']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='bairro']"), $("#invalid-bairro"));
+  });
+  $("[name='logradouro']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='logradouro']"), $("#invalid-logradouro"));
+  });
+  $("[name='numero']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='numero']"), $("#invalid-numero"));
   });
 });
+
 
 function validateField(e, input, feedback) {
   if(e.target.checkValidity()) {
