@@ -102,6 +102,7 @@ $route['sac/listar'] = 'sac/index';
 $route['sac/cadastrar'] = 'sac/create';
 
 //Rotas Setores
+
 $route['setor']='Setor';
 
 //Rotas Cliente

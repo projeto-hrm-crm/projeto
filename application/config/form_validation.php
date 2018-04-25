@@ -201,14 +201,17 @@ $config = array(
                         'label' => 'senha',
                         'rules' => 'required'
                 )
-        )
+        ),
+
+    
+
+
+    ),
 );
 
 /**
 * @author: Tiago Villalobos
 * Método para tratar a validação de cpf ou cnpj
-*
-* 
 */
 function requiredIf($field, $value)
 {
