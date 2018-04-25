@@ -156,6 +156,5 @@ $autoload['model'] = array(
                     'Usuario_model'              => 'usuario',
                     'Sac_model'                  => 'sac',
                     'Setor_model'                => 'setor',
-                    'Vaga_model'                 => 'vaga',
 
 );
