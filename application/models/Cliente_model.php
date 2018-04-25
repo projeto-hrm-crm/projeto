@@ -7,24 +7,67 @@ class Cliente_model extends CI_Model {
 	* @author: Camila Sales
 	* Salva o registro de cliente associado à uma pessoa fisica
 	*
-	* @param integer $id_pessoa
 	*/
-	public function insert($id_pessoa)
-	{
-		$this->id_pessoa = $id_pessoa;
-		$this->db->insert('cliente', $this);
-	}
+	public function insert($data)
+  {
+ 	try {
+ 		$this->db->insert('cliente', $data);
+ 	} catch (\Exception $e) {}
+  }
+
 
 	/**
 	* @author: Camila Sales
 	* Remove o registro de cliente associado à uma pessoa fisica
 	*
-	* @param integer $id_pessoa
+	* @param integer $id_cliente
 	*/
-	public function remove($id_pessoa)
+	public function remove($id_cliente)
 	{
-		$this->db->where('id_pessoa', $id_pessoa);
+		$this->db->where('id_cliente', $id_cliente);
 		$this->db->delete('cliente');
 		// delete pessoa fisica;
 	}
+
+	public function get()
+	{
+		try {
+			$query = $this->db->select("*")->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('cliente', 'pessoa_fisica.id_pessoa_fisica = cliente.id_pessoa_fisica');
+		} catch (\Exception $e) {}
+
+	if ($query)
+	{
+		return $query->get()->result();
+	}else{
+		echo 'Não existem dados';
+		exit;
+	}
+	}
+
+	public function find($id_cliente)
+	{
+		try {
+			$cliente = $this->db->select("*")->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('cliente', 'pessoa_fisica.id_pessoa_fisica = cliente.id_pessoa_fisica')->where('cliente.id_cliente', $id_cliente)->get();
+			if ($cliente)
+			{
+				return $cliente->result();
+			}else{
+				echo 'Candidato não existe';
+				return 1;
+			}
+		} catch (\Exception $e) {}
+	}
+
+	public function update($id_cliente, $data)
+	{
+		try {
+			$this->db->where('id_cliente', $id_cliente);
+			$this->db->update('cliente', $data);
+		} catch (\Exception $e) {}
+	}
+
 }
