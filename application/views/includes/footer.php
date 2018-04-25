@@ -19,6 +19,8 @@
 <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.mask.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.validate.min.js"></script>
 
+<script src="<?php echo base_url();?>assets/js/validate.js"></script>
+
 <script>
     ( function ( $ ) {
         "use strict";

@@ -55,7 +55,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-//Rotas Produtos 
+//Rotas Produtos
 $route['produto/index'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
@@ -80,7 +80,7 @@ $route['fornecedor/cadastrar'] = 'Fornecedor/create';
 $route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
 $route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
 
-//Rotas cliente
+//Rotas funcionários
 $route['funcionario'] = 'Funcionario';
 $route['funcionario/cadastrar'] = 'Funcionario/create';
 $route['funcionario/editar/(:num)'] = 'Funcionario/edit/$1';
@@ -102,4 +102,18 @@ $route['sac/listar'] = 'sac/index';
 $route['sac/cadastrar'] = 'sac/create';
 
 //Rotas Setores
+
 $route['setor']='Setor';
+
+//Rotas Cliente
+$route['cliente']                   = 'Cliente';
+$route['cliente/cadastrar']         = 'Cliente/create';
+$route['cliente/editar/(:num)']     = 'Cliente/edit/$1';
+$route['cliente/excluir/(:num)']    = 'Cliente/delete/$1';
+
+//Rotas candidato
+$route['candidato'] = 'Candidato';
+$route['candidato/cadastrar'] = 'Candidato/create';
+$route['candidato/editar/(:num)'] = 'Candidato/edit/$1';
+$route['candidato/excluir/(:num)'] = 'Candidato/delete/$1';
+

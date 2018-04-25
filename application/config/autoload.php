@@ -156,5 +156,8 @@ $autoload['model'] = array(
                     'Usuario_model'              => 'usuario',
                     'Sac_model'                  => 'sac',
                     'Setor_model'                => 'setor',
+                    'Categoria_model'            => 'categoria',
+                    'Subcategoria_model'         => 'subcategoria',
+                    'Grupo_model'                => 'grupo'
 
 );
