@@ -54,6 +54,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
 //Rotas Produtos
 $route['produto/index'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
@@ -103,14 +104,15 @@ $route['sac/cadastrar'] = 'sac/create';
 //Rotas Setores
 $route['setor']='Setor';
 
-//Rotas Candidato
-$route['candidato']                 = 'Candidato';
-$route['candidato/cadastrar']       = 'Funcionario/create';
-$route['candidato/editar/(:num)']   = 'Funcionario/edit/$1';
-$route['candidato/excluir/(:num)']  = 'Funcionario/delete/$1';
-
 //Rotas Cliente
 $route['cliente']                   = 'Cliente';
 $route['cliente/cadastrar']         = 'Cliente/create';
 $route['cliente/editar/(:num)']     = 'Cliente/edit/$1';
 $route['cliente/excluir/(:num)']    = 'Cliente/delete/$1';
+
+//Rotas candidato
+$route['candidato'] = 'Candidato';
+$route['candidato/cadastrar'] = 'Candidato/create';
+$route['candidato/editar/(:num)'] = 'Candidato/edit/$1';
+$route['candidato/excluir/(:num)'] = 'Candidato/delete/$1';
+

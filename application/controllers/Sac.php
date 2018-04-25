@@ -1,6 +1,15 @@
 <?php
 class Sac extends CI_Controller {
 
+    public function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->categoria->getUserMenu($user_id);
+  }
+  
     public function index(){
         $data['title'] = 'Solicitações SAC';
         $data['sac'] = $this->sac->get();
