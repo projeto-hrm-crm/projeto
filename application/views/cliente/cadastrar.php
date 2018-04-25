@@ -36,8 +36,8 @@
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
           <div class="col-12 col-md-9">
-            <input type="radio" name="sexo" id="sexo_masc" value="0" required/><label for="sexo_masc">Masculino</label>
-            <input type="radio" name="sexo" id="sexo_fem" value="1" /><label for="sexo_fem" required>Feminino</label></div>
+            <input type="radio" name="sexo" id="sexo_masc" value="0" required /><label for="sexo_masc">Masculino</label>
+            <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label for="sexo_fem" >Feminino</label></div>
         </div> <!-- FIM SEXO -->
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
