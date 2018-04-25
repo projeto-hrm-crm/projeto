@@ -12,7 +12,7 @@ class PessoaJuridica_model extends CI_Model
         return $query->result();
       }else{
         echo 'Não existem dados';
-        exit;
+        return 0;
       }
     } catch (\Exception $e) {}
   }
@@ -32,16 +32,22 @@ class PessoaJuridica_model extends CI_Model
         return $pessoa_juridica->result();
       }else{
         echo 'Pessoa Juridica não existe';
-        return 1;
+        return 0;
       }
     } catch (\Exception $e) {}
   }
 
-  public function update($id, $data)
+  public function update($data)
   {
     try {
-      $this->db->where('id', $id);
-      $this->db->update('pessoa_juridica', $data);
+      $this->db->where('id_pessoa_juridica', $data['id_pessoa_juridica']);
+
+      if($this->db->update('pessoa_juridica', $data))
+  		{
+  			return $data['id_pessoa_juridica'];
+  		}else {
+  			return 0;
+  		}
     } catch (\Exception $e) {}
   }
 

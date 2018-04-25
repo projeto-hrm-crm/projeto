@@ -1,6 +1,6 @@
 <?php
 
-function data_preparation($data)
+function data_preparation($data, $id=NULL)
 {
   $cleaned = array(
     'pessoa' => array(
@@ -30,6 +30,24 @@ function data_preparation($data)
       'razao_social' => $data['razao_social'],
     ),
   );
+  if($id)
+  {
+    $CI =& get_instance();
+    $aux = $CI->db->select('pessoa.id_pessoa')
+    ->from('fornecedor')
+    ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+    ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+    ->where('fornecedor.id_fornecedor', $id)
+    ->get();
+    $cleaned['pessoa']['id_pessoa'] = $aux->result()[0]->id_pessoa;
+
+    $aux2 = $CI->db->select('pessoa_juridica.id_pessoa_juridica')
+    ->from('fornecedor')
+    ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+    ->where('fornecedor.id_fornecedor', $id)
+    ->get();
+    $cleaned['pessoa_juridica']['id_pessoa_juridica'] = $aux2->result()[0]->id_pessoa_juridica;
+  }
 
   return $cleaned;
 }

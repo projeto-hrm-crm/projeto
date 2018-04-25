@@ -6,7 +6,7 @@ class Fornecedor_model extends CI_Model
   public function get()
   {
     try {
-      $query = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email')//, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.estado, endereco.cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco, endereco.complemento')
+      $query = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento')
   		->from('fornecedor')
       ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
       ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
@@ -54,13 +54,22 @@ class Fornecedor_model extends CI_Model
   public function find($id)
   {
     try {
-      $fornecedor = $this->db->select('*')->from('fornecedor')->where('id', $id)->get();
+      $fornecedor = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento')
+  		->from('fornecedor')
+      ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+      ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+  		->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
+  		->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
+  		->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
+      ->where('id_fornecedor', $id)
+  		->get();
+
       if ($fornecedor)
       {
         return $fornecedor->result();
       }else{
         echo 'Fornecedor não existe';
-        return 1;
+        return 0;
       }
     } catch (\Exception $e) {}
   }
@@ -69,8 +78,36 @@ class Fornecedor_model extends CI_Model
   public function update($id, $data)
   {
     try {
-      $this->db->where('id', $id);
-      $this->db->update('fornecedor', $data);
+
+      $cleaned = data_preparation($data, $id);
+
+      if($cleaned)
+      {
+        $id = $this->pessoa->update($cleaned['pessoa']);
+        // print "<pre>";
+        // print_r($id);
+        // print "</pre>";
+        // exit();
+
+        $cleaned['documento']['id_pessoa'] = $id;
+        $cleaned['telefone']['id_pessoa'] = $id;
+        $cleaned['endereco']['id_pessoa'] = $id;
+        $cleaned['pessoa_juridica']['id_pessoa'] = $id;
+
+        $this->documento->update($cleaned['documento']);
+        $this->telefone->update($cleaned['telefone']);
+        $this->endereco->update($cleaned['endereco']);
+        $aux['id_pessoa_juridica'] = $this->pessoa_juridica->update($cleaned['pessoa_juridica']);
+
+        $this->db->where('id_fornecedor', $id);
+
+        if($this->db->update('fornecedor', $aux))
+    		{
+    			return $aux['id_fornecedor'];
+    		}else {
+    			return 0;
+    		}
+      }
     } catch (\Exception $e) {}
   }
 

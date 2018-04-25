@@ -76,7 +76,7 @@ class Fornecedor extends CI_Controller
         $this->session->set_flashdata('success', 'Fornecedor editado com sucesso.');
         redirect('fornecedor');
       }else{
-        $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+        $this->session->set_flashdata('danger', 'Fornecedor não pode ser atualizado.');
         redirect('fornecedor/edit/'.$id);
       }
     }
