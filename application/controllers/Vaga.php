@@ -15,16 +15,19 @@ class Vaga extends CI_Controller
     
     public function index()
     {
-      $dados['title'] = 'Vagas';
-      $dados['vagas'] = $this->vaga->get();
-      $vagas = $dados['vagas'];
-      foreach($vagas as $vaga){
-          $vaga->cargo = $_POST($vaga->cargo);
-          $vaga->setor = switchDate($vaga->setor);
-          $vaga->data_oferta = switchDate($vaga->data_oferta);
-
-      }
-      loadTemplate('includes/header', 'Vaga/index', 'includes/footer', $dados);
+      $data['title'] = 'vagas';
+      $data['vagas'] = $this->vaga->get();
+      $data['sucess_message']=$this->session->flashdata('sucess');
+       $data['error_message']=$this->session->flashdata('danger');
+       $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'vaga/main.js',
+        ),
+      );
+      
+      loadTemplate('includes/header', 'Vaga/index', 'includes/footer', $data);
     }
 
 
@@ -53,13 +56,20 @@ class Vaga extends CI_Controller
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             $this->session->set_flashdata('old_data', $this->input->post());
-            redirect('cadastrar/vaga');
+            redirect('vaga/cadastrar');
         }
       }else{
-        $dados['title'] = 'Cadastrar vaga';
-        $dados['errors'] = $this->session->flashdata('errors');
-        $dados['old_data'] = $this->session->flashdata('old_data');
-        loadTemplate('includes/header', 'cadastrar/vaga', 'includes/footer', $dados);
+        $data['title'] = 'Cadastrar vaga';
+        $data['errors'] = $this->session->flashdata('errors');
+        $data['old_data'] = $this->session->flashdata('old_data');
+         $data['assets'] = array(
+        'js' => array(
+          
+          'vaga/validate.js',
+        ),
+      );
+      
+        loadTemplate('includes/header', 'vaga/cadastrar', 'includes/footer', $data);
       }
     }
 
@@ -81,7 +91,7 @@ class Vaga extends CI_Controller
            'cargo' => $this->input->post('cargo'),
            'setor' => $this->input->post('setor'),
            'data_oferta' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('data_oferta')))),
-           
+           )
           );
           $this->vaga->update($array);
           $this->session->set_flashdata('success','Alterado com sucesso.');

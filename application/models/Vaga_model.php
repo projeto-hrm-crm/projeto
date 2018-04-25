@@ -48,7 +48,7 @@ class Vaga_model extends CI_Model
         $this->db->set('cargo', $array['cargo']);
         $this->db->set('setor', $array['setor']);
         $this->db->set('data_oferta', $array['data_oferta']);
-        return $this->db->insert('vaga');        
+        return $this->db->update('vaga');        
     }
     
 
@@ -58,8 +58,8 @@ class Vaga_model extends CI_Model
      *@params: mixed com dados das vagas
      *@return: boolean
     */
-    public function delete($id){
-        $this->db->where('id_vaga', $id);
+    public function remove($id){
+        $this->db->where('vaga.id_vaga', $id);
         return $this->db->delete('vaga');
     }
 
@@ -85,7 +85,7 @@ class Vaga_model extends CI_Model
      */
     public function getByName($nome){
        $this->db->select('id_vaga, cargo, setor, data_oferta');
-      $this->db->where('cargo', $cargo);
+      $this->db->where('vaga.cargo', $cargo);
       return $this->db->get('vaga')->row();
     }
 
