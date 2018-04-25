@@ -106,6 +106,6 @@ $route['setor']='Setor';
 
 //Rotas candidato
 $route['candidato'] = 'Candidato';
-$route['candidato/cadastrar'] = 'Funcionario/create';
-$route['candidato/editar/(:num)'] = 'Funcionario/edit/$1';
-$route['candidato/excluir/(:num)'] = 'Funcionario/delete/$1';
+$route['candidato/cadastrar'] = 'Candidato/create';
+$route['candidato/editar/(:num)'] = 'Candidato/edit/$1';
+$route['candidato/excluir/(:num)'] = 'Candidato/delete/$1';
