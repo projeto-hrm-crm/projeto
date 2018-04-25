@@ -19,36 +19,41 @@
 			</div>
 		</div>
     <div class="card-body card-block">
+
       <form action="<?php site_url('cliente/edit'.$id); ?>" method="POST" class="form-horizontal">
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($cliente[0]->nome)?>"></div>
+        <div class="card-body">
+          <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
+            <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($cliente[0]->nome)?>" required></div>
+          </div> <!-- FIM NOME -->
+          <div class="row form-group">
+            <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email</label></div>
+            <div class="col-12 col-md-9"><input type="text" id="email" name="email" value="<?= htmlspecialchars($cliente[0]->email)?>" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" required></div>
+          </div> <!-- FIM EMAIL -->
+          <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Data de Nascimento</label></div>
+            <div class="col-12 col-md-9"><input type="date" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($cliente[0]->data_nascimento)?>" class="form-control" required></div>
+          </div> <!-- DATA DE NASCIMENTO -->
+          <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
+            <div class="col-12 col-md-9">
+              <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo ($cliente[0]->sexo=='0')?'checked':'' ?> /><label for="sexo_masc">Masculino</label>
+              <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo ($cliente[0]->sexo=='1')?'checked':'' ?> /><label for="sexo_fem">Feminino</label></div>
+          </div> <!-- FIM SEXO -->
+          <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
+            <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais"></div>
+          </div> <!-- FIM CPF -->
         </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="email" name="email" value="<?= htmlspecialchars($cliente[0]->email)?>" class="form-control"></div>
-        </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Data Nascimento</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($cliente[0]->data_nascimento)?>" class="form-control"></div>
-        </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
-          <div class="col-12 col-md-9"><input type="radio" name="sexo" id="sexo_masc" value="homem" class="form-control" /><label for="sexo_masc">Masculino</label>
-            <input type="radio" name="sexo" id="sexo_fem" value="mulher" class="form-control" /><label for="sexo_fem">Feminino</label>
-        </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control"></div>
-        </div>
+
         <div class="card-footer">
           <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Enviar
+            <i class="fa fa-dot-circle-o"></i> Editar
           </button>
           <a href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-ban"></i> Cancelar
           </a>
-        </div>
+        </div> <!-- FIM BOTÕES -->
       </form>
     </div>
 
