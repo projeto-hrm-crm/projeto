@@ -34,7 +34,7 @@ class Cliente_model extends CI_Model {
 		try {
 			$query = $this->db->select("*")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
-			->join('cliente', 'pessoa_fisica.id_pessoa_fisica = cliente.id_pessoa_fisica');
+			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa');
 		} catch (\Exception $e) {}
 
 	if ($query)
@@ -51,7 +51,7 @@ class Cliente_model extends CI_Model {
 		try {
 			$cliente = $this->db->select("*")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
-			->join('cliente', 'pessoa_fisica.id_pessoa_fisica = cliente.id_pessoa_fisica')->where('cliente.id_cliente', $id_cliente)->get();
+			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')->where('cliente.id_cliente', $id_cliente)->get();
 			if ($cliente)
 			{
 				return $cliente->result();
