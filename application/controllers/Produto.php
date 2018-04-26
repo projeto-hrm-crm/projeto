@@ -44,6 +44,7 @@ class Produto extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
+           'id_fornecedor' => $this->input->post('id_fornecedor'),
            'nome' => $this->input->post('nome'),
            'codigo' => $this->input->post('codigo'),
            'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
@@ -63,6 +64,7 @@ class Produto extends CI_Controller
         $dados['title'] = 'Cadastrar produto';
         $dados['errors'] = $this->session->flashdata('errors');
         $dados['old_data'] = $this->session->flashdata('old_data');
+        $dados['fornecedores'] = $this->fornecedor->getRazaoSocial();
         loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
       }
     }
@@ -82,6 +84,8 @@ class Produto extends CI_Controller
         if($this->form_validation->run('produto')){
           $array = array(
            'id_produto' => $id,
+           'id_fornecedor' => $this->input->post('id_fornecedor'),
+
            'nome' => $this->input->post('nome'),
            'codigo' => $this->input->post('codigo'),
            'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
@@ -105,6 +109,7 @@ class Produto extends CI_Controller
         $data['produto']->fabricacao = switchDate($data['produto']->fabricacao);
         $data['produto']->validade = switchDate($data['produto']->validade);
         $data['produto']->recebimento = switchDate($data['produto']->recebimento);
+        $data['fornecedores'] = $this->fornecedor->getRazaoSocial();
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
       }
     }
