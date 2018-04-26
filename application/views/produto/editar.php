@@ -39,9 +39,12 @@
                                 <span class="invalid-feedback">Data de Validade inválida.</span>
                             </div>
                             <div class="form-group col-6">
-                                <label for="fornecedor" class="control-label mb-1">Fornecedor</label>
-                                <input id="fornecedor" value="<?php echo isset($old_data['fornecedor']) ? $old_data['fornecedor']: null;?>" name="fornecedor" type="text" class="form-control <?php echo isset($errors['fornecedor']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Fornecedor inválido.</span>
+                                <label for="id_fornecedor" class="control-label mb-1">Fornecedor</label>
+                                <select id="id_fornecedor" name="id_fornecedor" value="<?php echo isset($old_data['id_fornecedor']) ? $old_data['id_fornecedor']: null;?>" name="id_fornecedor" type="text" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>" required>
+                                    <?php foreach($fornecedores as $fornecedor): ?>
+                                        <option value="<?php echo $fornecedor->id_fornecedor;?>"><?php echo $fornecedor->razao_social; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
                     </div>

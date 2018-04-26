@@ -23,6 +23,12 @@ class Fornecedor_model extends CI_Model
     } catch (\Exception $e) {}
   }
 
+  public function getRazaoSocial(){
+      $this->db->select('id_fornecedor, razao_social')
+      ->join('pessoa_juridica' , 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica');
+
+      return $this->db->get('fornecedor')->result();
+  }
 
   public function insert($data)
   {
