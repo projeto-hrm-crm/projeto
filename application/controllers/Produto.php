@@ -7,6 +7,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produto extends CI_Controller
 {
+    public $menus;
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * Com a configuração do menu esse controller serve como base para todos os outros controllers
+     * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+     */
+    public function __construct()
+    {
+      parent::__construct();
+      $user_id = $this->session->userdata('user_login');
+      $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
+      $this->usuario->hasPermission($user_id, $url);
+      $this->menus = $this->menu->getUserMenu($user_id);
+    }
     /**
       *@author: Dhiego Balthazar
       * Esse método tem a finalidade de retornar uma lista com todos os produtos
@@ -19,6 +34,7 @@ class Produto extends CI_Controller
     {
       $dados['title'] = 'Produtos';
       $dados['produtos'] = $this->produto->get();
+      $dados['menus'] = $this->menus;
       $produtos = $dados['produtos'];
       foreach($produtos as $produto){
           $produto->fabricacao = switchDate($produto->fabricacao);
@@ -41,6 +57,7 @@ class Produto extends CI_Controller
      */
     public function create()
     {
+      $dados['menus'] = $this->menus;
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
@@ -78,6 +95,7 @@ class Produto extends CI_Controller
      */
     public function edit($id)
     {
+      $dados['menus'] = $this->menus;
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(

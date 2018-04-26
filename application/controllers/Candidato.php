@@ -51,7 +51,7 @@ class Candidato extends CI_Controller
       {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['candidato']['nome'], 'email' => $data['candidato']['email']]);
         $id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
-        $this->candidato->insert(['id_pessoa_fisica' => $id_pessoa_fisica]);
+        $this->candidato->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
       }
@@ -81,7 +81,7 @@ class Candidato extends CI_Controller
       $candidato = $this->candidato->find($id_candidato);
 
       $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['candidato']['nome'],'email'=>$data['candidato']['email']]);
-      $this->pessoa_fisica->update($candidato[0]->id_pessoa_fisica,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['candidato']['sexo']]);
+      $this->pessoa_fisica->update($candidato[0]->id_pessoa,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['candidato']['sexo']]);
       $this->session->set_flashdata('success', 'Candidato editado com sucesso.');
       redirect('candidato');
     }
