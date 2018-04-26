@@ -29,7 +29,7 @@
                                         <td><?= $produto->validade;?></td>
                                         <td><?= $produto->lote;?></td>
                                         <td><?= $produto->recebimento;?></td>
-                                        <td><?= $produto->fornecedor;?></td>
+                                        <td><?= $produto->razao_social;?></td>
                                         <td>
                                             <a href="editar/produto/<?php echo $produto->id_produto?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
