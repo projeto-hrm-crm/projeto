@@ -160,8 +160,8 @@ $autoload['model'] = array(
                     'Setor_model'                => 'setor',
                     'Cidade_model'               => 'cidade',
                     'Cargo_model'                => 'cargo',
-                    'Categoria_model'            => 'categoria',
-                    'Subcategoria_model'         => 'subcategoria',
+                    'Menu_model'                 => 'menu',
+                    'Submenu_model'              => 'submenu',
                     'Grupo_model'                => 'grupo'
 
 );
