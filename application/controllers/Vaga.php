@@ -17,7 +17,7 @@ class Vaga extends CI_Controller
     {
       $data['title'] = 'vagas';
       $data['vagas'] = $this->vaga->get();
-      $data['sucess_message']=$this->session->flashdata('sucess');
+      $data['success_message']=$this->session->flashdata('success');
        $data['error_message']=$this->session->flashdata('danger');
        $data['assets'] = array(
         'js' => array(
@@ -63,13 +63,24 @@ class Vaga extends CI_Controller
       }else{
         $data['title'] = 'Cadastrar vaga';
         $data['errors'] = $this->session->flashdata('errors');
+        $data['success_message'] = $this->session->flashdata('success');
+        $data['error_message']   = $this->session->flashdata('danger');
         $data['old_data'] = $this->session->flashdata('old_data');
          $data['assets'] = array(
         'js' => array(
           
           'vaga/validate.js',
         ),
+
       );
+         $data['cargos'] = array();
+        for($i = 1; $i <= 4; $i++)
+        {
+          $cargo = new stdClass;
+          $cargo->id_cargo = $i;
+          $cargo->nome     = 'Cargo '.$i;
+          array_push($data['cargos'], $cargo);
+        }
       
         loadTemplate('includes/header', 'vaga/cadastrar', 'includes/footer', $data);
       }
@@ -89,11 +100,13 @@ class Vaga extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('vaga')){
           $array = array(
-           $array = array(
-           'cargo' => $this->input->post('cargo'),
-           'setor' => $this->input->post('setor'),
+          
+            'id_vaga' => $id,
+           'id_cargo' => $this->input->post('id_cargo'),
+           'quantidade' => $this->input->post('quantidade'),
+           'requisitos' => $this->input->post('requisitos'),
            'data_oferta' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('data_oferta')))),
-           )
+           
           );
           $this->vaga->update($array);
           $this->session->set_flashdata('success','Alterado com sucesso.');
@@ -106,10 +119,21 @@ class Vaga extends CI_Controller
         $data['errors'] = $this->session->flashdata('errors');
         $data['title'] = 'Alterar Vaga';
         $data['vaga'] = $this->vaga->getById($id);
-        $data['vaga']->cargo = switchDate($data['vaga']->cargo);
-        $data['vaga']->setor = switchDate($data['vaga']->setor);
+       $data['success_message'] = $this->session->flashdata('success');
+        $data['error_message']   = $this->session->flashdata('danger');
         $data['vaga']->data_oferta = switchDate($data['vaga']->data_oferta);
-        loadTemplate('includes/header', 'editar/vaga', 'includes/footer', $data);
+       
+
+        $data['cargos'] = array();
+        for($i = 1; $i <= 4; $i++)
+        {
+          $cargo = new stdClass;
+          $cargo->id_cargo = $i;
+          $cargo->nome     = 'Cargo '.$i;
+          array_push($data['cargos'], $cargo);
+        }
+      
+        loadTemplate('includes/header', 'vaga/editar', 'includes/footer', $data);
       }
     }
 
@@ -123,8 +147,8 @@ class Vaga extends CI_Controller
      */
     public function delete($id){
       $vaga = $this->vaga->getById($id);
-      if($produto){
-        $this->vaga->delete($id);
+      if($vaga){
+        $this->vaga->remove($id);
         $this->session->set_flashdata('success', 'Vaga deletada com sucesso.');
       }else{
         $this->session->set_flashdata('danger', 'Impossível Deletar!');

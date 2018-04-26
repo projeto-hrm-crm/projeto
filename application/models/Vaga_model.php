@@ -33,7 +33,7 @@ class Vaga_model extends CI_Model
     */
     public function insert($array) {
         
-        $this->db->insert('vaga', $vaga);
+        $this->db->insert('vaga', $array);
         return $this->db->insert_id();        
     }
      /*
@@ -42,8 +42,8 @@ class Vaga_model extends CI_Model
      *@params: mixed com dados das vagas
      *@return: boolean
     */
-    public function update($array){
-        $this->db->where('id_vaga', $array['id_vaga']);
+    public function update($vaga){
+        $this->db->where('vaga.id_vaga', $vaga['id_vaga']);
         
         $this->db->set('vaga.data_oferta', $vaga['data_oferta']);
         $this->db->set('vaga.quantidade',  $vaga['quantidade']);
@@ -61,7 +61,7 @@ class Vaga_model extends CI_Model
     */
     public function remove($id){
         $query = $this->db->where('vaga.id_vaga', $id);
-        $query = $this->db->delete('vaga');
+        $query->delete('vaga');
         return $query->affected_rows() > 0 ? true : false;
     }
 
