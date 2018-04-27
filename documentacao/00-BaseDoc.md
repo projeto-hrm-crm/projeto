@@ -1,12 +1,12 @@
 # Sistema PR1 2018
 
-##h2 Introdução
+## Introdução
 Nome do sistema e o que ele faz
 
-##h2 Níveis de acesso do Sistema
+## Níveis de acesso do Sistema
 Quais os níveis de acesso dos sitema?
 
-##h2 Desenvolvimento
+## Desenvolvimento
 Linguagens e ferramenats utilizados no desenvolvimento do sistema:
 
 - HTML5 - HyperText Markup Language; 
@@ -22,19 +22,19 @@ Linguagens e ferramenats utilizados no desenvolvimento do sistema:
 - Google Drive - armazenamento e compartilhamento de documentos;
 - CodeIgniter  - framework de desenvolvimento php.
 
-##h2 Controle de Versões	
+## Controle de Versões	
 	O controle das versões do sistema é mantido no Github, no endereço https://github.com/ProjetoPR12018/projeto
 	
-##h2 Banco de Dados
+## Banco de Dados
 
 
-##h2 Diagramas UML
+## Diagramas UML
 Os diagramas necessários na documentação
 
-##h2 Overview do Sistema
+## Overview do Sistema
 Componentes e telas do Sistema
 
-##h2 O sistema e suas funções
+## O sistema e suas funções
 Descrição mais detalhada
 
 
