@@ -3,6 +3,9 @@
 ## Introdução
 Nome do sistema e o que ele faz
 
+## Requisitos de Sistema
+
+
 ## Níveis de acesso do Sistema
 Quais os níveis de acesso dos sitema?
 
@@ -23,10 +26,10 @@ Linguagens e ferramenats utilizados no desenvolvimento do sistema:
 - CodeIgniter  - framework de desenvolvimento php.
 
 ## Controle de Versões	
-	O controle das versões do sistema é mantido no Github, no endereço https://github.com/ProjetoPR12018/projeto
+O controle das versões do sistema é mantido no Github, no endereço https://github.com/ProjetoPR12018/projeto
 	
 ## Banco de Dados
-
+O DER ficará disponível ao final do projeto, uma vez que está sendo desenvolvido de forma incremental, de acordo com as necessidades do sistema.
 
 ## Diagramas UML
 Os diagramas necessários na documentação
