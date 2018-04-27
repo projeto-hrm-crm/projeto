@@ -1,10 +1,10 @@
 # Sistema PR1 2018
 
 ## Introdução
-Nome do sistema e o que ele faz
+Descrição sumária do sistema
 
 ## Requisitos de Sistema
-
+Requisitos funcionais e não funcionais 
 
 ## Níveis de acesso do Sistema
 Quais os níveis de acesso dos sitema?
@@ -32,7 +32,7 @@ O controle das versões do sistema é mantido no Github, no endereço https://gi
 O DER ficará disponível ao final do projeto, uma vez que está sendo desenvolvido de forma incremental, de acordo com as necessidades do sistema.
 
 ## Diagramas UML
-Os diagramas necessários na documentação
+Os diagramas UML necessários na documentação
 
 ## Overview do Sistema
 Componentes e telas do Sistema
