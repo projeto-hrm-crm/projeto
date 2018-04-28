@@ -1,4 +1,4 @@
-# Sistema PR1 2018
+# Projeto PR1 2018
 
 ## Introdução
 Descrição sumária do sistema
@@ -6,24 +6,31 @@ Descrição sumária do sistema
 ## Requisitos de Sistema
 Requisitos funcionais e não funcionais 
 
-## Níveis de acesso do Sistema
-Quais os níveis de acesso dos sitema?
+## Níveis de acesso
+Quais os níveis de acesso do sitema?
 
 ## Desenvolvimento
-Linguagens e ferramenats utilizados no desenvolvimento do sistema:
+Linguagens e ferramenats utilizados no desenvolvimento:
 
+### Linguagens
 - HTML5 - HyperText Markup Language; 
 - PHP (HyperText Preprocessor);
-- CSS (Cascading Style Sheets)como linguagem de folhas de estilo para definir a apresentação web; 
-- JQuery e JQuery UI8  - bibliotecas JavaScript e AJAX; 
-- Bootstrap - framework para interfaces responsivas;
-- Mysql - sistema gerenciador de banco de dados 
-- MySql Workbench  - ferramenta de banco de dados.
-- Astah  - ferramenta para desenvolvimento UML;
-- Mardown  - linguagem de marcação para documentação
-- Trello para gestão do projeto
-- Google Drive - armazenamento e compartilhamento de documentos;
+- CSS (Cascading Style Sheets); 
+- JavaScript; 
+- Mardown - linguagem de marcação para documentação
+
+### Frameworks 
 - CodeIgniter  - framework de desenvolvimento php.
+- Bootstrap - framework para interfaces responsivas;
+
+### Banco de Dados
+- MySQL
+
+### Ferramentas
+- MySql Workbench.
+- Astah;
+- Trello
+- Google Drive;
 
 ## Controle de Versões	
 O controle das versões do sistema é mantido no Github, no endereço https://github.com/ProjetoPR12018/projeto
