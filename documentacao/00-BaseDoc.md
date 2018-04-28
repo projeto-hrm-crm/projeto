@@ -20,8 +20,8 @@ Linguagens e ferramenats utilizados no desenvolvimento:
 - Mardown - linguagem de marcação para documentação
 
 ### Frameworks 
-- CodeIgniter  - framework de desenvolvimento php.
-- Bootstrap - framework para interfaces responsivas;
+- CodeIgniter
+- Bootstrap
 
 ### Banco de Dados
 - MySQL
