@@ -6,9 +6,6 @@ Descrição sumária do sistema
 ## Requisitos de Sistema
 Requisitos funcionais e não funcionais 
 
-## Níveis de acesso
-Quais os níveis de acesso do sitema?
-
 ## Desenvolvimento
 Linguagens e ferramenats utilizados no desenvolvimento:
 
@@ -41,10 +38,50 @@ O DER ficará disponível ao final do projeto, uma vez que está sendo desenvolv
 ## Diagramas UML
 Os diagramas UML necessários na documentação
 
-## Overview do Sistema
-Componentes e telas do Sistema
+## Níveis de acesso
+Quais os níveis de acesso do sitema?
 
 ## O sistema e suas funções
-Descrição mais detalhada
+*Os componentes estão sendo desenvolvidos de forma incemental, assim, atualizar esta lista
 
+### Arquitetura MVC
+
+### Models
+- Candidato_model
+- Cargo_model
+- Cidade_model
+- Cliente_model
+- Documento_model
+- Endereco_model
+- Estado_model
+- Fornecedor_model
+- Funcionario_model
+- Grupo_model
+- Interacao_model
+- Menu_model
+- Pessoa_model
+- PessoaFisica_model
+- PessoaJuridica_model
+- Produto_model
+- Sac_model
+- Setor_model
+- Submenu_model
+- Telefone_model
+
+### Controllers
+- Candidato
+- Cargo
+- Cidade
+- Cliente
+- Fornecedor
+- Funcionario
+- Index
+- Login
+- Pessoa
+- PessoaFisica
+- Produto
+- Sac
+- Setor
+
+### Views
 
