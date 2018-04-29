@@ -12,6 +12,26 @@ class Setor_model extends CI_Model
 
   /**
   * @author: Matheus Ladislau
+  * Retorna registro de setor cadastrados no banco com id_setor referente
+  *
+  * @param integer $id_setor refere-se ao id do registro de setor a ser consultado
+  * @return array: registro de setor cadastrado com id_setor informado
+  */
+  public function find($id_setor)
+	{
+    try {
+			$data=$this->db->from('setor')->where('setor.id_setor', $id_setor)->get();
+      if($data){
+        return $data->result();
+      }else{
+        echo "setor não existe";
+        return 1;
+      }
+    }catch (\Exception $e){}
+}
+
+  /**
+  * @author: Matheus Ladislau
   * Retorna todos registro de setor cadastrados no banco
   * @return array: todos registro de setor cadastrados
   */
