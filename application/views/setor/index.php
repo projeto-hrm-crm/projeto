@@ -18,13 +18,12 @@
   		<tbody>
   			<?php foreach ($setores as $setor): ?>
   				<tr>
-  					<td class="text-center"><?= $setor->id; ?></td>
+  					<td class="text-center"><?= $setor->id_setor; ?></td>
             <td class="text-center"><?= $setor->nome; ?></td>
-              <p>teste</p>
 
   					<td class="text-center">
-  						<a title="Editar" href="<?= site_url('setor/update/'.$setor->id)?>">Editar</a> |
-              <a title="Excluir" href="<?= site_url('setor/remove/'.$setor->id)?>">Excluir</a>
+  						<a title="Editar" href="<?= site_url('setor/edit/'.$setor->id_setor)?>">Editar</a> |
+              <a title="Excluir" href="<?= site_url('setor/remove/'.$setor->id_setor)?>">Excluir</a>
   					</td>
   				</tr>
         <?php endforeach ?>
