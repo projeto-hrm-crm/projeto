@@ -11,6 +11,10 @@ class Setor extends CI_Controller
       $this->menus = $this->menu->getUserMenu($user_id);
     }
 
+    /**
+    * @author: Matheus Ladislau
+    * Realiza o carregamento da página inicial de setor, apresentando os setores
+    */
     public function index()
     {
       $data['title'] = 'Setores';
