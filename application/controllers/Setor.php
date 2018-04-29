@@ -1,12 +1,25 @@
 <?php
 class Setor extends CI_Controller
 {
-  public function index()
-  {
-    $setores=$this->setor->get();
-    $data['title'] = 'Setores';
-    loadTemplate('includes/header', 'setor/index', 'includes/footer', $data);
-  }
+
+  public function __construct()
+    {
+      parent::__construct();
+      $user_id = $this->session->userdata('user_login');
+      $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+      #$this->usuario->hasPermission($user_id, $url);
+      $this->menus = $this->menu->getUserMenu($user_id);
+    }
+
+    public function index()
+    {
+      $data['title'] = 'Setores';
+      $data['setores'] = $this->setor->get();
+      loadTemplate(
+        'includes/header',
+        'setor/index',
+        'includes/footer', $data);
+    }
 
   /**
   * @author: Matheus Ladislau
@@ -24,11 +37,22 @@ class Setor extends CI_Controller
   *
   *@param integer: referen-se ao id do setor a ser alterado
   */
-  public function edit($id)
+  public function edit($id_setor)
   {
-    $id_setor=$id;
-    $data["nome"]=$this->input->post("nome");
-    $this->setor->update($data,$id_setor);
+    if($this->input->post())
+    {
+      $data["nome"]=$this->input->post("nome");
+      $this->setor->update($data,$id_setor);
+      redirect('setor');
+    }else{
+      $data['setor'] = $this->setor->find($id_setor);
+      $data['title'] = 'Editar Setor';
+      $data['id_setor'] = $id_setor;
+      loadTemplate(
+        'includes/header',
+        'setor/editar',
+        'includes/footer', $data);
+    }
   }
 
   /**
