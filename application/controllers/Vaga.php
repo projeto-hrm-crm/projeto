@@ -5,6 +5,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vaga extends CI_Controller
 {
+
+  public $menus;
+    /**
+     * @author Pedro Henrique Guimarães
+     * Com a configuração do menu esse controller serve como base para todos os outros controllers
+     * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+     */
+    public function __construct()
+    {
+      parent::__construct();
+      $user_id = $this->session->userdata('user_login');
+      $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
+     // $this->usuario->hasPermission($user_id, $url);
+      $this->menus = $this->menu->getUserMenu($user_id);
+    }
     /**
       *@author: Lucilene Fidelis
       * Esse método tem a finalidade de retornar uma lista com todos as vagas
@@ -15,7 +30,7 @@ class Vaga extends CI_Controller
     
     public function index()
     {
-      $data['title'] = 'vagas';
+      $data['title'] = 'Vagas';
       $data['vagas'] = $this->vaga->get();
       $data['success_message']=$this->session->flashdata('success');
        $data['error_message']=$this->session->flashdata('danger');
@@ -73,14 +88,7 @@ class Vaga extends CI_Controller
         ),
 
       );
-         $data['cargos'] = array();
-        for($i = 1; $i <= 4; $i++)
-        {
-          $cargo = new stdClass;
-          $cargo->id_cargo = $i;
-          $cargo->nome     = 'Cargo '.$i;
-          array_push($data['cargos'], $cargo);
-        }
+         $data['cargos'] = $this->cargo->get();
       
         loadTemplate('includes/header', 'vaga/cadastrar', 'includes/footer', $data);
       }
@@ -122,16 +130,15 @@ class Vaga extends CI_Controller
        $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
         $data['vaga']->data_oferta = switchDate($data['vaga']->data_oferta);
-       
+       $data['assets'] = array(
+        'js' => array(
+          
+          'vaga/validate.js',
+        ),
 
-        $data['cargos'] = array();
-        for($i = 1; $i <= 4; $i++)
-        {
-          $cargo = new stdClass;
-          $cargo->id_cargo = $i;
-          $cargo->nome     = 'Cargo '.$i;
-          array_push($data['cargos'], $cargo);
-        }
+      );
+
+        $data['cargos'] = $this->cargo->get();
       
         loadTemplate('includes/header', 'vaga/editar', 'includes/footer', $data);
       }
