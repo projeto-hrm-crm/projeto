@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
-
 class Vaga extends CI_Controller
 {
 
@@ -58,13 +56,14 @@ class Vaga extends CI_Controller
     public function create()
     {
       if($this->input->post()){
+
         if($this->form_validation->run('vaga')){
           $array = array(
            'id_cargo' => $this->input->post('id_cargo'),
            'quantidade' => $this->input->post('quantidade'),
            'requisitos' => $this->input->post('requisitos'),
 
-           'data_oferta' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('data_oferta')))),
+           'data_oferta' => switchDate($this->input->post('data_oferta')),
            
           );
             $this->vaga->insert($array);
@@ -113,7 +112,7 @@ class Vaga extends CI_Controller
            'id_cargo' => $this->input->post('id_cargo'),
            'quantidade' => $this->input->post('quantidade'),
            'requisitos' => $this->input->post('requisitos'),
-           'data_oferta' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('data_oferta')))),
+           'data_oferta' => switchDate($this->input->post('data_oferta')),
            
           );
           $this->vaga->update($array);
@@ -121,6 +120,7 @@ class Vaga extends CI_Controller
           redirect('vaga');
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
+          $this->session->set_flashdata('old_data', $this->input->post());
           redirect('editar/vaga/'.$id);
         }
       }else{
@@ -130,6 +130,7 @@ class Vaga extends CI_Controller
        $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
         $data['vaga']->data_oferta = switchDate($data['vaga']->data_oferta);
+        $data['old_data'] = $this->session->flashdata('old_data');
        $data['assets'] = array(
         'js' => array(
           
@@ -156,9 +157,9 @@ class Vaga extends CI_Controller
       $vaga = $this->vaga->getById($id);
       if($vaga){
         $this->vaga->remove($id);
-        $this->session->set_flashdata('success', 'Vaga deletada com sucesso.');
+        $this->session->set_flashdata('success', 'Vaga removida com sucesso.');
       }else{
-        $this->session->set_flashdata('danger', 'Impossível Deletar!');
+        $this->session->set_flashdata('danger', 'Não foi possível remover a Vaga!');
       }
       redirect('vaga');
     }
