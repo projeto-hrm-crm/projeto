@@ -49,19 +49,15 @@ class Candidato extends CI_Controller
   public function create()
   {
     $data['candidato']  = $this->input->post();
+    $data['menus'] = $this->menus;
 
     if($data['candidato']){
       if(!$this->form_validation->run('pessoa'))
       {
-        $this->session->set_flashdata('errors', $this->form_validation->error_array());
-        $this->session->set_flashdata('old_values', $this->input->post());
-
-        $this->session->set_flashdata(
-          'danger',
-          'Não foi possível realizar o cadastro<br>Verifique os campos abaixo'
-        );
-
-        redirect('candidato/cadastrar');
+            $data['old_data'] = $this->input->post();
+            $this->session->set_flashdata('errors', $this->form_validation->error_array());
+            $this->session->set_flashdata('old_data', $this->input->post());
+            redirect('candidato/cadastrar');
       }
       else
       {
@@ -72,8 +68,9 @@ class Candidato extends CI_Controller
         redirect('candidato');
       }
     }
-    $data['menus'] = $this->menus;
     $data['title'] = 'Cadastrar Candidato';
+    $data['errors'] = $this->session->flashdata('errors');
+    $data['old_data'] = $this->session->flashdata('old_data');
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
 
