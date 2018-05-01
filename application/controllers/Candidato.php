@@ -8,6 +8,21 @@
 
 class Candidato extends CI_Controller
 {
+  public $menus;
+
+  /**
+   * @author Pedro Henrique Guimarães
+   * Com a configuração do menu esse controller serve como base para todos os outros controllers
+   * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
+  }
   /**
   * author: Camila Sales
   * Metodo index que chama a view inicial de candidato
@@ -16,6 +31,7 @@ class Candidato extends CI_Controller
   {
     $data['title'] = 'Candidatos';
     $data['candidatos'] = $this->candidato->get();
+    $data['menus'] = $this->menus;
 
     loadTemplate('includes/header', 'candidato/index', 'includes/footer', $data);
   }
@@ -56,8 +72,7 @@ class Candidato extends CI_Controller
         redirect('candidato');
       }
     }
-
-
+    $data['menus'] = $this->menus;
     $data['title'] = 'Cadastrar Candidato';
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
@@ -89,6 +104,7 @@ class Candidato extends CI_Controller
     $data['candidato'] = $this->candidato->find($id_candidato);
     $data['title'] = 'Editar Candidato';
     $data['id'] = $id_candidato;
+    $data['menus'] = $this->menus;
 
     loadTemplate('includes/header', 'candidato/editar', 'includes/footer', $data);
   }
