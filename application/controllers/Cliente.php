@@ -14,15 +14,14 @@ class Cliente extends CI_Controller
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
    * onde todos devem seguir essa mesma estrutura mínima no consrutor.
    */
-
-  // public function __construct()
-  // {
-  //   parent::__construct();
-  //   $user_id = $this->session->userdata('user_login');
-  //   $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-  //   $this->usuario->hasPermission($user_id, $url);
-  //   $this->menus = $this->menu->getUserMenu($user_id);
-  // }
+  public function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
+  }
 
   /**
   * @author Mayra Bueno
@@ -49,7 +48,6 @@ class Cliente extends CI_Controller
   **/
   public function create()
   {
-    $data['menus'] = $this->menus;
     $data = $this->input->post();
 
     if($data){
@@ -60,6 +58,7 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
+    $data['menus'] = $this->menus;
     $data['title'] = 'Cadastrar cliente';
     loadTemplate('includes/header', 'cliente/cadastrar', 'includes/footer', $data);
   }
@@ -78,7 +77,6 @@ class Cliente extends CI_Controller
   **/
   public function edit($id_cliente)
   {
-    $data['menus'] = $this->menus;
     if ($this->input->post())
     {
       $data['cliente'] = $this->input->post();
@@ -90,6 +88,7 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
+    $data['menus'] = $this->menus;
     $data['cliente'] = $this->cliente->find($id_cliente);
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;
