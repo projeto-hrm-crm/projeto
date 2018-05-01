@@ -62,7 +62,16 @@ class Candidato extends CI_Controller
       else
       {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['candidato']['nome'], 'email' => $data['candidato']['email']]);
-        $id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
+
+        $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+        'id_pessoa'   => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+        $this->documento->insert(['tipo' => 'cpf','numero' = $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+
+        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
+
+        $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
@@ -91,6 +100,14 @@ class Candidato extends CI_Controller
     {
       $data['candidato'] = $this->input->post();
       $candidato = $this->candidato->find($id_candidato);
+
+      $this->endereco->update(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+      'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+      'id_pessoa'   => $candidato[0]->id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+      $this->documento->update(['tipo' => 'cpf','numero' = $this->input->post('cpf') , 'id_pessoa' => $candidato[0]->id_pessoa]);
+
+      $this->telefone->update(['numero'=>$this->input->post('telefone'),'id_pessoa' => $candidato[0]->id_pessoa]);
 
       $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['candidato']['nome'],'email'=>$data['candidato']['email']]);
       $this->pessoa_fisica->update($candidato[0]->id_pessoa,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['candidato']['sexo']]);
