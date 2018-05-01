@@ -68,11 +68,11 @@
         </div> <!-- FIM CIDADE -->
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Endereço</label></div>
-          <div class="col-12 col-md-9"><input type="rua" id="rua" name="rua"  value="<?php echo isset($old_data['rua']) ? $old_data['rua'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" pattern="[A-Za-z]" title="Campo obrigatório" required></div>
+          <div class="col-12 col-md-9"><input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" pattern="[A-Za-z]" title="Campo obrigatório" required></div>
         </div> <!-- FIM ENDEREÇO -->
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Número</label></div>
-          <div class="col-12 col-md-9"><input type="rua_num" id="rua_num" name="rua_num" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required></div>
+          <div class="col-12 col-md-9"><input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required></div>
         </div> <!-- FIM NÚMERO -->
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Complemento</label></div>
