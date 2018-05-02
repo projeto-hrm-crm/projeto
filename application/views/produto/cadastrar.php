@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Novo Produto</strong>
             </div>
-            <form action="<?php echo base_url('cadastrar/produto'); ?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('cadastrar/produto'); ?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
@@ -37,6 +37,15 @@
                                 <label for="validade" class="control-label mb-1">Data de Validade</label>
                                 <input id="validade" value="<?php echo isset($old_data['validade']) ? $old_data['validade']: null;?>" name="validade" type="text" class="form-control data <?php echo isset($errors['validade']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Data de Validade inválida.</span>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="id_fornecedor" class="control-label mb-1">Fornecedor</label>
+                                <select id="id_fornecedor" name="id_fornecedor" value="<?php echo isset($old_data['id_fornecedor']) ? $old_data['id_fornecedor']: null;?>" name="id_fornecedor" type="text" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>" required>
+                                    <?php foreach($fornecedores as $fornecedor): ?>
+                                        <option value="<?php echo $fornecedor->id_fornecedor; ?>"><?php echo $fornecedor->razao_social; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <span class="invalid-feedback">Fornecedor inválido.</span>
                             </div>
                         </div>
                     </div>

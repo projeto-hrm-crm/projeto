@@ -96,7 +96,8 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array(
     'url',
     'loadTemplate',
-    'switchDate'
+    'switchDate',
+    'dataprep_fornecedor',
 );
 
 /*
@@ -142,12 +143,14 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
 
-                    'Produto_model' => 'produto',
+                    'Produto_model'              => 'produto',
                     'Pessoa_model'               => 'pessoa',
                     'Endereco_model'             => 'endereco',
+                    'Estado_model'               => 'estado',
                     'Documento_model'            => 'documento',
                     'Telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',
+                    'PessoaJuridica_model'       => 'pessoa_juridica',
                     'PessoaFisica_model'         => 'pessoa_fisica',
                     'Cliente_model'              => 'cliente',
                     'Funcionario_model'          => 'funcionario',
@@ -156,5 +159,9 @@ $autoload['model'] = array(
                     'Sac_model'                  => 'sac',
                     'Setor_model'                => 'setor',
                     'Vaga_model'                 => 'vaga',
-
+                    'Cidade_model'               => 'cidade',
+                    'Cargo_model'                => 'cargo',
+                    'Menu_model'                 => 'menu',
+                    'Submenu_model'              => 'submenu',
+                    'Grupo_model'                => 'grupo'
 );

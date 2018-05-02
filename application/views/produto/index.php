@@ -15,6 +15,7 @@
                                 <th>Validade</th>
                                 <th>Lote</th>
                                 <th>Recebimento</th>
+                                <th>Fornecedor</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                         <td><?= $produto->validade;?></td>
                                         <td><?= $produto->lote;?></td>
                                         <td><?= $produto->recebimento;?></td>
+                                        <td><?= $produto->razao_social;?></td>
                                         <td>
                                             <a href="editar/produto/<?php echo $produto->id_produto?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>

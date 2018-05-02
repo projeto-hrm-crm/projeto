@@ -15,6 +15,8 @@ class Fornecedor extends CI_Controller
   {
     $data['title'] = 'Fornecedores';
     $data['fornecedores'] = $this->fornecedor->get();
+    // print_r($data);
+    // exit();
 
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
@@ -33,14 +35,17 @@ class Fornecedor extends CI_Controller
   {
     $data = $this->input->post();
 
-    if($data){
+    if($data)
+    {
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->insert($data);
         $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso.');
+
         redirect('fornecedor');
       }else{
         $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+
         redirect('fornecedor/create');
       }
     }
@@ -71,7 +76,7 @@ class Fornecedor extends CI_Controller
         $this->session->set_flashdata('success', 'Fornecedor editado com sucesso.');
         redirect('fornecedor');
       }else{
-        $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+        $this->session->set_flashdata('danger', 'Fornecedor não pode ser atualizado.');
         redirect('fornecedor/edit/'.$id);
       }
     }

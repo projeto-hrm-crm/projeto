@@ -1,8 +1,6 @@
 <div class="animated fadeIn">
 	<div class="row">
 		<div class="col-md-12">
-
-
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                     <?php echo $success_message; ?>
@@ -11,7 +9,6 @@
                     </button>
                 </div>
             <?php endif; ?>
-
 			<?php if(isset($error_message)): ?>
                 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
                     <?php echo $error_message; ?>
@@ -19,7 +16,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            <?php endif; ?>
+      <?php endif; ?>
 			<div class="card">
 				<div class="card-header">
 					<strong class="card-title">Vagas</strong>

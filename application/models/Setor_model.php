@@ -16,8 +16,7 @@ class Setor_model extends CI_Model
   * @return array: todos registro de setor cadastrados
   */
   public function get(){
-      $query = $this->db->get('setor');
-      return $query->result();
+    return $this->db->get('setor')->result();
   }
 
   /**
@@ -35,7 +34,7 @@ class Setor_model extends CI_Model
   * @author: Matheus Ladislau
   * Edita o registro de setor pelo id_setor referente
   *
-  * @param integer $id_setor refere-se ao id do registro de setor a ser editado 
+  * @param integer $id_setor refere-se ao id do registro de setor a ser editado
   * @return boolean: True - caso editado com sucesso, False - não editado
   */
   public function update($data,$id_setor)
