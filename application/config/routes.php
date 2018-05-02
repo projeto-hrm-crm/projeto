@@ -125,3 +125,8 @@ $route['candidato/cadastrar'] = 'Candidato/create';
 $route['candidato/editar/(:num)'] = 'Candidato/edit/$1';
 $route['candidato/excluir/(:num)'] = 'Candidato/delete/$1';
 
+//Rotas Vagas
+$route['vagas']               = 'Vaga/index';
+$route['cadastrar/vaga']      = 'Vaga/create';
+$route['editar/vaga/(:num)']  = 'Vaga/edit/$1';
+$route['remover/vaga/(:num)'] = 'Vaga/delete/$1';
