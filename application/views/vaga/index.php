@@ -9,6 +9,14 @@
                     </button>
                 </div>
             <?php endif; ?>
+			<?php if(isset($error_message)): ?>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    <?php echo $error_message; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+      <?php endif; ?>
 			<div class="card">
 				<div class="card-header">
 					<strong class="card-title">Vagas</strong>
