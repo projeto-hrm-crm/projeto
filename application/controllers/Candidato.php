@@ -65,9 +65,9 @@ class Candidato extends CI_Controller
 
         $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
         'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
-        'id_pessoa'   => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+        ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
 
-        $this->documento->insert(['tipo' => 'cpf','numero' = $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+        $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
         $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
 
@@ -102,10 +102,10 @@ class Candidato extends CI_Controller
       $candidato = $this->candidato->find($id_candidato);
 
       $this->endereco->update(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
-      'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+      'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento'),
       'id_pessoa'   => $candidato[0]->id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
 
-      $this->documento->update(['tipo' => 'cpf','numero' = $this->input->post('cpf') , 'id_pessoa' => $candidato[0]->id_pessoa]);
+      $this->documento->update(['tipo' => 'cpf','numero' => $this->input->post('cpf') , 'id_pessoa' => $candidato[0]->id_pessoa]);
 
       $this->telefone->update(['numero'=>$this->input->post('telefone'),'id_pessoa' => $candidato[0]->id_pessoa]);
 
