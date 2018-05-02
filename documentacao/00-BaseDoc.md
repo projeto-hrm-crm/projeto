@@ -1,7 +1,7 @@
 # Projeto PR1 2018
 
 ## Introdução
-O sistema em desenvolvimento tem o objetivo de auxiliar pequenas e médias empresas a agilizar o gerenciamento de clientes, funcionários e produtos. Neste sentido pode-se afirmar que se trata de um sistema ERP - Enterprise Resource Planning, ou Planejamento de Recursos Empresarias com foco em nos módulos de CRM e HRM.
+O sistema em desenvolvimento tem o objetivo de auxiliar empresas a agilizar o gerenciamento de clientes, funcionários e produtos. Neste sentido pode-se afirmar que se trata de um sistema ERP - Enterprise Resource Planning, ou Planejamento de Recursos Empresarias com foco em nos módulos de CRM e HRM.
 
 O termo CRM significa Customer Relationship Management, ou Gestão de Relacionamento com o Cliente. Por meio do sistema de CRM, uma empresa consegue manter um banco de dados detalhado de cada cliente, bem como um histórico de interações que ajuda a enriquecer e personalizar atendimentos futuros.   
 
