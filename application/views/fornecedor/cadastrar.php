@@ -1,4 +1,5 @@
-<div class="col-lg-12">
+<div class="row justify-content-center align-items-center">
+   <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
       <strong>Cadastro de Fornecedores</strong>
@@ -17,7 +18,7 @@
 			</div>
 		</div>
     <div class="card-body card-block">
-      <form action="<?php echo site_url('fornecedor/create'); ?>" method="POST" class="form-horizontal">
+      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" class="form-horizontal">
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
           <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" placeholder="Nome" class="form-control"></div>
@@ -81,3 +82,4 @@
     </div>
 
   </div>
+   </div>

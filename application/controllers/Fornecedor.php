@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 * author: Nikolas Lencioni
 * Controller de fornecedor
@@ -7,6 +7,22 @@
 
 class Fornecedor extends CI_Controller
 {
+  public $menus;
+   
+   /**
+   * @author Pedro Henrique Guimarães
+   * Com a configuração do menu esse controller serve como base para todos os outros controllers
+   * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+   */
+   public function __construct()
+   {
+      parent::__construct();
+      $user_id = $this->session->userdata('user_login');
+      $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
+      $this->usuario->hasPermission($user_id, $url);
+      $this->menus = $this->menu->getUserMenu($user_id);
+   }
+
   /**
   * author: Nikolas Lencioni
   * Metodo index que chama a view inicial de fornecedores
@@ -15,6 +31,7 @@ class Fornecedor extends CI_Controller
   {
     $data['title'] = 'Fornecedores';
     $data['fornecedores'] = $this->fornecedor->get();
+    $data['menus'] = $this->menus;
     // print_r($data);
     // exit();
 
@@ -33,6 +50,7 @@ class Fornecedor extends CI_Controller
   **/
   public function create()
   {
+     
     $data = $this->input->post();
 
     if($data)
@@ -46,11 +64,13 @@ class Fornecedor extends CI_Controller
       }else{
         $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
 
-        redirect('fornecedor/create');
+        redirect('fornecedor');
       }
     }
 
     $data['title'] = 'Cadastrar Fornecedor';
+    $data['fornecedor'] = $this->input->post();
+    $data['menus'] = $this->menus;
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
 
@@ -67,9 +87,10 @@ class Fornecedor extends CI_Controller
   **/
   public function edit($id)
   {
+    $data['menus'] = $this->menus;  
     if ($this->input->post())
     {
-      $data['fornecedor'] = $this->input->post();
+      
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->update($id, (array)$data['fornecedor']);
@@ -83,6 +104,7 @@ class Fornecedor extends CI_Controller
 
     $data['fornecedor'] = $this->fornecedor->find($id);
     $data['title'] = 'Editar Fornecedor';
+    $data['fornecedor'] = $this->input->post();
     $data['id'] = $id;
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
@@ -98,6 +120,7 @@ class Fornecedor extends CI_Controller
   public function delete($id)
   {
     $data['fornecedor'] = $this->fornecedor->find($id);
+     $data['menus'] = $this->menus;  
     if ($data)
     {
       $this->fornecedor->delete($id);
