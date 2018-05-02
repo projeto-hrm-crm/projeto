@@ -39,14 +39,14 @@ O controle das versões do sistema é mantido no Github, no endereço https://gi
 Os diagramas UML necessários na documentação
 
 ### Níveis de acesso
-Quais os níveis de acesso do sitema?
+Quais os níveis de acesso do sistema?
 
 ## O sistema e suas funções
 *Os componentes estão sendo desenvolvidos de forma incemental, assim, atualizar esta lista*
 
 ### Arquitetura MVC
 
-A aplicação desenvolvida neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP. A seguir listamos as classes, pastas e os arquivos que compõem a estrutura do projeto. 
+O sistema desenvolvido neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP. A seguir listamos as classes, pastas e os arquivos que compõem a estrutura do projeto.
 
 #### Models
 
