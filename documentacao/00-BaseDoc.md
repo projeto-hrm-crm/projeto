@@ -4,49 +4,54 @@
 Descrição sumária do sistema
 
 ## Requisitos de Sistema
-Requisitos funcionais e não funcionais 
+Requisitos funcionais e não funcionais
 
 ## Desenvolvimento
 Linguagens e ferramenats utilizados no desenvolvimento:
 
 ### Linguagens
-- HTML5 - HyperText Markup Language; 
+- HTML5 - HyperText Markup Language;
 - PHP (HyperText Preprocessor);
-- CSS (Cascading Style Sheets); 
-- JavaScript; 
+- CSS (Cascading Style Sheets);
+- JavaScript;
 - Mardown - linguagem de marcação para documentação
 
-### Frameworks 
+### Frameworks
 - CodeIgniter
 - Bootstrap
 
 ### Banco de Dados
 - MySQL
 
+O DER ficará disponível ao final do projeto, uma vez que está sendo desenvolvido de forma incremental, de acordo com as necessidades do sistema.
+
 ### Ferramentas
 - MySql Workbench.
 - Astah;
 - Trello
 - Google Drive;
+- Diversas IDEs, entre Atom, Brackets, Sublime Text.
 
-## Controle de Versões	
+### Controle de Versões
 O controle das versões do sistema é mantido no Github, no endereço https://github.com/ProjetoPR12018/projeto
-	
-## Banco de Dados
-O DER ficará disponível ao final do projeto, uma vez que está sendo desenvolvido de forma incremental, de acordo com as necessidades do sistema.
 
-## Diagramas UML
+### Diagramas UML
 Os diagramas UML necessários na documentação
 
-## Níveis de acesso
+### Níveis de acesso
 Quais os níveis de acesso do sitema?
 
 ## O sistema e suas funções
-*Os componentes estão sendo desenvolvidos de forma incemental, assim, atualizar esta lista
+*Os componentes estão sendo desenvolvidos de forma incemental, assim, atualizar esta lista*
 
 ### Arquitetura MVC
 
-### Models
+A aplicação desenvolvida neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP. A seguir listamos as classes, pastas e os arquivos que compõem a estrutura do projeto. 
+
+#### Models
+
+Estes são os models que compõem o projeto e cada model é uma classe/arquivo .php
+
 - Candidato_model
 - Cargo_model
 - Cidade_model
@@ -68,7 +73,9 @@ Quais os níveis de acesso do sitema?
 - Submenu_model
 - Telefone_model
 
-### Controllers
+#### Controllers
+Estes são os controllers que compoem o projeto e cada controller é uma classe/arquivo .php
+
 - Candidato
 - Cargo
 - Cidade
@@ -83,5 +90,20 @@ Quais os níveis de acesso do sitema?
 - Sac
 - Setor
 
-### Views
+#### Views
+Os arquivos das views do projeto estão organizadas nas pastas listadas a seguir:
 
+- candidato
+- cargo
+- cliente
+- errors
+- fornecedor
+- funcionario
+- images
+- includes
+- login
+- pessoa
+- produto
+- sac
+- setor
+- vaga
