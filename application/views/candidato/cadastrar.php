@@ -40,6 +40,10 @@
             <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label for="sexo_fem" >Feminino</label></div>
         </div> <!-- FIM SEXO -->
         <div class="row form-group">
+          <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
+          <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="CPF" class="form-control" title="O CPF deve conter 11 dígitos decimais" data-mask="000.000.000-00"></div>
+        </div> <!-- FIM CPF -->
+        <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">DDD</label></div>
           <div class="col-12 col-md-9"><input type="text" id="ddd" name="ddd" value="<?php echo isset($old_data['ddd']) ? $old_data['ddd'] : null;?>"  placeholder="DDD" class="form-control"  title="O DDD contém dois dígitos" data-mask="(00)"></div>
         </div> <!-- FIM DDD -->
@@ -47,10 +51,6 @@
           <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
           <div class="col-12 col-md-9"><input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="Número de telefone" class="form-control" pattern="[0-9]{11}" title="Residencial ou celular" ></div>
         </div> <!-- FIM TELEFONE -->
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="CPF" class="form-control" " title="O CPF deve conter 11 dígitos decimais" data-mask="000.000.000-00"></div>
-        </div> <!-- FIM CPF -->
         <!-- INÍCIO ENDEREÇO -->
         <!-- PAÍS: INSERIR CAIXA DE SELECT QUE PUXA OS PAÍSES DO BD -->
         <div class="row form-group">
@@ -80,7 +80,7 @@
         </div> <!-- FIM COMPLEMENTO -->
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Bairro</label></div>
-          <div class="col-12 col-md-9"><input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Complemento" class="form-control" title="Campo obrigatório" required></div>
+          <div class="col-12 col-md-9"><input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control" title="Campo obrigatório" required></div>
         </div> <!-- FIM BAIRRO -->
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">CEP</label></div>

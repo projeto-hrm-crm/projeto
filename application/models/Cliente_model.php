@@ -70,4 +70,12 @@ class Cliente_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
+	public function getPais()
+	{
+		$query = $this->db->query('SELECT nome FROM pais');
+		return $query->result();
+
+			//echo 'Total Results: ' . $query->num_rows();
+	}
+
 }
