@@ -16,7 +16,7 @@
 - disparo de email automático para o candidato a cada atualização no processo de seleção;
 - anexo de arquivos/documentos;
 
-## Remanejamento de Funcionários
+## Remanejamento de Funcionário
 - cadastro de filiais;
 - cadastro de funcionário;
 - remanejamento de funcionários entre filiais;
