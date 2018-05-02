@@ -203,6 +203,37 @@ $config = array(
                 )
         ),
 
+       'vaga' => array(
+        
+        array(
+            'field' => 'id_cargo',
+            'label' => 'Cargo',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field'  => 'data_oferta',
+            'label'  => 'Data da Oferta',
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
+        ),
+
+        array(
+            'field' => 'quantidade',
+            'label' => 'Quantidade',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'requisitos',
+            'label' => 'Requisitos',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        ),
+
+
+    ),
 );
 
 /**
@@ -220,4 +251,17 @@ function requiredIf($field, $value)
     }
 
 
+}
+
+/**
+* @author: Tiago Villalobos
+* Verifica se uma data é válida
+* 
+* Recebe uma data no formato padrão enviado por post, sem inversão Ex: 21/04/2018
+* 
+* @param: string $date
+*/
+function validDate($date) 
+{ 
+    return date('d/m/Y', strtotime(str_replace('/', '-', $date))) === $date ? true : false;
 }
