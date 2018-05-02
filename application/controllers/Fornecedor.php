@@ -87,13 +87,14 @@ class Fornecedor extends CI_Controller
   **/
   public function edit($id)
   {
-    $data['menus'] = $this->menus;  
-    if ($this->input->post())
+    
+     $data = $this->input->post();
+    if ($data)
     {
       
       if ($this->form_validation->run('fornecedor'))
       {
-        $this->fornecedor->update($id, (array)$data['fornecedor']);
+        $this->fornecedor->update($id, $data);
         $this->session->set_flashdata('success', 'Fornecedor editado com sucesso.');
         redirect('fornecedor');
       }else{
@@ -104,7 +105,7 @@ class Fornecedor extends CI_Controller
 
     $data['fornecedor'] = $this->fornecedor->find($id);
     $data['title'] = 'Editar Fornecedor';
-    $data['fornecedor'] = $this->input->post();
+    $data['menus'] = $this->menus;  
     $data['id'] = $id;
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
@@ -119,13 +120,14 @@ class Fornecedor extends CI_Controller
   **/
   public function delete($id)
   {
-    $data['fornecedor'] = $this->fornecedor->find($id);
-     $data['menus'] = $this->menus;  
-    if ($data)
-    {
-      $this->fornecedor->delete($id);
-      $this->session->set_flashdata('success', 'Fornecedor excluido com sucesso');
-      redirect('fornecedor');
-    }
+    $fornecedor = $this->fornecedor->find($id);
+   if($fornecedor){
+      $this->db->where('id_fornecedor', $id);
+      $this->db->delete('fornecedor');
+      $this->session->set_flashdata('success', 'fornecedor deletado com sucesso.');
+   }else{
+     $this->session->set_flashdata('danger', 'Impossível Deletar!');
+   }
+   redirect('fornecedor');
   }
 }

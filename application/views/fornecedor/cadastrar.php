@@ -17,69 +17,69 @@
 				<?php endif; ?>
 			</div>
 		</div>
+     <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" >
     <div class="card-body card-block">
-      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" class="form-horizontal">
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" placeholder="Nome" class="form-control"></div>
-        </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label for="email-input" class=" form-control-label">E-mail</label></div>
-          <div class="col-12 col-md-9"><input type="email" id="email" name="email" placeholder="e-mail" class="form-control"></div>
-        </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Razão Social</label></div>
-          <div class="col-12 col-md-9"><textarea name="razao_social" id="razao_social" rows="9" placeholder="Conteudo..." class="form-control"></textarea></div>
-        </div>
-        <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">CNPJ</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" class="form-control"></div>
-        </div>
-		<div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control"></div>
-        </div>
-		<div class="card-header">
-			<strong>Endereço</strong>
-		</div><br>
-    <div class="row form-group">
-      <div class="col col-md-3"><label class=" form-control-label">CEP</label></div>
-      <div class="col-12 col-md-9"><input type="num" id="cep" name="cep" placeholder="CEP" class="form-control"></div>
+      
+        <div class="row">
+           
+          <div class="form-group col-12 col-md-6">
+             <label class=" form-control-label">Nome</label>
+             <input type="text" id="nome" name="nome" placeholder="Nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+              <span class="invalid-feedback">Nome inválido.</span>
+           </div>
+       
+          <div class="form-group col-12 col-md-6">
+             <label for="email-input" class=" form-control-label">E-mail</label>
+             <input type="email" id="email" name="email" placeholder="e-mail" class="form-control" required>
+           </div>
+      
+          <div class="form-group col-12 col-md-4">
+             <label class=" form-control-label">Razão Social</label>
+             <input type="text" id="razao_social" name="razao_social" placeholder="Razão Social" class="form-control" required>
+           </div>
+        
+           <div class="form-group col col-md-4">
+              <label class=" form-control-label">CNPJ</label>
+               <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" class="form-control" required>
+           </div>
+           
+          <div class="col-12 col-md-4">
+             <label class=" form-control-label">Telefone</label>
+             <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control telefone" maxlength="15" required>
+         </div>
+       
+		<div class="col-12 col-md-12 ">
+         <br />
+			<strong>Endereço</strong><br />
+         <br />
+		</div>
+           
+           
+      <div class="form-group col-12 col-md-3"><label class=" form-control-label">CEP</label><input type="num" id="cep" name="cep" placeholder="CEP" class="form-control" required></div>
+   
+       <div class="form-group col-12 col-md-3"><label class=" form-control-label">Estado</label><input type="text" id="estado" name="estado" placeholder="São Paulo" class="form-control" required></div>
+           
+       <div class="form-group col-12 col-md-3"><label class=" form-control-label">Cidade</label><input type="text" id="cidade" name="cidade" placeholder="Caraguatuba" class="form-control" required></div>
+           
+      <div class="form-group col-12 col-md-3"><label class=" form-control-label">Bairro</label><input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control" required></div>
+         
+      <div class="form-group col-12 col-md-4"><label class=" form-control-label">Número</label><input type="num" id="numero" name="numero" placeholder="" class="form-control" required></div>
+    
+      <div class="form-group col-12 col-md-4"><label class=" form-control-label">Logradouro</label><input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control" required></div>
+           
+      <div class="form-group col-12 col-md-4"><label class=" form-control-label">Complemento</label><input type="text" id="complemento" name="complemento" placeholder="complemento" class="form-control" required></div>
+   </div>
+        
+      
     </div>
-		<div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Estado</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="estado" name="estado" placeholder="São Paulo" class="form-control"></div>
-        </div>
-		<div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Cidade</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="cidade" name="cidade" placeholder="Caraguatuba" class="form-control"></div>
-        </div>
-		<div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Bairro</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"></div>
-    </div>
-		<div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Número</label></div>
-          <div class="col-12 col-md-9"><input type="num" id="numero" name="numero" placeholder="CNPJ" class="form-control"></div>
-    </div>
-    <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Logradouro</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"></div>
-    </div>
-    <div class="row form-group">
-      <div class="col col-md-3"><label class=" form-control-label">Complemento</label></div>
-      <div class="col-12 col-md-9"><textarea name="complemento" id="complemento" rows="9" placeholder="Complemento..." class="form-control"></textarea></div>
-    </div>
-        <div class="card-footer">
+     <div class="card-footer">
           <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Enviar
+            <i class="fa fa-dot-circle-o"></i> Gravar
           </button>
           <a href="<?= site_url('fornecedor')?>" class="btn btn-danger btn-sm">
           <i class="fa fa-ban"></i> Cancelar
           </a>
         </div>
-      </form>
-    </div>
-
+       </form>
   </div>
    </div>
