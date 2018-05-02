@@ -56,14 +56,10 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 //Rotas Produtos
-$route['produto/index'] = 'produto/index';
+$route['produto'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
-
-$route['produto'] = 'Produto/index';
-$route['cadastrar/produto'] = 'Produto/create';
-$route['editar/produto/(:num)'] = 'Produto/edit/$1';
-$route['deletar/produto/(:num)'] = 'Produto/delete/$1';
+$route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 
 //Rotas Pessoa
 $route['pessoa']                = 'Pessoa/index';
@@ -125,4 +121,3 @@ $route['candidato'] = 'Candidato';
 $route['candidato/cadastrar'] = 'Candidato/create';
 $route['candidato/editar/(:num)'] = 'Candidato/edit/$1';
 $route['candidato/excluir/(:num)'] = 'Candidato/delete/$1';
-

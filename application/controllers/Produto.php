@@ -58,7 +58,7 @@ class Produto extends CI_Controller
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             $this->session->set_flashdata('old_data', $this->input->post());
-            redirect('cadastrar/produto');
+            redirect('produto/cadastrar');
         }
       }else{
         $dados['title'] = 'Cadastrar produto';
@@ -99,7 +99,7 @@ class Produto extends CI_Controller
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
           $this->session->set_flashdata('old_data', $this->input->post());
-          redirect('editar/produto/'.$id);
+          redirect('produto/editar/'.$id);
         }
       }else{
         $data['errors'] = $this->session->flashdata('errors');

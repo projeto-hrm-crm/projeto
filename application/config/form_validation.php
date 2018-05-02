@@ -52,7 +52,7 @@ $config = array(
 
 $config = array(
 
-    'produto' => 
+    'produto' =>
     array(
         array(
             'field' => 'nome',
@@ -85,8 +85,8 @@ $config = array(
             'rules' => 'required|exact_length[10]'
         ),
     ),
-    'pessoa' => array( 
-    
+    'pessoa' => array(
+
         array(
             'field' => 'nome',
             'label' => 'Nome',
@@ -121,7 +121,7 @@ $config = array(
             'field' => 'bairro',
             'label' => 'Bairro',
             'rules' => 'required'
-        ),        
+        ),
 
         array(
             'field' => 'logradouro',
@@ -203,10 +203,6 @@ $config = array(
                 )
         ),
 
-    
-
-
-    ),
 );
 
 /**
@@ -220,7 +216,7 @@ function requiredIf($field, $value)
         if($_POST[$field] == $value)
         {
             return 'required';
-        }    
+        }
     }
 
 
