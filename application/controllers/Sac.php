@@ -6,10 +6,10 @@ class Sac extends CI_Controller {
     parent::__construct();
     $user_id = $this->session->userdata('user_login');
     $url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-    $this->usuario->hasPermission($user_id, $url);
-    $this->menus = $this->categoria->getUserMenu($user_id);
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
   }
-  
+
     public function index(){
         $data['title'] = 'Solicitações SAC';
         $data['sac'] = $this->sac->get();
@@ -23,7 +23,7 @@ class Sac extends CI_Controller {
     *
     */
     public function create() {
-     
+
         $data = $this->input->post();
 
         if($data){
@@ -36,13 +36,13 @@ class Sac extends CI_Controller {
         $data['title'] = 'Cadastrar SAC';
         loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
     }
-    
-    public function edit() {     
+
+    public function edit() {
 
         $data['title'] = 'Editar SAC';
         loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
 
-    }    
+    }
 
     /**
     * @author: Rodrigo Alves
@@ -53,6 +53,6 @@ class Sac extends CI_Controller {
     public function delete($id_sac) {
 
     }
-    
+
 
 }

@@ -158,10 +158,10 @@ $autoload['model'] = array(
                     'Usuario_model'              => 'usuario',
                     'Sac_model'                  => 'sac',
                     'Setor_model'                => 'setor',
+                    'Vaga_model'                 => 'vaga',
                     'Cidade_model'               => 'cidade',
                     'Cargo_model'                => 'cargo',
-                    'Categoria_model'            => 'categoria',
-                    'Subcategoria_model'         => 'subcategoria',
+                    'Menu_model'                 => 'menu',
+                    'Submenu_model'              => 'submenu',
                     'Grupo_model'                => 'grupo'
-
 );

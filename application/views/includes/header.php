@@ -38,7 +38,6 @@
   <!-- inserção dinamica de arquivos JS -->
 
   <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js">
-
   </script>
   <?php if (isset($assets['js'])): ?>
     <?php foreach ($assets['js'] as $js_file): ?>
@@ -53,6 +52,9 @@
 
 
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+  <!-- script jquero para incluir máscaras nos inputs -->
+  <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/jquery.mask.min.js"></script>
 
 </head>
 <body>
@@ -77,13 +79,13 @@
           <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
-        
+
         <?php foreach($menus as $key => $m): ?>
           <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i><?php echo $key;?></a>
-            <?php if (isset($m['subcategoria']) && !empty($m['subcategoria'])): ?>
+            <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
               <ul class="sub-menu children dropdown-menu">
-                <?php foreach($m['subcategoria'] as $s) : ?>
+                <?php foreach($m['submenu'] as $s) : ?>
                   <li><a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
                 <?php endforeach;?>
               </ul>
@@ -248,4 +250,4 @@
     </div>
   </div> -->
 
-  <div class="content mt-3">
+<div class="content mt-3">

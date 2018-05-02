@@ -7,14 +7,33 @@
 
 class Cliente extends CI_Controller
 {
+  public $menus;
+
+  /**
+   * @author Pedro Henrique Guimarães
+   * Com a configuração do menu esse controller serve como base para todos os outros controllers
+   * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
+    $this->load->model('Cliente_model');
+  }
+
   /**
   * @author Mayra Bueno
   * Metodo index que chama a view inicial de cliente
   **/
   public function index()
   {
+    $data['menus'] = $this->menus;
     $data['title'] = 'Clientes';
     $data['clientes'] = $this->cliente->get();
+    $data['groups'] = $this->Cliente_model->getPais();
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
@@ -36,11 +55,12 @@ class Cliente extends CI_Controller
     if($data){
         $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
-        $this->cliente->insert(['id_pessoa_fisica' => $id_pessoa_fisica]);
+        $this->cliente->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Cliente cadastrado com sucesso.');
         redirect('cliente');
     }
 
+    $data['menus'] = $this->menus;
     $data['title'] = 'Cadastrar cliente';
     loadTemplate('includes/header', 'cliente/cadastrar', 'includes/footer', $data);
   }
@@ -70,6 +90,7 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
+    $data['menus'] = $this->menus;
     $data['cliente'] = $this->cliente->find($id_cliente);
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;

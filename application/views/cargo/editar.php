@@ -8,25 +8,22 @@
   </div>
 </div>
 <div class="card">
-  <div class="card-header"><strong>Cadastro</strong><small> Cargo</small></div>
-  <form action="<?php echo base_url() ?>cargo/cadastrar" method="post">
+  <div class="card-header"><strong>Editar</strong><small> Cargo</small></div>
+  <form action="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" method="post">
     <div class="card-body card-block">
       <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <div class="col-8">
             <div class="form-group">
-              <input type="text" placeholder="Nome do Cargo" name="nome" class="form-control" required>
-              <span class="invalid-feedback" id="invalid-nome">
-                Campo obrigatório
-              </span>
+              <label for="nome">Nome do cargo</label>
+              <input id="nome" type="text" value="<?php echo $cargo->nome ?>" name="nome" class="form-control">
             </div>
             <div class="form-group">
-              <textarea placeholder="Descrição do cargo" name="descricao" class="form-control" required></textarea>
-              <span class="invalid-feedback" id="invalid-descricao">
-                Campo obrigatório
-              </span>
+              <label for="descricao">Descrição do cargo</label>
+              <textarea id="descricao" name="descricao" class="form-control"><?php echo $cargo->descricao ?></textarea>
             </div>
             <div class="form-group">
-              <select class="form-control" name="id_setor">
+              <label for="setor">Setor</label>
+              <select id="setor" class="form-control" name="id_setor">
                 <?php foreach ($setores as $setor): ?>
                   <option value="<?php echo $setor->id_setor ?>"><?php echo $setor->nome; ?></option>
                 <?php endforeach; ?>
@@ -37,7 +34,7 @@
     </div>
     <div class="card-footer">
       <button type="submit" class="btn btn-primary btn-sm">
-        <i class="fa fa-dot-circle-o"></i> Cadastrar
+        <i class="fa fa-dot-circle-o"></i> Salvar Alterações
       </button>
       <button type="reset" class="btn btn-danger btn-sm">
         <i class="fa fa-ban"></i> Limpar Campos

@@ -1,23 +1,23 @@
-<?php 
-class Subcategoria_model extends CI_Model
+<?php
+class Submenu_model extends CI_Model
 {
     /**
      * @author Pedro Henrique Guimarães
      * Método responsável por buscar subcategorias pelo id_categoria
-     * 
-     * @param $category_id
+     *
+     * @param $menu_id
      * @return mixed|bool
      */
-    public function getAllSubcategoriesByCategoryId($category_id)
+    public function getAllSubmenusByMenuId($menu_id)
     {
         $this->db->select('*')
-                 ->from('subcategoria')
-                 ->where('id_categoria', $category_id);
+                 ->from('sub_menu')
+                 ->where('id_menu', $menu_id);
         $result = $this->db->get();
         if ($result->num_rows() > 0) {
             return $result->result();
         }
 
-        return false; 
+        return false;
     }
 }

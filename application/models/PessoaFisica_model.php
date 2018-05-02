@@ -18,7 +18,6 @@ class PessoaFisica_model extends CI_Model{
   {
     try{
       $this->db->insert('pessoa_fisica', $data);
-      return $this->db->insert_id();
     } catch (\Exception $e) {
 
     }
@@ -55,7 +54,7 @@ class PessoaFisica_model extends CI_Model{
   public function update($id, $data)
   {
     try {
-      $this->db->update('pessoa_fisica', $data, "id_pessoa_fisica = ".$id);
+      $this->db->update('pessoa_fisica', $data, "id_pessoa = ".$id);
     } catch (\Exception $e) {}
   }
 

@@ -1,9 +1,31 @@
 <?php
 class Cargo extends CI_Controller
 {
+  public $menus;
+
+  // function __construct()
+  // {
+  //   $user_id = $this->session->userdata('user_login');
+  //   $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+  //   $this->usuario->hasPermission($user_id, $url);
+  //   $this->menus = $this->menu->getUserMenu($user_id);
+  // }
+
+  function __construct()
+  {
+    parent::__construct();
+    $this->menus = ['aaa','bbb','ccc'];
+  }
+
+  /**
+  * @author Peterson Munuera
+  * Metodo index que chama a view inicial de cliente
+  **/
+
   public function index()
   {
-    $cargos=$this->cargo->get();
+    $data['cargos'] = $this->cargo->get();
+    $data['menus'] = $this->menus;
     $data['title'] = 'Cargos';
     loadTemplate('includes/header', 'cargo/index', 'includes/footer', $data);
   }
@@ -29,6 +51,7 @@ class Cargo extends CI_Controller
 		}
 		else
 		{
+      $data['menus'] = $this->menus;
 			$data['title']         = 'Cadastrar Cargo';
 			$data['setores']       = $this->setor->get();
 			$data['assets'] = array(
@@ -47,28 +70,51 @@ class Cargo extends CI_Controller
   }
 
   /**
-  * @author: Matheus Ladislau
+  * @author: Peteson Munuera
   * Realiza edição de registro de um cargo pelo id, dados recebidos pela view cargo/editar.php
   *
   * @param integer: referem-se ao id do cargo a ser alterado
   */
   public function edit($id_cargo)
   {
-    $data["nome"]=$this->input->post("nome");
-    $data["descricao"]=$this->input->post("descricao");
-    $data["id_setor"]=$this->input->post("id_setor");
-    $this->cargo->update($id_cargo,$data);
+    if ($this->input->post())
+    {
+      $data["nome"]=$this->input->post("nome");
+      $data["descricao"]=$this->input->post("descricao");
+      $data["id_setor"]=$this->input->post("id_setor");
+      $this->cargo->update($id_cargo,$data);
+
+      $this->session->set_flashdata('success', 'Cargo editado com sucesso');
+
+      redirect('cargo/editar/'.$id_cargo);
+    }
+    else {
+      $data['cargo'] = $this->cargo->getById($id_cargo)[0];
+
+      $data['setores']       = $this->setor->get();
+      $data['menus'] = $this->menus;
+			$data['title']         = 'Editar Cargo';
+      loadTemplate(
+				'includes/header',
+				'cargo/editar',
+				'includes/footer',
+				$data
+			);
+    }
   }
 
   /**
-  * @author: Matheus Ladislau
+  * @author: Peterson Munuera
   * Realiza remoção de registro de um cargo pelo id, dados recebidos pela view cargo/delete.php
   *
   * @param integer: refere-se ao id do cargo a ser alterado
   */
   public function delete($id_cargo)
   {
-    $this->cargo->remove($id_cargo);
+    $this->cargo->delete($id_cargo);
+
+    $this->session->set_flashdata('success', 'Cargo excluído com sucesso');
+    redirect('cargo');
   }
 }
 ?>

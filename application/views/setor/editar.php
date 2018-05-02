@@ -20,11 +20,11 @@
 			</div>
 		</div>
     <div class="card-body card-block">
-      <form action="<?php site_url('setor/update'.$id); ?>" method="POST" class="form-horizontal">
+      <form action="<?php site_url('setor/editar'.$id_setor); ?>" method="POST" class="form-horizontal">
         <div class="row form-group">
           <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
           <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($setor[0]->nome)?>"></div>
-   
+
         <div class="card-footer">
           <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Enviar

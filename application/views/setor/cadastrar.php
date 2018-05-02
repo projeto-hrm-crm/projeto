@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-8">
   <div class="card">
     <div class="card-header">
       <strong>Cadastro de setor</strong>
@@ -17,12 +17,12 @@
 			</div>
 		</div>
     <div class="card-body card-block">
-      <form action="<?php echo site_url('setor/insert'); ?>" method="POST" class="form-horizontal">
+      <form action="<?php echo site_url('setor/cadastrar'); ?>" method="POST" class="form-horizontal">
         <div class="row form-group">
-          <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
-          <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" placeholder="Nome" class="form-control"></div>
+          <div class="col-8 col-md-3"><label class=" form-control-label">Nome</label></div>
+          <div class="col-8 col-md-9"><input type="text" id="nome" name="nome" placeholder="Nome" class="form-control"></div>
         </div>
-   
+
           <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Enviar
           </button>

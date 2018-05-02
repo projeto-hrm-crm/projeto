@@ -49,5 +49,36 @@ jQuery().ready(function() {;
         },
 
     });
+                           
+   jQuery("#form_fornecedor").validate({
+        rules: {
+            nome: "required",
+            email: "required",
+            razao_social: "required",
+            cnpj: "required",
+            telefone: "required",
+
+        },
+        messages: {
+            nome: "Insira o nome do produto",
+
+            email: {
+                required: "Insira o e-mail",
+            },
+
+            razao_social: {
+                required: "Informe a razão social",
+            },
+
+            cnpj: {
+                required: "Insira o número do CNPJ",
+            },
+
+            telefone: {
+                required: "Insira o número de Telefone",
+            },
+        },
+
+    });
 
 });

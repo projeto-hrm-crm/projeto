@@ -22,6 +22,18 @@ class Cargo_model extends CI_Model
   }
 
   /**
+  * @author: Peterson Munuera
+  * Retorna registro do cargo filtrado pelo id_cargo
+  * @param integer $id_cargo refere-se ao id do registro de cargo a ser buscado
+  * @return array: cargo buscado
+  */
+  public function getById($id_cargo)
+  {
+      $query = $this->db->get_where('cargo', array('id_cargo' => $id_cargo));
+      return $query->result();
+  }
+
+  /**
   * @author: Matheus Ladislau
   * Realiza registro de cargo
   *
@@ -50,10 +62,9 @@ class Cargo_model extends CI_Model
   *
   * @param integer: $id_cargo refere-se ao id do registro de cargo a ser deletado
   */
-  public function remove($id_cargo)
+  public function delete($id_cargo)
   {
-  	$this->db->where('id_cargo', $id_cargo);
-  	$this->db->delete('cargo');
+    $this->db->delete('cargo', array('id_cargo' => $id_cargo));
   }
 }
 ?>
