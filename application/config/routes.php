@@ -75,10 +75,9 @@ $route['remover/pessoa/(:num)'] = 'Pessoa/delete/$1';
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
 //Rotas Fornecedores
-$route['fornecedor'] = 'Fornecedor';
-$route['fornecedor/cadastrar'] = 'Fornecedor/create';
-$route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
-$route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
+$route['fornecedor/cadastrar'] = 'fornecedor/create';
+$route['fornecedor/editar/(:num)'] = 'fornecedor/edit/$1';
+$route['fornecedor/excluir/(:num)'] = 'fornecedor/delete/$1';
 
 //Rotas funcionários
 $route['funcionario'] = 'Funcionario';
