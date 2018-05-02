@@ -202,6 +202,13 @@ $config = array(
                         'rules' => 'required'
                 )
         ),
+        'setor' => array(
+                array(
+                        'field' => 'nome',
+                        'label' => 'nome',
+                        'rules' => 'required'
+                )
+        ),
 
        'vaga' => array(
         
