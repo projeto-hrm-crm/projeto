@@ -8,6 +8,21 @@
 
 class Candidato extends CI_Controller
 {
+  public $menus;
+
+  /**
+   * @author Pedro Henrique Guimarães
+   * Com a configuração do menu esse controller serve como base para todos os outros controllers
+   * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
+  }
   /**
   * author: Camila Sales
   * Metodo index que chama a view inicial de candidato
@@ -16,6 +31,7 @@ class Candidato extends CI_Controller
   {
     $data['title'] = 'Candidatos';
     $data['candidatos'] = $this->candidato->get();
+    $data['menus'] = $this->menus;
 
     loadTemplate('includes/header', 'candidato/index', 'includes/footer', $data);
   }
@@ -33,32 +49,37 @@ class Candidato extends CI_Controller
   public function create()
   {
     $data['candidato']  = $this->input->post();
+    $data['menus'] = $this->menus;
 
     if($data['candidato']){
       if(!$this->form_validation->run('pessoa'))
       {
-        $this->session->set_flashdata('errors', $this->form_validation->error_array());
-        $this->session->set_flashdata('old_values', $this->input->post());
-
-        $this->session->set_flashdata(
-          'danger',
-          'Não foi possível realizar o cadastro<br>Verifique os campos abaixo'
-        );
-
-        redirect('candidato/cadastrar');
+            $data['old_data'] = $this->input->post();
+            $this->session->set_flashdata('errors', $this->form_validation->error_array());
+            $this->session->set_flashdata('old_data', $this->input->post());
+            redirect('candidato/cadastrar');
       }
       else
       {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['candidato']['nome'], 'email' => $data['candidato']['email']]);
-        $id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
+
+        $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+        'id_pessoa'   => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+        $this->documento->insert(['tipo' => 'cpf','numero' = $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+
+        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
+
+        $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
       }
     }
-
-
     $data['title'] = 'Cadastrar Candidato';
+    $data['errors'] = $this->session->flashdata('errors');
+    $data['old_data'] = $this->session->flashdata('old_data');
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
 
@@ -80,6 +101,14 @@ class Candidato extends CI_Controller
       $data['candidato'] = $this->input->post();
       $candidato = $this->candidato->find($id_candidato);
 
+      $this->endereco->update(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+      'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+      'id_pessoa'   => $candidato[0]->id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+      $this->documento->update(['tipo' => 'cpf','numero' = $this->input->post('cpf') , 'id_pessoa' => $candidato[0]->id_pessoa]);
+
+      $this->telefone->update(['numero'=>$this->input->post('telefone'),'id_pessoa' => $candidato[0]->id_pessoa]);
+
       $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['candidato']['nome'],'email'=>$data['candidato']['email']]);
       $this->pessoa_fisica->update($candidato[0]->id_pessoa,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['candidato']['sexo']]);
       $this->session->set_flashdata('success', 'Candidato editado com sucesso.');
@@ -89,6 +118,7 @@ class Candidato extends CI_Controller
     $data['candidato'] = $this->candidato->find($id_candidato);
     $data['title'] = 'Editar Candidato';
     $data['id'] = $id_candidato;
+    $data['menus'] = $this->menus;
 
     loadTemplate('includes/header', 'candidato/editar', 'includes/footer', $data);
   }

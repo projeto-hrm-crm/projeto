@@ -22,6 +22,7 @@
 
       <form action="<?php site_url('cliente/edit'.$id); ?>" method="POST" class="form-horizontal">
         <div class="card-body">
+
           <div class="row form-group">
             <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
             <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($cliente[0]->nome)?>" title="Campo obrigatório" required></div>
@@ -41,9 +42,14 @@
               <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo ($cliente[0]->sexo=='1')?'checked':'' ?> /><label for="sexo_fem">Feminino</label></div>
           </div> <!-- FIM SEXO -->
           <div class="row form-group">
+            <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
+            <div class="col-12 col-md-9"><input type="text" id="telefone" name="telefone" value="" class="form-control" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
+          </div> <!-- FIM TELEFONE -->
+          <div class="row form-group">
             <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
-            <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais"></div>
+            <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais" ></div>
           </div> <!-- FIM CPF -->
+
         </div>
 
         <div class="card-footer">

@@ -38,7 +38,6 @@
   <!-- inserção dinamica de arquivos JS -->
 
   <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js">
-
   </script>
   <?php if (isset($assets['js'])): ?>
     <?php foreach ($assets['js'] as $js_file): ?>
@@ -53,6 +52,9 @@
 
 
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+  <!-- script jquero para incluir máscaras nos inputs -->
+  <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/jquery.mask.min.js"></script>
 
 </head>
 <body>
@@ -248,4 +250,4 @@
     </div>
   </div> -->
 
-  <div class="content mt-3">
+<div class="content mt-3">

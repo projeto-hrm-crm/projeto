@@ -19,8 +19,9 @@ class Cliente extends CI_Controller
     parent::__construct();
     $user_id = $this->session->userdata('user_login');
     $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-    $this->usuario->hasPermission($user_id, $url);
+    // $this->usuario->hasPermission($user_id, $url);
     $this->menus = $this->menu->getUserMenu($user_id);
+    $this->load->model('Cliente_model');
   }
 
   /**
@@ -32,6 +33,7 @@ class Cliente extends CI_Controller
     $data['menus'] = $this->menus;
     $data['title'] = 'Clientes';
     $data['clientes'] = $this->cliente->get();
+    $data['groups'] = $this->Cliente_model->getPais();
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
@@ -48,7 +50,6 @@ class Cliente extends CI_Controller
   **/
   public function create()
   {
-    $data['menus'] = $this->menus;
     $data = $this->input->post();
 
     if($data){
@@ -59,6 +60,7 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
+    $data['menus'] = $this->menus;
     $data['title'] = 'Cadastrar cliente';
     loadTemplate('includes/header', 'cliente/cadastrar', 'includes/footer', $data);
   }
@@ -77,7 +79,6 @@ class Cliente extends CI_Controller
   **/
   public function edit($id_cliente)
   {
-    $data['menus'] = $this->menus;
     if ($this->input->post())
     {
       $data['cliente'] = $this->input->post();
@@ -89,6 +90,7 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
+    $data['menus'] = $this->menus;
     $data['cliente'] = $this->cliente->find($id_cliente);
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;

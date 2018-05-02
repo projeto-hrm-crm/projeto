@@ -18,7 +18,6 @@ class PessoaFisica_model extends CI_Model{
   {
     try{
       $this->db->insert('pessoa_fisica', $data);
-      return $this->db->insert_id();
     } catch (\Exception $e) {
 
     }
