@@ -35,6 +35,13 @@ class Produto extends CI_Controller
       $dados['title'] = 'Produtos';
       $dados['produtos'] = $this->produto->get();
       $dados['menus'] = $this->menus;
+      $dados['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'vaga/main.js',
+        ),
+      );
       $produtos = $dados['produtos'];
       foreach($produtos as $produto){
           $produto->fabricacao = switchDate($produto->fabricacao);
