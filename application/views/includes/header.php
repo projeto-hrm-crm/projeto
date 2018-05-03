@@ -21,8 +21,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
   <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
-  <link href="<?php echo base_url();?>assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
-
 
   <!-- inserção dinâmica de arquivos CSS -->
   <?php if (isset($assets['css'])): ?>
@@ -53,7 +51,7 @@
 
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-  <!-- script jquero para incluir máscaras nos inputs -->
+  <!-- script jquery para incluir máscaras nos inputs -->
   <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/jquery.mask.min.js"></script>
 
 </head>
@@ -80,18 +78,20 @@
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
-        <?php foreach($menus as $key => $m): ?>
-          <li class="menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i><?php echo $key;?></a>
-            <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
-              <ul class="sub-menu children dropdown-menu">
-                <?php foreach($m['submenu'] as $s) : ?>
-                  <li><a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
-                <?php endforeach;?>
-              </ul>
-            <?php endif;?>
-          </li>
-        <?php endforeach;?>
+        <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
+          <?php foreach($menus as $key => $m): ?>
+            <li class="menu-item-has-children dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i><?php echo $key;?></a>
+              <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
+                <ul class="sub-menu children dropdown-menu">
+                  <?php foreach($m['submenu'] as $s) : ?>
+                    <li><a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
+                  <?php endforeach;?>
+                </ul>
+              <?php endif;?>
+            </li>
+          <?php endforeach;?>
+      <?php endif;?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
