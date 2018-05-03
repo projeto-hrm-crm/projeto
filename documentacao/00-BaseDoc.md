@@ -10,7 +10,12 @@ Com o sistema HRM (Human Resource Management - Gerenciador de Recursos Humanos) 
 Sendo uma solução voltada a empresas que vendem produtos, houve necessidade de cadastrar os fornecedreos de tais produtos, de forma que o sistema possui módulo de gerenciamente de fornecedores.
 
 ## Requisitos de Sistema
-Requisitos funcionais e não funcionais
+
+Embora o clente tenha explicitado um conjunto de necessidades que deverão ser atendidas pelo sistema para solucionar o problema do seu negócio, coube à equipe de consultores identificar a real necessidade do negócio.
+
+### Requisitos funcionais
+
+### Requisitos não funcionais
 
 ## Desenvolvimento
 Linguagens e ferramenats utilizados no desenvolvimento:
