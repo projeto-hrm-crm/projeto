@@ -85,7 +85,9 @@
               <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
                 <ul class="sub-menu children dropdown-menu">
                   <?php foreach($m['submenu'] as $s) : ?>
-                    <li><a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
+                    <?php if(!is_null($s->id_menu)):?>
+                      <li><a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
+                    <?php endif;?>
                   <?php endforeach;?>
                 </ul>
               <?php endif;?>
