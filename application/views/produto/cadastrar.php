@@ -1,10 +1,10 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">Novo Produto</strong>
             </div>
-            <form id="form_produto" action="<?php echo base_url('cadastrar/produto'); ?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('produto/cadastrar'); ?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
