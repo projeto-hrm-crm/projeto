@@ -11,10 +11,13 @@ class Cargo extends CI_Controller
   //   $this->menus = $this->menu->getUserMenu($user_id);
   // }
 
-  function __construct()
+  public function __construct()
   {
     parent::__construct();
-    $this->menus = ['aaa','bbb','ccc'];
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
   }
 
   /**

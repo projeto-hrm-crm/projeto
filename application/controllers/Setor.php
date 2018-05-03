@@ -1,15 +1,16 @@
 <?php
 class Setor extends CI_Controller
 {
+  public $menus;
 
-  public function __construct()
-    {
-      parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-      #$this->usuario->hasPermission($user_id, $url);
-      $this->menus = $this->menu->getUserMenu($user_id);
-    }
+  function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
+  }
 
   /**
   * @author: Matheus Ladislau
@@ -19,6 +20,7 @@ class Setor extends CI_Controller
   {
     $data['title'] = 'Setores';
     $data['setores'] = $this->setor->get();
+    $data['menus'] = $this->menus;
     loadTemplate(
       'includes/header',
       'setor/index',
@@ -38,10 +40,12 @@ class Setor extends CI_Controller
       $this->session->set_flashdata('success', 'setor cadastrado com sucesso');
       redirect('setor');
     }else{
+      $data['title'] = 'Cadastrar Setor';
+      $data['menus'] = $this->menus;
       loadTemplate(
         'includes/header',
         'setor/cadastrar.php',
-        'includes/footer');
+        'includes/footer',$data);
   }
 }
 
@@ -63,6 +67,7 @@ class Setor extends CI_Controller
       $data['setor'] = $this->setor->find($id_setor);
       $data['title'] = 'Editar Setor';
       $data['id_setor'] = $id_setor;
+      $data['menus'] = $this->menus;
       loadTemplate(
         'includes/header',
         'setor/editar',
