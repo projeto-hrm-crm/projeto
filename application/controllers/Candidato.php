@@ -53,15 +53,15 @@ class Candidato extends CI_Controller
     $data['menus'] = $this->menus;
 
     if($data['candidato']){
-      if(!$this->form_validation->run('pessoa'))
-      {
-            $data['old_data'] = $this->input->post();
-            $this->session->set_flashdata('errors', $this->form_validation->error_array());
-            $this->session->set_flashdata('old_data', $this->input->post());
-            redirect('candidato/cadastrar');
-      }
-      else
-      {
+      // if(!$this->form_validation->run('pessoa'))
+      // {
+      //       $data['old_data'] = $this->input->post();
+      //       $this->session->set_flashdata('errors', $this->form_validation->error_array());
+      //       $this->session->set_flashdata('old_data', $this->input->post());
+      //       redirect('candidato/cadastrar');
+      // }
+      // else
+      // {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['candidato']['nome'], 'email' => $data['candidato']['email']]);
 
         $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
@@ -70,13 +70,13 @@ class Candidato extends CI_Controller
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
+        $this->telefone->insert(['numero'=>$this->input->post('numero'),'id_pessoa' => $id_pessoa]);
 
         $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
-      }
+      // }
     }
     $data['title'] = 'Cadastrar Candidato';
     $data['errors'] = $this->session->flashdata('errors');
