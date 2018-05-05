@@ -42,13 +42,62 @@
 										<td><?php echo $vaga->setor; ?></td>
 										<td><?php echo $vaga->quantidade; ?></td>
 										<td><?php echo switchDate($vaga->data_oferta); ?></td>
-										<td>
-										    <a href="editar/vaga/<?php echo $vaga->id_vaga ?>" class="btn btn-primary">
-										        <span class="fa fa-edit"></span>
+										<td >
+										    
+										    <a  href="#modalRemover" onclick= "remover/vaga/<?php echo $vaga->id_vaga ?>" role="button" data-togle="modal"  class="bg bg-danger text-white col-4 " >
+										        <span class="fa fa-times" </span>
+										        	
+  									    </a>
+  									    
+										   
+										   <!-- Modal remover -->
+
+<div class="modal fade" id="modalRemover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Vaga</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deseja excluir essa Vaga?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+										    <a href="#modalEditar" role="button" data-togle="modal" onclick= "editar/vaga/<?php echo $vaga->id_vaga ?>" class="bg  bg-primary text-white col-2">
+										        <span class="fa fa-pencil-square-o" ></span>
 										    </a>
-										    <a href="remover/vaga/<?php echo $vaga->id_vaga ?>" class="btn btn-danger">
-										        <span class="fa fa-close"></span>
-										    </a>
+										    <!-- Modal editar -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deseja editar essa Vaga?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
 										</td>
 									</tr>
 								<?php endforeach; ?>

@@ -10,7 +10,7 @@
 	                <div class="card-body">
 	                    <div class="card-body">
 	                        <div class="row">
-	                            <div class="form-group col-6">
+	                            <div class="form-group col-8">
 	                                <label for="id_cargo" class="control-label mb-1">Cargo</label>
 	                                <select name="id_cargo" id="id_cargo" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
@@ -24,7 +24,7 @@
 	                             		<?php echo isset($errors['id_cargo']) ? $errors['id_cargo'] : '' ; ?>
 	                             	</span>
 	                            </div>
-	                            <div class="form-group col-6">
+	                            <div class="form-group col-8">
 	                                <label for="data_oferta" class="control-label mb-1">Data da Oferta</label>
 	                                <input id="data_oferta" value="<?php echo isset($old_data['data_oferta']) ? $old_data['data_oferta'] : null;?>" name="data_oferta" type="text" class="data form-control <?php echo isset($errors['data_oferta']) ? 'is-invalid' : '' ?>" required>
 	                                <span class="invalid-feedback">
@@ -35,7 +35,7 @@
 
 
 	                        <div class="row">
-	                            <div class="form-group col-3">
+	                            <div class="form-group col-8">
 	                                <label for="quantidade" class="control-label mb-1">Quantidade</label>
 	                                <input id="quantidade" value="<?php echo isset($old_data['quantidade']) ? $old_data['quantidade'] : null;?>" name="quantidade" type="text" class="form-control <?php echo isset($errors['quantidade']) ? 'is-invalid' : '' ?>" required>
 	                                <span class="invalid-feedback">
@@ -45,7 +45,7 @@
 	                        </div>
 
 	                        <div class="row">
-	                        	<div class="form-group col-12">
+	                        	<div class="form-group col-8">
 	                        	
 	                                <label for="data_oferta" class="control-label mb-1">Requisitos</label>
 	                                <textarea name="requisitos" id="requisitos" rows="6" class="form-control <?php echo isset($errors['requisitos']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['requisitos']) ? $old_data['requisitos'] : null;?></textarea>
@@ -60,12 +60,12 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-	                    <button type="reset" class="btn btn-danger btn-sm">
-	                        <i class="fa fa-ban"></i>
-	                        Apagar
+	                    <button type="reset" class="bg bg-danger text-white">
+	                        <i class="fa fa-times" aria-hidden="true"></i>
+	                        Cancelar
 	                    </button>
-	                    <button type="submit" class="btn btn-primary btn-sm">
-	                        <i class="fa fa-check"></i>
+	                    <button type="submit" class="bg bg-primary text-white">
+	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>
 	                </div>
