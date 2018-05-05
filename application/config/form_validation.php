@@ -187,7 +187,7 @@ $config = array(
           array(
                   'field' => 'cnpj',
                   'label' => 'CNPJ',
-                  'rules' => 'required|integer'
+                  'rules' => 'required'
           ),
     ),
         'login' => array(

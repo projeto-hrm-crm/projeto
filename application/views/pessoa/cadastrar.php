@@ -75,7 +75,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="form-group">
-              <input type="text" name="cep" placeholder="CEP" class="form-control" required>
+              <input type="text" name="cep" id="cep" placeholder="CEP" class="form-control" required>
               <span class="invalid-feedback" id="invalid-cep">
                 Campo obrigatório
               </span>
@@ -98,7 +98,7 @@
               </span>
             </div>
             <div class="form-group">
-              <input type="text" name="bairro" placeholder="Bairro" class="form-control" required>
+              <input type="text" name="bairro" id="bairro" placeholder="Bairro" class="form-control" required>
               <span class="invalid-feedback" id="invalid-bairro">
                 Campo obrigatório
               </span>

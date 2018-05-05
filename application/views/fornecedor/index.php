@@ -20,13 +20,9 @@
   		<tbody>
   			<?php foreach ($fornecedores as $fornecedor): ?>
   				<tr>
-  					<td class="text-center"><?= $fornecedor->id_fornecedor; ?></td>
+  					<td class="text-center"><?=$fornecedor->id_fornecedor; ?></td>
   					<td>
-                  <?= $fornecedor->nome;?> <br />
-                  <small>
-                     CNPJ: <?= $fornecedor->cnpj; ?> <br />
-                     Razão Social: <?= $fornecedor->razao_social; ?>
-                  </small>
+                  <?= $fornecedor->nome;?> 
                </td>
                <td><?= $fornecedor->email; ?></td>
                <td><?= $fornecedor->telefone; ?></td>
