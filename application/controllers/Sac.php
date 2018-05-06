@@ -24,16 +24,31 @@ class Sac extends CI_Controller {
     */
     public function create() {
 
-        $data = $this->input->post();
+         $data = $this->input->post();
 
-        if($data){
-
-            $this->sac->insert($data);
-            redirect('sac/index');
-
-        }
+         if($data){
+            if ($this->form_validation->run('sac')) {
+               $array = array(
+                 'id_produto' => $this->input->post('id_produto'),
+                 'id_cliente' => $this->input->post('id_cliente'),
+                 'abertura' => date("Y-m-d H:i:s"),
+                 'fechamento' => 0,
+                 'encerrado' => 0,
+                 'titulo' => $this->input->post('titulo'),
+                 'descricao' => $this->input->post('descricao'),
+               );
+               $this->sac->insert($array);
+               $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
+               redirect('sac');
+            }else{
+               $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
+               redirect('sac');
+            }
+         }
 
         $data['title'] = 'Cadastrar SAC';
+        $data['produtos'] = $this->produto->get();
+        $data['clientes'] = $this->cliente->get();
         loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
     }
 
@@ -51,7 +66,9 @@ class Sac extends CI_Controller {
     * @param integer $id_sac
     */
     public function delete($id_sac) {
-
+       $this->sac->remove($id_sac);
+       $this->session->set_flashdata('success', 'Sac deletado com sucesso.');
+       redirect('sac');
     }
 
 

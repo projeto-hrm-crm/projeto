@@ -60,8 +60,8 @@ jQuery().ready(function() {;
             cep: "required",
             bairro: "required",
             numero: "required",
-            logradouro: "logradouro",
-            compremento: "compremento",
+            logradouro: "required",
+            compremento: "required",
 
         },
         messages: {
@@ -101,6 +101,24 @@ jQuery().ready(function() {;
             complemento: {
                 required: "Informe o complemento",
             },
+        },
+
+    });
+                           
+   jQuery("#form-sac").validate({
+        rules: {
+            titulo: "titulo",
+            descricao: "descricao",
+
+        },
+        messages: {
+            titulo: "Insira um asssunto ao SAC",
+
+            descricao: {
+                required: "Insira a descrição de seu problema",
+            },
+
+           
         },
 
     });

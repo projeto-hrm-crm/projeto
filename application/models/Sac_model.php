@@ -7,9 +7,15 @@ class Sac_model extends CI_Model {
   * Este método inserção de dados
   *
   */
-  public function insert($dados) {    
-    $this->db->insert('sac', $dados);
-    return $this->db->insert_id();
+  public function insert($dados) {
+     try {
+      
+      $this->db->insert('sac', $dados);
+      return $this->db->insert_id();
+      
+    
+    } catch (\Exception $e) {}     
+         
   }
     
   /**
@@ -59,8 +65,16 @@ class Sac_model extends CI_Model {
   *
   */
   public function remove($id_sac) {
-    $this->db->where('id_sac', $id_sac);
-    $this->db->delete('sac');
+    
+     
+    try {
+      
+      $this->db->where('id_sac', $id_sac);
+      return $this->db->delete('sac');
+      
+    
+    } catch (\Exception $e) {} 
+     
   }
     
 }

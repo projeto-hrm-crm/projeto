@@ -6,17 +6,13 @@
                     <strong class="card-title">Ordens</strong>
                 </div>
                 <div class="card-body">
-                   
-                   <a href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
-                     <i class="fa fa-check"></i> Cadastrar
-                   </a><br />
-                   <br />
+                  
                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Código</th>
+                                <th width="10%">Código</th>
                                 <th>Titulo</th>
-                                <th>Ação</th>
+                                <th width="20%">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,10 +22,10 @@
                                         <td><?=$item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
                                         <td>
-                                            <a href="item/editar/<?php echo $item->id_sac?>" class="btn btn-primary">
+                                            <a href="<?php echo site_url('sac/editar/'.$item->id_sac); ?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <a href="item/deletar/<?php echo $item->id_sac?>" class="btn btn-danger">
+                                            <a href="<?php echo site_url('sac/excluir/'.$item->id_sac); ?>" class="btn btn-danger">
                                                 <span class="fa fa-close"></span>
                                             </a>
                                         </td>
@@ -59,22 +55,20 @@
         </div>
     </div>
 </div>
+<script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/dataTables.buttons.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/buttons.bootstrap.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/jszip.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/pdfmake.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/vfs_fonts.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/buttons.html5.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/buttons.print.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/buttons.colVis.min.js');?>"></script>
+<script src="<?= base_url('assets/js/lib/data-table/datatables-init.js');?>"></script>
 
-
-    <script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/dataTables.buttons.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.bootstrap.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/jszip.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/pdfmake.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/vfs_fonts.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.html5.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.print.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.colVis.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/datatables-init.js');?>"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-        } );
-    </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#bootstrap-data-table-export').DataTable();
+  } );
+</script>
