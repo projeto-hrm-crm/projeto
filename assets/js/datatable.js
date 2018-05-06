@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('#vagas').DataTable({
+	$('.datatable').DataTable({
 
 		'language': {
 		    'sEmptyTable': 'Nenhum registro encontrado',
