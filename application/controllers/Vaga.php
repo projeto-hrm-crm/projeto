@@ -36,7 +36,7 @@ class Vaga extends CI_Controller
         'js' => array(
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
-          'vaga/main.js',
+          'datatable.js',
         ),
       );
       
@@ -83,7 +83,7 @@ class Vaga extends CI_Controller
          $data['assets'] = array(
         'js' => array(
           
-          'vaga/validate.js',
+          'validate.js',
         ),
 
       );
@@ -134,7 +134,7 @@ class Vaga extends CI_Controller
        $data['assets'] = array(
         'js' => array(
           
-          'vaga/validate.js',
+          'validate.js',
         ),
 
       );
