@@ -230,7 +230,7 @@ $config = array(
         array(
             'field' => 'quantidade',
             'label' => 'Quantidade',
-            'rules' => 'required|integer'
+            'rules' => 'required|integer|greater_than[0]'
         ),
 
         array(
