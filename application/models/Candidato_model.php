@@ -81,8 +81,8 @@ class Candidato_model extends CI_Model {
 	}
 
 	public function get_estado(){
-		$query = $this->db->get('estado');
-		return $query->result();
+		$query = $this->db->select('*')->from('estado');
+		return $query->get()->result();
 	}
 
 	public function get_cidade(){
