@@ -66,9 +66,6 @@
                           <div class="col-12 col-md-9">
                             <select name="cidade" id="cidade" class="form-control">
                                   <option value="">Selecionar cidade</option>
-                                  <?php foreach($cidades as $cidade): ?>
-                                      <option value="<?php echo $cidade->id_cidade; ?>"><?php echo $cidade->nome; ?></option>
-                                  <?php endforeach ?>
                             </select>
                         </div>
                     </div> <!-- FIM CIDADE -->
