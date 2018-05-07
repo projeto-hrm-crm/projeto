@@ -7,6 +7,22 @@
 
 class Funcionario extends CI_Controller
 {
+  public $menus;
+
+  /**
+   * @author Pedro Henrique Guimarães
+   * Com a configuração do menu esse controller serve como base para todos os outros controllers
+   * onde todos devem seguir essa mesma estrutura mínima no consrutor.
+   */
+  public function __construct()
+  {
+    parent::__construct();
+    $user_id = $this->session->userdata('user_login');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $url = $this->usuario->getParsedUrl($currentUrl);
+    // $this->usuario->hasPermission($user_id, $url);
+    $this->menus = $this->menu->getUserMenu($user_id);
+  }
   /**
   * author: Camila Sales
   * Metodo index que chama a view inicial de funcionarioes
@@ -15,6 +31,7 @@ class Funcionario extends CI_Controller
   {
     $data['title'] = 'Funcionarios';
     $data['funcionarios'] = $this->funcionario->get();
+    $data['menus'] = $this->menus;
 
     loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
   }
@@ -47,6 +64,7 @@ class Funcionario extends CI_Controller
       // }
     }
 
+    $data['menus'] = $this->menus;
     $data['title'] = 'Cadastrar Funcionario';
     loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
   }
@@ -70,7 +88,7 @@ class Funcionario extends CI_Controller
       // if ($this->form_validation->run('funcionario'))
       // {
         $funcionario = $this->funcionario->find($id_funcionario);
-        
+
         $this->pessoa->update(['id_pessoa' => $funcionario[0]->id_pessoa, 'nome'=> $data['nome'],'email'=>$data['email']]);
         $this->pessoa_fisica->update($funcionario[0]->id_pessoa_fisica,['data_nascimento'=> $data['data_nascimento'],'sexo'=>$data['sexo']]);
         $this->session->set_flashdata('success', 'Funcionario editado com sucesso.');
@@ -84,6 +102,7 @@ class Funcionario extends CI_Controller
     $data['funcionario'] = $this->funcionario->find($id_funcionario);
     $data['title'] = 'Editar Funcionario';
     $data['id'] = $id_funcionario;
+    $data['menus'] = $this->menus;
 
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);
   }
