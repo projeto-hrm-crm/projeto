@@ -70,12 +70,24 @@ class Cliente_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function getPais()
-	{
-		$query = $this->db->query('SELECT nome FROM pais');
+	/**
+	* @author: Mayra Bueno
+	* Métodos para a caixa de seleção dinâmica
+	* País, estado e cidade
+	*/
+	public function get_pais(){
+		$query = $this->db->get('pais');
 		return $query->result();
+	}
 
-			//echo 'Total Results: ' . $query->num_rows();
+	public function get_estado(){
+		$query = $this->db->get('estado');
+		return $query->result();
+	}
+
+	public function get_cidade(){
+		$query = $this->db->get('cidade');
+		return $query->result();
 	}
 
 }

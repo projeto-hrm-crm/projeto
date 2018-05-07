@@ -21,7 +21,7 @@ class Cliente extends CI_Controller
     $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
     // $this->usuario->hasPermission($user_id, $url);
     $this->menus = $this->menu->getUserMenu($user_id);
-    $this->load->model('Cliente_model');
+    $this->load->model('cliente_model');
   }
 
   /**
@@ -33,7 +33,6 @@ class Cliente extends CI_Controller
     $data['menus'] = $this->menus;
     $data['title'] = 'Clientes';
     $data['clientes'] = $this->cliente->get();
-    $data['groups'] = $this->Cliente_model->getPais();
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
@@ -61,6 +60,9 @@ class Cliente extends CI_Controller
     }
 
     $data['menus'] = $this->menus;
+    $data['paises'] = $this->cliente->get_pais();
+    $data['estados'] = $this->cliente->get_estado();
+    $data['cidades'] = $this->cliente->get_cidade();
     $data['title'] = 'Cadastrar cliente';
     loadTemplate('includes/header', 'cliente/cadastrar', 'includes/footer', $data);
   }

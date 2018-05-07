@@ -81,6 +81,10 @@ class Candidato extends CI_Controller
     $data['title'] = 'Cadastrar Candidato';
     $data['errors'] = $this->session->flashdata('errors');
     $data['old_data'] = $this->session->flashdata('old_data');
+    $data['paises'] = $this->candidato->get_pais();
+    $data['estados'] = $this->candidato->get_estado();
+    $data['cidades'] = $this->candidato->get_cidade();
+    $data['vagas'] = $this->candidato->get_vagas();
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
 
