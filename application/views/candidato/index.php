@@ -50,8 +50,10 @@
                               ?>
                             </td>
                   					<td class="text-center">
-                  						<a title="Editar" href="<?= site_url('candidato/edit/'.$candidato->id_candidato)?>">Editar</a> |
-                              <a title="Excluir" href="<?= site_url('candidato/delete/'.$candidato->id_candidato)?>">Excluir</a>
+                  						<a title="Editar" href="<?= site_url('candidato/edit/'.$candidato->id_candidato)?>" class="btn btn-primary">
+      										        <span class="fa fa-edit"></span></a>
+                              <a title="Excluir" href="<?= site_url('candidato/delete/'.$candidato->id_candidato)?>" class="btn btn-danger">
+      										        <span class="fa fa-close"></span></a>
                   					</td>
                   				</tr>
                         <?php endforeach ?>
