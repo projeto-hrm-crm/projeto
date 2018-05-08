@@ -52,9 +52,43 @@ class Sac extends CI_Controller {
         loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
     }
 
-    public function edit() {
+    public function edit($id) {
+       
+       $data = $this->input->post();
+
+         if($data){
+            if ($this->form_validation->run('sac')) {
+               
+               if($this->input->post('encerrado')){
+                  $fec = date("Y-m-d H:i:s");
+               }else {
+                  $fec = 0;
+               }               
+               
+               $array = array(
+                 'id_produto' => $this->input->post('id_produto'),
+                 'id_cliente' => $this->input->post('id_cliente'),
+                 'abertura' => date("Y-m-d H:i:s"),
+                 'fechamento' => $fec,
+                 'encerrado' => $this->input->post('encerrado'),
+                 'titulo' => $this->input->post('titulo'),
+                 'descricao' => $this->input->post('descricao'),
+               );
+               
+               $this->sac->update($array, $id);
+               $this->session->set_flashdata('success', 'Sac editado com sucesso.');
+               redirect('sac');
+            }else{
+               $this->session->set_flashdata('danger', 'Sac não pode ser editado');
+               redirect('sac');
+            }
+         }
 
         $data['title'] = 'Editar SAC';
+        $data['sac'] = $this->sac->get();
+        $data['produtos'] = $this->produto->get();
+        $data['clientes'] = $this->cliente->get();
+        $data['id'] = $id;
         loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
 
     }

@@ -12,6 +12,7 @@
                             <tr>
                                 <th width="10%">Código</th>
                                 <th>Titulo</th>
+                                <th>Status</th>
                                 <th width="20%">Ação</th>
                             </tr>
                         </thead>
@@ -21,13 +22,14 @@
                                     <tr>
                                         <td><?=$item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
+                                        <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
                                         <td>
-                                            <a href="<?php echo site_url('sac/editar/'.$item->id_sac); ?>" class="btn btn-primary">
-                                                <span class="fa fa-edit"></span>
-                                            </a>
                                             <a href="<?php echo site_url('sac/excluir/'.$item->id_sac); ?>" class="btn btn-danger">
-                                                <span class="fa fa-close"></span>
+                                                <span class="fa fa-times"></span>
                                             </a>
+                                            <a href="<?php echo site_url('sac/editar/'.$item->id_sac); ?>" class="btn bg-warning">
+                                                <span class="fa fa-pencil-square-o"></span>
+                                            </a>                                           
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

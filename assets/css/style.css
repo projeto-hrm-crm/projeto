@@ -28,6 +28,10 @@
 .bg-flat-color-5 {
   background: #4dbd74; }
 
+.bg-warning {
+   color: #fff !important;
+}
+
 .transition {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
