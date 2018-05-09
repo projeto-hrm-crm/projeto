@@ -95,14 +95,5 @@ class Cliente_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function get_estado(){
-		$query = $this->db->get('estado');
-		return $query->result();
-	}
-
-	public function get_cidade(){
-		$query = $this->db->get('cidade');
-		return $query->result();
-	}
 
 }

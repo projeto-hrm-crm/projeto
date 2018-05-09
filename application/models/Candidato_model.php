@@ -45,7 +45,36 @@ class Candidato_model extends CI_Model {
 		exit;
 	}
 	}
-
+	public function getById($id_candidato)
+	{
+		try {
+			$candidato = $this->db->select("
+			pessoa.id_pessoa, pessoa.nome, pessoa.email,
+			pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
+			endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
+			endereco.complemento,
+			cidade.id_cidade, cidade.nome AS cidade,
+			documento.tipo AS tipo_documento, documento.numero AS numero_documento,
+			telefone.numero AS telefone,
+			estado.id_estado, estado.nome AS estado
+			")->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('candidato', 'pessoa_fisica.id_pessoa = candidato.id_pessoa')
+			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+			->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
+			->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
+			->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
+			->join('estado',    'cidade.id_estado = estado.id_estado')
+			->where('candidato.id_candidato', $id_candidato)->get();
+			if ($candidato)
+			{
+				return $candidato->result();
+			}else{
+				echo 'Candidato não existe';
+				return 1;
+			}
+		} catch (\Exception $e) {}
+	}
 	public function find($id_candidato)
 	{
 		try {
@@ -77,16 +106,6 @@ class Candidato_model extends CI_Model {
 	*/
 	public function get_pais(){
 		$query = $this->db->get('pais');
-		return $query->result();
-	}
-
-	public function get_estado(){
-		$query = $this->db->select('*')->from('estado');
-		return $query->get()->result();
-	}
-
-	public function get_cidade(){
-		$query = $this->db->get('cidade');
 		return $query->result();
 	}
 
