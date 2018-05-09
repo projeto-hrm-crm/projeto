@@ -29,11 +29,11 @@
                     </div> <!-- FIM SEXO -->
                     <div class="row form-group">
                       <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
-                      <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais" ></div>
+                      <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($cliente[0]->numero_documento)?>" class="form-control" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais" ></div>
                     </div> <!-- FIM CPF -->
                     <div class="row form-group">
                       <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
-                      <div class="col-12 col-md-9"><input type="text" id="telefone" name="telefone" value="" class="form-control" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
+                      <div class="col-12 col-md-9"><input type="text" id="telefone" name="telefone" value="<?= htmlspecialchars($cliente[0]->telefone)?>" class="form-control" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
                     </div> <!-- FIM TELEFONE -->
 
                     <!-- INÍCIO ENDEREÇO -->
@@ -76,7 +76,7 @@
                     </div> <!-- FIM ENDEREÇO -->
                     <div class="row form-group">
                       <div class="col col-md-3"><label class=" form-control-label">Número</label></div>
-                      <div class="col-12 col-md-9"><input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($cliente[0]->numero)?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required></div>
+                      <div class="col-12 col-md-9"><input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($cliente[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required></div>
                     </div> <!-- FIM NÚMERO -->
                     <div class="row form-group">
                       <div class="col col-md-3"><label class=" form-control-label">Complemento</label></div>

@@ -53,6 +53,13 @@ class Cliente extends CI_Controller
 
     if($data){
         $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
+        $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+        ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+        $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+
+        $this->telefone->insert(['numero'=>$this->input->post('numero'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->cliente->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Cliente cadastrado com sucesso.');
@@ -84,7 +91,7 @@ class Cliente extends CI_Controller
     if ($this->input->post())
     {
       $data['cliente'] = $this->input->post();
-        $cliente = $this->cliente->find($id_cliente);
+        $cliente = $this->cliente->getById($id_cliente);
 
         $this->pessoa->update(['id_pessoa' => $cliente[0]->id_pessoa, 'nome'=> $data['cliente']['nome'],'email'=>$data['cliente']['email']]);
         $this->pessoa_fisica->update($cliente[0]->id_pessoa_fisica,['data_nascimento'=> $data['cliente']['data_nascimento'],'sexo'=>$data['cliente']['sexo']]);
@@ -93,10 +100,14 @@ class Cliente extends CI_Controller
     }
 
     $data['menus'] = $this->menus;
-    $data['cliente'] = $this->cliente->find($id_cliente);
+    $data['cliente'] = $this->cliente->getById($id_cliente);
+    // $data['cliente'] = $this->cliente->getById($data['cliente'][0]->id_pessoa);
+
+    $data['paises'] = $this->cliente->get_pais();
+    $data['estados'] = $this->cliente->get_estado();
+    $data['cidades'] = $this->cliente->get_cidade();
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;
-
     loadTemplate('includes/header', 'cliente/editar', 'includes/footer', $data);
   }
 
@@ -109,7 +120,7 @@ class Cliente extends CI_Controller
   **/
   public function delete($id_cliente)
   {
-    $data['cliente'] = $this->cliente->find($id_cliente);
+    $data['cliente'] = $this->cliente->getById($id_cliente);
     if ($data)
     {
       $this->cliente->remove($id_cliente);
