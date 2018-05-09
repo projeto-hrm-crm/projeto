@@ -118,7 +118,7 @@ class Vaga extends CI_Controller
 
           );
           $this->vaga->update($array);
-          $this->session->set_flashdata('success','Alterado com sucesso.');
+          $this->session->set_flashdata('success','Atualizado com sucesso.');
           redirect('vaga');
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
