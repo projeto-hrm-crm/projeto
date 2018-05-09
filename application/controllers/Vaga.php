@@ -36,7 +36,8 @@ class Vaga extends CI_Controller
         'js' => array(
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
-          'vaga/main.js',
+          'datatable.js',
+          'confirm.modal.js'
         ),
       );
       
@@ -83,7 +84,7 @@ class Vaga extends CI_Controller
          $data['assets'] = array(
         'js' => array(
           
-          'vaga/validate.js',
+          'validate.js',
         ),
 
       );
@@ -133,8 +134,8 @@ class Vaga extends CI_Controller
         $data['old_data'] = $this->session->flashdata('old_data');
        $data['assets'] = array(
         'js' => array(
-          
-          'vaga/validate.js',
+          'lib/jquery/jquery.validate.min.js',
+          'validate.js',
         ),
 
       );

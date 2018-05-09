@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-12">
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                     <?php echo $success_message; ?>
@@ -22,7 +22,7 @@
 					<strong class="card-title">Vagas</strong>
 				</div>
 				<div class="card-body">
-					<table id="vagas" class="table table-striped table-bordered">
+					<table class="datatable table table-striped table-bordered">
 						
 						<thead>
 							<tr>
@@ -42,13 +42,17 @@
 										<td><?php echo $vaga->setor; ?></td>
 										<td><?php echo $vaga->quantidade; ?></td>
 										<td><?php echo switchDate($vaga->data_oferta); ?></td>
-										<td>
-										    <a href="editar/vaga/<?php echo $vaga->id_vaga ?>" class="btn btn-primary">
-										        <span class="fa fa-edit"></span>
+										<td >
+										    <a href="vaga/editar/<?php echo $vaga->id_vaga ?>" 
+										    	class="btn bg-primary text-white">
+										        <i class="fa fa-pencil-square-o"></i>
 										    </a>
-										    <a href="remover/vaga/<?php echo $vaga->id_vaga ?>" class="btn btn-danger">
-										        <span class="fa fa-close"></span>
-										    </a>
+										    
+										    <button  data-href="vaga/excluir/<?php echo $vaga->id_vaga ?>" 
+										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
+										        <i class="fa fa-times"></i>
+  									    	</button>
+
 										</td>
 									</tr>
 								<?php endforeach; ?>
@@ -63,4 +67,27 @@
 
 
 	</div>
+</div>
+
+
+ <!-- Modal remover -->
+
+<div class="modal fade" id="modalRemover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Vaga</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Tem certeza que deseja excluir essa vaga?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
+      </div>
+    </div>
+  </div>
 </div>
