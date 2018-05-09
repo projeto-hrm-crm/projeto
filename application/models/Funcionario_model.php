@@ -62,4 +62,33 @@ public function find($id_funcionario)
     } catch (\Exception $e) {}
 		// delete pessoa fisica;
 	}
+
+	/**
+	* @author: Mayra Bueno
+	* Métodos para a caixa de seleção dinâmica
+	* País, estado e cidade
+	*/
+	public function get_pais(){
+		$query = $this->db->get('pais');
+		return $query->result();
+	}
+
+	public function get_estado(){
+		$query = $this->db->select('*')->from('estado');
+		return $query->get()->result();
+	}
+
+	public function get_cidade(){
+		$query = $this->db->get('cidade');
+		return $query->result();
+	}
+
+	public function get_cargos(){
+		// $query = $this->db->get('vaga');
+
+		// return $query->result();
+	}
+
+}
+
 }

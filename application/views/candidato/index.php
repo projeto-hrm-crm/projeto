@@ -17,11 +17,11 @@
 
                   		<thead>
                   			<tr>
-                  				<th class="text-center">ID</th>
                   				<th class="text-center">Nome</th>
                   				<th class="text-center">E-mail</th>
                           <th class="text-center">Sexo</th>
                   				<th class="text-center">Data Nascimento</th>
+                          <th class="text-center">Vaga</th>
                   				<th class="text-center">Ações</th>
                   			</tr>
                   		</thead>
@@ -49,6 +49,7 @@
                                 echo $date->format('d/m/Y');
                               ?>
                             </td>
+                            <td class="text-center"><?= $candidato->vaga; ?></td>
                   					<td class="text-center">
                   						<a title="Editar" href="<?= site_url('candidato/edit/'.$candidato->id_candidato)?>" class="btn btn-primary">
       										        <span class="fa fa-edit"></span></a>

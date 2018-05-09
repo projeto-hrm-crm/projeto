@@ -4,7 +4,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <strong class="card-title">Cadastrar Reclamação</strong>
+                  <strong class="card-title">Editar informações de cliente</strong>
               </div>
               <div class="card-body">
 

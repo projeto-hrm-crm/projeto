@@ -1,7 +1,7 @@
 <?php
 
 /**
-* author: Camila Sales
+* author: Mayra Bueno
 * Controller de funcionario
 **/
 
@@ -18,29 +18,30 @@ class Funcionario extends CI_Controller
   {
     parent::__construct();
     $user_id = $this->session->userdata('user_login');
-    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-    $url = $this->usuario->getParsedUrl($currentUrl);
+    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
     // $this->usuario->hasPermission($user_id, $url);
     $this->menus = $this->menu->getUserMenu($user_id);
+    $this->load->model('funcionario_model');
   }
+
   /**
-  * author: Camila Sales
-  * Metodo index que chama a view inicial de funcionarioes
+  * @author Mayra Bueno
+  * Metodo index que chama a view inicial de funcionario
   **/
   public function index()
   {
-    $data['title'] = 'Funcionarios';
-    $data['funcionarios'] = $this->funcionario->get();
     $data['menus'] = $this->menus;
+    $data['title'] = 'funcionarios';
+    $data['funcionarios'] = $this->funcionario->get();
 
     loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
   }
 
 
   /**
-  * author: Camila Sales
+  * @author Mayra Bueno
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
-  * e envia para função insert de Funcionario_model
+  * e envia para função insert de funcionario_model
   *
   * Se cadastrar com sucesso, redireciona para pagina index de funcionario
   * Se não, mostra msg de erro e redireciona para a mesma pagina
@@ -51,76 +52,79 @@ class Funcionario extends CI_Controller
     $data = $this->input->post();
 
     if($data){
-      // if ($this->form_validation->run('funcionario'))
-      // {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
+        $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+        ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+        $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+
+        $this->telefone->insert(['numero'=>$this->input->post('numero'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
-        $this->funcionario->insert(['id_pessoa_fisica' => $id_pessoa_fisica]);
-        $this->session->set_flashdata('success', 'Funcionario cadastrado com sucesso.');
+        $this->funcionario->insert(['id_pessoa' => $id_pessoa]);
+        $this->session->set_flashdata('success', 'funcionario cadastrado com sucesso.');
         redirect('funcionario');
-      // }else{
-      //   $this->session->set_flashdata('danger', 'Funcionario não pode ser cadastrado');
-      //   redirect('funcionario/create');
-      // }
     }
 
     $data['menus'] = $this->menus;
-    $data['title'] = 'Cadastrar Funcionario';
+    $data['paises'] = $this->funcionario->get_pais();
+    $data['estados'] = $this->funcionario->get_estado();
+    $data['cidades'] = $this->funcionario->get_cidade();
+    $data['title'] = 'Cadastrar funcionario';
     loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
   }
 
 
   /**
-  * author: Camila Sales
+  * @author Mayra Bueno
+  * @author Camila Sales
   * Metodo edit, apresenta o formulario de edição, com os dados do funcionario a ser editado,
-  * recebe os dados e envia para função update de Funcionario_model
+  * recebe os dados e envia para função update de funcionario_model
   *
   * Se cadastrar com sucesso, redireciona para pagina index de funcionario
   * Se não, mostra msg de erro e redireciona para a mesma pagina
   *
-  * @param $id int, id do funcionario
+  * @param $id_funcionario int
   **/
   public function edit($id_funcionario)
   {
     if ($this->input->post())
     {
-      $data = $this->input->post();
-      // if ($this->form_validation->run('funcionario'))
-      // {
-        $funcionario = $this->funcionario->find($id_funcionario);
+      $data['funcionario'] = $this->input->post();
+        $funcionario = $this->funcionario->getById($id_funcionario);
 
-        $this->pessoa->update(['id_pessoa' => $funcionario[0]->id_pessoa, 'nome'=> $data['nome'],'email'=>$data['email']]);
-        $this->pessoa_fisica->update($funcionario[0]->id_pessoa_fisica,['data_nascimento'=> $data['data_nascimento'],'sexo'=>$data['sexo']]);
-        $this->session->set_flashdata('success', 'Funcionario editado com sucesso.');
+        $this->pessoa->update(['id_pessoa' => $funcionario[0]->id_pessoa, 'nome'=> $data['funcionario']['nome'],'email'=>$data['funcionario']['email']]);
+        $this->pessoa_fisica->update($funcionario[0]->id_pessoa_fisica,['data_nascimento'=> $data['funcionario']['data_nascimento'],'sexo'=>$data['funcionario']['sexo']]);
+        $this->session->set_flashdata('success', 'funcionario editado com sucesso.');
         redirect('funcionario');
-      // }else{
-      //   $this->session->set_flashdata('danger', 'Funcionario não pode ser cadastrado');
-      //   redirect('funcionario/edit/'.$id_funcionario);
-      // }
     }
 
-    $data['funcionario'] = $this->funcionario->find($id_funcionario);
-    $data['title'] = 'Editar Funcionario';
-    $data['id'] = $id_funcionario;
     $data['menus'] = $this->menus;
+    $data['funcionario'] = $this->funcionario->getById($id_funcionario);
+    // $data['funcionario'] = $this->funcionario->getById($data['funcionario'][0]->id_pessoa);
 
+    $data['paises'] = $this->funcionario->get_pais();
+    $data['estados'] = $this->funcionario->get_estado();
+    $data['cidades'] = $this->funcionario->get_cidade();
+    $data['title'] = 'Editar funcionario';
+    $data['id'] = $id_funcionario;
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);
   }
 
   /**
-  * author: Camila Sales
-  * Metodo delete, chama a funçao delete de Funcionario_model, passando o id do funcionarioes
+  * @author Mayra Bueno
+  * Metodo delete, chama a funçao delete de funcionario_model, passando o id do funcionario
   * Redireciona para a pagina index de funcionario
   *
   * @param $id_funcionario int
   **/
   public function delete($id_funcionario)
   {
-    $data['funcionario'] = $this->funcionario->find($id_funcionario);
+    $data['funcionario'] = $this->funcionario->getById($id_funcionario);
     if ($data)
     {
       $this->funcionario->remove($id_funcionario);
-      $this->session->set_flashdata('success', 'Funcionario excluido com sucesso');
+      $this->session->set_flashdata('success', 'funcionario excluido com sucesso');
       redirect('funcionario');
     }
   }
