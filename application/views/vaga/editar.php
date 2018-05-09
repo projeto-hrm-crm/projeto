@@ -51,7 +51,7 @@
 	                        </div>
 
 	                        <div class="row">
-	                        	<div class="form-group col-6">
+	                        	<div class="form-group col-12">
 	                        	
 	                                <label for="data_oferta" class="control-label mb-1">Requisitos</label>
 	                                <textarea name="requisitos" id="requisitos" rows="6" class="form-control <?php echo isset($errors['requisitos']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['requisitos']) ? $old_data['requisitos'] : $vaga->requisitos;?></textarea>
@@ -67,11 +67,11 @@
 	                </div>
 
 	                <div class="card-footer text-right">
-	                    <button title="Cancelar edição Vaga" type="reset" class="bg bg-danger text-white" data-toggle="modal" data-target="#modalRemover" >
+	                    <button title="Cancelar edição Vaga" type="reset" class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" >
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </button>
-	                    <button  title="Atualizar vaga" type="submit" class="bg bg-warning text-white" data-toggle="modal" data-target="#modalRemover">
+	                    <button  title="Atualizar vaga" type="submit" class="btn bg-warning text-white btn-edit" data-toggle="modal" data-target="#modalAtualizar">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Atualizar
 	                    </button>
@@ -81,27 +81,7 @@
     	</div>
 	</div>
 </div>
- <!-- Modal remover -->
 
-<div class="modal fade" id="modalRemover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Excluir Vaga</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Tem certeza que deseja excluir essa vaga?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancela</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Modal atualizar -->
 
 <div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,12 +93,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         Tem certeza que deseja atualizar essa vaga?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancela</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary btn-edit-ok">Salvar</button>
       </div>
     </div>
   </div>
