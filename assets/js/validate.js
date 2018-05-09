@@ -1,6 +1,6 @@
-jQuery().ready(function($) {;
+jQuery(document).ready(function($) {;
 
-    jQuery("#form_produto").validate({
+    $("#form_produto").validate({
         rules: {
             nome: "required",
 
@@ -50,7 +50,7 @@ jQuery().ready(function($) {;
 
     });
                            
-   jQuery("#form_fornecedor").validate({
+   $("#form_fornecedor").validate({
         rules: {
             nome: "required",
             email: "required",
@@ -105,7 +105,7 @@ jQuery().ready(function($) {;
 
     });
                            
-   jQuery("#form-sac").validate({
+   $("#form-sac").validate({
         rules: {
             titulo: "titulo",
             descricao: "descricao",
@@ -123,7 +123,7 @@ jQuery().ready(function($) {;
 
     });
 
-    jQuery('#form-vaga').validate({
+    $('#form-vaga').validate({
 
         highlight:function(input)
         {
@@ -228,7 +228,7 @@ jQuery().ready(function($) {;
     * @author:Tiago Villalobos
     * Verifica se a data é válida
     */
-    jQuery.validator.addMethod('brazilian_date', function(value, element) { 
+    $.validator.addMethod('brazilian_date', function(value, element) { 
         
         var check = false;
             
@@ -267,7 +267,7 @@ jQuery().ready(function($) {;
     * @author: Tiago Villalobos
     * Validação com expressão regular
     **/
-    jQuery.validator.addMethod('regex', function(value, element, regexp){
+    $.validator.addMethod('regex', function(value, element, regexp){
         var re = new RegExp(regexp);
 
         return this.optional(element) || re.test(value);
