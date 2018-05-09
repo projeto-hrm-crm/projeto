@@ -21,7 +21,7 @@ class Funcionario_model extends CI_Model {
 		try {
 			$query = $this->db->select("*")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
-			->join('funcionario', 'pessoa_fisica.id_pessoa_fisica = funcionario.id_pessoa_fisica');
+			->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa');
     } catch (\Exception $e) {}
 
 	if ($query)
