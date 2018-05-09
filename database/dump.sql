@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `database` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `database`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: database
+-- Host: localhost    Database: projeto
 -- ------------------------------------------------------
--- Server version	5.7.20
+-- Server version	5.5.5-10.1.21-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,32 +16,32 @@ USE `database`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `avaliacao_funcionario`
+-- Table structure for table `bairro`
 --
-
-DROP TABLE IF EXISTS `avaliacao_funcionario`;
+use projeto;
+DROP TABLE IF EXISTS `bairro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `avaliacao_funcionario` (
-  `id_funcionario_avaliador` int(11) NOT NULL,
-  `id_funcionario_avaliado` int(11) NOT NULL,
-  `avaliacao` int(11) NOT NULL,
-  `comentario` text,
-  PRIMARY KEY (`id_funcionario_avaliador`,`id_funcionario_avaliado`),
-  KEY `fk_funcionario_has_funcionario_funcionario2_idx` (`id_funcionario_avaliado`),
-  KEY `fk_funcionario_has_funcionario_funcionario1_idx` (`id_funcionario_avaliador`),
-  CONSTRAINT `fk_funcionario_has_funcionario_funcionario1` FOREIGN KEY (`id_funcionario_avaliador`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_funcionario_has_funcionario_funcionario2` FOREIGN KEY (`id_funcionario_avaliado`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `bairro` (
+  `id_bairro` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `id_cidade` int(10) unsigned NOT NULL,
+  `id_regiao` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id_bairro`),
+  KEY `bairro_cidade_id_foreign` (`id_cidade`),
+  KEY `bairro_regiao_id_foreign` (`id_regiao`),
+  CONSTRAINT `bairro_cidade_id_foreign` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`),
+  CONSTRAINT `bairro_regiao_id_foreign` FOREIGN KEY (`id_regiao`) REFERENCES `regiao` (`id_regiao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `avaliacao_funcionario`
+-- Dumping data for table `bairro`
 --
 
-LOCK TABLES `avaliacao_funcionario` WRITE;
-/*!40000 ALTER TABLE `avaliacao_funcionario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `avaliacao_funcionario` ENABLE KEYS */;
+LOCK TABLES `bairro` WRITE;
+/*!40000 ALTER TABLE `bairro` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bairro` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -55,11 +53,11 @@ DROP TABLE IF EXISTS `candidato`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `candidato` (
   `id_candidato` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pessoa_fisica` int(11) NOT NULL,
+  `id_pessoa` int(11) NOT NULL,
   PRIMARY KEY (`id_candidato`),
-  KEY `fk_candidato_pessoa1_idx` (`id_pessoa_fisica`),
-  CONSTRAINT `fk_candidato_pessoa1` FOREIGN KEY (`id_pessoa_fisica`) REFERENCES `pessoa_fisica` (`id_pessoa_fisica`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_candidato_pessoa_fisica1_idx` (`id_pessoa`),
+  CONSTRAINT `fk_candidato_pessoa_fisica1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa_fisica` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,33 +70,6 @@ LOCK TABLES `candidato` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `candidato_etapa`
---
-
-DROP TABLE IF EXISTS `candidato_etapa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `candidato_etapa` (
-  `id_candidato` int(11) NOT NULL,
-  `id_etapa` int(11) NOT NULL,
-  PRIMARY KEY (`id_candidato`,`id_etapa`),
-  KEY `fk_candidato_has_vaga_candidato1_idx` (`id_candidato`),
-  KEY `fk_candidato_vaga_etapa1` (`id_etapa`),
-  CONSTRAINT `fk_candidato_has_vaga_candidato1` FOREIGN KEY (`id_candidato`) REFERENCES `candidato` (`id_candidato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_candidato_vaga_etapa1` FOREIGN KEY (`id_etapa`) REFERENCES `etapa` (`id_etapa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `candidato_etapa`
---
-
-LOCK TABLES `candidato_etapa` WRITE;
-/*!40000 ALTER TABLE `candidato_etapa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `candidato_etapa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cargo`
 --
 
@@ -107,6 +78,8 @@ DROP TABLE IF EXISTS `cargo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cargo` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `descricao` varchar(45) NOT NULL,
   `id_setor` int(11) NOT NULL,
   PRIMARY KEY (`id_cargo`),
   KEY `fk_cargo_setor1_idx` (`id_setor`),
@@ -124,29 +97,30 @@ LOCK TABLES `cargo` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cargo_funcionario`
+-- Table structure for table `cidade`
 --
 
-DROP TABLE IF EXISTS `cargo_funcionario`;
+DROP TABLE IF EXISTS `cidade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cargo_funcionario` (
-  `id_funcionario` int(11) NOT NULL,
-  `id_cargo` int(11) NOT NULL,
-  KEY `fk_funcionario_has_cargo_cargo1_idx` (`id_cargo`),
-  KEY `fk_funcionario_has_cargo_funcionario1_idx` (`id_funcionario`),
-  CONSTRAINT `fk_funcionario_has_cargo_cargo1` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_funcionario_has_cargo_funcionario1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `cidade` (
+  `id_cidade` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `id_estado` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_cidade`),
+  KEY `cidade_estado_id_foreign` (`id_estado`),
+  CONSTRAINT `cidade_estado_id_foreign` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cargo_funcionario`
+-- Dumping data for table `cidade`
 --
 
-LOCK TABLES `cargo_funcionario` WRITE;
-/*!40000 ALTER TABLE `cargo_funcionario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cargo_funcionario` ENABLE KEYS */;
+LOCK TABLES `cidade` WRITE;
+/*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -158,11 +132,11 @@ DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pessoa_fisica` int(11) NOT NULL,
+  `id_pessoa` int(11) NOT NULL,
   PRIMARY KEY (`id_cliente`),
-  KEY `fk_cliente_pessoa1_idx` (`id_pessoa_fisica`),
-  CONSTRAINT `fk_cliente_pessoa1` FOREIGN KEY (`id_pessoa_fisica`) REFERENCES `pessoa_fisica` (`id_pessoa_fisica`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_cliente_pessoa_fisica1_idx` (`id_pessoa`),
+  CONSTRAINT `fk_cliente_pessoa_fisica1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa_fisica` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,6 +145,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1,3);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +164,7 @@ CREATE TABLE `documento` (
   PRIMARY KEY (`id_documento`),
   KEY `fk_documento_pessoa1_idx` (`id_pessoa`),
   CONSTRAINT `fk_documento_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +173,7 @@ CREATE TABLE `documento` (
 
 LOCK TABLES `documento` WRITE;
 /*!40000 ALTER TABLE `documento` DISABLE KEYS */;
+INSERT INTO `documento` VALUES (1,'123123123123123','cnpj',4);
 /*!40000 ALTER TABLE `documento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,18 +186,15 @@ DROP TABLE IF EXISTS `endereco`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `endereco` (
   `id_endereco` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pessoa` int(11) NOT NULL,
   `cep` varchar(11) NOT NULL,
-  `estado` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
   `bairro` varchar(45) NOT NULL,
   `logradouro` varchar(45) NOT NULL,
   `numero` varchar(45) NOT NULL,
   `complemento` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_endereco`),
-  KEY `fk_endereco_pessoa1_idx` (`id_pessoa`),
-  CONSTRAINT `fk_endereco_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_pessoa` int(11) DEFAULT NULL,
+  `id_cidade` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_endereco`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,54 +203,35 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
+INSERT INTO `endereco` VALUES (1,'11665-320','auishdaushd','uhasudhasudhu','123123123123','',4,10);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `etapa`
+-- Table structure for table `estado`
 --
 
-DROP TABLE IF EXISTS `etapa`;
+DROP TABLE IF EXISTS `estado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `etapa` (
-  `id_etapa` int(11) NOT NULL AUTO_INCREMENT,
-  `id_vaga` int(11) NOT NULL,
-  PRIMARY KEY (`id_etapa`),
-  KEY `fk_etapa_vaga1_idx` (`id_vaga`),
-  CONSTRAINT `fk_etapa_vaga1` FOREIGN KEY (`id_vaga`) REFERENCES `vaga` (`id_vaga`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `estado` (
+  `id_estado` int(10) unsigned NOT NULL,
+  `uf` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `id_pais` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_estado`),
+  KEY `estado_pais_id_foreign` (`id_pais`),
+  CONSTRAINT `estado_pais_id_foreign` FOREIGN KEY (`id_pais`) REFERENCES `pais` (`id_pais`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `etapa`
+-- Dumping data for table `estado`
 --
 
-LOCK TABLES `etapa` WRITE;
-/*!40000 ALTER TABLE `etapa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `etapa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `filial`
---
-
-DROP TABLE IF EXISTS `filial`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `filial` (
-  `id_filial` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_filial`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `filial`
---
-
-LOCK TABLES `filial` WRITE;
-/*!40000 ALTER TABLE `filial` DISABLE KEYS */;
-/*!40000 ALTER TABLE `filial` ENABLE KEYS */;
+LOCK TABLES `estado` WRITE;
+/*!40000 ALTER TABLE `estado` DISABLE KEYS */;
+/*!40000 ALTER TABLE `estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -293,7 +247,7 @@ CREATE TABLE `fornecedor` (
   PRIMARY KEY (`id_fornecedor`),
   KEY `fk_fornecedor_pessoa_juridica1_idx` (`id_pessoa_juridica`),
   CONSTRAINT `fk_fornecedor_pessoa_juridica1` FOREIGN KEY (`id_pessoa_juridica`) REFERENCES `pessoa_juridica` (`id_pessoa_juridica`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,6 +256,7 @@ CREATE TABLE `fornecedor` (
 
 LOCK TABLES `fornecedor` WRITE;
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
+INSERT INTO `fornecedor` VALUES (1,1);
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,10 +269,10 @@ DROP TABLE IF EXISTS `funcionario`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `funcionario` (
   `id_funcionario` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pessoa_fisica` int(11) NOT NULL,
+  `id_pessoa` int(11) NOT NULL,
   PRIMARY KEY (`id_funcionario`),
-  KEY `fk_funcionario_pessoa1_idx` (`id_pessoa_fisica`),
-  CONSTRAINT `fk_funcionario_pessoa1` FOREIGN KEY (`id_pessoa_fisica`) REFERENCES `pessoa_fisica` (`id_pessoa_fisica`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_funcionario_pessoa_fisica1_idx` (`id_pessoa`),
+  CONSTRAINT `fk_funcionario_pessoa_fisica1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa_fisica` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -341,7 +296,7 @@ CREATE TABLE `grupo_acesso` (
   `id_grupo_acesso` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_grupo_acesso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,6 +305,7 @@ CREATE TABLE `grupo_acesso` (
 
 LOCK TABLES `grupo_acesso` WRITE;
 /*!40000 ALTER TABLE `grupo_acesso` DISABLE KEYS */;
+INSERT INTO `grupo_acesso` VALUES (1,'admin'),(2,'teste');
 /*!40000 ALTER TABLE `grupo_acesso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +333,38 @@ CREATE TABLE `grupo_acesso_menu` (
 
 LOCK TABLES `grupo_acesso_menu` WRITE;
 /*!40000 ALTER TABLE `grupo_acesso_menu` DISABLE KEYS */;
+INSERT INTO `grupo_acesso_menu` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8);
 /*!40000 ALTER TABLE `grupo_acesso_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `iteracao`
+--
+
+DROP TABLE IF EXISTS `iteracao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `iteracao` (
+  `id_iteracao` int(11) NOT NULL AUTO_INCREMENT,
+  `mensagem` varchar(45) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_sac` int(11) NOT NULL,
+  `id_funcionario` int(11) NOT NULL,
+  PRIMARY KEY (`id_iteracao`),
+  KEY `fk_iteracao_sac1_idx` (`id_sac`),
+  KEY `fk_iteracao_funcionario1_idx` (`id_funcionario`),
+  CONSTRAINT `fk_iteracao_funcionario1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_iteracao_sac1` FOREIGN KEY (`id_sac`) REFERENCES `sac` (`id_sac`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `iteracao`
+--
+
+LOCK TABLES `iteracao` WRITE;
+/*!40000 ALTER TABLE `iteracao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `iteracao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -391,7 +378,7 @@ CREATE TABLE `menu` (
   `id_menu` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,7 +387,32 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'Produto'),(2,'Cliente'),(3,'Candidato'),(4,'Fornecedor'),(5,'Funcionario'),(6,'Cargo'),(7,'Setor'),(8,'SAC');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pais`
+--
+
+DROP TABLE IF EXISTS `pais`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pais` (
+  `id_pais` int(10) unsigned NOT NULL,
+  `nome` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `sigla` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_pais`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pais`
+--
+
+LOCK TABLES `pais` WRITE;
+/*!40000 ALTER TABLE `pais` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pais` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -415,7 +427,7 @@ CREATE TABLE `pessoa` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,6 +436,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
+INSERT INTO `pessoa` VALUES (1,'dfsdfsdf','sdfsdf.sdfsdf@sdfsdf.com'),(2,'asdasdasd','asd.asdas@sdf.com'),(3,'asdasdasd','asd.asdas@sdf.com'),(4,'wwwwwwwwwwwwwww','werwer.werwe@asdas.xcds');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,10 +452,9 @@ CREATE TABLE `pessoa_fisica` (
   `id_pessoa` int(11) NOT NULL,
   `data_nascimento` date NOT NULL,
   `sexo` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id_pessoa_fisica`),
-  KEY `fk_pessoa_fisica_pessoa1_idx` (`id_pessoa`),
-  CONSTRAINT `fk_pessoa_fisica_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_pessoa_fisica`,`id_pessoa`),
+  KEY `fk_pessoa_fisica_pessoa1_idx` (`id_pessoa`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -451,6 +463,7 @@ CREATE TABLE `pessoa_fisica` (
 
 LOCK TABLES `pessoa_fisica` WRITE;
 /*!40000 ALTER TABLE `pessoa_fisica` DISABLE KEYS */;
+INSERT INTO `pessoa_fisica` VALUES (1,1,'2018-04-12',0),(2,2,'2018-04-08',0),(3,3,'2018-04-08',0);
 /*!40000 ALTER TABLE `pessoa_fisica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,7 +481,7 @@ CREATE TABLE `pessoa_juridica` (
   PRIMARY KEY (`id_pessoa_juridica`),
   KEY `fk_pessoa_juridica_pessoa1_idx` (`id_pessoa`),
   CONSTRAINT `fk_pessoa_juridica_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,6 +490,7 @@ CREATE TABLE `pessoa_juridica` (
 
 LOCK TABLES `pessoa_juridica` WRITE;
 /*!40000 ALTER TABLE `pessoa_juridica` DISABLE KEYS */;
+INSERT INTO `pessoa_juridica` VALUES (1,4,'werwerwer');
 /*!40000 ALTER TABLE `pessoa_juridica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -490,11 +504,15 @@ DROP TABLE IF EXISTS `produto`;
 CREATE TABLE `produto` (
   `id_produto` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(100) NOT NULL,
+  `nome` varchar(100) NOT NULL,
   `fabricacao` date NOT NULL,
-  `validate` date NOT NULL,
+  `validade` date NOT NULL,
   `lote` varchar(45) NOT NULL,
   `recebimento` date NOT NULL,
-  PRIMARY KEY (`id_produto`)
+  `id_fornecedor` int(11) NOT NULL,
+  PRIMARY KEY (`id_produto`),
+  KEY `id_fornecedor_idx` (`id_fornecedor`),
+  CONSTRAINT `id_fornecedor` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -508,30 +526,26 @@ LOCK TABLES `produto` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `produto_fornecedor`
+-- Table structure for table `regiao`
 --
 
-DROP TABLE IF EXISTS `produto_fornecedor`;
+DROP TABLE IF EXISTS `regiao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `produto_fornecedor` (
-  `id_fornecedor` int(11) NOT NULL,
-  `id_produto` int(11) NOT NULL,
-  PRIMARY KEY (`id_fornecedor`,`id_produto`),
-  KEY `fk_fornecedor_has_produto_produto1_idx` (`id_produto`),
-  KEY `fk_fornecedor_has_produto_fornecedor1_idx` (`id_fornecedor`),
-  CONSTRAINT `fk_fornecedor_has_produto_fornecedor1` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_fornecedor_has_produto_produto1` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `regiao` (
+  `id_regiao` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regiao` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_regiao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `produto_fornecedor`
+-- Dumping data for table `regiao`
 --
 
-LOCK TABLES `produto_fornecedor` WRITE;
-/*!40000 ALTER TABLE `produto_fornecedor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `produto_fornecedor` ENABLE KEYS */;
+LOCK TABLES `regiao` WRITE;
+/*!40000 ALTER TABLE `regiao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `regiao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -545,11 +559,11 @@ CREATE TABLE `sac` (
   `id_sac` int(11) NOT NULL AUTO_INCREMENT,
   `id_produto` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
-  `abertura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `fechameneto` timestamp NULL DEFAULT NULL,
-  `tratamento` longtext NOT NULL,
-  `encerrado_fornecedor` tinyint(4) DEFAULT NULL,
-  `encerrado_cliente` tinyint(4) DEFAULT NULL,
+  `titulo` VARCHAR(45) NOT NULL,
+  `descricao` LONGTEXT NOT NULL,
+  `abertura` timestamp NULL DEFAULT NULL,
+  `fechamento` timestamp NULL DEFAULT NULL,
+  `encerrado` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id_sac`),
   KEY `fk_sac_produto1_idx` (`id_produto`),
   KEY `fk_sac_cliente1_idx` (`id_cliente`),
@@ -591,29 +605,31 @@ LOCK TABLES `setor` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `submenu`
+-- Table structure for table `sub_menu`
 --
 
-DROP TABLE IF EXISTS `submenu`;
+DROP TABLE IF EXISTS `sub_menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `submenu` (
-  `id_submenu` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sub_menu` (
+  `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   `id_menu` int(11) NOT NULL,
-  PRIMARY KEY (`id_submenu`),
-  KEY `fk_submenu_menu1_idx` (`id_menu`),
-  CONSTRAINT `fk_submenu_menu1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `link` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_sub_menu`),
+  KEY `fk_sub_menu_menu1_idx` (`id_menu`),
+  CONSTRAINT `fk_sub_menu_menu1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `submenu`
+-- Dumping data for table `sub_menu`
 --
 
-LOCK TABLES `submenu` WRITE;
-/*!40000 ALTER TABLE `submenu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `submenu` ENABLE KEYS */;
+LOCK TABLES `sub_menu` WRITE;
+/*!40000 ALTER TABLE `sub_menu` DISABLE KEYS */;
+INSERT INTO `sub_menu` VALUES (1,'Cadastrar',1,'produto/cadastrar'),(2,'Listar',1,'produto'),(3,'Cadastrar',2,'cliente/cadastrar'),(4,'Listar',2,'cliente'),(5,'Cadastrar',3,'candidato/cadastrar'),(6,'Listar',3,'candidato'),(7,'Cadastrar',4,'fornecedor/cadastrar'),(8,'Listar',4,'fornecedor'),(9,'Cadastrar',5,'funcionario/cadastrar'),(10,'Listar',5,'funcionario'),(11,'Cadastrar',6,'cargo/cadastrar'),(12,'Listar',6,'cargo'),(13,'Cadastrar',7,'setor/cadastrar'),(14,'Listar',7,'setor'),(15,'Cadastrar',8,'sac/cadastrar'),(16,'Listar',8,'sac');
+/*!40000 ALTER TABLE `sub_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -630,7 +646,7 @@ CREATE TABLE `telefone` (
   PRIMARY KEY (`id_telefone`),
   KEY `fk_telefone_pessoa1_idx` (`id_pessoa`),
   CONSTRAINT `fk_telefone_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -639,6 +655,7 @@ CREATE TABLE `telefone` (
 
 LOCK TABLES `telefone` WRITE;
 /*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
+INSERT INTO `telefone` VALUES (1,'12982266622',4);
 /*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -654,13 +671,10 @@ CREATE TABLE `usuario` (
   `login` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL,
   `id_grupo_acesso` int(11) NOT NULL,
-  `id_pessoa` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuario_grupo_acesso1_idx` (`id_grupo_acesso`),
-  KEY `fk_usuario_pessoa1_idx` (`id_pessoa`),
-  CONSTRAINT `fk_usuario_grupo_acesso1` FOREIGN KEY (`id_grupo_acesso`) REFERENCES `grupo_acesso` (`id_grupo_acesso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_usuario_grupo_acesso1` FOREIGN KEY (`id_grupo_acesso`) REFERENCES `grupo_acesso` (`id_grupo_acesso`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -669,6 +683,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'admin@admin.com','admin',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -680,8 +695,10 @@ DROP TABLE IF EXISTS `vaga`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vaga` (
-  `id_vaga` int(11) NOT NULL,
+  `id_vaga` int(11) NOT NULL AUTO_INCREMENT,
   `data_oferta` date NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `requisitos` varchar(45) NOT NULL,
   `id_cargo` int(11) NOT NULL,
   PRIMARY KEY (`id_vaga`),
   KEY `fk_vaga_cargo1_idx` (`id_cargo`),
@@ -697,6 +714,10 @@ LOCK TABLES `vaga` WRITE;
 /*!40000 ALTER TABLE `vaga` DISABLE KEYS */;
 /*!40000 ALTER TABLE `vaga` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'projeto'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -707,4 +728,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-28 20:36:08
+-- Dump completed on 2018-04-27 16:58:12
