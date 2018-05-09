@@ -61,11 +61,6 @@ $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
 $route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 
-//Rotas Pessoa
-$route['pessoa']                = 'Pessoa/index';
-$route['pessoa/cadastrar']      = 'Pessoa/create';
-$route['pessoa/editar/(:num)']  = 'Pessoa/edit/$1';
-$route['pessoa/deletar/(:num)'] = 'Pessoa/delete/$1';
 
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
