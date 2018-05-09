@@ -134,8 +134,8 @@ class Vaga extends CI_Controller
         $data['old_data'] = $this->session->flashdata('old_data');
        $data['assets'] = array(
         'js' => array(
+          'lib/jquery/jquery.validate.min.js',
           'validate.js',
-          'confirm.modal.js'
         ),
 
       );
