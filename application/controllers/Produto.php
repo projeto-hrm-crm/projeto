@@ -19,7 +19,7 @@ class Produto extends CI_Controller
       parent::__construct();
       $user_id = $this->session->userdata('user_login');
       $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
-      // $this->usuario->hasPermission($user_id, $url);
+      $this->usuario->hasPermission($user_id, $url);
       $this->menus = $this->menu->getUserMenu($user_id);
     }
     /**
@@ -104,7 +104,7 @@ class Produto extends CI_Controller
      */
     public function edit($id)
     {
-      $dados['menus'] = $this->menus;
+      $data['menus'] = $this->menus;
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
