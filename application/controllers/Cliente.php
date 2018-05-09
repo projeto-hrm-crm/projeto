@@ -53,13 +53,14 @@ class Cliente extends CI_Controller
 
     if($data){
         $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
+
         $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
         'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
         ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('numero'),'id_pessoa' => $id_pessoa]);
+        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->cliente->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Cliente cadastrado com sucesso.');
@@ -68,8 +69,7 @@ class Cliente extends CI_Controller
 
     $data['menus'] = $this->menus;
     $data['paises'] = $this->cliente->get_pais();
-    $data['estados'] = $this->cliente->get_estado();
-    $data['cidades'] = $this->cliente->get_cidade();
+    $data['estados'] = $this->estado->get();
     $data['title'] = 'Cadastrar cliente';
     loadTemplate('includes/header', 'cliente/cadastrar', 'includes/footer', $data);
   }
@@ -104,8 +104,7 @@ class Cliente extends CI_Controller
     // $data['cliente'] = $this->cliente->getById($data['cliente'][0]->id_pessoa);
 
     $data['paises'] = $this->cliente->get_pais();
-    $data['estados'] = $this->cliente->get_estado();
-    $data['cidades'] = $this->cliente->get_cidade();
+    $data['estados'] =  $this->estado->get();
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;
     loadTemplate('includes/header', 'cliente/editar', 'includes/footer', $data);

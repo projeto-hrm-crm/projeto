@@ -68,8 +68,7 @@ class Funcionario extends CI_Controller
 
     $data['menus'] = $this->menus;
     $data['paises'] = $this->funcionario->get_pais();
-    $data['estados'] = $this->funcionario->get_estado();
-    $data['cidades'] = $this->funcionario->get_cidade();
+    $data['estados'] =  $this->estado->get();
     $data['title'] = 'Cadastrar funcionario';
     loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
   }

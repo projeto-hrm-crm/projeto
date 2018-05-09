@@ -70,7 +70,7 @@ class Candidato extends CI_Controller
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('numero'),'id_pessoa' => $id_pessoa]);
+        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
 
         $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);
@@ -82,8 +82,7 @@ class Candidato extends CI_Controller
     $data['errors'] = $this->session->flashdata('errors');
     $data['old_data'] = $this->session->flashdata('old_data');
     $data['paises'] = $this->candidato->get_pais();
-    $data['estados'] = $this->candidato->get_estado();
-    $data['cidades'] = $this->candidato->get_cidade();
+    $data['estados'] =  $this->estado->get();
     $data['vagas'] = $this->candidato->get_vagas();
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
@@ -104,7 +103,7 @@ class Candidato extends CI_Controller
     if ($this->input->post())
     {
       $data['candidato'] = $this->input->post();
-      $candidato = $this->candidato->find($id_candidato);
+      $candidato = $this->candidato->getById($id_candidato);
 
       $this->endereco->update(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
       'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento'),
@@ -120,11 +119,12 @@ class Candidato extends CI_Controller
       redirect('candidato');
     }
 
-    $data['candidato'] = $this->candidato->find($id_candidato);
+    $data['candidato'] = $this->candidato->getById($id_candidato);
     $data['title'] = 'Editar Candidato';
     $data['id'] = $id_candidato;
     $data['menus'] = $this->menus;
-
+    $data['estados'] =  $this->estado->get();
+    $data['vagas'] = $this->candidato->get_vagas();
     loadTemplate('includes/header', 'candidato/editar', 'includes/footer', $data);
   }
 
@@ -137,7 +137,7 @@ class Candidato extends CI_Controller
   **/
   public function delete($id_candidato)
   {
-    $data['candidato'] = $this->candidato->find($id_candidato);
+    $data['candidato'] = $this->candidato->getById($id_candidato);
     if ($data)
     {
       $this->candidato->remove($id_candidato);
