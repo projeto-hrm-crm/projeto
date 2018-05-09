@@ -33,10 +33,13 @@
   <?php endif; ?>
   <!-- fim da inserção -->
 
+<<<<<<< HEAD
  
 
 
 
+=======
+>>>>>>> 6cda5597d7d07645a36bb9be4db02d3cd8c220be
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
   <!-- script jquery para incluir máscaras nos inputs -->

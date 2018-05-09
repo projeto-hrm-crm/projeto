@@ -14,7 +14,7 @@ class Home extends CI_Controller
     $user_id = $this->session->userdata('user_login');
     $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
     $url = $this->usuario->getParsedUrl($currentUrl);
-    // $this->usuario->hasPermission($user_id, $url);
+    $this->usuario->hasPermission($user_id, $url);
     $this->menus = $this->menu->getUserMenu($user_id);
   }
 
