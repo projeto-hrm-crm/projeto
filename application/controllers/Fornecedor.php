@@ -62,12 +62,10 @@ class Fornecedor extends CI_Controller
 
         redirect('fornecedor');
       }else{
-         print_r($data);
-         
-         
-        //$this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+                  
+        $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
 
-        //redirect('fornecedor');
+        redirect('fornecedor');
       }
     }
 
@@ -92,7 +90,7 @@ class Fornecedor extends CI_Controller
   public function edit($id)
   {
     
-     $data = $this->input->post();
+    $data = $this->input->post();
     if ($data)
     {
       

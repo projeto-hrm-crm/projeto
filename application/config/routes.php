@@ -93,8 +93,9 @@ $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
 
 //Rotas SAC
-$route['sac/listar'] = 'sac/index';
 $route['sac/cadastrar'] = 'sac/create';
+$route['sac/excluir/(:num)'] = 'sac/delete/$1';
+$route['sac/editar/(:num)'] = 'sac/edit/$1';
 
 //Rotas Setores
 

@@ -106,13 +106,14 @@
         
       </div>
    </div>
-       <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Gravar
-          </button>
-            <a href="<?= site_url('fornecedor')?>" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban"></i> Cancelar
+       <div class="card-footer text-right">
+          <a href="<?= site_url('fornecedor')?>" class="btn btn-danger btn-sm">
+            <i class="fa fa-times"></i> Cancelar
             </a>
+            <button type="submit" class="btn btn-warning btn-sm">
+               <i class="fa fa-pencil-square-o"></i> Editar
+             </button>
+            
           </div>
        </form>
    </div>
