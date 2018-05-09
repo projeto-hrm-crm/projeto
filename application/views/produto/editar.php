@@ -54,10 +54,38 @@
                         <i class="fa fa-arrow-left"></i>
                         Voltar
                     </a>
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <!-- <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-check"></i>
                         Editar
+                    </button> -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarProduto">
+                        <span class="fa fa-check"></span>
+                        Editar
                     </button>
+                </div>
+                <div class="modal fade" id="editarProduto" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Editar produto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja realmente editar esse produto?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-check"></i>
+                                    Editar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

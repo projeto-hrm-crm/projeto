@@ -30,9 +30,9 @@
                                             <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">
-                                                <span class="fa fa-close"></span>
-                                            </a>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#excluirProduto">
+                                                <span class="fa fa-times"></span>
+                                            </button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -57,6 +57,30 @@
                     </button>
                 </div>
             <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="excluirProduto" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir esse produto?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">
+                    Excluir
+                </a>
+            </div>
         </div>
     </div>
 </div>
