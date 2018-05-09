@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-12">
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                     <?php echo $success_message; ?>
@@ -86,7 +86,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <a href="#" class="btn btn-primary btn-remove-ok">Salvar</a>
+        <a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
       </div>
     </div>
   </div>

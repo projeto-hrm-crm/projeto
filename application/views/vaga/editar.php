@@ -9,10 +9,10 @@
 	                <div class="card-body">
 	                    <div class="card-body">
 	                        <div class="row">
-	                            <div class="form-group col-6">
+	                            <div class="form-group col-lg-6 col-sm-12">
 	                                <label for="id_cargo" class="control-label mb-1">Cargo</label>
 	                                <select name="id_cargo" id="id_cargo" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>">
-		                                <option value="" <?php echo isset($errors['id_cargo']) ? 'selected' : '' ?>>Selecione</option>
+		                                <option value="">Selecione</option>
 		                                <?php foreach ($cargos as $cargo): ?>
 		                                	<option value="<?php echo $cargo->id_cargo ?>" 
 		                                		<?php 
@@ -31,7 +31,7 @@
 	                             		<?php echo isset($errors['id_cargo']) ? $errors['id_cargo'] : '' ; ?>
 	                             	</span>
 	                            </div>
-	                            <div class="form-group col-6">
+	                            <div class="form-group col-lg-6 col-sm-12">
 	                                <label for="data_oferta" class="control-label mb-1">Data da Oferta</label>
 	                                <input id="data_oferta" value="<?php echo isset($old_data['data_oferta']) ? $old_data['data_oferta'] : $vaga->data_oferta;?>" name="data_oferta" type="text" class="data form-control <?php echo isset($errors['data_oferta']) ? 'is-invalid' : '' ?>" required>
 	                                <span class="invalid-feedback">
@@ -41,7 +41,7 @@
 	                        </div>
 
 	                        <div class="row">
-	                            <div class="form-group col-6">
+	                            <div class="form-group col-lg-6 col-sm-12">
 	                                <label for="quantidade" class="control-label mb-1">Quantidade</label>
 	                                <input id="quantidade" value="<?php echo isset($old_data['quantidade']) ? $old_data['quantidade'] : $vaga->quantidade;?>" name="quantidade" type="text" class="form-control <?php echo isset($errors['quantidade']) ? 'is-invalid' : '' ?>" required>
 	                                <span class="invalid-feedback">
@@ -71,7 +71,7 @@
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </button>
-	                    <button  title="Atualizar vaga" type="submit" class="btn bg-warning text-white btn-edit" data-toggle="modal" data-target="#modalAtualizar">
+	                    <button  title="Atualizar vaga" type="submit" class="btn bg-warning text-white" >
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Atualizar
 	                    </button>
@@ -98,7 +98,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary btn-edit-ok">Salvar</button>
+        <button type="button" class="btn btn-primary btn-edit">Confirmar</button>
       </div>
     </div>
   </div>
