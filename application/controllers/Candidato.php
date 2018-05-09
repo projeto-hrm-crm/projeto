@@ -70,7 +70,7 @@ class Candidato extends CI_Controller
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
+        $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
 
         $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);

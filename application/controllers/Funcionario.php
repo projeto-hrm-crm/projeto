@@ -59,7 +59,7 @@ class Funcionario extends CI_Controller
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('numero'),'id_pessoa' => $id_pessoa]);
+        $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->funcionario->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'funcionario cadastrado com sucesso.');

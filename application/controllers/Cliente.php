@@ -60,7 +60,7 @@ class Cliente extends CI_Controller
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('telefone'),'id_pessoa' => $id_pessoa]);
+        $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->cliente->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Cliente cadastrado com sucesso.');
@@ -107,6 +107,7 @@ class Cliente extends CI_Controller
     $data['estados'] =  $this->estado->get();
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;
+
     loadTemplate('includes/header', 'cliente/editar', 'includes/footer', $data);
   }
 
