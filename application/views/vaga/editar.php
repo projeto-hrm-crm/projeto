@@ -5,7 +5,7 @@
 	            <div class="card-header">
 	                <strong class="card-title">Edição de Vaga</strong>
 	            </div>
-	            <form id="form-vaga" action="<?php echo base_url('editar/vaga/'.$vaga->id_vaga); ?>" method="POST" novalidate="novalidate">
+	            <form id="form-vaga" action="<?php echo base_url('vaga/editar/'.$vaga->id_vaga); ?>" method="POST" novalidate="novalidate">
 	                <div class="card-body">
 	                    <div class="card-body">
 	                        <div class="row">

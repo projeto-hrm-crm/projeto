@@ -43,12 +43,12 @@
 										<td><?php echo $vaga->quantidade; ?></td>
 										<td><?php echo switchDate($vaga->data_oferta); ?></td>
 										<td >
-										    <a href="editar/vaga/<?php echo $vaga->id_vaga ?>" 
+										    <a href="vaga/editar/<?php echo $vaga->id_vaga ?>" 
 										    	class="btn bg-primary text-white">
 										        <i class="fa fa-pencil-square-o"></i>
 										    </a>
 										    
-										    <button  data-href="remover/vaga/<?php echo $vaga->id_vaga ?>" 
+										    <button  data-href="vaga/excluir/<?php echo $vaga->id_vaga ?>" 
 										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
 										        <i class="fa fa-times"></i>
   									    	</button>

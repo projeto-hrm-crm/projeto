@@ -6,7 +6,7 @@
 	            <div class="card-header">
 	                <strong class="card-title">Nova Vaga</strong>
 	            </div>
-	            <form id="form-vaga" action="<?php echo base_url('cadastrar/vaga'); ?>" method="post" novalidate="novalidate">
+	            <form id="form-vaga" action="<?php echo base_url('vaga/cadastrar'); ?>" method="post" novalidate="novalidate">
 	                <div class="card-body">
 	                    <div class="card-body">
 	                        <div class="row">
