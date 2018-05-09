@@ -1,4 +1,4 @@
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
   $(document).on('change', '#estado', function() {
     cidade = $('#cidade');
     mudaCidade($(this),cidade);

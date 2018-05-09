@@ -33,27 +33,15 @@
   <?php endif; ?>
   <!-- fim da inserção -->
 
-  <!-- inserção dinamica de arquivos JS -->
-
-  <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js">
-  </script>
-  <?php if (isset($assets['js'])): ?>
-    <?php foreach ($assets['js'] as $js_file): ?>
-      <script
-        src="<?php echo base_url().'assets/js/'.$js_file; ?>"
-        charset="utf-8"
-      ></script>
-    <?php endforeach; ?>
-  <?php endif; ?>
-  <!-- fim da inserção -->
+ 
 
 
 
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
   <!-- script jquery para incluir máscaras nos inputs -->
-  <script src="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/jquery.mask.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
 
 </head>
 <body>

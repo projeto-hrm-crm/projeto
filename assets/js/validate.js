@@ -1,4 +1,4 @@
-jQuery().ready(function() {;
+jQuery().ready(function($) {;
 
     jQuery("#form_produto").validate({
         rules: {
