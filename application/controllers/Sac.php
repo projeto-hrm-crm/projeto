@@ -1,6 +1,7 @@
 <?php
 class Sac extends CI_Controller {
 
+    public $menus;
     public function __construct()
   {
     parent::__construct();
@@ -13,6 +14,7 @@ class Sac extends CI_Controller {
     public function index(){
         $data['title'] = 'Solicitações SAC';
         $data['sac'] = $this->sac->get();
+        $data['menus'] = $this->menus;
 
         loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
     }
@@ -46,6 +48,7 @@ class Sac extends CI_Controller {
             }
          }
 
+        $data['menus'] = $this->menus;
         $data['title'] = 'Cadastrar SAC';
         $data['produtos'] = $this->produto->get();
         $data['clientes'] = $this->cliente->get();
@@ -53,18 +56,18 @@ class Sac extends CI_Controller {
     }
 
     public function edit($id) {
-       
+
        $data = $this->input->post();
 
          if($data){
             if ($this->form_validation->run('sac')) {
-               
+
                if($this->input->post('encerrado')){
                   $fec = date("Y-m-d H:i:s");
                }else {
                   $fec = 0;
-               }               
-               
+               }
+
                $array = array(
                  'id_produto' => $this->input->post('id_produto'),
                  'id_cliente' => $this->input->post('id_cliente'),
@@ -74,7 +77,7 @@ class Sac extends CI_Controller {
                  'titulo' => $this->input->post('titulo'),
                  'descricao' => $this->input->post('descricao'),
                );
-               
+
                $this->sac->update($array, $id);
                $this->session->set_flashdata('success', 'Sac editado com sucesso.');
                redirect('sac');
@@ -89,6 +92,7 @@ class Sac extends CI_Controller {
         $data['produtos'] = $this->produto->get();
         $data['clientes'] = $this->cliente->get();
         $data['id'] = $id;
+        $data['menus'] = $this->menus;
         loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
 
     }
