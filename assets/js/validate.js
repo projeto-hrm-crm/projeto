@@ -57,10 +57,15 @@ jQuery().ready(function() {;
             razao_social: "required",
             cnpj: "required",
             telefone: "required",
+            cep: "required",
+            bairro: "required",
+            numero: "required",
+            logradouro: "logradouro",
+            compremento: "compremento",
 
         },
         messages: {
-            nome: "Insira o nome do produto",
+            nome: "Insira o nome do fornecedor",
 
             email: {
                 required: "Insira o e-mail",
@@ -76,6 +81,25 @@ jQuery().ready(function() {;
 
             telefone: {
                 required: "Insira o número de Telefone",
+            },
+
+            cep: {
+                required: "Insira o CEP",
+            },
+
+            bairro: {
+                required: "Informe o bairro",
+            },
+
+            numero: {
+                required: "Insira o número",
+            },
+
+            logradouro: {
+                required: "Informe o logradouro",
+            },
+            complemento: {
+                required: "Informe o complemento",
             },
         },
 
