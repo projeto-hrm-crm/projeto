@@ -51,14 +51,6 @@ class Vaga_model extends CI_Model
         $this->db->set('vaga.id_cargo',    $vaga['id_cargo']);
         $this->db->update('vaga');    
     }
-         $data1 = 'vaga.data_oferta';
-        $data2 = date("Y-m-d");// pegar data atual
-
- // Comparando as Datas
- if(strtotime($data1) >= strtotime($data2))
- echo " Data de oferta válida!";
-else
- echo"Data de oferta inválida";
     
 
     /*
