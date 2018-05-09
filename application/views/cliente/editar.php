@@ -33,7 +33,7 @@
                     </div> <!-- FIM CPF -->
                     <div class="row form-group">
                       <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
-                      <div class="col-12 col-md-9"><input type="text" id="telefone" name="telefone" value="<?= htmlspecialchars($cliente[0]->telefone)?>" class="form-control" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
+                      <div class="col-12 col-md-9"><input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($cliente[0]->telefone)?>" class="form-control" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
                     </div> <!-- FIM TELEFONE -->
 
                     <!-- INÍCIO ENDEREÇO -->
