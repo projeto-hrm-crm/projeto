@@ -1,5 +1,5 @@
 <div class="animated fadeIn">
-    <div class="row" >
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -27,10 +27,10 @@
                                         <td><?= $produto->recebimento;?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary">
+                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Editar produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#excluirProduto">
+                                            <button type="button" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#excluirProduto">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
@@ -77,8 +77,8 @@
                 <button type="button" class="btn btn-secundary" data-dismiss="modal">
                     Cancelar
                 </button>
-                <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger">
-                    Excluir
+                <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-primary">
+                    Confirmar
                 </a>
             </div>
         </div>
