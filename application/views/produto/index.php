@@ -46,7 +46,7 @@
                                             <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Editar produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#excluirProduto">
+                                            <button data-href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
