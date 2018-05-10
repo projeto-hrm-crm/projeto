@@ -47,51 +47,48 @@
                 <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control telefone" maxlength="15"  value="<?= htmlspecialchars($fornecedor[0]->telefone)?>" required>
             </div>
 
-         <div class="col-12 col-md-12 ">
-            <br />
-            <strong>Endereço</strong><br />
-            <br />
-         </div>
+          <div class="form-group col-12 col-md-6">
+              <label class="form-control-label">Estado</label>
+               <select name="id_estado" class="form-control" id="estado">
+                  <option value="0" disabled selected>Selecione um estado</option>
+                 <?php foreach ($estados as $estado): ?>
+                   <option value="<?php echo $estado->id_estado ?>" <?php if($estado_fornecedor[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
+                 <?php endforeach; ?>
+               </select>
+          </div>
 
+           <div class="form-group col-12 col-md-6">
+              <label class="form-control-label">Cidade</label>
+              <select name="id_cidade" class="form-control" id="estado">
+                 <?php foreach ($cidades as $cidade): ?>
+                   <option value="<?php echo $cidade->id_cidade; ?>" <?php if($fornecedor[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
+                 <?php endforeach; ?>
+               </select>
+          </div>
 
          <div class="form-group col-12 col-md-3">
             <label class=" form-control-label">CEP</label>
             <input type="num" id="cep" name="cep" placeholder="CEP" class="form-control cep"  value="<?= htmlspecialchars($fornecedor[0]->cep)?>" required>
          </div>
 
-      <div class="form-group col-12 col-md-3">
-          <label class="form-control-label">Estado</label>
-           <select name="id_estado" class="form-control" id="estado">
-              <option value="0" disabled selected>Selecione um estado</option>
-             <?php foreach ($estados as $estado): ?>
-               <option value="<?php echo $estado->id_estado ?>" <?php if($estado_fornecedor[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
-             <?php endforeach; ?>
-           </select>
-      </div>
-           
-       <div class="form-group col-12 col-md-3">
-          <label class="form-control-label">Cidade</label>
-          <select name="id_cidade" class="form-control" id="estado">
-             <?php foreach ($cidades as $cidade): ?>
-               <option value="<?php echo $cidade->id_cidade; ?>" <?php if($fornecedor[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
-             <?php endforeach; ?>
-           </select>
-      </div>
+        <div class="form-group col-12 col-md-9">
+            <label class=" form-control-label">Logradouro</label>
+            <input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->logradouro)?>" required>
+         </div>
 
-         <div class="form-group col-12 col-md-3">
+          <div class="form-group col-12 col-md-3">
+            <label class=" form-control-label">Número</label>
+            <input type="num" id="numero" name="numero" placeholder="" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->numero)?>" required>
+         </div>
+          
+         <div class="form-group col-12 col-md-5">
             <label class=" form-control-label">Bairro</label>
             <input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->bairro)?>" required>
          </div>
 
-         <div class="form-group col-12 col-md-4">
-            <label class=" form-control-label">Número</label>
-            <input type="num" id="numero" name="numero" placeholder="" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->numero)?>" required>
-         </div>
+         
 
-         <div class="form-group col-12 col-md-4">
-            <label class=" form-control-label">Logradouro</label>
-            <input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->logradouro)?>" required>
-         </div>
+         
 
          <div class="form-group col-12 col-md-4">
             <label class=" form-control-label">Complemento</label>
@@ -110,7 +107,7 @@
           <a href="<?= site_url('fornecedor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
             </a>
-            <button type="submit" class="btn btn-warning btn-sm">
+            <button type="submit" class="btn btn-primary btn-sm">
                <i class="fa fa-pencil-square-o"></i> Editar
              </button>
             

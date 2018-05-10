@@ -27,7 +27,7 @@
                                             <a href="<?php echo site_url('sac/excluir/'.$item->id_sac); ?>" class="btn btn-danger">
                                                 <span class="fa fa-times"></span>
                                             </a>
-                                            <a href="<?php echo site_url('sac/editar/'.$item->id_sac); ?>" class="btn bg-warning">
+                                            <a href="<?php echo site_url('sac/editar/'.$item->id_sac); ?>" class="btn bg-primary">
                                                 <span class="fa fa-pencil-square-o"></span>
                                             </a>                                           
                                         </td>

@@ -53,7 +53,7 @@
                   <a href="<?= site_url('sac/index')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button type="submit" class="btn bg-warning btn-sm">
+                  <button type="submit" class="btn bg-primary btn-sm">
                      <i class="fa fa-pencil-square-o"></i> Editar
                   </button>
                   

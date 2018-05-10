@@ -31,7 +31,7 @@
                                        <span class="fa fa-times"></span>
                                    </a>
 
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-warning">
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary">
                                        <span class="fa fa-pencil-square-o"></span>
                                    </a>
                                    
