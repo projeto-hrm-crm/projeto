@@ -22,7 +22,7 @@
                     <strong class="card-title">Produtos</strong>
                 </div>
                 <div class="card-body">
-                    <table id="vagas" class="table table-striped table-bordered">
+                    <table class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
                                 <th>Código</th>
