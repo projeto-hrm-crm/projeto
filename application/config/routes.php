@@ -61,11 +61,6 @@ $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
 $route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 
-//Rotas Pessoa
-$route['pessoa']                = 'Pessoa/index';
-$route['cadastrar/pessoa']      = 'Pessoa/create';
-$route['editar/pessoa/(:num)']  = 'Pessoa/edit/$1';
-$route['remover/pessoa/(:num)'] = 'Pessoa/delete/$1';
 
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
@@ -93,8 +88,9 @@ $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
 
 //Rotas SAC
-$route['sac/listar'] = 'sac/index';
 $route['sac/cadastrar'] = 'sac/create';
+$route['sac/excluir/(:num)'] = 'sac/delete/$1';
+$route['sac/editar/(:num)'] = 'sac/edit/$1';
 
 //Rotas Setores
 
@@ -123,7 +119,7 @@ $route['candidato/excluir/(:num)'] = 'Candidato/delete/$1';
 
 
 //Rotas Vagas
-$route['vagas']               = 'Vaga/index';
-$route['cadastrar/vaga']      = 'Vaga/create';
-$route['editar/vaga/(:num)']  = 'Vaga/edit/$1';
-$route['remover/vaga/(:num)'] = 'Vaga/delete/$1';
+$route['vaga']                = 'Vaga/index';
+$route['vaga/cadastrar']      = 'Vaga/create';
+$route['vaga/editar/(:num)']  = 'Vaga/edit/$1';
+$route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';

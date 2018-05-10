@@ -77,4 +77,23 @@ class Usuario_model extends CI_Model
             }
         }
     }
+
+    /**
+    * @author Pedro Henrique Guimarães
+    * Retorna a url atual do usuário, formatada.
+    *
+    * @param $url
+    * @return void|false
+    */
+    public function getParsedUrl($url)
+    {
+      if (!empty($url)) {
+        $explodedUrl = explode('/', $url);
+        array_pop($explodedUrl);
+        array_shift($explodedUrl);
+
+        $url = implode('/', $explodedUrl);
+        return $url;
+      }
+    }
 }

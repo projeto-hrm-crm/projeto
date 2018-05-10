@@ -23,12 +23,13 @@ class Vaga extends CI_Controller
       * Esse método tem a finalidade de retornar uma lista com todos as vagas
       * cadastradas
       *
-      * 
+      *
       */
-    
+
     public function index()
     {
       $data['title'] = 'Vagas';
+      $data['menus'] = $this->menus;
       $data['vagas'] = $this->vaga->get();
       $data['success_message']=$this->session->flashdata('success');
        $data['error_message']=$this->session->flashdata('danger');
@@ -36,10 +37,11 @@ class Vaga extends CI_Controller
         'js' => array(
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
-          'vaga/main.js',
+          'datatable.js',
+          'confirm.modal.js'
         ),
       );
-      
+
       loadTemplate('includes/header', 'Vaga/index', 'includes/footer', $data);
     }
 
@@ -64,7 +66,7 @@ class Vaga extends CI_Controller
            'requisitos' => $this->input->post('requisitos'),
 
            'data_oferta' => switchDate($this->input->post('data_oferta')),
-           
+
           );
             $this->vaga->insert($array);
             $this->session->set_flashdata('success','Cadastrado com sucesso');
@@ -76,19 +78,20 @@ class Vaga extends CI_Controller
         }
       }else{
         $data['title'] = 'Cadastrar vaga';
+        $data['menus'] = $this->menus;
         $data['errors'] = $this->session->flashdata('errors');
         $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
         $data['old_data'] = $this->session->flashdata('old_data');
          $data['assets'] = array(
         'js' => array(
-          
-          'vaga/validate.js',
+
+          'validate.js',
         ),
 
       );
          $data['cargos'] = $this->cargo->get();
-      
+
         loadTemplate('includes/header', 'vaga/cadastrar', 'includes/footer', $data);
       }
     }
@@ -107,16 +110,16 @@ class Vaga extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('vaga')){
           $array = array(
-          
+
             'id_vaga' => $id,
            'id_cargo' => $this->input->post('id_cargo'),
            'quantidade' => $this->input->post('quantidade'),
            'requisitos' => $this->input->post('requisitos'),
            'data_oferta' => switchDate($this->input->post('data_oferta')),
-           
+
           );
           $this->vaga->update($array);
-          $this->session->set_flashdata('success','Alterado com sucesso.');
+          $this->session->set_flashdata('success','Atualizado com sucesso.');
           redirect('vaga');
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -126,21 +129,22 @@ class Vaga extends CI_Controller
       }else{
         $data['errors'] = $this->session->flashdata('errors');
         $data['title'] = 'Alterar Vaga';
+        $data['menus'] = $this->menus;
         $data['vaga'] = $this->vaga->getById($id);
-       $data['success_message'] = $this->session->flashdata('success');
+        $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
         $data['vaga']->data_oferta = switchDate($data['vaga']->data_oferta);
         $data['old_data'] = $this->session->flashdata('old_data');
        $data['assets'] = array(
         'js' => array(
-          
-          'vaga/validate.js',
+          'lib/jquery/jquery.validate.min.js',
+          'validate.js',
         ),
 
       );
 
         $data['cargos'] = $this->cargo->get();
-      
+
         loadTemplate('includes/header', 'vaga/editar', 'includes/footer', $data);
       }
     }

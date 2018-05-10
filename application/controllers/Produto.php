@@ -18,7 +18,8 @@ class Produto extends CI_Controller
     {
       parent::__construct();
       $user_id = $this->session->userdata('user_login');
-      $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $url = $this->usuario->getParsedUrl($currentUrl);
       $this->usuario->hasPermission($user_id, $url);
       $this->menus = $this->menu->getUserMenu($user_id);
     }
@@ -43,6 +44,7 @@ class Produto extends CI_Controller
           'confirm.modal.js',
         ),
       );
+
       $produtos = $dados['produtos'];
       foreach($produtos as $produto){
           $produto->fabricacao = switchDate($produto->fabricacao);

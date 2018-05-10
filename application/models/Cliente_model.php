@@ -46,12 +46,27 @@ class Cliente_model extends CI_Model {
 	}
 	}
 
-	public function find($id_cliente)
+	public function getById($id_cliente)
 	{
 		try {
-			$cliente = $this->db->select("*")->from("pessoa")
+			$cliente = $this->db->select("
+			pessoa.id_pessoa, pessoa.nome, pessoa.email,
+			pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
+			endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
+			endereco.complemento,
+			cidade.id_cidade, cidade.nome AS cidade,
+			documento.tipo AS tipo_documento, documento.numero AS numero_documento,
+			telefone.numero AS telefone,
+			estado.id_estado, estado.nome AS estado
+			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
-			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')->where('cliente.id_cliente', $id_cliente)->get();
+			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')
+			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+			->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
+			->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
+			->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
+			->join('estado',    'cidade.id_estado = estado.id_estado')
+			->where('cliente.id_cliente', $id_cliente)->get();
 			if ($cliente)
 			{
 				return $cliente->result();
@@ -70,12 +85,15 @@ class Cliente_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function getPais()
-	{
-		$query = $this->db->query('SELECT nome FROM pais');
+	/**
+	* @author: Mayra Bueno
+	* Métodos para a caixa de seleção dinâmica
+	* País, estado e cidade
+	*/
+	public function get_pais(){
+		$query = $this->db->get('pais');
 		return $query->result();
-
-			//echo 'Total Results: ' . $query->num_rows();
 	}
+
 
 }
