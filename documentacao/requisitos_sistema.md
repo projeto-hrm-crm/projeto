@@ -1,6 +1,6 @@
 ## Requisitos Funcionais
 
-Os requisitos que descrevem o os serviços que o sistema deve prover:
+O sistema tem como objetivo auxiliar no gerencoamento de clientes, funcionáriosee o serviço de atendimento ao consumidor. Os requisitos que seguem descrevem as funcionalidades que o sistema deve prover:
 
 <table>
 <!--start table-->
