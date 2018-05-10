@@ -8,7 +8,7 @@ class Setor extends CI_Controller
     parent::__construct();
     $user_id = $this->session->userdata('user_login');
     $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-    $this->usuario->hasPermission($user_id, $url);
+    // $this->usuario->hasPermission($user_id, $url);
     $this->menus = $this->menu->getUserMenu($user_id);
   }
 
@@ -21,6 +21,14 @@ class Setor extends CI_Controller
     $data['title'] = 'Setores';
     $data['setores'] = $this->setor->get();
     $data['menus'] = $this->menus;
+    $data['assets']= array(
+      'js' =>array(
+        'lib/data-table/datatables.min.js',
+        'lib/data-table/datatables.bootstrap.min.js',
+        'datatable.js',
+        'confirm.modal.js',
+      ),
+    );
     loadTemplate(
       'includes/header',
       'setor/index',
