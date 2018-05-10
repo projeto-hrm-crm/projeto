@@ -14,14 +14,17 @@ jQuery(document).ready(function($) {;
 
             recebimento: {
                 required: true,
+                brazilian_date: true,
             },
 
             fabricacao: {
                 required: true,
+                brazilian_date: true,
             },
 
             validade: {
                 required: true,
+                brazilian_date: true,
             },
         },
         messages: {
@@ -37,20 +40,24 @@ jQuery(document).ready(function($) {;
 
             recebimento: {
                 required: "Insira a data de recebimento",
+                brazilian_date: "Insira uma data valida",
             },
 
             fabricacao: {
                 required: "Insira a data de fabricação",
+                brazilian_date: "Insira uma data valida",
             },
 
             validade: {
                 required: "Insira a data de validade",
+                brazilian_date: "Insira uma data valida",
             },
         },
 
     });
-                           
+               
    $("#form_fornecedor").validate({
+
         rules: {
             nome: "required",
             email: "required",
@@ -219,9 +226,6 @@ jQuery(document).ready(function($) {;
 
     });
 
-
-
-
     //Métodos de validação extras
 
     /*
@@ -272,6 +276,5 @@ jQuery(document).ready(function($) {;
 
         return this.optional(element) || re.test(value);
     });
-
 
 });

@@ -8,37 +8,37 @@
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="nome" class="control-label mb-1">Nome do Produto</label>
                                 <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Nome inválido.</span>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="lote" class="control-label mb-1">Lote</label>
                                 <input name="lote" id="lote" value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : $produto->lote;?>" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Lote inválido.</span>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="codigo" class="control-label mb-1">Código</label>
                                 <input name="codigo" id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : $produto->codigo;?>" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Código inválido.</span>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
                                 <input name="recebimento" id="recebimento" value="<?php echo isset($old_data['recebimento']) ? $old_data['recebimento'] : $produto->recebimento;?>" type="text" class="form-control data <?php echo isset($errors['recebimento']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Data de Recebimento inválida.</span>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="fabricacao" class="control-label mb-1">Data de Fabricação</label>
                                 <input name="fabricacao" id="fabricacao" value="<?php echo isset($old_data['fabricacao']) ? $old_data['fabricacao'] : $produto->fabricacao;?>" type="text" class="form-control data <?php echo isset($errors['fabricacao']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Data de Fabricação inválida.</span>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="validade" class="control-label mb-1">Data de Validade</label>
                                 <input name="validade" id="validade" value="<?php echo isset($old_data['validade']) ? $old_data['validade'] : $produto->validade;?>" type="text" class="form-control data <?php echo isset($errors['validade']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Data de Validade inválida.</span>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="id_fornecedor" class="control-label mb-1">Fornecedor</label>
                                 <select id="id_fornecedor" name="id_fornecedor" value="<?php echo isset($old_data['id_fornecedor']) ? $old_data['id_fornecedor']: null;?>" name="id_fornecedor" type="text" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>" required>
                                     <?php foreach($fornecedores as $fornecedor): ?>
@@ -50,14 +50,37 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
+                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger">
                         <i class="fa fa-arrow-left"></i>
                         Voltar
                     </a>
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-check"></i>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarProduto">
+                        <span class="fa fa-check"></span>
                         Editar
                     </button>
+                </div>
+                <div class="modal fade" id="editarProduto" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Editar produto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja realmente editar esse produto?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Editar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
