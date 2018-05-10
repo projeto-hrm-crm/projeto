@@ -46,21 +46,12 @@
           <div class="col-12 col-md-4">
              <label class=" form-control-label">Telefone</label>
              <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control telefone" maxlength="15" required>
-         </div>
-       
-		<div class="col-12 col-md-12 ">
-         <br />
-			<strong>Endereço</strong><br />
-         <br />
-		</div>
+         </div>    
            
            
-      <div class="form-group col-12 col-md-3">
-         <label class=" form-control-label">CEP</label>
-         <input type="num" id="cep" name="cep" placeholder="CEP" class="form-control cep" maxlength="9" required>
-      </div>
+      
    
-       <div class="form-group col-12 col-md-3">
+       <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Estado</label>
            <select name="id_estado" class="form-control" id="estado">
               <option value="0" disabled selected>Selecione um estado</option>
@@ -70,30 +61,36 @@
            </select>
       </div>
            
-       <div class="form-group col-12 col-md-3">
+       <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Cidade</label>
           <select name="id_cidade" class="form-control" id="cidade">
              <option value="0">Selecione um estado</option>
           </select>
       </div>
-           
+            
       <div class="form-group col-12 col-md-3">
-         <label class=" form-control-label">Bairro</label>
-         <input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control" required>
+         <label class=" form-control-label">CEP</label>
+         <input type="num" id="cep" name="cep" placeholder="CEP" class="form-control cep" maxlength="9" required>
       </div>
+      
+      <div class="form-group col-12 col-md-9">
+         <label class=" form-control-label">Logradouro</label>
+         <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" class="form-control" required>
+      </div>
+      
          
-      <div class="form-group col-12 col-md-2">
+      <div class="form-group col-12 col-md-3">
          <label class=" form-control-label">Número</label><input type="num" id="numero" name="numero" placeholder="Exemplo: 91" class="form-control" required>
       </div>
     
-      <div class="form-group col-12 col-md-6">
-         <label class=" form-control-label">Logradouro</label>
-         <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" class="form-control" required>
+      <div class="form-group col-12 col-md-5">
+         <label class=" form-control-label">Bairro</label>
+         <input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control" required>
       </div>
            
       <div class="form-group col-12 col-md-4">
          <label class=" form-control-label">Complemento</label>
-         <input type="text" id="complemento" name="complemento" placeholder="complemento" class="form-control" required>
+         <input type="text" id="complemento" name="complemento" placeholder="complemento" class="form-control">
       </div>
            
    </div>
