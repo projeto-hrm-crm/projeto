@@ -66,7 +66,7 @@
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="<?php echo $m['icon'];?>"></i> <?php echo $key;?></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>"></i> <?php echo $key;?></a>
               <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
                 <ul class="sub-menu children dropdown-menu">
                   <?php foreach($m['submenu'] as $s) : ?>
