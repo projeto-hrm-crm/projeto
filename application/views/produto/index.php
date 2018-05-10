@@ -46,7 +46,7 @@
                                             <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Editar produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button type="button" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#excluirProduto">
+                                            <button data-href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#excluirProduto">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="excluirProduto" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -77,7 +77,7 @@
                 <button type="button" class="btn btn-secundary" data-dismiss="modal">
                     Cancelar
                 </button>
-                <a href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-primary">
+                <a href="#" class="btn btn-primary btn-remove-ok">
                     Confirmar
                 </a>
             </div>
