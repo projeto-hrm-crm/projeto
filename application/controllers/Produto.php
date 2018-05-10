@@ -40,6 +40,7 @@ class Produto extends CI_Controller
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
           'datatable.js',
+          'confirm.modal.js',
         ),
       );
       $produtos = $dados['produtos'];
@@ -105,11 +106,6 @@ class Produto extends CI_Controller
     public function edit($id)
     {
       $data['menus'] = $this->menus;
-      $data['assets'] = array(
-        'js' => array(
-            'confirm.modal.js',
-        ),
-      );
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
