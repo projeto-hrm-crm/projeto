@@ -78,6 +78,7 @@ class Vaga extends CI_Controller
         }
       }else{
         $data['title'] = 'Cadastrar vaga';
+        $data['menus'] = $this->menus;
         $data['errors'] = $this->session->flashdata('errors');
         $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
@@ -128,8 +129,9 @@ class Vaga extends CI_Controller
       }else{
         $data['errors'] = $this->session->flashdata('errors');
         $data['title'] = 'Alterar Vaga';
+        $data['menus'] = $this->menus;
         $data['vaga'] = $this->vaga->getById($id);
-       $data['success_message'] = $this->session->flashdata('success');
+        $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
         $data['vaga']->data_oferta = switchDate($data['vaga']->data_oferta);
         $data['old_data'] = $this->session->flashdata('old_data');
