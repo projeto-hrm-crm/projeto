@@ -71,9 +71,9 @@
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </button>
-	                    <button  title="Atualizar vaga" type="submit" class="btn bg-warning text-white" >
-	                        <i class="fa fa-plus" aria-hidden="true"></i>
-	                        Atualizar
+	                    <button  title="Atualizar vaga" type="submit" class="btn bg-primary text-white" >
+	                        <i class="fa fa-check" aria-hidden="true"></i>
+	                        Editar
 	                    </button>
 	                </div>
 	            </form>

@@ -153,7 +153,7 @@ jQuery(document).ready(function($) {;
             *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
             */
             if(action.indexOf('editar') >= 0) 
-            {
+            {   
                 jQuery("#modalAtualizar").modal('show');
                 
                 jQuery('.btn-edit').click(function () {
