@@ -36,8 +36,8 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
   <!-- script jquery para incluir máscaras nos inputs -->
-  
-  
+
+
 
 </head>
 <body>
@@ -66,12 +66,12 @@
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i><?php echo $key;?></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="<?php echo $m['icon'];?>"></i> <?php echo $key;?></a>
               <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
                 <ul class="sub-menu children dropdown-menu">
                   <?php foreach($m['submenu'] as $s) : ?>
                     <?php if(!is_null($s->id_menu)):?>
-                      <li><a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
+                      <li><i class="<?php echo $s->icone;?>"></i> <a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
                     <?php endif;?>
                   <?php endforeach;?>
                 </ul>
