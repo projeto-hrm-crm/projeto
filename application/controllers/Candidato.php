@@ -84,6 +84,13 @@ class Candidato extends CI_Controller
     $data['paises'] = $this->candidato->get_pais();
     $data['estados'] =  $this->estado->get();
     $data['vagas'] = $this->candidato->get_vagas();
+    $data['assets'] = array(
+      'js' => array(
+        'lib/jquery/jquery.mask.min.js',
+        'pessoa/main.js',
+        'pessoa/validate-form.js',
+      ),
+    );
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
 
