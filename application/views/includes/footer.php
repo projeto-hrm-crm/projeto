@@ -25,7 +25,7 @@
       ></script>
     <?php endforeach; ?>
   <?php endif; ?>
-<script>
+<!-- <script>
     ( function ( $ ) {
         "use strict";
 
@@ -42,7 +42,7 @@
             normalizeFunction: 'polynomial'
         } );
     } )( jQuery );
-</script>
+</script> -->
 
 </body>
 </html>
