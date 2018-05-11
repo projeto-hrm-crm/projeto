@@ -7,8 +7,6 @@
 
 class Funcionario extends CI_Controller
 {
-  public $menus;
-
   /**
    * @author Pedro Henrique Guimarães
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
@@ -17,10 +15,9 @@ class Funcionario extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $user_id = $this->session->userdata('user_login');
-    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-    $this->usuario->hasPermission($user_id, $url);
-    $this->menus = $this->menu->getUserMenu($user_id);
+      $user_id = $this->session->userdata('user_login');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($user_id, $currentUrl);
     $this->load->model('funcionario_model');
   }
 
@@ -30,7 +27,6 @@ class Funcionario extends CI_Controller
   **/
   public function index()
   {
-    $data['menus'] = $this->menus;
     $data['title'] = 'funcionarios';
     $data['funcionarios'] = $this->funcionario->get();
 
@@ -66,7 +62,6 @@ class Funcionario extends CI_Controller
         redirect('funcionario');
     }
 
-    $data['menus'] = $this->menus;
     $data['paises'] = $this->funcionario->get_pais();
     $data['estados'] =  $this->estado->get();
     $data['title'] = 'Cadastrar funcionario';
@@ -106,7 +101,6 @@ class Funcionario extends CI_Controller
         redirect('funcionario');
     }
 
-    $data['menus'] = $this->menus;
     $data['funcionario'] = $this->funcionario->getById($id_funcionario);
     // $data['funcionario'] = $this->funcionario->getById($data['funcionario'][0]->id_pessoa);
 

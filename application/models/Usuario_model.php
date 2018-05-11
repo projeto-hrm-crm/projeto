@@ -60,12 +60,11 @@ class Usuario_model extends CI_Model
      */
     public function hasPermission($user_id, $url)
     {
-        $id = $this->session->userdata('user_login');
-        if (empty($id))
+        if (empty($user_id))
         redirect(base_url('login'));
 
         if (!empty($url)) {
-          $url = $this->getParsedUrl($url);
+            $url = $this->getParsedUrl($url);
             $access_group = $this->getUserAccessGroup($user_id);
             if ($user_id) {
                 $this->db->select('gam.id_grupo_acesso')
@@ -93,12 +92,13 @@ class Usuario_model extends CI_Model
     public function getParsedUrl($url)
     {
       if (!empty($url)) {
-        $explodedUrl = explode('/', $url);
-        array_pop($explodedUrl);
-        array_shift($explodedUrl);
-
-        $url = implode('/', $explodedUrl);
-        return $url;
+          $url = substr($url, 1);
+          $explodedUrl = explode('/', $url);
+          if(count($explodedUrl) >= 3){
+            array_pop($explodedUrl);
+            return implode('/', $explodedUrl);
+          }
+          return $url;
       }
     }
 }

@@ -14,10 +14,9 @@ class Cargo extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $user_id = $this->session->userdata('user_login');
-    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-    $this->usuario->hasPermission($user_id, $url);
-    $this->menus = $this->menu->getUserMenu($user_id);
+      $user_id = $this->session->userdata('user_login');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($user_id, $currentUrl);
   }
 
   /**
@@ -28,7 +27,6 @@ class Cargo extends CI_Controller
   public function index()
   {
     $data['cargos'] = $this->cargo->get();
-    $data['menus'] = $this->menus;
     $data['title'] = 'Cargos';
     loadTemplate('includes/header', 'cargo/index', 'includes/footer', $data);
   }
@@ -95,7 +93,6 @@ class Cargo extends CI_Controller
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
 
       $data['setores']       = $this->setor->get();
-      $data['menus'] = $this->menus;
 			$data['title']         = 'Editar Cargo';
       loadTemplate(
 				'includes/header',

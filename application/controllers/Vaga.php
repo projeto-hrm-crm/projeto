@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Vaga extends CI_Controller
 {
 
-  public $menus;
     /**
      * @author Pedro Henrique Guimarães
      * Com a configuração do menu esse controller serve como base para todos os outros controllers
@@ -13,10 +12,9 @@ class Vaga extends CI_Controller
     public function __construct()
     {
       parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
-      $this->usuario->hasPermission($user_id, $url);
-      $this->menus = $this->menu->getUserMenu($user_id);
+        $user_id = $this->session->userdata('user_login');
+        $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+        $this->usuario->hasPermission($user_id, $currentUrl);
     }
     /**
       *@author: Lucilene Fidelis
@@ -29,7 +27,6 @@ class Vaga extends CI_Controller
     public function index()
     {
       $data['title'] = 'Vagas';
-      $data['menus'] = $this->menus;
       $data['vagas'] = $this->vaga->get();
       $data['success_message']=$this->session->flashdata('success');
        $data['error_message']=$this->session->flashdata('danger');
@@ -78,7 +75,6 @@ class Vaga extends CI_Controller
         }
       }else{
         $data['title'] = 'Cadastrar vaga';
-        $data['menus'] = $this->menus;
         $data['errors'] = $this->session->flashdata('errors');
         $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');
@@ -129,7 +125,6 @@ class Vaga extends CI_Controller
       }else{
         $data['errors'] = $this->session->flashdata('errors');
         $data['title'] = 'Alterar Vaga';
-        $data['menus'] = $this->menus;
         $data['vaga'] = $this->vaga->getById($id);
         $data['success_message'] = $this->session->flashdata('success');
         $data['error_message']   = $this->session->flashdata('danger');

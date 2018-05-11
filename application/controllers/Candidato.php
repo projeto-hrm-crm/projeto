@@ -8,8 +8,6 @@
 
 class Candidato extends CI_Controller
 {
-  public $menus;
-
   /**
    * @author Pedro Henrique Guimarães
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
@@ -20,9 +18,7 @@ class Candidato extends CI_Controller
     parent::__construct();
     $user_id = $this->session->userdata('user_login');
     $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-    $url = $this->usuario->getParsedUrl($currentUrl);
-    $this->usuario->hasPermission($user_id, $url);
-    $this->menus = $this->menu->getUserMenu($user_id);
+    $this->usuario->hasPermission($user_id, $currentUrl);
   }
   /**
   * author: Camila Sales
@@ -32,8 +28,6 @@ class Candidato extends CI_Controller
   {
     $data['title'] = 'Candidatos';
     $data['candidatos'] = $this->candidato->get();
-    $data['menus'] = $this->menus;
-
     loadTemplate('includes/header', 'candidato/index', 'includes/footer', $data);
   }
 
@@ -50,8 +44,6 @@ class Candidato extends CI_Controller
   public function create()
   {
     $data['candidato']  = $this->input->post();
-    $data['menus'] = $this->menus;
-
     if($data['candidato']){
       // if(!$this->form_validation->run('pessoa'))
       // {
@@ -122,7 +114,6 @@ class Candidato extends CI_Controller
     $data['candidato'] = $this->candidato->getById($id_candidato);
     $data['title'] = 'Editar Candidato';
     $data['id'] = $id_candidato;
-    $data['menus'] = $this->menus;
     $data['estados'] =  $this->estado->get();
     $data['vagas'] = $this->candidato->get_vagas();
     loadTemplate('includes/header', 'candidato/editar', 'includes/footer', $data);

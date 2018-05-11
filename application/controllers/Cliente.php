@@ -7,8 +7,6 @@
 
 class Cliente extends CI_Controller
 {
-  public $menus;
-
   /**
    * @author Pedro Henrique Guimarães
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
@@ -17,11 +15,9 @@ class Cliente extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $user_id = $this->session->userdata('user_login');
-    $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-    $this->usuario->hasPermission($user_id, $url);
-    $this->menus = $this->menu->getUserMenu($user_id);
-    $this->load->model('cliente_model');
+      $user_id = $this->session->userdata('user_login');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($user_id, $currentUrl);
   }
 
   /**
@@ -30,7 +26,6 @@ class Cliente extends CI_Controller
   **/
   public function index()
   {
-    $data['menus'] = $this->menus;
     $data['title'] = 'Clientes';
     $data['clientes'] = $this->cliente->get();
 
@@ -67,7 +62,6 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
-    $data['menus'] = $this->menus;
     $data['paises'] = $this->cliente->get_pais();
     $data['estados'] = $this->estado->get();
     $data['title'] = 'Cadastrar cliente';
@@ -107,8 +101,6 @@ class Cliente extends CI_Controller
         $this->session->set_flashdata('success', 'Cliente editado com sucesso.');
         redirect('cliente');
     }
-
-    $data['menus'] = $this->menus;
     $data['cliente'] = $this->cliente->getById($id_cliente);
     // $data['cliente'] = $this->cliente->getById($data['cliente'][0]->id_pessoa);
 

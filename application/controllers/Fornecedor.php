@@ -7,8 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Fornecedor extends CI_Controller
 {
-  public $menus;
-   
    /**
    * @author Pedro Henrique Guimarães
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
@@ -17,10 +15,10 @@ class Fornecedor extends CI_Controller
    public function __construct()
    {
       parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $url = isset($_SERVER['PATH_INFO']) ? ltrim($_SERVER['PATH_INFO'], '/') : '';
-      $this->usuario->hasPermission($user_id, $url);
-      $this->menus = $this->menu->getUserMenu($user_id);
+       $user_id = $this->session->userdata('user_login');
+       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+       $this->usuario->hasPermission($user_id, $currentUrl);
+       $this->menus = $this->menu->getUserMenu($user_id);
    }
 
   /**
@@ -31,7 +29,6 @@ class Fornecedor extends CI_Controller
   {
     $data['title'] = 'Fornecedores';
     $data['fornecedores'] = $this->fornecedor->get();
-    $data['menus'] = $this->menus;
     // print_r($data);
     // exit();
 
@@ -71,7 +68,6 @@ class Fornecedor extends CI_Controller
 
     $data['title'] = 'Cadastrar Fornecedor';
     $data['fornecedor'] = $this->input->post();
-    $data['menus'] = $this->menus;
     $data['estados'] = $this->estado->get();
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
@@ -109,7 +105,6 @@ class Fornecedor extends CI_Controller
     $state = $this->cidade->findState($fornecedor[0]->id_cidade);
     $data['fornecedor'] = $this->fornecedor->find($id);
     $data['title'] = 'Editar Fornecedor';
-    $data['menus'] = $this->menus; 
     $data['estados'] = $this->estado->get();
     $data['estado_fornecedor'] = $state;
     $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
