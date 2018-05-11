@@ -60,6 +60,10 @@ class Usuario_model extends CI_Model
      */
     public function hasPermission($user_id, $url)
     {
+        $id = $this->session->userdata('user_login');
+        if (empty($id))
+        redirect(base_url('login'));
+
         if (!empty($url)) {
           $url = $this->getParsedUrl($url);
             $access_group = $this->getUserAccessGroup($user_id);
