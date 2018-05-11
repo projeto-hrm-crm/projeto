@@ -7,7 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produto extends CI_Controller
 {
-    public $menus;
 
     /**
      * @author Pedro Henrique Guimarães
@@ -19,9 +18,7 @@ class Produto extends CI_Controller
       parent::__construct();
       $user_id = $this->session->userdata('user_login');
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $url = $this->usuario->getParsedUrl($currentUrl);
-      $this->usuario->hasPermission($user_id, $url);
-      $this->menus = $this->menu->getUserMenu($user_id);
+      $this->usuario->hasPermission($user_id, $currentUrl);
     }
     /**
       *@author: Dhiego Balthazar
@@ -35,7 +32,6 @@ class Produto extends CI_Controller
     {
       $dados['title'] = 'Produtos';
       $dados['produtos'] = $this->produto->get();
-      $dados['menus'] = $this->menus;
       $dados['assets'] = array(
         'js' => array(
           'lib/data-table/datatables.min.js',
@@ -67,7 +63,6 @@ class Produto extends CI_Controller
      */
     public function create()
     {
-      $dados['menus'] = $this->menus;
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
@@ -107,7 +102,6 @@ class Produto extends CI_Controller
      */
     public function edit($id)
     {
-      $data['menus'] = $this->menus;
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(

@@ -1,3 +1,102 @@
+## Requisitos Funcionais
+
+O sistema tem como objetivo auxiliar no gerencoamento de clientes, funcionáriosee o serviço de atendimento ao consumidor. Os requisitos que seguem descrevem as funcionalidades que o sistema deve prover:
+
+<table>
+<!--start table-->
+
+<tr>
+<th>Identificação</th>
+<th>Nome</th>
+</tr>
+
+<tr>
+<td>RF 001</td>
+<td>Gerenciar permissões</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua permissões do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 002</td>
+<td>Gerenciar Usuário</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de usuários do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 003</td>
+<td>Gerenciar Cliente</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de clientes do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 004</td>
+<td>Gerenciar Funcionário</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de funcionários do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 005</td>
+<td>Gerenciar Candidato</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de candidatos do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 006</td>
+<td>Gerenciar Fornecedor</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de fornecedores do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 007</td>
+<td>Gerenciar Setor</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de candidatos do sistema.
+</td>
+</tr>
+
+
+<tr>
+<td>RF 008</td>
+<td>Gerenciar Vaga</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de vagas do sistema.
+</td>
+</tr>
+
+<tr>
+<td>RF 009</td>
+<td>Gerenciar Produto</td>
+<tr>
+<td colspan = "2">
+<strong>Descrição</strong>: Possibilita que o usuário com perfil de Administrador, identificado no sistema, cadastre, altere e exclua o cadastro de produtos do sistema.
+</td>
+</tr>
+
+
+
+<!--end of table-->
+</table>
+
 ## Requisitos Não-Funcionais
 
 Os requisitos que descrevem os aspectos não-funcionais do sistema são apresentados a seguir e foram divididos nas categorias de processo, de produto e externos:
