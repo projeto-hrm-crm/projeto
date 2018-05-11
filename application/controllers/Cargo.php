@@ -30,6 +30,14 @@ class Cargo extends CI_Controller
     $data['cargos'] = $this->cargo->get();
     $data['menus'] = $this->menus;
     $data['title'] = 'Cargos';
+    $data['assets'] = array(
+      'js' => array(
+        'lib/data-table/datatables.min.js',
+        'lib/data-table/dataTables.bootstrap.min.js',
+        'datatable.js',
+        'confirm.modal.js',
+      ),
+    );
     loadTemplate('includes/header', 'cargo/index', 'includes/footer', $data);
   }
 
