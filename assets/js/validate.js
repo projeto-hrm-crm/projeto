@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {;
         },
 
     });
-               
+
    $("#form_fornecedor").validate({
 
         rules: {
@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {;
         },
 
     });
-                           
+
    $("#form-sac").validate({
         rules: {
             titulo: "titulo",
@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {;
                 required: "Insira a descrição de seu problema",
             },
 
-           
+
         },
 
     });
@@ -137,7 +137,7 @@ jQuery(document).ready(function($) {;
             jQuery(input).addClass('is-invalid');
         },
 
-        unhighlight:function(input) 
+        unhighlight:function(input)
         {
             jQuery(input).removeClass('is-invalid');
         },
@@ -148,21 +148,21 @@ jQuery(document).ready(function($) {;
         },
 
         submitHandler:function (form, event) {
-                
+
             event.preventDefault(); //Evita que o formulário seja submetido
-            
+
             var action = $(form).prop('action'); // Recupera o action do formulário
-            
+
             /*
             *   Verifica se a url do action do formulário contém a palavra editar
-            *   Se sim abre, abre o modal para confirmação setando o evento de submissão do 
+            *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
             *   formulário para o click do botão do modal.
             *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
             */
-            if(action.indexOf('editar') >= 0) 
-            {   
+            if(action.indexOf('editar') >= 0)
+            {
                 jQuery("#modalAtualizar").modal('show');
-                
+
                 jQuery('.btn-edit').click(function () {
                     form.submit();
                 });
@@ -171,11 +171,11 @@ jQuery(document).ready(function($) {;
             {
                 form.submit();
             }
-            
+
         },
 
         rules: {
-            
+
             id_cargo:{
                 required: true,
                 digits:   true,
@@ -200,7 +200,7 @@ jQuery(document).ready(function($) {;
         },
 
         messages: {
-            
+
             id_cargo:{
                 required: 'O campo Cargo é obrigatório',
                 digits:   'O campo Cargo deve conter um número inteiro',
@@ -226,44 +226,103 @@ jQuery(document).ready(function($) {;
 
     });
 
+    $('#form_candidato').validate({
+
+      rules: {
+          nome: "required",
+          email: "required",
+          data_nacimento: {
+              required: true,
+              brazilian_date: true,
+          },
+          cpf: "required",
+          telefone: "required",
+          cep: "required",
+          bairro: "required",
+          numero: "required",
+          logradouro: "required",
+
+      },
+      messages: {
+          nome: "Insira o nome do fornecedor",
+
+          email: {
+              required: "Insira o e-mail",
+          },
+
+          razao_social: {
+              required: "Informe a razão social",
+          },
+
+          cnpj: {
+              required: "Insira o número do CNPJ",
+          },
+
+          telefone: {
+              required: "Insira o número de Telefone",
+          },
+
+          cep: {
+              required: "Insira o CEP",
+          },
+
+          bairro: {
+              required: "Informe o bairro",
+          },
+
+          numero: {
+              required: "Insira o número",
+          },
+
+          logradouro: {
+              required: "Informe o logradouro",
+          },
+          complemento: {
+              required: "Informe o complemento",
+          },
+      },
+
+
+    });
+
     //Métodos de validação extras
 
     /*
     * @author:Tiago Villalobos
     * Verifica se a data é válida
     */
-    $.validator.addMethod('brazilian_date', function(value, element) { 
-        
+    $.validator.addMethod('brazilian_date', function(value, element) {
+
         var check = false;
-            
+
             var re = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
 
             if(re.test(value))
-            {      
-               var adata = value.split('/');  
+            {
+               var adata = value.split('/');
 
-               var gg   = parseInt(adata[0], 10);  
-               var mm   = parseInt(adata[1], 10);  
-               var aaaa = parseInt(adata[2], 10);  
+               var gg   = parseInt(adata[0], 10);
+               var mm   = parseInt(adata[1], 10);
+               var aaaa = parseInt(adata[2], 10);
 
-               var xdata = new Date(aaaa, mm-1, gg);  
+               var xdata = new Date(aaaa, mm-1, gg);
 
                if((xdata.getFullYear() == aaaa) && (xdata.getMonth () == mm - 1) && (xdata.getDate() == gg))
                {
-                   check = true;  
+                   check = true;
                }
-               else  
+               else
                {
-                   check = false;  
+                   check = false;
                }
-                    
-            } 
+
+            }
             else
             {
-               check = false;  
-            }  
-               
-            return this.optional(element) || check;  
+               check = false;
+            }
+
+            return this.optional(element) || check;
 
     });
 

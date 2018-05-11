@@ -1,7 +1,7 @@
 <!-- CANDIDATO -->
 <div class="animated fadeIn">
-  <div class="row" >
-    <div class="col-md-12">
+  <div class="row justify-content-center align-items-center">
+     <div class="col-lg-8">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Editar informações de candidato</strong>
@@ -19,7 +19,7 @@
             </div> <!-- FIM EMAIL -->
             <div class="row form-group">
               <div class="col col-md-3"><label class=" form-control-label">Data de Nascimento</label></div>
-              <div class="col-12 col-md-9"><input type="date" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($candidato[0]->data_nascimento)?>" class="form-control" required></div>
+              <div class="col-12 col-md-9"><input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($candidato[0]->data_nascimento)?>" class="form-control data" required></div>
             </div> <!-- DATA DE NASCIMENTO -->
             <div class="row form-group">
               <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
@@ -29,11 +29,11 @@
               </div> <!-- FIM SEXO -->
               <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
-                <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais"></div>
+                <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="" class="form-control cpf" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais"></div>
               </div> <!-- FIM CPF -->
               <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
-                <div class="col-12 col-md-9"><input type="text" id="telefone" name="tel" value="" class="form-control" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
+                <div class="col-12 col-md-9"><input type="text" id="telefone" name="tel" value="" class="form-control telefone" pattern="[0-9]{11}" title="Insira um número válido de telefone" ></div>
               </div> <!-- FIM TELEFONE -->
 
               <!-- INÍCIO ENDEREÇO -->
@@ -78,7 +78,7 @@
                   </div> <!-- FIM BAIRRO -->
                   <div class="row form-group">
                     <div class="col col-md-3"><label class=" form-control-label">CEP</label></div>
-                    <div class="col-12 col-md-9"><input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control" title="Campo obrigatório" data-mask="00000-000" required></div>
+                    <div class="col-12 col-md-9"><input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" title="Campo obrigatório" data-mask="00000-000" required></div>
                     <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank" style="padding-left: 15px;">Não sabe o CEP?</a>
                   </div> <!-- FIM CEP -->
                   <div class="row form-group">
