@@ -1,10 +1,10 @@
 <!-- CANDIDATO -->
 <div class="animated fadeIn">
-  <div class="row" >
-    <div class="col-md-12">
+  <div class="row justify-content-center align-items-center">
+     <div class="col-lg-8">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Cadastrar Reclamação</strong>
+          <strong class="card-title">Cadastrar Candidato</strong>
         </div>
         <div class="card-body">
 
@@ -19,7 +19,7 @@
             </div> <!-- FIM EMAIL -->
             <div class="row form-group">
               <div class="col col-md-3"><label class=" form-control-label">Data de Nascimento</label></div>
-              <div class="col-12 col-md-9"><input type="date" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="Data de nascimento" class="form-control"></div>
+              <div class="col-12 col-md-9"><input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="Data de nascimento" class="form-control data"></div>
             </div> <!-- FIM DATA DE NASCIMENTO -->
             <div class="row form-group">
               <div class="col col-md-3"><label class=" form-control-label">Sexo</label></div>
@@ -29,11 +29,11 @@
               </div> <!-- FIM SEXO -->
               <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">CPF</label></div>
-                <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control" title="O CPF deve conter 11 dígitos decimais" data-mask="000.000.000-00"></div>
+                <div class="col-12 col-md-9"><input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf" title="O CPF deve conter 11 dígitos decimais"></div>
               </div> <!-- FIM CPF -->
               <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Telefone</label></div>
-                <div class="col-12 col-md-9"><input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control" pattern="[0-9]{11}" title="Residencial ou celular" ></div>
+                <div class="col-12 col-md-9"><input type="text" id="telefone" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control telefone" pattern="[0-9]{11}" title="Residencial ou celular" ></div>
               </div> <!-- FIM TELEFONE -->
               <!-- INÍCIO ENDEREÇO -->
               <div class="row form-group">
