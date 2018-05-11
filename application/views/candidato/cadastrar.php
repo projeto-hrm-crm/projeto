@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
 
-          <form action="<?php echo site_url('candidato/create'); ?>" method="POST" class="form-horizontal" novalidate="novalidate">
+          <form action="<?php echo site_url('candidato/create'); ?>" method="POST" id="form_candidato">
             <div class="row form-group">
               <div class="col col-md-3"><label class=" form-control-label">Nome</label></div>
               <div class="col-12 col-md-9"><input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" title="Campo obrigatório" required></div>
@@ -59,11 +59,11 @@
                   </div> <!-- FIM CIDADE -->
                   <div class="row form-group">
                     <div class="col col-md-3"><label class=" form-control-label">Endereço</label></div>
-                    <div class="col-12 col-md-9"><input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" pattern="[A-Za-z]" title="Campo obrigatório" required></div>
+                    <div class="col-12 col-md-9"><input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" title="Campo obrigatório" required></div>
                   </div> <!-- FIM ENDEREÇO -->
                   <div class="row form-group">
                     <div class="col col-md-3"><label class=" form-control-label">Número</label></div>
-                    <div class="col-12 col-md-9"><input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required></div>
+                    <div class="col-12 col-md-9"><input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" title="Campo obrigatório" required></div>
                   </div> <!-- FIM NÚMERO -->
                   <div class="row form-group">
                     <div class="col col-md-3"><label class=" form-control-label">Complemento</label></div>
@@ -75,7 +75,7 @@
                   </div> <!-- FIM BAIRRO -->
                   <div class="row form-group">
                     <div class="col col-md-3"><label class=" form-control-label">CEP</label></div>
-                    <div class="col-12 col-md-9"><input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control" title="Campo obrigatório" data-mask="00000-000" required></div>
+                    <div class="col-12 col-md-9"><input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" title="Campo obrigatório" required></div>
                     <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank" style="padding-left: 15px;">Não sabe o CEP?</a>
                   </div> <!-- FIM CEP -->
 
@@ -92,14 +92,16 @@
                       </div>
                     </div> <!-- FIM VAGAS -->
 
-                    <div class="card-footer text-left">
-                      <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-dot-circle-o"></i> Cadastrar
-                      </button>
-                      <a href="<?= site_url('candidato')?>" class="btn btn-danger btn-sm">
-                        <i class="fa fa-ban"></i> Cancelar
-                      </a>
-                    </div> <!-- FIM BOTÕES -->
+
+                    <div class="card-footer text-right">
+                       <a href="<?=site_url('candidato')?>" class="btn btn-danger btn-sm">
+                           <i class="fa fa-times"></i> Cancelar
+                         </a>
+                         <button type="submit" class="btn btn-primary btn-sm">
+                           <i class="fa fa-plus"></i> Cadastrar
+                         </button>
+
+                       </div>
                   </form>
 
                 </div>
