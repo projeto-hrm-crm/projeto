@@ -62,6 +62,7 @@ class Fornecedor extends CI_Controller
 
         redirect('fornecedor');
       }else{
+                  
         $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
 
         redirect('fornecedor');
@@ -71,6 +72,7 @@ class Fornecedor extends CI_Controller
     $data['title'] = 'Cadastrar Fornecedor';
     $data['fornecedor'] = $this->input->post();
     $data['menus'] = $this->menus;
+    $data['estados'] = $this->estado->get();
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
 
@@ -88,7 +90,7 @@ class Fornecedor extends CI_Controller
   public function edit($id)
   {
     
-     $data = $this->input->post();
+    $data = $this->input->post();
     if ($data)
     {
       
@@ -102,10 +104,15 @@ class Fornecedor extends CI_Controller
         redirect('fornecedor/edit/'.$id);
       }
     }
-
+     
+    $fornecedor = $this->fornecedor->find($id);
+    $state = $this->cidade->findState($fornecedor[0]->id_cidade);
     $data['fornecedor'] = $this->fornecedor->find($id);
     $data['title'] = 'Editar Fornecedor';
-    $data['menus'] = $this->menus;  
+    $data['menus'] = $this->menus; 
+    $data['estados'] = $this->estado->get();
+    $data['estado_fornecedor'] = $state;
+    $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
     $data['id'] = $id;
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);

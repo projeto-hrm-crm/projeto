@@ -187,7 +187,7 @@ $config = array(
           array(
                   'field' => 'cnpj',
                   'label' => 'CNPJ',
-                  'rules' => 'required|integer'
+                  'rules' => 'required'
           ),
     ),
         'login' => array(
@@ -230,7 +230,7 @@ $config = array(
         array(
             'field' => 'quantidade',
             'label' => 'Quantidade',
-            'rules' => 'required|integer'
+            'rules' => 'required|integer|greater_than[0]'
         ),
 
         array(
@@ -238,6 +238,33 @@ $config = array(
             'label' => 'Requisitos',
             'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
         ),
+        ),
+          
+      'sac' => array(
+        
+        array(
+            'field' => 'titulo',
+            'label' => 'Assunto',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field'  => 'id_produto',
+            'label'  => 'Produto',
+            'rules'  => 'required|integer'
+        ),
+
+        array(
+            'field' => 'id_cliente',
+            'label' => 'Cliente',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required'
+        )
 
 
     ),

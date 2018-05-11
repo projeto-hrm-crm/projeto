@@ -35,7 +35,16 @@ class Produto extends CI_Controller
     {
       $dados['title'] = 'Produtos';
       $dados['produtos'] = $this->produto->get();
-        $dados['menus'] = $this->menus;
+      $dados['menus'] = $this->menus;
+      $dados['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+      );
+
       $produtos = $dados['produtos'];
       foreach($produtos as $produto){
           $produto->fabricacao = switchDate($produto->fabricacao);
@@ -98,7 +107,7 @@ class Produto extends CI_Controller
      */
     public function edit($id)
     {
-      $dados['menus'] = $this->menus;
+      $data['menus'] = $this->menus;
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(

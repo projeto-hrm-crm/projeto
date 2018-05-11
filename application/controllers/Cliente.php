@@ -19,7 +19,7 @@ class Cliente extends CI_Controller
     parent::__construct();
     $user_id = $this->session->userdata('user_login');
     $url = isset($_SERVER['PATH_INFO']) ? rtrim($_SERVER['PATH_INFO'], '') : '';
-    // $this->usuario->hasPermission($user_id, $url);
+    $this->usuario->hasPermission($user_id, $url);
     $this->menus = $this->menu->getUserMenu($user_id);
     $this->load->model('cliente_model');
   }

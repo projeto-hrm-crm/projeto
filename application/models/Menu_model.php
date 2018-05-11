@@ -21,6 +21,7 @@ class Menu_model extends CI_Model
             if ($menus->num_rows() > 0) {
                foreach ($menus->result() as $menu) {
                     $final_menu[$menu->nome]['submenu'] = $this->submenu->getAllSubmenusByMenuId($menu->id_menu);
+                    $final_menu[$menu->nome]['icon']    = $menu->icone;
                }
             }
             return $final_menu;

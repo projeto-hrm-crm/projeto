@@ -21,6 +21,14 @@ class Setor extends CI_Controller
     $data['title'] = 'Setores';
     $data['setores'] = $this->setor->get();
     $data['menus'] = $this->menus;
+    $data['assets']= array(
+      'js' =>array(
+        'lib/data-table/datatables.min.js',
+        'lib/data-table/datatables.bootstrap.min.js',
+        'datatable.js',
+        'confirm.modal.js',
+      ),
+    );
     loadTemplate(
       'includes/header',
       'setor/index',
