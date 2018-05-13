@@ -123,3 +123,10 @@ $route['vaga']                = 'Vaga/index';
 $route['vaga/cadastrar']      = 'Vaga/create';
 $route['vaga/editar/(:num)']  = 'Vaga/edit/$1';
 $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
+
+
+//Rotas CandidatoVaga
+$route['candidato_vaga']                = 'CandidatoVaga/index';
+$route['candidato_vaga/cadastrar']      = 'CandidatoVaga/create';
+$route['candidato_vaga/editar/(:num)']  = 'CandidatoVaga/edit/$1';
+$route['candidato_vaga/excluir/(:num)'] = 'CandidatoVaga/delete/$1';
