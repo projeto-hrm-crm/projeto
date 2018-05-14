@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body">
 
-                   <a href="<?= site_url('funcionario/create')?>" class="btn btn-primary btn-sm">
+                   <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm">
                      <i class="fa fa-check"></i> Cadastrar
                    </a><br />
                    <br />
@@ -50,7 +50,7 @@
                             </td>
                             <td class="text-center"><?= $funcionario->cargo; ?></td>
                   					<td class="text-center">
-                  						<a title="Editar" href="<?= site_url('funcionario/edit/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
+                  						<a title="Editar" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
       										        <span class="fa fa-edit"></span></a>
                               <a title="Excluir" href="<?= site_url('funcionario/delete/'.$funcionario->id_funcionario)?>" class="btn btn-danger">
       										        <span class="fa fa-close"></span></a>

@@ -48,7 +48,7 @@
                               ?>
                             </td>
                   					<td class="text-center">
-                  						<a title="Editar" href="<?= site_url('cliente/edit/'.$cliente->id_cliente)?>" class="btn btn-primary">
+                  						<a title="Editar" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
       										        <span class="fa fa-edit"></span></a>
                               <a title="Excluir" href="<?= site_url('cliente/delete/'.$cliente->id_cliente)?>" class="btn btn-danger">
       										        <span class="fa fa-close"></span></a>

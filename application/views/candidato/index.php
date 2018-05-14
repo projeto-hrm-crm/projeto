@@ -29,7 +29,6 @@
                   		<tbody>
                   			<?php foreach ($candidatos as $candidato): ?>
                   				<tr>
-                  					<td class="text-center"><?= $candidato->id_candidato; ?></td>
                   					<td class="text-center"><?= $candidato->nome; ?></td>
                             <td class="text-center"><?= $candidato->email; ?></td>
                             <td class="text-center">
@@ -51,7 +50,7 @@
                             </td>
                             <!-- <td class="text-center"><?= $candidato->vaga; ?></td> -->
                   					<td class="text-center">
-                  						<a title="Editar" href="<?= site_url('candidato/edit/'.$candidato->id_candidato)?>" class="btn btn-primary">
+                  						<a title="Editar" href="<?= site_url('candidato/editar/'.$candidato->id_candidato)?>" class="btn btn-primary">
       										        <span class="fa fa-edit"></span></a>
                               <a title="Excluir" href="<?= site_url('candidato/delete/'.$candidato->id_candidato)?>" class="btn btn-danger">
       										        <span class="fa fa-close"></span></a>
