@@ -102,10 +102,8 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
     $data['cliente'] = $this->cliente->getById($id_cliente);
-    // $data['cliente'] = $this->cliente->getById($data['cliente'][0]->id_pessoa);
-
-    $data['paises'] = $this->cliente->get_pais();
     $data['estados'] =  $this->estado->get();
+    $data['cidades'] = $this->cidade->getByState($data['cliente'][0]->id_estado);
     $data['title'] = 'Editar cliente';
     $data['id'] = $id_cliente;
 
