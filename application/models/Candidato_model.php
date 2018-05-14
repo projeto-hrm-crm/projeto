@@ -54,9 +54,9 @@ class Candidato_model extends CI_Model {
 			endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
 			endereco.complemento,
 			cidade.id_cidade, cidade.nome AS cidade,
-			documento.tipo AS tipo_documento, documento.numero AS numero_documento,
+			documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado, estado.nome AS estado
+			estado.id_estado
 			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
 			->join('candidato', 'pessoa_fisica.id_pessoa = candidato.id_pessoa')
