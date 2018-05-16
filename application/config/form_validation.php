@@ -268,6 +268,43 @@ $config = array(
 
 
     ),
+
+    'pedido' => array(
+
+        array(
+            'field' => 'id_cliente',
+            'label' => 'Cliente',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'id_produto[]',
+            'label' => 'Produto',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Selecione ao menos um Produto/Serviço'
+            ),
+        ),
+
+        array(
+            'field' => 'situacao',
+            'label' => 'Situação',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        ),
+
+        array(
+            'field' => 'tipo',
+            'label' => 'Tipo do Pedido',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        )
+
+    ),
 );
 
 /**
