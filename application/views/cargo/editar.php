@@ -24,6 +24,10 @@
                 <textarea id="descricao" name="descricao" class="form-control"><?php echo $cargo->descricao ?></textarea>
               </div>
               <div class="form-group">
+                <label for="salario">Salário por hora</label>
+                <input id="salario" type="text" value="<?php echo $cargo->salario ?>" name="salario" class="form-control">
+              </div>
+              <div class="form-group">
                 <label for="setor">Setor</label>
                 <select id="setor" class="form-control" name="id_setor">
                   <?php foreach ($setores as $setor): ?>

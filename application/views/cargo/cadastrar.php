@@ -28,6 +28,12 @@
                 </span>
               </div>
               <div class="form-group">
+                <input type="text" placeholder="Salário por hora" name="salario" class="form-control" required>
+                <span class="invalid-feedback" id="invalid-salario">
+                  Campo obrigatório
+                </span>
+              </div>
+              <div class="form-group">
                 <select class="form-control" name="id_setor">
                   <?php foreach ($setores as $setor): ?>
                     <option value="<?php echo $setor->id_setor ?>"><?php echo $setor->nome; ?></option>

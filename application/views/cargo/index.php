@@ -20,6 +20,7 @@
               <tr>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Salário por hora</th>
                 <th></th>
               </tr>
             </thead>
@@ -29,6 +30,7 @@
                   <tr>
                     <td><?= $cargo->nome;?></td>
                     <td><?= $cargo->descricao;?></td>
+                    <td><?= $cargo->salario;?></td>
 
                     <td class="text-right">
                       <a href="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" class="btn btn-primary">
