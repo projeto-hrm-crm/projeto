@@ -11,7 +11,7 @@
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
 	                                <label for="id_cliente" class="control-label mb-1">Cliente</label>
-	                                <select name="id_cliente" id="id_cliente" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>">
+	                                <select name="id_cliente" id="id_cliente" class="form-control <?php echo isset($errors['id_cliente']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($clientes as $cliente): ?>
 		                                	<option value="<?php echo $cliente->id_cliente ?>" <?php echo isset($old_data['id_cliente']) && ($cliente->id_cliente == $old_data['id_cliente']) ? 'selected' : '' ?>>
@@ -24,25 +24,30 @@
 	                             	</span>
 	                            </div>
 	                        </div>
-
-
+	                
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
-	                                <label for="quantidade" class="control-label mb-1">Produtos/Serviços</label>
-	                                  <select id="id_produto" class="form-control">
+	                                <label for="id_produto" class="control-label mb-1">Produtos/Serviços</label>
+	                                  <select id="id_produto" class="form-control <?php echo isset($errors['id_produto[]']) ? 'is-invalid' : '' ?>">
 	                                    <option value="">Selecione</option>
 	                                    <?php foreach($produtos as $produto): ?>
-	                                    	<option value="<?php echo $produto->id_produto ?>" <?php echo isset($old_data['id_produto']) && ($produto->id_produto == $old_data['id_produto']) ? 'selected' : '' ?> data-value="<?php echo $produto->valor; ?>">
+	                                    	<option value="<?php echo $produto->id_produto ?>" 
+	                                    		<?php 
+	                                    			echo isset($old_data['id_produto']) && 
+	                                    			in_array($produto->id_produto, $old_data['id_produto']) ? 
+	                                    			'disabled' : '' 
+	                                    		?> 
+	                                    		data-value="<?php echo $produto->valor; ?>">
 	                                    		<?php echo $produto->nome ?>
 	                                    	</option>
 	                                   	<?php endforeach ?>
 	                                </select>
 	                                <span class="invalid-feedback">
-	                                	<?php echo isset($errors['id_produto']) ? $errors['id_produto'] : '' ; ?>
+	                                	<?php echo isset($errors['id_produto[]']) ? $errors['id_produto[]'] : '' ; ?>
 	                                </span>
 	                            </div>
 	                        </div>
-
+	                        
 	                        <div class="row">
 	                        	<div class="form-group col-lg-12">
 	                        		<table id="produtos-table" class="table table-sm">
@@ -56,14 +61,58 @@
     		                                </tr>
     		                            </thead>
     		                            <tbody>
-    		                            	
+    		                            	<?php 
+    		                            		if(isset($old_data['id_produto'])):
+    		                            			
+    		                            			$qtd   = 0;
+    		                            			$total = 0;
+
+	    		                            	 	foreach($produtos as $produto):
+	    		                       
+	    		                            	 		$key = array_search($produto->id_produto, $old_data['id_produto']); 
+
+	    		                            	 		if($key !== false):
+	    		                            ?>
+			    		                            	<tr>
+			    		                            		<td width="5%" class="td-id">
+			    		                            			<input class="form-control form-control-sm" name="id_produto[]" readonly 
+			    		                            			style="background-color: transparent; border: 0px; font-size: 1em;" 
+			    		                            			value="<?php echo $produto->id_produto; ?>">
+			    		                            		</td>
+			    		                            		<td width="50%" class="td-nome" data-id="<?php echo $produto->id_produto; ?>">
+			    		                            			<?php echo $produto->nome; ?>
+			    		                            		</td>
+			    		                            		<td width="15%" class="td-qtd">
+			    		                            			<input type="number" class="form-control form-control-sm input-qtd" min="1" 
+			    		                            			value="<?php echo $old_data['qtd_produto'][$key]; ?>" name="qtd_produto[]">
+			    		                            		</td>
+			    		                            		<td width="20%" class="td-value" data-default="<?php echo $produto->valor ?>">
+			    		                            			<?php 
+			    		                            				echo 'R$ ' . number_format($produto->valor *  $old_data['qtd_produto'][$key], 2, ',','');
+			    		                            				
+			    		                            			?>
+			    		                            		</td>
+			    		                            		<td width="10%">
+			    		                            			<button class="btn btn-danger btn-sm btn-block text-white btn-remove">
+			    		                            				<i class="fa fa-close"></i>
+			    		                            			</button>
+			    		                            		</td>
+			    		                            	</tr>
+
+	    		                            <?php 
+	    		                            			$qtd   += $old_data['qtd_produto'][$key];
+	    		                            			$total += $produto->valor *  $old_data['qtd_produto'][$key];
+	    		                            			endif;
+	    		                            		endforeach;
+    		                            		endif; 
+    		                            	?>
     		                            </tbody>
-    		                            <tfoot class="d-none">
+    		                            <tfoot class="<?php isset($old_data['id_produto']) ? '' : 'd-none' ?>">
     		                            	<tr>
     		                            	    <th scope="col"></th>
     		                            	    <th scope="col"></th>
-    		                            	    <th scope="col" id="total-qtd">Qtd</th>
-    		                            	    <th scope="col" id="total">Valor</th>
+    		                            	    <th scope="col" id="total-qtd"><?php echo isset($old_data['id_produto']) ? $qtd : ''; ?></th>
+    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) ? 'R$ ' . number_format($total, 2, ',','') : ''; ?></th>
     		                            	    <th scope="col"></th>
     		                            	</tr>
     		                            </tfoot>
@@ -83,19 +132,25 @@
 	                        		<label for="tipo" class="control-label mb-1">Tipo de Pedido</label>
 	                        		<br>
 	                        		<div class="form-check-inline form-check">
-	                        		  <label for="tipo1" class="form-check-label mr-2">
-	                        		    <input type="radio" name="tipo" value="P" class="form-check-input">
+	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'P' ? 'checked' : ''?>>
 	                        		    Produtos
 	                        		  </label>
-	                        		  <label for="tipo2" class="form-check-label mr-2">
-	                        		    <input type="radio" name="tipo" value="S" class="form-check-input">
+	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="S" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'S' ? 'checked' : ''?>>
 	                        		    Serviços
 	                        		  </label>
-	                        		  <label for="tipo3" class="form-check-label ">
-	                        		    <input type="radio" name="tipo" value="PS" class="form-check-input">
+	                        		  <label for="tipo3" class="form-check-label <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="PS" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'PS' ? 'checked' : ''?>>
 	                        		    Ambos
 	                        		  </label>
+
 	                        		</div>
+	                        		<?php if (isset($errors['tipo'])): ?>
+	                        			<div class="text-danger">
+	                        				<small><?php echo $errors['tipo'] ?></small>
+	                        			</div>
+	                        		<?php endif ?>
 	                        	</div>
 	                        </div>
 
