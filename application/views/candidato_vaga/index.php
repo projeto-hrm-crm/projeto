@@ -46,9 +46,11 @@
 												<!--
 												<input type="checkbox" name="" value="">
 											-->
-												<a href="candidato_vaga/create/<?php echo $vaga->id_vaga ?>"
+												<a href="CandidatoVaga/create/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-primary text-white">
-										        <i class="fa fa-pencil-square-o"></i>
+										        	<!--<i class="fa fa-pencil-square-o"></i>-->
+														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
+
 										    </a>
 
 										    <button  data-href="canditato_vaga/excluir/<?php echo $vaga->id_vaga ?>"
