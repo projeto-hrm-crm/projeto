@@ -32,4 +32,11 @@ class CandidatoVaga extends CI_Controller
       'includes/footer',
       $data);
   }
+
+  public function create($id_cargo){
+    $user_id = $this->session->userdata('user_login');
+    $data['id_candidato']=$user_id;
+    $data['id_vaga_etapa']=$id_cargo;
+    $this->candidato_etapa->insert($data);
+  }
 }
