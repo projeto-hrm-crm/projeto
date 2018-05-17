@@ -15,7 +15,7 @@
               </div> <!-- FIM NOME -->
               <div class="form-group col-12 col-md-6">
                 <label for="email-input" class=" form-control-label">Email</label>
-                <input type="text" id="email" name="email" value="<?= htmlspecialchars($candidato[0]->email)?>" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" title="Digite um e-mail válido" required>
+                <input type="text" id="email" name="email" value="<?= htmlspecialchars($candidato[0]->email)?>" class="form-control" title="Digite um e-mail válido" required>
               </div> <!-- FIM EMAIL -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>

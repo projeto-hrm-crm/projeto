@@ -17,7 +17,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="email-input" class=" form-control-label">Email</label>
-                <input type="text" id="email" name="email" value="<?= htmlspecialchars($funcionario[0]->email)?>" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" title="Digite um e-mail válido" required>
+                <input type="text" id="email" name="email" value="<?= htmlspecialchars($funcionario[0]->email)?>" class="form-control"  title="Digite um e-mail válido" required>
               </div> <!-- FIM EMAIL -->
 
               <div class="form-group col-12 col-md-6">
@@ -33,12 +33,12 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($funcionario[0]->numero_documento)?>" class="form-control cpf" pattern="[0-9]{11}" title="O CPF deve conter 11 dígitos decimais" >
+                <input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($funcionario[0]->numero_documento)?>" class="form-control cpf" title="O CPF deve conter 11 dígitos decimais" >
               </div> <!-- FIM CPF -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($funcionario[0]->telefone)?>" class="form-control telefone" pattern="[0-9]{11}" title="Insira um número válido de telefone" >
+                <input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($funcionario[0]->telefone)?>" class="form-control telefone" title="Insira um número válido de telefone" >
               </div> <!-- FIM TELEFONE -->
 
               <!-- INÍCIO ENDEREÇO -->
@@ -72,12 +72,12 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($funcionario[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" pattern="[A-Za-z]" title="Campo obrigatório" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($funcionario[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" title="Campo obrigatório" required>
               </div> <!-- FIM ENDEREÇO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($funcionario[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required>
+                <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($funcionario[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control" title="Campo obrigatório" required>
               </div> <!-- FIM NÚMERO -->
 
               <div class="form-group col-12 col-md-6">
