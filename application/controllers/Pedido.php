@@ -18,6 +18,29 @@ class Pedido extends CI_Controller
 	// }
 
 
+	public function index()
+	{
+
+		$data['title'] = 'Pedidos';
+
+		$data['pedidos'] = $this->pedido->get();
+		$data['assets'] = array(
+			'css' => array(
+				'lib/datatable/dataTables.bootstrap.min.css'
+			),
+
+			'js' => array(
+				'lib/data-table/datatables.min.js',
+				'lib/data-table/dataTables.bootstrap.min.js',
+				'datatable.js',
+				'confirm.modal.js'
+			),
+		);
+
+		loadTemplate('includes/header', 'pedido/index', 'includes/footer', $data);
+	}
+
+
 	/**
 	* @author: Tiago Villalobos
 	* Formulário para cadastro de pedidos
