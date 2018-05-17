@@ -211,7 +211,7 @@ $config = array(
         ),
 
        'vaga' => array(
-        
+
         array(
             'field' => 'id_cargo',
             'label' => 'Cargo',
@@ -239,9 +239,9 @@ $config = array(
             'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
         ),
         ),
-          
+
       'sac' => array(
-        
+
         array(
             'field' => 'titulo',
             'label' => 'Assunto',
@@ -265,9 +265,24 @@ $config = array(
             'label' => 'Descrição',
             'rules' => 'required'
         )
-
-
     ),
+    'processo_seletivo' => array(
+            array(
+                    'field' => 'nome',
+                    'label' => 'Nome',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'codigo',
+                    'label' => 'Codigo',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'descricao',
+                    'label' => 'Descrição etapas',
+                    'rules' => 'required'
+            ),
+      ),
 );
 
 /**
@@ -291,12 +306,12 @@ function requiredIf($field, $value)
 /**
 * @author: Tiago Villalobos
 * Verifica se uma data é válida
-* 
+*
 * Recebe uma data no formato padrão enviado por post, sem inversão Ex: 21/04/2018
-* 
+*
 * @param: string $date
 */
-function validDate($date) 
-{ 
+function validDate($date)
+{
     return date('d/m/Y', strtotime(str_replace('/', '-', $date))) === $date ? true : false;
 }

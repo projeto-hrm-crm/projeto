@@ -729,3 +729,40 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-04-27 16:58:12
+
+-- INSERT INTO `cargo` (`id_cargo`, `nome`, `descricao`, `salario`, `id_setor`) VALUES (NULL, 'chefe', 'manda em tudo', '5000', '1');
+-- INSERT INTO `cargo` (`id_cargo`, `nome`, `descricao`, `salario`, `id_setor`) VALUES (NULL, 'empregado', 'obedece todos', '1000', '1');
+--
+--
+-- USE projeto;
+-- CREATE TABLE `processo_seletivo` (
+--   `id_processo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+--   `codigo` int(10) NOT NULL,
+--   `nome` varchar(40) NOT NULL,
+--   `data_inicio` date NOT NULL,
+--   `data_fim` date NOT NULL,
+--   `id_cargo` int(10) NOT NULL,
+--   `descricao` varchar(255)NOT NULL,
+--   `vagas` int(10) NOT NULL,
+--   PRIMARY KEY (`id_processo`),
+--   KEY `fk_processo_seletivo_cargo1_idx` (`id_cargo`),
+--   CONSTRAINT `fk_processo_seletivo_cargo1` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+-- INSERT INTO `processo_seletivo` (`id_processo`, `codigo`, `nome`, `data_inicio`, `data_fim`, `id_cargo`, `descricao`, `vagas`) VALUES (NULL, '1313', 'processo 01', '2018-05-01', '2018-05-24', '1', 'etapa 1:
+-- asdasdsdha
+--
+-- etapa 2:
+-- asdasdsdha
+--
+-- etapa 3:
+-- asdasdsdha', '2');
+--
+-- INSERT INTO `processo_seletivo` (`id_processo`, `codigo`, `nome`, `data_inicio`, `data_fim`, `id_cargo`, `descricao`, `vagas`) VALUES (NULL, '1514', 'processo 02', '2018-05-01', '2018-05-24', '2', 'etapa 1:
+-- asdasdsdha
+--
+-- etapa 2:
+-- asdasdsdha
+--
+-- etapa 3:
+-- asdasdsdha', '5');
