@@ -16,6 +16,7 @@ Verificar se o produto ta cadastrando e editando normalmente. Verificar se a mes
 |CE8|	Botão excluir produto	|Remover todos os dados contidos do produto|	permanecer os dados, erro na página|
 |CE9|	Editar Produto|	editar dentro dos requisitos acima|	qualquer campo que esteja fora dos requisitos|
 |CE10|	Botão cancelar em editar|	Retornar a tela de listagem| não ter nenhuma ação
+|CE11|	Data validade|	Data válida(dia ate 31, mês ate 12, ano a partir de 1900), nenhum caracter|	32/13/0019 e data inferior a data de fabricação|
 
 #### TESTE			
 | ID |	ENTRADA |	SAÍDA ESPERADA | RESULTADO |
@@ -56,4 +57,7 @@ Verificar se o produto ta cadastrando e editando normalmente. Verificar se a mes
 |CE9|	editar data validade|	editado com sucesso|	ok|
 |CE9|	editar nome|	editado com sucesso|	ok|
 |CE10|	cancelar edição|	volta a pagina de listagem|	ok|
-
+|CE11|	01/05/2018|	cadastrar|	ok|
+|CE11|	nenhum caracter|	cadastrar|falhou|
+|CE11|	32/13/0019|	aparece msg de erro e não cadastra|	Falhou|
+|CE11|	data recebimento < data fabricação|	aparece msg de erro e não cadastra|	Falhou|
