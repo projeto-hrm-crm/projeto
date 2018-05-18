@@ -30,7 +30,18 @@
 	                                <label for="id_produto" class="control-label mb-1">Produtos/Serviços</label>
 	                                  <select id="id_produto" class="form-control <?php echo isset($errors['id_produto[]']) ? 'is-invalid' : '' ?>">
 	                                    <option value="">Selecione</option>
-	                                    <?php foreach($produtos as $produto): ?>
+	                                   <?php 
+	                                    	$old_produtos = array();
+	                                    	foreach($produtos as $produto): 
+
+	                                    		if(isset($old_data['id_produto'])): 
+	                                    			
+	                                    			$key = array_search($produto->id_produto, $old_data['id_produto']); 
+
+	                                    			if($key !== false) array_push($old_produtos, $produto);
+	                                    			
+	                                    		endif 
+	                                    ?>
 	                                    	<option value="<?php echo $produto->id_produto ?>" 
 	                                    		<?php 
 	                                    			echo isset($old_data['id_produto']) && 
@@ -43,7 +54,7 @@
 	                                   	<?php endforeach ?>
 	                                </select>
 	                                <span class="invalid-feedback">
-	                                	<?php echo isset($errors['id_produto[]']) ? $errors['id_produto[]'] : '' ; ?>
+	                                	<?php echo isset($errors['id_produto[]']) ? $errors['id_produto[]'] : 'Selecione ao menos um Produto/Serviço' ; ?>
 	                                </span>
 	                            </div>
 	                        </div>
@@ -62,16 +73,14 @@
     		                            </thead>
     		                            <tbody>
     		                            	<?php 
+
     		                            		if(isset($old_data['id_produto'])):
     		                            			
     		                            			$qtd   = 0;
     		                            			$total = 0;
 
-	    		                            	 	foreach($produtos as $produto):
-	    		                       
-	    		                            	 		$key = array_search($produto->id_produto, $old_data['id_produto']); 
-
-	    		                            	 		if($key !== false):
+	    		                            	 	foreach($old_produtos as $produto):
+	    		                            	 		
 	    		                            ?>
 			    		                            	<tr>
 			    		                            		<td width="5%" class="td-id">
@@ -102,7 +111,6 @@
 	    		                            <?php 
 	    		                            			$qtd   += $old_data['qtd_produto'][$key];
 	    		                            			$total += $produto->valor *  $old_data['qtd_produto'][$key];
-	    		                            			endif;
 	    		                            		endforeach;
     		                            		endif; 
     		                            	?>
@@ -146,11 +154,9 @@
 	                        		  </label>
 
 	                        		</div>
-	                        		<?php if (isset($errors['tipo'])): ?>
 	                        			<div class="text-danger">
-	                        				<small><?php echo $errors['tipo'] ?></small>
+	                        				<small class="d-none" id="error-tipo"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
 	                        			</div>
-	                        		<?php endif ?>
 	                        	</div>
 	                        </div>
 
@@ -170,10 +176,10 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-	                    <button type="reset" class="btn bg-danger text-white">
+	                   	<a href="<?php echo base_url('pedido')?>" class="btn bg-danger text-white">
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
-	                    </button>
+	                    </a>
 	                    <button type="submit" class="btn bg-primary text-white">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar

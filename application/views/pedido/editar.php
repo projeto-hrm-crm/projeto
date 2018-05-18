@@ -60,7 +60,7 @@
 	                                    		<?php 
 	                                    			echo (isset($old_data['id_produto']) && 
 	                                    			in_array($produto->id_produto, $old_data['id_produto']) !== false) ||
-	                                    			(array_search($produto->id_produto, array_column($pedido_produtos, 'id_produto'))) ?
+	                                    			(array_search($produto->id_produto, array_column($pedido_produtos, 'id_produto')) !== false) ?
 	                                    			// in_array($produto->id_produto, $pedido_produtos) !== false ? 
 	                                    			'disabled' : '' 
 	                                    		?> 
@@ -70,7 +70,7 @@
 	                                   	<?php endforeach ?>
 	                                </select>
 	                                <span class="invalid-feedback">
-	                                	<?php echo isset($errors['id_produto[]']) ? $errors['id_produto[]'] : '' ; ?>
+	                                	<?php echo isset($errors['id_produto[]']) ? $errors['id_produto[]'] : 'Selecione ao menos um Produto/Serviço' ; ?>
 	                                </span>
 	                            </div>
 	                        </div>
@@ -177,11 +177,9 @@
 	                        		  </label>
 
 	                        		</div>
-	                        		<?php if (isset($errors['tipo'])): ?>
-	                        			<div class="text-danger">
-	                        				<small><?php echo $errors['tipo'] ?></small>
-	                        			</div>
-	                        		<?php endif ?>
+	                        		<div class="text-danger">
+                        				<small class="d-none" id="error-tipo"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
+                        			</div>
 	                        	</div>
 	                        </div>
 
@@ -205,7 +203,7 @@
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button type="submit" class="btn bg-primary text-white">
+	                    <button type="submit" class="btn bg-primary text-white btn-submit">
 	                        <i class="fa fa-check" aria-hidden="true"></i>
 	                        Editar
 	                    </button>
@@ -214,4 +212,27 @@
 	        </div>
 	    </div>
 	</div>
+</div>
+
+
+<!-- Modal atualizar -->
+
+<div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atualizar Pedido</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Tem certeza que deseja atualizar esse Pedido ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary btn-edit">Confirmar</button>
+      </div>
+    </div>
+  </div>
 </div>
