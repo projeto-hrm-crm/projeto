@@ -106,9 +106,3 @@
 <script src="<?= base_url('assets/js/lib/data-table/buttons.print.min.js');?>"></script>
 <script src="<?= base_url('assets/js/lib/data-table/buttons.colVis.min.js');?>"></script>
 <script src="<?= base_url('assets/js/lib/data-table/datatables-init.js');?>"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#bootstrap-data-table-export').DataTable();
-  } );
-</script>

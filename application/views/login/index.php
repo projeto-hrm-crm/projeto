@@ -23,24 +23,7 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-  <style media="screen">
-  body {
-    min-height: 100vh;
-    background-color: #CCC;
-    background-image: url('https://unsplash.it/g/1500/800?random');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .login-form {
- 	margin-top: 50vh;
-	padding: 20px 30px;
- 	background-color: rgba(0, 0, 0, .9);
- 	color: #FFF;
 
- 	transform: translateY(-50%);
-} 
-
-  </style>
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
