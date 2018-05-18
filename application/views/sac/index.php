@@ -12,6 +12,7 @@
                             <tr>
                                 <th width="10%">Código</th>
                                 <th>Titulo</th>
+                                <th>Cliente</th>
                                 <th>Status</th>
                                 <th width="20%">Ação</th>
                             </tr>
@@ -22,6 +23,7 @@
                                     <tr>
                                         <td><?=$item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
+                                        <td><?=$item->id_cliente;?></td>
                                         <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
                                         <td>
                                             <a href="<?php echo site_url('sac/excluir/'.$item->id_sac); ?>" class="btn btn-danger">
