@@ -90,10 +90,6 @@ class Fornecedor_model extends CI_Model
       if($cleaned)
       {
         $id = $this->pessoa->update($cleaned['pessoa']);
-        // print "<pre>";
-        // print_r($id);
-        // print "</pre>";
-        // exit();
 
         $cleaned['documento']['id_pessoa'] = $id;
         $cleaned['telefone']['id_pessoa'] = $id;

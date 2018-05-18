@@ -742,7 +742,7 @@ UNLOCK TABLES;
 --   `data_inicio` date NOT NULL,
 --   `data_fim` date NOT NULL,
 --   `id_cargo` int(10) NOT NULL,
---   `descricao` varchar(255)NOT NULL,
+--   `descricao` LONGTEXT NOT NULL,
 --   `vagas` int(10) NOT NULL,
 --   PRIMARY KEY (`id_processo`),
 --   KEY `fk_processo_seletivo_cargo1_idx` (`id_cargo`),

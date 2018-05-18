@@ -1,9 +1,11 @@
-
+<!-- <pre>
+<?php print_r($processo_seletivo) ?>
+</pre> -->
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
-      <strong>Cadastro de Processos Seletivos</strong>
+      <strong>Edição do Processo Seletivo <?php echo($processo_seletivo[0]->codigo) ?></strong>
     </div>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
@@ -18,29 +20,29 @@
 				<?php endif; ?>
 			</div>
 		</div>
-     <form action="<?php echo site_url('processo_seletivo/cadastrar'); ?>" method="POST" id="form_processo_seletivo" >
+     <form action="<?php echo site_url('processo_seletivo/editar/'.$processo_seletivo[0]->id_processo); ?>" method="POST" id="form_processo_seletivo" >
        <div class="card-body card-block">
 
         <div class="row">
 
           <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Codigo</label>
-             <input type="text" id="codigo" name="codigo" placeholder="Codigo do Processo" class="form-control" value="" required>
+             <input type="text" id="codigo" name="codigo" placeholder="Codigo do Processo" class="form-control" value="<?php echo($processo_seletivo[0]->codigo); ?>" required>
            </div>
 
           <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Nome</label>
-             <input type="text" id="nome" name="nome" placeholder="Nome" class="form-control" required>
+             <input type="text" id="nome" name="nome" placeholder="Nome" class="form-control" value="<?php echo($processo_seletivo[0]->nome); ?>" required>
            </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Inicio</label>
-             <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
+             <input type="date" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control" value="<?php echo($processo_seletivo[0]->data_inicio); ?>">
            </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Término</label>
-             <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
+             <input type="date" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control" value="<?php echo($processo_seletivo[0]->data_fim); ?>">
            </div>
 
            <div class="form-group col-12 col-md-6">
@@ -54,12 +56,12 @@
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Número de Vagas</label>
-             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number">
+             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number" value="<?php echo($processo_seletivo[0]->vagas); ?>">
            </div>
 
            <div class="form-group col-12">
              <label class=" form-control-label">Descrição das Etapas do Processo</label>
-             <textarea placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
+             <textarea rows="30" cols="140" placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required><?php echo($processo_seletivo[0]->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
@@ -73,10 +75,15 @@
             <i class="fa fa-times"></i> Cancelar
           </a>
           <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-plus"></i> Cadastrar
+            <i class="fa fa-plus"></i> Salvar
           </button>
 
         </div>
        </form>
   </div>
 </div>
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    var date = new DateUtil("yyyy/MM/dd");
+  } );
+</script> -->

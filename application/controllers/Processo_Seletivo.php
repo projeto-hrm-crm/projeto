@@ -58,10 +58,9 @@ class Processo_Seletivo extends CI_Controller
     $data = $this->input->post();
     if ($data)
     {
-
       if ($this->form_validation->run('processo_seletivo'))
       {
-        $this->$processo_seletivo->update($id, $data);
+        $this->processo_seletivo->update($id, $data);
         $this->session->set_flashdata('success', 'Processo Seletivo editado com sucesso.');
         redirect('processo_seletivo');
       }else{
@@ -70,7 +69,7 @@ class Processo_Seletivo extends CI_Controller
       }
     }
 
-    $data['title'] = 'Cadastrar Processo Seletivo';
+    $data['title'] = 'Editar Processo Seletivo';
     $data['cargos'] = $this->cargo->get();
     $data['processo_seletivo'] = $this->processo_seletivo->find($id);
     loadTemplate('includes/header', 'processo_seletivo/editar', 'includes/footer', $data);
@@ -78,7 +77,9 @@ class Processo_Seletivo extends CI_Controller
 
   public function info($id)
   {
-
+    $data['info'] = $this->processo_seletivo->info($id);
+    $data['title'] = 'Informações Processo Seletivo';
+    loadTemplate('includes/header', 'processo_seletivo/info', 'includes/footer', $data);
   }
 
   public function delete($id)

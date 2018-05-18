@@ -35,12 +35,16 @@
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Inicio</label>
-             <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
+             <date-util format="yyyy/MM/dd">
+               <input type="date" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control">
+             </date-util>
            </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Término</label>
-             <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
+             <date-util format="yyyy/MM/dd">
+               <input type="date" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control">
+             </date-util>
            </div>
 
            <div class="form-group col-12 col-md-6">
@@ -59,7 +63,7 @@
 
            <div class="form-group col-12">
              <label class=" form-control-label">Descrição das Etapas do Processo</label>
-             <textarea placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
+             <textarea rows="30" cols="140" placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
