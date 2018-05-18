@@ -27,87 +27,34 @@ jQuery(document).ready(function($) {;
                 brazilian_date: true,
             },
         },
-        messages: {
-            nome: "Insira o nome do produto",
-
-            lote: {
-                required: "Insira o lote do produto",
-            },
-
-            codigo: {
-                required: "Insira o código do produto",
-            },
-
-            recebimento: {
-                required: "Insira a data de recebimento",
-                brazilian_date: "Insira uma data valida",
-            },
-
-            fabricacao: {
-                required: "Insira a data de fabricação",
-                brazilian_date: "Insira uma data valida",
-            },
-
-            validade: {
-                required: "Insira a data de validade",
-                brazilian_date: "Insira uma data valida",
-            },
-        },
 
     });
 
    $("#form_fornecedor").validate({
 
         rules: {
-            nome: "required",
-            email: "required",
+            nome: {
+              required:true,
+              letras:true,
+            },
+            email: {
+              required:true,
+              email:true,
+            },
             razao_social: "required",
             cnpj: "required",
             telefone: "required",
             cep: "required",
             bairro: "required",
-            numero: "required",
+            id_estado: "required",
+            id_cidade: "required",
+            numero: {
+              required:true,
+              digits:true,
+            },
             logradouro: "required",
             compremento: "required",
 
-        },
-        messages: {
-            nome: "Insira o nome do fornecedor",
-
-            email: {
-                required: "Insira o e-mail",
-            },
-
-            razao_social: {
-                required: "Informe a razão social",
-            },
-
-            cnpj: {
-                required: "Insira o número do CNPJ",
-            },
-
-            telefone: {
-                required: "Insira o número de Telefone",
-            },
-
-            cep: {
-                required: "Insira o CEP",
-            },
-
-            bairro: {
-                required: "Informe o bairro",
-            },
-
-            numero: {
-                required: "Insira o número",
-            },
-
-            logradouro: {
-                required: "Informe o logradouro",
-            },
-            complemento: {
-                required: "Informe o complemento",
-            },
         },
 
     });
@@ -116,7 +63,8 @@ jQuery(document).ready(function($) {;
         rules: {
             titulo: "titulo",
             descricao: "descricao",
-
+            id_produto: "required",
+            id_cliente: "required",
         },
         messages: {
             titulo: "Insira um asssunto ao SAC",
@@ -395,6 +343,7 @@ jQuery(document).ready(function($) {;
       required: "Esse campo é obrigatorio",
       brazilian_date: "Digite uma data valida!",
       email: "Digite um email valido",
+      digits: "O valor do campo deve ser númerico",
     });
 
 
