@@ -6,16 +6,16 @@
         <div class="card-header">
           <strong class="card-title">Editar informações de candidato</strong>
         </div>
-        <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" class="form-horizontal">
+        <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" class="form-horizontal" id="form_candidato">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($candidato[0]->nome)?>" title="Campo obrigatório" required>
+                <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($candidato[0]->nome)?>" required>
               </div> <!-- FIM NOME -->
               <div class="form-group col-12 col-md-6">
                 <label for="email-input" class=" form-control-label">Email</label>
-                <input type="text" id="email" name="email" value="<?= htmlspecialchars($candidato[0]->email)?>" class="form-control" title="Digite um e-mail válido" required>
+                <input type="text" id="email" name="email" value="<?= htmlspecialchars($candidato[0]->email)?>" class="form-control" required>
               </div> <!-- FIM EMAIL -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
@@ -29,11 +29,11 @@
               </div> <!-- FIM SEXO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" class="form-control cpf" value="<?php echo htmlspecialchars($candidato[0]->numero_documento)?>" title="O CPF deve conter 11 dígitos decimais">
+                <input type="text" id="cpf" name="cpf" class="form-control cpf" value="<?php echo htmlspecialchars($candidato[0]->numero_documento)?>" >
               </div> <!-- FIM CPF -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="telefone" name="tel" class="form-control telefone"  value="<?php echo htmlspecialchars($candidato[0]->telefone)?>" title="Insira um número válido de telefone" >
+                <input type="text" id="telefone" name="tel" class="form-control telefone"  value="<?php echo htmlspecialchars($candidato[0]->telefone)?>"  >
               </div> <!-- FIM TELEFONE -->
 
               <!-- INÍCIO ENDEREÇO -->
@@ -58,24 +58,24 @@
               </div>
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Bairro</label>
-                <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($candidato[0]->bairro)?>"  placeholder="Bairro" class="form-control" title="Campo obrigatório" required>
+                <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($candidato[0]->bairro)?>"  placeholder="Bairro" class="form-control" required>
               </div> <!-- FIM BAIRRO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($candidato[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" title="Campo obrigatório" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($candidato[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" required>
               </div> <!-- FIM ENDEREÇO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($candidato[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control" title="Campo obrigatório" required>
+                <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($candidato[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control" required>
               </div> <!-- FIM NÚMERO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Complemento</label>
-                <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($candidato[0]->complemento)?>" placeholder="Complemento" class="form-control" title="Campo opcional" >
+                <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($candidato[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" title="Campo obrigatório" data-mask="00000-000" required>
+                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
               </div> <!-- FIM CEP -->
               <div class="form-group col-12 col-md-6">
                 <label for="vaga">Vagas disponíveis</label>

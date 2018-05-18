@@ -13,7 +13,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" title="Campo obrigatório" required>
+                <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
@@ -34,17 +34,17 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf" title="O CPF deve conter 11 dígitos decimais">
+                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf">
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="telefone" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control telefone" title="Residencial ou celular" >
+                <input type="text" id="telefone" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control telefone">
               </div>
               <!-- INÍCIO ENDEREÇO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" title="Campo obrigatório" required>
+                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
@@ -65,32 +65,25 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Bairro</label>
-                <input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control" title="Campo obrigatório" required>
+                <input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control" required>
               </div>
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" title="Campo obrigatório" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" title="Campo obrigatório" required>
+                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Complemento</label>
-                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control" title="Campo opcional" >
+                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control" >
               </div>
 
-              <div class="form-group col-12 col-md-6">
-                <label for="vaga">Vagas disponíveis</label>
-                <select name="vaga" id="vaga" class="form-control">
-                  <option value="">Selecionar vaga</option>
-                  <?php foreach($vagas as $vaga): ?>
-                    <option value="<?php echo $vaga->id_vaga; ?>"><?php echo $vaga->nome; ?></option>
-                  <?php endforeach ?>
-                </select>
-              </div>
+
+            </div>
 
               <div class="card-footer text-right">
                 <a href="<?=site_url('candidato')?>" class="btn btn-danger btn-sm">
@@ -100,7 +93,6 @@
                   <i class="fa fa-plus"></i> Cadastrar
                 </button>
               </div>
-            </div>
           </form>
 
         </div>

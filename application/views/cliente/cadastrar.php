@@ -7,19 +7,19 @@
           <strong class="card-title">Cadastrar Cliente</strong>
         </div>
 
-        <form action="<?php echo site_url('cliente/cadastrar'); ?>" method="POST" class="form-horizontal" novalidate="novalidate">
+        <form action="<?php echo site_url('cliente/cadastrar'); ?>" method="POST" id="form_cliente" class="form-horizontal" novalidate="novalidate">
 
           <div class="card-body card-block">
             <div class="row">
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" title="Campo obrigatório" required>
+                <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">E-mail</label>
-                <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$" title="Digite um e-mail válido">
+                <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
               </div> <!-- FIM EMAIL -->
 
               <div class="form-group col-12 col-md-6">
@@ -35,17 +35,17 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf" title="O CPF deve conter 11 dígitos decimais">
+                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf">
               </div> <!-- FIM CPF -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control telefone" pattern="[0-9]{11}" title="Residencial ou celular" >
+                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control telefone" pattern="[0-9]{11}" >
               </div> <!-- FIM TELEFONE -->
               <!-- INÍCIO ENDEREÇO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" title="Campo obrigatório"required>
+                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" required>
               </div> <!-- FIM CEP -->
 
               <div class="form-group col-12 col-md-6">
@@ -67,22 +67,22 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Bairro</label>
-                <input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control" title="Campo obrigatório" required>
+                <input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control" required>
               </div> <!-- FIM BAIRRO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" pattern="[A-Za-z]" title="Campo obrigatório" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" required>
               </div> <!-- FIM ENDEREÇO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" pattern="[0-9]" title="Campo obrigatório" required>
+                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" required>
               </div> <!-- FIM NÚMERO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Complemento</label>
-                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control" title="Campo opcional" >
+                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control">
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
@@ -94,7 +94,7 @@
                 <i class="fa fa-plus"></i> Cadastrar
               </button>
             </div>
-            
+
           </div>
         </div>
       </form>

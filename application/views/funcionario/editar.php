@@ -7,12 +7,12 @@
           <strong class="card-title">Editar informações de funcionário</strong>
         </div>
 
-        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" class="form-horizontal">
+        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" class="form-horizontal">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($funcionario[0]->nome)?>" title="Campo obrigatório" required>
+                <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($funcionario[0]->nome)?>"  required>
               </div> <!-- FIM NOME -->
 
               <div class="form-group col-12 col-md-6">
@@ -44,7 +44,7 @@
               <!-- INÍCIO ENDEREÇO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($funcionario[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" title="Campo obrigatório" required>
+                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($funcionario[0]->cep)?>"  placeholder="C.E.P" class="form-control cep"  required>
               </div> <!-- FIM CEP -->
 
               <div class="form-group col-12 col-md-6">
@@ -67,22 +67,22 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Bairro</label>
-                <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($funcionario[0]->bairro)?>"  placeholder="Bairro" class="form-control" title="Campo obrigatório" required>
+                <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($funcionario[0]->bairro)?>"  placeholder="Bairro" class="form-control"  required>
               </div> <!-- FIM BAIRRO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($funcionario[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" title="Campo obrigatório" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($funcionario[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control"  required>
               </div> <!-- FIM ENDEREÇO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($funcionario[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control" title="Campo obrigatório" required>
+                <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($funcionario[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control"  required>
               </div> <!-- FIM NÚMERO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Complemento</label>
-                <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" title="Campo opcional" >
+                <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
