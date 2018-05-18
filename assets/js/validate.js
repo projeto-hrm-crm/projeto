@@ -227,7 +227,38 @@ jQuery(document).ready(function($) {;
     });
 
     $('#form_candidato').validate({
+      rules: {
+          nome: {
+            required:true,
+            letras:true,
+          },
+          email: {
+          required:true,
+          email:true,
+        },
+          data_nacimento: {
+              required: true,
+              brazilian_date: true,
+          },
+          cpf:{
+            required:true,
+            cpf:true,
+          },
+          tel: "required",
+          cep: "required",
+          cidade: "required",
+          estado: "required",
+          bairro: "required",
+          numero:{
+            required:true,
+            digits: true,
+          },
+          logradouro: "required",
+      },
 
+    });
+
+    $('#form_cliente').validate({
       rules: {
           nome: "required",
           email: "required",
@@ -236,52 +267,36 @@ jQuery(document).ready(function($) {;
               brazilian_date: true,
           },
           cpf: "required",
-          telefone: "required",
+          tel: "required",
           cep: "required",
+          cidade: "required",
+          estado: "required",
           bairro: "required",
           numero: "required",
           logradouro: "required",
-
-      },
-      messages: {
-          nome: "Insira o nome do fornecedor",
-
-          email: {
-              required: "Insira o e-mail",
-          },
-
-          razao_social: {
-              required: "Informe a razão social",
-          },
-
-          cnpj: {
-              required: "Insira o número do CNPJ",
-          },
-
-          telefone: {
-              required: "Insira o número de Telefone",
-          },
-
-          cep: {
-              required: "Insira o CEP",
-          },
-
-          bairro: {
-              required: "Informe o bairro",
-          },
-
-          numero: {
-              required: "Insira o número",
-          },
-
-          logradouro: {
-              required: "Informe o logradouro",
-          },
-          complemento: {
-              required: "Informe o complemento",
-          },
       },
 
+    });
+    $('#form_funcionario').validate({
+      rules: {
+          nome: "required",
+          email: "required",
+          data_nacimento: {
+              required: true,
+              brazilian_date: true,
+          },
+          cpf: {
+            required:true,
+            cpf:true,
+          },
+          tel: "required",
+          cep: "required",
+          cidade: "required",
+          estado: "required",
+          bairro: "required",
+          numero: "required",
+          logradouro: "required",
+      },
 
     });
 
@@ -335,5 +350,52 @@ jQuery(document).ready(function($) {;
 
         return this.optional(element) || re.test(value);
     });
+
+    /**
+    * @author: Camila Sales
+    * Verifica se o cpf é válido
+    **/
+    jQuery.validator.addMethod("cpf", function(value, element) {
+      value = jQuery.trim(value);
+      cpf = value.replace(/[^\d]+/g,'')
+
+      while(cpf.length < 11) cpf = "0"+ cpf;
+      var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
+      var a = [], b = new Number, c = 11;
+      for (i=0; i<11; i++){
+        a[i] = cpf.charAt(i);
+        if (i < 9) b += (a[i] * --c);
+      }
+
+      ((x = b % 11) < 2) ? a[9] = 0 : a[9] = 11-x ;
+      b = 0;
+      c = 11;
+      for (y=0; y<10; y++) b += (a[y] * c--);
+      ((x = b % 11) < 2) ? a[10] = 0 : a[10] = 11-x;
+
+      var retorno = true;
+      if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) retorno = false;
+
+      return this.optional(element) || retorno;
+    }, "Informe um CPF válido.");
+
+    /**
+    * @author: Camila Sales
+    * Verifica se o campo contem apenas letras
+    **/
+    jQuery.validator.addMethod("letras", function(value, element) {
+      return this.optional(element) || /^[a-z-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/i.test(value);
+    }, "Somente letras");
+
+    /**
+    * @author: Camila Sales
+    * Mensagens Padroes
+    **/
+    jQuery.extend(jQuery.validator.messages, {
+      required: "Esse campo é obrigatorio",
+      brazilian_date: "Digite uma data valida!",
+      email: "Digite um email valido",
+    });
+
 
 });
