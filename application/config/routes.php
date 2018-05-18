@@ -61,6 +61,9 @@ $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
 $route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 
+//Rotas Log
+$route['log'] = 'Log/index';
+
 
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
