@@ -46,14 +46,14 @@
 												<!--
 												<input type="checkbox" name="" value="">
 											-->
-												<a href="CandidatoVaga/create/<?php echo $vaga->id_vaga ?>"
+												<a href="CandidatoEtapa/create/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-primary text-white">
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
 
 										    </a>
 
-										    <button  data-href="canditato_vaga/excluir/<?php echo $vaga->id_vaga ?>"
+										    <button  data-href="canditato_etapa/excluir/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
 										        <i class="fa fa-times"></i>
   									    	</button>

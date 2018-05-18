@@ -1,9 +1,9 @@
 <?php
 /**
 * author: Matheus Ladislau
-* Controller de candidato-vaga
+* Controller de candidato-etapa
 **/
-class CandidatoVaga extends CI_Controller
+class CandidatoEtapa extends CI_Controller
 {
   /**
    * @author Pedro Henrique Guimarães
@@ -28,15 +28,25 @@ class CandidatoVaga extends CI_Controller
     $data['vagas'] = $this->vaga->get();
     loadTemplate(
       'includes/header',
-      'candidato_vaga/index',
+      'candidato_etapa/index',
       'includes/footer',
       $data);
   }
 
-  public function create($id_cargo){
-    $user_id = $this->session->userdata('user_login');
-    $data['id_candidato']=$user_id;
-    $data['id_vaga_etapa']=$id_cargo;
+  public function create($id_vaga_etapa){
+    $id_usuario = $this->session->userdata('user_login');
+    $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
+    $data['id_candidato']=$usuario->id_candidato;
+    $data['id_vaga_etapa']=$id_vaga_etapa;
     $this->candidato_etapa->insert($data);
+    redirect('candidato_etapa');
   }
+
+  function excluir()
+  {
+    $id_candidato = $this->session->userdata('user_login');
+    $this->candidato_etapa->remove($id_candidato,$id_vaga_etapa);
+    redirect('candidato_etapa');
+  }
+
 }

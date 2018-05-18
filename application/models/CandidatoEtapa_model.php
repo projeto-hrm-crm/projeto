@@ -20,4 +20,41 @@ class CandidatoEtapa_model extends CI_Model
   }
 
 
+  /**
+  * @author: Matheus Ladislau
+  * Remove o registro de candidato_etapa
+  *
+  * @param integer:  refere-se ao id do a ser deletado
+  */
+  public function remove($id_candidato,$id_vaga_etapa)
+  {
+    $this->db->where('id_candidato', $id_candidato);
+    $this->db->where('id_vaga_etapa', $id_vaga_etapa);
+    $this->db->delete('candidato_etapa');
+  }
+
+
+  public function selectAll()
+  {
+    $this->db->select('*');
+    $this->db->from('candidato');
+    $this->db->join('pessoa', 'pessoa.id_pessoa = candidato.id_pessoa');
+    $query=$this->db->get();
+    return $query;
+  }
+
+  public function selectCandidatoByIdUsuario($id_usuario)
+  {
+    $this->db->select('*');
+    $this->db->from('candidato');
+    $this->db->join('usuario', 'candidato.id_pessoa = usuario.id_pessoa');
+    $query=$this->db->get();
+    return $query->row();
+  }
+/**
+  $this->db->select('*');
+$this->db->from('blogs');
+$this->db->join('comments', 'comments.id = blogs.id');
+$query = $this->db->get();
+*/
 }
