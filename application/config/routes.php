@@ -126,7 +126,7 @@ $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
 
 
 //Rotas CandidatoVaga
-$route['candidato_vaga']                = 'CandidatoVaga/index';
-$route['candidato_vaga/cadastrar']      = 'CandidatoVaga/create';
-$route['candidato_vaga/editar/(:num)']  = 'CandidatoVaga/edit/$1';
-$route['candidato_vaga/excluir/(:num)'] = 'CandidatoVaga/delete/$1';
+$route['candidato_etapa']                = 'CandidatoEtapa/index';
+$route['candidato_etapa/cadastrar']      = 'CandidatoEtapa/create';
+$route['candidato_etapa/editar/(:num)']  = 'CandidatoEtapa/edit/$1';
+$route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
