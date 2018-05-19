@@ -1,6 +1,36 @@
 <?php
 class Usuario_model extends CI_Model
 {
+  public $id_usuario;
+  public $login;
+  public $senha;
+  public $id_grupo_acesso;//estrangeira
+  public $id_pessoa;//estrangeira
+
+
+  /**
+  * @author: Matheus Ladislau
+  * Retorna todos registro de cargo cadastrados no banco
+  * @return array: todos registro de cargo
+  */
+  public function get(){
+      $query = $this->db->get('usuario');
+      return $query->result();
+  }
+
+  /**
+	* @author: Matheus Ladislau
+	* Remove o registro de usuario pelo id de usuário referente
+	*
+	* @param integer: $id_usuario refere-se ao id do registro de usuario a ser deletado
+	*/
+	public function remove($id_usuario)
+	{
+		$this->db->where('id_usuario', $id_usuario);
+		$this->db->delete('usuario');
+	}
+
+
     /**
      * @author Pedro Henrique Guimarães
      * Método responsável por efetuar o login
