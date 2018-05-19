@@ -76,6 +76,9 @@ class ProcessoSeletivo_model extends CI_Model
   }
   public function delete($id)
   {
-
+    try {
+      $this->db->where('id', $id);
+      $this->db->delete('processo_seletivo');
+    } catch (\Exception $e) {}
   }
 }

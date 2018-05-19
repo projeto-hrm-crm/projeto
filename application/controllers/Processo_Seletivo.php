@@ -95,6 +95,13 @@ class Processo_Seletivo extends CI_Controller
 
   public function delete($id)
   {
-
+    $processo_seletivo = $this->processo_seletivo->find($id);
+    if($processo_seletivo){
+       $this->processo_seletivo->delete($id);
+       $this->session->set_flashdata('success', 'Processo Seletivo deletado com sucesso.');
+    }else{
+      $this->session->set_flashdata('danger', 'Impossível Deletar!');
+    }
+    redirect('processo_seletivo');
   }
 }
