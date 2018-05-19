@@ -107,7 +107,7 @@ class Cliente_model extends CI_Model {
 						   ->from('cliente as c ')
 							 ->join('pessoa as p', ' c.id_pessoa = p.id_pessoa')
 							 ->where('MONTH(p.data_criacao)', $i);
-			$chart[$i] = $this->db->get()->result()[0]->c;
+			$chart[] = $this->db->get()->result()[0]->c;
 		}
 
 		$data = [

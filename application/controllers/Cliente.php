@@ -137,6 +137,6 @@ class Cliente extends CI_Controller
   */
   public function getChartData()
   {
-      echo json_encode((object)$this->cliente->getClienteChartData());
+      echo json_encode($this->cliente->getClienteChartData());
   }
 }

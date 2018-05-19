@@ -27,15 +27,13 @@ jQuery(document).ready(($) => {
       url : 'http://localhost/projeto/cliente/chart',
       data: 'json',
       success: function(data) {
-        console.log(data);
+        data = JSON.parse(data);
         if (data.status == 'ok') {
-          console.log(data);return
           var clientChart = new Chart(client_chart, {
             type: 'line',
             data: {
               labels: month,
-              backgroundColor: '#000000',
-              borderColor: '#000000',
+              borderColor: '#0984e3',
               datasets: [{
       					label: getCurrentDate(),
       					data: data.data,
