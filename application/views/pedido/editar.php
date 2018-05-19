@@ -154,7 +154,7 @@
 	                        <div class="row">
 	                        	<div class="form-group col-lg-6 col-sm-12">
 	                                <label for="situacao" class="control-label mb-1">Situação</label>
-	                                <input value="<?php echo isset($old_data['situacao']) ? $old_data['situacao'] : $pedido->situacao;?>" name="situacao" type="text" class="data form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
+	                                <input value="<?php echo isset($old_data['situacao']) ? $old_data['situacao'] : $pedido->situacao;?>" name="situacao" type="text" class="form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['situacao']) ? $errors['situacao'] : '' ; ?>
 	                                </span>
