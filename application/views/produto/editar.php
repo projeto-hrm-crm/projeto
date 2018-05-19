@@ -49,13 +49,7 @@
 	                                <option value="">Selecione</option>
 	                                <?php foreach ($fornecedores as $fornecedor): ?>
 	                                    <option value="<?php echo $fornecedor->id_fornecedor;?>"
-                                        <?php
-                                            echo (isset($old_data['id_fornecedor']) &&
-                                            ($fornecedor->id_fornecedor == $old_data['id_fornecedor'])) ||
-                                            !isset($errors['id_fornecedor']) &&
-                                            ($produto->id_fornecedor == $fornecedor->id_fornecedor) ?
-                                            'selected' : '' ?>
-                                        >
+                                        <?php echo (isset($old_data['id_fornecedor']) && ($fornecedor->id_fornecedor == $old_data['id_fornecedor'])) || !isset($errors['id_fornecedor']) && ($produto->id_fornecedor == $fornecedor->id_fornecedor) ? 'selected' : '' ?>>
 	                               	    <?php echo $fornecedor->razao_social;?>
 	                                    </option>
                                     <?php endforeach; ?>
