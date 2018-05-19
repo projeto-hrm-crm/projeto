@@ -1,3 +1,12 @@
+<div class="row">
+  <div class="col">
+    <?php if ($this->session->flashdata('success')): ?>
+      <div class="alert alert-success mt-4">
+        <?php echo $this->session->flashdata('success'); ?>
+      </div>
+    <?php endif; ?>
+  </div>
+</div>
 <div class="animated fadeIn">
 	<div class="row">
 		<div class="col-12">
