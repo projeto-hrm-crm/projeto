@@ -95,5 +95,27 @@ class Cliente_model extends CI_Model {
 		return $query->result();
 	}
 
+	/**
+	* @author: Pedro Henrique
+	* Método responsável por alimentar o gráfico de clientes da home
+	* País, estado e cidade
+	*/
+	public function getClienteChartData()
+	{
+		for($i = 1; $i <= 12; $i++) {
+			$this->db->select('count(*) as c')
+						   ->from('cliente as c ')
+							 ->join('pessoa as p', ' c.id_pessoa = p.id_pessoa')
+							 ->where('MONTH(p.data_criacao)', $i);
+			$chart[] = $this->db->get()->result()[0]->c;
+		}
+
+		$data = [
+			'data' => $chart,
+			'status' => 'ok'
+		];
+		return $data;
+	}
+
 
 }

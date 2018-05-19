@@ -17,6 +17,12 @@ class Home extends CI_Controller
 	public function index()
 	{
     $data['title'] = 'Dashboard';
+    $data['assets'] = [
+      'js' => [
+         'chartjs.min.js',
+         'cliente/home-charts.js'
+      ]
+    ];
 
 		loadTemplate(
         'includes/header',

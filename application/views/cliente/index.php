@@ -55,7 +55,6 @@
                     }
                     ?>
                   </td>
-
                   <td class="text-center">
                     <?php
                     $source = $cliente->data_nascimento;
