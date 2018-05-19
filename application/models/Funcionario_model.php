@@ -12,6 +12,13 @@ class Funcionario_model extends CI_Model {
 	{
 		try {
 			$this->db->insert('funcionario', $data);
+			$id_funcionario = $this->db->insert_id();
+
+			if($id_funcionario)
+			{
+				$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Funcionário', date('Y-m-d'), 'Funcionário', $id_funcionario);
+				return $id_funcionario;
+			}
     } catch (\Exception $e) {}
 	}
 

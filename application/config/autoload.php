@@ -164,5 +164,7 @@ $autoload['model'] = array(
                     'Menu_model'                 => 'menu',
                     'Submenu_model'              => 'submenu',
                     'Grupo_model'                => 'grupo',
+                    'Log_model'                  => 'relatorio',
                     'ProcessoSeletivo_model'     => 'processo_seletivo'
+
 );

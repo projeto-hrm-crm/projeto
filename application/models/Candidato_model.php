@@ -12,6 +12,13 @@ class Candidato_model extends CI_Model {
   {
  	try {
  		$this->db->insert('candidato', $data);
+		$id_candidato = $this->db->insert_id();
+
+		if($id_candidato)
+		{
+			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
+			return $id_candidato;
+		}
  	} catch (\Exception $e) {}
   }
 
@@ -95,7 +102,13 @@ class Candidato_model extends CI_Model {
 	{
 		try {
 			$this->db->where('id_candidato', $id_candidato);
-			$this->db->update('candidato', $data);
+			$candidato = $this->db->update('candidato', $data);
+
+			if($candidato)
+			{
+				$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
+				return $candidato;
+			}
 		} catch (\Exception $e) {}
 	}
 

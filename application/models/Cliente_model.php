@@ -12,6 +12,13 @@ class Cliente_model extends CI_Model {
   {
  	try {
  		$this->db->insert('cliente', $data);
+		$id_cliente = $this->db->insert_id();
+
+		if($id_cliente)
+		{
+			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Cliente', date('Y-m-d'), 'Cliente',  $id_cliente);
+			return $id_cliente;
+		}
  	} catch (\Exception $e) {}
   }
 
@@ -82,6 +89,7 @@ class Cliente_model extends CI_Model {
 		try {
 			$this->db->where('id_cliente', $id_cliente);
 			$this->db->update('cliente', $data);
+
 		} catch (\Exception $e) {}
 	}
 
