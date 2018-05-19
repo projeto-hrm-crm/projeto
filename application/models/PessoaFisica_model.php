@@ -22,7 +22,7 @@ class PessoaFisica_model extends CI_Model{
 
       if($id_pessoa_fisica)
       {
-          $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'Pessoa Fisica', date('Y-m-d'), 'Pessoa Fisica', $id_pessoa_fisica);
+          $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Pessoa Fisica', date('Y-m-d'), 'Pessoa Fisica', $id_pessoa_fisica);
           return $id_pessoa_fisica;
       }
     } catch (\Exception $e) {

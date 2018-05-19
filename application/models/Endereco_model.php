@@ -17,7 +17,7 @@ class Endereco_model extends CI_Model {
 
 		if($id_endereco)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'Endereço', date('Y-m-d'), 'Endereço', $id_endereco);
+			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Endereço', date('Y-m-d'), 'Endereço', $id_endereco);
 			return $id_endereco;
 		}
 	}
@@ -49,7 +49,7 @@ class Endereco_model extends CI_Model {
 
 		if($id_endereco)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Endereço', date('Y-m-d'), 'Enedereço', $endereco['id_pessoa']);
+			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Endereço', date('Y-m-d'), 'Endereço', $endereco['id_pessoa']);
 			return $id_endereco;
 		}
 	}

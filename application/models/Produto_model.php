@@ -53,7 +53,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'PRODUTO', date('Y-m-d'), 'PRODUTO', $id_produto);
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Produto', date('Y-m-d'), 'Produto', $id_produto);
             return $id_produto;
         }
     }
@@ -78,7 +78,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'PRODUTO', date('Y-m-d'), 'PRODUTO',  $array['id_produto']);
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Produto', date('Y-m-d'), '´roduto',  $array['id_produto']);
             return $id_produto;
         }
     }
@@ -96,7 +96,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'PRODUTO', date('Y-m-d'), 'PRODUTO', $id_produto);
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'delete', 'Deleta', 'Produto', date('Y-m-d'), 'Produto', $id);
             return $id_produto;
         }
     }

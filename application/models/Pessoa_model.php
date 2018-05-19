@@ -19,7 +19,7 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'Pessoa', date('Y-m-d'), 'Pessoa', $id_pessoa);
+			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Pessoa', date('Y-m-d'), 'Pessoa', $id_pessoa);
 			return $id_pessoa;
 		}
 	}

@@ -55,7 +55,7 @@ class Sac_model extends CI_Model {
 
     if($id_sac)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'SAC', date('Y-m-d'), 'SAC',  $id_sac);
+        $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Sac', date('Y-m-d'), 'Sac',  $id_sac);
         return $id_sac;
     }
   }

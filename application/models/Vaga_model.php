@@ -38,7 +38,7 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'vaga', date('Y-m-d'), 'Vaga', $id_vaga);
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Vaga', date('Y-m-d'), 'Vaga', $id_vaga);
             return $id_vaga;
         }
 
