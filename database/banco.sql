@@ -426,7 +426,7 @@ CREATE TABLE `pessoa` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `data_criacao` date  DEFAULT NULL,
+
   PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -434,6 +434,12 @@ CREATE TABLE `pessoa` (
 --
 -- Dumping data for table `pessoa`
 --
+
+LOCK TABLES `pessoa` WRITE;
+/*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
+INSERT INTO `pessoa` VALUES (1,'dfsdfsdf','sdfsdf.sdfsdf@sdfsdf.com'),(2,'asdasdasd','asd.asdas@sdf.com'),(3,'asdasdasd','asd.asdas@sdf.com'),(4,'wwwwwwwwwwwwwww','werwer.werwe@asdas.xcds'),(5,'asdasdasdasd','camilapsales@hotmail.com'),(6,'ghjghgfh','asdasd.asdas@adfasd.com'),(7,'asdasdasdasd','camilapsales@hotmail.com');
+/*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `pessoa_fisica`
@@ -455,6 +461,12 @@ CREATE TABLE `pessoa_fisica` (
 --
 -- Dumping data for table `pessoa_fisica`
 --
+
+LOCK TABLES `pessoa_fisica` WRITE;
+/*!40000 ALTER TABLE `pessoa_fisica` DISABLE KEYS */;
+INSERT INTO `pessoa_fisica` VALUES (1,1,'2018-04-12',0),(2,2,'2018-04-08',0),(3,3,'2018-04-08',0),(4,5,'1996-11-11',1),(5,7,'1922-12-12',1);
+/*!40000 ALTER TABLE `pessoa_fisica` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --
@@ -478,6 +490,11 @@ CREATE TABLE `pessoa_juridica` (
 -- Dumping data for table `pessoa_juridica`
 --
 
+LOCK TABLES `pessoa_juridica` WRITE;
+/*!40000 ALTER TABLE `pessoa_juridica` DISABLE KEYS */;
+INSERT INTO `pessoa_juridica` VALUES (1,4,'werwerwer'),(2,6,'sdfsdfsdf');
+/*!40000 ALTER TABLE `pessoa_juridica` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --
@@ -505,6 +522,12 @@ CREATE TABLE `produto` (
 --
 -- Dumping data for table `produto`
 --
+
+LOCK TABLES `produto` WRITE;
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+INSERT INTO `produto` VALUES (1,'34534534','produto ','1665-12-12','1998-12-23','1231','2019-03-22',1);
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
@@ -559,6 +582,11 @@ CREATE TABLE `sac` (
 -- Dumping data for table `sac`
 --
 
+LOCK TABLES `sac` WRITE;
+/*!40000 ALTER TABLE `sac` DISABLE KEYS */;
+INSERT INTO `sac` VALUES (1,1,2,'dgfgdfgdfgdfgdfg','fsdddddddddddddddddddddddddgsdf\r\n\r\n\r\n\r\nsd\r\nes\r\nf\r\ns\r\nf\r\nsd\r\nf\r\nsdf\r\nsd\r\nfsd\r\nfs\r\ndf\r\nsd\r\nf\r\nsdf\r\n\r\nsdf\r\n\r\nsdf\r\n\r\nsd\r\nfds','2018-05-10 01:49:30','2018-05-10 01:49:30',1);
+/*!40000 ALTER TABLE `sac` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --
@@ -578,6 +606,12 @@ CREATE TABLE `setor` (
 --
 -- Dumping data for table `setor`
 --
+
+LOCK TABLES `setor` WRITE;
+/*!40000 ALTER TABLE `setor` DISABLE KEYS */;
+INSERT INTO `setor` VALUES (1,'gfhfghfghfgh');
+/*!40000 ALTER TABLE `setor` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --
@@ -638,6 +672,12 @@ CREATE TABLE `telefone` (
 --
 -- Dumping data for table `telefone`
 --
+
+LOCK TABLES `telefone` WRITE;
+/*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
+INSERT INTO `telefone` VALUES (1,'12982266622',4),(2,'12321312312',5),(3,'123412312312312',6),(4,'12321312312',7);
+/*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --

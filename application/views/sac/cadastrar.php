@@ -5,7 +5,7 @@
             <div class="card-header">
                <strong class="card-title">Cadastrar SAC</strong>
             </div>
-            <form action="<?php echo site_url('sac/create'); ?>" method="POST" id="form-sac">
+            <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac">
                <div class="card-body">
                   <div class="row">
                      <div class="col-lg-12 form-group">
@@ -23,8 +23,8 @@
                         </select>                         
                      </div>
                           
-                     <div class="col-lg-6 form-group">
-                        <label class="form-control-label">Cliente</label>
+                     <div class="form-group col-md-6 col-sm-12">
+                        <label for="id_cliente" class="form-control-label">Cliente</label>
                         <select name="id_cliente" class="form-control" id="produto">
                            <option value="0" disabled selected>Selecione um cliente</option>
                            <?php foreach ($clientes as $cliente): ?>

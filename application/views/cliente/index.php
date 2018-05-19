@@ -23,8 +23,7 @@
           </div>
         <?php endif; ?>
         <div class="card-body">
-
-          <a href="<?= site_url('cliente/create')?>" class="btn btn-primary btn-sm">
+          <a href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
             <i class="fa fa-check"></i> Cadastrar
           </a><br />
           <br />
