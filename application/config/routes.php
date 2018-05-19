@@ -55,6 +55,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
+//Rota do seed
+$route['make/seed'] = 'seed/index';
+
+
 //Rotas Produtos
 $route['produto'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
@@ -145,5 +149,3 @@ $route['perfil'] = 'Perfil/admin';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
-
-

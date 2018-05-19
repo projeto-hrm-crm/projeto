@@ -62,6 +62,7 @@ $autoload['libraries'] = array(
     'database',
     'form_validation',
     'session',
+    'seed/Seeds' => 'Seed',
 );
 
 /*
