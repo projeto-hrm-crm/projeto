@@ -32,8 +32,7 @@
 	                                </span>
 	                            </div>
 	                        </div>
-
-
+							
 	                        <div class="row">
 	                            <div class="form-group col-lg-6 col-sm-12">
 	                                <label for="quantidade" class="control-label mb-1">Quantidade</label>
@@ -46,25 +45,21 @@
 
 	                        <div class="row">
 	                        	<div class="form-group col-12">
-	                        	
 	                                <label for="data_oferta" class="control-label mb-1">Requisitos</label>
 	                                <textarea name="requisitos" id="requisitos" rows="6" class="form-control <?php echo isset($errors['requisitos']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['requisitos']) ? $old_data['requisitos'] : null;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['requisitos']) ? $errors['requisitos'] : '' ; ?>
 	                                </span>
-	                           
 	                        	</div>
 	                        </div>
-
-
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-	                    <button type="reset" class="btn bg-danger text-white">
-	                        <i class="fa fa-times" aria-hidden="true"></i>
-	                        Cancelar
-	                    </button>
-	                    <button type="submit" class="btn bg-primary text-white">
+						<a href="<?=site_url('vaga')?>" class="btn btn-danger btn-sm">
+							<i class="fa fa-times"></i>
+							Cancelar
+						  </a>
+	                    <button type="submit" class="btn bg-primary text-white btn-sm">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>
