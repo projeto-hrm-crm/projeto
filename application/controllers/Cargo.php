@@ -28,6 +28,14 @@ class Cargo extends CI_Controller
   {
     $data['cargos'] = $this->cargo->get();
     $data['title'] = 'Cargos';
+    $data['assets'] = array(
+      'js' => array(
+        'lib/data-table/datatables.min.js',
+        'lib/data-table/dataTables.bootstrap.min.js',
+        'datatable.js',
+        'confirm.modal.js',
+      ),
+    );
     loadTemplate('includes/header', 'cargo/index', 'includes/footer', $data);
   }
 
@@ -43,6 +51,7 @@ class Cargo extends CI_Controller
       $cargo = array();
       $cargo["nome"]=$this->input->post("nome");
       $cargo["descricao"]=$this->input->post("descricao");
+      $cargo["salario"]=$this->input->post("salario");
       $cargo["id_setor"]=$this->input->post("id_setor");
       $this->cargo->insert($cargo);
 
@@ -82,6 +91,7 @@ class Cargo extends CI_Controller
     {
       $data["nome"]=$this->input->post("nome");
       $data["descricao"]=$this->input->post("descricao");
+      $data["salario"]=$this->input->post("salario");
       $data["id_setor"]=$this->input->post("id_setor");
       $this->cargo->update($id_cargo,$data);
 
