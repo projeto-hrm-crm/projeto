@@ -34,12 +34,12 @@ class Vaga_model extends CI_Model
     public function insert($array) {
 
         $this->db->insert('vaga', $array);
-        $id = $this->db->insert_id();
+        $id_vaga = $this->db->insert_id();
 
-        if($id)
+        if($id_vaga)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'vaga', date('Y-m-d'), 'Vaga', $id);
-            return $id;
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'vaga', date('Y-m-d'), 'Vaga', $id_vaga);
+            return $id_vaga;
         }
 
     }
@@ -56,7 +56,14 @@ class Vaga_model extends CI_Model
         $this->db->set('vaga.quantidade',  $vaga['quantidade']);
         $this->db->set('vaga.requisitos',  $vaga['requisitos']);
         $this->db->set('vaga.id_cargo',    $vaga['id_cargo']);
-        $this->db->update('vaga');
+        $id_vaga = $this->db->update('vaga');
+
+        if($id_vaga)
+        {
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Vaga', date('Y-m-d'), 'Vaga',  $vaga['id_vaga']);
+            return $id_vaga;
+        }
+
     }
 
 

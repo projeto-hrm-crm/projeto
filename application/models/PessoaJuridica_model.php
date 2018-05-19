@@ -20,7 +20,13 @@ class PessoaJuridica_model extends CI_Model
   public function insert($data)
   {
 		$this->db->insert('pessoa_juridica', $data);
-		return $this->db->insert_id();
+		$id_pessoa_juridica = $this->db->insert_id();
+
+        if($id_pessoa_juridica)
+        {
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'Pessoa Juridica', date('Y-m-d'), 'Pessoa Júridica', $id_pessoa_juridica);
+            return $id_pessoa_juridica;
+        }
   }
 
   public function find($id)

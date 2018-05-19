@@ -18,6 +18,13 @@ class PessoaFisica_model extends CI_Model{
   {
     try{
       $this->db->insert('pessoa_fisica', $data);
+      $id_pessoa_fisica = $this->db->insert_id();
+
+      if($id_pessoa_fisica)
+      {
+          $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'insere', 'Pessoa Fisica', date('Y-m-d'), 'Pessoa Fisica', $id_pessoa_fisica);
+          return $id_pessoa_fisica;
+      }
     } catch (\Exception $e) {
 
     }
