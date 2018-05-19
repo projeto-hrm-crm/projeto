@@ -55,7 +55,7 @@ class Fornecedor extends CI_Controller
   **/
   public function create()
   {
-     
+
     $data = $this->input->post();
 
     if($data)
@@ -67,7 +67,6 @@ class Fornecedor extends CI_Controller
 
         redirect('fornecedor');
       }else{
-                  
         $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
 
         redirect('fornecedor');
@@ -101,11 +100,11 @@ class Fornecedor extends CI_Controller
   **/
   public function edit($id)
   {
-    
+
     $data = $this->input->post();
     if ($data)
     {
-      
+
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->update($id, $data);
@@ -116,8 +115,8 @@ class Fornecedor extends CI_Controller
         redirect('fornecedor/edit/'.$id);
       }
     }
-     
-    $fornecedor = $this->fornecedor->find($id);
+
+    $fornecedor = $this->fornecedor->find($id); //FIXME ARRUMAR
     $state = $this->cidade->findState($fornecedor[0]->id_cidade);
     $data['fornecedor'] = $this->fornecedor->find($id);
     $data['title'] = 'Editar Fornecedor';
@@ -146,14 +145,14 @@ class Fornecedor extends CI_Controller
   **/
   public function delete($id)
   {
-   $fornecedor = $this->fornecedor->find($id);
-   if($fornecedor){
-      $this->db->where('id_fornecedor', $id);
-      $this->db->delete('fornecedor');
-      $this->session->set_flashdata('success', 'fornecedor deletado com sucesso.');
-   }else{
-     $this->session->set_flashdata('danger', 'Impossível Deletar!');
-   }
-   redirect('fornecedor');
+     $fornecedor = $this->fornecedor->find($id);
+     if($fornecedor){
+        $this->fornecedor->delete($id);
+        $this->session->set_flashdata('success', 'fornecedor deletado com sucesso.');
+     }else{
+       $this->session->set_flashdata('danger', 'Impossível Deletar!');
+     }
+     redirect('fornecedor');
+
   }
 }
