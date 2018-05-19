@@ -30,10 +30,10 @@
               <td class="text-center"><?= $setor->nome; ?></td>
               <td class="text-center">
                 <a title="Editar" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
-                  <span class="fa fa-edit"></span>      
+                  <span class="fa fa-edit"></span>
                 </a>
                 <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
-                  <i class="fa fa-times"></i> 
+                  <i class="fa fa-times"></i>
                 </button>
               </td>
             </tr>
@@ -49,7 +49,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title">Excluir produto</h5>
+              <h5 class="modal-title">Excluir Setor</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>

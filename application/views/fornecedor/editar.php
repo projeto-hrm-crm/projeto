@@ -20,7 +20,7 @@
         <form action="<?php site_url('fornecedor/edit'.$id); ?>" method="POST" id="form_fornecedor">
       <div class="card-body card-block">
       <div class="row">
-       
+
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Nome" value="<?= htmlspecialchars($fornecedor[0]->nome)?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
@@ -80,27 +80,27 @@
             <label class=" form-control-label">Número</label>
             <input type="num" id="numero" name="numero" placeholder="" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->numero)?>" required>
          </div>
-          
+
          <div class="form-group col-12 col-md-5">
             <label class=" form-control-label">Bairro</label>
             <input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->bairro)?>" required>
          </div>
 
-         
 
-         
+
+
 
          <div class="form-group col-12 col-md-4">
             <label class=" form-control-label">Complemento</label>
             <input type="text" id="complemento" name="complemento" placeholder="complemento" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->complemento)?>" required>
          </div>
-           
-           
-           
-           
-       
-          
-        
+
+
+
+
+
+
+
       </div>
    </div>
        <div class="card-footer text-right">
@@ -111,13 +111,13 @@
                <span class="fa fa-pencil-square-o"></span>
                Editar
            </button>
-            
+
           </div>
            <div class="modal fade" id="editar" role="dialog" aria-hidden="true">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">
-                         <h5 class="modal-title">Excluir produto</h5>
+                         <h5 class="modal-title">Editar Fornecedor</h5>
                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                              <span aria-hidden="true">&times;</span>
                          </button>
@@ -139,23 +139,23 @@
        </form>
    </div>
 </div>
-   
+
 <script type="text/javascript">
    $("#estado").change(function(){
-      
-      var id = $("#estado").val();     
-      
+
+      var id = $("#estado").val();
+
       $.ajax({
-           type: "GET", 
+           type: "GET",
            url: "<?=site_url("filtrar_cidades");?>/"+id,
            contentType: "application/json; charset=utf-8",
            cache: false,
            success: function(retorno) {
              // Interpretando retorno JSON...
-              
+
              var cidades = JSON.parse(retorno);
 
-            $("#cidade").html(null); 
+            $("#cidade").html(null);
 
              // Listando cada cliente encontrado na lista...
              $.each(cidades,function(i, cidade){
@@ -163,9 +163,7 @@
                  $("#cidade").append(item);
              });
 
-           } 
-       }); 
-   }); 
+           }
+       });
+   });
 </script>
-
-
