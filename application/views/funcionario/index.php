@@ -2,6 +2,22 @@
 <div class="animated fadeIn">
   <div class="row" >
     <div class="col-md-12">
+      <?php if($this->session->flashdata('success')): ?>
+        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+          <?php echo $this->session->flashdata('success'); ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php endif; ?>
+      <?php if($this->session->flashdata('danger')): ?>
+        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+          <?php echo $this->session->flashdata('danger'); ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php endif; ?>
       <div class="card">
         <div class="card-header">
           <strong class="card-title">funcionario</strong>
@@ -50,10 +66,8 @@
                   <td class="text-center">
                     <a title="Editar" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
                       <span class="fa fa-edit"></span></a>
-                      <a title="Excluir" href="<?= site_url('funcionario/delete/'.$funcionario->id_funcionario)?>" class="btn btn-danger">
-                        <span class="fa fa-close"></span></a>
                         <button data-href="funcionario/deletar/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir Funcionário" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-times"></span>
+                          <span class="fa fa-times"></span>
                         </button>
                       </td>
                     </tr>
@@ -63,23 +77,6 @@
               </table>
             </div>
           </div>
-
-          <?php if($this->session->flashdata('success')): ?>
-            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-              <?php echo $this->session->flashdata('success'); ?>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          <?php endif; ?>
-          <?php if($this->session->flashdata('danger')): ?>
-            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-              <?php echo $this->session->flashdata('danger'); ?>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          <?php endif; ?>
         </div>
       </div>
     </div>

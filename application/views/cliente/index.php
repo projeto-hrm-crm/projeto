@@ -66,8 +66,9 @@
                   <td class="text-center">
                     <a title="Editar" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
                       <span class="fa fa-edit"></span></a>
-                      <a title="Excluir" href="<?= site_url('cliente/delete/'.$cliente->id_cliente)?>" class="btn btn-danger">
-                        <span class="fa fa-close"></span></a>
+                       <button data-href="cliente/deletar/<?php echo $cliente->id_candidato?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
+                            <span class="fa fa-close"></span>
+                        </button>
                       </td>
                     </tr>
                   <?php endforeach ?>
@@ -76,8 +77,29 @@
               </table>
             </div>
           </div>
-
-
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Excluir Cliente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Deseja realmente excluir esse cliente?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secundary" data-dismiss="modal">
+              Cancelar
+            </button>
+            <a href="#" class="btn btn-primary btn-remove-ok">
+              Confirmar
+            </a>
+          </div>
         </div>
       </div>
     </div>
