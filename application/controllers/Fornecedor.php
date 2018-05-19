@@ -29,6 +29,14 @@ class Fornecedor extends CI_Controller
   {
     $data['title'] = 'Fornecedores';
     $data['fornecedores'] = $this->fornecedor->get();
+    $data['assets'] = array(
+     'js' => array(
+       'lib/data-table/datatables.min.js',
+       'lib/data-table/dataTables.bootstrap.min.js',
+       'datatable.js',
+       'confirm.modal.js',
+     ),
+   );
     // print_r($data);
     // exit();
 
@@ -68,6 +76,14 @@ class Fornecedor extends CI_Controller
     $data['title'] = 'Cadastrar Fornecedor';
     $data['fornecedor'] = $this->input->post();
     $data['estados'] = $this->estado->get();
+    $data['assets'] = array(
+     'js' => array(
+       'lib/data-table/datatables.min.js',
+       'lib/data-table/dataTables.bootstrap.min.js',
+       'datatable.js',
+       'confirm.modal.js',
+     ),
+   );
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
 
@@ -108,6 +124,14 @@ class Fornecedor extends CI_Controller
     $data['estado_fornecedor'] = $state;
     $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
     $data['id'] = $id;
+    $data['assets'] = array(
+     'js' => array(
+       'lib/data-table/datatables.min.js',
+       'lib/data-table/dataTables.bootstrap.min.js',
+       'datatable.js',
+       'confirm.modal.js',
+     ),
+   );
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
   }
@@ -129,5 +153,6 @@ class Fornecedor extends CI_Controller
        $this->session->set_flashdata('danger', 'Impossível Deletar!');
      }
      redirect('fornecedor');
+
   }
 }

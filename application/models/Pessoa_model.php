@@ -13,7 +13,7 @@ class Pessoa_model extends CI_Model {
 	*/
 	public function insert($pessoa)
 	{
-
+		$pessoa['data_criacao'] = date("Y-m-d");
 		$this->db->insert('pessoa', $pessoa);
 
 		return $this->db->insert_id();
