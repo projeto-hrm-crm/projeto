@@ -149,3 +149,10 @@ $route['perfil'] = 'Perfil/admin';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
+
+//Rotas Usuario
+$route['usuario'] = 'Usuario/index';
+$route['usuario/cadastrar'] = 'Usuario/create';
+$route['usuario/info/(:num)'] = 'Usuario/info/$1';
+$route['usuario/editar/(:num)'] = 'Usuario/edit/$1';
+$route['usuario/excluir/(:num)'] = 'Usuario/delete/$1';
