@@ -48,6 +48,13 @@ class Setor_model extends CI_Model
   public function insert($data)
   {
     $this->db->insert('setor',$data);
+    $id_setor = $this->db->insert_id();
+
+    if($id_setor)
+    {
+        $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Setor', date('Y-m-d'), 'Setor', $id_setor);
+        return $id_setor;
+    }
   }
 
   /**

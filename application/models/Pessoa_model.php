@@ -15,8 +15,13 @@ class Pessoa_model extends CI_Model {
 	{
 		$pessoa['data_criacao'] = date("Y-m-d");
 		$this->db->insert('pessoa', $pessoa);
+		$id_pessoa = $this->db->insert_id();
 
-		return $this->db->insert_id();
+		if($id_pessoa)
+		{
+			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Pessoa', date('Y-m-d'), 'Pessoa', $id_pessoa);
+			return $id_pessoa;
+		}
 	}
 
 

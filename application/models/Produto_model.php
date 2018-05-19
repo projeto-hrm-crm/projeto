@@ -39,14 +39,23 @@ class Produto_model extends CI_Model
      *@return: boolean
     */
     public function insert($array) {
-        $this->db->set('nome', $array['nome']);
-        $this->db->set('codigo', $array['codigo']);
-        $this->db->set('fabricacao', $array['fabricacao']);
-        $this->db->set('validade', $array['validade']);
-        $this->db->set('lote', $array['lote']);
-        $this->db->set('recebimento', $array['recebimento']);
-        $this->db->set('id_fornecedor', $array['id_fornecedor']);
-        return $this->db->insert('produto');
+        // $this->db->set('nome', $array['nome']);
+        // $this->db->set('codigo', $array['codigo']);
+        // $this->db->set('fabricacao', $array['fabricacao']);
+        // $this->db->set('validade', $array['validade']);
+        // $this->db->set('lote', $array['lote']);
+        // $this->db->set('recebimento', $array['recebimento']);
+        // $this->db->set('id_fornecedor', $array['id_fornecedor']);
+        // return $this->db->insert('produto');
+
+        $this->db->insert('produto', $array);
+        $id_produto = $this->db->insert_id();
+
+        if($id_produto)
+        {
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Produto', date('Y-m-d'), 'Produto', $id_produto);
+            return $id_produto;
+        }
     }
 
     /*
@@ -65,7 +74,13 @@ class Produto_model extends CI_Model
 
         $this->db->set('lote', $array['lote']);
         $this->db->set('recebimento', $array['recebimento']);
-        return $this->db->update('produto');
+        $id_produto = $this->db->update('produto');
+
+        if($id_produto)
+        {
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Produto', date('Y-m-d'), '´roduto',  $array['id_produto']);
+            return $id_produto;
+        }
     }
 
 
@@ -77,7 +92,13 @@ class Produto_model extends CI_Model
     */
     public function delete($id){
         $this->db->where('id_produto', $id);
-        return $this->db->delete('produto');
+        $id_produto = $this->db->delete('produto');
+
+        if($id_produto)
+        {
+            $this->relatorio->setLog($this->session->userdata('user_login'), 'delete', 'Deleta', 'Produto', date('Y-m-d'), 'Produto', $id);
+            return $id_produto;
+        }
     }
 
     /*
