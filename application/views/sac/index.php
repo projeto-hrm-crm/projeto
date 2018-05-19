@@ -1,6 +1,22 @@
 <div class="animated fadeIn">
     <div class="row" >
         <div class="col-md-12">
+           <?php if($this->session->flashdata('success')): ?>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('success'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <?php if($this->session->flashdata('danger')): ?>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('danger'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Ordens</strong>
@@ -26,12 +42,13 @@
                                         <td><?=$item->id_cliente;?></td>
                                         <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
                                         <td>
-                                            <a href="<?php echo site_url('sac/excluir/'.$item->id_sac); ?>" class="btn btn-danger">
-                                                <span class="fa fa-times"></span>
+                                            <a href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Editar">
+                                                <span class="fa fa-edit"></span>
                                             </a>
-                                            <a href="<?php echo site_url('sac/editar/'.$item->id_sac); ?>" class="btn bg-primary">
-                                                <span class="fa fa-pencil-square-o"></span>
-                                            </a>                                           
+                                            <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir" data-toggle="modal" data-target="#modalRemover">
+                                                <span class="fa fa-times"></span>
+                                            </button>
+                                           
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -40,22 +57,7 @@
                     </table>
                 </div>
             </div>
-            <?php if($this->session->flashdata('success')): ?>
-                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('success'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
-            <?php if($this->session->flashdata('danger')): ?>
-                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('danger'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
+            
         </div>
     </div>
 </div>
@@ -76,3 +78,27 @@
     $('#bootstrap-data-table-export').DataTable();
   } );
 </script>
+
+<div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir esse SAC?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <a href="#" class="btn btn-primary btn-remove-ok">
+                    Confirmar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

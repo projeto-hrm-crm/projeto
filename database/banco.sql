@@ -426,6 +426,7 @@ CREATE TABLE `pessoa` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
+
   PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -467,6 +468,7 @@ INSERT INTO `pessoa_fisica` VALUES (1,1,'2018-04-12',0),(2,2,'2018-04-08',0),(3,
 /*!40000 ALTER TABLE `pessoa_fisica` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Table structure for table `pessoa_juridica`
 --
@@ -493,6 +495,7 @@ LOCK TABLES `pessoa_juridica` WRITE;
 INSERT INTO `pessoa_juridica` VALUES (1,4,'werwerwer'),(2,6,'sdfsdfsdf');
 /*!40000 ALTER TABLE `pessoa_juridica` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `produto`
@@ -525,6 +528,8 @@ LOCK TABLES `produto` WRITE;
 INSERT INTO `produto` VALUES (1,'34534534','produto ','1665-12-12','1998-12-23','1231','2019-03-22',1);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `regiao`
@@ -583,6 +588,7 @@ INSERT INTO `sac` VALUES (1,1,2,'dgfgdfgdfgdfgdfg','fsdddddddddddddddddddddddddg
 /*!40000 ALTER TABLE `sac` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Table structure for table `setor`
 --
@@ -606,6 +612,7 @@ LOCK TABLES `setor` WRITE;
 INSERT INTO `setor` VALUES (1,'gfhfghfghfgh');
 /*!40000 ALTER TABLE `setor` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `sub_menu`
@@ -671,6 +678,7 @@ LOCK TABLES `telefone` WRITE;
 INSERT INTO `telefone` VALUES (1,'12982266622',4),(2,'12321312312',5),(3,'123412312312312',6),(4,'12321312312',7);
 /*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `usuario`
@@ -829,6 +837,43 @@ CREATE TABLE `candidato_etapa` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT INTO `cargo` (`id_cargo`, `nome`, `descricao`, `salario`, `id_setor`) VALUES (NULL, 'chefe', 'manda em tudo', '5000', '1');
+INSERT INTO `cargo` (`id_cargo`, `nome`, `descricao`, `salario`, `id_setor`) VALUES (NULL, 'empregado', 'obedece todos', '1000', '1');
+
+
+USE projeto;
+CREATE TABLE `processo_seletivo` (
+  `id_processo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `codigo` int(10) NOT NULL,
+  `nome` varchar(40) NOT NULL,
+  `data_inicio` date NOT NULL,
+  `data_fim` date NOT NULL,
+  `id_cargo` int(10) NOT NULL,
+  `descricao` LONGTEXT NOT NULL,
+  `vagas` int(10) NOT NULL,
+  PRIMARY KEY (`id_processo`),
+  KEY `fk_processo_seletivo_cargo1_idx` (`id_cargo`),
+  CONSTRAINT `fk_processo_seletivo_cargo1` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `processo_seletivo` (`id_processo`, `codigo`, `nome`, `data_inicio`, `data_fim`, `id_cargo`, `descricao`, `vagas`) VALUES (NULL, '1313', 'processo 01', '2018-05-01', '2018-05-24', '1', 'etapa 1:
+asdasdsdha
+
+etapa 2:
+asdasdsdha
+
+etapa 3:
+asdasdsdha', '2');
+
+INSERT INTO `processo_seletivo` (`id_processo`, `codigo`, `nome`, `data_inicio`, `data_fim`, `id_cargo`, `descricao`, `vagas`) VALUES (NULL, '1514', 'processo 02', '2018-05-01', '2018-05-24', '2', 'etapa 1:
+asdasdsdha
+
+etapa 2:
+asdasdsdha
+
+etapa 3:
+asdasdsdha', '5');
 
 
 
