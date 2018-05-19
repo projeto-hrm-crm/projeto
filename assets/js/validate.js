@@ -248,6 +248,158 @@ jQuery(document).ready(function($) {;
 
     });
 
+
+    $('#form-pedido').validate({
+
+        highlight:function(input)
+        {
+            var inputName = $(input)[0].name;
+
+            if(inputName == 'tipo' || inputName == 'compra')
+            {
+              jQuery(input).parents('.form-check').addClass('text-danger');
+            }
+            else
+            {
+              jQuery(input).addClass('is-invalid');
+              if($('#produtos-table tbody tr').length == 0) $('#id_produto').addClass('is-invalid');
+            }
+
+          
+        },
+
+        unhighlight:function(input)
+        {
+            var inputName = $(input)[0].name;
+
+            if(inputName == 'tipo' || inputName == 'compra')
+            {
+              jQuery(input).parents('.form-check').removeClass('text-danger');
+            }
+            else
+            {
+              jQuery(input).removeClass('is-invalid');
+            }
+            
+        },
+
+        errorPlacement:function(error, element)
+        {   
+            var inputName = $(element)[0].name;
+
+            if(element.is(':radio'))
+            {
+              if(inputName == 'tipo')
+              {
+                jQuery('#error-tipo').removeClass('d-none').append(error);  
+              }
+              else
+              {
+                jQuery('#error-compra').removeClass('d-none').append(error);
+              }
+              
+            }
+            else
+            {
+              jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+            }
+            
+        },
+
+        submitHandler:function (form, event) {
+
+            event.preventDefault(); //Evita que o formulário seja submetido
+
+            var action = $(form).prop('action'); // Recupera o action do formulário
+
+            /*
+            *   Verifica se a url do action do formulário contém a palavra editar
+            *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+            *   formulário para o click do botão do modal.
+            *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+            */
+            if($('#produtos-table tbody tr').length > 0)
+            {
+              if(action.indexOf('editar') >= 0)
+              {
+                 
+                  jQuery("#modalAtualizar").modal('show');
+
+                  jQuery('.btn-edit').click(function () {
+                      form.submit();
+                  });
+                  
+              }
+              else
+              {
+                  form.submit();
+              }
+            }
+
+        },
+
+        rules: {
+
+            id_pessoa:{
+                required: true,
+            },
+
+            'id_produto':{
+                required: true,
+            },
+
+            situacao:{
+                required: true,
+                regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+            },
+
+            tipo:{
+                required: true,
+            },
+
+            compra:{
+                required: true,
+            },
+
+            descricao:{
+              required: true,
+              regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+            }
+
+        },
+
+        messages: {
+
+            id_pessoa:{
+                required: 'O campo Cliente é obrigatório',
+            },
+
+            'id_produto':{
+                required: 'Selecione ao menos um Produto/Serviço',
+            },
+
+            situacao:{
+                required: 'O campo Situação é obrigatório',
+                regex:    'O campo Situação não está no formato correto.'
+            },
+
+            tipo:{
+                required: 'O campo Tipo é obrigatório',
+            },
+
+            compra:{
+                required: 'O campo Compra/Venda é obrigatório',
+            },
+
+            descricao:{
+              required: 'O campo Descrição é obrigatório',
+              regex:    'O campo Descrição não está no formato correto.'
+            }
+
+        },
+
+    });
+
     //Métodos de validação extras
 
     /*
@@ -299,6 +451,12 @@ jQuery(document).ready(function($) {;
         return this.optional(element) || re.test(value);
     });
 
+
+    $.validator.addMethod('table_rows', function(value, element){
+      return 
+    });
+
+
     /**
     * @author: Camila Sales
     * Verifica se o cpf é válido
@@ -345,6 +503,5 @@ jQuery(document).ready(function($) {;
       email: "Digite um email valido",
       digits: "O valor do campo deve ser númerico",
     });
-
 
 });
