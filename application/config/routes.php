@@ -66,9 +66,9 @@ $route['produto/deletar/(:num)'] = 'Produto/delete/$1';
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
 //Rotas Fornecedores
-$route['fornecedor/cadastrar'] = 'fornecedor/create';
-$route['fornecedor/editar/(:num)'] = 'fornecedor/edit/$1';
-$route['fornecedor/excluir/(:num)'] = 'fornecedor/delete/$1';
+$route['fornecedor/cadastrar'] = 'Fornecedor/create';
+$route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
+$route['fornecedor/excluir/(:num)'] = 'Fornecedor/delete/$1';
 
 //Rotas funcionários
 $route['funcionario'] = 'Funcionario';
@@ -88,9 +88,9 @@ $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
 
 //Rotas SAC
-$route['sac/cadastrar'] = 'sac/create';
-$route['sac/excluir/(:num)'] = 'sac/delete/$1';
-$route['sac/editar/(:num)'] = 'sac/edit/$1';
+$route['sac/cadastrar'] = 'Sac/create';
+$route['sac/excluir/(:num)'] = 'Sac/delete/$1';
+$route['sac/editar/(:num)'] = 'Sac/edit/$1';
 
 //Rotas Setores
 
@@ -125,5 +125,9 @@ $route['vaga/editar/(:num)']  = 'Vaga/edit/$1';
 $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
 
 
+//Rotas Perfil
+$route['perfil'] = 'Perfil/admin';
+
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
+
