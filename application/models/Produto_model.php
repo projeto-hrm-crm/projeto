@@ -73,6 +73,7 @@ class Produto_model extends CI_Model
         $this->db->set('validade', $array['validade']);
 
         $this->db->set('lote', $array['lote']);
+        $this->db->set('valor', $array['valor']);
         $this->db->set('recebimento', $array['recebimento']);
         $id_produto = $this->db->update('produto');
 
@@ -109,7 +110,7 @@ class Produto_model extends CI_Model
      * @return: object Produto
      */
     public function getById($id){
-        $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento, razao_social')
+        $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento, valor, razao_social')
             ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
             ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')
             ->get('produto');
@@ -125,7 +126,7 @@ class Produto_model extends CI_Model
      * @return: object Produto
      */
     public function getByName($nome){
-      $this->db->select('id_produto, id_fornecedor, nome, codigo, fabricacao, validade, lote, recebimento');
+      $this->db->select('id_produto, id_fornecedor, nome, codigo, fabricacao, validade, lote, recebimento, valor');
       $this->db->where('nome', $nome);
       return $this->db->get('produto')->row();
     }

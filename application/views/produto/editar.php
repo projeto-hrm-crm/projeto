@@ -11,7 +11,7 @@
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="nome" class="control-label mb-1">Nome do Produto</label>
                                 <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Nome inválido.</span>
+                                <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="lote" class="control-label mb-1">Lote</label>
@@ -21,7 +21,12 @@
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="codigo" class="control-label mb-1">Código</label>
                                 <input name="codigo" id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : $produto->codigo;?>" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Código inválido.</span>
+                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12">
+                                <label for="valor" class="control-label mb-1">Valor</label>
+                                <input name="valor" id="valor" value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : $produto->valor;?>" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Valor inválido.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
@@ -50,11 +55,11 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger">
-                        <i class="fa fa-arrow-left"></i>
-                        Voltar
+                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i>
+                        Cancelar
                     </a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarProduto">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarProduto">
                         <span class="fa fa-check"></span>
                         Editar
                     </button>
@@ -76,7 +81,7 @@
                                     Cancelar
                                 </button>
                                 <button type="submit" class="btn btn-primary">
-                                    Editar
+                                    Confirmar
                                 </button>
                             </div>
                         </div>

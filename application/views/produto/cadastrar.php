@@ -11,7 +11,7 @@
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="nome" class="control-label mb-1">Nome do Produto</label>
                                 <input id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" name="nome" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Nome inválido.</span>
+                                <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="lote" class="control-label mb-1">Lote</label>
@@ -21,7 +21,12 @@
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="codigo" class="control-label mb-1">Código</label>
                                 <input id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : null;?>" name="codigo" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Código inválido.</span>
+                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="valor" class="control-label mb-1">Valor</label>
+                                <input id="valor" value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : null;?>" name="valor" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Valor inválido.</span>
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
@@ -51,11 +56,11 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <button type="reset" class="btn btn-danger">
-                        <i class="fa fa-ban"></i>
-                        Apagar
-                    </button>
-                    <button type="submit" class="btn btn-primary">
+                    <a href="<?php echo site_url('produto')?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i>
+                        Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-plus"></i>
                         Cadastrar
                     </button>

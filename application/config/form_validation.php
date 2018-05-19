@@ -77,7 +77,7 @@ $config = array(
         array(
             'field' => 'lote',
             'label' => 'Lote',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'recebimento',

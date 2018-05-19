@@ -22,6 +22,9 @@
                     <strong class="card-title">Produtos</strong>
                 </div>
                 <div class="card-body">
+                    <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm">
+                        <i class="fa fa-check"></i> Cadastrar
+                    </a><br><br>
                     <table class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
@@ -30,6 +33,7 @@
                                 <th>Lote</th>
                                 <th>Recebimento</th>
                                 <th>Fornecedor</th>
+                                <th>Valor</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -41,12 +45,13 @@
                                         <td><?= $produto->nome;?></td>
                                         <td><?= $produto->lote;?></td>
                                         <td><?= $produto->recebimento;?></td>
+                                        <td><?= $produto->valor;?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
                                             <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Editar produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="produto/deletar/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
+                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
