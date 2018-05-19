@@ -4,11 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Andamento_model extends CI_Model 
 {
 
+    /**
+    * @author: Tiago Villalobos
+    * Insere andamento no banco
+    * @param: $andamento mixed
+    */
 	public function insert($andamento)
 	{
 		$this->db->insert('andamento', $andamento);
 	}
 
+    /**
+    * @author: Tiago Villalobos
+    * Atualiza andamento no banco
+    *
+    * @param: $andamento mixed
+    */
 	public function update($andamento)
 	{
         $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
@@ -20,6 +31,14 @@ class Andamento_model extends CI_Model
 
     }
 
+    /**
+    * @author: Tiago Villalobos
+    * Remove andamento do banco utilizado o id do pedido
+    * e retorna verdadeiro ou falso caso consiga remove-lo
+    *
+    *
+    * @param: $id integer
+    */
     public function remove($id)
     {
         
