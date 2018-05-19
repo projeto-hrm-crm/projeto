@@ -20,9 +20,10 @@
               'lib/data-table/datatables.min.js',
               'lib/data-table/dataTables.bootstrap.min.js',
               'datatable.js',
-              'confirm.modal.js',
             ),
           );
+
+          $dados['logs'] = $this->relatorio->get();
 
           loadTemplate('includes/header', 'log/index', 'includes/footer', $dados);
 

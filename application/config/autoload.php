@@ -163,5 +163,6 @@ $autoload['model'] = array(
                     'Cargo_model'                => 'cargo',
                     'Menu_model'                 => 'menu',
                     'Submenu_model'              => 'submenu',
-                    'Grupo_model'                => 'grupo'
+                    'Grupo_model'                => 'grupo',
+                    'Log_model'                  => 'relatorio'
 );

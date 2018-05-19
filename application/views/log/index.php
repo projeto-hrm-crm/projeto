@@ -15,20 +15,20 @@
                                 <th>Descrição</th>
                                 <th>Data</th>
                                 <th>Tabela</th>
-                                <th>Produto editado</th>
+                                <th>Item alterado</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(isset($logs)): ?>
                                 <?php foreach($logs as $log): ?>
                                     <tr>
-                                        <td><?php echo $log->usuario;?></td>
+                                        <td><?php echo $log->id_usuario;?></td>
                                         <td><?php echo $log->tipo;?></td>
                                         <td><?php echo $log->acao;?></td>
                                         <td><?php echo $log->descricao;?></td>
                                         <td><?php echo date("d/m/Y",strtotime($log->data));?></td>
                                         <td><?php echo $log->tabela;?></td>
-                                        <td><?php echo $log->produto_editado;?></td>
+                                        <td><?php echo $log->item_editado;?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
