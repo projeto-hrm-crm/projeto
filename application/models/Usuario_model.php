@@ -11,7 +11,7 @@ class Usuario_model extends CI_Model
   /**
   * @author: Matheus Ladislau
   * Retorna todos registro de cargo cadastrados no banco
-  * @return array: todos registro de cargo
+  * @return array: todos registro de usuario
   */
   public function get(){
       $query = $this->db->get('usuario');

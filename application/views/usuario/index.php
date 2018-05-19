@@ -1,5 +1,7 @@
 <?php
 
-echo "deu bom";
+foreach ($data as $a) {
+  echo $a->login;
+}
 
  ?>
