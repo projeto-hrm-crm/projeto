@@ -1,6 +1,6 @@
 # Issue 06 - Teste Cliente
 
-Verificar se a tabela cliente ta cadastrando e editando normalmente. 
+Verificar se a tabela cliente ta cadastrando e editando normalmente.
 
 #### CLASSE DE EQUIVALÊNCIA
 
@@ -30,40 +30,40 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 #### TESTE			
 | ID |	ENTRADA |	SAÍDA ESPERADA | RESULTADO |
 | ------ | --------- | ---------------| ------------------------------|
-|CE1|	123456|	aparece msg de erro e não cadastra|	falhou|
-|CE1|	ABCD$$$#|	aparece msg de erro e não cadastra|	falhou|
-|CE1|	ABCD|	cadastrar|	Falhou|
-|CE1|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
-|CE1|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
+|CE1|	123456|	aparece msg de erro e não cadastra|	ok|
+|CE1|	ABCD$$$#|	aparece msg de erro e não cadastra|	ok|
+|CE1|	ABCD|	cadastrar|	ok|
+|CE1|	$$$$$$###****|	aparece msg de erro e não cadastra|	ok|
+|CE1|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
 |CE1|	mais de 45 caracteres|	aparece msg de erro e não cadastra|	falhou|
 |CE1|	ate 45 caracter|cadastrar|	falhou|
-|CE2|	testanto@testar.com|	cadastrar|	falhou|
-|CE2|	testandotestanto|	aparece msg de erro e não cadastra|	falhou|
-|CE2|	13232323|	aparece msg de erro e não cadastra|	falhou|
-|CE2|	<script></script>|	aparece msg de erro e não cadastra|	falhou|
-|CE3|	32/13/0019|	aparece msg de erro e não cadastra	|falhou|
-|CE3|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
-|CE3|	12/12/2012|	cadastrar|	falhou|
-|CE3|	oo/oo/oooo|	aparece msg de erro e não cadastra|	falhou|
-|CE4|	nenhuma alternativa|	aparece msg de erro e não cadastra|	falhou|
-|CE4|	Feminino|	cadastrar|	falhou|
-|CE4|   Masculino|Cadastrar|falhou
+|CE2|	testanto@testar.com|	cadastrar|	ok|
+|CE2|	testandotestanto|	aparece msg de erro e não cadastra|	ok|
+|CE2|	13232323|	aparece msg de erro e não cadastra|	ok|
+|CE2|	<script></script>|	aparece msg de erro e não cadastra|	ok|
+|CE3|	32/13/0019|	aparece msg de erro e não cadastra	|ok|
+|CE3|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
+|CE3|	12/12/2012|	cadastrar|	ok|
+|CE3|	oo/oo/oooo|	aparece msg de erro e não cadastra|	ok|
+|CE4|	nenhuma alternativa|	aparece msg de erro e não cadastra|	ok|
+|CE4|	Feminino|	cadastrar|	ok|
+|CE4| Masculino| Cadastrar| ok|
 |CE5|	somente letras|	não permitir|	ok|
 |CE5|	caracteres especiais|	não permitir|	ok|
-|CE5|	menor que 11 caracteres|	aparece msg de erro e não cadastra|	falhou|
+|CE5|	menor que 11 caracteres(excluindo a máscara)|	aparece msg de erro e não cadastra|	ok|
 |CE5|	maior que 11 caracteres|	não permitir|	ok|
-|CE5|	dentro do padrão|	cadastrar|	falhou|
-|CE5|   campo em branco| aparece msg e não cadastra| falhou
+|CE5|	dentro do padrão|	cadastrar|	ok|
+|CE5| campo em branco| aparece msg e não cadastra| ok|
 |CE6|	somente letras|	não permitir|	ok|
 |CE6|	caracteres especiais|	não permitir|	ok|
-|CE6|	menor que 10 caracteres|	aparece msg de erro e não cadastra|	falhou|
+|CE6|	menor que 10 caracteres|	aparece msg de erro e não cadastra|	ok|
 |CE6|	maior que 11 caracteres|	não permitir|	ok|
-|CE6|	dentro do padrão|	cadastrar|	falhou|
-|CE6|   campo em branco| aparece msg e não cadastra| falhou
-|CE7|  escolher um item combobox|cadastrar|falhou
-|CE7|  não ter nenhum item escolhido no combobox|aparece msg de erro e não cadastra|falhou
-|CE8|  escolher um item combobox|cadastrar|falhou
-|CE8|  não ter nenhum item escolhido no combobox|aparece msg de erro e não cadastra|falhou
+|CE6|	dentro do padrão|	cadastrar|	ok|
+|CE6| campo em branco| aparece msg e não cadastra| ok|
+|CE7| escolher um item combobox|cadastrar|ok|
+|CE7| não ter nenhum item escolhido no combobox|aparece msg de erro e não cadastra|ok|
+|CE8|  escolher um item combobox|cadastrar|ok
+|CE8|  não ter nenhum item escolhido no combobox|aparece msg de erro e não cadastra|ok|
 |CE9|	123456|	aparece msg de erro e não cadastra|	falhou|
 |CE9|	ABCD$$$#|	aparece msg de erro e não cadastra|	falhou|
 |CE9|	ABCD|	cadastrar|	Falhou|
@@ -72,13 +72,12 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 |CE9|	mais de 45 caracteres|	aparece msg de erro e não cadastra|	falhou|
 |CE9|	ate 45 caracter|cadastrar|	falhou|
 |CE9|  HHHH5555|cadastrar|falhou
-|CE10| 25A|cadastrar|falhou
-|CE10|25|cadastrar|falhou
-|CE10| hhhhhhh|aparece msg de erro e não cadastra| falhou
-|CE10|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
-|CE10|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
-|CE11| casa 1|cadastrar|falhou
-|CE11|  A|cadastrar|falhou
+|CE10|25|cadastrar|ok|
+|CE10| hhhhhhh|aparece msg de erro e não cadastra| ok|
+|CE10|	$$$$$$###****|	aparece msg de erro e não cadastra|	ok|
+|CE10|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
+|CE11| casa 1|cadastrar|ok|
+|CE11|  A|cadastrar|ok|
 |CE11| hhhhhhh|cadastrar| falhou
 |CE11|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
 |CE11|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
