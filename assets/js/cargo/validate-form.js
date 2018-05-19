@@ -5,6 +5,9 @@ $(document).ready(() => {
   $("[name='descricao']").on('focusout keyup', (e) => {
     validateField(e, $("[name='descricao']"), $("#invalid-descricao"));
   });
+  $("[name='salario']").on('focusout keyup', (e) => {
+    validateField(e, $("[name='salario']"), $("#invalid-salario"));
+  });
 });
 
 function validateField(e, input, feedback) {
