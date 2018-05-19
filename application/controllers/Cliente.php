@@ -129,4 +129,14 @@ class Cliente extends CI_Controller
       redirect('cliente');
     }
   }
+
+  /**
+  * @author Pedro Henrique Guimarães
+  *
+  * Método chamado por ajax
+  */
+  public function getChartData()
+  {
+      echo json_encode((object)$this->cliente->getClienteChartData());
+  }
 }

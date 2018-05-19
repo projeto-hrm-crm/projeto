@@ -123,3 +123,7 @@ $route['vaga']                = 'Vaga/index';
 $route['vaga/cadastrar']      = 'Vaga/create';
 $route['vaga/editar/(:num)']  = 'Vaga/edit/$1';
 $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
+
+
+//Ajax calls
+$route['cliente/chart']        = 'Cliente/getChartData';
