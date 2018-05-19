@@ -124,5 +124,10 @@ $route['vaga/cadastrar']      = 'Vaga/create';
 $route['vaga/editar/(:num)']  = 'Vaga/edit/$1';
 $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
 
+
 //Rotas Perfil
 $route['perfil'] = 'Perfil/admin';
+
+//Ajax calls
+$route['cliente/chart']        = 'Cliente/getChartData';
+
