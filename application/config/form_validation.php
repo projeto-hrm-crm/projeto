@@ -352,6 +352,20 @@ $config = array(
                       'rules' => 'required'
               ),
             ),
+
+      'usuario' =>
+      array(
+          array(
+              'field' => 'login',
+              'label' => 'Login',
+              'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+          ),
+          array(
+              'field' => 'senha',
+              'label' => 'Senha',
+              'rules' => 'required|exact_length[10]'
+          ),
+      ),
 );
 
 /**
