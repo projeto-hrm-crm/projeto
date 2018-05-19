@@ -61,7 +61,7 @@
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
 										    </a>
 
-												<a  href="CandidatoEtapa/excluir/<?php echo $vaga->id_vaga ?>"
+												<a  href="CandidatoEtapa/delete/<?php echo $vaga->id_vaga ?>"
 													class="btn bg-danger text-white">
 															<i class="fa fa-times"></i>
 												</a>
@@ -90,7 +90,6 @@
 
 
  <!-- Modal remover -->
-
 <div class="modal fade" id="modalRemover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

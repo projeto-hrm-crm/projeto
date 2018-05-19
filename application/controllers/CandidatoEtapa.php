@@ -33,6 +33,12 @@ class CandidatoEtapa extends CI_Controller
       $data);
   }
 
+  /**
+  * @author: Matheus Ladislau
+  * Realiza criação de registro de um vaga_etapa pelo id vaga etapa e usuario, coletado por sessão
+  *
+  *@param integer: refere-se ao id da vaga a ser vinculada ao usuário/candidato atual
+  */
   public function create($id_vaga_etapa){
     $id_usuario = $this->session->userdata('user_login');
     $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
@@ -44,7 +50,13 @@ class CandidatoEtapa extends CI_Controller
     redirect('candidato_etapa');
   }
 
-  function excluir($id_vaga_etapa)
+  /**
+  * @author: Matheus Ladislau
+  * Realiza remoção de registro de um vaga_etapa pelo id vaga etapa e usuario, coletado por sessão
+  *
+  *@param integer: refere-se ao id da vaga ligada ao usuário atual
+  */
+  function delete($id_vaga_etapa)
   {
     $id_usuario = $this->session->userdata('user_login');
     $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
