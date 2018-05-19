@@ -102,11 +102,8 @@ class Funcionario extends CI_Controller
     }
 
     $data['funcionario'] = $this->funcionario->getById($id_funcionario);
-    // $data['funcionario'] = $this->funcionario->getById($data['funcionario'][0]->id_pessoa);
-
-    $data['paises'] = $this->funcionario->get_pais();
-    $data['estados'] = $this->funcionario->get_estado();
-    $data['cidades'] = $this->funcionario->get_cidade();
+    $data['estados'] =  $this->estado->get();
+    $data['cidades'] = $this->cidade->getByState($data['funcionario'][0]->id_estado);
     $data['title'] = 'Editar funcionario';
     $data['id'] = $id_funcionario;
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);

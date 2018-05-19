@@ -40,10 +40,10 @@ public function getById($id_funcionario)
 		pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
 		endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
 		endereco.complemento,
-		cidade.id_cidade, cidade.nome AS cidade,
-		documento.tipo AS tipo_documento, documento.numero AS numero_documento,
+		cidade.id_cidade,
+		documento.numero AS numero_documento,
 		telefone.numero AS telefone,
-		estado.id_estado, estado.nome AS estado
+		estado.id_estado
 		")->from("pessoa")
 		->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
 		->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
