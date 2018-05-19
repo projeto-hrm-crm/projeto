@@ -275,14 +275,46 @@ $config = array(
             array(
                     'field' => 'codigo',
                     'label' => 'Codigo',
-                    'rules' => 'required'
+                    'rules' => 'required|numeric'
             ),
             array(
                     'field' => 'descricao',
                     'label' => 'Descrição etapas',
                     'rules' => 'required'
             ),
+            array(
+                    'field' => 'data_inicio',
+                    'label' => 'Data de inicio',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'data_fim',
+                    'label' => 'Data termino',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'id_cargo',
+                    'label' => 'Cargo',
+                    'rules' => 'required|numeric'
+            ),
+            array(
+                    'field' => 'vagas',
+                    'label' => 'Numero de vagas',
+                    'rules' => 'required|numeric'
+            ),
       ),
+      'processo_seletivo_info' => array(
+              array(
+                      'field' => 'nome',
+                      'label' => 'Nome',
+                      'rules' => 'required'
+              ),
+              array(
+                      'field' => 'descricao',
+                      'label' => 'Descricao etapas',
+                      'rules' => 'required'
+              ),
+            ),
 );
 
 /**

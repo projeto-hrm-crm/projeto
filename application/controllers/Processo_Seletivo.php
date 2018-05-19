@@ -31,20 +31,18 @@ class Processo_Seletivo extends CI_Controller
 
   public function create()
   {
-    $data = $this->input->post();
 
-    if($data)
+    if($this->input->post())
     {
+      $data = $this->input->post();
       if($this->form_validation->run('processo_seletivo'))
       {
         $this->processo_seletivo->insert($data);
         $this->session->set_flashdata('success', 'Processo Seletivo cadastrado com sucesso.');
-
         redirect('processo_seletivo');
       }else {
         $this->session->set_flashdata('danger', 'Processo Seletivo não pode ser cadastrado');
-
-        redirect('processo_seletivo');
+        // redirect('processo_seletivo');
       }
     }
     $data['title'] = 'Cadastrar Processo Seletivo';
@@ -55,9 +53,9 @@ class Processo_Seletivo extends CI_Controller
 
   public function edit($id)
   {
-    $data = $this->input->post();
-    if ($data)
+    if ($this->input->post())
     {
+      $data = $this->input->post();
       if ($this->form_validation->run('processo_seletivo'))
       {
         $this->processo_seletivo->update($id, $data);
@@ -65,7 +63,7 @@ class Processo_Seletivo extends CI_Controller
         redirect('processo_seletivo');
       }else{
         $this->session->set_flashdata('danger', 'Processo Seletivo não pode ser atualizado.');
-        redirect('processo_seletivo/edit/'.$id);
+        // redirect('processo_seletivo/edit/'.$id);
       }
     }
 
@@ -77,6 +75,19 @@ class Processo_Seletivo extends CI_Controller
 
   public function info($id)
   {
+    if ($this->input->post())
+    {
+      $data = $this->input->post();
+      if ($this->form_validation->run('processo_seletivo_info'))
+      {
+        $this->processo_seletivo->update($id, $data);
+        $this->session->set_flashdata('success', 'Processo Seletivo editado com sucesso.');
+        redirect('processo_seletivo');
+      }else{
+        $this->session->set_flashdata('danger', 'Processo Seletivo não pode ser atualizado.');
+        // redirect('processo_seletivo/edit/'.$id);
+      }
+    }
     $data['info'] = $this->processo_seletivo->info($id);
     $data['title'] = 'Informações Processo Seletivo';
     loadTemplate('includes/header', 'processo_seletivo/info', 'includes/footer', $data);

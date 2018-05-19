@@ -5,6 +5,7 @@
     <div class="card-header">
       <strong>Cadastro de Processos Seletivos</strong>
     </div>
+    <?php echo validation_errors(); ?>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
 				<?php if ($this->session->flashdata('success')) : ?>
