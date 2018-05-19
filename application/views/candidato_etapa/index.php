@@ -55,7 +55,7 @@
 												<!--
 												<input type="checkbox" name="" value="">
 											-->
-												<a href="CandidatoEtapa/create/<?php echo $vaga->id_vaga ?>"
+												<a href="CandidatoEtapa/createCandidatoEtapa/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-primary text-white">
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>

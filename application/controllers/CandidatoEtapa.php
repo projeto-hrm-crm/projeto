@@ -39,14 +39,25 @@ class CandidatoEtapa extends CI_Controller
   *
   *@param integer: refere-se ao id da vaga a ser vinculada ao usuário/candidato atual
   */
-  public function create($id_vaga_etapa){
+  function create()
+  {
+    redirect('candidato_etapa');
+  }
+
+  /**
+  * @author: Matheus Ladislau
+  * Realiza criação de registro de um vaga_etapa pelo id vaga etapa e usuario, coletado por sessão
+  *
+  *@param integer: refere-se ao id da vaga a ser vinculada ao usuário/candidato atual
+  */
+  function createCandidatoEtapa($id_vaga_etapa)
+  {
     $id_usuario = $this->session->userdata('user_login');
     $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
     $data['id_candidato']=$usuario->id_candidato;
     $data['id_vaga_etapa']=$id_vaga_etapa;
     $this->candidato_etapa->insert($data);
     $this->session->set_flashdata('success', 'Realizada candidatura à vaga com sucesso');
-
     redirect('candidato_etapa');
   }
 
