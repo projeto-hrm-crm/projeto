@@ -9,15 +9,20 @@ class Pedido extends CI_Controller
 	 * Com a configuração do menu esse controller serve como base para todos os outros controllers
 	 * onde todos devem seguir essa mesma estrutura mínima no consrutor.
 	 */
-	// public function __construct()
-	// {
-	//   	parent::__construct();
-	//     $user_id = $this->session->userdata('user_login');
-	//     $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-	//     $this->usuario->hasPermission($user_id, $currentUrl);
-	// }
+	public function __construct()
+	{
+	  	parent::__construct();
+	    $user_id = $this->session->userdata('user_login');
+	    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+	    $this->usuario->hasPermission($user_id, $currentUrl);
+	}
 
-
+	/**
+	* @author: Tiago Villalobos
+	* Listagem de pedidos realizados por clientes
+	*
+	*
+	*/
 	public function index()
 	{
 
@@ -47,7 +52,7 @@ class Pedido extends CI_Controller
 
 	/**
 	* @author: Tiago Villalobos
-	* Formulário para cadastro de pedidos
+	* Formulário para cadastro de pedidos e cadastro dos mesmos
 	*
 	*/
   	public function create()
@@ -125,6 +130,12 @@ class Pedido extends CI_Controller
 
   	}
 
+  	/**
+	* @author: Tiago Villalobos
+	* Formulário para edição de pedido e atualização do mesmo
+	*
+	* @param $id integer
+	*/
 	public function edit($id)
 	{
 		if($this->input->post())
@@ -202,6 +213,13 @@ class Pedido extends CI_Controller
 		}
 	}
 
+
+	/**
+	* @author: Tiago Villalobos
+	* Remoção do pedido e dados relacionados
+	*
+	* @param: $id integer
+	*/
 	public function delete($id)
 	{
 		$pedido = $this->pedido->getById($id);
@@ -223,6 +241,13 @@ class Pedido extends CI_Controller
 	}
 
 
+	/**
+	* @author: Tiago Villalobos
+	* Retorna JSON com fornecedores utilizado para adequação do formulário para cadastro de pedidos aos fornecedores
+	*
+	* @return: mixed 
+	* @todo: Mudar o nome do método quando for ser implementado
+	*/
 	public function getJSON()
 	{
 	  echo json_encode($this->fornecedor->get());
