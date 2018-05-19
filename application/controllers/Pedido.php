@@ -57,7 +57,7 @@ class Pedido extends CI_Controller
   			if($this->form_validation->run('pedido'))
   			{
   				$pedido = array(
-  					'id_cliente' => $this->input->post('id_cliente'),
+  					'id_pessoa' => $this->input->post('id_pessoa'),
   					'descricao'  => $this->input->post('descricao'),
   					'tipo'       => $this->input->post('tipo')
   				);
@@ -65,6 +65,7 @@ class Pedido extends CI_Controller
   				$id_pedido = $this->pedido->insert($pedido);
 
   				$andamento = array(
+  					'data'      => date('Y-m-d h:i:s'),
   					'situacao'  => $this->input->post('situacao'),
   					'id_pedido' => $id_pedido
   				);
@@ -132,7 +133,7 @@ class Pedido extends CI_Controller
 			{
 				$pedido = array(
 					'id_pedido'  => $id,
-  					'id_cliente' => $this->input->post('id_cliente'),
+  					'id_pessoa' => $this->input->post('id_pessoa'),
   					'descricao'  => $this->input->post('descricao'),
   					'tipo'       => $this->input->post('tipo')
   				);
@@ -219,6 +220,12 @@ class Pedido extends CI_Controller
 		}
 		
 		redirect('pedido');
+	}
+
+
+	public function getJSON()
+	{
+	  echo json_encode($this->fornecedor->get());
 	}
 
 }

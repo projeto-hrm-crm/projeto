@@ -8,19 +8,60 @@
 	            <form id="form-pedido" action="<?php echo base_url('pedido/cadastrar'); ?>" method="POST">
 	                <div class="card-body">
 	                    <div class="card-body">
+	                    	<div class="row">
+	                    		<!-- <div class="form-group col-6">
+	                        		<label for="tipo" class="control-label mb-1">Compra ou Venda?</label>
+	                        		<br>
+	                        		<div class="form-check-inline form-check">
+	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="compra" value="1" class="form-check-input compra-radio" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'P' ? 'checked' : ''?>>
+	                        		    Compra
+	                        		  </label>
+	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="compra" value="0" class="form-check-input compra-radio" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'S' ? 'checked' : ''?>>
+	                        		    Venda
+	                        		  </label>
+	                        		</div>
+                        			<div class="text-danger">
+                        				<small class="d-none" id="error-compra"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
+                        			</div>
+	                    		</div> -->
+	                        	<div class="form-group col-6">
+	                        		<label for="tipo" class="control-label mb-1">Tipo de Pedido</label>
+	                        		<br>
+	                        		<div class="form-check-inline form-check">
+	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'P' ? 'checked' : ''?>>
+	                        		    Produtos
+	                        		  </label>
+	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="S" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'S' ? 'checked' : ''?>>
+	                        		    Serviços
+	                        		  </label>
+	                        		  <label for="tipo3" class="form-check-label <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="PS" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'PS' ? 'checked' : ''?>>
+	                        		    Ambos
+	                        		  </label>
+
+	                        		</div>
+                        			<div class="text-danger">
+                        				<small class="d-none" id="error-tipo"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
+                        			</div>
+	                        	</div>
+	                    	</div>
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
-	                                <label for="id_cliente" class="control-label mb-1">Cliente</label>
-	                                <select name="id_cliente" id="id_cliente" class="form-control <?php echo isset($errors['id_cliente']) ? 'is-invalid' : '' ?>">
+	                                <label for="id_pessoa" class="control-label mb-1">Cliente</label>
+	                                <select name="id_pessoa" id="id_pessoa" class="form-control <?php echo isset($errors['id_pessoa']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($clientes as $cliente): ?>
-		                                	<option value="<?php echo $cliente->id_cliente ?>" <?php echo isset($old_data['id_cliente']) && ($cliente->id_cliente == $old_data['id_cliente']) ? 'selected' : '' ?>>
+		                                	<option value="<?php echo $cliente->id_pessoa ?>" <?php echo isset($old_data['id_pessoa']) && ($cliente->id_pessoa == $old_data['id_pessoa']) ? 'selected' : '' ?>>
 		                                		<?php echo $cliente->nome ?>
 		                                	</option>
 		                                <?php endforeach; ?>
 	                              	</select>
 	                             	<span class="invalid-feedback">
-	                             		<?php echo isset($errors['id_cliente']) ? $errors['id_cliente'] : '' ; ?>
+	                             		<?php echo isset($errors['id_pessoa']) ? $errors['id_pessoa'] : '' ; ?>
 	                             	</span>
 	                            </div>
 	                        </div>
@@ -129,35 +170,13 @@
 	                        </div>
 
 	                        <div class="row">
-	                        	<div class="form-group col-lg-6 col-sm-12">
+	                        	<div class="form-group col-lg-12 col-sm-12">
 	                                <label for="situacao" class="control-label mb-1">Situação</label>
 	                                <input value="<?php echo isset($old_data['situacao']) ? $old_data['situacao'] : null;?>" name="situacao" type="text" class="data form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['situacao']) ? $errors['situacao'] : '' ; ?>
 	                                </span>
 	                            </div>
-	                        	<div class="form-group col-6">
-	                        		<label for="tipo" class="control-label mb-1">Tipo de Pedido</label>
-	                        		<br>
-	                        		<div class="form-check-inline form-check">
-	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'P' ? 'checked' : ''?>>
-	                        		    Produtos
-	                        		  </label>
-	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                        		    <input type="radio" name="tipo" value="S" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'S' ? 'checked' : ''?>>
-	                        		    Serviços
-	                        		  </label>
-	                        		  <label for="tipo3" class="form-check-label <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                        		    <input type="radio" name="tipo" value="PS" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'PS' ? 'checked' : ''?>>
-	                        		    Ambos
-	                        		  </label>
-
-	                        		</div>
-	                        			<div class="text-danger">
-	                        				<small class="d-none" id="error-tipo"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
-	                        			</div>
-	                        	</div>
 	                        </div>
 
 

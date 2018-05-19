@@ -163,4 +163,55 @@ jQuery(document).ready(function($) {
         }
     }
 
+    // 0 = Venda - cliente
+    // 1 = Compra - fornecedor
+    $('.compra-radio').click(function(){
+    	var value = $(this).val();
+
+    	console.log(value);
+    	if(value == 1)
+    	{
+    		$.ajax({
+
+    			url:       base_url + 'json_fornecedores',
+    			dataType:  'JSON',
+    			type:      'POST',
+
+    			success:function(resp)
+    			{
+                    console.log(resp);
+    				if(resp.length > 0)
+                    {
+                        var select = $('[name="id_pessoa"]');
+                        
+                       // select.empty();
+
+                        select.append('<option value="">Selecione</option>');
+
+                        $.each(resp, function(index, item){
+                            console.log(item);
+                            var option = $('option');
+
+                            option.val(item.id_pessoa);
+                            option.text(item.razao_social);
+                            console.log(option);
+                            select.append(option);
+
+                        });
+
+                    }
+    			},
+
+    			error:function(resp)
+    			{
+    				//console.log(resp);
+    			}
+
+
+    		});
+    	}
+
+
+    });
+
 });

@@ -292,7 +292,7 @@ jQuery(document).ready(function($) {;
         {
             var inputName = $(input)[0].name;
 
-            if(inputName == 'tipo')
+            if(inputName == 'tipo' || inputName == 'compra')
             {
               jQuery(input).parents('.form-check').addClass('text-danger');
             }
@@ -307,9 +307,9 @@ jQuery(document).ready(function($) {;
 
         unhighlight:function(input)
         {
-             var inputName = $(input)[0].name;
+            var inputName = $(input)[0].name;
 
-            if(inputName == 'tipo')
+            if(inputName == 'tipo' || inputName == 'compra')
             {
               jQuery(input).parents('.form-check').removeClass('text-danger');
             }
@@ -321,10 +321,20 @@ jQuery(document).ready(function($) {;
         },
 
         errorPlacement:function(error, element)
-        {
+        {   
+            var inputName = $(element)[0].name;
+
             if(element.is(':radio'))
             {
-              jQuery('#error-tipo').removeClass('d-none').append(error);
+              if(inputName == 'tipo')
+              {
+                jQuery('#error-tipo').removeClass('d-none').append(error);  
+              }
+              else
+              {
+                jQuery('#error-compra').removeClass('d-none').append(error);
+              }
+              
             }
             else
             {
@@ -367,7 +377,7 @@ jQuery(document).ready(function($) {;
 
         rules: {
 
-            id_cliente:{
+            id_pessoa:{
                 required: true,
             },
 
@@ -384,6 +394,10 @@ jQuery(document).ready(function($) {;
                 required: true,
             },
 
+            compra:{
+                required: true,
+            },
+
             descricao:{
               required: true,
               regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
@@ -393,7 +407,7 @@ jQuery(document).ready(function($) {;
 
         messages: {
 
-            id_cliente:{
+            id_pessoa:{
                 required: 'O campo Cliente é obrigatório',
             },
 
@@ -408,6 +422,10 @@ jQuery(document).ready(function($) {;
 
             tipo:{
                 required: 'O campo Tipo é obrigatório',
+            },
+
+            compra:{
+                required: 'O campo Compra/Venda é obrigatório',
             },
 
             descricao:{

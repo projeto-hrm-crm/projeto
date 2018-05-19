@@ -10,23 +10,23 @@
 	                    <div class="card-body">
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
-	                                <label for="id_cliente" class="control-label mb-1">Cliente</label>
-	                                <select name="id_cliente" id="id_cliente" class="form-control <?php echo isset($errors['id_cliente']) ? 'is-invalid' : '' ?>">
+	                                <label for="id_pessoa" class="control-label mb-1">Cliente</label>
+	                                <select name="id_pessoa" id="id_pessoa" class="form-control <?php echo isset($errors['id_pessoa']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($clientes as $cliente): ?>
-		                                	<option value="<?php echo $cliente->id_cliente ?>" 
+		                                	<option value="<?php echo $cliente->id_pessoa ?>" 
 		                                		<?php 
-		                                			echo isset($old_data['id_cliente']) && 
-		                                			($cliente->id_cliente == $old_data['id_cliente']) || 
-		                                			!isset($errors['id_cliente']) && 
-		                                			($pedido->id_cliente == $cliente->id_cliente) ? 'selected' : '' 
+		                                			echo isset($old_data['id_pessoa']) && 
+		                                			($cliente->id_pessoa == $old_data['id_pessoa']) || 
+		                                			!isset($errors['id_pessoa']) && 
+		                                			($pedido->id_pessoa == $cliente->id_pessoa) ? 'selected' : '' 
 		                                		?>>
 		                                		<?php echo $cliente->nome ?>
 		                                	</option>
 		                                <?php endforeach; ?>
 	                              	</select>
 	                             	<span class="invalid-feedback">
-	                             		<?php echo isset($errors['id_cliente']) ? $errors['id_cliente'] : '' ; ?>
+	                             		<?php echo isset($errors['id_pessoa']) ? $errors['id_pessoa'] : '' ; ?>
 	                             	</span>
 	                            </div>
 	                        </div>

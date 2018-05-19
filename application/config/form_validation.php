@@ -272,7 +272,7 @@ $config = array(
     'pedido' => array(
 
         array(
-            'field' => 'id_cliente',
+            'field' => 'id_pessoa',
             'label' => 'Cliente',
             'rules' => 'required'
         ),
