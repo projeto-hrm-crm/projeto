@@ -19,7 +19,7 @@
       <?php endif; ?>
 			<div class="card">
 				<div class="card-header">
-					<strong class="card-title">Vagas</strong>
+					<strong class="card-title">Candidatar-se à Vaga</strong>
 				</div>
 				<div class="card-body">
 					<table class="datatable table table-striped table-bordered">
@@ -50,14 +50,19 @@
 										    	class="btn bg-primary text-white">
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
-
 										    </a>
 
-										    <button  data-href="canditato_etapa/excluir/<?php echo $vaga->id_vaga ?>"
+												<a  href="CandidatoEtapa/excluir/<?php echo $vaga->id_vaga ?>"
+													class="btn bg-danger text-white">
+															<i class="fa fa-times"></i>
+												</a>
+
+										    <!--
+												<button  data-href="canditato_etapa/excluir/ < ?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
 										        <i class="fa fa-times"></i>
   									    	</button>
-
+												-->
 										</td>
 									</tr>
 								<?php endforeach; ?>

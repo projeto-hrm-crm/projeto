@@ -20,11 +20,11 @@ class CandidatoEtapa extends CI_Controller
   }
   /**
   * author: Matheus Ladislau
-  * Metodo index que chama a view inicial de candidato vaga
+  * Metodo index que chama a view inicial de candidato-etapa
   **/
   public function index()
   {
-    $data['title'] = 'Candidatar a Vaga';
+    $data['title'] = 'Candidatar-se à Vaga';
     $data['vagas'] = $this->vaga->get();
     loadTemplate(
       'includes/header',
@@ -42,11 +42,13 @@ class CandidatoEtapa extends CI_Controller
     redirect('candidato_etapa');
   }
 
-  function excluir()
+  function excluir($id_vaga_etapa)
   {
-    $id_candidato = $this->session->userdata('user_login');
+    $id_usuario = $this->session->userdata('user_login');
+    $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
+    $id_candidato=$usuario->id_candidato;
     $this->candidato_etapa->remove($id_candidato,$id_vaga_etapa);
-    redirect('candidato_etapa');
+
   }
 
 }
