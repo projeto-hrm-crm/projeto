@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `projeto` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `projeto`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: projeto
@@ -16,6 +14,34 @@ USE `projeto`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `andamento`
+--
+
+DROP TABLE IF EXISTS `andamento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `andamento` (
+  `id_andamento` int(11) NOT NULL AUTO_INCREMENT,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `situacao` varchar(45) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
+  PRIMARY KEY (`id_andamento`),
+  KEY `fk_andamento_pedido1_idx` (`id_pedido`),
+  CONSTRAINT `fk_andamento_pedido1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `andamento`
+--
+
+LOCK TABLES `andamento` WRITE;
+/*!40000 ALTER TABLE `andamento` DISABLE KEYS */;
+INSERT INTO `andamento` VALUES (8,'2018-05-19 13:38:32','drtreter',9);
+/*!40000 ALTER TABLE `andamento` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `bairro`
@@ -59,7 +85,7 @@ CREATE TABLE `candidato` (
   PRIMARY KEY (`id_candidato`),
   KEY `fk_candidato_pessoa_fisica1_idx` (`id_pessoa`),
   CONSTRAINT `fk_candidato_pessoa_fisica1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa_fisica` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,8 +94,35 @@ CREATE TABLE `candidato` (
 
 LOCK TABLES `candidato` WRITE;
 /*!40000 ALTER TABLE `candidato` DISABLE KEYS */;
-INSERT INTO `candidato` VALUES (1,7);
+INSERT INTO `candidato` VALUES (1,7),(2,8);
 /*!40000 ALTER TABLE `candidato` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `candidato_etapa`
+--
+
+DROP TABLE IF EXISTS `candidato_etapa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `candidato_etapa` (
+  `id_candidato` int(11) NOT NULL,
+  `id_vaga_etapa` int(11) NOT NULL,
+  PRIMARY KEY (`id_candidato`,`id_vaga_etapa`),
+  KEY `fk_candidato_has_vaga_candidato1_idx` (`id_candidato`),
+  KEY `fk_candidato_vaga_etapa1` (`id_vaga_etapa`),
+  CONSTRAINT `fk_candidato_has_vaga_candidato1` FOREIGN KEY (`id_candidato`) REFERENCES `candidato` (`id_candidato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_candidato_vaga_etapa1` FOREIGN KEY (`id_vaga_etapa`) REFERENCES `vaga_etapa` (`id_vaga_etapa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `candidato_etapa`
+--
+
+LOCK TABLES `candidato_etapa` WRITE;
+/*!40000 ALTER TABLE `candidato_etapa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `candidato_etapa` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -88,9 +141,18 @@ CREATE TABLE `cargo` (
   PRIMARY KEY (`id_cargo`),
   KEY `fk_cargo_setor1_idx` (`id_setor`),
   CONSTRAINT `fk_cargo_setor1` FOREIGN KEY (`id_setor`) REFERENCES `setor` (`id_setor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `cargo`
+--
+
+LOCK TABLES `cargo` WRITE;
+/*!40000 ALTER TABLE `cargo` DISABLE KEYS */;
+INSERT INTO `cargo` VALUES (2,'rtyrtyrt','ryrtyrty',3445345,3);
+/*!40000 ALTER TABLE `cargo` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cidade`
@@ -133,7 +195,7 @@ CREATE TABLE `cliente` (
   PRIMARY KEY (`id_cliente`),
   KEY `fk_cliente_pessoa_fisica1_idx` (`id_pessoa`),
   CONSTRAINT `fk_cliente_pessoa_fisica1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa_fisica` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +204,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,3),(2,5);
+INSERT INTO `cliente` VALUES (1,3),(2,5),(3,12);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +223,7 @@ CREATE TABLE `documento` (
   PRIMARY KEY (`id_documento`),
   KEY `fk_documento_pessoa1_idx` (`id_pessoa`),
   CONSTRAINT `fk_documento_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +232,7 @@ CREATE TABLE `documento` (
 
 LOCK TABLES `documento` WRITE;
 /*!40000 ALTER TABLE `documento` DISABLE KEYS */;
-INSERT INTO `documento` VALUES (1,'123123123123123','cnpj',4),(2,'211.111.111-11','cpf',5),(3,'333333333333333333','cnpj',6),(4,'111.111.111-11','cpf',7);
+INSERT INTO `documento` VALUES (1,'123123123123123','cnpj',4),(2,'211.111.111-11','cpf',5),(3,'333333333333333333','cnpj',6),(4,'111.111.111-11','cpf',7),(5,'134.186.624-63','cpf',8),(6,'134.186.624-63','cpf',9),(7,'','cpf',10),(8,'163.145.413-79','cpf',11),(9,'225.752.245-19','cpf',12),(10,'23.423.423/4234-23','cnpj',13);
 /*!40000 ALTER TABLE `documento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +253,7 @@ CREATE TABLE `endereco` (
   `id_pessoa` int(11) DEFAULT NULL,
   `id_cidade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_endereco`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +262,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (1,'11665-320','auishdaushd','uhasudhasudhu','123123123123','',4,10),(2,'32423-423','Indaiá','dfssdfsdf','23423','asdasdasd',5,3182),(3,'213333333','dghfhfgh','dfssdfsdf','3453','dfgdfg',6,0),(4,'32423-423','Indaiá','dfssdfsdf','23423','asdasdasd',7,3184);
+INSERT INTO `endereco` VALUES (1,'11665-320','auishdaushd','uhasudhasudhu','123123123123','',4,10),(2,'32423-423','Indaiá','dfssdfsdf','23423','asdasdasd',5,3182),(3,'213333333','dghfhfgh','dfssdfsdf','3453','dfgdfg',6,0),(4,'32423-423','Indaiá','dfssdfsdf','23423','asdasdasd',7,3184),(5,'32423-423','sdfsdfs','dfssdfsdf','345','',8,3098),(6,'32423-423','werwerwer','dfssdfsdf','32423','dassd',9,3191),(7,'','','','','',10,0),(8,'23423-423','dsfsdfsdfsdf','Rua Saturnino Mariano Nepomuceno','652','Casa',11,3113),(9,'11665-320','Indaiá','Rua Saturnino Mariano Nepomuceno','652','',12,3113),(10,'32423-423','dsfsdfsdfsdf','dfssdfsdf','23423','',13,3193);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,6 +295,29 @@ INSERT INTO `estado` VALUES (11,'RO','RONDÔNIA',76),(12,'AC','Acre',76),(13,'AM
 UNLOCK TABLES;
 
 --
+-- Table structure for table `etapa`
+--
+
+DROP TABLE IF EXISTS `etapa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `etapa` (
+  `id_etapa` int(11) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_etapa`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `etapa`
+--
+
+LOCK TABLES `etapa` WRITE;
+/*!40000 ALTER TABLE `etapa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `etapa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `fornecedor`
 --
 
@@ -245,7 +330,7 @@ CREATE TABLE `fornecedor` (
   PRIMARY KEY (`id_fornecedor`),
   KEY `fk_fornecedor_pessoa_juridica1_idx` (`id_pessoa_juridica`),
   CONSTRAINT `fk_fornecedor_pessoa_juridica1` FOREIGN KEY (`id_pessoa_juridica`) REFERENCES `pessoa_juridica` (`id_pessoa_juridica`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +339,7 @@ CREATE TABLE `fornecedor` (
 
 LOCK TABLES `fornecedor` WRITE;
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
-INSERT INTO `fornecedor` VALUES (1,1),(2,2);
+INSERT INTO `fornecedor` VALUES (1,1),(2,2),(3,3);
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,7 +356,7 @@ CREATE TABLE `funcionario` (
   PRIMARY KEY (`id_funcionario`),
   KEY `fk_funcionario_pessoa_fisica1_idx` (`id_pessoa`),
   CONSTRAINT `fk_funcionario_pessoa_fisica1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa_fisica` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,6 +365,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
+INSERT INTO `funcionario` VALUES (1,9),(2,11);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +417,7 @@ CREATE TABLE `grupo_acesso_menu` (
 
 LOCK TABLES `grupo_acesso_menu` WRITE;
 /*!40000 ALTER TABLE `grupo_acesso_menu` DISABLE KEYS */;
-INSERT INTO `grupo_acesso_menu` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9);
+INSERT INTO `grupo_acesso_menu` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12);
 /*!40000 ALTER TABLE `grupo_acesso_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,6 +452,35 @@ LOCK TABLES `iteracao` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `log`
+--
+
+DROP TABLE IF EXISTS `log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `log` (
+  `id_log` int(11) NOT NULL,
+  `id_usuario` varchar(45) NOT NULL,
+  `tipo` varchar(45) NOT NULL,
+  `acao` varchar(45) NOT NULL,
+  `descricao` varchar(45) NOT NULL,
+  `data` date NOT NULL,
+  `tabela` varchar(45) NOT NULL,
+  `item_editado` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `log`
+--
+
+LOCK TABLES `log` WRITE;
+/*!40000 ALTER TABLE `log` DISABLE KEYS */;
+INSERT INTO `log` VALUES (0,'1','insert','Insere','Pessoa','2018-05-19','Pessoa','sdfsdfsd'),(0,'1','insert','Insere','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','insert','Insere','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa Fisica','2018-05-19','Pessoa Fisica','sdfsdfsd'),(0,'1','insert','Insere','Candidato','2018-05-19','Candidato','sdfsdfsd'),(0,'1','insert','Insere','Pessoa','2018-05-19','Pessoa','sdfsdfsd'),(0,'1','insert','Insere','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','insert','Insere','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa Fisica','2018-05-19','Pessoa Fisica','sdfsdfsd'),(0,'1','insert','Insere','Funcionário','2018-05-19','Funcionário','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa','2018-05-19','Pessoa','sdfsdfsd'),(0,'1','insert','Insere','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','insert','Insere','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa','2018-05-19','Pessoa','sdfsdfsd'),(0,'1','insert','Insere','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','insert','Insere','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa Fisica','2018-05-19','Pessoa Fisica','sdfsdfsd'),(0,'1','insert','Insere','Funcionário','2018-05-19','Funcionário','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa','2018-05-19','Pessoa','sdfsdfsd'),(0,'1','insert','Insere','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','insert','Insere','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa Fisica','2018-05-19','Pessoa Fisica','sdfsdfsd'),(0,'1','insert','Insere','Cliente','2018-05-19','Cliente','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Pessoa','2018-05-19','Pessoa','sdfsdfsd'),(0,'1','insert','Insere','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','insert','Insere','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','insert','Insere','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Pessoa Juridica','2018-05-19','Pessoa Juridica','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','update','Atualiza','Documento','2018-05-19','Documento','sdfsdfsd'),(0,'1','update','Atualiza','Telefone','2018-05-19','Telefone','sdfsdfsd'),(0,'1','update','Atualiza','Endereço','2018-05-19','Endereço','sdfsdfsd'),(0,'1','insert','Insere','Produto','2018-05-19','Produto','sdfsdfsd'),(0,'1','insert','Insere','Setor','2018-05-19','Setor','sdfsdfsd'),(0,'1','insert','Insere','Setor','2018-05-19','Setor','sdfsdfsd'),(0,'1','insert','Insere','Cargo','2018-05-19','Cargo','sdfsdfsd'),(0,'1','insert','Insere','Vaga','2018-05-19','Vaga','sdfsdfsd');
+/*!40000 ALTER TABLE `log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `menu`
 --
 
@@ -377,7 +492,7 @@ CREATE TABLE `menu` (
   `nome` varchar(45) DEFAULT NULL,
   `icone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +501,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Produto','fa fa-gift'),(2,'Cliente','fa fa-user'),(3,'Candidato','fa fa-address-book'),(4,'Fornecedor','fa fa-truck'),(5,'Funcionario','fa fa-address-card'),(6,'Cargo','fa fa-briefcase'),(7,'Setor','fa fa-building'),(8,'SAC','fa fa-phone-square'),(9,'Vaga','fa fa-newspaper-o');
+INSERT INTO `menu` VALUES (1,'Produto','fa fa-gift'),(2,'Cliente','fa fa-user'),(3,'Candidato','fa fa-address-book'),(4,'Fornecedor','fa fa-truck'),(5,'Funcionario','fa fa-address-card'),(6,'Cargo','fa fa-briefcase'),(7,'Setor','fa fa-building'),(8,'SAC','fa fa-phone-square'),(9,'Vaga','fa fa-newspaper-o'),(10,'Processo Seletivo','fa fa-address-card'),(11,'Candidato Etapa','fa fa-bars'),(12,'Pedido','fa fa-archive');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -416,6 +531,64 @@ INSERT INTO `pais` VALUES (4,'AFEGANISTÃO','AFG'),(8,'ALBÂNIA','ALB'),(12,'ARG
 UNLOCK TABLES;
 
 --
+-- Table structure for table `pedido`
+--
+
+DROP TABLE IF EXISTS `pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pedido` (
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pessoa` int(11) NOT NULL,
+  `descricao` varchar(45) NOT NULL,
+  `tipo` enum('p','s','ps') NOT NULL,
+  `compra` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_cliente_idx` (`id_pessoa`),
+  CONSTRAINT `id_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pedido`
+--
+
+LOCK TABLES `pedido` WRITE;
+/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` VALUES (9,12,'tgfgdf','s',0);
+/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pedido_produto`
+--
+
+DROP TABLE IF EXISTS `pedido_produto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pedido_produto` (
+  `id_pedido` int(11) NOT NULL,
+  `id_produto` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  PRIMARY KEY (`id_pedido`,`id_produto`),
+  KEY `fk_pedido_has_produto_produto1_idx` (`id_produto`),
+  KEY `fk_pedido_has_produto_pedido1_idx` (`id_pedido`),
+  CONSTRAINT `fk_pedido_has_produto_pedido1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pedido_has_produto_produto1` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pedido_produto`
+--
+
+LOCK TABLES `pedido_produto` WRITE;
+/*!40000 ALTER TABLE `pedido_produto` DISABLE KEYS */;
+INSERT INTO `pedido_produto` VALUES (9,4,146704);
+/*!40000 ALTER TABLE `pedido_produto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pessoa`
 --
 
@@ -426,9 +599,9 @@ CREATE TABLE `pessoa` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
-
+  `data_criacao` date DEFAULT NULL,
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -437,7 +610,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'dfsdfsdf','sdfsdf.sdfsdf@sdfsdf.com'),(2,'asdasdasd','asd.asdas@sdf.com'),(3,'asdasdasd','asd.asdas@sdf.com'),(4,'wwwwwwwwwwwwwww','werwer.werwe@asdas.xcds'),(5,'asdasdasdasd','camilapsales@hotmail.com'),(6,'ghjghgfh','asdasd.asdas@adfasd.com'),(7,'asdasdasdasd','camilapsales@hotmail.com');
+INSERT INTO `pessoa` VALUES (8,'asdasdasdasd','camilapsales@hotmail.com','2018-05-19'),(9,'werwerwer','camilapsale','2018-05-19'),(10,'','','2018-05-19'),(11,'afsdfsd','dfgdfg@fsgsdfsdf.sdfsdf','2018-05-19'),(12,'fsgdfgdfgdfg','pedroguimaraes.contato@gmail.com','2018-05-19'),(13,'asdasdasd','camilapsales@hotmail.com','2018-05-19');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,7 +628,7 @@ CREATE TABLE `pessoa_fisica` (
   `sexo` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_pessoa_fisica`,`id_pessoa`),
   KEY `fk_pessoa_fisica_pessoa1_idx` (`id_pessoa`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -464,10 +637,9 @@ CREATE TABLE `pessoa_fisica` (
 
 LOCK TABLES `pessoa_fisica` WRITE;
 /*!40000 ALTER TABLE `pessoa_fisica` DISABLE KEYS */;
-INSERT INTO `pessoa_fisica` VALUES (1,1,'2018-04-12',0),(2,2,'2018-04-08',0),(3,3,'2018-04-08',0),(4,5,'1996-11-11',1),(5,7,'1922-12-12',1);
+INSERT INTO `pessoa_fisica` VALUES (6,8,'0000-00-00',0),(7,9,'0000-00-00',0),(8,11,'0000-00-00',0),(9,12,'0000-00-00',1);
 /*!40000 ALTER TABLE `pessoa_fisica` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `pessoa_juridica`
@@ -483,7 +655,7 @@ CREATE TABLE `pessoa_juridica` (
   PRIMARY KEY (`id_pessoa_juridica`),
   KEY `fk_pessoa_juridica_pessoa1_idx` (`id_pessoa`),
   CONSTRAINT `fk_pessoa_juridica_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -492,10 +664,41 @@ CREATE TABLE `pessoa_juridica` (
 
 LOCK TABLES `pessoa_juridica` WRITE;
 /*!40000 ALTER TABLE `pessoa_juridica` DISABLE KEYS */;
-INSERT INTO `pessoa_juridica` VALUES (1,4,'werwerwer'),(2,6,'sdfsdfsdf');
+INSERT INTO `pessoa_juridica` VALUES (3,13,'sdfsdfsdf');
 /*!40000 ALTER TABLE `pessoa_juridica` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `processo_seletivo`
+--
+
+DROP TABLE IF EXISTS `processo_seletivo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `processo_seletivo` (
+  `id_processo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `codigo` int(10) NOT NULL,
+  `nome` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `data_inicio` date NOT NULL,
+  `data_fim` date NOT NULL,
+  `id_cargo` int(10) NOT NULL,
+  `descricao` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `vagas` int(10) NOT NULL,
+  PRIMARY KEY (`id_processo`),
+  KEY `fk_processo_seletivo_cargo1_idx` (`id_cargo`),
+  CONSTRAINT `fk_processo_seletivo_cargo1` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `processo_seletivo`
+--
+
+LOCK TABLES `processo_seletivo` WRITE;
+/*!40000 ALTER TABLE `processo_seletivo` DISABLE KEYS */;
+INSERT INTO `processo_seletivo` VALUES (1,1313,'processo 01','2018-05-01','2018-05-24',1,'etapa 1:asdasdsdha\r\netapa 2:asdasdsdha\r\netapa 3:asdasdsdha',2),(2,1514,'processo 02','2018-05-01','2018-05-24',2,'etapa 1:asdasdsdha\r\netapa 2:asdasdsdha\r\netapa 3:sdasdsdha',5),(3,2147483647,'xdfsdfsfsdf','9988-12-12','1258-12-12',2,'stertetrertertetr',456456);
+/*!40000 ALTER TABLE `processo_seletivo` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `produto`
@@ -513,10 +716,11 @@ CREATE TABLE `produto` (
   `lote` varchar(45) NOT NULL,
   `recebimento` date NOT NULL,
   `id_fornecedor` int(11) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_produto`),
   KEY `id_fornecedor_idx` (`id_fornecedor`),
   CONSTRAINT `id_fornecedor` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id_fornecedor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,11 +729,9 @@ CREATE TABLE `produto` (
 
 LOCK TABLES `produto` WRITE;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (1,'34534534','produto ','1665-12-12','1998-12-23','1231','2019-03-22',1);
+INSERT INTO `produto` VALUES (4,'34534534','produto ','1665-12-12','2018-04-30','1231','2019-03-22',3,0.00);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
 
 --
 -- Table structure for table `regiao`
@@ -584,10 +786,8 @@ CREATE TABLE `sac` (
 
 LOCK TABLES `sac` WRITE;
 /*!40000 ALTER TABLE `sac` DISABLE KEYS */;
-INSERT INTO `sac` VALUES (1,1,2,'dgfgdfgdfgdfgdfg','fsdddddddddddddddddddddddddgsdf\r\n\r\n\r\n\r\nsd\r\nes\r\nf\r\ns\r\nf\r\nsd\r\nf\r\nsdf\r\nsd\r\nfsd\r\nfs\r\ndf\r\nsd\r\nf\r\nsdf\r\n\r\nsdf\r\n\r\nsdf\r\n\r\nsd\r\nfds','2018-05-10 01:49:30','2018-05-10 01:49:30',1);
 /*!40000 ALTER TABLE `sac` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `setor`
@@ -600,7 +800,7 @@ CREATE TABLE `setor` (
   `id_setor` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`id_setor`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -609,10 +809,9 @@ CREATE TABLE `setor` (
 
 LOCK TABLES `setor` WRITE;
 /*!40000 ALTER TABLE `setor` DISABLE KEYS */;
-INSERT INTO `setor` VALUES (1,'gfhfghfghfgh');
+INSERT INTO `setor` VALUES (3,'e5terterteter');
 /*!40000 ALTER TABLE `setor` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `sub_menu`
@@ -631,7 +830,7 @@ CREATE TABLE `sub_menu` (
   PRIMARY KEY (`id_sub_menu`),
   KEY `fk_sub_menu_menu1_idx` (`id_menu`),
   CONSTRAINT `fk_sub_menu_menu1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -640,18 +839,10 @@ CREATE TABLE `sub_menu` (
 
 LOCK TABLES `sub_menu` WRITE;
 /*!40000 ALTER TABLE `sub_menu` DISABLE KEYS */;
-INSERT INTO `sub_menu` VALUES (1,'Cadastrar',1,'produto/cadastrar','fa fa-plus',1),(2,'Listar',1,'produto','fa fa-list',1),(3,'Cadastrar',2,'cliente/cadastrar','fa fa-plus',1),(4,'Listar',2,'cliente','fa fa-list',1),(5,'Cadastrar',3,'candidato/cadastrar','fa fa-plus',1),(6,'Listar',3,'candidato','fa fa-list',1),(7,'Cadastrar',4,'fornecedor/cadastrar','fa fa-plus',1),(8,'Listar',4,'fornecedor','fa fa-list',1),(9,'Cadastrar',5,'funcionario/cadastrar','fa fa-plus',1),(10,'Listar',5,'funcionario','fa fa-list',1),(11,'Cadastrar',6,'cargo/cadastrar','fa fa-plus',1),(12,'Listar',6,'cargo','fa fa-list',1),(13,'Cadastrar',7,'setor/cadastrar','fa fa-plus',1),(14,'Listar',7,'setor','fa fa-list',1),(15,'Cadastrar',8,'sac/cadastrar','fa fa-plus',1),(16,'Listar',8,'sac','fa fa-list',1),(17,'Editar',1,'produto/editar',NULL,0),(18,'Editar',2,'cliente/editar',NULL,0),(19,'Editar',3,'candidato/editar',NULL,0),(20,'Editar',4,'fornecedor/editar',NULL,0),(21,'Editar',5,'funcionario/editar',NULL,0),(22,'Editar',6,'cargo/editar',NULL,0),(23,'Editar',7,'setor/editar',NULL,0),(24,'Editar',8,'sac/editar',NULL,0),(25,'Cadastrar',9,'vaga/cadastrar','fa fa-plus',1),(26,'Listar',9,'vaga','fa fa-list',1),(27,'Editar',9,'vaga/editar',NULL,0);
+INSERT INTO `sub_menu` VALUES (1,'Cadastrar',1,'produto/cadastrar','fa fa-plus',1),(2,'Listar',1,'produto','fa fa-list',1),(3,'Cadastrar',2,'cliente/cadastrar','fa fa-plus',1),(4,'Listar',2,'cliente','fa fa-list',1),(5,'Cadastrar',3,'candidato/cadastrar','fa fa-plus',1),(6,'Listar',3,'candidato','fa fa-list',1),(7,'Cadastrar',4,'fornecedor/cadastrar','fa fa-plus',1),(8,'Listar',4,'fornecedor','fa fa-list',1),(9,'Cadastrar',5,'funcionario/cadastrar','fa fa-plus',1),(10,'Listar',5,'funcionario','fa fa-list',1),(11,'Cadastrar',6,'cargo/cadastrar','fa fa-plus',1),(12,'Listar',6,'cargo','fa fa-list',1),(13,'Cadastrar',7,'setor/cadastrar','fa fa-plus',1),(14,'Listar',7,'setor','fa fa-list',1),(15,'Cadastrar',8,'sac/cadastrar','fa fa-plus',1),(16,'Listar',8,'sac','fa fa-list',1),(17,'Editar',1,'produto/editar',NULL,0),(18,'Editar',2,'cliente/editar',NULL,0),(19,'Editar',3,'candidato/editar',NULL,0),(20,'Editar',4,'fornecedor/editar',NULL,0),(21,'Editar',5,'funcionario/editar',NULL,0),(22,'Editar',6,'cargo/editar',NULL,0),(23,'Editar',7,'setor/editar',NULL,0),(24,'Editar',8,'sac/editar',NULL,0),(25,'Cadastrar',9,'vaga/cadastrar','fa fa-plus',1),(26,'Listar',9,'vaga','fa fa-list',1),(27,'Editar',9,'vaga/editar',NULL,0),(28,'Excluir',1,'produto/excluir',NULL,0),(29,'Excluir',2,'cliente/excluir',NULL,0),(30,'Excluir',3,'candidato/excluir',NULL,0),(31,'Excluir',4,'fornecedor/excluir',NULL,0),(32,'Excluir',5,'funcionario/excluir',NULL,0),(33,'Excluir',6,'cargo/excluir',NULL,0),(34,'Excluir',7,'setor/excluir',NULL,0),(35,'Excluir',8,'sac/excluir',NULL,0),(36,'Excluir',9,'vaga/excluir',NULL,0),(37,'Cadastrar',10,'processo_seletivo/cadastrar','fa fa-plus',1),(38,'Cadastrar',11,'candidato_etapa/cadastrar','fa fa-plus',1),(39,'Cadastrar',12,'pedido/cadastrar','fa fa-plus',1),(40,'Listar',10,'processo_seletivo','fa fa-list',1),(41,'Listar',11,'candidato_etapa','fa fa-list',1),(42,'Listar',12,'pedido','fa fa-list',1),(43,'Excluir',10,'processo_seletivo/excluir',NULL,0),(44,'Excluir',11,'candidato_etapa/excluir',NULL,0),(45,'Excluir',12,'pedido/excluir',NULL,0),(46,'Informação',10,'processo_seletivo/info','fa fa-info',1),(47,'Editar',10,'proceso_seletivo/editar',NULL,0),(48,'Editar',11,'candidato_etapa/editar',NULL,0),(49,'Editar',12,'pedido/editar',NULL,0);
 /*!40000 ALTER TABLE `sub_menu` ENABLE KEYS */;
 UNLOCK TABLES;
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '1', 'produto/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '2', 'cliente/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '3', 'candidato/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '4', 'fornecedor/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '5', 'funcionario/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '6', 'cargo/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '7', 'setor/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '8', 'sac/excluir', '0');
-INSERT INTO `sub_menu` (`nome`, `id_menu`, `link`, `status`) VALUES ('Excluir', '9', 'vaga/excluir', '0');
+
 --
 -- Table structure for table `telefone`
 --
@@ -666,7 +857,7 @@ CREATE TABLE `telefone` (
   PRIMARY KEY (`id_telefone`),
   KEY `fk_telefone_pessoa1_idx` (`id_pessoa`),
   CONSTRAINT `fk_telefone_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -675,10 +866,9 @@ CREATE TABLE `telefone` (
 
 LOCK TABLES `telefone` WRITE;
 /*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
-INSERT INTO `telefone` VALUES (1,'12982266622',4),(2,'12321312312',5),(3,'123412312312312',6),(4,'12321312312',7);
+INSERT INTO `telefone` VALUES (5,'(12)32131-2312',8),(6,'(12)32131-2312',9),(7,'',10),(8,'(23)42342-3423',11),(9,'(56)56456-4564',12),(10,'(12)32131-2312',13);
 /*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 --
 -- Table structure for table `usuario`
@@ -692,9 +882,12 @@ CREATE TABLE `usuario` (
   `login` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL,
   `id_grupo_acesso` int(11) NOT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuario_grupo_acesso1_idx` (`id_grupo_acesso`),
-  CONSTRAINT `fk_usuario_grupo_acesso1` FOREIGN KEY (`id_grupo_acesso`) REFERENCES `grupo_acesso` (`id_grupo_acesso`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_usuario_pessoa1_idx` (`id_pessoa`),
+  CONSTRAINT `fk_usuario_grupo_acesso1` FOREIGN KEY (`id_grupo_acesso`) REFERENCES `grupo_acesso` (`id_grupo_acesso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -704,7 +897,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin@admin.com','admin',1);
+INSERT INTO `usuario` VALUES (1,'admin@admin.com','admin',1,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -724,158 +917,48 @@ CREATE TABLE `vaga` (
   PRIMARY KEY (`id_vaga`),
   KEY `fk_vaga_cargo1_idx` (`id_cargo`),
   CONSTRAINT `fk_vaga_cargo1` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vaga`
+--
+
+LOCK TABLES `vaga` WRITE;
+/*!40000 ALTER TABLE `vaga` DISABLE KEYS */;
+INSERT INTO `vaga` VALUES (1,'1998-12-12',2147483647,'dssfsfsd',2);
+/*!40000 ALTER TABLE `vaga` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vaga_etapa`
+--
+
+DROP TABLE IF EXISTS `vaga_etapa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vaga_etapa` (
+  `id_vaga_etapa` int(11) NOT NULL AUTO_INCREMENT,
+  `id_vaga` int(11) NOT NULL,
+  `id_etapa` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id_vaga_etapa`),
+  KEY `fk_etapa_vaga1_idx` (`id_vaga`),
+  KEY `fk_vaga_etapa_etapa1_idx` (`id_etapa`),
+  CONSTRAINT `fk_etapa_vaga1` FOREIGN KEY (`id_vaga`) REFERENCES `vaga` (`id_vaga`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vaga_etapa_etapa1` FOREIGN KEY (`id_etapa`) REFERENCES `etapa` (`id_etapa`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `pedido`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `pedido`;
+--
+-- Dumping data for table `vaga_etapa`
+--
 
-CREATE TABLE `pedido` (
-  `id_pedido` INT NOT NULL AUTO_INCREMENT,
-  `descricao` VARCHAR(45) NOT NULL,
-  `tipo` ENUM('p', 's', 'ps') NOT NULL,
-  PRIMARY KEY (`id_pedido`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `pedido_produto`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `pedido_produto`;
-
-CREATE TABLE IF NOT EXISTS `pedido_produto` (
-  `id_pedido` INT NOT NULL,
-  `id_produto` INT NOT NULL,
-  `quantidade` INT NOT NULL,
-  PRIMARY KEY (`id_pedido`, `id_produto`),
-  INDEX `fk_pedido_has_produto_produto1_idx` (`id_produto` ASC),
-  INDEX `fk_pedido_has_produto_pedido1_idx` (`id_pedido` ASC),
-  CONSTRAINT `fk_pedido_has_produto_pedido1`
-    FOREIGN KEY (`id_pedido`)
-    REFERENCES `pedido` (`id_pedido`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pedido_has_produto_produto1`
-    FOREIGN KEY (`id_produto`)
-    REFERENCES `produto` (`id_produto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `andamento`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `andamento`;
-
-CREATE TABLE `andamento` (
-  `id` INT NOT NULL,
-  `data` TIMESTAMP NOT NULL,
-  `situação` VARCHAR(45) NOT NULL,
-  `id_pedido` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_andamento_pedido1_idx` (`id_pedido` ASC),
-  CONSTRAINT `fk_andamento_pedido1`
-    FOREIGN KEY (`id_pedido`)
-    REFERENCES `pedido` (`id_pedido`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-DROP TABLE IF EXISTS `etapa`;
-
-CREATE TABLE `etapa` (
-  `id_etapa` INT NOT NULL,
-  `descricao` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id_etapa`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `vaga_etapa`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `vaga_etapa`;
-
-CREATE TABLE `vaga_etapa` (
-  `id_vaga_etapa` INT NOT NULL AUTO_INCREMENT,
-  `id_vaga` INT NOT NULL,
-  `id_etapa` INT NOT NULL,
-  `status` TINYINT NOT NULL,
-  PRIMARY KEY (`id_vaga_etapa`),
-  INDEX `fk_etapa_vaga1_idx` (`id_vaga` ASC),
-  INDEX `fk_vaga_etapa_etapa1_idx` (`id_etapa` ASC),
-  CONSTRAINT `fk_etapa_vaga1`
-    FOREIGN KEY (`id_vaga`)
-    REFERENCES `vaga` (`id_vaga`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_vaga_etapa_etapa1`
-    FOREIGN KEY (`id_etapa`)
-    REFERENCES `etapa` (`id_etapa`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-DROP TABLE IF EXISTS `candidato_etapa`;
-
-CREATE TABLE `candidato_etapa` (
-  `id_candidato` INT NOT NULL,
-  `id_vaga_etapa` INT NOT NULL,
-  INDEX `fk_candidato_has_vaga_candidato1_idx` (`id_candidato` ASC),
-  PRIMARY KEY (`id_candidato`, `id_vaga_etapa`),
-  CONSTRAINT `fk_candidato_has_vaga_candidato1`
-    FOREIGN KEY (`id_candidato`)
-    REFERENCES `candidato` (`id_candidato`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_candidato_vaga_etapa1`
-    FOREIGN KEY (`id_vaga_etapa`)
-    REFERENCES `vaga_etapa` (`id_vaga_etapa`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-INSERT INTO `cargo` (`id_cargo`, `nome`, `descricao`, `salario`, `id_setor`) VALUES (NULL, 'chefe', 'manda em tudo', '5000', '1');
-INSERT INTO `cargo` (`id_cargo`, `nome`, `descricao`, `salario`, `id_setor`) VALUES (NULL, 'empregado', 'obedece todos', '1000', '1');
-
-
-USE projeto;
-CREATE TABLE `processo_seletivo` (
-  `id_processo` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `codigo` int(10) NOT NULL,
-  `nome` varchar(40) NOT NULL,
-  `data_inicio` date NOT NULL,
-  `data_fim` date NOT NULL,
-  `id_cargo` int(10) NOT NULL,
-  `descricao` LONGTEXT NOT NULL,
-  `vagas` int(10) NOT NULL,
-  PRIMARY KEY (`id_processo`),
-  KEY `fk_processo_seletivo_cargo1_idx` (`id_cargo`),
-  CONSTRAINT `fk_processo_seletivo_cargo1` FOREIGN KEY (`id_cargo`) REFERENCES `cargo` (`id_cargo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-INSERT INTO `processo_seletivo` (`id_processo`, `codigo`, `nome`, `data_inicio`, `data_fim`, `id_cargo`, `descricao`, `vagas`) VALUES (NULL, '1313', 'processo 01', '2018-05-01', '2018-05-24', '1', 'etapa 1:
-asdasdsdha
-
-etapa 2:
-asdasdsdha
-
-etapa 3:
-asdasdsdha', '2');
-
-INSERT INTO `processo_seletivo` (`id_processo`, `codigo`, `nome`, `data_inicio`, `data_fim`, `id_cargo`, `descricao`, `vagas`) VALUES (NULL, '1514', 'processo 02', '2018-05-01', '2018-05-24', '2', 'etapa 1:
-asdasdsdha
-
-etapa 2:
-asdasdsdha
-
-etapa 3:
-asdasdsdha', '5');
-
-
+LOCK TABLES `vaga_etapa` WRITE;
+/*!40000 ALTER TABLE `vaga_etapa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vaga_etapa` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -885,4 +968,4 @@ asdasdsdha', '5');
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-09 22:13:41
+-- Dump completed on 2018-05-19 10:43:39
