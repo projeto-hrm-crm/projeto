@@ -42,6 +42,13 @@ class Cargo_model extends CI_Model
   public function insert($data)
   {
     $this->db->insert('cargo',$data);
+    $id_cargo = $this->db->insert_id();
+
+    if($id_cargo)
+    {
+        $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Cargo', date('Y-m-d'), 'Cargo',  $id_cargo);
+        return $id_cargo;
+    }
   }
 
   /**

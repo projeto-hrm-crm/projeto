@@ -19,3 +19,12 @@ function switchDate($date){
 	}
         return $date_array[2].$char.$date_array[1].$char.$date_array[0];
 }
+
+
+
+function swicthTimestamp($timestamp)
+{
+	$parts = explode(' ', $timestamp);
+	
+	return switchDate($parts[0]).' '.$parts[1];
+}

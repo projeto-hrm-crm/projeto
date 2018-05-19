@@ -211,7 +211,7 @@ $config = array(
         ),
 
        'vaga' => array(
-        
+
         array(
             'field' => 'id_cargo',
             'label' => 'Cargo',
@@ -239,9 +239,9 @@ $config = array(
             'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
         ),
         ),
-          
+
       'sac' => array(
-        
+
         array(
             'field' => 'titulo',
             'label' => 'Assunto',
@@ -265,9 +265,93 @@ $config = array(
             'label' => 'Descrição',
             'rules' => 'required'
         )
+    ),
 
+    'pedido' => array(
+
+        array(
+            'field' => 'id_pessoa',
+            'label' => 'Cliente',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'id_produto[]',
+            'label' => 'Produto',
+            'rules' => 'required',
+            'errors' => array(
+                'required' => 'Selecione ao menos um Produto/Serviço'
+            ),
+        ),
+
+        array(
+            'field' => 'situacao',
+            'label' => 'Situação',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        ),
+
+        array(
+            'field' => 'tipo',
+            'label' => 'Tipo do Pedido',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        )
 
     ),
+    'processo_seletivo' => array(
+            array(
+                    'field' => 'nome',
+                    'label' => 'Nome',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'codigo',
+                    'label' => 'Codigo',
+                    'rules' => 'required|numeric'
+            ),
+            array(
+                    'field' => 'descricao',
+                    'label' => 'Descrição etapas',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'data_inicio',
+                    'label' => 'Data de inicio',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'data_fim',
+                    'label' => 'Data termino',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'id_cargo',
+                    'label' => 'Cargo',
+                    'rules' => 'required|numeric'
+            ),
+            array(
+                    'field' => 'vagas',
+                    'label' => 'Numero de vagas',
+                    'rules' => 'required|numeric'
+            ),
+      ),
+      'processo_seletivo_info' => array(
+              array(
+                      'field' => 'nome',
+                      'label' => 'Nome',
+                      'rules' => 'required'
+              ),
+              array(
+                      'field' => 'descricao',
+                      'label' => 'Descricao etapas',
+                      'rules' => 'required'
+              ),
+            ),
 );
 
 /**
@@ -291,12 +375,12 @@ function requiredIf($field, $value)
 /**
 * @author: Tiago Villalobos
 * Verifica se uma data é válida
-* 
+*
 * Recebe uma data no formato padrão enviado por post, sem inversão Ex: 21/04/2018
-* 
+*
 * @param: string $date
 */
-function validDate($date) 
-{ 
+function validDate($date)
+{
     return date('d/m/Y', strtotime(str_replace('/', '-', $date))) === $date ? true : false;
 }

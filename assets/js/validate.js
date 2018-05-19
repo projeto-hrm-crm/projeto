@@ -27,87 +27,34 @@ jQuery(document).ready(function($) {;
                 brazilian_date: true,
             },
         },
-        messages: {
-            nome: "Insira o nome do produto",
-
-            lote: {
-                required: "Insira o lote do produto",
-            },
-
-            codigo: {
-                required: "Insira o código do produto",
-            },
-
-            recebimento: {
-                required: "Insira a data de recebimento",
-                brazilian_date: "Insira uma data valida",
-            },
-
-            fabricacao: {
-                required: "Insira a data de fabricação",
-                brazilian_date: "Insira uma data valida",
-            },
-
-            validade: {
-                required: "Insira a data de validade",
-                brazilian_date: "Insira uma data valida",
-            },
-        },
 
     });
 
    $("#form_fornecedor").validate({
 
         rules: {
-            nome: "required",
-            email: "required",
+            nome: {
+              required:true,
+              letras:true,
+            },
+            email: {
+              required:true,
+              email:true,
+            },
             razao_social: "required",
             cnpj: "required",
             telefone: "required",
             cep: "required",
             bairro: "required",
-            numero: "required",
+            id_estado: "required",
+            id_cidade: "required",
+            numero: {
+              required:true,
+              digits:true,
+            },
             logradouro: "required",
             compremento: "required",
 
-        },
-        messages: {
-            nome: "Insira o nome do fornecedor",
-
-            email: {
-                required: "Insira o e-mail",
-            },
-
-            razao_social: {
-                required: "Informe a razão social",
-            },
-
-            cnpj: {
-                required: "Insira o número do CNPJ",
-            },
-
-            telefone: {
-                required: "Insira o número de Telefone",
-            },
-
-            cep: {
-                required: "Insira o CEP",
-            },
-
-            bairro: {
-                required: "Informe o bairro",
-            },
-
-            numero: {
-                required: "Insira o número",
-            },
-
-            logradouro: {
-                required: "Informe o logradouro",
-            },
-            complemento: {
-                required: "Informe o complemento",
-            },
         },
 
     });
@@ -116,7 +63,8 @@ jQuery(document).ready(function($) {;
         rules: {
             titulo: "titulo",
             descricao: "descricao",
-
+            id_produto: "required",
+            id_cliente: "required",
         },
         messages: {
             titulo: "Insira um asssunto ao SAC",
@@ -227,7 +175,38 @@ jQuery(document).ready(function($) {;
     });
 
     $('#form_candidato').validate({
+      rules: {
+          nome: {
+            required:true,
+            letras:true,
+          },
+          email: {
+          required:true,
+          email:true,
+        },
+          data_nacimento: {
+              required: true,
+              brazilian_date: true,
+          },
+          cpf:{
+            required:true,
+            cpf:true,
+          },
+          tel: "required",
+          cep: "required",
+          cidade: "required",
+          estado: "required",
+          bairro: "required",
+          numero:{
+            required:true,
+            digits: true,
+          },
+          logradouro: "required",
+      },
 
+    });
+
+    $('#form_cliente').validate({
       rules: {
           nome: "required",
           email: "required",
@@ -236,52 +215,188 @@ jQuery(document).ready(function($) {;
               brazilian_date: true,
           },
           cpf: "required",
-          telefone: "required",
+          tel: "required",
           cep: "required",
+          cidade: "required",
+          estado: "required",
           bairro: "required",
           numero: "required",
           logradouro: "required",
-
-      },
-      messages: {
-          nome: "Insira o nome do fornecedor",
-
-          email: {
-              required: "Insira o e-mail",
-          },
-
-          razao_social: {
-              required: "Informe a razão social",
-          },
-
-          cnpj: {
-              required: "Insira o número do CNPJ",
-          },
-
-          telefone: {
-              required: "Insira o número de Telefone",
-          },
-
-          cep: {
-              required: "Insira o CEP",
-          },
-
-          bairro: {
-              required: "Informe o bairro",
-          },
-
-          numero: {
-              required: "Insira o número",
-          },
-
-          logradouro: {
-              required: "Informe o logradouro",
-          },
-          complemento: {
-              required: "Informe o complemento",
-          },
       },
 
+    });
+    $('#form_funcionario').validate({
+      rules: {
+          nome: "required",
+          email: "required",
+          data_nacimento: {
+              required: true,
+              brazilian_date: true,
+          },
+          cpf: {
+            required:true,
+            cpf:true,
+          },
+          tel: "required",
+          cep: "required",
+          cidade: "required",
+          estado: "required",
+          bairro: "required",
+          numero: "required",
+          logradouro: "required",
+      },
+
+    });
+
+
+    $('#form-pedido').validate({
+
+        highlight:function(input)
+        {
+            var inputName = $(input)[0].name;
+
+            if(inputName == 'tipo' || inputName == 'compra')
+            {
+              jQuery(input).parents('.form-check').addClass('text-danger');
+            }
+            else
+            {
+              jQuery(input).addClass('is-invalid');
+              if($('#produtos-table tbody tr').length == 0) $('#id_produto').addClass('is-invalid');
+            }
+
+          
+        },
+
+        unhighlight:function(input)
+        {
+            var inputName = $(input)[0].name;
+
+            if(inputName == 'tipo' || inputName == 'compra')
+            {
+              jQuery(input).parents('.form-check').removeClass('text-danger');
+            }
+            else
+            {
+              jQuery(input).removeClass('is-invalid');
+            }
+            
+        },
+
+        errorPlacement:function(error, element)
+        {   
+            var inputName = $(element)[0].name;
+
+            if(element.is(':radio'))
+            {
+              if(inputName == 'tipo')
+              {
+                jQuery('#error-tipo').removeClass('d-none').append(error);  
+              }
+              else
+              {
+                jQuery('#error-compra').removeClass('d-none').append(error);
+              }
+              
+            }
+            else
+            {
+              jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+            }
+            
+        },
+
+        submitHandler:function (form, event) {
+
+            event.preventDefault(); //Evita que o formulário seja submetido
+
+            var action = $(form).prop('action'); // Recupera o action do formulário
+
+            /*
+            *   Verifica se a url do action do formulário contém a palavra editar
+            *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+            *   formulário para o click do botão do modal.
+            *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+            */
+            if($('#produtos-table tbody tr').length > 0)
+            {
+              if(action.indexOf('editar') >= 0)
+              {
+                 
+                  jQuery("#modalAtualizar").modal('show');
+
+                  jQuery('.btn-edit').click(function () {
+                      form.submit();
+                  });
+                  
+              }
+              else
+              {
+                  form.submit();
+              }
+            }
+
+        },
+
+        rules: {
+
+            id_pessoa:{
+                required: true,
+            },
+
+            'id_produto':{
+                required: true,
+            },
+
+            situacao:{
+                required: true,
+                regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+            },
+
+            tipo:{
+                required: true,
+            },
+
+            compra:{
+                required: true,
+            },
+
+            descricao:{
+              required: true,
+              regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+            }
+
+        },
+
+        messages: {
+
+            id_pessoa:{
+                required: 'O campo Cliente é obrigatório',
+            },
+
+            'id_produto':{
+                required: 'Selecione ao menos um Produto/Serviço',
+            },
+
+            situacao:{
+                required: 'O campo Situação é obrigatório',
+                regex:    'O campo Situação não está no formato correto.'
+            },
+
+            tipo:{
+                required: 'O campo Tipo é obrigatório',
+            },
+
+            compra:{
+                required: 'O campo Compra/Venda é obrigatório',
+            },
+
+            descricao:{
+              required: 'O campo Descrição é obrigatório',
+              regex:    'O campo Descrição não está no formato correto.'
+            }
+
+        },
 
     });
 
@@ -334,6 +449,59 @@ jQuery(document).ready(function($) {;
         var re = new RegExp(regexp);
 
         return this.optional(element) || re.test(value);
+    });
+
+
+    $.validator.addMethod('table_rows', function(value, element){
+      return 
+    });
+
+
+    /**
+    * @author: Camila Sales
+    * Verifica se o cpf é válido
+    **/
+    jQuery.validator.addMethod("cpf", function(value, element) {
+      value = jQuery.trim(value);
+      cpf = value.replace(/[^\d]+/g,'')
+
+      while(cpf.length < 11) cpf = "0"+ cpf;
+      var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
+      var a = [], b = new Number, c = 11;
+      for (i=0; i<11; i++){
+        a[i] = cpf.charAt(i);
+        if (i < 9) b += (a[i] * --c);
+      }
+
+      ((x = b % 11) < 2) ? a[9] = 0 : a[9] = 11-x ;
+      b = 0;
+      c = 11;
+      for (y=0; y<10; y++) b += (a[y] * c--);
+      ((x = b % 11) < 2) ? a[10] = 0 : a[10] = 11-x;
+
+      var retorno = true;
+      if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) retorno = false;
+
+      return this.optional(element) || retorno;
+    }, "Informe um CPF válido.");
+
+    /**
+    * @author: Camila Sales
+    * Verifica se o campo contem apenas letras
+    **/
+    jQuery.validator.addMethod("letras", function(value, element) {
+      return this.optional(element) || /^[a-z-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/i.test(value);
+    }, "Somente letras");
+
+    /**
+    * @author: Camila Sales
+    * Mensagens Padroes
+    **/
+    jQuery.extend(jQuery.validator.messages, {
+      required: "Esse campo é obrigatorio",
+      brazilian_date: "Digite uma data valida!",
+      email: "Digite um email valido",
+      digits: "O valor do campo deve ser númerico",
     });
 
 });

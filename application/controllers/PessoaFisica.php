@@ -13,7 +13,7 @@ class PessoaFisica extends CI_Controller
   */
   public function save($id_pessoa)
   {
-    $id_pessoa_fisica = $this->pessoa_fisica->insert(5);
+    $id_pessoa_fisica = $this->pessoa_fisica->insert($id_pessoa);
 
   }
 
