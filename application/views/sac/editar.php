@@ -1,3 +1,5 @@
+ <form action="<?php echo site_url('sac/edit/'.$id); ?>" method="POST" id="form-sac">
+               
 <div class="animated fadeIn">
    <div class="row justify-content-center align-items-center">
       <div class="col-lg-8">
@@ -5,8 +7,7 @@
             <div class="card-header">
                <strong class="card-title">Editar SAC</strong>
             </div>
-            <form action="<?php echo site_url('sac/edit/'.$id); ?>" method="POST" id="form-sac">
-               
+           
                <div class="card-body">
                   <div class="row">
                      <div class="col-lg-8 form-group">
@@ -50,18 +51,42 @@
                </div>
                
                <div class="card-footer text-right">
-                  <a href="<?= site_url('sac/index')?>" class="btn btn-danger btn-sm">
+                  <a href="<?= site_url('sac/index')?>" class="btn btn-danger">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button type="submit" class="btn bg-primary btn-sm">
-                     <i class="fa fa-pencil-square-o"></i> Editar
-                  </button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar">
+                     <span class="fa fa-pencil-square-o"></span>
+                     Editar
+                 </button>
                   
                </div>
-               
-            </form>
+              
          </div>
 
       </div>
    </div>
 </div>
+ <div class="modal fade" id="editar" role="dialog" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title">Excluir produto</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <div class="modal-body">
+                   Deseja realmente editar esse Fornecedor?
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                       Cancelar
+                   </button>
+                   <button  type="submit" class="btn btn-primary btn-remove-ok">
+                       Confirmar
+                   </button>
+               </div>
+           </div>
+       </div>
+   </div>
+</form>

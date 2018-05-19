@@ -61,10 +61,10 @@ class Cliente_model extends CI_Model {
 			pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
 			endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
 			endereco.complemento,
-			cidade.id_cidade, cidade.nome AS cidade,
-			documento.tipo AS tipo_documento, documento.numero AS numero_documento,
+			cidade.id_cidade,
+			documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado, estado.nome AS estado
+			estado.id_estado
 			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
 			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')
@@ -101,6 +101,28 @@ class Cliente_model extends CI_Model {
 	public function get_pais(){
 		$query = $this->db->get('pais');
 		return $query->result();
+	}
+
+	/**
+	* @author: Pedro Henrique
+	* Método responsável por alimentar o gráfico de clientes da home
+	* País, estado e cidade
+	*/
+	public function getClienteChartData()
+	{
+		for($i = 1; $i <= 12; $i++) {
+			$this->db->select('count(*) as c')
+						   ->from('cliente as c ')
+							 ->join('pessoa as p', ' c.id_pessoa = p.id_pessoa')
+							 ->where('MONTH(p.data_criacao)', $i);
+			$chart[] = $this->db->get()->result()[0]->c;
+		}
+
+		$data = [
+			'data' => $chart,
+			'status' => 'ok'
+		];
+		return $data;
 	}
 
 
