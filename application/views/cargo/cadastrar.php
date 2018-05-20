@@ -44,12 +44,15 @@
           </div>
         </div>
         <div class="card-footer text-right">
+
+        <a href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
+                <i class="fa fa-times"></i> Cancelar
+              </a>
+        
           <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Cadastrar
           </button>
-          <button type="reset" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban"></i> Limpar Campos
-          </button>
+          
         </div>
       </form>
     </div>

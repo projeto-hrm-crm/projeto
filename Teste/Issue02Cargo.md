@@ -35,10 +35,10 @@ Verificar seo cargo ta cadastrando e editando normalmente. Verificar se a mesma 
 |CE3|	1 caracter|	cadastrar|	ok|
 |CE4|	todos os campos preenchido corretamente|	cadastrar e ir pra tela listar|	falhou|
 |CE4|	um ou mais campos errados|	permanecer na mesma tela para correção|	ok|
-|CE5|	cancelar o cadastro|	voltar para tela de listagem|	falhou|
+|CE5|	cancelar o cadastro|	voltar para tela de listagem|	ok|
 |CE6|	Excluir um cargo|	exclusao de dados e retorno a tela de listagem|	falhou|
 |CE7|	editar cargo|	editado com sucesso|	ok|
 |CE7|	editar descrição|	editado com sucesso|	ok|
 |CE7|	editar setor|	editado com sucesso|	ok|
-|CE8|	botão editar|	ir para tela de listagem|	falhou|
-|CE9|	botao cancelar edição|	ir para tela de listagem|	falhou|
+|CE8|	botão editar|	ir para tela de listagem|	ok |
+|CE9|	botao cancelar edição|	ir para tela de listagem|	ok |

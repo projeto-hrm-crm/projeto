@@ -57,7 +57,7 @@ class Cargo extends CI_Controller
 
       $this->session->set_flashdata('success', 'Cadastro efetuado com sucesso');
 
-      redirect('cargo/cadastrar');
+      redirect('cargo');
 		}
 		else
 		{
@@ -97,7 +97,7 @@ class Cargo extends CI_Controller
 
       $this->session->set_flashdata('success', 'Cargo editado com sucesso');
 
-      redirect('cargo/editar/'.$id_cargo);
+      redirect('cargo');
     }
     else {
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
