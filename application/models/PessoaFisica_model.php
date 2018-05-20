@@ -16,8 +16,6 @@ class PessoaFisica_model extends CI_Model{
   */
   public function insert($data)
   {
-    $data['data_nascimento'] = date('Y-m-d',strtotime(str_replace('/','-',$data['data_nacimento'])))
-
     try{
       $this->db->insert('pessoa_fisica', $data);
       $id_pessoa_fisica = $this->db->insert_id();
@@ -63,7 +61,7 @@ class PessoaFisica_model extends CI_Model{
   public function update($id, $data)
   {
     try {
-      $this->db->update('pessoa_fisica', $data, "id_pessoa = ".$id);
+      $this->db->update('pessoa_fisica', $data, array('id_pessoa' => $id));
     } catch (\Exception $e) {}
   }
 
