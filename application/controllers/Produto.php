@@ -88,6 +88,12 @@ class Produto extends CI_Controller
         $dados['errors'] = $this->session->flashdata('errors');
         $dados['old_data'] = $this->session->flashdata('old_data');
         $dados['fornecedores'] = $this->fornecedor->getRazaoSocial();
+        $dados['assets'] = array(
+         'js' => array(
+           'lib/jquery/jquery.maskMoney.min.js',
+           'validate.js',
+         ),
+       );
         loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
       }
     }
@@ -134,6 +140,12 @@ class Produto extends CI_Controller
         $data['produto']->validade = switchDate($data['produto']->validade);
         $data['produto']->recebimento = switchDate($data['produto']->recebimento);
         $data['fornecedores'] = $this->fornecedor->getRazaoSocial();
+        $data['assets'] = array(
+         'js' => array(
+           'lib/jquery/jquery.maskMoney.min.js',
+           'validate.js',
+         ),
+       );
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
       }
     }
