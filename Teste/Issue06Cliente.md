@@ -78,29 +78,27 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 |CE10|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
 |CE11| casa 1|cadastrar|ok|
 |CE11|  A|cadastrar|ok|
-|CE11| hhhhhhh|cadastrar| falhou
-|CE11|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
-|CE11|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
+|CE11| hhhhhhh|cadastrar| ok
+|CE11|	$$$$$$###****|	aparece msg de erro e não cadastra|	ok|
 |CE12|	123456|	aparece msg de erro e não cadastra|	falhou|
 |CE12|	ABCD$$$#|	aparece msg de erro e não cadastra|	falhou|
-|CE12|	ABCD|	cadastrar|	Falhou|
-|CE12|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
-|CE12|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
-|CE12|	mais de 45 caracteres|	aparece msg de erro e não cadastra|	falhou|
-|CE12|	ate 45 caracter|cadastrar|	falhou|
-|CE12|  HHHH5555|cadastrar|falhou
+|CE12|	ABCD|	cadastrar|	ok|
+|CE12|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
+|CE12|	mais de 70 caracteres|	aparece msg de erro e não cadastra|	ok|
+|CE12|	ate 70 caracter|cadastrar|	ok|
+|CE12|  HHHH5555|cadastrar|ok|
 |CE13|	somente letras|	não permitir|	ok|
 |CE13|	caracteres especiais|	não permitir|	ok|
-|CE13|	menor que 8 caracteres|	aparece msg de erro e não cadastra|	falhou|
+|CE13|	menor que 8 caracteres|	aparece msg de erro e não cadastra|	ok|
 |CE13|	maior que 8 caracteres|	não permitir|	ok|
-|CE13|	dentro do padrão|	cadastrar|	falhou|
-|CE13|   campo em branco| aparece msg e não cadastra| falhou
-|CE14| todos os dados de acordo com os requisitos válidos| cadastrar| falhou
-|CE14| algum campo com erro| aparece msg e não cadastra| falhou
+|CE13|	dentro do padrão|	cadastrar|	ok|
+|CE13|  campo em branco| aparece msg e não cadastra| ok|
+|CE14| todos os dados de acordo com os requisitos válidos| cadastrar| ok|
+|CE14| algum campo com erro| aparece msg e não cadastra| ok|
 |CE15| clicar no botão cancelar| ir para tela de listar|ok
-|CE16| Clicar no botão excluir| Apresentar modal para confirmação| falhou
-|CE17| editar os dados de acordo com os requisitos válidos| cadastrar| falhou
-|CE17| algum campo com erro| aparece msg e não cadastra| falhou
-|CE18| Clicar botão atualizar| apresentar modal de confirmação| falhou
+|CE16| Clicar no botão excluir| Apresentar modal para confirmação| ok|
+|CE17| editar os dados de acordo com os requisitos válidos| editar| ok|
+|CE17| algum campo com erro| aparece msg e não cadastra| ok|
+|CE18| Clicar botão atualizar| apresentar modal de confirmação| falhou|
 |CE19|Clicar no botão cancelar de atualização! voltar para tela de listar|falhou
 |CE20|Clicar no botão novo cadastro|ir para tela de cadastro|falhou
