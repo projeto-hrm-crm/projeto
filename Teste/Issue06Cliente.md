@@ -99,6 +99,6 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 |CE16| Clicar no botão excluir| Apresentar modal para confirmação| ok|
 |CE17| editar os dados de acordo com os requisitos válidos| editar| ok|
 |CE17| algum campo com erro| aparece msg e não cadastra| ok|
-|CE18| Clicar botão atualizar| apresentar modal de confirmação| falhou|
-|CE19|Clicar no botão cancelar de atualização! voltar para tela de listar|falhou
+|CE18| Clicar botão atualizar| apresentar modal de confirmação| ok|
+|CE19|Clicar no botão cancelar de atualização! voltar para tela de listar|ok
 |CE20|Clicar no botão novo cadastro|ir para tela de cadastro|falhou

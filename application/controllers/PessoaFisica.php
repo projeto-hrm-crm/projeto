@@ -11,9 +11,10 @@ class PessoaFisica extends CI_Controller
   * Este método tem como finalidade salvar um registro de pessoa fisica.
   *
   */
-  public function save($id_pessoa)
+  public function save($data)
   {
-    $id_pessoa_fisica = $this->pessoa_fisica->insert($id_pessoa);
+    $data['data_nascimento'] = date('Y-m-d',strtotime(str_replace('/','-',$data['data_nacimento'])))
+    $id_pessoa_fisica = $this->pessoa_fisica->insert($data);
 
   }
 

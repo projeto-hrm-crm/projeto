@@ -26,8 +26,19 @@ class Cliente extends CI_Controller
   **/
   public function index()
   {
+    $dados['assets'] = array(
+      'js' => array(
+        'lib/data-table/datatables.min.js',
+        'lib/data-table/dataTables.bootstrap.min.js',
+        'datatable.js',
+        'confirm.modal.js',
+      ),
+    );
     $data['title'] = 'Clientes';
     $data['clientes'] = $this->cliente->get();
+    foreach ($data['clientes'] as $key => $cliente) {
+      $data['clientes'][$key]->data_nascimento = switchDate($data['clientes'][$key]->data_nascimento);
+    }
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
