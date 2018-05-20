@@ -34,26 +34,25 @@ class Usuario extends CI_Controller
     if($this->input->post())
     {
       $data["login"]=$this->input->post("login");
-      $data["email"]=$this->input->post("email");
       $data["senha"]=$this->input->post("senha");
       $data["id_grupo_acesso"]=$this->input->post("id_grupo_acesso");
-      $data["id_pessoa"]=$this->input->post("id_pessoa");
-      $this->setor->insert($data);
+      $data["id_pessoa"]=$this->input->post("id_pessoa_fisica");
+      $this->usuario->insert($data);
       $this->session->set_flashdata('success', "Usuário cadastrado com sucesso");
-      redirect('usuario');
+      // redirect('usuario');
       $this->session->set_flashdata('errors', $this->form_validation->error_array());
-    }
-    $data['title'] = 'Cadastrar Usuário';
-    $data['grupo_acesso'] = $this->grupo->get();
-    $data['pessoa_fisica'] = $this->pessoa_fisica->get();
-    $data['pessoa_juridica'] = $this->pessoa_juridica->get();
-    loadTemplate(
-      'includes/header',
-      'usuario/cadastrar.php',
-      'includes/footer',
-      $data);
- }
-
+      }else{
+        $data['title'] = 'Cadastrar Usuário';
+        $data['grupo_acesso'] = $this->grupo->get();
+        $data['pessoa_fisica'] = $this->pessoa_fisica->get();
+        $data['pessoa_juridica'] = $this->pessoa_juridica->get();
+        loadTemplate(
+          'includes/header',
+          'usuario/cadastrar.php',
+          'includes/footer',
+          $data);
+   }
+  }
 
     /**
     * @author: Matheus Ladislau
