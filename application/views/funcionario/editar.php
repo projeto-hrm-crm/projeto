@@ -85,6 +85,16 @@
                 <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 
+              <div class="form-group col-12 col-md-6">
+                <label for="cargo">cargos disponíveis</label>
+                <select id="id_cargo" name="id_cargo" class="form-control">
+                  <option value="">Selecionar cargo</option>
+                  <?php foreach($cargos as $cargo): ?>
+                    <option value="<?php echo $cargo->id_cargo; ?>"><?php echo $cargo->nome; ?></option>
+                  <?php endforeach ?>
+                </select>
+              </div><!-- FIM CARGOS -->
+
             </div>
 
             <div class="card-footer text-right">

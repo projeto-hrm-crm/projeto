@@ -48,10 +48,10 @@
                   <td class="text-center">
                     <?php
                     if($funcionario->sexo == 0){
-                      echo "Homem";
+                      echo "Masculino";
                     }
                     if($funcionario->sexo == 1){
-                      echo "Mulher";
+                      echo "Feminino";
                     }
                     ?>
                   </td>

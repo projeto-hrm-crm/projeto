@@ -65,6 +65,7 @@ class Funcionario extends CI_Controller
     $data['paises'] = $this->funcionario->get_pais();
     $data['estados'] =  $this->estado->get();
     $data['title'] = 'Cadastrar funcionario';
+    $data['cargos'] = $this->cargo->get();
     loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
   }
 
@@ -106,6 +107,7 @@ class Funcionario extends CI_Controller
     $data['cidades'] = $this->cidade->getByState($data['funcionario'][0]->id_estado);
     $data['title'] = 'Editar funcionario';
     $data['id'] = $id_funcionario;
+    $data['cargos'] = $this->cargo->get();
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);
   }
 
