@@ -351,7 +351,46 @@ $config = array(
                       'label' => 'Descricao etapas',
                       'rules' => 'required'
               ),
+         ),
+         'fornecedor' => array(
+            array(
+                    'field' => 'nome',
+                    'label' => 'Nome',
+                    'rules' => 'required'
             ),
+            array(
+                    'field' => 'razao_social',
+                    'label' => 'Razão Social',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'cnpj',
+                    'label' => 'CNPJ',
+                    'rules' => 'required'
+            ),
+        ),
+        'cargo' => array(
+          array(
+                  'field' => 'nome',
+                  'label' => 'Nome',
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+          ),
+          array(
+                  'field' => 'descricao',
+                  'label' => 'Descrição',
+                  'rules' => 'required'
+          ),
+          array(
+                  'field' => 'salario',
+                  'label' => 'Salário',
+                  'rules' => 'required'
+          ),
+          array(
+            'field' => 'id_setor',
+            'label' => 'Setor',
+            'rules' => 'required|numeric'
+            ),
+    ),
 );
 
 /**

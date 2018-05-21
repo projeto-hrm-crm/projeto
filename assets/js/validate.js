@@ -406,6 +406,104 @@ jQuery(document).ready(function($) {;
 
   });
 
+  $('#form-cargo').validate({
+
+    highlight:function(input)
+    {
+      jQuery(input).addClass('is-invalid');
+    },
+
+    unhighlight:function(input)
+    {
+      jQuery(input).removeClass('is-invalid');
+    },
+
+    errorPlacement:function(error, element)
+    {
+      jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+    },
+
+    submitHandler:function (form, event) {
+
+      event.preventDefault(); //Evita que o formulário seja submetido
+
+      var action = $(form).prop('action'); // Recupera o action do formulário
+
+      /*
+      *   Verifica se a url do action do formulário contém a palavra editar
+      *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+      *   formulário para o click do botão do modal.
+      *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+      */
+      if(action.indexOf('editar') >= 0)
+      {
+        jQuery("#modalAtualizar").modal('show');
+
+        jQuery('.btn-edit').click(function () {
+          form.submit();
+        });
+      }
+      else
+      {
+        form.submit();
+      }
+
+    },
+
+    rules: {
+
+      nome:{
+        required: true,
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+      },
+
+      descricao:{
+        required: true,
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+      },
+
+      salario:{
+        required: true,
+        digits:   true,
+        min:      1
+      },
+
+      id_setor:{
+       required: true,
+        digits:   true,
+        min:      1
+      },
+
+    },
+
+    messages: {
+
+      nome:{
+        required: 'O campo Nome é obrigatório',
+        regex:    'O campo Nome não está no formato correto.'
+      },
+
+      descricao:{
+        required:  'O campo Descrição é obrigatório',
+        regex:    'O campo Descrição não está no formato correto.'
+      },
+
+      salario:{
+        required: 'O campo Salario é obrigatório',
+        digits:   'O campo Salário deve conter um número decimenl',
+        min:      'O campo Salário deve conter um número maior que 0'
+      },
+
+      id_setor:{
+        required: 'O Setor é obrigatório',
+        regex:    'O campo Requisitos não está no formato correto.'
+      },
+
+    },
+
+  });
+
+
   //Métodos de validação extras
 
   /*

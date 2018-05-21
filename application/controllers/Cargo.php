@@ -21,13 +21,16 @@ class Cargo extends CI_Controller
 
   /**
   * @author Peterson Munuera
+  * @author Beto Cadilhe
   * Metodo index que chama a view inicial de cliente
   **/
 
   public function index()
   {
-    $data['cargos'] = $this->cargo->get();
     $data['title'] = 'Cargos';
+    $data['cargos'] = $this->cargo->get();
+    $data['success_message']=$this->session->flashdata('success');
+    $data['error_message']=$this->session->flashdata('danger');
     $data['assets'] = array(
       'js' => array(
         'lib/data-table/datatables.min.js',
@@ -43,41 +46,87 @@ class Cargo extends CI_Controller
   /**
   * @author: Matheus Ladislau
   * Realiza o cadastro de um cargo, dados recebidos da view cargo/cadastro.php
+ */ 
+
+/* public function create()
+{
+  if($this->input->post())
+  {
+    $cargo = array();
+    $cargo["nome"]=$this->input->post("nome");
+    $cargo["descricao"]=$this->input->post("descricao");
+    $cargo["salario"]=$this->input->post("salario");
+    $cargo["id_setor"]=$this->input->post("id_setor");
+    $this->cargo->insert($cargo);
+
+    $this->session->set_flashdata('success', 'Cadastro efetuado com sucesso');
+
+    redirect('cargo/cadastrar');
+  }
+  else
+  {
+    $data['menus'] = $this->menus;
+    $data['title']         = 'Cadastrar Cargo';
+    $data['setores']       = $this->setor->get();
+    $data['assets'] = array(
+      'js' => array(
+        'cargo/validate-form.js',
+      ),
+    );
+
+    loadTemplate(
+      'includes/header',
+      'cargo/cadastrar',
+      'includes/footer',
+      $data
+    );
+  }
+}*/
+
+/**
+  * @author: Beto Cadilhe
+  * Realiza o cadastro de um cargo, com validação dos dados recebidos da view cargo/cadastro.php
   */
+
   public function create()
   {
-    if($this->input->post())
-		{
-      $cargo = array();
-      $cargo["nome"]=$this->input->post("nome");
-      $cargo["descricao"]=$this->input->post("descricao");
-      $cargo["salario"]=$this->input->post("salario");
-      $cargo["id_setor"]=$this->input->post("id_setor");
-      $this->cargo->insert($cargo);
+    if($this->input->post()){
 
-      $this->session->set_flashdata('success', 'Cadastro efetuado com sucesso');
+      if($this->form_validation->run('cargo')){
+        $cargo = array(
+         'nome' => $this->input->post('nome'),
+         'descricao' => $this->input->post('descricao'),
+         'salario' => $this->input->post('salario'),
+         'id_setor' => $this->input->post('id_setor'),
 
-      redirect('cargo');
-		}
-		else
-		{
-      $data['menus'] = $this->menus;
-			$data['title']         = 'Cadastrar Cargo';
-			$data['setores']       = $this->setor->get();
-			$data['assets'] = array(
-				'js' => array(
-					'cargo/validate-form.js',
-				),
-			);
+        );
+          $this->cargo->insert($cargo);
+          $this->session->set_flashdata('success','Cadastrado com sucesso');
+          redirect('cargo');
+      }else{
+          $this->session->set_flashdata('errors', $this->form_validation->error_array());
+          $this->session->set_flashdata('old_data', $this->input->post());
+          redirect('cargo/cadastrar');
+      }
+    }else{
+      $data['title'] = 'Cadastrar cargo';
+      $data['errors'] = $this->session->flashdata('errors');
+      $data['success_message'] = $this->session->flashdata('success');
+      $data['error_message']   = $this->session->flashdata('danger');
+      $data['old_data'] = $this->session->flashdata('old_data');
+       $data['assets'] = array(
+      'js' => array(
 
-			loadTemplate(
-				'includes/header',
-				'cargo/cadastrar',
-				'includes/footer',
-				$data
-			);
-		}
+        'validate.js',
+      ),
+
+    );
+       $data['setores'] = $this->setor->get();
+
+      loadTemplate('includes/header', 'cargo/cadastrar', 'includes/footer', $data);
+    }
   }
+
 
   /**
   * @author: Peteson Munuera
