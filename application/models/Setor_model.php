@@ -52,7 +52,15 @@ class Setor_model extends CI_Model
 
     if($id_setor)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Setor', date('Y-m-d'), 'Setor', $id_setor);
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'insert';
+        $dados['acao'] = 'Inserir';
+        $dados['data'] = date('d-m-Y');
+        $dados['tabela'] = 'Setor';
+        $dados['item_editado'] = $id_setor;
+        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+        $this->relatorio->setLog($dados);
         return $id_setor;
     }
   }
@@ -64,9 +72,23 @@ class Setor_model extends CI_Model
   * @param integer $id_setor refere-se ao id do registro de setor a ser editado
   * @return boolean: True - caso editado com sucesso, False - não editado
   */
-  public function update($data,$id_setor)
+  public function update($data,$id)
   {
-    return $this->db->update("setor",$data,array('id_setor'=>$id_setor));
+    $id_setor = $this->db->update("setor",$data,array('id_setor'=>$id));
+
+    if($id_setor)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'update';
+        $dados['acao'] = 'Atualizar';
+        $dados['data'] = date('d-m-Y');
+        $dados['tabela'] = 'Setor';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+        $this->relatorio->setLog($dados);
+        return $id_setor;
+    }
   }
 
   /**
@@ -75,10 +97,24 @@ class Setor_model extends CI_Model
 	*
 	* @param integer: $id_setor refere-se ao id do registro de setor a ser deletado
 	*/
-	public function remove($id_setor)
+	public function remove($id)
 	{
-		$this->db->where('id_setor', $id_setor);
-		$this->db->delete('setor');
+		$this->db->where('id_setor', $id);
+		$id_setor = $this->db->delete('setor');
+
+        if($id_setor)
+        {
+            $dados['id_usuario'] = $this->session->userdata('user_login');
+            $dados['tipo'] = 'delete';
+            $dados['acao'] = 'Deletar';
+            $dados['data'] = date('d-m-Y');
+            $dados['tabela'] = 'Setor';
+            $dados['item_editado'] = $id;
+            $dados['descricao'] = $dados['id_usuario'] . ' Deletou o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+            $this->relatorio->setLog($dados);
+            return $id_setor;
+        }
 	}
 }
 ?>

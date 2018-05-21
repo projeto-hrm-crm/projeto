@@ -38,7 +38,15 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Vaga', date('Y-m-d'), 'Vaga', $id_vaga);
+            $dados['id_usuario'] = $this->session->userdata('user_login');
+            $dados['tipo'] = 'insert';
+            $dados['acao'] = 'Inserir';
+            $dados['data'] = date('d-m-Y');
+            $dados['tabela'] = 'Vaga';
+            $dados['item_editado'] = $id_vaga;
+            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu a vaga ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+            $this->relatorio->setLog($dados);
             return $id_vaga;
         }
 
@@ -60,12 +68,21 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Vaga', date('Y-m-d'), 'Vaga',  $vaga['id_vaga']);
+            $id_vaga = $vaga['id_vaga'];
+
+            $dados['id_usuario'] = $this->session->userdata('user_login');
+            $dados['tipo'] = 'update';
+            $dados['acao'] = 'Atualizar';
+            $dados['data'] = date('d-m-Y');
+            $dados['tabela'] = 'Vaga';
+            $dados['item_editado'] = $id_vaga;
+            $dados['descricao'] = $dados['id_usuario'] . ' Atualizou a vaga ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+            $this->relatorio->setLog($dados);
             return $id_vaga;
         }
 
     }
-
 
     /*
      *@author: Lucilene Fidelis
@@ -74,9 +91,22 @@ class Vaga_model extends CI_Model
      *@return: boolean
     */
     public function remove($id){
-        $query = $this->db->where('vaga.id_vaga', $id);
-        $query->delete('vaga');
-        return $query->affected_rows() > 0 ? true : false;
+        $this->db->where('vaga.id_vaga', $id);
+        $id_vaga = $this->db->delete('vaga');
+
+        if($id_vaga)
+        {
+            $dados['id_usuario'] = $this->session->userdata('user_login');
+            $dados['tipo'] = 'delete';
+            $dados['acao'] = 'Deletar';
+            $dados['data'] = date('d-m-Y');
+            $dados['tabela'] = 'Vaga';
+            $dados['item_editado'] = $id;
+            $dados['descricao'] = $dados['id_usuario'] . ' Deletou a vaga ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+            $this->relatorio->setLog($dados);
+            return $id_vaga;
+        }
     }
 
     /*
@@ -91,8 +121,5 @@ class Vaga_model extends CI_Model
       $this->db->where('vaga.id_vaga', $id);
       return $this->db->get('vaga')->row();
     }
-
-
-
 
 }
