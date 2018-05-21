@@ -28,15 +28,15 @@ Verificar seo cargo ta cadastrando e editando normalmente. Verificar se a mesma 
 |CE2|	ABCD$$$#|	cadastrar|	ok|
 |CE2|	ABCD|	cadastrar|	ok|
 |CE2|	$$$$$$###****|	cadastrar|	ok|
-|CE2|	1,2|	cadastrar|	OK|
+|CE2|	1,2|	cadastrar|	ok|
 |CE2|	<script></script>|	aparece msg de erro e não cadastra|	falhou|
 |CE3|	200 caracteres|	aparece msg de erro e não cadastra	|falhou|
 |CE3|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
 |CE3|	1 caracter|	cadastrar|	ok|
-|CE4|	todos os campos preenchido corretamente|	cadastrar e ir pra tela listar|	falhou|
+|CE4|	todos os campos preenchido corretamente|	cadastrar e ir pra tela listar|	ok|
 |CE4|	um ou mais campos errados|	permanecer na mesma tela para correção|	ok|
 |CE5|	cancelar o cadastro|	voltar para tela de listagem|	ok|
-|CE6|	Excluir um cargo|	exclusao de dados e retorno a tela de listagem|	falhou|
+|CE6|	Excluir um cargo|	exclusao de dados e retorno a tela de listagem|	ok|
 |CE7|	editar cargo|	editado com sucesso|	ok|
 |CE7|	editar descrição|	editado com sucesso|	ok|
 |CE7|	editar setor|	editado com sucesso|	ok|
