@@ -19,10 +19,10 @@ Verificar seo cargo ta cadastrando e editando normalmente. Verificar se a mesma 
 #### TESTE			
 | ID |	ENTRADA |	SAÍDA ESPERADA | RESULTADO |
 | ------ | --------- | ---------------| ------------------------------|
-|CE1|	123456|	aparece msg de erro e não cadastra|	falhou|
-|CE1|	ABCD$$$#|	aparece msg de erro e não cadastra|	falhou|
+|CE1|	123456|	aparece msg de erro e não cadastra|	ok|
+|CE1|	ABCD$$$#|	aparece msg de erro e não cadastra|	ok|
 |CE1|	ABCD|	cadastrar|	ok|
-|CE1|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
+|CE1|	$$$$$$###****|	aparece msg de erro e não cadastra|	ok|
 |CE1|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
 |CE2|	1235456|	cadastrar|	ok|
 |CE2|	ABCD$$$#|	cadastrar|	ok|
