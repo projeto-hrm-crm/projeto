@@ -39,17 +39,31 @@ class Documento_model extends CI_Model {
 	*
 	*
 	*/
+
 	public function update($documento)
 	{
 		$this->db->where('documento.id_pessoa', $documento['id_pessoa']);
+		$id_documento = $this->db->get('documento')->row()->id_documento;
 
 		$this->db->set('documento.numero', $documento['numero']);
 		$this->db->set('documento.tipo',   $documento['tipo']);
 
 		$this->db->update('documento');
 
-	}
+		if($id_documento)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'update';
+			$dados['acao'] = 'Atualizar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Documento';
+			$dados['item_editado'] = $id_documento;
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o documento ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
 
+			$this->relatorio->setLog($dados);
+			return $id_documento;
+		}
+	}
 
 	/**
 	* @author: Tiago Villalobos
@@ -61,22 +75,7 @@ class Documento_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
-		$id_documento = $this->db->delete('documento');
+		$this->db->delete('documento');
 
-		if($id_documento)
-		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Documento';
-			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o documento ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_documento;
-		}
 	}
-
-
 }

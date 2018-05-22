@@ -44,8 +44,10 @@ class Telefone_model extends CI_Model {
 	public function update($telefone)
 	{
 		$this->db->where('telefone.id_pessoa', $telefone['id_pessoa']);
+		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
+
 		$this->db->set('telefone.numero', $telefone['numero']);
-		$id_telefone = $this->db->update('telefone');
+		$this->db->update('telefone');
 
 		if($id_telefone)
 		{
@@ -72,21 +74,7 @@ class Telefone_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
-		$id_telefone = $this->db->delete('telefone');
-
-		if($id_telefone)
-		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Telefone';
-			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_telefone;
-		}
+		$this->db->delete('telefone');
 
 	}
 

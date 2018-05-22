@@ -50,7 +50,22 @@ class Endereco_model extends CI_Model {
 		$this->db->set('endereco.complemento', $endereco['complemento']);
 		$this->db->set('endereco.id_cidade',   $endereco['id_cidade']);
 
+		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
 		$this->db->update('endereco');
+
+		if($id_endereco)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'update';
+			$dados['acao'] = 'Atualizar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Endereco';
+			$dados['item_editado'] = $id_endereco;
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o endereço ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
+			return $id_endereco;
+		}
 	}
 
 
@@ -64,21 +79,8 @@ class Endereco_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
-		$id_endereco = $this->db->delete('endereco');
+		$this->db->delete('endereco');
 
-		if($id_endereco)
-		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Endereco';
-			$dados['item_editado'] = $id_endereco;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o endereço ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_endereco;
-		}
 	}
 
 }

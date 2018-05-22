@@ -3,14 +3,7 @@
 
     class Log_model extends CI_Model
     {
-        public $id_Usuario;
-        public $tipo;
-        public $acao;
-        public $descricao;
-        public $data;
-        public $tabela;
-        public $item_editado;
-
+        
         public function __construct(){
             parent::__construct();
         }

@@ -3,14 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produto_model extends CI_Model
 {
-    public $id_fornecedor;
-    public $nome;
-    public $codigo;
-    public $fabricacao;
-    public $validade;
-    public $lote;
-    public $recebimento;
-
+    
     public function __construct(){
         parent::__construct();
     }
