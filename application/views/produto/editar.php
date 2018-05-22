@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="valor_produto" class="control-label mb-1">Valor</label>
-                                <input name="valor" id="valor_produto" value="<?php echo isset($old_data['valor_produto']) ? $old_data['valor_produto'] : $produto->valor;?>" type="text" class="form-control <?php echo isset($errors['valor_produto']) ? 'is-invalid' : '' ?>" required>
+                                <input name="valor" id="valor_produto" value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : $produto->valor;?>" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Valor inválido.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">

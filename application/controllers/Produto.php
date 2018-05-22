@@ -67,13 +67,13 @@ class Produto extends CI_Controller
         if($this->form_validation->run('produto')){
           $array = array(
            'id_fornecedor' => $this->input->post('id_fornecedor'),
-           'nome' => $this->input->post('nome'),
-           'codigo' => $this->input->post('codigo'),
-           'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-           'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
-           'lote' => $this->input->post('lote'),
-           'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-           'valor' => $this->input->post('valor'),
+           'nome'          => $this->input->post('nome'),
+           'codigo'        => $this->input->post('codigo'),
+           'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+           'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+           'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+           'lote'          => $this->input->post('lote'),
+           'valor'         => $this->input->post('valor'),
           );
             $this->produto->insert($array);
             $this->session->set_flashdata('success','Cadastrado com sucesso');
@@ -112,16 +112,15 @@ class Produto extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
-           'id_produto' => $id,
+           'id_produto'    => $id,
            'id_fornecedor' => $this->input->post('id_fornecedor'),
-
-           'nome' => $this->input->post('nome'),
-           'codigo' => $this->input->post('codigo'),
-           'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-           'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
-           'lote' => $this->input->post('lote'),
-           'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-           'valor' => $this->input->post('valor'),
+           'nome'          => $this->input->post('nome'),
+           'codigo'        => $this->input->post('codigo'),
+           'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+           'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+           'lote'          => $this->input->post('lote'),
+           'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+           'valor'         => $this->input->post('valor'),
          );
           $this->produto->update($array);
           $this->session->set_flashdata('success','Alterado com sucesso.');

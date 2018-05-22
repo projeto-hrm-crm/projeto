@@ -31,7 +31,6 @@ jQuery(document).ready(function($) {;
         brazilian_date: true,
       },
     },
-
   });
 
   $("#form_fornecedor").validate({
