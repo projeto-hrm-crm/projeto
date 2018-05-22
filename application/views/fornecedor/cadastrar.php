@@ -44,21 +44,30 @@
           
           <!-- RAZÃO SOCIAL -->
               <div class="form-group col-12 col-md-4">
-             <label class=" form-control-label">Nome</label>
-             <input type="text" id="razao_social" name="razao_social" value = "<?php echo isset($old_data['razao_social']) ? $old_data['razao_social'] : null;?>" placeholder="Razão Social" class="form-control" required>
-           </div>
+             <label class=" form-control-label">Razão Social</label>
+             <input type="text" id="razao_social" name="razao_social" value="<?php echo isset($old_data['razao_social']) ? $old_data['razao_social'] : null;?>"  placeholder="Razão Social" class="form-control <?php echo isset($errors['razao_social']) ? 'is-invalid' : '' ?>" required>
+                 <span class="invalid-feedback">
+	                <?php echo isset($errors['razao_social']) ? $errors['razao_social'] : '' ; ?>
+	              </span>
+              </div>
         
            <!-- CNPJ -->
            <div class="form-group col-12 col-md-4">
-                <label class=" form-control-label">CPF</label>
-                <input type="text" id="cnpj" name="cnpj" value="<?php echo isset($old_data['cnpj']) ? $old_data['cnpj'] : null;?>" placeholder="XX.XXX.XXX/YYYY-ZZ" class="form-control cnpj">
-              </div> 
+                <label class=" form-control-label">CNPJ</label>
+                <input type="text" id="cnpj" name="cnpj" value="<?php echo isset($old_data['cnpj']) ? $old_data['cnpj'] : null;?>" placeholder="XX.XXX.XXX/YYYY-ZZ" class="form-control <?php echo isset($errors['cnpj']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['cnpj']) ? $errors['cnpj'] : '' ; ?>
+	              </span>
+              </div>
            
           <!-- TELEFONE -->
           <div class="form-group col-12 col-md-4">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control telefone" pattern="[0-9]{11}" >
-              </div> 
+                <input type="text" id="telefone" name="telefone"  value="<?php echo isset($old_data['telefone']) ? $old_data['telefone'] : null;?>" placeholder="(XX)XXXX-XXXX" pattern="[0-9]{11}"  class="form-control <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['telefone']) ? $errors['telefone'] : '' ; ?>
+	              </span>
+              </div>
            
            
       
@@ -83,31 +92,47 @@
       <!-- CEP -->            
       <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" required>
+                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
+	              </span>
               </div>
+
       <!-- LOGRADOURO -->
       <div class="form-group col-12 col-md-9">
                 <label class=" form-control-label">Logradouro</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['cnpj']) ? $errors['logradouro'] : '' ; ?>
+	              </span>
               </div>
       
       <!-- NUMERO -->   
               <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" required>
+                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control <?php echo isset($errors['numero']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['numero']) ? $errors['numero'] : '' ; ?>
+	              </span>
               </div>
     
               <!-- BAIRRO -->
               <div class="form-group col-12 col-md-5">
                 <label class=" form-control-label">Bairro</label>
-                <input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control" required>
+                <input type="bairro" id="bairro" name="bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>"  placeholder="Bairro" class="form-control <?php echo isset($errors['bairro']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['bairro']) ? $errors['bairro'] : '' ; ?>
+	              </span>
               </div>
            
            <!-- COMPLEMENTO -->
               <div class="form-group col-12 col-md-4">
                 <label class=" form-control-label">Complemento</label>
-                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control">
-              </div> 
+                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control <?php echo isset($errors['complemento']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['complemento']) ? $errors['complemento'] : '' ; ?>
+	              </span>
+              </div>
            
    </div>
         
