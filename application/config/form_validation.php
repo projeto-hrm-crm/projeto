@@ -177,19 +177,88 @@ $config = array(
           array(
                   'field' => 'nome',
                   'label' => 'Nome',
-                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]',
+                  'rules' => 'required|min_length[1]',     
+                  'rules' => 'required|max_length[45]',       
           ),
+
+          array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required|valid_email'
+          ),
+
           array(
                   'field' => 'razao_social',
                   'label' => 'Razão Social',
                   'rules' => 'required'
           ),
+
           array(
-                  'field' => 'cnpj',
-                  'label' => 'CNPJ',
-                  'rules' => requiredIf('tipo_pessoa', 'pj')
+            'field' => 'cnpj',
+            'label' => 'CNPJ',
+            'rules' => requiredIf('tipo_pessoa', 'pj')
+        ),
+
+          array(
+            'field' => 'telefone',
+            'label' => 'Telefone',
+            'rules' => 'required'
+        ),
+
+
+        array(
+            'field' => 'estado',
+            'label' => 'Estado',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'cidade',
+            'label' => 'Cidade',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'cep',
+            'label' => 'CEP',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'logradouro',
+            'label' => 'Logradouro',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'numero',
+            'label' => 'Número',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'bairro',
+            'label' => 'Bairro',
+            'rules' => 'required'
+       ),
+                 
+),
+    
+
+    'cargo' => array(
+        
+        array(
+                'field' => 'salario',
+                'label' => 'Salário',
+                'rules' => 'required'
+        ),
+        array(
+          'field' => 'id_setor',
+          'label' => 'Setor',
+          'rules' => 'required|numeric'
           ),
-    ),
+  ),
         'login' => array(
                 array(
                         'field' => 'email',
