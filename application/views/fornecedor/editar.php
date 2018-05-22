@@ -142,9 +142,7 @@
 
 <script type="text/javascript">
    $("#estado").change(function(){
-
       var id = $("#estado").val();
-
       $.ajax({
            type: "GET",
            url: "<?=site_url("filtrar_cidades");?>/"+id,
@@ -152,17 +150,13 @@
            cache: false,
            success: function(retorno) {
              // Interpretando retorno JSON...
-
              var cidades = JSON.parse(retorno);
-
             $("#cidade").html(null);
-
              // Listando cada cliente encontrado na lista...
              $.each(cidades,function(i, cidade){
                  var item = "<option value='"+cidade.id_cidade+"'> "+cidade.nome+"</option>";
                  $("#cidade").append(item);
              });
-
            }
        });
    });
