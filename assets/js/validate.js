@@ -46,8 +46,8 @@ jQuery(document).ready(function($) {;
       telefone: "required",
       cep: "required",
       bairro: "required",
-      id_estado: "required",
-      id_cidade: "required",
+      estado: "required",
+      cidade: "required",
       numero: {
         required:true,
         digits:true,

@@ -109,7 +109,8 @@
        </form>
   </div>
 </div>
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
    $("#estado").change(function(){
       
       var id = $("#estado").val();     
@@ -135,4 +136,4 @@
            } 
        }); 
    }); 
-</script>
+</script> -->
