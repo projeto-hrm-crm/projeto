@@ -144,7 +144,7 @@ class Pedido extends CI_Controller
 			{
 				$pedido = array(
 					'id_pedido'  => $id,
-  					'id_pessoa' => $this->input->post('id_pessoa'),
+  					'id_pessoa'  => $this->input->post('id_pessoa'),
   					'descricao'  => $this->input->post('descricao'),
   					'tipo'       => $this->input->post('tipo')
   				);
@@ -251,6 +251,26 @@ class Pedido extends CI_Controller
 	public function getJSON()
 	{
 	  echo json_encode($this->fornecedor->get());
+	}
+
+
+	public function pdf($id)
+	{
+		
+	  	$data['pedido_produtos'] = $this->produto->getByOrder($id);
+		$data['pedido']          = $this->pedido->getById($id);
+
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$html = $this->load->view('pedido/pdf', $data, TRUE);
+		
+		$mpdf->SetTitle('TEST');
+		
+		$mpdf->SetFooter('{PAGENO}');
+		
+		$mpdf->writeHTML($html);
+		
+		$mpdf->Output('file_name.pdf', 'I');
 	}
 
 }
