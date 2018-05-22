@@ -136,6 +136,7 @@ $route['pedido']                = 'Pedido/index';
 $route['pedido/cadastrar']      = 'Pedido/create';
 $route['pedido/editar/(:num)']  = 'Pedido/edit/$1';
 $route['pedido/excluir/(:num)'] = 'Pedido/delete/$1';
+$route['pedido/pdf/(:num)']     = 'Pedido/pdf/$1';
 
 //Rotas Processo Processo_Seletivo
 $route['processo_seletivo'] = 'Processo_Seletivo/index';
