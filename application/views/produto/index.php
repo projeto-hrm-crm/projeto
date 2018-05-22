@@ -32,8 +32,8 @@
                                 <th>Nome</th>
                                 <th>Lote</th>
                                 <th>Recebimento</th>
-                                <th>Fornecedor</th>
                                 <th>Valor</th>
+                                <th>Fornecedor</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
