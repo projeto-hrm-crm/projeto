@@ -55,7 +55,7 @@ class Setor_model extends CI_Model
         $dados['id_usuario'] = $this->session->userdata('user_login');
         $dados['tipo'] = 'insert';
         $dados['acao'] = 'Inserir';
-        $dados['data'] = date('d-m-Y');
+        $dados['data'] = date('Y-m-d');
         $dados['tabela'] = 'Setor';
         $dados['item_editado'] = $id_setor;
         $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
@@ -81,7 +81,7 @@ class Setor_model extends CI_Model
         $dados['id_usuario'] = $this->session->userdata('user_login');
         $dados['tipo'] = 'update';
         $dados['acao'] = 'Atualizar';
-        $dados['data'] = date('d-m-Y');
+        $dados['data'] = date('Y-m-d');
         $dados['tabela'] = 'Setor';
         $dados['item_editado'] = $id;
         $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
@@ -107,7 +107,7 @@ class Setor_model extends CI_Model
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'delete';
             $dados['acao'] = 'Deletar';
-            $dados['data'] = date('d-m-Y');
+            $dados['data'] = date('Y-m-d');
             $dados['tabela'] = 'Setor';
             $dados['item_editado'] = $id;
             $dados['descricao'] = $dados['id_usuario'] . ' Deletou o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];

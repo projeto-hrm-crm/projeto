@@ -15,10 +15,18 @@ class Funcionario_model extends CI_Model {
 			$id_funcionario = $this->db->insert_id();
 
 			if($id_funcionario)
-			{
-				$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Funcionário', date('Y-m-d'), 'Funcionário', $id_funcionario);
-				return $id_funcionario;
-			}
+	        {
+	            $dados['id_usuario'] = $this->session->userdata('user_login');
+	            $dados['tipo'] = 'insert';
+	            $dados['acao'] = 'Inserir';
+	            $dados['data'] = date('Y-m-d');
+	            $dados['tabela'] = 'Funcionario';
+	            $dados['item_editado'] = $id_funcionario;
+	            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o funcionário ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+	            $this->relatorio->setLog($dados);
+	            return $id_funcionario;
+	        }
     } catch (\Exception $e) {}
 	}
 
@@ -76,14 +84,28 @@ public function getById($id_funcionario)
 	*
 	* @param integer $id_pessoa
 	*/
-	public function remove($id_funcionario)
+	public function remove($id)
 	{
 		try {
-			$this->db->where('id_funcionario', $id_funcionario);
-			$this->db->delete('funcionario');
-    } catch (\Exception $e) {}
-		// delete pessoa fisica;
-	}
+			$this->db->where('id_funcionario', $id);
+			$id_funcionario = $this->db->delete('funcionario');
+
+			if($id_funcionario)
+			{
+				$dados['id_usuario'] = $this->session->userdata('user_login');
+				$dados['tipo'] = 'delete';
+				$dados['acao'] = 'Deletar';
+				$dados['data'] = date('Y-m-d');
+				$dados['tabela'] = 'Funcionario';
+				$dados['item_editado'] = $id;
+				$dados['descricao'] = $dados['id_usuario'] . ' Deletou o funcionário ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+				$this->relatorio->setLog($dados);
+				return $id_funcionario;
+			}
+	    } catch (\Exception $e) {}
+			// delete pessoa fisica;
+		}
 
 	/**
 	* @author: Mayra Bueno

@@ -41,7 +41,7 @@ class Vaga_model extends CI_Model
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'insert';
             $dados['acao'] = 'Inserir';
-            $dados['data'] = date('d-m-Y');
+            $dados['data'] = date('Y-m-d');
             $dados['tabela'] = 'Vaga';
             $dados['item_editado'] = $id_vaga;
             $dados['descricao'] = $dados['id_usuario'] . ' Inseriu a vaga ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
@@ -73,7 +73,7 @@ class Vaga_model extends CI_Model
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'update';
             $dados['acao'] = 'Atualizar';
-            $dados['data'] = date('d-m-Y');
+            $dados['data'] = date('Y-m-d');
             $dados['tabela'] = 'Vaga';
             $dados['item_editado'] = $id_vaga;
             $dados['descricao'] = $dados['id_usuario'] . ' Atualizou a vaga ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
@@ -99,7 +99,7 @@ class Vaga_model extends CI_Model
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'delete';
             $dados['acao'] = 'Deletar';
-            $dados['data'] = date('d-m-Y');
+            $dados['data'] = date('Y-m-d');
             $dados['tabela'] = 'Vaga';
             $dados['item_editado'] = $id;
             $dados['descricao'] = $dados['id_usuario'] . ' Deletou a vaga ' . $dados['item_editado'] . ' na data de ' . $dados['data'];

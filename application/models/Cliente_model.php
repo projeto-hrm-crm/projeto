@@ -16,7 +16,15 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Cliente', date('Y-m-d'), 'Cliente',  $id_cliente);
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'insert';
+			$dados['acao'] = 'Inserir';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Cliente';
+			$dados['item_editado'] = $id_cliente;
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o cliente ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
 			return $id_cliente;
 		}
  	} catch (\Exception $e) {}
@@ -29,10 +37,24 @@ class Cliente_model extends CI_Model {
 	*
 	* @param integer $id_cliente
 	*/
-	public function remove($id_cliente)
+	public function remove($id)
 	{
-		$this->db->where('id_cliente', $id_cliente);
-		$this->db->delete('cliente');
+		$this->db->where('id_cliente', $id);
+		$id_cliente = $this->db->delete('cliente');
+
+		if($id_cliente)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'delete';
+			$dados['acao'] = 'Deletar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Cliente';
+			$dados['item_editado'] = $id;
+			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o cliente ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
+			return $id_cliente;
+		}
 		// delete pessoa fisica;
 	}
 
