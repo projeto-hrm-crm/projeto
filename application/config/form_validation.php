@@ -77,7 +77,7 @@ $config = array(
         array(
             'field' => 'lote',
             'label' => 'Lote',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'recebimento',
@@ -177,17 +177,17 @@ $config = array(
           array(
                   'field' => 'nome',
                   'label' => 'Nome',
-                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+                  'rules' => 'required'
           ),
           array(
                   'field' => 'razao_social',
                   'label' => 'Razão Social',
-                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+                  'rules' => 'required'
           ),
           array(
                   'field' => 'cnpj',
                   'label' => 'CNPJ',
-                  'rules' => requiredIf('tipo_pessoa', 'pj')
+                  'rules' => 'required'
           ),
     ),
         'login' => array(

@@ -1,6 +1,10 @@
 <div class="animated fadeIn">
     <div class="row" >
         <div class="col-md-12">
+        <div class="card-header">
+                    <strong class="card-title">Fornecedores</strong>
+                </div>
+        
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -17,13 +21,9 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <div class="card">
-                <div class="card-header">
-                    <strong class="card-title">Fornecedores</strong>
-                </div>
+            <div class="card">                
                 <div class="card-body">
-                <div class="card-body">
-          <a href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
+                <a href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
             <i class="fa fa-check"></i> Cadastrar
           </a><br />
           <br />

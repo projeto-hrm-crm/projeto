@@ -6,19 +6,6 @@
     <div class="card-header">
       <strong>Cadastrar Fornecedor</strong>
     </div>
-    <div class="row" style="margin-top: 5px;">
-			<div class="col-md-12">
-				<?php if ($this->session->flashdata('success')) : ?>
-					<div class="alert alert-success">
-						<p><span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?></p>
-					</div>
-				<?php elseif ($this->session->flashdata('danger')) : ?>
-					<div class="alert alert-danger">
-						<p><span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?></p>
-					</div>
-				<?php endif; ?>
-			</div>
-		</div>
 
      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor"  class="form-horizontal" novalidate="novalidate">
     

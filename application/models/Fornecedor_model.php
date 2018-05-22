@@ -57,7 +57,7 @@ class Fornecedor_model extends CI_Model
   }
 
 
-  public function find($id)
+  public function getById($id)
   {
     try {
       $fornecedor = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento')

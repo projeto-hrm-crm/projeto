@@ -17,8 +17,7 @@ class Fornecedor extends CI_Controller
       parent::__construct();
        $user_id = $this->session->userdata('user_login');
        $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-       $this->usuario->hasPermission($user_id, $currentUrl);
-       $this->menus = $this->menu->getUserMenu($user_id);
+       $this->usuario->hasPermission($user_id, $currentUrl);       
    }
 
   /**
@@ -98,7 +97,7 @@ class Fornecedor extends CI_Controller
   *
   * @param $id int, id do fornecedor
   **/
-  public function edit($id)
+  public function edit($id_fornecedor)
   {
 
     $data = $this->input->post();
@@ -107,23 +106,23 @@ class Fornecedor extends CI_Controller
 
       if ($this->form_validation->run('fornecedor'))
       {
-        $this->fornecedor->update($id, $data);
+        $this->fornecedor->update($id_fornecedor, $data);
         $this->session->set_flashdata('success', 'Fornecedor editado com sucesso.');
         redirect('fornecedor');
       }else{
         $this->session->set_flashdata('danger', 'Fornecedor não pode ser atualizado.');
-        redirect('fornecedor/edit/'.$id);
+        redirect('fornecedor/edit/'.$id_fornecedor);
       }
     }
 
-    $fornecedor = $this->fornecedor->find($id); //FIXME ARRUMAR
+    $fornecedor = $this->fornecedor->getById($id_fornecedor); //FIXME ARRUMAR
     $state = $this->cidade->findState($fornecedor[0]->id_cidade);
-    $data['fornecedor'] = $this->fornecedor->find($id);
+    $data['fornecedor'] = $this->fornecedor->find($id_fornecedor);
     $data['title'] = 'Editar Fornecedor';
     $data['estados'] = $this->estado->get();
     $data['estado_fornecedor'] = $state;
     $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
-    $data['id'] = $id;
+    $data['id'] = $id_fornecedor;
     $data['assets'] = array(
      'js' => array(
        'lib/data-table/datatables.min.js',
@@ -141,18 +140,32 @@ class Fornecedor extends CI_Controller
   * Metodo delete, chama a funçao delete de Fornecedor_model, passando o id do fornecedores
   * Redireciona para a pagina index de fornecedor
   *
-  * @param $id int
+  * @param $id_fornecedor int
   **/
-  public function delete($id)
+  /* public function delete($id_fornecedor)
   {
-     $fornecedor = $this->fornecedor->find($id);
+     $fornecedor = $this->fornecedor->find($id_fornecedor);
      if($fornecedor){
-        $this->fornecedor->delete($id);
+        $this->fornecedor->delete($id_fornecedor);
         $this->session->set_flashdata('success', 'fornecedor deletado com sucesso.');
      }else{
        $this->session->set_flashdata('danger', 'Impossível Deletar!');
      }
      redirect('fornecedor');
 
+  } */
+
+  public function delete($id_fornecedor)
+  {
+    $data['fornecedor'] = $this->fornecedor->getById($id_fornecedor);
+    if ($data)
+    {
+      $this->fornecedor->remove($id_fornecedor);
+      $this->session->set_flashdata('success', 'fornecedor excluido com sucesso');
+      redirect('fornecedor');
+    }
   }
+
+
+
 }
