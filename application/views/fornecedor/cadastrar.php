@@ -23,15 +23,24 @@
         <div class="row">
           <!-- NOME --> 
           <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Nome</label>
-             <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" required>
-           </div>
+            
+
+
+            <label class=" form-control-label">Nome</label>
+                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" name="nome" placeholder="Nome Completo" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+                 <span class="invalid-feedback">
+	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
+	              </span>
+              </div>
        
           <!-- EMAIL -->
            <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">E-mail</label>
-                <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
-              </div> 
+                <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
+                 <span class="invalid-feedback">
+	                <?php echo isset($errors['email']) ? $errors['email'] : '' ; ?>
+	              </span>
+              </div>
           
           <!-- RAZÃO SOCIAL -->
               <div class="form-group col-12 col-md-4">
