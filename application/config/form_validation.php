@@ -177,17 +177,17 @@ $config = array(
           array(
                   'field' => 'nome',
                   'label' => 'Nome',
-                  'rules' => 'required'
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
           ),
           array(
                   'field' => 'razao_social',
                   'label' => 'Razão Social',
-                  'rules' => 'required'
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
           ),
           array(
                   'field' => 'cnpj',
                   'label' => 'CNPJ',
-                  'rules' => 'required'
+                  'rules' => requiredIf('tipo_pessoa', 'pj')
           ),
     ),
         'login' => array(

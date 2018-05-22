@@ -22,6 +22,11 @@
                     <strong class="card-title">Fornecedores</strong>
                 </div>
                 <div class="card-body">
+                <div class="card-body">
+          <a href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
+            <i class="fa fa-check"></i> Cadastrar
+          </a><br />
+          <br />
                    <table class="table table-striped table-bordered datatable">
                      <thead>
                         <tr>
