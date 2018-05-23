@@ -5,6 +5,7 @@
     <div class="card-header">
       <strong>Cadastro de Fornecedores</strong>
     </div>
+ <!-- MENSAGENS DE SAIDA -->   
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
 				<?php if ($this->session->flashdata('success')) : ?>
@@ -18,6 +19,7 @@
 				<?php endif; ?>
 			</div>
 		</div>
+  <!-- FIM MENSAGENS DE SAIDA -->  
      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" class="form-horizontal" novalidate="novalidate">
     <div class="card-body card-block">
       
@@ -100,7 +102,7 @@
                 <label class=" form-control-label">Logradouro</label>
                 <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
-	                <?php echo isset($errors['cnpj']) ? $errors['logradouro'] : '' ; ?>
+	                <?php echo isset($errors['logradouro']) ? $errors['logradouro'] : '' ; ?>
 	              </span>
               </div>
       
