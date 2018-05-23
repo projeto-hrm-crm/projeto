@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {;
       recebimento: {
         required: true,
         brazilian_date: true,
+        dataMaiorQue: '#fabricacao',
       },
 
       fabricacao: {
@@ -522,6 +523,6 @@ jQuery(document).ready(function($) {;
 
       return new Date(dataAtual) > new Date(dataFinal);
 
-  }, 'Data de validade menor ou igual a data de fabricação');
+  }, 'Data menor ou igual a data de fabricação');
 
 });
