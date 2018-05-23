@@ -142,7 +142,7 @@ jQuery(document).ready(function($) {;
 
       requisitos:{
         required: true,
-        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P}|\.\,\!\?\-\\\/\+\*\~ ]+$/
       },
 
     },
@@ -356,7 +356,7 @@ jQuery(document).ready(function($) {;
 
       situacao:{
         required: true,
-        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P}|\.\,\!\?\-\\\/\+\*\~ ]+$/
       },
 
       tipo:{
@@ -369,7 +369,7 @@ jQuery(document).ready(function($) {;
 
       descricao:{
         required: true,
-        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P}|\.\,\!\?\-\\\/\+\*\~ ]+$/
       }
 
     },
