@@ -80,10 +80,9 @@ $config = array(
         array(
             'field' => 'validade',
             'label' => 'Validade',
-            'rules'  => 'required|validDate|dataMaiorQue',
+            'rules'  => 'required|validDate',
             'errors' => array(
                 'validDate' => 'O campo {field} deve conter uma data válida',
-                'dataMaiorQue' => 'Data de validade menor ou igual a data de fabricação',
             ),
         ),
         array(
@@ -394,10 +393,4 @@ function requiredIf($field, $value)
 function validDate($date)
 {
     return date('d/m/Y', strtotime(str_replace('/', '-', $date))) === $date ? true : false;
-}
-
-function dataMaiorQue()
-{
-    return date('d/m/Y', strtotime(str_replace('/', '-', $_POST('validade')))) > date('d/m/Y', strtotime(str_replace('/', '-', $_POST('fabricacao'))));
-
 }
