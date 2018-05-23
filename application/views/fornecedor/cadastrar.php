@@ -23,8 +23,7 @@
       
         <div class="row">
           <!-- NOME --> 
-          <div class="form-group col-12 col-md-6">
-            
+          <div class="form-group col-12 col-md-6">           
 
 
             <label class=" form-control-label">Nome</label>
