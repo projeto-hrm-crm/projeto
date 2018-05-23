@@ -60,7 +60,7 @@ class Fornecedor extends CI_Controller
         redirect('fornecedor');
       }else{
         $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
-        redirect('fornecedor');
+        redirect('fornecedor/cadastrar');
       }
     }
     $data['title'] = 'Cadastrar Fornecedor';
@@ -72,6 +72,7 @@ class Fornecedor extends CI_Controller
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
        'confirm.modal.js',
+       'fornecedor/validate-form.js',
      ),
    );
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
@@ -110,12 +111,13 @@ class Fornecedor extends CI_Controller
     $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
     $data['id'] = $id;
     $data['assets'] = array(
-     'js' => array(
-       
+     'js' => array(       
        'lib/data-table/datatables.min.js',
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
        'confirm.modal.js',
+       'fornecedor/validate-form.js',
+       'validate.js',
      ),
    );
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
