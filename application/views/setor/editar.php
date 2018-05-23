@@ -29,10 +29,10 @@
         </div>
         <div class="card-footer text-right">
           <a href="<?= site_url('setor')?>" class="btn btn-danger">
-            <i class="fa fa-arrow-left"></i> Voltar
+            <i class="fa fa-times"></i> Cancelar
           </a>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarSetor">
-            <i class="fa fa-check"></i> Editar
+            <i class="fa fa-pencil-square-o"></i> Editar
           </button>
                 </div>
                 <div class="modal fade" id="editarSetor" role="dialog" aria-hidden="true">
@@ -45,7 +45,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja realmente editar esse Setor?
+                                Deseja realmente alterar esse Setor?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secundary" data-dismiss="modal">

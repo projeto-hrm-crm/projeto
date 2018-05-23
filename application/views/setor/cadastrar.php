@@ -31,10 +31,10 @@
         <div class="card-footer text-right">
           
           <a href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban"></i> Cancelar
+            <i class="fa fa-times"></i> Cancelar
           </a>
           <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Enviar
+            <i class="fa fa-plus"></i> Enviar
           </button>
         </div>
       </form>

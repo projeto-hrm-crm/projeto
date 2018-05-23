@@ -66,7 +66,7 @@ class Setor extends CI_Controller
     {
       $data["nome"]=$this->input->post("nome");
       $this->setor->update($data,$id_setor);
-      $this->session->set_flashdata('success', 'setor editado com sucesso');
+      $this->session->set_flashdata('success', 'setor alterado com sucesso');
       redirect('setor');
     }else{
       $data['setor'] = $this->setor->find($id_setor);

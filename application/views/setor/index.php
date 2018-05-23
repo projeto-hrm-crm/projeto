@@ -62,7 +62,7 @@
                   Cancelar
               </button>
               <a href="#" class="btn btn-primary btn-remove-ok">
-                  Excluir
+                  Confirmar
               </a>
           </div>
       </div>
