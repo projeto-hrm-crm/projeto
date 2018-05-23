@@ -1,6 +1,8 @@
 <?php
 class Sac extends CI_Controller {
 
+  public $menus;
+
     public function __construct()
   {
     parent::__construct();

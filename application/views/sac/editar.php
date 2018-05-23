@@ -51,13 +51,13 @@
                </div>
                
                <div class="card-footer text-right">
-                  <a href="<?= site_url('sac/index')?>" class="btn btn-danger">
+                  <a href="<?= site_url('sac')?>" class="btn btn-danger">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar">
-                     <span class="fa fa-pencil-square-o"></span>
-                     Editar
-                 </button>
+                  
+                 <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil-square-o"></i> Editar
+              </button>
                   
                </div>
               
