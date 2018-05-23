@@ -29,6 +29,7 @@ jQuery(document).ready(function($) {;
       validade: {
         required: true,
         brazilian_date: true,
+        dataMaiorQue: '#fabricacao',
       },
     },
   });
@@ -512,5 +513,15 @@ jQuery(document).ready(function($) {;
     email: "Digite um email valido",
     digits: "O valor do campo deve ser númerico",
   });
+
+  jQuery.validator.addMethod("dataMaiorQue", function(value, element, params){
+      var data = value.split('/');
+      var dataAtual = data[2] + '-' + data[1] + '-' + data[0];
+      var data = jQuery(params).val().split('/');
+      var dataFinal = data[2] + '-' + data[1] + '-' + data[0];
+
+      return new Date(dataAtual) > new Date(dataFinal);
+
+  }, 'Data de validade menor ou igual a data de fabricação');
 
 });
