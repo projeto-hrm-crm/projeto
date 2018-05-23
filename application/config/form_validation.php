@@ -373,12 +373,12 @@ $config = array(
           array(
                   'field' => 'nome',
                   'label' => 'Nome',
-                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú]+$/]'
           ),
           array(
                   'field' => 'descricao',
                   'label' => 'Descrição',
-                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'                  
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú]+$/]'                  
           ),
           array(
             'field' => 'descricao',

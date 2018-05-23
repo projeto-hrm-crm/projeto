@@ -1,3 +1,11 @@
+<!--
+Para obter sessão do cliente
+SELECT * FROM sac 
+JOIN cliente ON sac.idCliente = cliente.idCliente 
+JOIN pessoa ON cliente.idPessoa = pessoa.idPessoa 
+JOIN usuario ON pessoa.idPessoa = usuario.idPessoa
+WHERE usuario.idUsuario = $this->session->userdata('user_login'); 
+-->
 <!-- <div class="row justify-content-center">
   <div class="col-8">
     <?php if ($this->session->flashdata('success')): ?>
@@ -7,7 +15,6 @@
     <?php endif; ?>
   </div>
 </div> -->
-
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
     <div class="col-lg-8">
@@ -16,6 +23,13 @@
           <strong class="card-title">Cadastrar Cargo</strong>
         </div>
       <form action="<?php echo base_url() ?>cargo/cadastrar" method="post" id="form_cargo" novalidate="novalidate">
+      <?php if ($this->session->flashdata('errors')): ?>
+        <div class="alert alert-danger">
+            <?php foreach($this->session->flashdata('errors') as $error): ?>
+              <span><?php echo $error;?></span><br>
+            <?php endforeach;?>
+        </div>
+      <?php endif;?>
         <div class="card-body card-block">
           <div class="row justify-content-center">
             <div class="col">

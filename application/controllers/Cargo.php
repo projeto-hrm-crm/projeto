@@ -98,7 +98,6 @@ class Cargo extends CI_Controller
          'descricao' => $this->input->post('descricao'),
          'salario' => $this->input->post('salario'),
          'id_setor' => $this->input->post('id_setor'),
-
         );
           $this->cargo->insert($cargo);
           $this->session->set_flashdata('success','Cadastrado com sucesso');
