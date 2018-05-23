@@ -145,7 +145,7 @@ $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 //Rotas Perfil
-$route['perfil'] = 'Perfil/admin';
+$route['perfil'] = 'Perfil/index';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';

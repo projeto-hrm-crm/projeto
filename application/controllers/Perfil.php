@@ -13,15 +13,15 @@ class Perfil extends CI_Controller {
     * Página perfil administrador
     *
     */
-    public function admin(){
+    public function index(){
         
         
         $user_id = $this->session->userdata('user_login');
         
-        $data['title'] = 'Perfil Admin';        
+        $data['title'] = 'Meu Perfil';        
         //$data['info'] = ;
         
-        loadTemplate('includes/header', 'perfil/admin', 'includes/footer', $data);
+        loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
     }
 
