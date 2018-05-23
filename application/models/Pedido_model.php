@@ -65,6 +65,47 @@ class Pedido_model extends CI_Model
 
 	/**
 	* @author: Tiago Villalobos
+	* Retorna um pedido do banco pelo id do mesmo, contando com todos os dados relativos de outras tabelas
+	*
+	* @param: $id integer
+	* @return: mixed
+	*/
+	public function getByIdCompleteData($id)
+	{
+		$this->db->select('pedido.id_pedido, pedido.id_pessoa, pedido.descricao, pedido.tipo, (valor * quantidade) as subtotal')
+		    ->from('produto')
+		    ->join('pedido_produto', 'produto.id_produto = pedido_produto.id_produto')
+		    ->join('pedido', 'pedido.id_pedido = pedido_produto.id_pedido');
+
+		$sub_query = $this->db->get_compiled_select();
+		     
+		return 
+			$this->db->select(
+					'pedido.id_pedido AS id, pedido.tipo, descricao, pessoa.nome AS cliente, 
+					andamento.situacao, andamento.data,  SUM(subtotal) AS total, 
+					documento.numero AS documento, documento.tipo AS tipo_documento,
+					telefone.numero AS telefone,
+					endereco.logradouro, endereco.bairro, endereco.numero AS endereco_numero, endereco.complemento,
+					cidade.nome AS cidade,
+					estado.uf AS estado'
+				)
+				->from("($sub_query) AS pedido", NULL, FALSE)
+				->join('cliente',   'pedido.id_pessoa = cliente.id_pessoa')
+				->join('pessoa',    'cliente.id_pessoa = pessoa.id_pessoa')
+				->join('endereco',  'cliente.id_pessoa = endereco.id_pessoa')
+				->join('documento', 'documento.id_pessoa = cliente.id_pessoa')
+				->join('andamento', 'pedido.id_pedido = andamento.id_pedido')
+				->join('telefone',  'telefone.id_pessoa = cliente.id_pessoa')
+				->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
+				->join('estado',    'estado.id_estado = cidade.id_estado')
+				->where('pedido.id_pedido', $id)
+				->order_by('andamento.data', 'DESC')
+				->get()
+				->row();
+	}
+
+	/**
+	* @author: Tiago Villalobos
 	* Retorna todos os pedidos do banco, calculando o valor total dos mesmos
 	*
 	* @return: mixed
