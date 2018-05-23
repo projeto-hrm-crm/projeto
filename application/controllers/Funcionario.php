@@ -29,6 +29,14 @@ class Funcionario extends CI_Controller
   {
     $data['title'] = 'funcionarios';
     $data['funcionarios'] = $this->funcionario->get();
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
 
     loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
   }

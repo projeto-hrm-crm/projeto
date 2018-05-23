@@ -29,6 +29,15 @@ class Candidato extends CI_Controller
   {
     $data['title'] = 'Candidatos';
     $data['candidatos'] = $this->candidato->get();
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
+
     loadTemplate('includes/header', 'candidato/index', 'includes/footer', $data);
   }
 
