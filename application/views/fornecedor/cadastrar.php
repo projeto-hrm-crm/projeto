@@ -1,3 +1,4 @@
+<!-- validation: @Beto Cadilhe -->
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-8">
   <div class="card">
@@ -70,8 +71,7 @@
               </div>
            
            
-      
-   
+      <!--ESTADO -->   
        <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Estado</label>
            <select name="id_estado" class="form-control" id="estado">
@@ -80,13 +80,20 @@
                <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
              <?php endforeach; ?>
            </select>
+           <span class="invalid-feedback">
+	                <?php echo isset($errors['estado']) ? $errors['estado'] : '' ; ?>
+	              </span>
       </div>
            
+       <!-- CIDADE -->    
        <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Cidade</label>
           <select name="id_cidade" class="form-control" id="cidade">
              <option value="0">Selecione um estado</option>
           </select>
+          <span class="invalid-feedback">
+	                <?php echo isset($errors['cidade']) ? $errors['cidade'] : '' ; ?>
+	              </span>
       </div>
 
       <!-- CEP -->            

@@ -173,6 +173,7 @@ $config = array(
 
     ),
 
+// @Beto Cadilhe
   'fornecedor' => array(
           array(
                   'field' => 'nome',
@@ -245,7 +246,7 @@ $config = array(
                  
 ),
     
-
+// @Beto Cadilhe
     'cargo' => array(
         
         array(

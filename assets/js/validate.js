@@ -30,7 +30,50 @@ jQuery(document).ready(function($) {;
 
   });
 
+  // @Carlos Cadilhe
   $("#form_fornecedor").validate({
+
+      highlight:function(input)
+      {
+        jQuery(input).addClass('is-invalid');
+      },
+  
+      unhighlight:function(input)
+      {
+        jQuery(input).removeClass('is-invalid');
+      },
+  
+      errorPlacement:function(error, element)
+      {
+        jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+      },
+  
+      submitHandler:function (form, event) {
+  
+        event.preventDefault(); //Evita que o formulário seja submetido
+  
+        var action = $(form).prop('action'); // Recupera o action do formulário
+  
+        /*
+        *   Verifica se a url do action do formulário contém a palavra editar
+        *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+        *   formulário para o click do botão do modal.
+        *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+        */
+        if(action.indexOf('editar') >= 0)
+        {
+          jQuery("#modalAtualizar").modal('show');
+  
+          jQuery('.btn-edit').click(function () {
+            form.submit();
+          });
+        }
+        else
+        {
+          form.submit();
+        }
+  
+      },  
 
     rules: {
       nome: {
@@ -48,12 +91,72 @@ jQuery(document).ready(function($) {;
       bairro: "required",
       estado: "required",
       cidade: "required",
+      logradouro: "required",
       numero: {
         required:true,
         digits:true,
       },
-      logradouro: "required",
-      compremento: "required",
+      
+    },
+
+    messages: {
+
+      nome:{
+        required: 'O campo Nome ser obrigatório',
+       },
+
+      email:{
+        required:  'O campo email é obrigatório', 
+      },
+      razao_social:{
+        required: 'O campo Razão Social ser obrigatório',
+       },
+
+      cnpj:{
+        required:  'O campo CNPJ é obrigatório', 
+      },
+
+      telefone:{
+        required: 'O campo Telefone ser obrigatório',
+       },
+
+      cep:{
+        required:  'O campo CEP é obrigatório', 
+      },
+
+      razao_social:{
+        required: 'O campo Razão Social ser obrigatório',
+       },
+
+      bairro:{
+        required:  'O campo Bairro é obrigatório', 
+      },
+      estado:{
+        required: 'O campo Estado Social ser obrigatório',
+       },
+
+      cidade:{
+        required:  'O campo Cidade é obrigatório', 
+      },
+      logradouro:{
+        required: 'O campo Logradouro Social ser obrigatório',
+       },
+
+      numero:{
+        required:  'O campo Número é obrigatório', 
+        digits:   'O campo número deve conter um número inteiro',
+      },
+
+      /* quantidade:{
+        required: 'O campo Quantidade é obrigatório',
+        digits:   'O campo Quantidade deve conter um número inteiro',
+        min:      'O campo Quantidade deve conter um número maior que 0'
+      },
+
+      requisitos:{
+        required: 'O campo Requisitos é obrigatório',
+        regex:    'O campo Requisitos não está no formato correto.'
+      }, */
 
     },
 
