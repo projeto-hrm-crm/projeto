@@ -111,6 +111,7 @@ class Fornecedor extends CI_Controller
     $data['id'] = $id;
     $data['assets'] = array(
      'js' => array(
+       
        'lib/data-table/datatables.min.js',
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',

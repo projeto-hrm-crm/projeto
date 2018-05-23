@@ -1,3 +1,4 @@
+
 <?php
 class Fornecedor_model extends CI_Model
 {
