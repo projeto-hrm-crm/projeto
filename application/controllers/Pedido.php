@@ -257,20 +257,20 @@ class Pedido extends CI_Controller
 	public function pdf($id)
 	{
 		
+		$data['pedido']          = $this->pedido->getByIdCompleteData($id);
 	  	$data['pedido_produtos'] = $this->produto->getByOrder($id);
-		$data['pedido']          = $this->pedido->getById($id);
 
 		$mpdf = new \Mpdf\Mpdf();
 		
 		$html = $this->load->view('pedido/pdf', $data, TRUE);
 		
-		$mpdf->SetTitle('TEST');
+		$mpdf->SetTitle('Pedido Nº '.$id);
 		
 		$mpdf->SetFooter('{PAGENO}');
 		
 		$mpdf->writeHTML($html);
 		
-		$mpdf->Output('file_name.pdf', 'I');
+		$mpdf->Output('pedido-'.$id.'.pdf', 'I');
 	}
 
 }
