@@ -35,8 +35,6 @@
 </style>
 
 
-<?php print_r($pedido); ?>
-
 
 <table width="100%" class="border-all" cellspacing="0">
   <tr>
@@ -50,13 +48,13 @@
     </td>
     <td width="20%" class="border-left border-bottom padding">
     	<p>
-    		<strong> Nº:</strong> <?php echo $pedido->id_pedido; ?>
+    		<strong> Nº:</strong> <?php echo $pedido->id ?>
     	</p>
     </td>
   </tr>
   <tr>
     <td class="border-left padding">
-    	<strong> Data:</strong> 21/04/2018
+    	<strong> Data:</strong> <?php echo swicthTimestamp($pedido->data, FALSE); ?>
     </td>
   </tr>
 </table>
@@ -71,37 +69,39 @@
     <td width="50%" class="border-right ">
     	<strong>Nome:</strong>
     	<br>
-    	Tiago Villalobos
+    	<?php echo $pedido->cliente; ?>
     </td>
     <td width="25%" class="border-right ">
-    	<strong>Documento:</strong>
+    	<strong><?php echo strtoupper($pedido->tipo_documento); ?>:</strong>
     	<br>
-    	340.124.578.37
+    	<?php echo $pedido->documento; ?>
     </td>
     <td width="25%" class="">
     	<strong>Telefone:</strong>
     	<br>
-    	(12) 3887 - 9006
+    	<?php echo $pedido->telefone; ?>
     </td>
   </tr>
 </table>
 
 <table width="100%" class="border-left border-right border-bottom" cellspacing="0">
 	<tr>
-    	<td width="33%" class="border-right ">
-            <strong>Endereço:</strong>
-            <br>
-            Rua do Contorno, 199   
-        </td>
-    	<td width="33%" class="border-right ">
+		<td width="100%" colspan="2" class="border-bottom">
+	        <strong>Endereço:</strong>
+	        <br>
+	        <?php echo $pedido->logradouro.', '.$pedido->endereco_numero.' '.$pedido->complemento; ?>   
+	    </td>
+	</tr>
+	<tr>
+    	<td width="50%" class="border-right ">
             <strong>Bairro:</strong>
             <br>
-            Pontal Santa Marina
+            <?php echo $pedido->bairro; ?>
         </td>
-    	<td width="33%" class="">
+    	<td width="50%" class="">
             <strong>Cidade:</strong>
             <br>
-            Caraguatatuba - SP
+            <?php echo $pedido->cidade.' - '.$pedido->estado; ?>
         </td>
   	</tr>
 </table>
@@ -114,17 +114,12 @@
 <table width="100%" class="border-all" cellspacing="0">
     <tr>
         <td style="text-align: justify;">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        	<?php echo $pedido->descricao; ?>
         </td>
     </tr>
      <tr>
         <td class="border-top">
-            <small><strong>Situação do Pedido:</strong> Aguardando pagamento</small>
+            <small><strong>Situação do Pedido:</strong> <?php echo $pedido->situacao; ?></small>
         </td>
     </tr>
 </table>
@@ -149,36 +144,45 @@
             Total
         </th>
     </tr>
+    
+    	<?php 
+    		$total = 0;
+    		foreach ($pedido_produtos as $produto): 
+   	 	?>
+	    <tr>
+	        <td class="border-right border-top">
+	        	<?php echo $produto->id_produto; ?> 
+	        </td>
+	        <td class="border-right border-top">
+	            <?php echo $produto->nome; ?> 
+	        </td>
+	        <td class="border-right border-top" align="right">
+	            <?php echo 'R$ '.number_format($produto->valor, 2, ',',''); ?> 
+	        </td>
+	        <td class="border-right border-top" align="right">
+	            <?php echo $produto->quantidade; ?> 
+	        </td>
+	        <td class="border-top" align="right">
+	            <?php echo 'R$ '.number_format(($produto->valor * $produto->quantidade), 2, ',',''); ?> 
+	        </td>
+	    </tr>
+	    <?php 
+				$total += $produto->valor * $produto->quantidade;
+			endforeach 
+		?>
 
-    <tr>
-        <td class="border-right border-top">
-            150    
-        </td>
-        <td class="border-right border-top">
-            Um produto
-        </td>
-        <td class="border-right border-top" align="right">
-            R$ 15,00
-        </td>
-        <td class="border-right border-top" align="right">
-            2
-        </td>
-        <td class="border-top" align="right">
-            R$ 30,00
-        </td>
-    </tr>
 </table>
 
 <table align="right">
      <tr>
         <td>
-           <strong>R$ 30,00</strong>
+           <strong><?php echo 'R$ '.number_format(($total), 2, ',',''); ?> </strong>
         </td>
     </tr>
 </table>
 <br>
 
-<p align="center">Caraguatatuba, 22 de Maio de 2018</p>
+<p align="center">Caraguatatuba, <?php echo strftime("%d de %B de %Y", strtotime(date('Y-m-d')));; ?></p>
 <br>
 <table width="100%"  cellspacing="0">
 
@@ -186,7 +190,7 @@
         <td align="center">
             ________________________________
             <br>
-            Tiago Villalobos
+            <?php echo $pedido->cliente; ?>
         </td>
         <td align="center">
             ________________________________
