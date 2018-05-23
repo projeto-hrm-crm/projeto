@@ -102,14 +102,14 @@ jQuery(document).ready(function($) {;
     messages: {
 
       nome:{
-        required: 'O campo Nome ser obrigatório',
+        required: 'O campo Nome é obrigatório',
        },
 
       email:{
         required:  'O campo email é obrigatório', 
       },
       razao_social:{
-        required: 'O campo Razão Social ser obrigatório',
+        required: 'O campo Razão Social é brigatório',
        },
 
       cnpj:{
@@ -124,22 +124,18 @@ jQuery(document).ready(function($) {;
         required:  'O campo CEP é obrigatório', 
       },
 
-      razao_social:{
-        required: 'O campo Razão Social ser obrigatório',
-       },
-
-      bairro:{
+     bairro:{
         required:  'O campo Bairro é obrigatório', 
       },
       estado:{
-        required: 'O campo Estado Social ser obrigatório',
+        required: 'O campo Estado é obrigatório',
        },
 
       cidade:{
         required:  'O campo Cidade é obrigatório', 
       },
       logradouro:{
-        required: 'O campo Logradouro Social ser obrigatório',
+        required: 'O campo Logradouro ser obrigatório',
        },
 
       numero:{

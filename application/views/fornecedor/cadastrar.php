@@ -135,7 +135,7 @@
            <!-- COMPLEMENTO -->
               <div class="form-group col-12 col-md-4">
                 <label class=" form-control-label">Complemento</label>
-                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control <?php echo isset($errors['complemento']) ? 'is-invalid' : '' ?>" required>
+                <input type="complemento" id="complemento" name="complemento" value="<?php echo isset($old_data['complemento']) ? $old_data['complemento'] : null;?>" placeholder="Complemento" class="form-control <?php echo isset($errors['complemento']) ? 'is-invalid' : '' ?>">
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['complemento']) ? $errors['complemento'] : '' ; ?>
 	              </span>
