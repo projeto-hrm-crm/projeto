@@ -72,11 +72,65 @@ class Fornecedor extends CI_Controller
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
        'confirm.modal.js',
-       'fornecedor/validate-form.js',
+       //'fornecedor/validate-form.js',
+       //'validate.js',
      ),
    );
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
+
+/**
+  * author: Beto Cadilhe
+  * Metodo create, apresenta o formulario de cadastro, recebe os dados, faz a validação
+  * e envia para função insert de Fornecedor_model
+  **/
+
+  /* public function create()
+  {
+    if($this->input->post()){
+
+      if($this->form_validation->run('fornecedor')){
+        $fornecedor = array(
+         'nome' => $this->input->post('nome'),
+         'email' => $this->input->post('email'),
+         'razao_social' => $this->input->post('razao_social'),
+         'cnpj' => $this->input->post('cnpj'),
+         'telefone' => $this->input->post('telefone'),
+         'estado' => $this->input->post('estado'),
+         'cidade' => $this->input->post('cidade'),
+         'logradouro' => $this->input->post('logradouro'),
+         'numero' => $this->input->post('numero'),
+         'bairro' => $this->input->post('bairro'), 
+         'cep' => $this->input->post('cep'),        
+         'complemento' => $this->input->post('complemento'),
+        );
+          $this->fornecedor->insert($fornecedor);
+          $this->session->set_flashdata('success','Cadastrado com sucesso');
+          redirect('fornecedor');
+      }else{
+          $this->session->set_flashdata('errors', $this->form_validation->error_array());
+          $this->session->set_flashdata('old_data', $this->input->post());
+          redirect('fornecedor/cadastrar');
+      }
+    }else{
+      $data['title'] = 'Cadastrar Fornecedor';
+      $data['errors'] = $this->session->flashdata('errors');
+      $data['success_message'] = $this->session->flashdata('success');
+      $data['error_message']   = $this->session->flashdata('danger');
+      $data['old_data'] = $this->session->flashdata('old_data');
+      $data['assets'] = array(
+      'js' => array(
+
+        'validate.js',
+      ),
+
+    );
+       $data['estados'] = $this->estado->get();
+
+      loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
+    }
+  } */
+
   /**
   * author: Nikolas Lencioni
   * Metodo edit, apresenta o formulario de edição, com os dados do fornecedor a ser editado,

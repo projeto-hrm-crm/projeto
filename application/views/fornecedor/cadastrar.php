@@ -96,15 +96,6 @@
 	              </span>
       </div>
 
-      <!-- CEP -->            
-      <div class="form-group col-12 col-md-3">
-                <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
-                <span class="invalid-feedback">
-	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
-	              </span>
-              </div>
-
       <!-- LOGRADOURO -->
       <div class="form-group col-12 col-md-9">
                 <label class=" form-control-label">Logradouro</label>
@@ -131,6 +122,16 @@
 	                <?php echo isset($errors['bairro']) ? $errors['bairro'] : '' ; ?>
 	              </span>
               </div>
+
+               <!-- CEP -->            
+      <div class="form-group col-12 col-md-3">
+                <label class=" form-control-label">CEP</label>
+                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
+	              </span>
+              </div>
+
            
            <!-- COMPLEMENTO -->
               <div class="form-group col-12 col-md-4">
