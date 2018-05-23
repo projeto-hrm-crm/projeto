@@ -27,9 +27,36 @@ class Usuario extends CI_Controller
 
   /**
   * @author: Matheus Ladislau
-  * Realiza o cadastro de um setor, dados recebidos da view setor/cadastro.php
+  * Realiza o cadastro de um usuario, dados recebidos da view setor/cadastro.php
   */
   public function create()
+  {
+    if($this->input->post())
+    {
+      $data["login"]=$this->input->post("login");
+      $data["senha"]=$this->input->post("senha");
+      $data["id_grupo_acesso"]=$this->input->post("id_grupo_acesso");
+      $data["id_pessoa"]=$this->input->post("id_pessoa_fisica");
+      $this->usuario->insert($data);
+      $this->session->set_flashdata('success', "Usuário cadastrado com sucesso");
+      // redirect('usuario');
+      $this->session->set_flashdata('errors', $this->form_validation->error_array());
+      }else{
+        $data['title'] = 'Cadastrar Usuário';
+        $data['grupo_acesso'] = $this->grupo->get();
+        $data['pessoa_fisica'] = $this->pessoa_fisica->get();
+        $data['pessoa_juridica'] = $this->pessoa_juridica->get();
+        // loadTemplate(
+        //   'includes/header',
+        //   'usuario/cadastrar.php',
+        //   'includes/footer',
+        //   $data);
+        $this->load->view(
+          'usuario/cadastrar2.php',
+          $data);
+   }
+  }
+  public function create2()
   {
     if($this->input->post())
     {
@@ -51,6 +78,9 @@ class Usuario extends CI_Controller
           'usuario/cadastrar.php',
           'includes/footer',
           $data);
+        // $this->load->view(
+        //   'usuario/cadastrar2.php',
+        //   $data);
    }
   }
 
