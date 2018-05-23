@@ -14,13 +14,13 @@ class Sac extends CI_Controller {
     public function index(){
         $data['title'] = 'Solicitações SAC';
         $data['sac'] = $this->sac->get();
-       $data['assets'] = array(
-     'js' => array(
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-     ),
+        $data['assets'] = array(
+          'js' => array(
+            'lib/data-table/datatables.min.js',
+            'lib/data-table/dataTables.bootstrap.min.js',
+            'datatable.js',
+            'confirm.modal.js',
+          ),
    );
 
         loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
