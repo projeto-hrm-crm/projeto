@@ -37,7 +37,7 @@ class Cliente_model extends CI_Model {
 	*
 	* @param integer $id_cliente
 	*/
-	public function remove($id)
+	public function delete($id)
 	{
 		$this->db->where('id_cliente', $id);
 		$id_cliente = $this->db->delete('cliente');
