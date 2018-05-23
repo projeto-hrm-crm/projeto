@@ -18,8 +18,10 @@ class Perfil extends CI_Controller {
         
         $user_id = $this->session->userdata('user_login');
         
-        $data['title'] = 'Meu Perfil';        
-        //$data['info'] = ;
+        $data['title'] = 'Meu Perfil';         
+        $data['id'] = $user_id;
+        
+        
         
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         

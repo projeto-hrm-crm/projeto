@@ -1,4 +1,4 @@
- <form action="<?php echo site_url('sac/edit/'.$id); ?>" method="POST" id="form-sac">
+ <form action="<?php echo site_url('sac/editar/'.$id); ?>" method="POST" id="form-sac">
                
 <div class="animated fadeIn">
    <div class="row justify-content-center align-items-center">

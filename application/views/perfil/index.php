@@ -27,12 +27,12 @@
                             <a href="#" class="btn btn-primary" style="width: 100%">Alterar Imagem</a>
                         </div>
                         <div class="col-lg-9">
-                            <h1 class="margin20">Teste</h1> 
+                            <h1 class="margin20">Teste  </h1> 
                             <br>
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td><b>E-mail</td>
+                                        <td><b>E-mail</b></td>
                                         <td colspan="6">xxxxxxxxxxx</td>                                    
                                     </tr>
                                     <tr>
