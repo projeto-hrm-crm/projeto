@@ -135,7 +135,7 @@ jQuery(document).ready(function($) {;
         required:  'O campo Cidade é obrigatório', 
       },
       logradouro:{
-        required: 'O campo Logradouro ser obrigatório',
+        required: 'O campo Logradouro é obrigatório',
        },
 
       numero:{
