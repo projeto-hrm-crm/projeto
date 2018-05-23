@@ -21,12 +21,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <img src="<?=site_url('assets/images/theme/no-user.png')?>" width="100%" class="margin20"><br>
-                            <br>
-                            <a href="#" class="btn btn-primary" style="width: 100%">Alterar Imagem</a>
-                        </div>
-                        <div class="col-lg-9">
+                        
+                        <div class="col-lg-12">
                             <h1 class="margin20">Teste  </h1> 
                             <br>
                             <table class="table">
