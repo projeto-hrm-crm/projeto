@@ -48,7 +48,8 @@
 													        <i class="fa fa-pencil-square-o"></i>
 													    </a>
 
-													    <a href="vaga/editar/<?php echo $pedido->id ?>" 
+													    <a href="pedido/pdf/<?php echo $pedido->id ?>" 
+													    	target="_blank"
 													    	class="btn bg-secondary btn-sm text-white">
 													        <i class="fa fa-print"></i>
 													    </a>
