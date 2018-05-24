@@ -23,9 +23,10 @@ class Pessoa_model extends CI_Model {
 			$dados['tipo'] = 'insert';
 			$dados['acao'] = 'Inserir';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Pessoa';
 			$dados['item_editado'] = $id_pessoa;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_pessoa;
@@ -65,8 +66,9 @@ class Pessoa_model extends CI_Model {
 		$this->db->where('pessoa.id_pessoa', $pessoa['id_pessoa']);
 		$this->db->set('pessoa.nome', $pessoa['nome']);
 		$this->db->set('pessoa.email', $pessoa['email']);
+		$this->db->update('pessoa', $pessoa);
 
-		$id_pessoa = $this->db->update('pessoa', $pessoa);
+		$id_pessoa = $pessoa['id_pessoa'];
 
 		if($id_pessoa)
 		{
@@ -74,9 +76,10 @@ class Pessoa_model extends CI_Model {
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Pessoa';
 			$dados['item_editado'] = $id_pessoa;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou pessoa ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou pessoa ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_pessoa;
@@ -93,20 +96,21 @@ class Pessoa_model extends CI_Model {
 	public function remove($id)
 	{
 		$this->db->where('id_pessoa', $id);
-		$id_pessoa = $this->db->delete('pessoa');
+		$this->db->delete('pessoa');
 
-		if($id_pessoa)
+		if($id)
 		{
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'delete';
 			$dados['acao'] = 'Deletar';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Pessoa';
 			$dados['item_editado'] = $id;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
-			return $id_pessoa;
+			return $id;
 		}
 	}
 

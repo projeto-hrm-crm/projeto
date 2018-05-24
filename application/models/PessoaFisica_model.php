@@ -26,9 +26,10 @@ class PessoaFisica_model extends CI_Model{
           $dados['tipo'] = 'insert';
           $dados['acao'] = 'Inserir';
           $dados['data'] = date('Y-m-d');
+          $dados['hora'] = date('H:i:s');
           $dados['tabela'] = 'Pessoa Fisica';
           $dados['item_editado'] = $id_pessoa_fisica;
-          $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa fisica ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+          $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa fisica ' . $dados['item_editado'];
 
           $this->relatorio->setLog($dados);
           return $id_pessoa_fisica;

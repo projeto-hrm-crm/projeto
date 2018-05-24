@@ -21,9 +21,10 @@ class Documento_model extends CI_Model {
 			$dados['tipo'] = 'insert';
 			$dados['acao'] = 'Inserir';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Documento';
 			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o documento ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o documento ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_documento;
@@ -56,9 +57,10 @@ class Documento_model extends CI_Model {
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Documento';
 			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o documento ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o documento ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_documento;
@@ -75,7 +77,23 @@ class Documento_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_documento = $this->db->get('documento')->row()->id_documento;
 		$this->db->delete('documento');
+
+		if($id_documento)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'delete';
+			$dados['acao'] = 'Deletar';
+			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
+			$dados['tabela'] = 'Documento';
+			$dados['item_editado'] = $id_documento;
+			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o documento ' . $dados['item_editado'];
+
+			$this->relatorio->setLog($dados);
+			return $id_documento;
+		}
 
 	}
 }

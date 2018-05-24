@@ -23,9 +23,10 @@ class Telefone_model extends CI_Model {
 			$dados['tipo'] = 'insert';
 			$dados['acao'] = 'Inserir';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Telefone';
 			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o telefone ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_telefone;
@@ -55,9 +56,10 @@ class Telefone_model extends CI_Model {
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
 			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
 			$dados['tabela'] = 'Telefone';
 			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o telefone ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_telefone;
@@ -74,7 +76,23 @@ class Telefone_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
 		$this->db->delete('telefone');
+
+		if($id_telefone)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'delete';
+			$dados['acao'] = 'Deletar';
+			$dados['data'] = date('Y-m-d');
+			$dados['hora'] = date('H:i:s');
+			$dados['tabela'] = 'Telefone';
+			$dados['item_editado'] = $id_telefone;
+			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o telefone ' . $dados['item_editado'];
+
+			$this->relatorio->setLog($dados);
+			return $id_telefone;
+		}
 
 	}
 

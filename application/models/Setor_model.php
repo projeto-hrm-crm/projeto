@@ -56,9 +56,10 @@ class Setor_model extends CI_Model
         $dados['tipo'] = 'insert';
         $dados['acao'] = 'Inserir';
         $dados['data'] = date('Y-m-d');
+        $dados['hora'] = date('H:i:s');
         $dados['tabela'] = 'Setor';
         $dados['item_editado'] = $id_setor;
-        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o setor ' . $dados['item_editado'];
 
         $this->relatorio->setLog($dados);
         return $id_setor;
@@ -82,9 +83,10 @@ class Setor_model extends CI_Model
         $dados['tipo'] = 'update';
         $dados['acao'] = 'Atualizar';
         $dados['data'] = date('Y-m-d');
+        $dados['hora'] = date('H:i:s');
         $dados['tabela'] = 'Setor';
         $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o setor ' . $dados['item_editado'];
 
         $this->relatorio->setLog($dados);
         return $id_setor;
@@ -108,9 +110,10 @@ class Setor_model extends CI_Model
             $dados['tipo'] = 'delete';
             $dados['acao'] = 'Deletar';
             $dados['data'] = date('Y-m-d');
+            $dados['hora'] = date('H:i:s');
             $dados['tabela'] = 'Setor';
             $dados['item_editado'] = $id;
-            $dados['descricao'] = $dados['id_usuario'] . ' Deletou o setor ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+            $dados['descricao'] = $dados['id_usuario'] . ' Deletou o setor ' . $dados['item_editado'];
 
             $this->relatorio->setLog($dados);
             return $id_setor;

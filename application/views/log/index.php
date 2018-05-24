@@ -14,8 +14,9 @@
                                 <th>Ação</th>
                                 <th>Descrição</th>
                                 <th>Data</th>
+                                <th>Hora</th>
                                 <th>Tabela</th>
-                                <th>Item alterado</th>
+                                <th>Alvo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,6 +28,7 @@
                                         <td><?php echo $log->acao;?></td>
                                         <td><?php echo $log->descricao;?></td>
                                         <td><?php echo date("d/m/Y",strtotime($log->data));?></td>
+                                        <td><?php echo date("H:i:s",strtotime($log->hora));?></td>
                                         <td><?php echo $log->tabela;?></td>
                                         <td><?php echo $log->item_editado;?></td>
                                     </tr>
