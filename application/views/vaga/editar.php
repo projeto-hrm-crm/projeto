@@ -14,13 +14,13 @@
 	                                <select name="id_cargo" id="id_cargo" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($cargos as $cargo): ?>
-		                                	<option value="<?php echo $cargo->id_cargo ?>" 
-		                                		<?php 
-		                                			echo (isset($old_data['id_cargo']) && 
-		                                			($cargo->id_cargo == $old_data['id_cargo'])) || 
-		                                			!isset($errors['id_cargo']) && 
-		                                			($vaga->id_cargo == $cargo->id_cargo) ? 
-		                                			'selected' : '' 
+		                                	<option value="<?php echo $cargo->id_cargo ?>"
+		                                		<?php
+		                                			echo (isset($old_data['id_cargo']) &&
+		                                			($cargo->id_cargo == $old_data['id_cargo'])) ||
+		                                			!isset($errors['id_cargo']) &&
+		                                			($vaga->id_cargo == $cargo->id_cargo) ?
+		                                			'selected' : ''
 		                                		?>
 		                                	>
 		                                		<?php echo $cargo->nome ?>
@@ -39,7 +39,6 @@
 	                                </span>
 	                            </div>
 	                        </div>
-
 	                        <div class="row">
 	                            <div class="form-group col-lg-6 col-sm-12">
 	                                <label for="quantidade" class="control-label mb-1">Quantidade</label>
@@ -49,29 +48,23 @@
 	                                </span>
 	                            </div>
 	                        </div>
-
 	                        <div class="row">
 	                        	<div class="form-group col-12">
-	                        	
 	                                <label for="data_oferta" class="control-label mb-1">Requisitos</label>
 	                                <textarea name="requisitos" id="requisitos" rows="6" class="form-control <?php echo isset($errors['requisitos']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['requisitos']) ? $old_data['requisitos'] : $vaga->requisitos;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['requisitos']) ? $errors['requisitos'] : '' ; ?>
 	                                </span>
-	                           
 	                        	</div>
 	                        </div>
-
-
 	                    </div>
 	                </div>
-
 	                <div class="card-footer text-right">
-	                    <button title="Cancelar edição Vaga" type="reset" class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" >
-	                        <i class="fa fa-times" aria-hidden="true"></i>
-	                        Cancelar
-	                    </button>
-	                    <button  title="Atualizar vaga" type="submit" class="btn bg-primary text-white" >
+						<a href="<?=site_url('vaga')?>" title="Cancelar edição Vaga" class="btn btn-danger btn-sm">
+							<i class="fa fa-times"></i>
+							Cancelar
+						  </a>
+	                    <button  title="Atualizar vaga" type="submit" class="btn bg-primary text-white btn-sm" >
 	                        <i class="fa fa-check" aria-hidden="true"></i>
 	                        Editar
 	                    </button>
@@ -85,21 +78,25 @@
 <!-- Modal atualizar -->
 
 <div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-        Tem certeza que deseja atualizar essa vaga?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary btn-edit">Confirmar</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">
+				Tem certeza que deseja atualizar essa vaga?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					Cancelar
+				</button>
+				<button type="button" class="btn btn-primary btn-edit">
+					Confirmar
+				</button>
+			</div>
+		</div>
+	</div>
 </div>
