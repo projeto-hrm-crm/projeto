@@ -17,12 +17,12 @@
           <?php endif; ?>
         </div>
       </div>
-      <form action="<?php echo site_url('setor/cadastrar'); ?>" method="POST" class="form-horizontal">
-        <div class="card-body">    
+      <form action="<?php echo site_url('setor/cadastrar'); ?>" method="POST" class="form-horizontal" id="form_setor">
+        <div class="card-body">
           <div class="row form-group">
             <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
-               
+
               </div>
             <div class="col-8 col-md-9">
                <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do setor" class="form-control" required>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="card-footer text-right">
-          
+
           <a href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
@@ -41,4 +41,4 @@
       </form>
     </div>
   </div>
-</div>  
+</div>

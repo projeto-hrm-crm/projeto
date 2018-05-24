@@ -18,8 +18,8 @@
         </div>
         <?php endif;?>
       </div>
-      <form action="<?php site_url('setor/editar'.$id_setor); ?>" method="POST" class="form-horizontal">
-        <div class="card-body">    
+      <form action="<?php site_url('setor/editar'.$id_setor); ?>" method="POST" class="form-horizontal" id="form_setor">
+        <div class="card-body">
           <div class="row justify-content-center">
             <div class="form-group col-8">
               <label class="control-label">Nome do Setor</label>

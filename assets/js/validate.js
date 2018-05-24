@@ -78,6 +78,15 @@ jQuery(document).ready(function($) {;
 
   });
 
+  $("#form_setor").validate({
+    rules: {
+      nome: {
+        required:true,
+        letras:true,
+      },
+    }
+  });
+
   $('#form-vaga').validate({
 
     highlight:function(input)
