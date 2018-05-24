@@ -28,9 +28,10 @@ class PessoaJuridica_model extends CI_Model
             $dados['tipo'] = 'insert';
             $dados['acao'] = 'Inserir';
             $dados['data'] = date('Y-m-d');
+            $dados['hora'] = date('H:i:s');
             $dados['tabela'] = 'Pessoa Juridica';
             $dados['item_editado'] = $id_pessoa_juridica;
-            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa juridica ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa juridica ' . $dados['item_editado'];
 
             $this->relatorio->setLog($dados);
             return $id_pessoa_juridica;
