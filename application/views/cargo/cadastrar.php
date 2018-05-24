@@ -23,13 +23,8 @@ WHERE usuario.idUsuario = $this->session->userdata('user_login');
           <strong class="card-title">Cadastrar Cargo</strong>
         </div>
       <form action="<?php echo base_url() ?>cargo/cadastrar" method="post" id="form_cargo" novalidate="novalidate">
-      <?php if ($this->session->flashdata('errors')): ?>
-        <div class="alert alert-danger">
-            <?php foreach($this->session->flashdata('errors') as $error): ?>
-              <span><?php echo $error;?></span><br>
-            <?php endforeach;?>
-        </div>
-      <?php endif;?>
+      
+      
         <div class="card-body card-block">
           <div class="row justify-content-center">
             <div class="col">
@@ -44,7 +39,7 @@ WHERE usuario.idUsuario = $this->session->userdata('user_login');
 
               <div class="form-group">
               <label class=" form-control-label">Descrição</label>
-                <textarea placeholder="Descrição do cargo" name="descricao" value="<?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?>" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>" required></textarea>
+                <textarea placeholder="Descrição do cargo" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>" required><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
 	              </span>
@@ -52,7 +47,7 @@ WHERE usuario.idUsuario = $this->session->userdata('user_login');
 
               <div class="form-group">
               <label class=" form-control-label">Salário por hora</label>
-                <input type="text" placeholder="Salário por hora" name="salario" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : null;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
+                <input id="salario_cargo" type="text" placeholder="Salário por hora" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : null;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
 	              </span>
