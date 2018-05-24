@@ -19,7 +19,15 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Telefone', date('Y-m-d'), 'Telefone', $telefone);
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'insert';
+			$dados['acao'] = 'Inserir';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Telefone';
+			$dados['item_editado'] = $id_telefone;
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
 			return $id_telefone;
 		}
 	}
@@ -36,12 +44,22 @@ class Telefone_model extends CI_Model {
 	public function update($telefone)
 	{
 		$this->db->where('telefone.id_pessoa', $telefone['id_pessoa']);
+		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
+
 		$this->db->set('telefone.numero', $telefone['numero']);
-		$id_telefone = $this->db->update('telefone');
+		$this->db->update('telefone');
 
 		if($id_telefone)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Telefone', date('Y-m-d'), 'Telefone', $telefone['id_pessoa']);
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'update';
+			$dados['acao'] = 'Atualizar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Telefone';
+			$dados['item_editado'] = $id_telefone;
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
 			return $id_telefone;
 		}
 	}
@@ -57,7 +75,7 @@ class Telefone_model extends CI_Model {
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
 		$this->db->delete('telefone');
-	}
 
+	}
 
 }

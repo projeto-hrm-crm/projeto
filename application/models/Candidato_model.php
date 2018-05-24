@@ -15,10 +15,18 @@ class Candidato_model extends CI_Model {
 		$id_candidato = $this->db->insert_id();
 
 		if($id_candidato)
-		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
-			return $id_candidato;
-		}
+	    {
+	        $dados['id_usuario'] = $this->session->userdata('user_login');
+	        $dados['tipo'] = 'insert';
+	        $dados['acao'] = 'Inserir';
+	        $dados['data'] = date('Y-m-d');
+	        $dados['tabela'] = 'Candidato';
+	        $dados['item_editado'] = $id_candidato;
+	        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o candidato ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+	        $this->relatorio->setLog($dados);
+	        return $id_candidato;
+	    }
  	} catch (\Exception $e) {}
   }
 
@@ -29,10 +37,24 @@ class Candidato_model extends CI_Model {
 	*
 	* @param integer $id_candidato
 	*/
-	public function remove($id_candidato)
+	public function remove($id)
 	{
-		$this->db->where('id_candidato', $id_candidato);
-		$this->db->delete('candidato');
+		$this->db->where('id_candidato', $id);
+		$id_candidato = $this->db->delete('candidato');
+
+		if($id_candidato)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'delete';
+			$dados['acao'] = 'Deletar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Candidato';
+			$dados['item_editado'] = $id;
+			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o candidato ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
+			return $id_candidato;
+		}
 		// delete pessoa fisica;
 	}
 
@@ -98,16 +120,22 @@ class Candidato_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function update($id_candidato, $data)
+	public function update($id, $data)
 	{
 		try {
-			$this->db->where('id_candidato', $id_candidato);
-			$candidato = $this->db->update('candidato', $data);
+			$this->db->where('id_candidato', $id);
+			$id_candidato = $this->db->update('candidato', $data);
 
-			if($candidato)
+			if($id_candidato)
 			{
-				$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
-				return $candidato;
+				$dados['id_usuario'] = $this->session->userdata('user_login');
+				$dados['tipo'] = 'update';
+				$dados['acao'] = 'Atualizar';
+				$dados['data'] = date('Y-m-d');
+				$dados['tabela'] = 'Candidato';
+				$dados['item_editado'] = $id;
+				$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o candidato ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+				$this->relatorio->setLog($dados);
 			}
 		} catch (\Exception $e) {}
 	}

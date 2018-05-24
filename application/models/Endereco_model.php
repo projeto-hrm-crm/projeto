@@ -17,7 +17,15 @@ class Endereco_model extends CI_Model {
 
 		if($id_endereco)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Endereço', date('Y-m-d'), 'Endereço', $id_endereco);
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'insert';
+			$dados['acao'] = 'Inserir';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Endereco';
+			$dados['item_editado'] = $id_endereco;
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o endereço ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
 			return $id_endereco;
 		}
 	}
@@ -34,9 +42,7 @@ class Endereco_model extends CI_Model {
 	*/
 	public function update($endereco)
 	{
-
 		$this->db->where('endereco.id_pessoa', $endereco['id_pessoa']);
-
 		$this->db->set('endereco.cep',         $endereco['cep']);
 		$this->db->set('endereco.bairro',      $endereco['bairro']);
 		$this->db->set('endereco.logradouro',  $endereco['logradouro']);
@@ -44,12 +50,20 @@ class Endereco_model extends CI_Model {
 		$this->db->set('endereco.complemento', $endereco['complemento']);
 		$this->db->set('endereco.id_cidade',   $endereco['id_cidade']);
 
-
-		$id_endereco = $this->db->update('endereco');
+		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
+		$this->db->update('endereco');
 
 		if($id_endereco)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Endereço', date('Y-m-d'), 'Endereço', $endereco['id_pessoa']);
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'update';
+			$dados['acao'] = 'Atualizar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Endereco';
+			$dados['item_editado'] = $id_endereco;
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o endereço ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
 			return $id_endereco;
 		}
 	}
@@ -66,6 +80,7 @@ class Endereco_model extends CI_Model {
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
 		$this->db->delete('endereco');
+
 	}
 
 }

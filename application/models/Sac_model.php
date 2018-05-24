@@ -15,10 +15,17 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-          $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Sac', date('Y-m-d'), 'Sac',  $id_sac);
+          $dados['id_usuario'] = $this->session->userdata('user_login');
+          $dados['tipo'] = 'insert';
+          $dados['acao'] = 'Inserir';
+          $dados['data'] = date('Y-m-d');
+          $dados['tabela'] = 'SAC';
+          $dados['item_editado'] = $id_sac;
+          $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o SAC ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+          $this->relatorio->setLog($dados);
           return $id_sac;
       }
-
 
     } catch (\Exception $e) {}
 
@@ -49,13 +56,21 @@ class Sac_model extends CI_Model {
   * Este método atualiza as informações da ordem do sac referenciado pelo id
   *
   */
-  public function update($data, $id_sac) {
-    $this->db->where('id_sac', $id_sac);
+  public function update($data, $id) {
+    $this->db->where('id_sac', $id);
     $id_sac = $this->db->update('sac', $data);
 
     if($id_sac)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Sac', date('Y-m-d'), 'Sac',  $id_sac);
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'update';
+        $dados['acao'] = 'Atualizar';
+        $dados['data'] = date('Y-m-d');
+        $dados['tabela'] = 'SAC';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o SAC ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+        $this->relatorio->setLog($dados);
         return $id_sac;
     }
   }
@@ -76,13 +91,27 @@ class Sac_model extends CI_Model {
   * Apagar uma ordem sac do banco
   *
   */
-  public function remove($id_sac) {
+  public function remove($id) {
 
 
     try {
 
-      $this->db->where('id_sac', $id_sac);
-      return $this->db->delete('sac');
+      $this->db->where('id_sac', $id);
+      $id_sac = $this->db->delete('sac');
+
+      if($id_sac)
+      {
+          $dados['id_usuario'] = $this->session->userdata('user_login');
+          $dados['tipo'] = 'delete';
+          $dados['acao'] = 'Deletar';
+          $dados['data'] = date('Y-m-d');
+          $dados['tabela'] = 'SAC';
+          $dados['item_editado'] = $id;
+          $dados['descricao'] = $dados['id_usuario'] . ' Deletou o SAC ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+          $this->relatorio->setLog($dados);
+          return $id_sac;
+      }
 
 
     } catch (\Exception $e) {}

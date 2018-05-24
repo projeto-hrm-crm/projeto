@@ -46,8 +46,16 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Cargo', date('Y-m-d'), 'Cargo',  $id_cargo);
-        return $id_cargo;
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'insert';
+        $dados['acao'] = 'Inserir';
+        $dados['data'] = date('Y-m-d');
+        $dados['tabela'] = 'Cargo';
+        $dados['item_editado'] = $id_cargo;
+        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o cargo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+        $this->relatorio->setLog($dados);
+        return $id_produto;
     }
   }
 
@@ -58,9 +66,23 @@ class Cargo_model extends CI_Model
   * @param integer $id_cargo refere-se ao id do registro de cargo a ser editado
   * @return boolean: True - caso editado com sucesso, False - não editado
   */
-  public function update($id_cargo,$data)
+  public function update($id,$data)
   {
-    return $this->db->update("cargo",$data,array('id_cargo'=>$id_cargo));
+    $id_cargo = $this->db->update("cargo",$data,array('id_cargo'=>$id));
+
+    if($id_cargo)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'update';
+        $dados['acao'] = 'Atualizar';
+        $dados['data'] = date('Y-m-d');
+        $dados['tabela'] = 'Cargo';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o cargo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+        $this->relatorio->setLog($dados);
+        return $id_produto;
+    }
   }
 
   /**
@@ -69,9 +91,23 @@ class Cargo_model extends CI_Model
   *
   * @param integer: $id_cargo refere-se ao id do registro de cargo a ser deletado
   */
-  public function delete($id_cargo)
+  public function delete($id)
   {
-    $this->db->delete('cargo', array('id_cargo' => $id_cargo));
+    $id_cargo = $this->db->delete('cargo', array('id_cargo' => $id));
+
+    if($id_cargo)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'delete';
+        $dados['acao'] = 'Deletar';
+        $dados['data'] = date('Y-m-d');
+        $dados['tabela'] = 'Cargo';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $dados['id_usuario'] . ' Deletou o cargo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+        $this->relatorio->setLog($dados);
+        return $id_produto;
+    }
   }
 }
 ?>
