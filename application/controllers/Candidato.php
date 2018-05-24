@@ -38,6 +38,9 @@ class Candidato extends CI_Controller
         ),
     );
 
+    foreach ($data['candidatos'] as $key => $cliente) {
+      $data['candidatos'][$key]->data_nascimento = switchDate($data['candidatos'][$key]->data_nascimento);
+    }
     loadTemplate('includes/header', 'candidato/index', 'includes/footer', $data);
   }
 
@@ -117,7 +120,7 @@ class Candidato extends CI_Controller
       $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $candidato[0]->id_pessoa]);
 
       $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['candidato']['nome'],'email'=>$data['candidato']['email']]);
-      $this->pessoa_fisica->update($candidato[0]->id_pessoa,['data_nascimento'=> $data['candidato']['data_nascimento'],'sexo'=>$data['candidato']['sexo']]);
+      $this->pessoa_fisica->update($candidato[0]->id_pessoa,['data_nascimento'=> switchDate($data['candidato']['data_nascimento']),'sexo'=>$data['candidato']['sexo']]);
       $this->session->set_flashdata('success', 'Candidato editado com sucesso.');
       redirect('candidato');
     }

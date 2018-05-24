@@ -135,9 +135,7 @@ class Candidato_model extends CI_Model {
 				$dados['tabela'] = 'Candidato';
 				$dados['item_editado'] = $id;
 				$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o candidato ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
 				$this->relatorio->setLog($dados);
-				return $id_candidato;
 			}
 		} catch (\Exception $e) {}
 	}
