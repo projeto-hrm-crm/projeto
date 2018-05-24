@@ -107,7 +107,6 @@ class Candidato_model extends CI_Model {
 			if($candidato)
 			{
 				$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
-				return $candidato;
 			}
 		} catch (\Exception $e) {}
 	}

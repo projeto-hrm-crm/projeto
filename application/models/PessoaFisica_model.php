@@ -61,7 +61,7 @@ class PessoaFisica_model extends CI_Model{
   public function update($id, $data)
   {
     try {
-      $this->db->update('pessoa_fisica', $data, "id_pessoa = ".$id);
+      $this->db->update('pessoa_fisica', $data, array('id_pessoa' => $id));
     } catch (\Exception $e) {}
   }
 

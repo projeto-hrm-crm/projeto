@@ -45,26 +45,15 @@
                   <td class="text-center"><?= $cliente->nome; ?></td>
                   <td class="text-center"><?= $cliente->email; ?></td>
                   <td class="text-center">
-                    <?php
-                    if($cliente->sexo == 0){
-                      echo "Homem";
-                    }
-                    if($cliente->sexo == 1){
-                      echo "Mulher";
-                    }
-                    ?>
+                    <?php echo ($cliente->sexo == 0)? "Masculino" : "Feminino"; ?>
                   </td>
                   <td class="text-center">
-                    <?php
-                    $source = $cliente->data_nascimento;
-                    $date = new DateTime($source);
-                    echo $date->format('d/m/Y');
-                    ?>
+                    <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
                     <a title="Editar" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
                       <span class="fa fa-edit"></span></a>
-                       <button data-href="cliente/deletar/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
+                       <button data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-close"></span>
                         </button>
                       </td>
@@ -101,22 +90,3 @@
         </div>
       </div>
     </div>
-
-
-    <script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/dataTables.buttons.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.bootstrap.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/jszip.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/pdfmake.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/vfs_fonts.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.html5.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.print.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/buttons.colVis.min.js');?>"></script>
-    <script src="<?= base_url('assets/js/lib/data-table/datatables-init.js');?>"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#bootstrap-data-table-export').DataTable();
-      } );
-    </script>
