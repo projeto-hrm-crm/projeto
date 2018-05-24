@@ -37,6 +37,14 @@ class Funcionario extends CI_Controller
     );
     $data['title'] = 'funcionarios';
     $data['funcionarios'] = $this->funcionario->get();
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
 
     foreach ($data['funcionarios'] as $key => $cliente) {
       $data['funcionarios'][$key]->data_nascimento = switchDate($data['funcionarios'][$key]->data_nascimento);

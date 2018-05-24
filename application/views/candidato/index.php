@@ -56,7 +56,7 @@
                   <td class="text-center">
                     <a title="Editar" href="<?= site_url('candidato/editar/'.$candidato->id_candidato)?>" class="btn btn-primary">
                       <span class="fa fa-edit"></span></a>
-                        <button data-href="candidato/deletar/<?php echo $candidato->id_candidato?>" class="btn btn-danger" title="Excluir Candidato" data-toggle="modal" data-target="#modalRemover">
+                        <button data-href="candidato/excluir/<?php echo $candidato->id_candidato?>" class="btn btn-danger" title="Excluir Candidato" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-close"></span>
                         </button>
                       </td>

@@ -19,7 +19,15 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Pessoa', date('Y-m-d'), 'Pessoa', $id_pessoa);
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'insert';
+			$dados['acao'] = 'Inserir';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Pessoa';
+			$dados['item_editado'] = $id_pessoa;
+			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
 			return $id_pessoa;
 		}
 	}
@@ -55,16 +63,25 @@ class Pessoa_model extends CI_Model {
 	public function update($pessoa)
 	{
 		$this->db->where('pessoa.id_pessoa', $pessoa['id_pessoa']);
-
 		$this->db->set('pessoa.nome', $pessoa['nome']);
 		$this->db->set('pessoa.email', $pessoa['email']);
 
-		if($this->db->update('pessoa', $pessoa))
+		$id_pessoa = $this->db->update('pessoa', $pessoa);
+
+		if($id_pessoa)
 		{
-			return $pessoa['id_pessoa'];
-		}else {
-			return 0;
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'update';
+			$dados['acao'] = 'Atualizar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Pessoa';
+			$dados['item_editado'] = $id_pessoa;
+			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou pessoa ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
+			return $id_pessoa;
 		}
+
 	}
 
 	/**
@@ -73,12 +90,24 @@ class Pessoa_model extends CI_Model {
 	* pelo id do mesmo.
 	*
 	*/
-	public function remove($id_pessoa)
+	public function remove($id)
 	{
-		$query = $this->db->where('id_pessoa', $id_pessoa);
-		$query->delete('pessoa');
+		$this->db->where('id_pessoa', $id);
+		$id_pessoa = $this->db->delete('pessoa');
 
-		return $query->affected_rows() > 0 ? true : false;
+		if($id_pessoa)
+		{
+			$dados['id_usuario'] = $this->session->userdata('user_login');
+			$dados['tipo'] = 'delete';
+			$dados['acao'] = 'Deletar';
+			$dados['data'] = date('Y-m-d');
+			$dados['tabela'] = 'Pessoa';
+			$dados['item_editado'] = $id;
+			$dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+
+			$this->relatorio->setLog($dados);
+			return $id_pessoa;
+		}
 	}
 
 

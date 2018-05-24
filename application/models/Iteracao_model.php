@@ -7,27 +7,27 @@ class Iteracao_model extends CI_Model {
   * Este método inserção de dados
   *
   */
-  public function insert($dados) {    
+  public function insert($dados) {
     $this->db->insert('iteracao', $dados);
     return $this->db->insert_id();
   }
-    
+
   /**
   * @author: Rodrigo Alves
   * listar todas as mensagem iteração
   *
   */
-  public function get() {    
+  public function get() {
     $query = $this->db->select('*')->from('iteracao');
     return $query->get()->result();
   }
-    
+
   /**
   * @author: Rodrigo Alves
   * listar iterações
   *
   */
-  public function getId($id_iteracao) {    
+  public function getId($id_iteracao) {
     $query = $this->db->select('*')->from('iteracao')->where('id_iteracao', $id_iteracao);
     return $query->get()->result();
   }
@@ -41,7 +41,7 @@ class Iteracao_model extends CI_Model {
     $this->db->where('id_iteracao', $id_iteracao);
     $this->db->update('iteracao', $data);
   }
-    
+
   /**
   * @author: Rodrigo Alves
   * Apagar uma ordem iteracao do banco
@@ -51,5 +51,5 @@ class Iteracao_model extends CI_Model {
     $this->db->where('id_iteracao', $id);
     $this->db->delete('iteracao');
   }
-    
+
 }
