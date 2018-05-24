@@ -67,12 +67,13 @@ class Produto extends CI_Controller
         if($this->form_validation->run('produto')){
           $array = array(
            'id_fornecedor' => $this->input->post('id_fornecedor'),
-           'nome' => $this->input->post('nome'),
-           'codigo' => $this->input->post('codigo'),
-           'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-           'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
-           'lote' => $this->input->post('lote'),
-           'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+           'nome'          => $this->input->post('nome'),
+           'codigo'        => $this->input->post('codigo'),
+           'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+           'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+           'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+           'lote'          => $this->input->post('lote'),
+           'valor'         => $this->input->post('valor'),
           );
             $this->produto->insert($array);
             $this->session->set_flashdata('success','Cadastrado com sucesso');
@@ -87,6 +88,12 @@ class Produto extends CI_Controller
         $dados['errors'] = $this->session->flashdata('errors');
         $dados['old_data'] = $this->session->flashdata('old_data');
         $dados['fornecedores'] = $this->fornecedor->getRazaoSocial();
+        $dados['assets'] = array(
+         'js' => array(
+           'lib/jquery/jquery.maskMoney.min.js',
+           'validate.js',
+         ),
+       );
         loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
       }
     }
@@ -105,15 +112,15 @@ class Produto extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('produto')){
           $array = array(
-           'id_produto' => $id,
+           'id_produto'    => $id,
            'id_fornecedor' => $this->input->post('id_fornecedor'),
-
-           'nome' => $this->input->post('nome'),
-           'codigo' => $this->input->post('codigo'),
-           'fabricacao' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-           'validade' => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
-           'lote' => $this->input->post('lote'),
-           'recebimento' => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+           'nome'          => $this->input->post('nome'),
+           'codigo'        => $this->input->post('codigo'),
+           'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+           'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+           'lote'          => $this->input->post('lote'),
+           'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+           'valor'         => $this->input->post('valor'),
          );
           $this->produto->update($array);
           $this->session->set_flashdata('success','Alterado com sucesso.');
@@ -132,6 +139,12 @@ class Produto extends CI_Controller
         $data['produto']->validade = switchDate($data['produto']->validade);
         $data['produto']->recebimento = switchDate($data['produto']->recebimento);
         $data['fornecedores'] = $this->fornecedor->getRazaoSocial();
+        $data['assets'] = array(
+         'js' => array(
+           'lib/jquery/jquery.maskMoney.min.js',
+           'validate.js',
+         ),
+       );
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
       }
     }

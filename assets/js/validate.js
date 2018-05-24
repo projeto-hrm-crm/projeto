@@ -1,5 +1,9 @@
 jQuery(document).ready(function($) {;
 
+    $(function() {
+        $("#valor_produto").maskMoney();
+    })
+
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -15,6 +19,7 @@ jQuery(document).ready(function($) {;
       recebimento: {
         required: true,
         brazilian_date: true,
+        dataMaiorQue: '#fabricacao',
       },
 
       fabricacao: {
@@ -25,9 +30,9 @@ jQuery(document).ready(function($) {;
       validade: {
         required: true,
         brazilian_date: true,
+        dataMaiorQue: '#fabricacao',
       },
     },
-
   });
 
   $("#form_fornecedor").validate({
@@ -577,6 +582,16 @@ jQuery(document).ready(function($) {;
     maxlength: "Este campo deve ter no máximo {0} caracteres.",
 
   });
+
+  jQuery.validator.addMethod("dataMaiorQue", function(value, element, params){
+      var data = value.split('/');
+      var dataAtual = data[2] + '-' + data[1] + '-' + data[0];
+      var data = jQuery(params).val().split('/');
+      var dataFinal = data[2] + '-' + data[1] + '-' + data[0];
+
+      return new Date(dataAtual) > new Date(dataFinal);
+
+  }, 'Data menor ou igual a data de fabricação');
 
   /**
   * @author: Camila Sales

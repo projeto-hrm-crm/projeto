@@ -60,6 +60,11 @@ $config = array(
             'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
+            'field' => 'lote',
+            'label' => 'Lote',
+            'rules' => 'required'
+        ),
+        array(
             'field' => 'codigo',
             'label' => 'Codigo',
             'rules' => 'required|numeric'
@@ -67,23 +72,28 @@ $config = array(
         array(
             'field' => 'fabricacao',
             'label' => 'Fabricacao',
-            'rules' => 'required|exact_length[10]'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
         ),
         array(
             'field' => 'validade',
             'label' => 'Validade',
-            'rules' => 'required|exact_length[10]'
-        ),
-        array(
-            'field' => 'lote',
-            'label' => 'Lote',
-            'rules' => 'required|numeric'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida',
+            ),
         ),
         array(
             'field' => 'recebimento',
             'label' => 'Recebimento',
-            'rules' => 'required|exact_length[10]'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
         ),
+
     ),
     'pessoa' => array(
 
