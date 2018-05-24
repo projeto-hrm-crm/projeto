@@ -20,9 +20,10 @@ class Funcionario_model extends CI_Model {
 	            $dados['tipo'] = 'insert';
 	            $dados['acao'] = 'Inserir';
 	            $dados['data'] = date('Y-m-d');
+				$dados['hora'] = date('H:i:s');
 	            $dados['tabela'] = 'Funcionario';
 	            $dados['item_editado'] = $id_funcionario;
-	            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o funcionário ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+	            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o funcionário ' . $dados['item_editado'];
 
 	            $this->relatorio->setLog($dados);
 	            return $id_funcionario;
@@ -96,9 +97,10 @@ public function getById($id_funcionario)
 				$dados['tipo'] = 'delete';
 				$dados['acao'] = 'Deletar';
 				$dados['data'] = date('Y-m-d');
+				$dados['hora'] = date('H:i:s');
 				$dados['tabela'] = 'Funcionario';
 				$dados['item_editado'] = $id;
-				$dados['descricao'] = $dados['id_usuario'] . ' Deletou o funcionário ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
+				$dados['descricao'] = $dados['id_usuario'] . ' Deletou o funcionário ' . $dados['item_editado'];
 
 				$this->relatorio->setLog($dados);
 				return $id_funcionario;
