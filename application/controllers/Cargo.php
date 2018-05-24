@@ -48,7 +48,7 @@ class Cargo extends CI_Controller
   * Realiza o cadastro de um cargo, dados recebidos da view cargo/cadastro.php
  */ 
 
-/* public function create()
+ /* public function create()
 {
   if($this->input->post())
   {
@@ -71,6 +71,8 @@ class Cargo extends CI_Controller
     $data['assets'] = array(
       'js' => array(
         'cargo/validate-form.js',
+        'lib/jquery/jquery.maskMoney.min.js',
+        'validate.js',
       ),
     );
 
@@ -81,8 +83,8 @@ class Cargo extends CI_Controller
       $data
     );
   }
-}*/
-
+}
+ */
 /**
   * @author: Beto Cadilhe
   * Realiza o cadastro de um cargo, com validação dos dados recebidos da view cargo/cadastro.php
@@ -115,7 +117,7 @@ class Cargo extends CI_Controller
       $data['old_data'] = $this->session->flashdata('old_data');
        $data['assets'] = array(
       'js' => array(
-
+        'lib/jquery/jquery.maskMoney.min.js',
         'validate.js',
       ),
 
@@ -125,7 +127,7 @@ class Cargo extends CI_Controller
       loadTemplate('includes/header', 'cargo/cadastrar', 'includes/footer', $data);
     }
   }
-
+ 
 
   /**
   * @author: Peteson Munuera

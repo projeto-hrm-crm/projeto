@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {;
 
     $(function() {
         $("#valor_produto").maskMoney();
-        $("#valor_produto").maskMoney();
+        $("#salario_cargo").maskMoney();
     })
 
   $("#form_produto").validate({

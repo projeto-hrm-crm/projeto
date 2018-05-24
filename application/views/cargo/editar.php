@@ -25,7 +25,7 @@
               </div>
               <div class="form-group">
                 <label for="salario">Salário por hora</label>
-                <input id="salario" type="text" value="<?php echo $cargo->salario ?>" name="salario" class="form-control">
+                <input id="salario_cargo" type="text" value="<?php echo $cargo->salario ?>" name="salario" class="form-control">
               </div>
               <div class="form-group">
                 <label for="setor">Setor</label>
