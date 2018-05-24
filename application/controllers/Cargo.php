@@ -120,7 +120,6 @@ class Cargo extends CI_Controller
         'lib/jquery/jquery.maskMoney.min.js',
         'validate.js',
       ),
-
     );
        $data['setores'] = $this->setor->get();
 

@@ -379,7 +379,8 @@ $config = array(
           array(
             'field' => 'descricao',
             'label' => 'Descrição',
-            'rules' => 'required|max_length[200]'                  
+            'rules' => 'required|max_length[200]',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'                 
     ),
           array(
                   'field' => 'salario',
