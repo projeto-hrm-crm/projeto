@@ -1,11 +1,3 @@
-<!--
-Para obter sessão do cliente
-SELECT * FROM sac 
-JOIN cliente ON sac.idCliente = cliente.idCliente 
-JOIN pessoa ON cliente.idPessoa = pessoa.idPessoa 
-JOIN usuario ON pessoa.idPessoa = usuario.idPessoa
-WHERE usuario.idUsuario = $this->session->userdata('user_login'); 
--->
 <!-- <div class="row justify-content-center">
   <div class="col-8">
     <?php if ($this->session->flashdata('success')): ?>

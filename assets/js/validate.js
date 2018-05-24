@@ -490,13 +490,13 @@ jQuery(document).ready(function($) {;
 
       salario:{
         required: 'O campo Salario é obrigatório',
-        digits:   'O campo Salário deve conter um número decimenl',
+        digits:   'O campo Salário deve conter um número decimal',
         min:      'O campo Salário deve conter um número maior que 0'
       },
 
       id_setor:{
         required: 'O Setor é obrigatório',
-        regex:    'O campo Requisitos não está no formato correto.'
+        regex:    'O campo Setor não está no formato correto.'
       },
 
     },
