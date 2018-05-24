@@ -20,8 +20,7 @@ class Endereco_model extends CI_Model {
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'insert';
 			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d');
-			$dados['hora'] = date('H:i:s');
+			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Endereco';
 			$dados['item_editado'] = $id_endereco;
 			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o endereço ' . $dados['item_editado'];
@@ -59,8 +58,7 @@ class Endereco_model extends CI_Model {
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d');
-			$dados['hora'] = date('H:i:s');
+			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Endereco';
 			$dados['item_editado'] = $id_endereco;
 			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o endereço ' . $dados['item_editado'];
@@ -89,8 +87,7 @@ class Endereco_model extends CI_Model {
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'delete';
 			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['hora'] = date('H:i:s');
+			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Endereco';
 			$dados['item_editado'] = $id_endereco;
 			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o endereço ' . $dados['item_editado'];

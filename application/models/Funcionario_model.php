@@ -19,8 +19,7 @@ class Funcionario_model extends CI_Model {
 	            $dados['id_usuario'] = $this->session->userdata('user_login');
 	            $dados['tipo'] = 'insert';
 	            $dados['acao'] = 'Inserir';
-	            $dados['data'] = date('Y-m-d');
-				$dados['hora'] = date('H:i:s');
+	            $dados['data'] = date('Y-m-d H:i:s');				
 	            $dados['tabela'] = 'Funcionario';
 	            $dados['item_editado'] = $id_funcionario;
 	            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o funcionário ' . $dados['item_editado'];
@@ -96,8 +95,7 @@ public function getById($id_funcionario)
 				$dados['id_usuario'] = $this->session->userdata('user_login');
 				$dados['tipo'] = 'delete';
 				$dados['acao'] = 'Deletar';
-				$dados['data'] = date('Y-m-d');
-				$dados['hora'] = date('H:i:s');
+				$dados['data'] = date('Y-m-d H:i:s');				
 				$dados['tabela'] = 'Funcionario';
 				$dados['item_editado'] = $id;
 				$dados['descricao'] = $dados['id_usuario'] . ' Deletou o funcionário ' . $dados['item_editado'];

@@ -25,8 +25,8 @@ class PessoaFisica_model extends CI_Model{
           $dados['id_usuario'] = $this->session->userdata('user_login');
           $dados['tipo'] = 'insert';
           $dados['acao'] = 'Inserir';
-          $dados['data'] = date('Y-m-d');
-          $dados['hora'] = date('H:i:s');
+          $dados['data'] = date('Y-m-d H:i:s');
+          
           $dados['tabela'] = 'Pessoa Fisica';
           $dados['item_editado'] = $id_pessoa_fisica;
           $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa fisica ' . $dados['item_editado'];

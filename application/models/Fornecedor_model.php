@@ -125,8 +125,7 @@ class Fornecedor_model extends CI_Model
           $dados['id_usuario'] = $this->session->userdata('user_login');
           $dados['tipo'] = 'delete';
           $dados['acao'] = 'Deletar';
-          $dados['data'] = date('Y-m-d');
-          $dados['hora'] = date('H:i:s');
+          $dados['data'] = date('Y-m-d H:i:s');          
           $dados['tabela'] = 'Fornecedor';
           $dados['item_editado'] = $id;
           $dados['descricao'] = $dados['id_usuario'] . ' Deletou o fornecedor ' . $dados['item_editado'];

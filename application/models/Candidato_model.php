@@ -19,8 +19,7 @@ class Candidato_model extends CI_Model {
 	        $dados['id_usuario'] = $this->session->userdata('user_login');
 	        $dados['tipo'] = 'insert';
 	        $dados['acao'] = 'Inserir';
-	        $dados['data'] = date('Y-m-d');
-			$dados['hora'] = date('H:i:s');
+	        $dados['data'] = date('Y-m-d H:i:s');			
 	        $dados['tabela'] = 'Candidato';
 	        $dados['item_editado'] = $id_candidato;
 	        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o candidato ' . $dados['item_editado'];
@@ -48,8 +47,7 @@ class Candidato_model extends CI_Model {
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'delete';
 			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['hora'] = date('H:i:s');
+			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Candidato';
 			$dados['item_editado'] = $id;
 			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o candidato ' . $dados['item_editado'];
@@ -132,8 +130,7 @@ class Candidato_model extends CI_Model {
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d');
-			$dados['hora'] = date('H:i:s');
+			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Candidato';
 			$dados['item_editado'] = $id;
 			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o candidato ' . $dados['item_editado'];
