@@ -118,7 +118,22 @@ class Fornecedor_model extends CI_Model
   {
     try {
       $this->db->where('id_fornecedor', $id);
-      $this->db->delete('fornecedor');
+      $id_fornecedor = $this->db->delete('fornecedor');
+
+      if($id_fornecedor)
+      {
+          $dados['id_usuario'] = $this->session->userdata('user_login');
+          $dados['tipo'] = 'delete';
+          $dados['acao'] = 'Deletar';
+          $dados['data'] = date('Y-m-d');
+          $dados['hora'] = date('H:i:s');
+          $dados['tabela'] = 'Fornecedor';
+          $dados['item_editado'] = $id;
+          $dados['descricao'] = $dados['id_usuario'] . ' Deletou o fornecedor ' . $dados['item_editado'];
+
+          $this->relatorio->setLog($dados);
+          return $id_fornecedor;
+      }
     } catch (\Exception $e) {}
   }
 
