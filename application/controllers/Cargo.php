@@ -130,6 +130,7 @@ class Cargo extends CI_Controller
 
   /* *
   * @author: Peteson Munuera
+  * @author: Beto Cadilhe
   * Realiza edição de registro de um cargo pelo id, dados recebidos pela view cargo/editar.php
   *
   * @param integer: referem-se ao id do cargo a ser alterado

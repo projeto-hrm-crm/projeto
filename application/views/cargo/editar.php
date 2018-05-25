@@ -26,17 +26,17 @@
             
               <div class="form-group">
                 <label for="descricao">Descrição do cargo</label>
-                <textarea id="descricao" name="descricao" class="form-control"><?php echo $cargo->descricao ?></textarea>
+                <textarea id="descricao" name="descricao" class="form-control" required><?php echo $cargo->descricao ?></textarea>
               </div>
             
               <div class="form-group">
                 <label for="salario">Salário por hora</label>
-                <input id="salario_cargo" type="text" value="<?php echo $cargo->salario ?>" name="salario" class="form-control">
+                <input id="salario_cargo" type="text" value="<?php echo $cargo->salario ?>" name="salario" class="form-control" required>
               </div>
             
               <div class="form-group">
                 <label for="setor">Setor</label>
-                <select id="setor" class="form-control" name="id_setor">
+                <select id="setor" class="form-control" name="id_setor" required>
                   <?php foreach ($setores as $setor): ?>
                     <option value="<?php echo $setor->id_setor ?>"><?php echo $setor->nome; ?></option>
                   <?php endforeach; ?>
