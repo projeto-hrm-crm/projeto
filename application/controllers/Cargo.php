@@ -115,7 +115,7 @@ class Cargo extends CI_Controller
       $data['success_message'] = $this->session->flashdata('success');
       $data['error_message']   = $this->session->flashdata('danger');
       $data['old_data'] = $this->session->flashdata('old_data');
-       $data['assets'] = array(
+      $data['assets'] = array(
       'js' => array(
         'lib/jquery/jquery.maskMoney.min.js',
         'validate.js',
@@ -126,14 +126,15 @@ class Cargo extends CI_Controller
       loadTemplate('includes/header', 'cargo/cadastrar', 'includes/footer', $data);
     }
   }
- 
 
-  /**
+
+  /* *
   * @author: Peteson Munuera
   * Realiza edição de registro de um cargo pelo id, dados recebidos pela view cargo/editar.php
   *
   * @param integer: referem-se ao id do cargo a ser alterado
   */
+
   public function edit($id_cargo)
   {
     if ($this->input->post())
@@ -152,7 +153,15 @@ class Cargo extends CI_Controller
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
 
       $data['setores']       = $this->setor->get();
-			$data['title']         = 'Editar Cargo';
+      $data['title']         = 'Editar Cargo';
+      
+      $data['assets'] = array(
+        'js' => array(
+          'lib/jquery/jquery.maskMoney.min.js',
+          'validate.js',
+        ),
+      );
+      
       loadTemplate(
 				'includes/header',
 				'cargo/editar',
@@ -161,6 +170,7 @@ class Cargo extends CI_Controller
 			);
     }
   }
+  
 
   /**
   * @author: Peterson Munuera

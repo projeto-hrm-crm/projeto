@@ -20,7 +20,7 @@
         <div class="card-body card-block">
           <div class="row justify-content-center">
             <div class="col">
-
+               <!--NOME--> 
               <div class="form-group">
               <label class=" form-control-label">Nome</label>
                 <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" name="nome" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
@@ -28,7 +28,7 @@
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
               </div>
-
+               <!--DESCRIÇÃO--> 
               <div class="form-group">
               <label class=" form-control-label">Descrição</label>
                 <textarea placeholder="Descrição do cargo" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>" required><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
@@ -36,7 +36,7 @@
 	                <?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
 	              </span>
               </div>
-
+               <!--SALÁRIO--> 
               <div class="form-group">
               <label class=" form-control-label">Salário por hora</label>
                 <input id="salario_cargo" type="text" placeholder="Salário por hora" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : null;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
@@ -44,7 +44,7 @@
 	                <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
 	              </span>
               </div>
-
+               <!--SETOR--> 
               <div class="form-group">
               <label class=" form-control-label">Setor</label>
               <select name="id_setor" id="id_setor" class="form-control <?php echo isset($errors['id_setor']) ? 'is-invalid' : '' ?>">
@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="card-footer text-right">
-
+         <!--ACTIONS-->
         <a href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>
