@@ -36,6 +36,7 @@ jQuery(document).ready(function($) {;
     },
   });
 
+  // @Beto Cadilhe
   $("#form_fornecedor").validate({
 
     rules: {
