@@ -77,7 +77,7 @@ $config = array(
         array(
             'field' => 'lote',
             'label' => 'Lote',
-            'rules' => 'required'
+            'rules' => 'required|numeric'
         ),
         array(
             'field' => 'recebimento',
@@ -173,7 +173,7 @@ $config = array(
 
     ),
 
-// @Beto Cadilhe
+  // @Beto Cadilhe
   'fornecedor' => array(
           array(
                   'field' => 'nome',
@@ -245,21 +245,6 @@ $config = array(
        ),
                  
 ),
-    
-// @Beto Cadilhe
-    'cargo' => array(
-        
-        array(
-                'field' => 'salario',
-                'label' => 'Salário',
-                'rules' => 'required'
-        ),
-        array(
-          'field' => 'id_setor',
-          'label' => 'Setor',
-          'rules' => 'required|numeric'
-          ),
-  ),
         'login' => array(
                 array(
                         'field' => 'email',
@@ -421,7 +406,48 @@ $config = array(
                       'label' => 'Descricao etapas',
                       'rules' => 'required'
               ),
+         ),
+         'fornecedor' => array(
+            array(
+                    'field' => 'nome',
+                    'label' => 'Nome',
+                    'rules' => 'required'
             ),
+            array(
+                    'field' => 'razao_social',
+                    'label' => 'Razão Social',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'cnpj',
+                    'label' => 'CNPJ',
+                    'rules' => 'required'
+            ),
+        ),
+        'cargo' => array(
+          array(
+                  'field' => 'nome',
+                  'label' => 'Nome',
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+          ),
+
+          array(
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required|max_length[200]',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'                 
+    ),
+          array(
+                  'field' => 'salario',
+                  'label' => 'Salário',
+                  'rules' => 'required'
+          ),
+          array(
+            'field' => 'id_setor',
+            'label' => 'Setor',
+            'rules' => 'required|numeric'
+            ),
+    ),
 );
 
 /**
