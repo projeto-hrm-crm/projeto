@@ -96,7 +96,7 @@ $config = array(
         array(
             'field' => 'email',
             'label' => 'E-Mail',
-            'rules' => 'valid_email'
+            'rules' => 'required|valid_email'
         ),
 
         array(
@@ -180,7 +180,7 @@ $config = array(
                   'label' => 'Nome',
                   'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]',
                   'rules' => 'required|min_length[1]',     
-                  'rules' => 'required|max_length[45]',       
+                  'rules' => 'required|max_length[45]'      
           ),
 
           array(
@@ -192,14 +192,15 @@ $config = array(
           array(
                   'field' => 'razao_social',
                   'label' => 'Razão Social',
-                  'rules' => 'required'
+                  'rules' => 'required',
+                  'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
           ),
 
-          array(
+          /* array(
             'field' => 'cnpj',
             'label' => 'CNPJ',
             'rules' => requiredIf('tipo_pessoa', 'pj')
-        ),
+        ), */
 
           array(
             'field' => 'telefone',
@@ -229,7 +230,8 @@ $config = array(
         array(
             'field' => 'logradouro',
             'label' => 'Logradouro',
-            'rules' => 'required'
+            'rules' => 'required',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
         ),
 
         array(
@@ -241,7 +243,8 @@ $config = array(
         array(
             'field' => 'bairro',
             'label' => 'Bairro',
-            'rules' => 'required'
+            'rules' => 'required',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
        ),
                  
 ),

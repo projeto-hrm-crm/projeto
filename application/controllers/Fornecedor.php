@@ -73,7 +73,7 @@ class Fornecedor extends CI_Controller
        'datatable.js',
        'confirm.modal.js',
        //'fornecedor/validate-form.js',
-       //'validate.js',
+       'validate.js',
      ),
    );
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
@@ -170,7 +170,7 @@ class Fornecedor extends CI_Controller
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
        'confirm.modal.js',
-       'fornecedor/validate-form.js',
+       // 'fornecedor/validate-form.js',
        'validate.js',
      ),
    );

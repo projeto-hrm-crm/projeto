@@ -1,5 +1,21 @@
+<div class="row" style="margin-top: 5px;">
+        <div class="col-md-12">
+          <?php if ($this->session->flashdata('success')) : ?>
+          <div class="alert alert-success">
+            <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
+          </div>
+          <?php elseif ($this->session->flashdata('danger')) : ?>
+          <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?>
+          </div>
+          <?php endif; ?>
+        </div>
+      </div>
+
 <div class="animated fadeIn">
 <div class="row justify-content-center align-items-center">
+
+
    <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
@@ -52,12 +68,12 @@
            
       
    
-       <div class="form-group col-12 col-md-6">
+          <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Estado</label>
-           <select name="id_estado"  class="form-control estado">
-             <option value="0" disabled selected>Selecione um estado</option>
+           <select name="id_estado" class="form-control" id="estado">
+              <option value="0" disabled selected>Selecione um estado</option>
              <?php foreach ($estados as $estado): ?>
-             <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
+               <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
              <?php endforeach; ?>
            </select>
       </div>
@@ -65,7 +81,7 @@
        <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Cidade</label>
           <select name="id_cidade" class="form-control" id="cidade">
-             <option value="0">Selecione um estado</option>
+             <option value="0">Selecione uma cidade</option>
           </select>
       </div>
             
@@ -79,7 +95,7 @@
       
       <div class="form-group col-12 col-md-9">
          <label class=" form-control-label">Logradouro</label>
-         <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
+         <input type="text" id="logradouro" name="logradouro" placeholder="Rua da Praia" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['logradouro']) ? $errors['logradouro'] : '' ; ?>
 	              </span>
