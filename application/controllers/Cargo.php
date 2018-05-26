@@ -159,8 +159,7 @@ class Cargo extends CI_Controller
         redirect('cargo/editar/'.$id_cargo);  
       }
       
-    }
-    else{
+    } else{
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
 
       $data['setores']       = $this->setor->get();

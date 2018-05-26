@@ -12,12 +12,11 @@
     <div class="col-lg-8">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Cadastrar Cargo</strong>
+          <strong class="card-title">Editar Cargo</strong>
         </div>
         <form id="form_cargo" action="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" method="post">
       
-      
-        <div class="card-body card-block">
+              <div class="card-body card-block">
           <div class="row justify-content-center">
             <div class="col">
                <!--NOME--> 
@@ -69,7 +68,7 @@
               </a>
         
           <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Cadastrar
+            <i class="fa fa-dot-circle-o"></i> Salvar
           </button>
           
         </div>
