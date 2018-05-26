@@ -46,16 +46,54 @@ class Usuario extends CI_Controller
         $data['grupo_acesso'] = $this->grupo->get();
         $data['pessoa_fisica'] = $this->pessoa_fisica->get();
         $data['pessoa_juridica'] = $this->pessoa_juridica->get();
-        // loadTemplate(
-        //   'includes/header',
-        //   'usuario/cadastrar.php',
-        //   'includes/footer',
-        //   $data);
-        $this->load->view(
-          'usuario/cadastrar2.php',
+        loadTemplate(
+          'includes/header',
+          'usuario/cadastrar.php',
+          'includes/footer',
           $data);
+        // $this->load->view(
+        //   'usuario/cadastrar2.php',
+        //   $data);
    }
   }
+
+  public function testecadastrar(){
+    if($this->input->post())
+    {
+      //pessoa
+      $data["nome"]=$this->input->post("nome");
+      $data["email"]=$this->input->post("email");
+      $this->pessoa->insert($data);
+
+      //endereco
+
+
+
+
+      //usuario
+      $data["login"]=$this->input->post("login");
+
+      $data["senha"]=$this->input->post("senha");
+      $data["senha2"]=$this->input->post("senha2");
+      // if($data["senha"]==$data["senha2"])
+      // {
+      // }
+      // else
+      // {
+      // }
+
+    }
+    else
+    {
+      $data['cidades'] = $this->cidade->get();
+      $data['estados'] = $this->estado->get();
+      $this->load->view(
+      'usuario/cadastrar2.php',
+      $data
+      );
+    }
+  }
+
   public function create2()
   {
     if($this->input->post())
@@ -73,14 +111,14 @@ class Usuario extends CI_Controller
         $data['grupo_acesso'] = $this->grupo->get();
         $data['pessoa_fisica'] = $this->pessoa_fisica->get();
         $data['pessoa_juridica'] = $this->pessoa_juridica->get();
-        loadTemplate(
-          'includes/header',
-          'usuario/cadastrar.php',
-          'includes/footer',
-          $data);
-        // $this->load->view(
-        //   'usuario/cadastrar2.php',
+        // loadTemplate(
+        //   'includes/header',
+        //   'usuario/cadastrar.php',
+        //   'includes/footer',
         //   $data);
+        $this->load->view(
+          'usuario/cadastrar2.php',
+          $data);
    }
   }
 
