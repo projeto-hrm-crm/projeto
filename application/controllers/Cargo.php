@@ -118,8 +118,8 @@ class Cargo extends CI_Controller
       $data['assets'] = array(
       'js' => array(
         'lib/jquery/jquery.maskMoney.min.js',
-        'cargo/validate-form.js',
-        //'validate.js',
+       // 'cargo/validate-form.js',
+       'validate.js',
       ),
     );
        $data['setores'] = $this->setor->get();

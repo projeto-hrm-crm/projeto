@@ -1,4 +1,4 @@
-/* $(document).ready(() => {
+$(document).ready(() => {
   $("[name='nome']").on('focusout keyup', (e) => {
     validateField(e, $("[name='nome']"), $("#invalid-nome"));
   });
@@ -19,4 +19,4 @@ function validateField(e, input, feedback) {
     input.removeClass('is-valid').addClass('is-invalid');
     feedback.show();
   }
-} */
+}
