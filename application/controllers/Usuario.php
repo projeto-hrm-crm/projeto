@@ -25,102 +25,122 @@ class Usuario extends CI_Controller
         $data);
     }
 
-  /**
-  * @author: Matheus Ladislau
-  * Realiza o cadastro de um usuario, dados recebidos da view setor/cadastro.php
-  */
-  public function create()
-  {
-    if($this->input->post())
-    {
-      $data["login"]=$this->input->post("login");
-      $data["senha"]=$this->input->post("senha");
-      $data["id_grupo_acesso"]=$this->input->post("id_grupo_acesso");
-      $data["id_pessoa"]=$this->input->post("id_pessoa_fisica");
-      $this->usuario->insert($data);
-      $this->session->set_flashdata('success', "Usuário cadastrado com sucesso");
-      // redirect('usuario');
-      $this->session->set_flashdata('errors', $this->form_validation->error_array());
-      }else{
-        $data['title'] = 'Cadastrar Usuário';
-        $data['grupo_acesso'] = $this->grupo->get();
-        $data['pessoa_fisica'] = $this->pessoa_fisica->get();
-        $data['pessoa_juridica'] = $this->pessoa_juridica->get();
-        loadTemplate(
-          'includes/header',
-          'usuario/cadastrar.php',
-          'includes/footer',
-          $data);
-        // $this->load->view(
-        //   'usuario/cadastrar2.php',
-        //   $data);
-   }
-  }
+    /**
+    * @author: Matheus Ladislau
+    * Realiza o cadastro de um usuario, dados recebidos da view setor/cadastro.php
+    */
+    public function create(){
+      if($this->input->post())
+      {
+        if(!$this->form_validation->run('usuario'))
+        {
+          // $this->session->set_flashdata('errors', $this->form_validation->error_array());
+          // $this->session->set_flashdata('old_values', $this->input->post());
 
-  public function testecadastrar(){
-    if($this->input->post())
-    {
-      //pessoa
-      $data["nome"]=$this->input->post("nome");
-      $data["email"]=$this->input->post("email");
-      $this->pessoa->insert($data);
+          $this->session->set_flashdata(
+            'errors',
+            'Não foi possível realizar o cadastro<br>Verifique os campos abaixo'
+          );
+          redirect("usuario/cadastrar");
+        }
+        else
+        {
+          //pessoa
+          $data_pessoa["nome"]=$this->input->post("nome");
+          $data_pessoa["email"]=$this->input->post("email");
+          $id_pessoa=$this->pessoa->insert($data_pessoa);
 
-      //endereco
+          //endereco
+          $data_endereco['cep']=$this->input->post('cep');
+          $data_endereco['bairro']=$this->input->post('bairro');
+          $data_endereco['logradouro']=$this->input->post('logradouro');
+          $data_endereco['numero']=$this->input->post('numero');
+          $data_endereco['complemento']=$this->input->post('complemento');
+          $data_endereco['id_pessoa']=$id_pessoa;
+          $data_endereco['id_cidade']=$this->input->post('cidade');
+          $this->endereco->insert($data_endereco);
 
-
-
-
-      //usuario
-      $data["login"]=$this->input->post("login");
-
-      $data["senha"]=$this->input->post("senha");
-      $data["senha2"]=$this->input->post("senha2");
-      // if($data["senha"]==$data["senha2"])
-      // {
-      // }
-      // else
-      // {
-      // }
-
-    }
-    else
-    {
-      $data['cidades'] = $this->cidade->get();
-      $data['estados'] = $this->estado->get();
-      $this->load->view(
-      'usuario/cadastrar2.php',
-      $data
-      );
-    }
-  }
-
-  public function create2()
-  {
-    if($this->input->post())
-    {
-      $data["login"]=$this->input->post("login");
-      $data["senha"]=$this->input->post("senha");
-      $data["id_grupo_acesso"]=$this->input->post("id_grupo_acesso");
-      $data["id_pessoa"]=$this->input->post("id_pessoa_fisica");
-      $this->usuario->insert($data);
-      $this->session->set_flashdata('success', "Usuário cadastrado com sucesso");
-      // redirect('usuario');
-      $this->session->set_flashdata('errors', $this->form_validation->error_array());
-      }else{
-        $data['title'] = 'Cadastrar Usuário';
-        $data['grupo_acesso'] = $this->grupo->get();
-        $data['pessoa_fisica'] = $this->pessoa_fisica->get();
-        $data['pessoa_juridica'] = $this->pessoa_juridica->get();
-        // loadTemplate(
-        //   'includes/header',
-        //   'usuario/cadastrar.php',
-        //   'includes/footer',
-        //   $data);
+          //usuario
+          $data_usuario["login"]=$this->input->post("login");
+          $data_usuario["senha"]=$this->input->post("senha");
+          $data_usuario["id_grupo_acesso"]=3;
+          $data_usuario["id_pessoa"]=$id_pessoa;
+          // $data_usuario["senha2"]=$this->input->post("senha2");
+          $this->usuario->insert($data_usuario);
+          // if($data["senha"]==$data["senha2"])
+          // {
+          // }
+          // else
+          // {
+          // }
+          }
+        }
+      else
+      {
+        $data['cidades'] = $this->cidade->get();
+        $data['estados'] = $this->estado->get();
         $this->load->view(
-          'usuario/cadastrar2.php',
-          $data);
-   }
-  }
+        'usuario/cadastrar2.php',
+        $data
+        );
+      }
+    }
+
+  // public function create()
+  // {
+  //   if($this->input->post())
+  //   {
+  //     $data["login"]=$this->input->post("login");
+  //     $data["senha"]=$this->input->post("senha");
+  //     $data["id_grupo_acesso"]=$this->input->post("id_grupo_acesso");
+  //     $data["id_pessoa"]=$this->input->post("id_pessoa_fisica");
+  //     $this->usuario->insert($data);
+  //     $this->session->set_flashdata('success', "Usuário cadastrado com sucesso");
+  //     // redirect('usuario');
+  //     $this->session->set_flashdata('errors', $this->form_validation->error_array());
+  //     }else{
+  //       $data['title'] = 'Cadastrar Usuário';
+  //       $data['grupo_acesso'] = $this->grupo->get();
+  //       $data['pessoa_fisica'] = $this->pessoa_fisica->get();
+  //       $data['pessoa_juridica'] = $this->pessoa_juridica->get();
+  //       loadTemplate(
+  //         'includes/header',
+  //         'usuario/cadastrar.php',
+  //         'includes/footer',
+  //         $data);
+  //       // $this->load->view(
+  //       //   'usuario/cadastrar2.php',
+  //       //   $data);
+  //  }
+  // }
+
+  // public function create2()
+  // {
+  //   if($this->input->post())
+  //   {
+  //     $data["login"]=$this->input->post("login");
+  //     $data["senha"]=$this->input->post("senha");
+  //     $data["id_grupo_acesso"]=$this->input->post("id_grupo_acesso");
+  //     $data["id_pessoa"]=$this->input->post("id_pessoa_fisica");
+  //     $this->usuario->insert($data);
+  //     $this->session->set_flashdata('success', "Usuário cadastrado com sucesso");
+  //     // redirect('usuario');
+  //     $this->session->set_flashdata('errors', $this->form_validation->error_array());
+  //     }else{
+  //       $data['title'] = 'Cadastrar Usuário';
+  //       $data['grupo_acesso'] = $this->grupo->get();
+  //       $data['pessoa_fisica'] = $this->pessoa_fisica->get();
+  //       $data['pessoa_juridica'] = $this->pessoa_juridica->get();
+  //       // loadTemplate(
+  //       //   'includes/header',
+  //       //   'usuario/cadastrar.php',
+  //       //   'includes/footer',
+  //       //   $data);
+  //       $this->load->view(
+  //         'usuario/cadastrar2.php',
+  //         $data);
+  //  }
+  // }
 
     /**
     * @author: Matheus Ladislau
