@@ -139,19 +139,28 @@ class Cargo extends CI_Controller
 
   public function edit($id_cargo)
   {
-    if ($this->input->post())
-    {
-      $data["nome"]=$this->input->post("nome");
-      $data["descricao"]=$this->input->post("descricao");
-      $data["salario"]=$this->input->post("salario");
-      $data["id_setor"]=$this->input->post("id_setor");
-      $this->cargo->update($id_cargo,$data);
+    if ($this->input->post()){
 
-      $this->session->set_flashdata('success', 'Cargo editado com sucesso');
+      if($this->form_validation->run('cargo')){
 
-      redirect('cargo');
+        $data["nome"]=$this->input->post("nome");
+        $data["descricao"]=$this->input->post("descricao");
+        $data["salario"]=$this->input->post("salario");
+        $data["id_setor"]=$this->input->post("id_setor");
+        $this->cargo->update($id_cargo,$data);
+
+        $this->session->set_flashdata('success', 'Cargo editado com sucesso');
+
+        redirect('cargo');
+      }
+      else{
+        $this->session->set_flashdata('errors', $this->form_validation->error_array());
+        $this->session->set_flashdata('old_data', $this->input->post());
+        redirect('cargo/editar/'.$id_cargo);  
+      }
+      
     }
-    else {
+    else{
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
 
       $data['setores']       = $this->setor->get();
@@ -171,6 +180,10 @@ class Cargo extends CI_Controller
 				$data
 			);
     }
+          
+    
+      
+    
   }
   
 
