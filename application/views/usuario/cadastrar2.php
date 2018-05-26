@@ -32,14 +32,22 @@
     <div class="container">
       <div class="login-content">
         <div class="login-form">
-          <form action="<?php echo site_url('usuario/testecadastrar'); ?>" method="POST" id="form_cliente" class="form-horizontal" novalidate="novalidate">
+          <form action="<?php echo site_url('usuario/cadastrar'); ?>" method="POST" id="form_usuario" class="form-horizontal" novalidate="novalidate">
+
+            <?php if ($this->session->flashdata('errors')): ?>
+              <div class="alert alert-danger"><?php echo $this->session->flashdata('errors');?></div>
+            <?php endif;?>
+            
+            <?php if (validation_errors()) : ?>
+              <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
+            <?php endif;?>
 
             <div class="card-body card-block">
+              <h4>Realizar Cadastro</h4>
               <div class="row">
-
                 <div class="form-group col-12 col-md-6">
                   <label class="text-lowercase">Nome</label>
-                  <input type="text" class="form-control" placeholder="Nome completo" name="nome">
+                  <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" required>
                 </div>
 
                 <div class="form-group col-12 col-md-6">
@@ -60,7 +68,7 @@
 
                 <div class="form-group col-12 col-md-6">
                   <label>CPF</label>
-                  <input type="cpf" class="form-control" placeholder="CPF" name="cpf">
+                  <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf">
                 </div>
 
                 <div class="form-group col-12 col-md-6">
@@ -70,7 +78,7 @@
 
                 <div class="form-group col-12 col-md-6">
                   <label>CEP</label>
-                  <input type="text" class="form-control" placeholder="CEP" name="cep">
+                  <input size="6" type="text" class="form-control" placeholder="CEP" name="cep">
                 </div>
 
                 <div class="form-group col-12 col-md-6">
@@ -100,12 +108,12 @@
 
                 <div class="form-group col-12 col-md-6">
                   <label class="text-lowercase">Endereço</label>
-                  <input type="text" class="form-control" placeholder="Logradoro" name="logradouro">
+                  <input type="text" class="form-control" placeholder="Logradouro" name="logradouro">
                 </div>
 
                 <div class="form-group col-12 col-md-6">
                   <label class="text-lowercase">Número</label>
-                  <input type="text" class="form-control" placeholder="Bairro" name="bairro">
+                  <input type="text" class="form-control" placeholder="Numero" name="numero">
                 </div>
 
                 <div class="form-group col-12 col-md-6">
