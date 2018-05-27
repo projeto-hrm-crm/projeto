@@ -79,9 +79,9 @@ class Endereco_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
-		$this->db->delete('endereco');
 		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
-
+		$this->db->delete('endereco');
+		
 		if($id_endereco)
 		{
 			$dados['id_usuario'] = $this->session->userdata('user_login');

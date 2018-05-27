@@ -65,13 +65,25 @@ class PessoaJuridica_model extends CI_Model
     } catch (\Exception $e) {}
   }
 
-  public function delete($id)
+  public function delete($id_pessoa_juridica)
   {
-    try {
-      $this->db->where('id', $id);
+      $this->db->where('id_pessoa_juridica', $id_pessoa_juridica);
       $this->db->delete('pessoa_juridica');
-    } catch (\Exception $e) {}
-  }
+   
+      if($id_pessoa_juridica)
+      {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'delete';
+        $dados['acao'] = 'Deletar';
+        $dados['data'] = date('Y-m-d H:i:s');			
+        $dados['tabela'] = 'Pessoa Juridica';
+        $dados['item_editado'] = $id_pessoa_juridica;
+        $dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa juridica ' . $dados['item_editado'];
+  
+        $this->relatorio->setLog($dados);
+        return $id_pessoa_juridica;
+      }
 
+  }
 
 }

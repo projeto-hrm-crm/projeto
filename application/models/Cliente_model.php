@@ -106,10 +106,10 @@ class Cliente_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function update($id, $data)
+	public function update($id)
 	{
 		$this->db->where('id_cliente', $id);
-		$id_cliente = $this->db->update('cliente', $data);
+		$id_cliente = $this->db->update('cliente');
 
 		if($id_cliente)
 		{

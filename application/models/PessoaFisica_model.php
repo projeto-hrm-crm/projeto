@@ -86,6 +86,20 @@ class PessoaFisica_model extends CI_Model{
         $this->db->where('id_pessoa', $id_pessoa);
         $this->db->delete('pessoa_fisica');
 
+        if($id_pessoa)
+        {
+          $dados['id_usuario'] = $this->session->userdata('user_login');
+          $dados['tipo'] = 'delete';
+          $dados['acao'] = 'Deletar';
+          $dados['data'] = date('Y-m-d H:i:s');			
+          $dados['tabela'] = 'Pessoa Fisica';
+          $dados['item_editado'] = $id_pessoa;
+          $dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa fisica ' . $dados['item_editado'];
+    
+          $this->relatorio->setLog($dados);
+          return $id_pessoa;
+        }
+
     } catch (\Exception $e) {}
   }
 }
