@@ -1,8 +1,8 @@
 jQuery(document).ready(function($) {;
 
-    $(function() {
-        $("#valor_produto").maskMoney();
-    })
+    // $(function() {
+    //     $("#valor_produto").maskMoney();
+    // })
 
   $("#form_produto").validate({
     rules: {
