@@ -1,5 +1,4 @@
 <!-- FUNCIONÁRIO -->
-<div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
     <div class="col-lg-8">
       <div class="card">
@@ -87,19 +86,40 @@
 
             </div>
 
-            <div class="card-footer text-right">
-              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-times"></i> Cancelar
-              </a>
-              <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-pencil-square-o"></i> Editar
+            <div class="card-footer">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFuncionario">
+                <span class="fa fa-check"></span>
+                Editar
               </button>
+              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Cancelar
+              </a>
+            </div> <!-- FIM BOTÕES -->
+            <div class="modal fade" id="editarFuncionario" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Editar Funcionario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Deseja realmente editar esse funcionario?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Editar
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-
-          </form>
-
         </div>
+      </form>
       </div>
     </div>
   </div>
-</div>
