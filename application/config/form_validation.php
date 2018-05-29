@@ -352,6 +352,22 @@ $config = array(
                       'rules' => 'required'
               ),
             ),
+
+    'pedido_fornecedor' => array(
+
+        array(
+            'field' => 'situacao',
+            'label' => 'Situação',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        ),
+
+        array(
+            'field' => 'descricao',
+            'label' => 'Descrição',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        )
+
+    ),
 );
 
 /**
