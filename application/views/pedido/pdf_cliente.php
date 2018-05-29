@@ -34,8 +34,6 @@
 
 </style>
 
-
-
 <table width="100%" class="border-all" cellspacing="0">
   <tr>
     <td rowspan="2" align="left" width="20%" class="padding">
@@ -119,7 +117,7 @@
     </tr>
      <tr>
         <td class="border-top">
-            <small><strong>Situação do Pedido:</strong> <?php echo $pedido->situacao; ?></small>
+            <small><strong>Situação do Pedido:</strong> <?php echo getSituationName($pedido->situacao); ?></small>
         </td>
     </tr>
 </table>
@@ -182,7 +180,7 @@
 </table>
 <br>
 
-<p align="center">Caraguatatuba, <?php echo strftime("%d de %B de %Y", strtotime(date('Y-m-d')));; ?></p>
+<p align="center">Caraguatatuba, <?php echo strftime("%d de %B de %Y", strtotime(date('Y-m-d'))); ?></p>
 <br>
 <table width="100%"  cellspacing="0">
 
