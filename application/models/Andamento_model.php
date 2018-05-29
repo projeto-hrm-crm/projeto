@@ -23,11 +23,27 @@ class Andamento_model extends CI_Model
 	public function update($andamento)
 	{
         $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
-        
-        $this->db->set('andamento.data', $andamento['data']);
-        $this->db->set('andamento.situacao', $andamento['situacao']);
-        
-        $this->db->update('andamento');
+        $this->db->where('andamento.atual', TRUE);
+
+        $situacao_atual = $this->db->get('andamento')->row()->situacao;
+
+        if($situacao_atual == $andamento['situacao'])
+        {
+            $this->db->set('andamento.data', $andamento['data']);
+            
+            $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
+            $this->db->where('andamento.atual', TRUE);
+
+            $this->db->update('andamento');    
+        }
+        else
+        {
+            $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
+            $this->db->set('andamento.atual', FALSE);
+            $this->db->update('andamento');
+
+            $this->insert($andamento);
+        }        
 
     }
 
@@ -49,4 +65,29 @@ class Andamento_model extends CI_Model
         return $query->affected_rows() > 0 ? true : false;
     }
 
+    /**
+    * @author: Tiago Villalobos
+    * Transforma o campo enum de situacao em array
+    *
+    *
+    * @return: mixed
+    */
+    public function getSituations(){
+        
+        $query = "SHOW COLUMNS FROM andamento LIKE 'situacao'";
+
+        $row = $this->db->query("SHOW COLUMNS FROM andamento LIKE 'situacao'")->row()->Type;  
+        
+        $regex = "/'(.*?)'/";
+        
+        preg_match_all( $regex , $row, $enum_array );
+        
+        $enum_fields = $enum_array[1];
+        foreach ($enum_fields as $key => $value)
+        {   
+            $enums[$value] = getSituationName($value);
+        }
+
+        return $enums;
+    }
 }
