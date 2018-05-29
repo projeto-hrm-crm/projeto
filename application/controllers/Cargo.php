@@ -84,7 +84,7 @@ class Cargo extends CI_Controller
     );
   }
 }
- */
+  */
 /**
   * @author: Beto Cadilhe
   * Realiza o cadastro de um cargo, com validação dos dados recebidos da view cargo/cadastro.php
@@ -118,7 +118,8 @@ class Cargo extends CI_Controller
       $data['assets'] = array(
       'js' => array(
         'lib/jquery/jquery.maskMoney.min.js',
-        'validate.js',
+       // 'cargo/validate-form.js',
+       'validate.js',
       ),
     );
        $data['setores'] = $this->setor->get();
@@ -136,6 +137,7 @@ class Cargo extends CI_Controller
   * @param integer: referem-se ao id do cargo a ser alterado
   */
 
+<<<<<<< HEAD
   public function edit($id_cargo) {
     if ($this->input->post()){
 
@@ -160,6 +162,32 @@ class Cargo extends CI_Controller
             redirect('cargo/editar/'.$id_cargo);
           }
     } else {
+=======
+  public function edit($id_cargo)
+  {
+    if ($this->input->post()){
+
+      if($this->form_validation->run('cargo')){
+
+        $data["nome"]=$this->input->post("nome");
+        $data["descricao"]=$this->input->post("descricao");
+        $data["salario"]=$this->input->post("salario");
+        $data["id_setor"]=$this->input->post("id_setor");
+        $this->cargo->update($id_cargo,$data);
+
+        $this->session->set_flashdata('success', 'Cargo editado com sucesso');
+
+        redirect('cargo');
+      }
+      else{
+        $this->session->set_flashdata('errors', $this->form_validation->error_array());
+        $this->session->set_flashdata('old_data', $this->input->post());
+        redirect('cargo/editar/'.$id_cargo);  
+      }
+      
+    }
+    else{
+>>>>>>> 106eddb22272eb97149544a0ad74427d61778719
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
       $data['setores']       = $this->setor->get();
       $data['title']         = 'Editar Cargo';      
@@ -177,6 +205,10 @@ class Cargo extends CI_Controller
 				$data
 			);
     }
+          
+    
+      
+    
   }
   
 
