@@ -21,7 +21,9 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
   <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
-
+<script type="text/javascript">
+    var BASE_URL = "<?php echo base_url();?>";
+</script>
   <!-- inserção dinâmica de arquivos CSS -->
   <?php if (isset($assets['css'])): ?>
     <?php foreach ($assets['css'] as $css_file): ?>
