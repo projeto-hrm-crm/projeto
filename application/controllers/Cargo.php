@@ -144,22 +144,25 @@ class Cargo extends CI_Controller
         $data["descricao"]=$this->input->post("descricao");
         $data["salario"]=$this->input->post("salario");
         $data["id_setor"]=$this->input->post("id_setor");
+
         $this->cargo->update($id_cargo,$data);
 
         $this->session->set_flashdata('success', 'Cargo editado com sucesso');
 
         redirect('cargo');
-      }
-      else{
+
+      } else{
         $this->session->set_flashdata('errors', $this->form_validation->error_array());
         $this->session->set_flashdata('old_data', $this->input->post());
         redirect('cargo/editar/'.$id_cargo);  
       }
       
     } else{
+      $data['errors'] = $this->session->flashdata('errors');
+      $data['title']         = 'Editar Cargo';     
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
-      $data['setores']       = $this->setor->get();
-      $data['title']         = 'Editar Cargo';      
+      $data['old_data'] = $this->session->flashdata('old_data');
+      $data['setores']       = $this->setor->get();       
       $data['assets'] = array(
         'js' => array(
           'lib/jquery/jquery.maskMoney.min.js',

@@ -14,7 +14,7 @@
         <div class="card-header">
           <strong class="card-title">Editar Cargo</strong>
         </div>
-        <form id="form_cargo" action="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" method="post">
+        <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
       
               <div class="card-body card-block">
           <div class="row justify-content-center">
