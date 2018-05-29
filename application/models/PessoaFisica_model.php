@@ -26,7 +26,7 @@ class PessoaFisica_model extends CI_Model{
           $dados['tipo'] = 'insert';
           $dados['acao'] = 'Inserir';
           $dados['data'] = date('Y-m-d H:i:s');          
-          $dados['tabela'] = 'Pessoa Fisica';
+          $dados['tabela'] = 'Pessoa_fisica';
           $dados['item_editado'] = $id_pessoa_fisica;
           $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa fisica ' . $dados['item_editado'];
 
@@ -92,7 +92,7 @@ class PessoaFisica_model extends CI_Model{
           $dados['tipo'] = 'delete';
           $dados['acao'] = 'Deletar';
           $dados['data'] = date('Y-m-d H:i:s');			
-          $dados['tabela'] = 'Pessoa Fisica';
+          $dados['tabela'] = 'Pessoa_fisica';
           $dados['item_editado'] = $id_pessoa;
           $dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa fisica ' . $dados['item_editado'];
     

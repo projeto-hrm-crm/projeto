@@ -28,7 +28,7 @@ class PessoaJuridica_model extends CI_Model
             $dados['tipo'] = 'insert';
             $dados['acao'] = 'Inserir';
             $dados['data'] = date('Y-m-d H:i:s');            
-            $dados['tabela'] = 'Pessoa Juridica';
+            $dados['tabela'] = 'Pessoa_juridica';
             $dados['item_editado'] = $id_pessoa_juridica;
             $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa juridica ' . $dados['item_editado'];
 
@@ -76,7 +76,7 @@ class PessoaJuridica_model extends CI_Model
         $dados['tipo'] = 'delete';
         $dados['acao'] = 'Deletar';
         $dados['data'] = date('Y-m-d H:i:s');			
-        $dados['tabela'] = 'Pessoa Juridica';
+        $dados['tabela'] = 'Pessoa_juridica';
         $dados['item_editado'] = $id_pessoa_juridica;
         $dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa juridica ' . $dados['item_editado'];
   

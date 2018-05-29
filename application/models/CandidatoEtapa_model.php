@@ -25,7 +25,7 @@ class CandidatoEtapa_model extends CI_Model
         $dados['tipo'] = 'insert';
         $dados['acao'] = 'Inserir';
         $dados['data'] = date('Y-m-d H:i:s');
-        $dados['tabela'] = 'Candidato_Etapa';
+        $dados['tabela'] = 'Candidato_etapa';
         $dados['item_editado'] = $id_candidato_etapa;
         $dados['descricao'] = $dados['id_usuario'] . ' Inseriu a etapa do candidato ' . $dados['item_editado'];
 
@@ -55,7 +55,7 @@ class CandidatoEtapa_model extends CI_Model
         $dados['tipo'] = 'delete';
         $dados['acao'] = 'Remover';
         $dados['data'] = date('Y-m-d H:i:s');
-        $dados['tabela'] = 'Candidato_Etapa';
+        $dados['tabela'] = 'Candidato_etapa';
         $dados['item_editado'] = $id_candidato_etapa;
         $dados['descricao'] = $dados['id_usuario'] . ' Removeu a etapa do candidato ' . $dados['item_editado'];
 
