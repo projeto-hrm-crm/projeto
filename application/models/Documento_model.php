@@ -17,13 +17,14 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'insert';
 			$dados['acao'] = 'Inserir';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Documento';
 			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o documento ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Inseriu o documento ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_documento;
@@ -52,13 +53,14 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Documento';
 			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o documento ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Atualizou o documento ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_documento;
@@ -80,13 +82,14 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'delete';
 			$dados['acao'] = 'Deletar';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Documento';
 			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o documento ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Deletou o documento ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_documento;

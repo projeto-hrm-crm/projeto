@@ -13,16 +13,17 @@ class Iteracao_model extends CI_Model {
 
     if($id_iteracao)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'insert';
-        $dados['acao'] = 'Inserir';
-        $dados['data'] = date('Y-m-d H:i:s');
-        $dados['tabela'] = 'Iteracao';
-        $dados['item_editado'] = $id_iteracao;
-        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu a iteracao ' . $dados['item_editado'];
+      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+      $dados['id_usuario'] = $this->session->userdata('user_login');
+      $dados['tipo'] = 'insert';
+      $dados['acao'] = 'Inserir';
+      $dados['data'] = date('Y-m-d H:i:s');
+      $dados['tabela'] = 'Iteracao';
+      $dados['item_editado'] = $id_iteracao;
+      $dados['descricao'] = $nome . ' Inseriu a iteracao ' . $dados['item_editado'];
 
-        $this->relatorio->setLog($dados);
-        return $id_iteracao;
+      $this->relatorio->setLog($dados);
+      return $id_iteracao;
     }
   }
 
@@ -57,16 +58,17 @@ class Iteracao_model extends CI_Model {
 
     if($id_iteracao)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'update';
-        $dados['acao'] = 'Atualizar';
-        $dados['data'] = date('Y-m-d H:i:s');
-        $dados['tabela'] = 'Iteracao';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou a iteracao ' . $dados['item_editado'];
+      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+      $dados['id_usuario'] = $this->session->userdata('user_login');
+      $dados['tipo'] = 'update';
+      $dados['acao'] = 'Atualizar';
+      $dados['data'] = date('Y-m-d H:i:s');
+      $dados['tabela'] = 'Iteracao';
+      $dados['item_editado'] = $id;
+      $dados['descricao'] = $nome . ' Atualizou a iteracao ' . $dados['item_editado'];
 
-        $this->relatorio->setLog($dados);
-        return $id_iteracao;
+      $this->relatorio->setLog($dados);
+      return $id_iteracao;
     }
 
     
@@ -83,16 +85,17 @@ class Iteracao_model extends CI_Model {
     
     if($id_iteracao)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'delete';
-        $dados['acao'] = 'Deletar';
-        $dados['data'] = date('Y-m-d H:i:s');
-        $dados['tabela'] = 'Iteracao';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Deletou a iteracao ' . $dados['item_editado'];
+      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+      $dados['id_usuario'] = $this->session->userdata('user_login');
+      $dados['tipo'] = 'delete';
+      $dados['acao'] = 'Deletar';
+      $dados['data'] = date('Y-m-d H:i:s');
+      $dados['tabela'] = 'Iteracao';
+      $dados['item_editado'] = $id;
+      $dados['descricao'] = $nome . ' Deletou a iteracao ' . $dados['item_editado'];
 
-        $this->relatorio->setLog($dados);
-        return $id_iteracao;
+      $this->relatorio->setLog($dados);
+      return $id_iteracao;
     }
   }
 

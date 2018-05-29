@@ -16,13 +16,14 @@ class Funcionario_model extends CI_Model {
 
 			if($id_funcionario)
 	        {
+				$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 	            $dados['id_usuario'] = $this->session->userdata('user_login');
 	            $dados['tipo'] = 'insert';
 	            $dados['acao'] = 'Inserir';
 	            $dados['data'] = date('Y-m-d H:i:s');				
 	            $dados['tabela'] = 'Funcionario';
 	            $dados['item_editado'] = $id_funcionario;
-	            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o funcionário ' . $dados['item_editado'];
+	            $dados['descricao'] = $nome . ' Inseriu o funcionário ' . $dados['item_editado'];
 
 	            $this->relatorio->setLog($dados);
 	            return $id_funcionario;
@@ -92,13 +93,14 @@ public function getById($id_funcionario)
 
 			if($id_funcionario)
 			{
+				$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 				$dados['id_usuario'] = $this->session->userdata('user_login');
 				$dados['tipo'] = 'delete';
 				$dados['acao'] = 'Deletar';
 				$dados['data'] = date('Y-m-d H:i:s');				
 				$dados['tabela'] = 'Funcionario';
 				$dados['item_editado'] = $id;
-				$dados['descricao'] = $dados['id_usuario'] . ' Deletou o funcionário ' . $dados['item_editado'];
+				$dados['descricao'] = $nome . ' Deletou o funcionário ' . $dados['item_editado'];
 
 				$this->relatorio->setLog($dados);
 				return $id_funcionario;

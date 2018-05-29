@@ -16,13 +16,14 @@ class Andamento_model extends CI_Model
         
         if($id_andamento)
         {
+            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'insert';
             $dados['acao'] = 'Inserir';
             $dados['data'] = date('Y-m-d H:i:s');
             $dados['tabela'] = 'Andamento';
             $dados['item_editado'] = $id_andamento;
-            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o andamento ' . $dados['item_editado'];
+            $dados['descricao'] = $nome . ' Inseriu o andamento ' . $dados['item_editado'];
     
             $this->relatorio->setLog($dados);
             return $id_andamento;
@@ -47,13 +48,14 @@ class Andamento_model extends CI_Model
 
         if($id_andamento)
         {
+            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'update';
             $dados['acao'] = 'Atualizar';
             $dados['data'] = date('Y-m-d H:i:s');
             $dados['tabela'] = 'Andamento';
             $dados['item_editado'] = $id_andamento;
-            $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o andamento ' . $dados['item_editado'];
+            $dados['descricao'] = $nome . ' Atualizou o andamento ' . $dados['item_editado'];
     
             $this->relatorio->setLog($dados);
             return $id_andamento;
@@ -79,13 +81,14 @@ class Andamento_model extends CI_Model
 
         if($id_andamento)
         {
+            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'delete';
             $dados['acao'] = 'Deletar';
             $dados['data'] = date('Y-m-d H:i:s');
             $dados['tabela'] = 'Andamento';
             $dados['item_editado'] = $id_andamento;
-            $dados['descricao'] = $dados['id_usuario'] . ' Deletou o andamento ' . $dados['item_editado'];
+            $dados['descricao'] = $nome . ' Deletou o andamento ' . $dados['item_editado'];
     
             $this->relatorio->setLog($dados);
             return $id_andamento;

@@ -19,13 +19,14 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'insert';
 			$dados['acao'] = 'Inserir';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Pessoa';
 			$dados['item_editado'] = $id_pessoa;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Inseriu pessoa ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_pessoa;
@@ -71,13 +72,14 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Pessoa';
 			$dados['item_editado'] = $id_pessoa;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou pessoa ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Atualizou pessoa ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_pessoa;
@@ -98,13 +100,14 @@ class Pessoa_model extends CI_Model {
 
 		if($id)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'delete';
 			$dados['acao'] = 'Deletar';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Pessoa';
 			$dados['item_editado'] = $id;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Deletou a pessoa ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id;

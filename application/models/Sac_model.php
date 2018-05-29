@@ -15,16 +15,18 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'insert';
-          $dados['acao'] = 'Inserir';
-          $dados['data'] = date('Y-m-d H:i:s');          
-          $dados['tabela'] = 'SAC';
-          $dados['item_editado'] = $id_sac;
-          $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o SAC ' . $dados['item_editado'];
+        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 
-          $this->relatorio->setLog($dados);
-          return $id_sac;
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'insert';
+        $dados['acao'] = 'Inserir';
+        $dados['data'] = date('Y-m-d H:i:s');          
+        $dados['tabela'] = 'SAC';
+        $dados['item_editado'] = $id_sac;
+        $dados['descricao'] = $nome . ' Inseriu o SAC ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_sac;
       }
 
     } catch (\Exception $e) {}
@@ -62,16 +64,18 @@ class Sac_model extends CI_Model {
 
     if($id_sac)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'update';
-        $dados['acao'] = 'Atualizar';
-        $dados['data'] = date('Y-m-d H:i:s');        
-        $dados['tabela'] = 'SAC';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o SAC ' . $dados['item_editado'];
+      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 
-        $this->relatorio->setLog($dados);
-        return $id_sac;
+      $dados['id_usuario'] = $this->session->userdata('user_login');
+      $dados['tipo'] = 'update';
+      $dados['acao'] = 'Atualizar';
+      $dados['data'] = date('Y-m-d H:i:s');        
+      $dados['tabela'] = 'SAC';
+      $dados['item_editado'] = $id;
+      $dados['descricao'] = $nome . ' Atualizou o SAC ' . $dados['item_editado'];
+
+      $this->relatorio->setLog($dados);
+      return $id_sac;
     }
   }
 
@@ -101,16 +105,18 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'delete';
-          $dados['acao'] = 'Deletar';
-          $dados['data'] = date('Y-m-d H:i:s');          
-          $dados['tabela'] = 'SAC';
-          $dados['item_editado'] = $id;
-          $dados['descricao'] = $dados['id_usuario'] . ' Deletou o SAC ' . $dados['item_editado'];
+        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 
-          $this->relatorio->setLog($dados);
-          return $id_sac;
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'delete';
+        $dados['acao'] = 'Deletar';
+        $dados['data'] = date('Y-m-d H:i:s');          
+        $dados['tabela'] = 'SAC';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $nome . ' Deletou o SAC ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_sac;
       }
 
 

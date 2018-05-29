@@ -122,16 +122,17 @@ class Fornecedor_model extends CI_Model
 
       if($id_fornecedor)
       {
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'delete';
-          $dados['acao'] = 'Deletar';
-          $dados['data'] = date('Y-m-d H:i:s');          
-          $dados['tabela'] = 'Fornecedor';
-          $dados['item_editado'] = $id;
-          $dados['descricao'] = $dados['id_usuario'] . ' Deletou o fornecedor ' . $dados['item_editado'];
+        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'delete';
+        $dados['acao'] = 'Deletar';
+        $dados['data'] = date('Y-m-d H:i:s');          
+        $dados['tabela'] = 'Fornecedor';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $nome . ' Deletou o fornecedor ' . $dados['item_editado'];
 
-          $this->relatorio->setLog($dados);
-          return $id_fornecedor;
+        $this->relatorio->setLog($dados);
+        return $id_fornecedor;
       }
     } catch (\Exception $e) {}
   }

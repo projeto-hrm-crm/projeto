@@ -22,16 +22,17 @@ class PessoaFisica_model extends CI_Model{
 
       if($id_pessoa_fisica)
       {
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'insert';
-          $dados['acao'] = 'Inserir';
-          $dados['data'] = date('Y-m-d H:i:s');          
-          $dados['tabela'] = 'Pessoa_fisica';
-          $dados['item_editado'] = $id_pessoa_fisica;
-          $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa fisica ' . $dados['item_editado'];
+        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'insert';
+        $dados['acao'] = 'Inserir';
+        $dados['data'] = date('Y-m-d H:i:s');          
+        $dados['tabela'] = 'Pessoa_fisica';
+        $dados['item_editado'] = $id_pessoa_fisica;
+        $dados['descricao'] = $nome . ' Inseriu pessoa fisica ' . $dados['item_editado'];
 
-          $this->relatorio->setLog($dados);
-          return $id_pessoa_fisica;
+        $this->relatorio->setLog($dados);
+        return $id_pessoa_fisica;
       }
     } catch (\Exception $e) {
 
@@ -88,13 +89,14 @@ class PessoaFisica_model extends CI_Model{
 
         if($id_pessoa)
         {
+          $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
           $dados['id_usuario'] = $this->session->userdata('user_login');
           $dados['tipo'] = 'delete';
           $dados['acao'] = 'Deletar';
           $dados['data'] = date('Y-m-d H:i:s');			
           $dados['tabela'] = 'Pessoa_fisica';
           $dados['item_editado'] = $id_pessoa;
-          $dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa fisica ' . $dados['item_editado'];
+          $dados['descricao'] = $nome . ' Deletou a pessoa fisica ' . $dados['item_editado'];
     
           $this->relatorio->setLog($dados);
           return $id_pessoa;

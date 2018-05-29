@@ -16,13 +16,14 @@ class Candidato_model extends CI_Model {
 
 		if($id_candidato)
 	    {
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 	        $dados['id_usuario'] = $this->session->userdata('user_login');
 	        $dados['tipo'] = 'insert';
 	        $dados['acao'] = 'Inserir';
 	        $dados['data'] = date('Y-m-d H:i:s');			
 	        $dados['tabela'] = 'Candidato';
 	        $dados['item_editado'] = $id_candidato;
-	        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o candidato ' . $dados['item_editado'];
+	        $dados['descricao'] = $nome . ' Inseriu o candidato ' . $dados['item_editado'];
 
 	        $this->relatorio->setLog($dados);
 	        return $id_candidato;
@@ -44,13 +45,14 @@ class Candidato_model extends CI_Model {
 
 		if($id_candidato)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'delete';
 			$dados['acao'] = 'Deletar';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Candidato';
 			$dados['item_editado'] = $id;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o candidato ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Deletou o candidato ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id_candidato;
@@ -127,13 +129,14 @@ class Candidato_model extends CI_Model {
 
 		if($id)
 		{
+			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
 			$dados['id_usuario'] = $this->session->userdata('user_login');
 			$dados['tipo'] = 'update';
 			$dados['acao'] = 'Atualizar';
 			$dados['data'] = date('Y-m-d H:i:s');			
 			$dados['tabela'] = 'Candidato';
 			$dados['item_editado'] = $id;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o candidato ' . $dados['item_editado'];
+			$dados['descricao'] = $nome . ' Atualizou o candidato ' . $dados['item_editado'];
 
 			$this->relatorio->setLog($dados);
 			return $id;

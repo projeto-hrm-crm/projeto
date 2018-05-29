@@ -24,16 +24,17 @@ class PessoaJuridica_model extends CI_Model
 
         if($id_pessoa_juridica)
         {
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'insert';
-            $dados['acao'] = 'Inserir';
-            $dados['data'] = date('Y-m-d H:i:s');            
-            $dados['tabela'] = 'Pessoa_juridica';
-            $dados['item_editado'] = $id_pessoa_juridica;
-            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu pessoa juridica ' . $dados['item_editado'];
+          $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+          $dados['id_usuario'] = $this->session->userdata('user_login');
+          $dados['tipo'] = 'insert';
+          $dados['acao'] = 'Inserir';
+          $dados['data'] = date('Y-m-d H:i:s');            
+          $dados['tabela'] = 'Pessoa_juridica';
+          $dados['item_editado'] = $id_pessoa_juridica;
+          $dados['descricao'] = $nome . ' Inseriu pessoa juridica ' . $dados['item_editado'];
 
-            $this->relatorio->setLog($dados);
-            return $id_pessoa_juridica;
+          $this->relatorio->setLog($dados);
+          return $id_pessoa_juridica;
         }
   }
 
@@ -72,13 +73,14 @@ class PessoaJuridica_model extends CI_Model
    
       if($id_pessoa_juridica)
       {
+        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
         $dados['id_usuario'] = $this->session->userdata('user_login');
         $dados['tipo'] = 'delete';
         $dados['acao'] = 'Deletar';
         $dados['data'] = date('Y-m-d H:i:s');			
         $dados['tabela'] = 'Pessoa_juridica';
         $dados['item_editado'] = $id_pessoa_juridica;
-        $dados['descricao'] = $dados['id_usuario'] . ' Deletou a pessoa juridica ' . $dados['item_editado'];
+        $dados['descricao'] = $nome . ' Deletou a pessoa juridica ' . $dados['item_editado'];
   
         $this->relatorio->setLog($dados);
         return $id_pessoa_juridica;

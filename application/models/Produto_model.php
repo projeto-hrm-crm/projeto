@@ -38,13 +38,15 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
+            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'insert';
             $dados['acao'] = 'Inserir';
             $dados['data'] = date('Y-m-d H:i:s');            
             $dados['tabela'] = 'Produto';
             $dados['item_editado'] = $id_produto;
-            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o produto ' . $_POST['nome'];
+            $dados['descricao'] = $nome . ' Inseriu o produto ' . $_POST['nome'];
 
             $this->relatorio->setLog($dados);
             return $id_produto;
@@ -74,13 +76,15 @@ class Produto_model extends CI_Model
         {
             $id_produto = $array['id_produto'];
 
+            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'update';
             $dados['acao'] = 'Atualizar';
             $dados['data'] = date('Y-m-d H:i:s');            
             $dados['tabela'] = 'Produto';
             $dados['item_editado'] = $id_produto;
-            $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o produto ' . $array['nome'];
+            $dados['descricao'] = $nome . ' Atualizou o produto ' . $array['nome'];
 
             $this->relatorio->setLog($dados);
             return $id_produto;
@@ -100,13 +104,15 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
+            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+
             $dados['id_usuario'] = $this->session->userdata('user_login');
             $dados['tipo'] = 'delete';
             $dados['acao'] = 'Deletar';
             $dados['data'] = date('Y-m-d H:i:s');            
             $dados['tabela'] = 'Produto';
             $dados['item_editado'] = $id;
-            $dados['descricao'] = $dados['id_usuario'] . ' Deletou o produto ' . $dados['item_editado'];
+            $dados['descricao'] = $nome . ' Deletou o produto ' . $dados['item_editado'];
 
             $this->relatorio->setLog($dados);
             return $id_produto;
