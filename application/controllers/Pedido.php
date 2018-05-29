@@ -14,22 +14,32 @@ class Pedido extends CI_Controller
 	  	parent::__construct();
 	    $user_id = $this->session->userdata('user_login');
 	    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-	    $this->usuario->hasPermission($user_id, $currentUrl);
+	    #$this->usuario->hasPermission($user_id, $currentUrl);
 	}
 
 	/**
 	* @author: Tiago Villalobos
-	* Listagem de pedidos realizados por clientes
+	* Listagem de pedidos realizados para clientes
 	*
 	*
 	*/
 	public function index()
 	{
-
 		$data['title'] = 'Pedidos';
 
-		$data['pedidos'] = $this->pedido->get();
+		$data['pedidos'] = $this->pedido->getFromClients();
+		$data['compras'] = $this->pedido->getFromProviders();
 
+		foreach($data['pedidos'] as $pedido)
+		{
+			$pedido->produtos = $this->produto->getByOrder($pedido->id);
+		}
+
+		foreach($data['compras'] as $compra)
+		{
+			$compra->produtos = $this->produto->getByOrder($compra->id);
+		}
+		
 		$data['success_message'] = $this->session->flashdata('success');
        	$data['error_message']   = $this->session->flashdata('danger');
 
@@ -49,6 +59,42 @@ class Pedido extends CI_Controller
 		loadTemplate('includes/header', 'pedido/index', 'includes/footer', $data);
 	}
 
+	/**
+	* @author: Tiago Villalobos
+	* Listagem de pedidos realizados para Fornecedores
+	*
+	*
+	*/
+	public function indexProvider()
+	{
+
+		$data['title'] = 'Pedidos';
+		$data['pedidos'] = $this->pedido->getFromProviders($this->session->userdata('user_login'));
+
+		foreach($data['pedidos'] as $pedido)
+		{
+			$pedido->produtos = $this->produto->getByOrder($pedido->id);
+		}
+
+		$data['success_message'] = $this->session->flashdata('success');
+       	$data['error_message']   = $this->session->flashdata('danger');
+
+		$data['assets'] = array(
+			'css' => array(
+				'lib/datatable/dataTables.bootstrap.min.css'
+			),
+
+			'js' => array(
+				'lib/data-table/datatables.min.js',
+				'lib/data-table/dataTables.bootstrap.min.js',
+				'datatable.js',
+				'confirm.modal.js'
+			),
+		);
+
+		loadTemplate('includes/header', 'pedido/index_fornecedor', 'includes/footer', $data);
+	}
+
 
 	/**
 	* @author: Tiago Villalobos
@@ -63,8 +109,9 @@ class Pedido extends CI_Controller
   			{
   				$pedido = array(
   					'id_pessoa' => $this->input->post('id_pessoa'),
-  					'descricao'  => $this->input->post('descricao'),
-  					'tipo'       => $this->input->post('tipo')
+  					'descricao' => $this->input->post('descricao'),
+  					'transacao' => $this->input->post('transacao'), 
+  					'tipo'      => $this->input->post('tipo')
   				);
 
   				$id_pedido = $this->pedido->insert($pedido);
@@ -112,8 +159,9 @@ class Pedido extends CI_Controller
 				),
 			);
 
-	  		$data['clientes'] = $this->cliente->get();
-	  		$data['produtos'] = $this->produto->get();
+	  		$data['clientes']  = $this->cliente->get();
+	  		$data['produtos']  = $this->produto->get();
+	  		$data['situacoes'] = $this->andamento->getSituations();
 
 	  		$data['errors']          = $this->session->flashdata('errors');
 	  		$data['old_data']        = $this->session->flashdata('old_data');
@@ -196,9 +244,32 @@ class Pedido extends CI_Controller
 				),
 			);
 			
-	  		$data['clientes']        = $this->cliente->get();
-	  		$data['produtos']        = $this->produto->get();
-	  		$data['pedido']          = $this->pedido->getById($id);
+	  		$data['pedido'] = $this->pedido->getById($id);
+
+	  		if($data['pedido']->transacao == 'V')
+	  		{
+	  			$data['label']    = 'Cliente';
+		  		$data['clientes'] = $this->cliente->get();
+		  		$data['produtos'] = $this->produto->get();
+	  		}
+	  		else
+	  		{
+	  			$data['label']    = 'Fornecedor';
+	  			$data['clientes'] = $this->fornecedor->get();
+
+	  			$id_provider;
+	  			foreach($data['clientes'] as $cliente)
+	  			{
+	  				if($cliente->id_pessoa == $data['pedido']->id_pessoa)
+	  				{
+	  					$id_provider = $cliente->id_fornecedor;
+	  				}
+	  			}
+
+		  		$data['produtos'] = $this->produto->getByProvider($id_provider);
+	  		}
+
+	  		$data['situacoes']       = $this->andamento->getSituations();
 	  		$data['pedido_produtos'] = $this->produto->getByOrder($id);
 
 	  		$data['errors']          = $this->session->flashdata('errors');
@@ -211,6 +282,72 @@ class Pedido extends CI_Controller
 				$data
 			);
 		}
+	}
+
+	/**
+	* @author: Tiago Villalobos
+	* Formulário para edição de pedido do Fornecedor
+	*
+	* @param $id integer
+	*/
+	public function editProvider($id)
+	{
+		if($this->input->post())
+				{
+					if($this->form_validation->run('pedido_fornecedor'))
+					{
+						$pedido = array(
+							'id_pedido'  => $id,
+		  					'descricao'  => $this->input->post('descricao'),
+		  				);
+
+		  				$this->pedido->update($pedido);
+
+		  				$andamento = array(
+		  					'data'      => date('Y-m-d h:i:s'),
+		  					'situacao'  => $this->input->post('situacao'),
+		  					'id_pedido' => $id
+		  				);
+
+		  				$this->andamento->update($andamento);
+
+		  				$this->session->set_flashdata('success', 'Atualizado com sucesso.');
+		  				redirect('pedido/fornecedor');
+		  				
+					}
+					else
+					{
+						$this->session->set_flashdata('errors', $this->form_validation->error_array());
+						$this->session->set_flashdata('old_data', $this->input->post());
+						redirect('pedido/fornecedor/editar/'.$id);
+					}
+				}
+				else
+				{
+					$data['title'] = 'Edição de Pedido';
+
+					$data['assets'] = array(
+						'js' => array(
+							'lib/jquery/jquery.validate.min.js',
+							'validate.js',
+						),
+					);
+					
+			  		$data['situacoes']       = $this->andamento->getSituations();
+			  		$data['pedido']          = $this->pedido->getById($id);
+			  		$data['pedido_produtos'] = $this->produto->getByOrder($id);
+
+			  		$data['errors']          = $this->session->flashdata('errors');
+			  		$data['old_data']        = $this->session->flashdata('old_data');
+
+					loadTemplate(
+						'includes/header',
+						'pedido/editar_fornecedor',
+						'includes/footer',
+						$data
+					);
+
+				}
 	}
 
 
@@ -246,23 +383,85 @@ class Pedido extends CI_Controller
 	* Retorna JSON com fornecedores utilizado para adequação do formulário para cadastro de pedidos aos fornecedores
 	*
 	* @return: mixed 
-	* @todo: Mudar o nome do método quando for ser implementado
 	*/
-	public function getJSON()
+	public function getProvidersJSON()
 	{
-	  echo json_encode($this->fornecedor->get());
+	  	echo json_encode($this->fornecedor->get());
 	}
 
+	/**
+	* @author: Tiago Villalobos
+	* Retorna JSON com clientes
+	*
+	* @return: mixed 
+	*/
+	public function getClientsJSON()
+	{
+	  	echo json_encode($this->cliente->get());
+	}
 
-	public function pdf($id)
+	/**
+	* @author: Tiago Villalobos
+	* Retorna JSON com produtos
+	*
+	* @return: mixed 
+	*/
+	public function getProductsJSON()
+	{
+	  	echo json_encode($this->produto->get());
+	}
+
+	/**
+	* @author: Tiago Villalobos
+	* Retorna JSON com produtos de um determinado fornecedor
+	*
+	* @return: mixed 
+	*/
+	public function getProductsByProviderJSON($id_fornecedor)
+	{
+		echo json_encode($this->produto->getByProvider($id_fornecedor));
+	}
+
+	/**
+	* @author: Tiago Villalobos
+	* Gera PDF para Cliente
+	*
+	* @param: $id 
+	*/
+	public function pdfClient($id)
 	{
 		
-		$data['pedido']          = $this->pedido->getByIdCompleteData($id);
+		$data['pedido']          = $this->pedido->getByIdCompleteDataClient($id);
 	  	$data['pedido_produtos'] = $this->produto->getByOrder($id);
 
 		$mpdf = new \Mpdf\Mpdf();
 		
-		$html = $this->load->view('pedido/pdf', $data, TRUE);
+		$html = $this->load->view('pedido/pdf_cliente', $data, TRUE);
+		
+		$mpdf->SetTitle('Pedido Nº '.$id);
+		
+		$mpdf->SetFooter('{PAGENO}');
+		
+		$mpdf->writeHTML($html);
+		
+		$mpdf->Output('pedido-'.$id.'.pdf', 'I');
+	}
+
+	/**
+	* @author: Tiago Villalobos
+	* Gera PDF para Fornecedor
+	*
+	* @param: $id 
+	*/
+	public function pdfProvider($id)
+	{
+		
+		$data['pedido']          = $this->pedido->getByIdCompleteDataProvider($id);
+	  	$data['pedido_produtos'] = $this->produto->getByOrder($id);
+
+		$mpdf = new \Mpdf\Mpdf();
+		
+		$html = $this->load->view('pedido/pdf_fornecedor', $data, TRUE);
 		
 		$mpdf->SetTitle('Pedido Nº '.$id);
 		
