@@ -208,7 +208,6 @@ $config = array(
             'rules' => 'required'
         ),
 
-
         array(
             'field' => 'estado',
             'label' => 'Estado',

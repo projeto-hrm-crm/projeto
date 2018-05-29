@@ -28,7 +28,7 @@
           <!--NOME--> 
           <div class="form-group col-12 col-md-6">
             <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>">
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
