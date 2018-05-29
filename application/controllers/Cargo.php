@@ -89,19 +89,17 @@ class Cargo extends CI_Controller
   * @author: Beto Cadilhe
   * Realiza o cadastro de um cargo, com validação dos dados recebidos da view cargo/cadastro.php
   */
-
   public function create()
   {
     if($this->input->post()){
 
       if($this->form_validation->run('cargo')){
-        $cargo = array(
-         'nome' => $this->input->post('nome'),
-         'descricao' => $this->input->post('descricao'),
-         'salario' => $this->input->post('salario'),
-         'id_setor' => $this->input->post('id_setor'),
-        );
-          $this->cargo->insert($cargo);
+        $data["nome"]=$this->input->post("nome");
+        $data["descricao"]=$this->input->post("descricao");
+        $data["salario"]=$this->input->post("salario");
+        $data["id_setor"]=$this->input->post("id_setor");
+
+          $this->cargo->insert($data);
           $this->session->set_flashdata('success','Cadastrado com sucesso');
           redirect('cargo');
       }else{
@@ -136,7 +134,6 @@ class Cargo extends CI_Controller
   *
   * @param integer: referem-se ao id do cargo a ser alterado
   */
-
   public function edit($id_cargo)
   {
     if ($this->input->post()){
