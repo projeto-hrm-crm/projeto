@@ -9,7 +9,21 @@ class Iteracao_model extends CI_Model {
   */
   public function insert($dados) {
     $this->db->insert('iteracao', $dados);
-    return $this->db->insert_id();
+    $id_iteracao = $this->db->insert_id();
+
+    if($id_iteracao)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'insert';
+        $dados['acao'] = 'Inserir';
+        $dados['data'] = date('Y-m-d H:i:s');
+        $dados['tabela'] = 'Iteracao';
+        $dados['item_editado'] = $id_iteracao;
+        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu a iteracao ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_iteracao;
+    }
   }
 
   /**
@@ -37,9 +51,25 @@ class Iteracao_model extends CI_Model {
   * Este método atualiza as informações da iteracao referenciado pelo id
   *
   */
-  public function update($data, $id_iteracao) {
-    $this->db->where('id_iteracao', $id_iteracao);
-    $this->db->update('iteracao', $data);
+  public function update($data, $id) {
+    $this->db->where('id_iteracao', $id);
+    $id_iteracao = $this->db->update('iteracao', $data);
+
+    if($id_iteracao)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'update';
+        $dados['acao'] = 'Atualizar';
+        $dados['data'] = date('Y-m-d H:i:s');
+        $dados['tabela'] = 'Iteracao';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou a iteracao ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_iteracao;
+    }
+
+    
   }
 
   /**
@@ -49,7 +79,21 @@ class Iteracao_model extends CI_Model {
   */
   public function remove($id) {
     $this->db->where('id_iteracao', $id);
-    $this->db->delete('iteracao');
+    $id_iteracao = $this->db->delete('iteracao');
+    
+    if($id_iteracao)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'delete';
+        $dados['acao'] = 'Deletar';
+        $dados['data'] = date('Y-m-d H:i:s');
+        $dados['tabela'] = 'Iteracao';
+        $dados['item_editado'] = $id;
+        $dados['descricao'] = $dados['id_usuario'] . ' Deletou a iteracao ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_iteracao;
+    }
   }
 
 }

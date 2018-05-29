@@ -17,6 +17,21 @@ class CandidatoEtapa_model extends CI_Model
   public function insert($data)
   {
     $this->db->insert('candidato_etapa',$data);
+    $id_candidato_etapa = $this->db->insert_id();
+
+    if($id_candidato_etapa)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'insert';
+        $dados['acao'] = 'Inserir';
+        $dados['data'] = date('Y-m-d H:i:s');
+        $dados['tabela'] = 'Candidato_Etapa';
+        $dados['item_editado'] = $id_candidato_etapa;
+        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu a etapa do candidato ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_candidato_etapa;
+    }
   }
 
 
@@ -29,8 +44,24 @@ class CandidatoEtapa_model extends CI_Model
   public function remove($id_candidato,$id_vaga_etapa)
   {
     $this->db->where('id_candidato', $id_candidato);
+    $id_candidato_etapa = $this->db->get('candidato_etapa')->row()->id_candidato_etapa;
+
     $this->db->where('id_vaga_etapa', $id_vaga_etapa);
     $this->db->delete('candidato_etapa');
+
+    if($id_candidato_etapa)
+    {
+        $dados['id_usuario'] = $this->session->userdata('user_login');
+        $dados['tipo'] = 'delete';
+        $dados['acao'] = 'Remover';
+        $dados['data'] = date('Y-m-d H:i:s');
+        $dados['tabela'] = 'Candidato_Etapa';
+        $dados['item_editado'] = $id_candidato_etapa;
+        $dados['descricao'] = $dados['id_usuario'] . ' Removeu a etapa do candidato ' . $dados['item_editado'];
+
+        $this->relatorio->setLog($dados);
+        return $id_candidato_etapa;
+    }
   }
 
 
