@@ -130,15 +130,34 @@ class Produto_model extends CI_Model
       return $this->db->get('produto')->row();
     }
 
+    /**
+    * @author: Tiago Villalobos
+    * Retorna produtos pelo id do pedido
+    *
+    * @return: mixed
+    */
     public function getByOrder($id_pedido)
     {
         return
             $this->db->select('pedido_produto.quantidade, produto.id_produto, produto.nome, produto.valor')
-           ->join('pedido_produto', 'pedido_produto.id_produto = produto.id_produto')
-           ->where('pedido_produto.id_pedido', $id_pedido)
-           ->get('produto')
-           ->result();
+               ->join('pedido_produto', 'pedido_produto.id_produto = produto.id_produto')
+               ->where('pedido_produto.id_pedido', $id_pedido)
+               ->get('produto')
+               ->result();
 
+    }
+
+    /**
+    * @author: Tiago Villalobos
+    * Retorna produtos pelo id do fornecedor
+    *
+    * @return: mixed
+    */
+    public function getByProvider($id_fornecedor)
+    {
+        $this->db->where('produto.id_fornecedor', $id_fornecedor);
+
+        return $this->get();
     }
 
 }
