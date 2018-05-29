@@ -9,28 +9,28 @@
 	                <div class="card-body">
 	                    <div class="card-body">
 	                    	<div class="row">
-	                    			                        	<div class="form-group col-6">
-	                    			                        		<label for="tipo" class="control-label mb-1">Tipo de Pedido</label>
-	                    			                        		<br>
-	                    			                        		<div class="form-check-inline form-check">
-	                    			                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                    			                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo (isset($old_data['tipo']) && strtoupper($old_data['tipo']) == 'P') || strtoupper($pedido->tipo) == 'P' ? 'checked' : ''?>>
-	                    			                        		    Produtos
-	                    			                        		  </label>
-	                    			                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                    			                        		    <input type="radio" name="tipo" value="S" class="form-check-input" <?php echo (isset($old_data['tipo']) && strtoupper($old_data['tipo']) == 'S') || strtoupper($pedido->tipo) == 'S' ? 'checked' : ''?>>
-	                    			                        		    Serviços
-	                    			                        		  </label>
-	                    			                        		  <label for="tipo3" class="form-check-label <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                    			                        		    <input type="radio" name="tipo" value="PS" class="form-check-input" <?php echo (isset($old_data['tipo']) && strtoupper($old_data['tipo']) == 'PS') || strtoupper($pedido->tipo) == 'PS' ? 'checked' : ''?>>
-	                    			                        		    Ambos
-	                    			                        		  </label>
+	                        	<div class="form-group col-6">
+	                        		<label for="tipo" class="control-label mb-1">Tipo de Pedido</label>
+	                        		<br>
+	                        		<div class="form-check-inline form-check">
+	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo (isset($old_data['tipo']) && strtoupper($old_data['tipo']) == 'P') || strtoupper($pedido->tipo) == 'P' ? 'checked' : ''?>>
+	                        		    Produtos
+	                        		  </label>
+	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="S" class="form-check-input" <?php echo (isset($old_data['tipo']) && strtoupper($old_data['tipo']) == 'S') || strtoupper($pedido->tipo) == 'S' ? 'checked' : ''?>>
+	                        		    Serviços
+	                        		  </label>
+	                        		  <label for="tipo3" class="form-check-label <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
+	                        		    <input type="radio" name="tipo" value="PS" class="form-check-input" <?php echo (isset($old_data['tipo']) && strtoupper($old_data['tipo']) == 'PS') || strtoupper($pedido->tipo) == 'PS' ? 'checked' : ''?>>
+	                        		    Ambos
+	                        		  </label>
 
-	                    			                        		</div>
-	                    			                        		<div class="text-danger">
-	                    		                        				<small class="d-none" id="error-tipo"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
-	                    		                        			</div>
-	                    			                        	</div>
+	                        		</div>
+	                        		<div class="text-danger">
+                        				<small class="d-none" id="error-tipo"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
+                        			</div>
+	                        	</div>
 	                    	</div>
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
