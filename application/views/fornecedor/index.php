@@ -48,8 +48,6 @@
                               <td><?= $fornecedor->email; ?></td>
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
-                                
-
                                  
                                  <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar">
                                     <span class="fa fa-edit"></span>
