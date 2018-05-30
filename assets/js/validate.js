@@ -3,8 +3,7 @@ jQuery(document).ready(function($) {;
     $(function() {
         $("#valor_produto").maskMoney();
         $("#salario_cargo").maskMoney();
-    })
-                                    
+    })                          
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -871,6 +870,8 @@ jQuery(document).ready(function($) {;
     }
   })
   //final da alteração do telefone
+});
+
   /**
   * @author: Beto Cadilhe
   * Validação de cnpj: 
@@ -923,4 +924,3 @@ jQuery(document).ready(function($) {;
     return (resultado == digitos.charAt(1));
 }) */
 
-});
