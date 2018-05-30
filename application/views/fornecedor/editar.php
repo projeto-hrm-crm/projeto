@@ -1,3 +1,4 @@
+<div class="animated fadeIn">
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-8">
     <div class="card">
@@ -138,6 +139,7 @@
          </div>
        </form>
    </div>
+</div>
 </div>
 
 <script type="text/javascript">

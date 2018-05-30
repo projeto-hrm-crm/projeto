@@ -60,6 +60,11 @@ $config = array(
             'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
+            'field' => 'lote',
+            'label' => 'Lote',
+            'rules' => 'required'
+        ),
+        array(
             'field' => 'codigo',
             'label' => 'Codigo',
             'rules' => 'required|numeric'
@@ -67,23 +72,28 @@ $config = array(
         array(
             'field' => 'fabricacao',
             'label' => 'Fabricacao',
-            'rules' => 'required|exact_length[10]'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
         ),
         array(
             'field' => 'validade',
             'label' => 'Validade',
-            'rules' => 'required|exact_length[10]'
-        ),
-        array(
-            'field' => 'lote',
-            'label' => 'Lote',
-            'rules' => 'required|numeric'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida',
+            ),
         ),
         array(
             'field' => 'recebimento',
             'label' => 'Recebimento',
-            'rules' => 'required|exact_length[10]'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
         ),
+
     ),
     'pessoa' => array(
 
@@ -96,7 +106,7 @@ $config = array(
         array(
             'field' => 'email',
             'label' => 'E-Mail',
-            'rules' => 'valid_email'
+            'rules' => 'required|valid_email'
         ),
 
         array(
@@ -173,23 +183,80 @@ $config = array(
 
     ),
 
+  // @Beto Cadilhe
   'fornecedor' => array(
           array(
                   'field' => 'nome',
                   'label' => 'Nome',
-                  'rules' => 'required'
+                  'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]',
+                  'rules' => 'required|min_length[1]',     
+                  'rules' => 'required|max_length[45]'      
           ),
+
+          array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required|valid_email'
+          ),
+
           array(
                   'field' => 'razao_social',
                   'label' => 'Razão Social',
-                  'rules' => 'required'
+                  'rules' => 'required',
+                  'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
           ),
+
+          /* array(
+            'field' => 'cnpj',
+            'label' => 'CNPJ',
+            'rules' => requiredIf('tipo_pessoa', 'pj')
+        ), */
+
           array(
-                  'field' => 'cnpj',
-                  'label' => 'CNPJ',
-                  'rules' => 'required'
-          ),
-    ),
+            'field' => 'telefone',
+            'label' => 'Telefone',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'estado',
+            'label' => 'Estado',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'cidade',
+            'label' => 'Cidade',
+            'rules' => 'required|integer'
+        ),
+
+        array(
+            'field' => 'cep',
+            'label' => 'CEP',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'logradouro',
+            'label' => 'Logradouro',
+            'rules' => 'required',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+        ),
+
+        array(
+            'field' => 'numero',
+            'label' => 'Número',
+            'rules' => 'required'
+        ),
+
+        array(
+            'field' => 'bairro',
+            'label' => 'Bairro',
+            'rules' => 'required',
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
+       ),
+                 
+),
         'login' => array(
                 array(
                         'field' => 'email',
@@ -381,7 +448,7 @@ $config = array(
             'label' => 'Descrição',
             'rules' => 'required|max_length[200]',
             'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'                 
-    ),
+          ),
           array(
                   'field' => 'salario',
                   'label' => 'Salário',
@@ -393,6 +460,82 @@ $config = array(
             'rules' => 'required|numeric'
             ),
     ),
+      'usuario' =>
+      array(
+          array(
+              'field' => 'nome',
+              'label' => 'nome completo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'email',
+              'label' => 'email',
+              'rules' => 'required'
+          ),
+          // array(
+          //     'field' => 'data_nascimento',
+          //     'label' => 'data de nascimento',
+          //     'rules' => 'required|validDate',
+          //     'errors' => array(
+          //         'validDate' => 'O campo data de nascimento deve conter uma data válida'
+          //     ),
+          // ),
+          array(
+              'field' => 'sexo',
+              'label' => 'sexo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cpf',
+              'label' => 'cpf',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'telefone',
+              'label' => 'telefone',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cep',
+              'label' => 'cep',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'estado',
+              'label' => 'estado',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cidade',
+              'label' => 'cidade',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'bairro',
+              'label' => 'bairro',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'logradouro',
+              'label' => 'endereço',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'numero',
+              'label' => 'número',
+              'rules' => 'required|numeric'
+          ),
+          array(
+              'field' => 'senha',
+              'label' => 'senha',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'senha2',
+              'label' => 'confirmar senha',
+              'rules' => 'required'
+          ),
+      ),
 );
 
 /**

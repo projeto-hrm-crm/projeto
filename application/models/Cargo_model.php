@@ -46,9 +46,9 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Cargo', date('Y-m-d'), 'Cargo',  $id_cargo);
-        return $id_cargo;
+        $this->relatorio->insertLog('Cargo', $id_cargo, 'Inseriu o cargo', $id_cargo);
     }
+    return $id_cargo;
   }
 
   /**
@@ -58,9 +58,15 @@ class Cargo_model extends CI_Model
   * @param integer $id_cargo refere-se ao id do registro de cargo a ser editado
   * @return boolean: True - caso editado com sucesso, False - não editado
   */
-  public function update($id_cargo,$data)
+  public function update($id,$data)
   {
-    return $this->db->update("cargo",$data,array('id_cargo'=>$id_cargo));
+    $id_cargo = $this->db->update("cargo",$data,array('id_cargo'=>$id));
+
+    if($id_cargo)
+    {
+        $this->relatorio->updateLog('Cargo', $id_cargo, 'Atualizou o cargo', $id);
+    }
+    return $id_cargo;
   }
 
   /**
@@ -69,9 +75,15 @@ class Cargo_model extends CI_Model
   *
   * @param integer: $id_cargo refere-se ao id do registro de cargo a ser deletado
   */
-  public function delete($id_cargo)
+  public function delete($id)
   {
-    $this->db->delete('cargo', array('id_cargo' => $id_cargo));
+    $id_cargo = $this->db->delete('cargo', array('id_cargo' => $id));
+
+    if($id_cargo)
+    {
+        $this->relatorio->deleteLog('Cargo', $id_cargo, 'Deletou o cargo', $id);
+    }
+    return $id_cargo;
   }
 }
 ?>

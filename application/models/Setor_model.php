@@ -52,9 +52,9 @@ class Setor_model extends CI_Model
 
     if($id_setor)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Setor', date('Y-m-d'), 'Setor', $id_setor);
-        return $id_setor;
+      $this->relatorio->insertLog('Setor', $id_setor, 'Inseriu o setor', $id_setor);
     }
+    return $id_setor;
   }
 
   /**
@@ -64,9 +64,15 @@ class Setor_model extends CI_Model
   * @param integer $id_setor refere-se ao id do registro de setor a ser editado
   * @return boolean: True - caso editado com sucesso, False - não editado
   */
-  public function update($data,$id_setor)
+  public function update($data,$id)
   {
-    return $this->db->update("setor",$data,array('id_setor'=>$id_setor));
+    $id_setor = $this->db->update("setor",$data,array('id_setor'=>$id));
+
+    if($id_setor)
+    {
+      $this->relatorio->updateLog('Setor', $id_setor, 'Atualizou o setor', $id);
+    }
+    return $id_setor;
   }
 
   /**
@@ -75,10 +81,16 @@ class Setor_model extends CI_Model
 	*
 	* @param integer: $id_setor refere-se ao id do registro de setor a ser deletado
 	*/
-	public function remove($id_setor)
+	public function remove($id)
 	{
-		$this->db->where('id_setor', $id_setor);
-		$this->db->delete('setor');
+		$this->db->where('id_setor', $id);
+		$id_setor = $this->db->delete('setor');
+
+      if($id_setor)
+      {
+        $this->relatorio->deleteLog('Setor', $id_setor, 'Deletou o setor', $id);
+      }
+      return $id_setor;
 	}
 }
 ?>

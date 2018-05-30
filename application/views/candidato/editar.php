@@ -19,7 +19,7 @@
               </div> <!-- FIM EMAIL -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
-                <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($candidato[0]->data_nascimento)?>" class="form-control data" required>
+                <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars(switchDate($candidato[0]->data_nascimento))?>" class="form-control data" required>
               </div> <!-- DATA DE NASCIMENTO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Sexo</label><br>
@@ -33,7 +33,7 @@
               </div> <!-- FIM CPF -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="telefone" name="tel" class="form-control telefone"  value="<?php echo htmlspecialchars($candidato[0]->telefone)?>"  >
+                <input type="text" id="telefone" name="tel" class="form-control alter_mask"  value="<?php echo htmlspecialchars($candidato[0]->telefone)?>"  >
               </div> <!-- FIM TELEFONE -->
 
               <!-- INÍCIO ENDEREÇO -->

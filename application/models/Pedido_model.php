@@ -1,21 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pedido_model extends CI_Model 
+class Pedido_model extends CI_Model
 {
 
 	/**
 	* @author: Tiago Villalobos
 	* Insere pedido no banco e retorna o último id inserido
 	*
-	* @param: $pedido mixed 
+	* @param: $pedido mixed
 	* @return: integer
 	*/
 	public function insert($pedido)
 	{
 		$this->db->insert('pedido', $pedido);
+		$id_pedido = $this->db->insert_id();
 
-		return $this->db->insert_id();
+		if($id_pedido)
+		{
+			$this->relatorio->insertLog('Pedido', $id_pedido, 'Inseriu o pedido', $id_pedido);
+		}
+		return $id_pedido;
 	}
 
 	/**
@@ -54,7 +59,7 @@ class Pedido_model extends CI_Model
 	*/
 	public function getById($id)
 	{
-		return 
+		return
 			$this->db->select('pedido.*, andamento.situacao')
 			->where('pedido.id_pedido', $id)
 			->join('andamento', 'pedido.id_pedido = andamento.id_pedido')
@@ -71,15 +76,15 @@ class Pedido_model extends CI_Model
 	*/
 	public function get()
 	{
-		
+
 		$this->db->select('pedido.id_pedido, pedido.id_pessoa, pedido.descricao, pedido.tipo, (valor * quantidade) as subtotal')
 		    ->from('produto')
 		    ->join('pedido_produto', 'produto.id_produto = pedido_produto.id_produto')
 		    ->join('pedido', 'pedido.id_pedido = pedido_produto.id_pedido');
 
 		$sub_query = $this->db->get_compiled_select();
-		     
-		return 
+
+		return
 			$this->db->select(
 					'pedido.id_pedido AS id, pedido.tipo, descricao, pessoa.nome AS cliente, andamento.situacao, andamento.data,  SUM(subtotal) AS total'
 				)
@@ -105,30 +110,37 @@ class Pedido_model extends CI_Model
 	public function update($pedido)
 	{
         $this->db->where('pedido.id_pedido', $pedido['id_pedido']);
-        
         $this->db->set('pedido.id_pessoa', $pedido['id_pessoa']);
-        $this->db->set('pedido.descricao',    $pedido['descricao']);
-        $this->db->set('pedido.tipo',       $pedido['tipo']);
-        
-        $this->db->update('pedido');
+        $this->db->set('pedido.descricao', $pedido['descricao']);
+        $this->db->set('pedido.tipo', $pedido['tipo']);
+        $id_pedido = $this->db->update('pedido');
+
+		if($id_pedido)
+		{
+			$this->relatorio->updateLog('Pedido', $id_pedido, 'Atualizou o pedido', $pedido['id_pedido']);
+		}
+		return $id_pedido;
 
     }
 
     /**
 	* @author: Tiago Villalobos
-	* Remove um pedido do banco utilizando o id do mesmo e 
+	* Remove um pedido do banco utilizando o id do mesmo e
 	* retorna verdadeiro ou falso caso consiga remove-lo
 	*
 	* @param: $id integer
 	* @return: boolean
 	*/
     public function remove($id)
-    { 
-        $query = $this->db->where('pedido.id_pedido', $id);
-        
-        $query->delete('pedido');
-        
-        return $query->affected_rows() > 0 ? true : false;
+    {
+       	$this->db->where('pedido.id_pedido', $id);
+    	$id_pedido = $this->db->delete('pedido');
+
+		if($id_pedido)
+		{
+			$this->relatorio->deleteLog('Pedido', $id_pedido, 'Deletou o pedido', $id);
+		}
+		return $id_pedido;
     }
 
 }
