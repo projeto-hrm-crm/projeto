@@ -29,6 +29,22 @@ class Usuario_model extends CI_Model
     }
 
     /**
+    * @author: Matheus Ladislau
+    * Retorna se login já existe
+    * @return: true or false para login ja estar cadastrado
+    */
+    public function existsLogin($login){
+        $this->db->where('login',$login);
+        $query = $this->db->get('usuario');
+        if ($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
   	* @author: Matheus Ladislau
   	* Remove o registro de usuario pelo id de usuário referente
   	*

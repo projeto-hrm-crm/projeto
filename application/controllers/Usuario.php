@@ -8,34 +8,40 @@ class Usuario extends CI_Controller
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
   }
 
-    /**
-    * @author: Matheus Ladislau
-    * Realiza o cadastro de um usuario, dados recebidos da view setor/cadastro.php
-    */
-    public function create(){
-      if($this->input->post())
+  public function index(){
+    $data['cidades'] = $this->cidade->get();
+    $data['estados'] = $this->estado->get();
+    $this->load->view(
+      'login/cadastrar.php',
+      $data
+    );
+  }
+
+  /**
+  * @author: Matheus Ladislau
+  * Realiza o cadastro de um usuario, dados recebidos da view setor/cadastro.php
+  */
+  public function create(){
+    if($this->input->post())
+    {
+      if(!$this->form_validation->run('usuario'))
       {
-        if(!$this->form_validation->run('usuario'))
+        $this->session->set_flashdata('errors','Não foi possível realizar o cadastro<br>Verifique os campos abaixo');
+        $this->index();
+      }
+      else
+      {
+        if($this->input->post("senha")!=$this->input->post("senha2"))
         {
-          $this->session->set_flashdata('errors','Não foi possível realizar o cadastro<br>Verifique os campos abaixo');
-          $data['cidades'] = $this->cidade->get();
-          $data['estados'] = $this->estado->get();
-          $this->load->view(
-            'login/cadastrar.php',
-            $data
-          );
+          $this->session->set_flashdata('errors','Senhas não coincidem');
+          $this->index();
         }
         else
         {
-          if($this->input->post("senha")!=$this->input->post("senha2"))
+          if($this->usuario->existsLogin($this->input->post("email")))
           {
-            $this->session->set_flashdata('errors','Senhas não coincidem');
-            $data['cidades'] = $this->cidade->get();
-            $data['estados'] = $this->estado->get();
-            $this->load->view(
-              'login/cadastrar.php',
-              $data
-            );
+            $this->session->set_flashdata('errors','E-mail já cadastrado no sistema.<br>Favor inserir outro e-mail');
+            $this->index();
           }
           else
           {
@@ -73,19 +79,15 @@ class Usuario extends CI_Controller
 
             $this->session->set_flashdata('success','Usuário criado.<br>Já é possível acessar com seu e-mail e senha.');
             redirect('login');
-            }
           }
         }
-        else
-        {
-          $data['cidades'] = $this->cidade->get();
-          $data['estados'] = $this->estado->get();
-          $this->load->view(
-          'login/cadastrar.php',
-          $data
-          );
-        }
       }
+    }
+      else
+      {
+        $this->index();
+      }
+    }
 
     /**
     * @author: Matheus Ladislau
