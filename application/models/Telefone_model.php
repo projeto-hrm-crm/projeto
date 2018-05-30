@@ -19,9 +19,9 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Telefone', date('Y-m-d'), 'Telefone', $telefone);
-			return $id_telefone;
+			$this->relatorio->insertLog('Telefone', $id_telefone, 'Inseriu o telefone', $id_telefone);
 		}
+		return $id_telefone;
 	}
 
 	public function get(){}
@@ -36,14 +36,16 @@ class Telefone_model extends CI_Model {
 	public function update($telefone)
 	{
 		$this->db->where('telefone.id_pessoa', $telefone['id_pessoa']);
+		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
+
 		$this->db->set('telefone.numero', $telefone['numero']);
-		$id_telefone = $this->db->update('telefone');
+		$this->db->update('telefone');
 
 		if($id_telefone)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Telefone', date('Y-m-d'), 'Telefone', $telefone['id_pessoa']);
-			return $id_telefone;
+			$this->relatorio->updateLog('Telefone', $id_telefone, 'Atualizou o telefone', $id_telefone);
 		}
+		return $id_telefone;
 	}
 
 
@@ -56,8 +58,15 @@ class Telefone_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
 		$this->db->delete('telefone');
-	}
 
+		if($id_telefone)
+		{
+			$this->relatorio->deleteLog('Telefone', $id_telefone, 'Deletou o telefone', $id_telefone);
+		}
+		return $id_telefone;
+
+	}
 
 }

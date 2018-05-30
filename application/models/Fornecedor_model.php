@@ -96,7 +96,13 @@ class Fornecedor_model extends CI_Model
   {
     try {
       $this->db->where('id_fornecedor', $id);
-      $this->db->delete('fornecedor');
+      $id_fornecedor = $this->db->delete('fornecedor');
+
+      if($id_fornecedor)
+      {
+        $this->relatorio->deleteLog('Fornecedor', $id_fornecedor, 'Deletou o fornecedor', $id);
+      }
+      return $id_fornecedor;
     } catch (\Exception $e) {}
   }
 }

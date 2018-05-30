@@ -27,9 +27,28 @@ class Funcionario extends CI_Controller
   **/
   public function index()
   {
+    $dados['assets'] = array(
+      'js' => array(
+        'lib/data-table/datatables.min.js',
+        'lib/data-table/dataTables.bootstrap.min.js',
+        'datatable.js',
+        'confirm.modal.js',
+      ),
+    );
     $data['title'] = 'funcionarios';
     $data['funcionarios'] = $this->funcionario->get();
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
 
+    foreach ($data['funcionarios'] as $key => $cliente) {
+      $data['funcionarios'][$key]->data_nascimento = switchDate($data['funcionarios'][$key]->data_nascimento);
+    }
     loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
   }
 
@@ -56,7 +75,7 @@ class Funcionario extends CI_Controller
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
         $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
-    		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
+    		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->funcionario->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'funcionario cadastrado com sucesso.');
         redirect('funcionario');
@@ -96,7 +115,7 @@ class Funcionario extends CI_Controller
 
         $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $funcionario[0]->id_pessoa]);
 
-        $this->pessoa_fisica->update($funcionario[0]->id_pessoa_fisica,['data_nascimento'=> $data['funcionario']['data_nascimento'],'sexo'=>$data['funcionario']['sexo']]);
+        $this->pessoa_fisica->update($funcionario[0]->id_pessoa,['data_nascimento'=> switchDate($data['funcionario']['data_nascimento']),'sexo'=>$data['funcionario']['sexo']]);
         $this->session->set_flashdata('success', 'funcionario editado com sucesso.');
         redirect('funcionario');
     }

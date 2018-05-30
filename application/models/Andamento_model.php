@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Andamento_model extends CI_Model 
+class Andamento_model extends CI_Model
 {
 
     /**
@@ -11,7 +11,14 @@ class Andamento_model extends CI_Model
     */
 	public function insert($andamento)
 	{
-		$this->db->insert('andamento', $andamento);
+        $this->db->insert('andamento', $andamento);
+        $id_andamento = $this->db->insert_id();
+        
+        if($id_andamento)
+        {
+            $this->relatorio->insertLog('Andamento', $id_andamento, 'Inseriu o andamento', $id_andamento);
+        }
+        return $id_andamento;
 	}
 
     /**
@@ -23,11 +30,18 @@ class Andamento_model extends CI_Model
 	public function update($andamento)
 	{
         $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
-        
+        $id_andamento = $this->db->get('andamento')->row()->id_andamento;
+
         $this->db->set('andamento.data', $andamento['data']);
         $this->db->set('andamento.situacao', $andamento['situacao']);
-        
+
         $this->db->update('andamento');
+
+        if($id_andamento)
+        {
+            $this->relatorio->updateLog('Andamento', $id_andamento, 'Atualizou o andamento', $id_andamento);
+        }
+        return $id_andamento;
 
     }
 
@@ -41,12 +55,16 @@ class Andamento_model extends CI_Model
     */
     public function remove($id)
     {
-        
-        $query = $this->db->where('andamento.id_pedido', $id);
-        
-        $query->delete('andamento');
-        
-        return $query->affected_rows() > 0 ? true : false;
+        $id_andamento = $this->db->get('andamento')->row()->id_andamento;
+        $this->db->where('andamento.id_pedido', $id);
+        $this->db->delete('andamento');
+
+        if($id_andamento)
+        {
+            $this->relatorio->deleteLog('Andamento', $id_andamento, 'Deletou o andamento', $id_andamento);
+        }
+        return $id_andamento;
+
     }
 
 }

@@ -60,6 +60,11 @@ $config = array(
             'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
+            'field' => 'lote',
+            'label' => 'Lote',
+            'rules' => 'required'
+        ),
+        array(
             'field' => 'codigo',
             'label' => 'Codigo',
             'rules' => 'required|numeric'
@@ -67,23 +72,28 @@ $config = array(
         array(
             'field' => 'fabricacao',
             'label' => 'Fabricacao',
-            'rules' => 'required|exact_length[10]'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
         ),
         array(
             'field' => 'validade',
             'label' => 'Validade',
-            'rules' => 'required|exact_length[10]'
-        ),
-        array(
-            'field' => 'lote',
-            'label' => 'Lote',
-            'rules' => 'required|numeric'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida',
+            ),
         ),
         array(
             'field' => 'recebimento',
             'label' => 'Recebimento',
-            'rules' => 'required|exact_length[10]'
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
         ),
+
     ),
     'pessoa' => array(
 
@@ -450,6 +460,82 @@ $config = array(
             'rules' => 'required|numeric'
             ),
     ),
+      'usuario' =>
+      array(
+          array(
+              'field' => 'nome',
+              'label' => 'nome completo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'email',
+              'label' => 'email',
+              'rules' => 'required'
+          ),
+          // array(
+          //     'field' => 'data_nascimento',
+          //     'label' => 'data de nascimento',
+          //     'rules' => 'required|validDate',
+          //     'errors' => array(
+          //         'validDate' => 'O campo data de nascimento deve conter uma data válida'
+          //     ),
+          // ),
+          array(
+              'field' => 'sexo',
+              'label' => 'sexo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cpf',
+              'label' => 'cpf',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'telefone',
+              'label' => 'telefone',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cep',
+              'label' => 'cep',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'estado',
+              'label' => 'estado',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cidade',
+              'label' => 'cidade',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'bairro',
+              'label' => 'bairro',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'logradouro',
+              'label' => 'endereço',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'numero',
+              'label' => 'número',
+              'rules' => 'required|numeric'
+          ),
+          array(
+              'field' => 'senha',
+              'label' => 'senha',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'senha2',
+              'label' => 'confirmar senha',
+              'rules' => 'required'
+          ),
+      ),
 );
 
 /**
