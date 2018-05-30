@@ -2,8 +2,9 @@ jQuery(document).ready(function($) {;
 
     $(function() {
         $("#valor_produto").maskMoney();
+        $("#salario_cargo").maskMoney();
     })
-
+                                    
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -35,33 +36,133 @@ jQuery(document).ready(function($) {;
     },
   });
 
+  // @Beto Cadilhe
   $("#form_fornecedor").validate({
 
+    highlight:function(input) {
+        jQuery(input).addClass('is-invalid');
+      },
+      unhighlight:function(input){
+        jQuery(input).removeClass('is-invalid');
+      },
+ 
+      errorPlacement:function(error, element)
+      {
+        jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+      },
+  
+      submitHandler:function (form, event) {
+  
+        event.preventDefault(); //Evita que o formulário seja submetido
+  
+        var action = $(form).prop('action'); // Recupera o action do formulário
+  
+        /*
+        *   Verifica se a url do action do formulário contém a palavra editar
+        *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+        *   formulário para o click do botão do modal.
+        *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+        */
+        if(action.indexOf('editar') >= 0)
+        {
+          jQuery("#modalAtualizar").modal('show');
+  
+          jQuery('.btn-edit').click(function () {
+            form.submit();
+          });
+        }
+        else
+        {
+          form.submit();
+        }
+  
+      },
+    
     rules: {
       nome: {
         required:true,
-        letras:true,
+        // regex:/^[a-zA-ZÀ-Úà-ú ]+$/
+        letras:true,          
       },
+
       email: {
         required:true,
         email:true,
       },
-      razao_social: "required",
-      cnpj: "required",
+
+      razao_social: {
+        required:true,
+        // regex:/^[a-zA-ZÀ-Úà-ú ]+$/
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/,       
+      },
+      
+      cnpj:{
+        required:true,
+        cnpj:true,
+      },
+
       telefone: "required",
-      cep: "required",
-      bairro: "required",
       id_estado: "required",
       id_cidade: "required",
+
+      logradouro: {
+        required:true,
+        regex: /^[A-Za-z0-9]/,
+      },
+
       numero: {
         required:true,
         digits:true,
       },
-      logradouro: "required",
-      compremento: "required",
 
+      bairro: {
+        required:true,
+        regex: /^[A-Za-z0-9]/,
+      },
+       
+      complemento: {
+        required:false,
+        regex: /^[A-Za-z0-9]/,
+      },
+
+      cep: {
+        required:true,
+        digits:true,
+      },
+     
     },
 
+    messages: {
+
+      nome:{
+        required: 'O campo Nome é obrigatório',
+        regex:    'O campo não está no formato correto',
+      },
+
+      email:{
+        required: 'O campo E-mail é obrigatório',        
+      },
+
+      razao_social:{
+        required: 'O campo Razão Social é obrigatório',
+        regex:    'O campo não está no formato correto',
+      },
+
+      cnpj:{
+        required: 'O campo CNPJ é obrigatório',
+        cnpj:    'O cnpj não está no formato correto',
+      },
+
+      logradouro:{
+        required: 'O campo logradouro é obrigatório',  
+        regex:    'O campo não está no formato correto',     
+      },
+
+      numero:{
+        required: 'O campo Número é obrigatório',
+        digits:   'O campo não está no formato correto',
+      },
+    },
   });
 
   $("#form-sac").validate({
@@ -476,6 +577,99 @@ jQuery(document).ready(function($) {;
 
   });
 
+  $('#form_cargo').validate({
+
+    highlight:function(input)
+    {
+      jQuery(input).addClass('is-invalid');
+    },
+
+    unhighlight:function(input)
+    {
+      jQuery(input).removeClass('is-invalid');
+    },
+
+    errorPlacement:function(error, element)
+    {
+      jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+    },
+
+    submitHandler:function (form, event) {
+
+      event.preventDefault(); //Evita que o formulário seja submetido
+
+      var action = $(form).prop('action'); // Recupera o action do formulário
+
+      /*
+      *   Verifica se a url do action do formulário contém a palavra editar
+      *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+      *   formulário para o click do botão do modal.
+      *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+      */
+      if(action.indexOf('editar') >= 0)
+      {
+        jQuery("#modalAtualizar").modal('show');
+
+        jQuery('.btn-edit').click(function () {
+          form.submit();
+        });
+      }
+      else
+      {
+        form.submit();
+      }
+
+    },
+
+    rules: {
+
+      nome:{
+        required: true,
+        regex: /^[a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+      },
+
+      descricao:{
+        required:       true,
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+      },
+
+      salario:{
+        required: true,       
+      },
+
+      id_setor:{
+        required: true,  
+        digits:   true,
+        min:      1     
+      },
+
+    },
+
+    messages: {
+
+      nome:{
+        required: 'O campo Nome é obrigatório',
+        regex:    'O campo Nome não está no formato correto.'
+      },
+
+      descricao:{
+        required:       'O campo Descriçao é obrigatório', 
+        regex:    'O campo Descricao não está no formato correto.'       
+      },
+
+      salario:{
+        required: 'O campo salário é obrigatório',       
+      },
+
+     id_setor:{
+        required: 'O setor deve ser selecionado'        
+      },
+
+    },
+
+  });
+
+
   //Métodos de validação extras
 
   /*
@@ -677,4 +871,56 @@ jQuery(document).ready(function($) {;
     }
   })
   //final da alteração do telefone
+  /**
+  * @author: Beto Cadilhe
+  * Validação de cnpj: 
+  **/
+
+ /* jQuery.validator.addMethod("cnpj", function (value, element) {
+
+    var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
+    if (value.length == 0) {
+        return false;
+    }
+
+    value = value.replace(/\D+/g, '');
+    digitos_iguais = 1;
+
+    for (i = 0; i < value.length - 1; i++)
+        if (value.charAt(i) != value.charAt(i + 1)) {
+            digitos_iguais = 0;
+            break;
+        }
+    if (digitos_iguais)
+        return false;
+
+    tamanho = value.length - 2;
+    numeros = value.substring(0, tamanho);
+    digitos = value.substring(tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(0)) {
+        return false;
+    }
+    tamanho = tamanho + 1;
+    numeros = value.substring(0, tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
+    return (resultado == digitos.charAt(1));
+}) */
+
 });
