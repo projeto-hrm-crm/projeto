@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produto_model extends CI_Model
 {
-    
+
     public function __construct(){
         parent::__construct();
     }
@@ -38,17 +38,9 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'insert';
-            $dados['acao'] = 'Inserir';
-            $dados['data'] = date('Y-m-d');
-            $dados['tabela'] = 'Produto';
-            $dados['item_editado'] = $id_produto;
-            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o produto ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-            $this->relatorio->setLog($dados);
-            return $id_produto;
+            $this->relatorio->insertLog('Produto', $id_produto, 'Inseriu o produto', $_POST['nome']);
         }
+        return $id_produto;
     }
 
     /*
@@ -72,19 +64,9 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $id_produto = $array['id_produto'];
-
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'update';
-            $dados['acao'] = 'Atualizar';
-            $dados['data'] = date('Y-m-d');
-            $dados['tabela'] = 'Produto';
-            $dados['item_editado'] = $id_produto;
-            $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o produto ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-            $this->relatorio->setLog($dados);
-            return $id_produto;
+            $this->relatorio->updateLog('Produto', $id_produto, 'Atualizou o produto', $array['nome']);
         }
+        return $id_produto;
     }
 
 
@@ -100,17 +82,9 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'delete';
-            $dados['acao'] = 'Deletar';
-            $dados['data'] = date('Y-m-d');
-            $dados['tabela'] = 'Produto';
-            $dados['item_editado'] = $id;
-            $dados['descricao'] = $dados['id_usuario'] . ' Deletou o produto ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-            $this->relatorio->setLog($dados);
-            return $id_produto;
+            $this->relatorio->deleteLog('Produto', $id_produto, 'Deletou o produto', $id);
         }
+        return $id_produto;
     }
 
     /*

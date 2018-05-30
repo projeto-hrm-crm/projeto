@@ -32,6 +32,16 @@ class Usuario_model extends CI_Model
         }
     }
 
+    public function getUserNameById($user_id)
+    {
+        $this->db->select('*')
+        ->from('pessoa')
+        ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+        ->where('usuario.id_usuario', $user_id);       
+
+        return $this->db->get()->result()[0]->nome;
+    }
+
     /**
      * @author Pedro Henrique Guimarães
      * Método responsável por buscar o grupo de acesso pelo id_usuario

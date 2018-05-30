@@ -7,25 +7,17 @@ class Sac_model extends CI_Model {
   * Este método inserção de dados
   *
   */
-  public function insert($dados) {
+  public function insert($data) {
      try {
 
-      $this->db->insert('sac', $dados);
+      $this->db->insert('sac', $data);
       $id_sac = $this->db->insert_id();
 
       if($id_sac)
       {
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'insert';
-          $dados['acao'] = 'Inserir';
-          $dados['data'] = date('Y-m-d');
-          $dados['tabela'] = 'SAC';
-          $dados['item_editado'] = $id_sac;
-          $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o SAC ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-          $this->relatorio->setLog($dados);
-          return $id_sac;
+        $this->relatorio->insertLog('SAC', $id_sac, 'Inseriu o SAC', $id_sac);
       }
+      return $id_sac;
 
     } catch (\Exception $e) {}
 
@@ -62,17 +54,9 @@ class Sac_model extends CI_Model {
 
     if($id_sac)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'update';
-        $dados['acao'] = 'Atualizar';
-        $dados['data'] = date('Y-m-d');
-        $dados['tabela'] = 'SAC';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o SAC ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-        $this->relatorio->setLog($dados);
-        return $id_sac;
+      $this->relatorio->updateLog('SAC', $id_sac, 'Atualizou o SAC', $id);
     }
+    return $id_sac;
   }
 
   /**
@@ -101,18 +85,9 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'delete';
-          $dados['acao'] = 'Deletar';
-          $dados['data'] = date('Y-m-d');
-          $dados['tabela'] = 'SAC';
-          $dados['item_editado'] = $id;
-          $dados['descricao'] = $dados['id_usuario'] . ' Deletou o SAC ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-          $this->relatorio->setLog($dados);
-          return $id_sac;
+        $this->relatorio->deleteLog('SAC', $id_sac, 'Deletou o SAC', $id);
       }
-
+      return $id_sac;
 
     } catch (\Exception $e) {}
 

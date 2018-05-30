@@ -16,17 +16,9 @@ class Funcionario_model extends CI_Model {
 
 			if($id_funcionario)
 	        {
-	            $dados['id_usuario'] = $this->session->userdata('user_login');
-	            $dados['tipo'] = 'insert';
-	            $dados['acao'] = 'Inserir';
-	            $dados['data'] = date('Y-m-d');
-	            $dados['tabela'] = 'Funcionario';
-	            $dados['item_editado'] = $id_funcionario;
-	            $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o funcionário ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-	            $this->relatorio->setLog($dados);
-	            return $id_funcionario;
-	        }
+				$this->relatorio->insertLog('Funcionario', $id_funcionario, 'Inseriu o funcionario', $id_funcionario);
+			}
+			return $id_funcionario;
     } catch (\Exception $e) {}
 	}
 
@@ -92,17 +84,9 @@ public function getById($id_funcionario)
 
 			if($id_funcionario)
 			{
-				$dados['id_usuario'] = $this->session->userdata('user_login');
-				$dados['tipo'] = 'delete';
-				$dados['acao'] = 'Deletar';
-				$dados['data'] = date('Y-m-d');
-				$dados['tabela'] = 'Funcionario';
-				$dados['item_editado'] = $id;
-				$dados['descricao'] = $dados['id_usuario'] . ' Deletou o funcionário ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-				$this->relatorio->setLog($dados);
-				return $id_funcionario;
+				$this->relatorio->deleteLog('Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
 			}
+			return $id_funcionario;
 	    } catch (\Exception $e) {}
 			// delete pessoa fisica;
 		}

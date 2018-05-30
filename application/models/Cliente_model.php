@@ -16,17 +16,9 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Cliente';
-			$dados['item_editado'] = $id_cliente;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o cliente ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_cliente;
+			$this->relatorio->insertLog('Cliente', $id_cliente, 'Inseriu o cliente', $id_cliente);
 		}
+		return $id_cliente;
  	} catch (\Exception $e) {}
   }
 
@@ -44,17 +36,9 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Cliente';
-			$dados['item_editado'] = $id;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o cliente ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_cliente;
+			$this->relatorio->deleteLog('Cliente', $id_cliente, 'Deletou o cliente', $id);
 		}
+		return $id_cliente;
 		// delete pessoa fisica;
 	}
 
@@ -106,27 +90,16 @@ class Cliente_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function update($id, $data)
+	public function update($id)
 	{
-		try {
-			$this->db->where('id_cliente', $id);
-			$id_cliente = $this->db->update('cliente', $data);
+		$this->db->where('id_cliente', $id);
+		$id_cliente = $this->db->update('cliente');
 
-			if($id_cliente)
-			{
-				$dados['id_usuario'] = $this->session->userdata('user_login');
-				$dados['tipo'] = 'update';
-				$dados['acao'] = 'Atualizar';
-				$dados['data'] = date('Y-m-d');
-				$dados['tabela'] = 'Cliente';
-				$dados['item_editado'] = $id;
-				$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o cliente ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-				$this->relatorio->setLog($dados);
-				return $id_cliente;
-			}
-
-		} catch (\Exception $e) {}
+		if($id_cliente)
+		{
+			$this->relatorio->updateLog('Cliente', $id_cliente, 'Atualizou o cliente', $id);
+		}
+		return $id_cliente;
 	}
 
 	/**

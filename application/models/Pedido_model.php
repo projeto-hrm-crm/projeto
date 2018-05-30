@@ -18,17 +18,9 @@ class Pedido_model extends CI_Model
 
 		if($id_pedido)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Pessoa';
-			$dados['item_editado'] = $id_pedido;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o pedido ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_pedido;
+			$this->relatorio->insertLog('Pedido', $id_pedido, 'Inseriu o pedido', $id_pedido);
 		}
+		return $id_pedido;
 	}
 
 	/**
@@ -125,17 +117,9 @@ class Pedido_model extends CI_Model
 
 		if($id_pedido)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'update';
-			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Pessoa';
-			$dados['item_editado'] = $pedido['id_pedido'];
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o pedido ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_pedido;
+			$this->relatorio->updateLog('Pedido', $id_pedido, 'Atualizou o pedido', $pedido['id_pedido']);
 		}
+		return $id_pedido;
 
     }
 
@@ -149,22 +133,14 @@ class Pedido_model extends CI_Model
 	*/
     public function remove($id)
     {
-        $id_pedido = $this->db->where('pedido.id_pedido', $id);
-        $id_pedido->delete('pedido');
+       	$this->db->where('pedido.id_pedido', $id);
+    	$id_pedido = $this->db->delete('pedido');
 
 		if($id_pedido)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Pessoa';
-			$dados['item_editado'] = $id;
-			$dados['descricao'] = $dados['id_usuario'] . ' Deletou o pedido ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_pedido;
+			$this->relatorio->deleteLog('Pedido', $id_pedido, 'Deletou o pedido', $id);
 		}
+		return $id_pedido;
     }
 
 }
