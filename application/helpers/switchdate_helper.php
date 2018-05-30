@@ -21,10 +21,20 @@ function switchDate($date){
 }
 
 
-
-function swicthTimestamp($timestamp)
+/**
+ * @author: Tiago Villalobos
+ * Transforma um timestamp em data no formato brasileiro
+ * Utilizando o parâmetro $full é possível definir se as horas serão concatenadas no retorno
+ * $full ? data e hora : somente data
+ * 
+ * @param: $timestamp string
+ * @param: $full boolean
+ * @return: string - Data formatada
+ */
+function swicthTimestamp($timestamp, $full = TRUE)
 {
 	$parts = explode(' ', $timestamp);
 	
-	return switchDate($parts[0]).' '.$parts[1];
+	return $full ? switchDate($parts[0]).' '.$parts[1] : switchDate($parts[0]);
 }
+

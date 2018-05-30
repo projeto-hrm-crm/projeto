@@ -17,17 +17,9 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Documento';
-			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o documento ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_documento;
+			$this->relatorio->insertLog('Documento', $id_documento, 'Inseriu o documento', $id_documento);
 		}
+		return $id_documento;
 	}
 
 
@@ -52,17 +44,9 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'update';
-			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Documento';
-			$dados['item_editado'] = $id_documento;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o documento ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_documento;
+			$this->relatorio->updateLog('Documento', $id_documento, 'Atualizou o documento', $id_documento);
 		}
+		return $id_documento;
 	}
 
 	/**
@@ -75,7 +59,14 @@ class Documento_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_documento = $this->db->get('documento')->row()->id_documento;
 		$this->db->delete('documento');
+
+		if($id_documento)
+		{
+			$this->relatorio->deleteLog('Documento', $id_documento, 'Deletou o documento', $id_documento);
+		}
+		return $id_documento;
 
 	}
 }

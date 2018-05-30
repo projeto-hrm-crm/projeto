@@ -132,10 +132,19 @@ $route['candidato_etapa/editar/(:num)']  = 'CandidatoEtapa/edit/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
 //Rotas Pedido
-$route['pedido']                = 'Pedido/index';
-$route['pedido/cadastrar']      = 'Pedido/create';
-$route['pedido/editar/(:num)']  = 'Pedido/edit/$1';
-$route['pedido/excluir/(:num)'] = 'Pedido/delete/$1';
+$route['pedido']                            = 'Pedido/index';
+$route['pedido/cadastrar']                  = 'Pedido/create';
+$route['pedido/editar/(:num)']              = 'Pedido/edit/$1';
+$route['pedido/excluir/(:num)']             = 'Pedido/delete/$1';
+$route['pedido/cliente/pdf/(:num)']         = 'Pedido/pdfClient/$1';
+$route['pedido/fornecedor/pdf/(:num)']      = 'Pedido/pdfProvider/$1';
+$route['pedido/fornecedores']               = 'Pedido/getProvidersJSON';
+$route['pedido/clientes']                   = 'Pedido/getClientsJSON';
+$route['pedido/produtos']                   = 'Pedido/getProductsJSON';
+$route['pedido/produtos/fornecedor/(:num)'] = 'Pedido/getProductsByProviderJSON/$1';
+$route['pedido/fornecedor']                 = 'Pedido/indexProvider';
+$route['pedido/fornecedor/editar/(:num)']   = 'Pedido/editProvider/$1';
+
 
 //Rotas Processo Processo_Seletivo
 $route['processo_seletivo'] = 'Processo_Seletivo/index';
@@ -149,3 +158,6 @@ $route['perfil'] = 'Perfil/admin';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
+
+//Rotas Usuario
+$route['cadastro'] = 'Usuario/create';

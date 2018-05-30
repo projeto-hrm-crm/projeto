@@ -1,8 +1,7 @@
-<?php
 
+<?php
 class Fornecedor_model extends CI_Model
 {
-
   public function get()
   {
     try {
@@ -22,41 +21,31 @@ class Fornecedor_model extends CI_Model
       }
     } catch (\Exception $e) {}
   }
-
   public function getRazaoSocial(){
       $this->db->select('id_fornecedor, razao_social')
       ->join('pessoa_juridica' , 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica');
-
       return $this->db->get('fornecedor')->result();
   }
-
   public function insert($data)
   {
-
     try {
       $cleaned = data_preparation($data);
-
       if($cleaned)
       {
         $id = $this->pessoa->insert($cleaned['pessoa']);
-
         $cleaned['documento']['id_pessoa'] = $id;
         $cleaned['telefone']['id_pessoa'] = $id;
         $cleaned['endereco']['id_pessoa'] = $id;
         $cleaned['pessoa_juridica']['id_pessoa'] = $id;
-
         $this->documento->insert($cleaned['documento']);
         $this->telefone->insert($cleaned['telefone']);
         $this->endereco->insert($cleaned['endereco']);
         $aux['id_pessoa_juridica'] = $this->pessoa_juridica->insert($cleaned['pessoa_juridica']);
-
         $this->db->insert('fornecedor', $aux);
         return $this->db->insert_id();
       }
     } catch (\Exception $e) {}
   }
-
-
   public function find($id)
   {
     try {
@@ -69,7 +58,6 @@ class Fornecedor_model extends CI_Model
   		->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
       ->where('id_fornecedor', $id)
   		->get();
-
       if ($fornecedor)
       {
         return $fornecedor->result();
@@ -79,30 +67,22 @@ class Fornecedor_model extends CI_Model
       }
     } catch (\Exception $e) {}
   }
-
-
   public function update($id, $data)
   {
     try {
-
       $cleaned = data_preparation($data, $id);
-
       if($cleaned)
       {
         $id = $this->pessoa->update($cleaned['pessoa']);
-
         $cleaned['documento']['id_pessoa'] = $id;
         $cleaned['telefone']['id_pessoa'] = $id;
         $cleaned['endereco']['id_pessoa'] = $id;
         $cleaned['pessoa_juridica']['id_pessoa'] = $id;
-
         $this->documento->update($cleaned['documento']);
         $this->telefone->update($cleaned['telefone']);
         $this->endereco->update($cleaned['endereco']);
         $aux['id_pessoa_juridica'] = $this->pessoa_juridica->update($cleaned['pessoa_juridica']);
-
         $this->db->where('id_fornecedor', $id);
-
         if($this->db->update('fornecedor', $aux))
     		{
     			return $aux['id_fornecedor'];
@@ -112,14 +92,17 @@ class Fornecedor_model extends CI_Model
       }
     } catch (\Exception $e) {}
   }
-
-
   public function delete($id)
   {
     try {
       $this->db->where('id_fornecedor', $id);
-      $this->db->delete('fornecedor');
+      $id_fornecedor = $this->db->delete('fornecedor');
+
+      if($id_fornecedor)
+      {
+        $this->relatorio->deleteLog('Fornecedor', $id_fornecedor, 'Deletou o fornecedor', $id);
+      }
+      return $id_fornecedor;
     } catch (\Exception $e) {}
   }
-
 }

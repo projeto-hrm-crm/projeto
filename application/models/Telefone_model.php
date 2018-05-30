@@ -19,17 +19,9 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Telefone';
-			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $dados['id_usuario'] . ' Inseriu o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_telefone;
+			$this->relatorio->insertLog('Telefone', $id_telefone, 'Inseriu o telefone', $id_telefone);
 		}
+		return $id_telefone;
 	}
 
 	public function get(){}
@@ -51,17 +43,9 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'update';
-			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d');
-			$dados['tabela'] = 'Telefone';
-			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $dados['id_usuario'] . ' Atualizou o telefone ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-			$this->relatorio->setLog($dados);
-			return $id_telefone;
+			$this->relatorio->updateLog('Telefone', $id_telefone, 'Atualizou o telefone', $id_telefone);
 		}
+		return $id_telefone;
 	}
 
 
@@ -74,7 +58,14 @@ class Telefone_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
 		$this->db->delete('telefone');
+
+		if($id_telefone)
+		{
+			$this->relatorio->deleteLog('Telefone', $id_telefone, 'Deletou o telefone', $id_telefone);
+		}
+		return $id_telefone;
 
 	}
 

@@ -1,12 +1,3 @@
-<!-- <div class="row justify-content-center">
-  <div class="col-8">
-  <?php if ($this->session->flashdata('success')): ?>
-      <div class="alert alert-success mt-4">
-        <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif; ?>
-  </div>
-</div> -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
     <div class="col-lg-8">
@@ -14,7 +5,7 @@
         <div class="card-header">
           <strong class="card-title">Editar Cargo</strong>
         </div>
-        <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
+        <form id="form_cargo" action="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" method="post">
       
               <div class="card-body card-block">
           <div class="row justify-content-center">
@@ -76,4 +67,3 @@
     </div>
   </div>
 </div>
-

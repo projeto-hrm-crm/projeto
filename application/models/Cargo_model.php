@@ -46,17 +46,9 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'insert';
-        $dados['acao'] = 'Inserir';
-        $dados['data'] = date('Y-m-d');
-        $dados['tabela'] = 'Cargo';
-        $dados['item_editado'] = $id_cargo;
-        $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o cargo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-        $this->relatorio->setLog($dados);
-        return $id_produto;
+        $this->relatorio->insertLog('Cargo', $id_cargo, 'Inseriu o cargo', $id_cargo);
     }
+    return $id_cargo;
   }
 
   /**
@@ -72,17 +64,9 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'update';
-        $dados['acao'] = 'Atualizar';
-        $dados['data'] = date('Y-m-d');
-        $dados['tabela'] = 'Cargo';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Atualizou o cargo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-        $this->relatorio->setLog($dados);
-        return $id_produto;
+        $this->relatorio->updateLog('Cargo', $id_cargo, 'Atualizou o cargo', $id);
     }
+    return $id_cargo;
   }
 
   /**
@@ -97,17 +81,9 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'delete';
-        $dados['acao'] = 'Deletar';
-        $dados['data'] = date('Y-m-d');
-        $dados['tabela'] = 'Cargo';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $dados['id_usuario'] . ' Deletou o cargo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
-
-        $this->relatorio->setLog($dados);
-        return $id_produto;
+        $this->relatorio->deleteLog('Cargo', $id_cargo, 'Deletou o cargo', $id);
     }
+    return $id_cargo;
   }
 }
 ?>
