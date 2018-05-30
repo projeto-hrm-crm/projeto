@@ -12,15 +12,13 @@
         </div>
       </div>
 
-<div class="animated fadeIn">
+
 <div class="row justify-content-center align-items-center">
-
-
    <div class="col-lg-8">
   <div class="card">
-    <div class="card-header">
-      <strong>Cadastro de Fornecedores</strong>
-    </div>
+  <div class="card-header">
+          <strong class="card-title">Cadastrar Fornecedor</strong>
+        </div>
      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
     
     <div class="card-body card-block">
@@ -28,7 +26,7 @@
           <!--NOME--> 
           <div class="form-group col-12 col-md-6">
             <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>">
+                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>

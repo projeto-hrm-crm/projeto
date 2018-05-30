@@ -39,6 +39,45 @@ jQuery(document).ready(function($) {;
   // @Beto Cadilhe
   $("#form_fornecedor").validate({
 
+    highlight:function(input) {
+        jQuery(input).addClass('is-invalid');
+      },
+      unhighlight:function(input){
+        jQuery(input).removeClass('is-invalid');
+      },
+ 
+      errorPlacement:function(error, element)
+      {
+        jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
+      },
+  
+      submitHandler:function (form, event) {
+  
+        event.preventDefault(); //Evita que o formulário seja submetido
+  
+        var action = $(form).prop('action'); // Recupera o action do formulário
+  
+        /*
+        *   Verifica se a url do action do formulário contém a palavra editar
+        *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
+        *   formulário para o click do botão do modal.
+        *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
+        */
+        if(action.indexOf('editar') >= 0)
+        {
+          jQuery("#modalAtualizar").modal('show');
+  
+          jQuery('.btn-edit').click(function () {
+            form.submit();
+          });
+        }
+        else
+        {
+          form.submit();
+        }
+  
+      },
+    
     rules: {
       nome: {
         required:true,
