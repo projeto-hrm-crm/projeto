@@ -72,14 +72,14 @@
                 </div>
 
                 <div class="form-group col-12 col-md-6">
-                  <label class="text-lowercase">Data de Nascimento</label>
-                  <input type="date" id="data_nascimento" name="data_nascimento" value="<?=set_value('data_nascimento')?>" class="form-control" required>
-                </div>
-
-                <div class="form-group col-12 col-md-6">
                   <label class="text-lowercase">Sexo</label><br>
                   <input type="radio" name="sexo" id="sexo_masc" value="0" required /><label class="text-lowercase" for="sexo_masc">Masculino</label>
                   <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label class="text-lowercase" for="sexo_fem" >Feminino</label>
+                </div>
+
+                <div class="form-group col-12 col-md-6">
+                  <label class="text-lowercase">Data de Nascimento</label>
+                  <input type="date" id="data_nascimento" name="data_nascimento" value="<?=set_value('data_nascimento')?>" class="form-control" required>
                 </div>
 
                 <div class="form-group col-12 col-md-6">
@@ -90,11 +90,6 @@
                 <div class="form-group col-12 col-md-6">
                   <label class="text-lowercase">Telefone</label>
                   <input type="text" class="form-control" value="<?=set_value('telefone')?>" placeholder="Telefone" name="telefone">
-                </div>
-
-                <div class="form-group col-12 col-md-6">
-                  <label>CEP</label>
-                  <input type="text" id="cep" name="cep" value="<?=set_value('cep')?>" placeholder="CEP" class="form-control" required>
                 </div>
 
                 <div class="form-group col-12 col-md-6">
@@ -115,6 +110,11 @@
                       <option  value="<?php echo $cidade->id_cidade; ?>"><?php echo $cidade->nome; ?></option>
                     <?php endforeach ?>
                   </select>
+                </div>
+
+                <div class="form-group col-12 col-md-6">
+                  <label>CEP</label>
+                  <input type="text" id="cep" name="cep" value="<?=set_value('cep')?>" placeholder="CEP" class="form-control" required>
                 </div>
 
                 <div class="form-group col-12 col-md-6">
