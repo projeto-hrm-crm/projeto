@@ -1,5 +1,4 @@
 <!-- FUNCIONÁRIO -->
-<div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
     <div class="col-lg-8">
       <div class="card">
@@ -17,12 +16,12 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="email-input" class=" form-control-label">Email</label>
-                <input type="text" id="email" name="email" value="<?= htmlspecialchars($funcionario[0]->email)?>" class="form-control"  title="Digite um e-mail válido" required>
+                <input type="text" id="email" name="email" value="<?= htmlspecialchars($funcionario[0]->email)?>" class="form-control" required>
               </div> <!-- FIM EMAIL -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
-                <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($funcionario[0]->data_nascimento)?>" class="form-control data" required>
+                <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars(switchDate($funcionario[0]->data_nascimento))?>" class="form-control data" required>
               </div> <!-- DATA DE NASCIMENTO -->
 
               <div class="form-group col-12 col-md-6">
@@ -33,12 +32,12 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($funcionario[0]->numero_documento)?>" class="form-control cpf" title="O CPF deve conter 11 dígitos decimais" >
+                <input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($funcionario[0]->numero_documento)?>" class="form-control cpf" >
               </div> <!-- FIM CPF -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($funcionario[0]->telefone)?>" class="form-control telefone" title="Insira um número válido de telefone" >
+                <input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($funcionario[0]->telefone)?>" class="form-control alter_mask" >
               </div> <!-- FIM TELEFONE -->
 
               <!-- INÍCIO ENDEREÇO -->
@@ -87,19 +86,40 @@
 
             </div>
 
-            <div class="card-footer text-right">
-              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-times"></i> Cancelar
-              </a>
-              <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-pencil-square-o"></i> Editar
+            <div class="card-footer">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFuncionario">
+                <span class="fa fa-check"></span>
+                Editar
               </button>
+              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Cancelar
+              </a>
+            </div> <!-- FIM BOTÕES -->
+            <div class="modal fade" id="editarFuncionario" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Editar Funcionario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Deseja realmente editar esse funcionario?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Editar
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-
-          </form>
-
         </div>
+      </form>
       </div>
     </div>
   </div>
-</div>

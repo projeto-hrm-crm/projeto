@@ -17,9 +17,9 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Documento', date('Y-m-d'), 'Documento', $id_documento);
-			return $id_documento;
+			$this->relatorio->insertLog('Documento', $id_documento, 'Inseriu o documento', $id_documento);
 		}
+		return $id_documento;
 	}
 
 
@@ -31,22 +31,23 @@ class Documento_model extends CI_Model {
 	*
 	*
 	*/
+
 	public function update($documento)
 	{
 		$this->db->where('documento.id_pessoa', $documento['id_pessoa']);
+		$id_documento = $this->db->get('documento')->row()->id_documento;
 
 		$this->db->set('documento.numero', $documento['numero']);
 		$this->db->set('documento.tipo',   $documento['tipo']);
 
-		$id_documento = $this->db->update('documento');
+		$this->db->update('documento');
 
 		if($id_documento)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Documento', date('Y-m-d'), 'Documento', $documento['id_pessoa']);
-			return $id_documento;
+			$this->relatorio->updateLog('Documento', $id_documento, 'Atualizou o documento', $id_documento);
 		}
+		return $id_documento;
 	}
-
 
 	/**
 	* @author: Tiago Villalobos
@@ -58,8 +59,14 @@ class Documento_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_documento = $this->db->get('documento')->row()->id_documento;
 		$this->db->delete('documento');
+
+		if($id_documento)
+		{
+			$this->relatorio->deleteLog('Documento', $id_documento, 'Deletou o documento', $id_documento);
+		}
+		return $id_documento;
+
 	}
-
-
 }

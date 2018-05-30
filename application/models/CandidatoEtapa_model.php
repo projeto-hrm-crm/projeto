@@ -17,6 +17,13 @@ class CandidatoEtapa_model extends CI_Model
   public function insert($data)
   {
     $this->db->insert('candidato_etapa',$data);
+    $id_candidato_etapa = $this->db->insert_id();
+
+    if($id_candidato_etapa)
+    {
+      $this->relatorio->insertLog('Candidato_etapa', $id_candidato_etapa, 'Inseriu a etapa do candidato', $id_candidato_etapa);
+    }
+    return $id_candidato_etapa;
   }
 
 
@@ -29,8 +36,16 @@ class CandidatoEtapa_model extends CI_Model
   public function remove($id_candidato,$id_vaga_etapa)
   {
     $this->db->where('id_candidato', $id_candidato);
+    $id_candidato_etapa = $this->db->get('candidato_etapa')->row()->id_candidato_etapa;
+
     $this->db->where('id_vaga_etapa', $id_vaga_etapa);
     $this->db->delete('candidato_etapa');
+
+    if($id_candidato_etapa)
+    {
+      $this->relatorio->deleteLog('Candidato_etapa', $id_candidato_etapa, 'Removeu a etapa do candidato', $id_candidato_etapa);
+    }
+    return $id_candidato_etapa;
   }
 
 

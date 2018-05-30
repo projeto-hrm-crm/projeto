@@ -22,6 +22,11 @@
                     <strong class="card-title">Fornecedores</strong>
                 </div>
                 <div class="card-body">
+          <a href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
+            <i class="fa fa-check"></i> Cadastrar
+          </a><br />
+          <br />
+
                    <table class="table table-striped table-bordered datatable">
                      <thead>
                         <tr>
@@ -68,7 +73,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Excluir produto</h5>
+                <h5 class="modal-title">Excluir Fornecedor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
