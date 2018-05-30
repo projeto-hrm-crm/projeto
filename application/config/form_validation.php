@@ -356,14 +356,77 @@ $config = array(
       'usuario' =>
       array(
           array(
-              'field' => 'login',
-              'label' => 'Login',
-              'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+              'field' => 'nome',
+              'label' => 'nome completo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'email',
+              'label' => 'email',
+              'rules' => 'required'
+          ),
+          // array(
+          //     'field' => 'data_nascimento',
+          //     'label' => 'data de nascimento',
+          //     'rules' => 'required|validDate',
+          //     'errors' => array(
+          //         'validDate' => 'O campo data de nascimento deve conter uma data válida'
+          //     ),
+          // ),
+          array(
+              'field' => 'sexo',
+              'label' => 'sexo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cpf',
+              'label' => 'cpf',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'telefone',
+              'label' => 'telefone',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cep',
+              'label' => 'cep',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'estado',
+              'label' => 'estado',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cidade',
+              'label' => 'cidade',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'bairro',
+              'label' => 'bairro',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'logradouro',
+              'label' => 'endereço',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'numero',
+              'label' => 'número',
+              'rules' => 'required|numeric'
           ),
           array(
               'field' => 'senha',
-              'label' => 'Senha',
-              'rules' => 'required|exact_length[10]'
+              'label' => 'senha',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'senha2',
+              'label' => 'confirmar senha',
+              'rules' => 'required'
           ),
       ),
 );
