@@ -13,24 +13,18 @@ class Pessoa_model extends CI_Model {
 	*/
 	public function insert($pessoa)
 	{
+
 		$pessoa['data_criacao'] = date("Y-m-d");
+		// print_r($pessoa);
+		// exit;
 		$this->db->insert('pessoa', $pessoa);
 		$id_pessoa = $this->db->insert_id();
 
 		if($id_pessoa)
 		{
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Pessoa';
-			$dados['item_editado'] = $id_pessoa;
-			$dados['descricao'] = $nome . ' Inseriu pessoa ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_pessoa;
+			$this->relatorio->insertLog('Pessoa', $id_pessoa, 'Inseriu a pessoa', $id_pessoa);
 		}
+		return $id_pessoa;	
 	}
 
 
@@ -72,17 +66,7 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'update';
-			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Pessoa';
-			$dados['item_editado'] = $id_pessoa;
-			$dados['descricao'] = $nome . ' Atualizou pessoa ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_pessoa;
+			$this->relatorio->updateLog('Pessoa', $id_pessoa, 'Atualizou pessoa', $id_pessoa);
 		}
 
 	}
@@ -100,17 +84,7 @@ class Pessoa_model extends CI_Model {
 
 		if($id)
 		{
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Pessoa';
-			$dados['item_editado'] = $id;
-			$dados['descricao'] = $nome . ' Deletou a pessoa ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id;
+			$this->relatorio->deleteLog('Pessoa', $id, 'Deletou a pessoa', $id);
 		}
 	}
 

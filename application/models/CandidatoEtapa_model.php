@@ -21,17 +21,7 @@ class CandidatoEtapa_model extends CI_Model
 
     if($id_candidato_etapa)
     {
-      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-      $dados['id_usuario'] = $this->session->userdata('user_login');
-      $dados['tipo'] = 'insert';
-      $dados['acao'] = 'Inserir';
-      $dados['data'] = date('Y-m-d H:i:s');
-      $dados['tabela'] = 'Candidato_etapa';
-      $dados['item_editado'] = $id_candidato_etapa;
-      $dados['descricao'] = $nome . ' Inseriu a etapa do candidato ' . $dados['item_editado'];
-
-      $this->relatorio->setLog($dados);
-      return $id_candidato_etapa;
+      $this->relatorio->insertLog('Candidato_etapa', $id_candidato_etapa, 'Inseriu a etapa do candidato', $id_candidato_etapa);
     }
   }
 
@@ -52,17 +42,7 @@ class CandidatoEtapa_model extends CI_Model
 
     if($id_candidato_etapa)
     {
-      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-      $dados['id_usuario'] = $this->session->userdata('user_login');
-      $dados['tipo'] = 'delete';
-      $dados['acao'] = 'Remover';
-      $dados['data'] = date('Y-m-d H:i:s');
-      $dados['tabela'] = 'Candidato_etapa';
-      $dados['item_editado'] = $id_candidato_etapa;
-      $dados['descricao'] = $nome . ' Removeu a etapa do candidato ' . $dados['item_editado'];
-
-      $this->relatorio->setLog($dados);
-      return $id_candidato_etapa;
+      $this->relatorio->deleteLog('Candidato_etapa', $id_candidato_etapa, 'Removeu a etapa do candidato', $id_candidato_etapa);
     }
   }
 

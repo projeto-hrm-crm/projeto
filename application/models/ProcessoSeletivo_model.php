@@ -25,18 +25,7 @@ class ProcessoSeletivo_model extends CI_Model
 
     if($id_processo_seletivo)
     {
-      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-      $dados['id_usuario'] = $this->session->userdata('user_login');
-      $dados['tipo'] = 'insert';
-      $dados['acao'] = 'Inserir';
-      $dados['data'] = date('Y-m-d H:i:s');        
-      $dados['tabela'] = 'Processo_seletivo';
-      $dados['item_editado'] = $id_processo_seletivo;
-      $dados['descricao'] = $nome . ' Inseriu o processo seletivo ' . $dados['item_editado'];
-
-      $this->relatorio->setLog($dados);
-      return $id_processo_seletivo;
+      $this->relatorio->insertLog('Processo_seletivo', $id_processo_seletivo, 'Inseriu o processo seletivo', $id_processo_seletivo);
     }
   }
 
@@ -67,18 +56,7 @@ class ProcessoSeletivo_model extends CI_Model
 
         if($id_processo_seletivo)
         {
-          $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'update';
-          $dados['acao'] = 'Atualizar';
-          $dados['data'] = date('Y-m-d H:i:s');            
-          $dados['tabela'] = 'Processo_seletivo';
-          $dados['item_editado'] = $id;
-          $dados['descricao'] = $nome . ' Atualizou o processo seletivo ' . $dados['item_editado'];
-
-          $this->relatorio->setLog($dados);
-          return $id_processo_seletivo;
+          $this->relatorio->updateLog('Processo_seletivo', $id_processo_seletivo, 'Atualizou o processo seletivo', $id);
         }
 
 		} catch (\Exception $e) {}
@@ -113,18 +91,7 @@ class ProcessoSeletivo_model extends CI_Model
 
         if($id_processo_seletivo)
         {
-          $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-          $dados['id_usuario'] = $this->session->userdata('user_login');
-          $dados['tipo'] = 'delete';
-          $dados['acao'] = 'Deletar';
-          $dados['data'] = date('Y-m-d H:i:s');            
-          $dados['tabela'] = 'Processo_seletivo';
-          $dados['item_editado'] = $id;
-          $dados['descricao'] = $nome . ' Deletou o processo seletivo ' . $dados['item_editado'];
-
-          $this->relatorio->setLog($dados);
-          return $id_processo_seletivo;
+          $this->relatorio->deleteLog('Processo_seletivo', $id_processo_seletivo, 'Deletou o processo seletivo', $id);
         }
     } catch (\Exception $e) {}
   }

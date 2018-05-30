@@ -19,19 +19,7 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Telefone';
-			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $nome . ' Inseriu o telefone ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_telefone;
+			$this->relatorio->insertLog('Telefone', $id_telefone, 'Inseriu o telefone', $id_telefone);
 		}
 	}
 
@@ -54,19 +42,7 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'update';
-			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Telefone';
-			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $nome . ' Atualizou o telefone ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_telefone;
+			$this->relatorio->updateLog('Telefone', $id_telefone, 'Atualizou o telefone', $id_telefone);
 		}
 	}
 
@@ -85,19 +61,7 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Telefone';
-			$dados['item_editado'] = $id_telefone;
-			$dados['descricao'] = $nome . ' Deletou o telefone ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_telefone;
+			$this->relatorio->deleteLog('Telefone', $id_telefone, 'Deletou o telefone', $id_telefone);
 		}
 
 	}

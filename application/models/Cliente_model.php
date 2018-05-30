@@ -16,17 +16,7 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'insert';
-			$dados['acao'] = 'Inserir';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Cliente';
-			$dados['item_editado'] = $id_cliente;
-			$dados['descricao'] = $nome . ' Inseriu o cliente ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_cliente;
+			$this->relatorio->insertLog('Cliente', $id_cliente, 'Inseriu o cliente', $id_cliente);
 		}
  	} catch (\Exception $e) {}
   }
@@ -45,17 +35,7 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'delete';
-			$dados['acao'] = 'Deletar';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Cliente';
-			$dados['item_editado'] = $id;
-			$dados['descricao'] = $nome . ' Deletou o cliente ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_cliente;
+			$this->relatorio->deleteLog('Cliente', $id_cliente, 'Deletou o cliente', $id);
 		}
 		// delete pessoa fisica;
 	}
@@ -115,17 +95,7 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-			$dados['id_usuario'] = $this->session->userdata('user_login');
-			$dados['tipo'] = 'update';
-			$dados['acao'] = 'Atualizar';
-			$dados['data'] = date('Y-m-d H:i:s');			
-			$dados['tabela'] = 'Cliente';
-			$dados['item_editado'] = $id;
-			$dados['descricao'] = $nome . ' Atualizou o cliente ' . $dados['item_editado'];
-
-			$this->relatorio->setLog($dados);
-			return $id_cliente;
+			$this->relatorio->updateLog('Cliente', $id_cliente, 'Atualizou o cliente', $id);
 		}
 	}
 

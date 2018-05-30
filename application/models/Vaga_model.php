@@ -38,19 +38,7 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'insert';
-            $dados['acao'] = 'Inserir';
-            $dados['data'] = date('Y-m-d H:i:s');
-            $dados['tabela'] = 'Vaga';
-            $dados['item_editado'] = $id_vaga;
-            $dados['descricao'] = $nome . ' Inseriu a vaga ' . $dados['item_editado'];
-
-            $this->relatorio->setLog($dados);
-            return $id_vaga;
+            $this->relatorio->insertLog('Vaga', $id_vaga, 'Inseriu a vaga', $id_vaga);
         }
 
     }
@@ -71,19 +59,7 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $id_vaga = $vaga['id_vaga'];
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'update';
-            $dados['acao'] = 'Atualizar';
-            $dados['data'] = date('Y-m-d H:i:s');
-            $dados['tabela'] = 'Vaga';
-            $dados['item_editado'] = $id_vaga;
-            $dados['descricao'] = $nome . ' Atualizou a vaga ' . $dados['item_editado'];
-
-            $this->relatorio->setLog($dados);
-            return $id_vaga;
+            $this->relatorio->updateLog('Vaga', $id_vaga, 'Atualizou a vaga', $vaga['id_vaga']);
         }
 
     }
@@ -100,19 +76,7 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'delete';
-            $dados['acao'] = 'Deletar';
-            $dados['data'] = date('Y-m-d H:i:s');            
-            $dados['tabela'] = 'Vaga';
-            $dados['item_editado'] = $id;
-            $dados['descricao'] = $nome . ' Deletou a vaga ' . $dados['item_editado'];
-
-            $this->relatorio->setLog($dados);
-            return $id_vaga;
+            $this->relatorio->deleteLog('Vaga', $id_vaga, 'Deletou a vaga', $id);
         }
     }
 

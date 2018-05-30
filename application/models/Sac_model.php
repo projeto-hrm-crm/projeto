@@ -15,18 +15,7 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'insert';
-        $dados['acao'] = 'Inserir';
-        $dados['data'] = date('Y-m-d H:i:s');          
-        $dados['tabela'] = 'SAC';
-        $dados['item_editado'] = $id_sac;
-        $dados['descricao'] = $nome . ' Inseriu o SAC ' . $dados['item_editado'];
-
-        $this->relatorio->setLog($dados);
-        return $id_sac;
+        $this->relatorio->insertLog('SAC', $id_sac, 'Inseriu o SAC', $id_sac);
       }
 
     } catch (\Exception $e) {}
@@ -64,18 +53,7 @@ class Sac_model extends CI_Model {
 
     if($id_sac)
     {
-      $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-      $dados['id_usuario'] = $this->session->userdata('user_login');
-      $dados['tipo'] = 'update';
-      $dados['acao'] = 'Atualizar';
-      $dados['data'] = date('Y-m-d H:i:s');        
-      $dados['tabela'] = 'SAC';
-      $dados['item_editado'] = $id;
-      $dados['descricao'] = $nome . ' Atualizou o SAC ' . $dados['item_editado'];
-
-      $this->relatorio->setLog($dados);
-      return $id_sac;
+      $this->relatorio->updateLog('SAC', $id_sac, 'Atualizou o SAC', $id);
     }
   }
 
@@ -105,18 +83,7 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-        $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-
-        $dados['id_usuario'] = $this->session->userdata('user_login');
-        $dados['tipo'] = 'delete';
-        $dados['acao'] = 'Deletar';
-        $dados['data'] = date('Y-m-d H:i:s');          
-        $dados['tabela'] = 'SAC';
-        $dados['item_editado'] = $id;
-        $dados['descricao'] = $nome . ' Deletou o SAC ' . $dados['item_editado'];
-
-        $this->relatorio->setLog($dados);
-        return $id_sac;
+        $this->relatorio->deleteLog('SAC', $id_sac, 'Deletou o SAC', $id);
       }
 
 

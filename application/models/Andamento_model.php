@@ -16,17 +16,7 @@ class Andamento_model extends CI_Model
         
         if($id_andamento)
         {
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'insert';
-            $dados['acao'] = 'Inserir';
-            $dados['data'] = date('Y-m-d H:i:s');
-            $dados['tabela'] = 'Andamento';
-            $dados['item_editado'] = $id_andamento;
-            $dados['descricao'] = $nome . ' Inseriu o andamento ' . $dados['item_editado'];
-    
-            $this->relatorio->setLog($dados);
-            return $id_andamento;
+            $this->relatorio->insertLog('Andamento', $id_andamento, 'Inseriu o andamento', $id_andamento);
         }
 	}
 
@@ -48,17 +38,7 @@ class Andamento_model extends CI_Model
 
         if($id_andamento)
         {
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'update';
-            $dados['acao'] = 'Atualizar';
-            $dados['data'] = date('Y-m-d H:i:s');
-            $dados['tabela'] = 'Andamento';
-            $dados['item_editado'] = $id_andamento;
-            $dados['descricao'] = $nome . ' Atualizou o andamento ' . $dados['item_editado'];
-    
-            $this->relatorio->setLog($dados);
-            return $id_andamento;
+            $this->relatorio->updateLog('Andamento', $id_andamento, 'Atualizou o andamento', $id_andamento);
         }
 
     }
@@ -73,25 +53,13 @@ class Andamento_model extends CI_Model
     */
     public function remove($id)
     {
-
+        $id_andamento = $this->db->get('andamento')->row()->id_andamento;
         $this->db->where('andamento.id_pedido', $id);
-        $id_documento = $this->db->get('documento')->row()->id_documento;
-
         $this->db->delete('andamento');
 
         if($id_andamento)
         {
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-            $dados['id_usuario'] = $this->session->userdata('user_login');
-            $dados['tipo'] = 'delete';
-            $dados['acao'] = 'Deletar';
-            $dados['data'] = date('Y-m-d H:i:s');
-            $dados['tabela'] = 'Andamento';
-            $dados['item_editado'] = $id_andamento;
-            $dados['descricao'] = $nome . ' Deletou o andamento ' . $dados['item_editado'];
-    
-            $this->relatorio->setLog($dados);
-            return $id_andamento;
+            $this->relatorio->deleteLog('Andamento', $id_andamento, 'Deletou o andamento', $id_andamento);
         }
 
     }
