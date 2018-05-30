@@ -52,42 +52,51 @@ jQuery(document).ready(function($) {
                 width: '5%',
                 class: 'td-id'
             }).html(inputReadOnly);
+            tr.append(tdId);
 
 
             var tdName  = $('<td>').prop({
                 width: '50%',
                 class: 'td-nome'
             }).data('id', selectedOption.val()).text(selectedOption.text());
+            tr.append(tdName);
             
             var tdQtd = $('<td>').prop({
                     width: '15%',
                     class: 'td-qtd'
                 }).append(input);
+            tr.append(tdQtd);
 
-            var tdValue = $('<td>').prop({
-                    width: '20%', 
-                    class: 'td-value'
-                }).data('default', selectedOption.data('value'))
-                .text('R$ '+ selectedOption.data('value').replace('.', ','));
+            if($('#label_pessoa').text() == 'Cliente')
+            {
+                var tdValue = $('<td>').prop({
+                        width: '20%', 
+                        class: 'td-value'
+                    }).data('default', selectedOption.data('value'))
+                    .text('R$ '+ selectedOption.data('value').replace('.', ','));
+                
+                tr.append(tdValue);
+                
+            }
 
             var tdAction = $('<td>').prop({
                 width: '10%',
             }).html(btnRemove);
-
-            tr.append(tdId);
-            tr.append(tdName);
-            tr.append(tdQtd);
-            tr.append(tdValue);
             tr.append(tdAction);
 
             table.append(tr);
+            
+            $('#total').addClass('d-none');
+            
+            if($('#label_pessoa').text() == 'Cliente')
+            {
+                $('#total').removeClass('d-none');
+            }
 
-            // $('option:selected', this).remove();
             selectedOption.prop('selected', true);
             selectedOption.prop('disabled', true);
             select.val('');
 
-            
 
             var sumQtd = 0;
             $.each($('.input-qtd'), function(index, input){
@@ -99,7 +108,6 @@ jQuery(document).ready(function($) {
             calculateTotal($('.input-qtd'), totalQtd, true);
             
             tableFoot.removeClass('d-none');
-
 
         }
 
@@ -165,53 +173,228 @@ jQuery(document).ready(function($) {
 
     // 0 = Venda - cliente
     // 1 = Compra - fornecedor
-    $('.compra-radio').click(function(){
+    $('.compra-radio').change(function(){
+
     	var value = $(this).val();
+        var url   = window.location.href.replace('cadastrar','');
 
-    	console.log(value);
-    	if(value == 1)
-    	{
-    		$.ajax({
+        $('#th-valor').removeClass('d-none');
 
-    			url:       base_url + 'json_fornecedores',
-    			dataType:  'JSON',
-    			type:      'POST',
+        $('#id_produto').empty();
 
-    			success:function(resp)
-    			{
-                    console.log(resp);
-    				if(resp.length > 0)
+        if(value == 'V')
+        {
+            $.ajax({
+
+                url:       window.location.href.replace('cadastrar','') + 'produtos',
+                dataType:  'JSON',
+
+                success:function(resp)
+                {
+                    var select = $('#id_produto');
+
+                    select.append('<option value="">Selecione um Produto</option>');
+
+                    $.each(resp, function(index, item){
+                        select.append(
+                            '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
+                                item.nome + 
+                            '</option>'
+                        );
+                    });
+                },
+
+                error:function(resp)
+                {
+
+                }
+
+            });
+        }
+        else
+        {
+            var select = $('#id_produto');
+            $('#th-valor').addClass('d-none');
+            select.append('<option value="">Selecione um Fornecedor</option>');
+        }
+
+        url += value == 'V' ? 'clientes' : 'fornecedores';
+    	
+		$.ajax({
+
+			url:       url,
+			dataType:  'JSON',
+			type:      'POST',
+
+			success:function(resp)
+			{
+
+				if(resp.length > 0)
+                {
+                    var select = $('[name="id_pessoa"]');
+
+                    select.empty();
+                    select.append('<option value="">Selecione</option>');
+                    
+                    $.each(resp, function(index, item){
+                        var name = value == 'C' ? item.razao_social  : item.nome;
+                        // var id   = value == 1 ? item.id_fornecedor : item.id_pessoa;
+                      
+                        select.append('<option value="' + item.id_pessoa + '" data-id="' + item.id_fornecedor + '">' 
+                            + name + '</option>');
+                    });
+
+                    if(value == 'C')
                     {
-                        var select = $('[name="id_pessoa"]');
-                        
-                       // select.empty();
 
-                        select.append('<option value="">Selecione</option>');
+                        $('#id_pessoa').change(function(){
 
-                        $.each(resp, function(index, item){
-                            console.log(item);
-                            var option = $('option');
+                            var value = $(this).find('option:selected').data('id');
 
-                            option.val(item.id_pessoa);
-                            option.text(item.razao_social);
-                            console.log(option);
-                            select.append(option);
+                            if($('#label_pessoa').text() == 'Fornecedor')
+                            {
+                                $('#produtos-table > tbody').empty();
+                                $('#produtos-table > tfoot').addClass('d-none');
+                                $('#id_produto option').prop('disabled', false);
+
+                                $.ajax({
+
+                                    url:      window.location.href.replace('cadastrar','') + 'produtos/fornecedor/' + value,
+                                    dataType: 'JSON',
+
+                                    success:function(resp)
+                                    {
+                                        var select = $('#id_produto');
+
+                                        select.empty();
+                                        select.append('<option value="">Selecione um Produto</option>');
+
+                                        $.each(resp, function(index, item){
+                                            select.append(
+                                                '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
+                                                    item.nome + 
+                                                '</option>'
+                                            );
+                                        });
+                                    },
+
+                                    error:function(resp)
+                                    {
+
+                                    }
+
+                                });
+                                    
+                            }
+                            
 
                         });
 
+                         
                     }
-    			},
+                    else
+                    {
+                        $.ajax({
 
-    			error:function(resp)
-    			{
-    				//console.log(resp);
-    			}
+                            url:       window.location.href.replace('cadastrar','') + 'produtos',
+                            dataType:  'JSON',
+
+                            success:function(resp)
+                            {
+                                console.log(resp);
+                                var select = $('#id_produto');
+
+                                select.empty();
+                                select.append('<option value="">Selecione um Produto</option>');
+
+                                $.each(resp, function(index, item){
+                                    select.append(
+                                        '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
+                                            item.nome + 
+                                        '</option>'
+                                    );
+                                });
+                            },
+
+                            error:function(resp)
+                            {
+
+                            }
+
+                        });
+                    }
+                    
+
+                    $('#label_pessoa').text(value == 'C' ? 'Fornecedor' : 'Cliente');
+
+                    $('#produtos-table > tbody').empty();
+                    $('#produtos-table > tfoot').addClass('d-none');
+                    $('#id_produto option').prop('disabled', false);
+
+                }
+			},
+
+			error:function(resp)
+			{
+				//console.log(resp);
+			}
 
 
-    		});
-    	}
+		});
+    	
 
 
     });
+
+
+
+    if($('#label_pessoa').text() == 'Fornecedor')
+    {
+        $('#id_pessoa').change(function(){
+
+            var value = $(this).find('option:selected').data('id');
+
+            
+                $('#produtos-table > tbody').empty();
+                $('#produtos-table > tfoot').addClass('d-none');
+                $('#id_produto option').prop('disabled', false);
+
+                $.ajax({
+
+                    url:      BASE_URL + 'pedido/produtos/fornecedor/' + value,
+                    dataType: 'JSON',
+
+                    success:function(resp)
+                    {
+                        var select = $('#id_produto');
+
+                        select.empty();
+                        select.append('<option value="">Selecione um Produto</option>');
+
+                        $.each(resp, function(index, item){
+                            select.append(
+                                '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
+                                    item.nome + 
+                                '</option>'
+                            );
+                        });
+                    },
+
+                    error:function(resp)
+                    {
+
+                    }
+
+                });
+                    
+            
+            
+
+        });
+
+    }
+
+
+    
 
 });
