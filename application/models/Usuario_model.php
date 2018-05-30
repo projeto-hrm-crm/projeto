@@ -90,12 +90,12 @@ class Usuario_model extends CI_Model
 
     public function getUserNameById($user_id)
     {
-        $this->db->select('*')
-        ->from('pessoa')
-        ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
-        ->where('usuario.id_usuario', $user_id);       
-
-        return $this->db->get()->result()[0]->nome;
+        $this->db->select('*');
+        $this->db->from('pessoa');
+        $this->db->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa');
+        $this->db->where('usuario.id_usuario', $user_id);
+        $query = $this->db->get();
+        return $query;
     }
 
     /**

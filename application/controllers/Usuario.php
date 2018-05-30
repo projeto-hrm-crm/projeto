@@ -73,7 +73,8 @@ class Usuario extends CI_Controller
             //usuario
             $data_usuario["login"]=$this->input->post("email");
             $data_usuario["senha"]=$this->input->post("senha");
-            $data_usuario["id_grupo_acesso"]=3;
+            //referente a grupo de acesso de cliente padrao
+            $data_usuario["id_grupo_acesso"]=4;
             $data_usuario["id_pessoa"]=$id_pessoa;
             $this->usuario->insert($data_usuario);
 
