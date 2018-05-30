@@ -48,6 +48,7 @@ class Cargo_model extends CI_Model
     {
         $this->relatorio->insertLog('Cargo', $id_cargo, 'Inseriu o cargo', $id_cargo);
     }
+    return $id_cargo;
   }
 
   /**
@@ -65,6 +66,7 @@ class Cargo_model extends CI_Model
     {
         $this->relatorio->updateLog('Cargo', $id_cargo, 'Atualizou o cargo', $id);
     }
+    return $id_cargo;
   }
 
   /**
@@ -81,6 +83,7 @@ class Cargo_model extends CI_Model
     {
         $this->relatorio->deleteLog('Cargo', $id_cargo, 'Deletou o cargo', $id);
     }
+    return $id_cargo;
   }
 }
 ?>

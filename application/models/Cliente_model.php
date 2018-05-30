@@ -18,6 +18,7 @@ class Cliente_model extends CI_Model {
 		{
 			$this->relatorio->insertLog('Cliente', $id_cliente, 'Inseriu o cliente', $id_cliente);
 		}
+		return $id_cliente;
  	} catch (\Exception $e) {}
   }
 
@@ -37,6 +38,7 @@ class Cliente_model extends CI_Model {
 		{
 			$this->relatorio->deleteLog('Cliente', $id_cliente, 'Deletou o cliente', $id);
 		}
+		return $id_cliente;
 		// delete pessoa fisica;
 	}
 
@@ -97,6 +99,7 @@ class Cliente_model extends CI_Model {
 		{
 			$this->relatorio->updateLog('Cliente', $id_cliente, 'Atualizou o cliente', $id);
 		}
+		return $id_cliente;
 	}
 
 	/**

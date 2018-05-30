@@ -27,6 +27,7 @@ class ProcessoSeletivo_model extends CI_Model
     {
       $this->relatorio->insertLog('Processo_seletivo', $id_processo_seletivo, 'Inseriu o processo seletivo', $id_processo_seletivo);
     }
+    return $id_processo_seletivo;
   }
 
   public function find($id)
@@ -58,6 +59,7 @@ class ProcessoSeletivo_model extends CI_Model
         {
           $this->relatorio->updateLog('Processo_seletivo', $id_processo_seletivo, 'Atualizou o processo seletivo', $id);
         }
+        return $id_processo_seletivo;
 
 		} catch (\Exception $e) {}
   }
@@ -93,6 +95,7 @@ class ProcessoSeletivo_model extends CI_Model
         {
           $this->relatorio->deleteLog('Processo_seletivo', $id_processo_seletivo, 'Deletou o processo seletivo', $id);
         }
+        return $id_processo_seletivo;
     } catch (\Exception $e) {}
   }
 }

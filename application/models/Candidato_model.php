@@ -17,7 +17,8 @@ class Candidato_model extends CI_Model {
 		if($id_candidato)
 	    {
 			$this->relatorio->insertLog('Candidato', $id_candidato, 'Inseriu o candidato', $id_candidato);
-	    }
+		}
+		return $id_candidato;
  	} catch (\Exception $e) {}
   }
 
@@ -37,6 +38,7 @@ class Candidato_model extends CI_Model {
 		{
 			$this->relatorio->deleteLog('Candidato', $id_candidato, 'Deletou o candidato', $id);
 		}
+		return $id_candidato;
 		// delete pessoa fisica;
 	}
 
@@ -111,6 +113,7 @@ class Candidato_model extends CI_Model {
 		{
 			$this->relatorio->updateLog('Candidato', $id, 'Atualizou o candidato', $id);
 		}
+		return $id;
 	}
 
 	/**

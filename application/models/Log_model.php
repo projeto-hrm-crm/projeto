@@ -30,7 +30,6 @@
             $dados['descricao'] = $nome . ' ' . $mensagem . ' ' . $nome_item;
 
             $this->db->insert('log', $dados);
-            return $id;
         }
 
         public function updateLog($tabela, $id, $mensagem, $nome_item)
@@ -45,7 +44,6 @@
             $dados['descricao'] = $nome . ' ' . $mensagem . ' ' . $nome_item;
 
             $this->db->insert('log', $dados);
-            return $id;
         }
 
         public function deleteLog($tabela, $id, $mensagem, $nome_item)
@@ -60,7 +58,6 @@
             $dados['descricao'] = $nome . ' ' . $mensagem . ' ' . $nome_item;
 
             $this->db->insert('log', $dados);
-            return $id;
         }
 
     }

@@ -119,6 +119,7 @@ class Pedido_model extends CI_Model
 		{
 			$this->relatorio->updateLog('Pedido', $id_pedido, 'Atualizou o pedido', $pedido['id_pedido']);
 		}
+		return $id_pedido;
 
     }
 
@@ -139,6 +140,7 @@ class Pedido_model extends CI_Model
 		{
 			$this->relatorio->deleteLog('Pedido', $id_pedido, 'Deletou o pedido', $id);
 		}
+		return $id_pedido;
     }
 
 }

@@ -19,6 +19,7 @@ class Documento_model extends CI_Model {
 		{
 			$this->relatorio->insertLog('Documento', $id_documento, 'Inseriu o documento', $id_documento);
 		}
+		return $id_documento;
 	}
 
 
@@ -45,6 +46,7 @@ class Documento_model extends CI_Model {
 		{
 			$this->relatorio->updateLog('Documento', $id_documento, 'Atualizou o documento', $id_documento);
 		}
+		return $id_documento;
 	}
 
 	/**
@@ -64,6 +66,7 @@ class Documento_model extends CI_Model {
 		{
 			$this->relatorio->deleteLog('Documento', $id_documento, 'Deletou o documento', $id_documento);
 		}
+		return $id_documento;
 
 	}
 }

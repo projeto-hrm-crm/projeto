@@ -40,6 +40,7 @@ class Vaga_model extends CI_Model
         {
             $this->relatorio->insertLog('Vaga', $id_vaga, 'Inseriu a vaga', $id_vaga);
         }
+        return $id_vaga;
 
     }
      /*
@@ -61,6 +62,7 @@ class Vaga_model extends CI_Model
         {
             $this->relatorio->updateLog('Vaga', $id_vaga, 'Atualizou a vaga', $vaga['id_vaga']);
         }
+        return $id_vaga;
 
     }
 
@@ -78,6 +80,7 @@ class Vaga_model extends CI_Model
         {
             $this->relatorio->deleteLog('Vaga', $id_vaga, 'Deletou a vaga', $id);
         }
+        return $id_vaga;
     }
 
     /*

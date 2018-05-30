@@ -40,6 +40,7 @@ class Produto_model extends CI_Model
         {
             $this->relatorio->insertLog('Produto', $id_produto, 'Inseriu o produto', $_POST['nome']);
         }
+        return $id_produto;
     }
 
     /*
@@ -65,6 +66,7 @@ class Produto_model extends CI_Model
         {
             $this->relatorio->updateLog('Produto', $id_produto, 'Atualizou o produto', $array['nome']);
         }
+        return $id_produto;
     }
 
 
@@ -82,6 +84,7 @@ class Produto_model extends CI_Model
         {
             $this->relatorio->deleteLog('Produto', $id_produto, 'Deletou o produto', $id);
         }
+        return $id_produto;
     }
 
     /*

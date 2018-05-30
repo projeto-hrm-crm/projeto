@@ -19,6 +19,7 @@ class Endereco_model extends CI_Model {
 		{
 			$this->relatorio->insertLog('Endereco', $id_endereco, 'Inseriu o endereço', $id_endereco);
 		}
+		return $id_endereco;
 	}
 
 
@@ -48,6 +49,7 @@ class Endereco_model extends CI_Model {
 		{
 			$this->relatorio->updateLog('Endereco', $id_endereco, 'Atualizou o endereço', $id_endereco);
 		}
+		return $id_endereco;
 	}
 
 
@@ -68,6 +70,8 @@ class Endereco_model extends CI_Model {
 		{
 			$this->relatorio->deleteLog('Endereco', $id_endereco, 'Deletou o endereço', $id_endereco);
 		}
+
+		return $id_endereco;
 
 	}
 

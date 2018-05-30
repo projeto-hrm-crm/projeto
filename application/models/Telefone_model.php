@@ -21,6 +21,7 @@ class Telefone_model extends CI_Model {
 		{
 			$this->relatorio->insertLog('Telefone', $id_telefone, 'Inseriu o telefone', $id_telefone);
 		}
+		return $id_telefone;
 	}
 
 	public function get(){}
@@ -44,6 +45,7 @@ class Telefone_model extends CI_Model {
 		{
 			$this->relatorio->updateLog('Telefone', $id_telefone, 'Atualizou o telefone', $id_telefone);
 		}
+		return $id_telefone;
 	}
 
 
@@ -63,6 +65,7 @@ class Telefone_model extends CI_Model {
 		{
 			$this->relatorio->deleteLog('Telefone', $id_telefone, 'Deletou o telefone', $id_telefone);
 		}
+		return $id_telefone;
 
 	}
 

@@ -15,6 +15,7 @@ class Iteracao_model extends CI_Model {
     {
       $this->relatorio->insertLog('Iteracao', $id_iteracao, 'Inseriu a iteracao', $id_iteracao);
     }
+    return $id_iteracao;
   }
 
   /**
@@ -50,6 +51,7 @@ class Iteracao_model extends CI_Model {
     {
       $this->relatorio->updateLog('Iteracao', $id_iteracao, 'Atualizou a iteracao', $id);
     }
+    return $id_iteracao;
     
   }
 
@@ -66,6 +68,7 @@ class Iteracao_model extends CI_Model {
     {
       $this->relatorio->deleteLog('Iteracao', $id_iteracao, 'Deletou a iteracao', $id);
     }
+    return $id_iteracao;
   }
 
 }

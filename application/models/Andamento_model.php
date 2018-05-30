@@ -18,6 +18,7 @@ class Andamento_model extends CI_Model
         {
             $this->relatorio->insertLog('Andamento', $id_andamento, 'Inseriu o andamento', $id_andamento);
         }
+        return $id_andamento;
 	}
 
     /**
@@ -40,6 +41,7 @@ class Andamento_model extends CI_Model
         {
             $this->relatorio->updateLog('Andamento', $id_andamento, 'Atualizou o andamento', $id_andamento);
         }
+        return $id_andamento;
 
     }
 
@@ -61,6 +63,7 @@ class Andamento_model extends CI_Model
         {
             $this->relatorio->deleteLog('Andamento', $id_andamento, 'Deletou o andamento', $id_andamento);
         }
+        return $id_andamento;
 
     }
 

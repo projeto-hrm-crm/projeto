@@ -66,6 +66,7 @@ class PessoaJuridica_model extends CI_Model
       {
         $this->relatorio->deleteLog('Pessoa_juridica', $id_pessoa_juridica, 'Deletou a pessoa juridica', $id_pessoa_juridica);
       }
+      return $id_pessoa_juridica;
 
   }
 
