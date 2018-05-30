@@ -15,10 +15,10 @@ class Funcionario_model extends CI_Model {
 			$id_funcionario = $this->db->insert_id();
 
 			if($id_funcionario)
-			{
-				$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Funcionário', date('Y-m-d'), 'Funcionário', $id_funcionario);
-				return $id_funcionario;
+	        {
+				$this->relatorio->insertLog('Funcionario', $id_funcionario, 'Inseriu o funcionario', $id_funcionario);
 			}
+			return $id_funcionario;
     } catch (\Exception $e) {}
 	}
 
@@ -76,14 +76,20 @@ public function getById($id_funcionario)
 	*
 	* @param integer $id_pessoa
 	*/
-	public function remove($id_funcionario)
+	public function remove($id)
 	{
 		try {
-			$this->db->where('id_funcionario', $id_funcionario);
-			$this->db->delete('funcionario');
-    } catch (\Exception $e) {}
-		// delete pessoa fisica;
-	}
+			$this->db->where('id_funcionario', $id);
+			$id_funcionario = $this->db->delete('funcionario');
+
+			if($id_funcionario)
+			{
+				$this->relatorio->deleteLog('Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
+			}
+			return $id_funcionario;
+	    } catch (\Exception $e) {}
+			// delete pessoa fisica;
+		}
 
 	/**
 	* @author: Mayra Bueno

@@ -63,7 +63,7 @@ $route['make/seed'] = 'seed/index';
 $route['produto'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
-$route['produto/deletar/(:num)'] = 'Produto/delete/$1';
+$route['produto/excluir/(:num)'] = 'Produto/delete/$1';
 
 //Rotas Log
 $route['log'] = 'Log/index';
@@ -158,3 +158,6 @@ $route['perfil'] = 'Perfil/admin';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
+
+//Rotas Usuario
+$route['cadastro'] = 'Usuario/create';

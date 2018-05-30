@@ -11,7 +11,7 @@
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="nome" class="control-label mb-1">Nome do Produto</label>
                                 <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Nome inválido.</span>
+                                <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="lote" class="control-label mb-1">Lote</label>
@@ -21,12 +21,12 @@
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="codigo" class="control-label mb-1">Código</label>
                                 <input name="codigo" id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : $produto->codigo;?>" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Código inválido.</span>
+                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
-                                <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
-                                <input name="recebimento" id="recebimento" value="<?php echo isset($old_data['recebimento']) ? $old_data['recebimento'] : $produto->recebimento;?>" type="text" class="form-control data <?php echo isset($errors['recebimento']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Data de Recebimento inválida.</span>
+                                <label for="valor_produto" class="control-label mb-1">Valor</label>
+                                <input id="valor_produto" name="valor" data-thousands="." data-decimal="," value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : $produto->valor;?>" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Valor inválido.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="fabricacao" class="control-label mb-1">Data de Fabricação</label>
@@ -39,22 +39,31 @@
                                 <span class="invalid-feedback">Data de Validade inválida.</span>
                             </div>
                             <div class="form-group col-lg-6 col-sm-12">
+                                <label for="recebimento" class="control-label mb-1">Data de Recebimento</label>
+                                <input name="recebimento" id="recebimento" value="<?php echo isset($old_data['recebimento']) ? $old_data['recebimento'] : $produto->recebimento;?>" type="text" class="form-control data <?php echo isset($errors['recebimento']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Data de Recebimento inválida.</span>
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12">
                                 <label for="id_fornecedor" class="control-label mb-1">Fornecedor</label>
-                                <select id="id_fornecedor" name="id_fornecedor" value="<?php echo isset($old_data['id_fornecedor']) ? $old_data['id_fornecedor']: null;?>" name="id_fornecedor" type="text" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>" required>
-                                    <?php foreach($fornecedores as $fornecedor): ?>
-                                        <option value="<?php echo $fornecedor->id_fornecedor;?>"><?php echo $fornecedor->razao_social; ?></option>
+                                <select id="id_fornecedor" name="id_fornecedor" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>" required>
+	                                <option value="">Selecione</option>
+	                                <?php foreach ($fornecedores as $fornecedor): ?>
+	                                    <option value="<?php echo $fornecedor->id_fornecedor;?>"
+                                        <?php echo (isset($old_data['id_fornecedor']) && ($fornecedor->id_fornecedor == $old_data['id_fornecedor'])) || !isset($errors['id_fornecedor']) && ($produto->id_fornecedor == $fornecedor->id_fornecedor) ? 'selected' : '' ?>>
+	                               	    <?php echo $fornecedor->razao_social;?>
+	                                    </option>
                                     <?php endforeach; ?>
-                                </select>
+	                            </select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger">
-                        <i class="fa fa-arrow-left"></i>
-                        Voltar
+                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i>
+                        Cancelar
                     </a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarProduto">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarProduto">
                         <span class="fa fa-check"></span>
                         Editar
                     </button>
@@ -76,7 +85,7 @@
                                     Cancelar
                                 </button>
                                 <button type="submit" class="btn btn-primary">
-                                    Editar
+                                    Confirmar
                                 </button>
                             </div>
                         </div>

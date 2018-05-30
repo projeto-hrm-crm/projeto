@@ -71,7 +71,7 @@ class Vaga extends CI_Controller
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             $this->session->set_flashdata('old_data', $this->input->post());
-            redirect('cadastrar/vaga');
+            redirect('vaga/cadastrar');
         }
       }else{
         $data['title'] = 'Cadastrar vaga';
@@ -120,7 +120,7 @@ class Vaga extends CI_Controller
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
           $this->session->set_flashdata('old_data', $this->input->post());
-          redirect('editar/vaga/'.$id);
+          redirect('vaga/editar/'.$id);
         }
       }else{
         $data['errors'] = $this->session->flashdata('errors');

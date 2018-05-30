@@ -16,9 +16,9 @@ class Cliente_model extends CI_Model {
 
 		if($id_cliente)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Cliente', date('Y-m-d'), 'Cliente',  $id_cliente);
-			return $id_cliente;
+			$this->relatorio->insertLog('Cliente', $id_cliente, 'Inseriu o cliente', $id_cliente);
 		}
+		return $id_cliente;
  	} catch (\Exception $e) {}
   }
 
@@ -29,10 +29,16 @@ class Cliente_model extends CI_Model {
 	*
 	* @param integer $id_cliente
 	*/
-	public function remove($id_cliente)
+	public function delete($id)
 	{
-		$this->db->where('id_cliente', $id_cliente);
-		$this->db->delete('cliente');
+		$this->db->where('id_cliente', $id);
+		$id_cliente = $this->db->delete('cliente');
+
+		if($id_cliente)
+		{
+			$this->relatorio->deleteLog('Cliente', $id_cliente, 'Deletou o cliente', $id);
+		}
+		return $id_cliente;
 		// delete pessoa fisica;
 	}
 
@@ -84,13 +90,16 @@ class Cliente_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function update($id_cliente, $data)
+	public function update($id)
 	{
-		try {
-			$this->db->where('id_cliente', $id_cliente);
-			$this->db->update('cliente', $data);
+		$this->db->where('id_cliente', $id);
+		$id_cliente = $this->db->update('cliente');
 
-		} catch (\Exception $e) {}
+		if($id_cliente)
+		{
+			$this->relatorio->updateLog('Cliente', $id_cliente, 'Atualizou o cliente', $id);
+		}
+		return $id_cliente;
 	}
 
 	/**
