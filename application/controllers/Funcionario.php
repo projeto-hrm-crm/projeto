@@ -27,14 +27,6 @@ class Funcionario extends CI_Controller
   **/
   public function index()
   {
-    $dados['assets'] = array(
-      'js' => array(
-        'lib/data-table/datatables.min.js',
-        'lib/data-table/dataTables.bootstrap.min.js',
-        'datatable.js',
-        'confirm.modal.js',
-      ),
-    );
     $data['title'] = 'funcionarios';
     $data['funcionarios'] = $this->funcionario->get();
     $data['assets'] = array(
@@ -46,9 +38,10 @@ class Funcionario extends CI_Controller
         ),
     );
 
-    foreach ($data['funcionarios'] as $key => $cliente) {
+    foreach ($data['funcionarios'] as $key => $funcionario) {
       $data['funcionarios'][$key]->data_nascimento = switchDate($data['funcionarios'][$key]->data_nascimento);
     }
+
     loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
   }
 

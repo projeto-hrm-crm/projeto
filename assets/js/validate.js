@@ -1,5 +1,5 @@
-jQuery(document).ready(function($) {;
-
+jQuery(document).ready(function($) {
+                                    
     $(function() {
         $("#valor_produto").maskMoney();
         $("#salario_cargo").maskMoney();
@@ -305,8 +305,10 @@ jQuery(document).ready(function($) {;
       cidade: "required",
       estado: "required",
       bairro: {
+        maxlength: 70,
+        minlength: 3,
         required:true,
-        regex: /^[A-Za-z0-9]/,
+        letras:true,
       },
       numero:{
         maxlength: 10,
@@ -314,6 +316,7 @@ jQuery(document).ready(function($) {;
         digits: true,
       },
       logradouro:{
+        minlength: 3,
         maxlength: 70,
         required:true,
         regex: /^[A-Za-z0-9]/,
@@ -325,9 +328,7 @@ jQuery(document).ready(function($) {;
 
     },
     messages: {
-      bairro:{
-        regex:    'O campo complemento pode conter apenas letras e numeros.'
-      },
+
       complemento:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
@@ -363,8 +364,10 @@ jQuery(document).ready(function($) {;
       cidade: "required",
       estado: "required",
       bairro: {
+        maxlength: 70,
+        minlength: 3,
+        letras:true,
         required:true,
-        regex: /^[A-Za-z0-9]/,
       },
       numero:{
         maxlength: 10,
@@ -383,9 +386,7 @@ jQuery(document).ready(function($) {;
 
     },
     messages: {
-      bairro:{
-        regex:    'O campo complemento pode conter apenas letras e numeros.'
-      },
+
       complemento:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
@@ -397,8 +398,14 @@ jQuery(document).ready(function($) {;
   });
   $('#form_funcionario').validate({
     rules: {
-      nome: "required",
+      nome: {
+        maxlength: 70,
+        minlength: 3,
+        required:true,
+        letras:true,
+      },
       email: {
+        maxlength: 150,
         required:true,
         email:true,
       },
@@ -406,7 +413,7 @@ jQuery(document).ready(function($) {;
         required: true,
         validaDataBR: true,
       },
-      cpf: {
+      cpf:{
         required:true,
         cpf:true,
       },
@@ -414,14 +421,36 @@ jQuery(document).ready(function($) {;
       cep: "required",
       cidade: "required",
       estado: "required",
-      bairro: "required",
+      bairro: {
+        maxlength: 70,
+        minlength: 3,
+        letras:true,
+        required:true,
+      },
       numero:{
+        maxlength: 10,
         required:true,
         digits: true,
       },
-      logradouro: "required",
+      logradouro:{
+        minlength: 3,
+        maxlength: 70,
+        required:true,
+        regex: /^[A-Za-z0-9]/,
+      },
+      complemento:{
+        maxlength: 70,
+        regex: /^[A-Za-z0-9]/,
+      }
     },
-
+    messages: {
+      complemento:{
+        regex:    'O campo complemento pode conter apenas letras e numeros.'
+      },
+      logradouro:{
+        regex:    'O campo complemento pode conter apenas letras e numeros.'
+      },
+    },
   });
 
 

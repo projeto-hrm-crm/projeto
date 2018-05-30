@@ -6,7 +6,7 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 
 | ID | NOME | CLASSE DE EQUIVALÊNCIA VÁLIDA | CLASSE DE EQUIVALÊNCIA INVÁLIDA |
 | ------ | --------- | ---------------| ------------------------------|
-|CE1|	Nome|	Somente Letras de 1 a 45 caracteres|	campo em branco, numeros e caracteres especias|
+|CE1|	Nome|	Somente Letras de 1 a 70 caracteres|	campo em branco, numeros e caracteres especias|
 |CE2|	Email|	Letras, Números e caracteres especiais seguindo a validação de email(Ex: XXXX@XXX.com)|	Tags HTML, Fora de Validação, somente numeros|
 |CE3|	Data Nascimento|	dia ate 31, mês até 12, ano a partir de 1900|	Letras,caracteres especiais,campo em branco|
 |CE4| Sexo| Feminino ou Masculino| Nenhuma alternativa
@@ -14,10 +14,10 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 |CE6| Telefone |Somente Números, obrigatório 10 ou 11 carateres, padrão (XX) XXXXX-XXXX| Campo em Branco, letras, caracteres especiais
 |CE7|Estado | Obrigatório escolher um item no combobox| Nenhuma escolha
 |CE8|Cidade |Obrigatório escolher um item no combobox| Nenhuma escolha
-|CE9|Endereço| Letras e Números, de 1 a 45 caracteres|Campo vazio, caracteres especiais, só numeros
+|CE9|Endereço| Letras e Números, de 1 a 70 caracteres|Campo vazio, caracteres especiais, só numeros
 |CE10|Numero| Número e Letra| Somente letra, campo em branco,caracteres especiais
 |CE11|Complemento| Número e Letra| caracteres especiais
-|CE12|Bairro| Letras e Números, de 1 a 45 caracteres|Campo vazio, caracteres especiais,so numeros
+|CE12|Bairro| Letras e Números, de 1 a 70 caracteres|Campo vazio, caracteres especiais,so numeros
 |CE13|CEP|Somente Números, obrigatório 8 carateres,padrão XXXXX-XXX|Campo em Branco, letras, caracteres especiais
 |CE14|	Botão Cadastrar|	Cadastrar tudo o que for de acordo com os requisitos válidos da tabela|	mudar de tela sem correção, cadastrar com erro|
 |CE15|	Botão Cancelar Cadastro|	volta pra tela de listagem |	faz qualquer coisa,menos voltar pra tela de listagem|
@@ -35,8 +35,8 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 |CE1|	ABCD|	cadastrar|	ok|
 |CE1|	$$$$$$###****|	aparece msg de erro e não cadastra|	ok|
 |CE1|	nenhum caracter|	aparece msg de erro e não cadastra|	ok|
-|CE1|	mais de 45 caracteres|	aparece msg de erro e não cadastra|	falhou|
-|CE1|	ate 45 caracter|cadastrar|	falhou|
+|CE1|	mais de 70 caracteres|	aparece msg de erro e não cadastra|	ok|
+|CE1|	ate 70 caracter|cadastrar|	ok|
 |CE2|	testanto@testar.com|	cadastrar|	ok|
 |CE2|	testandotestanto|	aparece msg de erro e não cadastra|	ok|
 |CE2|	13232323|	aparece msg de erro e não cadastra|	ok|
@@ -69,8 +69,8 @@ Verificar se a tabela cliente ta cadastrando e editando normalmente.
 |CE9|	ABCD|	cadastrar|	Falhou|
 |CE9|	$$$$$$###****|	aparece msg de erro e não cadastra|	falhou|
 |CE9|	nenhum caracter|	aparece msg de erro e não cadastra|	falhou|
-|CE9|	mais de 45 caracteres|	aparece msg de erro e não cadastra|	falhou|
-|CE9|	ate 45 caracter|cadastrar|	falhou|
+|CE9|	mais de 70 caracteres|	aparece msg de erro e não cadastra|	falhou|
+|CE9|	ate 70 caracter|cadastrar|	falhou|
 |CE9|  HHHH5555|cadastrar|falhou
 |CE10|25|cadastrar|ok|
 |CE10| hhhhhhh|aparece msg de erro e não cadastra| ok|

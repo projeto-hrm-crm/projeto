@@ -46,22 +46,10 @@
                   <td class="text-center"><?= $funcionario->nome; ?></td>
                   <td class="text-center"><?= $funcionario->email; ?></td>
                   <td class="text-center">
-                    <?php
-                    if($funcionario->sexo == 0){
-                      echo "Homem";
-                    }
-                    if($funcionario->sexo == 1){
-                      echo "Mulher";
-                    }
-                    ?>
+                    <?php echo ($funcionario->sexo == '0')? "Masculino" : "Feminino"; ?>
                   </td>
-
                   <td class="text-center">
-                    <?php
-                    $source = $funcionario->data_nascimento;
-                    $date = new DateTime($source);
-                    echo $date->format('d/m/Y');
-                    ?>
+                    <?php echo $funcionario->data_nascimento; ?>
                   </td>
                   <td class="text-center">
                     <a title="Editar" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
