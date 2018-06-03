@@ -19,6 +19,10 @@
                 <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
               </div> <!-- FIM EMAIL -->
               <div class="form-group col-12 col-md-6">
+                <label class=" form-control-label">Senha</label>
+                <input type="password" id="password" name="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>"  placeholder="Senha" class="form-control" >
+              </div> <!-- FIM EMAIL -->
+              <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
                 <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="Data de nascimento" class="form-control data">
               </div> <!-- FIM DATA DE NASCIMENTO -->
