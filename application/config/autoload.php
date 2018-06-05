@@ -170,6 +170,7 @@ $autoload['model'] = array(
                     'Pedido_model'               => 'pedido',
                     'Andamento_model'            => 'andamento',
                     'Log_model'                  => 'relatorio',
-                    'ProcessoSeletivo_model'     => 'processo_seletivo'
+                    'ProcessoSeletivo_model'     => 'processo_seletivo',
+                    'Etapa_model'                => 'etapa'
 
 );

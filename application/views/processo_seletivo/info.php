@@ -30,7 +30,7 @@
 
            <div class="form-group col-12">
              <label class=" form-control-label">Descrição das Etapas do Processo</label>
-             <textarea rows="30" cols="140" id="descricao" name="descricao" class="form-control" required><?php print_r($info[0]->descricao); ?></textarea>
+             <textarea auto-resize id="descricao" name="descricao" class="form-control" required><?php print_r($info[0]->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>

@@ -37,12 +37,12 @@
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Inicio</label>
-             <input type="date" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control" value="<?php echo($processo_seletivo[0]->data_inicio); ?>">
+             <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data" value="<?php echo($processo_seletivo[0]->data_inicio); ?>">
            </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Término</label>
-             <input type="date" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control" value="<?php echo($processo_seletivo[0]->data_fim); ?>">
+             <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data" value="<?php echo($processo_seletivo[0]->data_fim); ?>">
            </div>
 
            <div class="form-group col-12 col-md-6">

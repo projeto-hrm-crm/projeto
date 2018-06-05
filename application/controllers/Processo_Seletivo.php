@@ -17,7 +17,7 @@ class Processo_Seletivo extends CI_Controller
     parent::__construct();
       $user_id = $this->session->userdata('user_login');
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      // $this->usuario->hasPermission($user_id, $currentUrl);
+      $this->usuario->hasPermission($user_id, $currentUrl);
     $this->load->model('ProcessoSeletivo_model');
   }
 
@@ -46,8 +46,15 @@ class Processo_Seletivo extends CI_Controller
       }
     }
     $data['title'] = 'Cadastrar Processo Seletivo';
-    $data['cargos'] = $this->cargo->get();
+    $data['vagas'] = $this->vaga->get();
+    $data['etapas'] = $this->etapa->get();
     $data['processo_seletivo'] = $this->input->post();
+    $data['assets'] = array(
+      'js' => array(
+        'processo_seletivo/textarea_auto_expand.js',
+        'processo_seletivo/cadastro_etapas.js',
+      ),
+    );
     loadTemplate('includes/header', 'processo_seletivo/cadastrar', 'includes/footer', $data);
   }
 
@@ -68,8 +75,14 @@ class Processo_Seletivo extends CI_Controller
     }
 
     $data['title'] = 'Editar Processo Seletivo';
-    $data['cargos'] = $this->cargo->get();
+    $data['vagas'] = $this->vaga->get();
+    $data['etapas'] = $this->etapa->get();
     $data['processo_seletivo'] = $this->processo_seletivo->find($id);
+    $data['assets'] = array(
+      'js' => array(
+        'processo_seletivo/textarea_auto_expand.js',
+      ),
+    );
     loadTemplate('includes/header', 'processo_seletivo/editar', 'includes/footer', $data);
   }
 
@@ -90,6 +103,11 @@ class Processo_Seletivo extends CI_Controller
     }
     $data['info'] = $this->processo_seletivo->info($id);
     $data['title'] = 'Informações Processo Seletivo';
+    $data['assets'] = array(
+      'js' => array(
+        'processo_seletivo/textarea_auto_expand.js',
+      ),
+    );
     loadTemplate('includes/header', 'processo_seletivo/info', 'includes/footer', $data);
   }
 

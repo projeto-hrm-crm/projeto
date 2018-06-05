@@ -1,4 +1,6 @@
-
+<!-- <pre>
+<?php print_r($vagas); ?>
+</pre> -->
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-8">
   <div class="card">
@@ -36,41 +38,40 @@
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Inicio</label>
-             <date-util format="yyyy/MM/dd">
-               <input type="date" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control">
-             </date-util>
-           </div>
+                 <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
+             </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Término</label>
-             <date-util format="yyyy/MM/dd">
-               <input type="date" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control">
-             </date-util>
-           </div>
+                 <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
+             </div>
 
-           <div class="form-group col-12 col-md-6">
-            <label class=" form-control-label">Cargo</label>
-             <select class="form-control" name="id_cargo">
-               <?php foreach ($cargos as $cargo): ?>
-                 <option value="<?php echo $cargo->id_cargo ?>"><?php echo $cargo->nome; ?></option>
+           <div class="form-group col-12">
+            <label class=" form-control-label">Vaga</label>
+             <select class="form-control" name="id_vaga">
+               <?php foreach ($vagas as $vaga): ?>
+                 <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
                <?php endforeach; ?>
              </select>
            </div>
 
-           <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Número de Vagas</label>
-             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number">
-           </div>
-
            <div class="form-group col-12">
              <label class=" form-control-label">Descrição das Etapas do Processo</label>
-             <textarea rows="30" cols="140" placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
+             <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
            </div>
 
+						 <div class="form-group col-12">
+							 <div id="newlink">
+							 <label class=" form-control-label">Etapas</label>
+               <!-- Aqui vai o template -->
+						 </div>
+					 </div>
+
        </div>
+       <a id="addnew" class="btn btn-success" href="javascript:add_etapa()">Adicionar Etapa</a>'
     </div>
 
      <div class="card-footer text-right">
@@ -84,4 +85,11 @@
         </div>
        </form>
   </div>
+</div>
+
+<!-- Template -->
+<div class="form-group col-12" id="template1" style="display:none;">
+  <input type="text" id="nome_etapa" name="nome_etapa" placeholder="Nome da Etapa" class="form-control" required>
+	<textarea auto-resize placeholder="Descrição da Etapa" id="descricao" name="descricao" class="form-control" required></textarea>
+  <a id='addnew' name="button" class="btn btn-danger btn-sm" href="javascript:remove_etapa()">Excluir</a><br><br>
 </div>
