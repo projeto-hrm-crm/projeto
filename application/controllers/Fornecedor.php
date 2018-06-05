@@ -48,36 +48,36 @@ class Fornecedor extends CI_Controller
   * Se não, mostra msg de erro e redireciona para a mesma pagina
   *
   **/
-  public function create()
-  {
-    $data = $this->input->post();
-    if($data)
-    {
-      if ($this->form_validation->run('fornecedor'))
-      {
-        $this->fornecedor->insert($data);
-        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso.');
-        redirect('fornecedor');
-      }else{
-        $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
-        redirect('fornecedor/cadastrar');
-      }
-    }
-    $data['title'] = 'Cadastrar Fornecedor';
-    $data['fornecedor'] = $this->input->post();
-    $data['estados'] = $this->estado->get();
-    $data['assets'] = array(
-     'js' => array(
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-       //'fornecedor/validate-form.js',
-       'validate.js',
-     ),
-   );
-    loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
-  }
+  // public function create()
+  // {
+  //   $data = $this->input->post();
+  //   if($data)
+  //   {
+  //     if ($this->form_validation->run('fornecedor'))
+  //     {
+  //       $this->fornecedor->insert($data);
+  //       $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso.');
+  //       redirect('fornecedor');
+  //     }else{
+  //       $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+  //       redirect('fornecedor/cadastrar');
+  //     }
+  //   }
+  //   $data['title'] = 'Cadastrar Fornecedor';
+  //   $data['fornecedor'] = $this->input->post();
+  //   $data['estados'] = $this->estado->get();
+  //   $data['assets'] = array(
+  //    'js' => array(
+  //      'lib/data-table/datatables.min.js',
+  //      'lib/data-table/dataTables.bootstrap.min.js',
+  //      'datatable.js',
+  //      'confirm.modal.js',
+  //      //'fornecedor/validate-form.js',
+  //      'validate.js',
+  //    ),
+  //  );
+  //   loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
+  // }
 
 /**
   * author: Beto Cadilhe
@@ -85,7 +85,7 @@ class Fornecedor extends CI_Controller
   * e envia para função insert de Fornecedor_model
   **/
 
-  /* public function create()
+  public function create()
   {
     if($this->input->post()){
 
@@ -129,7 +129,7 @@ class Fornecedor extends CI_Controller
 
       loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
     }
-  } */
+  }
 
   /**
   * author: Nikolas Lencioni
