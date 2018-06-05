@@ -19,7 +19,7 @@ function data_preparation($data, $id=NULL)
 
     'endereco' => array(
       'cep' => $data['cep'],
-      'id_cidade' => $data['id_cidade'],//$data['cidade'], FIXME ACERTAR O ID QUANDO O FRONT ESTIVER PRONTO
+      'cidade' => $data['cidade'],//$data['cidade'], FIXME ACERTAR O ID QUANDO O FRONT ESTIVER PRONTO
       'bairro' => $data['bairro'],
       'logradouro' => $data['logradouro'],
       'numero' => $data['numero'],

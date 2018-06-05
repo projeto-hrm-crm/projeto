@@ -40,6 +40,7 @@
 	              </span>
           </div>
       
+      <!-- RAZÃO SOCIAL -->
           <div class="form-group col-12 col-md-4">
              <label class=" form-control-label">Razão Social</label>
              <input type="text" id="razao_social" name="razao_social" placeholder="Razão Social" value="<?php echo isset($old_data['razao_social']) ? $old_data['razao_social'] : null;?>" class="form-control <?php echo isset($errors['razao_social']) ? 'is-invalid' : '' ?>" required>
@@ -48,6 +49,7 @@
 	              </span>
           </div>
         
+         <!-- CNPJ -->
            <div class="form-group col col-md-4">
               <label class=" form-control-label">CNPJ</label>
                <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" maxlength="18" value="<?php echo isset($old_data['cnpj']) ? $old_data['cnpj'] : null;?>" class="form-control cnpj <?php echo isset($errors['cnpj']) ? 'is-invalid' : '' ?>" required>
@@ -55,7 +57,8 @@
 	                <?php echo isset($errors['cnpj']) ? $errors['cnpj'] : '' ; ?>
 	              </span>
           </div>
-           
+
+          <!-- TELEFONE -->  
           <div class="col-12 col-md-4">
              <label class=" form-control-label">Telefone</label>
              <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" maxlength="15" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control telefone <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
@@ -64,33 +67,35 @@
 	              </span>
           </div>
            
-      
-   
+       <!-- ESTADO -->   
           <div class="form-group col-12 col-md-6">
-          <label class="form-control-label">Estado</label>
-           <select name="id_estado" class="form-control" id="estado">
+          <label for="estado">Estado</label>
+           <select name="estado" class="form-control" id="estado">
               <option value="0" disabled selected>Selecione um estado</option>
              <?php foreach ($estados as $estado): ?>
                <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
              <?php endforeach; ?>
            </select>
       </div>
-           
+
+        <!-- CIDADE -->   
        <div class="form-group col-12 col-md-6">
-          <label class="form-control-label">Cidade</label>
-          <select name="id_cidade" class="form-control" id="cidade">
+          <label for="cidade">Cidade</label>
+          <select name="cidade" class="form-control" id="cidade">
              <option value="0">Selecione uma cidade</option>
           </select>
       </div>
-            
+
+       <!-- CEP -->       
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label">CEP</label>
          <input type="num" id="cep" name="cep" placeholder="CEP" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
 	              </span>
-          </div>
+      </div>
       
+      <!-- LOGRADOURO -->   
       <div class="form-group col-12 col-md-9">
          <label class=" form-control-label">Logradouro</label>
          <input type="text" id="logradouro" name="logradouro" placeholder="Rua da Praia" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
@@ -99,7 +104,7 @@
 	              </span>
           </div>
       
-         
+      <!-- NUMERO -->      
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label">Número</label>
          <input type="num" id="numero" name="numero" placeholder="Exemplo: 91" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>" class="form-control <?php echo isset($errors['numero']) ? 'is-invalid' : '' ?>" required>
@@ -108,6 +113,7 @@
 	              </span>
           </div>
     
+       <!-- BAIRRO -->   
       <div class="form-group col-12 col-md-5">
          <label class=" form-control-label">Bairro</label>
          <input type="text" id="bairro" name="bairro" placeholder="Bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>" class="form-control <?php echo isset($errors['bairro']) ? 'is-invalid' : '' ?>" required>
@@ -115,7 +121,8 @@
 	                <?php echo isset($errors['bairro']) ? $errors['bairro'] : '' ; ?>
 	              </span>
           </div>
-           
+
+       <!-- COMPLEMENTO -->       
       <div class="form-group col-12 col-md-4">
          <label class=" form-control-label">Complemento</label>
          <input type="text" id="complemento" name="complemento" placeholder="complemento" class="form-control">
