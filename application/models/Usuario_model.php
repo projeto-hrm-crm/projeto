@@ -167,4 +167,29 @@ class Usuario_model extends CI_Model
           return $url;
       }
     }
+
+    /**
+    * @author Camila Pereira Sales
+    * Verifica se o email informado ja existe.
+    *
+    * @param $id_usuario
+    * @param $email
+    * @return true|false
+    */
+    public function uniqueMail($id_usuario,$email)
+    {
+      if(is_null($id_usuario)){
+        $this->db->where('login',$email);
+      }else {
+        $this->db->where('login',$email)->where('id_usuario','!=',$id_usuario);
+      }
+      $query = $this->db->get('usuario');
+      if ($query->num_rows() > 0){
+          return 'false';
+      }
+      else{
+          return 'true';
+      }
+    }
+
 }

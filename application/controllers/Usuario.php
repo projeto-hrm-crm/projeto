@@ -103,6 +103,16 @@ class Usuario extends CI_Controller
       redirect('usuario');
     }
 
-
+    /**
+    * @author: Camila Sales
+    * Realiza a verificação do email
+    *
+    *@param string: refere-se ao email do usuario
+    *@param integer: refere-se ao id do usuario
+    */
+    public function unique($id_usuario)
+    {
+      echo $this->usuario->uniqueMail($id_usuario,$this->input->get('email'));
+    }
 }
 ?>
