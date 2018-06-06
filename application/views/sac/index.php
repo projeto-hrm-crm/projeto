@@ -22,7 +22,6 @@
                     <strong class="card-title">Ordens</strong>
                 </div>
                 <div class="card-body">
-                  
                     <table id="bootstrap-data-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -39,7 +38,7 @@
                                     <tr>
                                         <td><?=$item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
-                                        <td><?=$item->id_cliente;?></td>
+                                        <td><?=$item->nome;?></td>
                                         <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
                                         <td>
                                             <a href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Editar">

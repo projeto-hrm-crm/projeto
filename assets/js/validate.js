@@ -874,6 +874,8 @@ jQuery(document).ready(function($) {;
   /**
   * @author: Beto Cadilhe
   * Validação de cnpj: 
+
+  
   **/
 
  /* jQuery.validator.addMethod("cnpj", function (value, element) {

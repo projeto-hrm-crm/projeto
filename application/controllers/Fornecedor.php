@@ -47,38 +47,38 @@ class Fornecedor extends CI_Controller
   * Se cadastrar com sucesso, redireciona para pagina index de fornecedor
   * Se não, mostra msg de erro e redireciona para a mesma pagina
   *
-  **/
-  // public function create()
-  // {
-  //   $data = $this->input->post();
-  //   if($data)
-  //   {
-  //     if ($this->form_validation->run('fornecedor'))
-  //     {
-  //       $this->fornecedor->insert($data);
-  //       $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso.');
-  //       redirect('fornecedor');
-  //     }else{
-  //       $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
-  //       redirect('fornecedor/cadastrar');
-  //     }
-  //   }
-  //   $data['title'] = 'Cadastrar Fornecedor';
-  //   $data['fornecedor'] = $this->input->post();
-  //   $data['estados'] = $this->estado->get();
-  //   $data['assets'] = array(
-  //    'js' => array(
-  //      'lib/data-table/datatables.min.js',
-  //      'lib/data-table/dataTables.bootstrap.min.js',
-  //      'datatable.js',
-  //      'confirm.modal.js',
-  //      //'fornecedor/validate-form.js',
-  //      'validate.js',
-  //    ),
-  //  );
-  //   loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
-  // }
-
+  */
+  /* public function create()
+  {
+    $data = $this->input->post();
+    if($data)
+    {
+      if ($this->form_validation->run('fornecedor'))
+      {
+        $this->fornecedor->insert($data);
+        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso.');
+        redirect('fornecedor');
+      }else{
+        $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+        redirect('fornecedor/cadastrar');
+      }
+    }
+    $data['title'] = 'Cadastrar Fornecedor';
+    $data['fornecedor'] = $this->input->post();
+    $data['estados'] = $this->estado->get();
+    $data['assets'] = array(
+     'js' => array(
+       'lib/data-table/datatables.min.js',
+       'lib/data-table/dataTables.bootstrap.min.js',
+       'datatable.js',
+       'confirm.modal.js',
+       //'fornecedor/validate-form.js',
+       'validate.js',
+     ),
+   );
+    loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
+  } */
+ 
 /**
   * author: Beto Cadilhe
   * Metodo create, apresenta o formulario de cadastro, recebe os dados, faz a validação
@@ -97,7 +97,7 @@ class Fornecedor extends CI_Controller
          'cnpj' => $this->input->post('cnpj'),
          'telefone' => $this->input->post('telefone'),
          'estado' => $this->input->post('estado'),
-         'cidade' => $this->input->post('cidade'),
+         'id_cidade' => $this->input->post('cidade'),
          'logradouro' => $this->input->post('logradouro'),
          'numero' => $this->input->post('numero'),
          'bairro' => $this->input->post('bairro'), 
@@ -130,7 +130,7 @@ class Fornecedor extends CI_Controller
       loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
     }
   }
-
+ 
   /**
   * author: Nikolas Lencioni
   * Metodo edit, apresenta o formulario de edição, com os dados do fornecedor a ser editado,

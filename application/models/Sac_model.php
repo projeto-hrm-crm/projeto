@@ -29,19 +29,24 @@ class Sac_model extends CI_Model {
   *
   */
   public function get() {
-    $query = $this->db->select('*')->from('sac');
+    $query = $this->db->select('*')->from('sac')
+    ->join('cliente' , 'sac.id_cliente = cliente.id_cliente')
+    ->join('pessoa', 'cliente.id_pessoa = pessoa.id_pessoa');
     return $query->get()->result();
   }
 
   /**
-  * @author: Rodrigo Alves
-  * listar todas as ordens que o cliente abriu
+  * @author: Beto Cadilhe
+  * Obter o cliente que abriu o SAC
   *
   */
-  public function getClient($id) {
-    $query = $this->db->select('*')->from('sac')->where('id_cliente', $id);
-    return $query->get()->result();
-  }
+  // public function getClient($id) {
+  //   $query = $this->db->select('*')->from('sac')
+  //   ->join('cliente', 'sac.id_cliente = cliente.id_cliente')
+  //   ->join('pessoa',  'cliente.id_pessoa = pessoa.id_pessoa')
+  //   ->where('id_cliente', $id);
+  //   return $query->get()->result();
+  // }
 
   /**
   * @author: Rodrigo Alves
