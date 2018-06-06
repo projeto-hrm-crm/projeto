@@ -22,10 +22,10 @@ class PessoaFisica_model extends CI_Model{
 
       if($id_pessoa_fisica)
       {
-        $this->relatorio->insertLog('Pessoa_fisica', $id_pessoa_fisica, 'Inseriu a pessoa fisica', $id_pessoa_fisica);
+        $this->relatorio->setLog('insert', 'Inserir', 'Pessoa_fisica', $id_pessoa_fisica, 'Inseriu a pessoa fisica', $id_pessoa_fisica);
       }
       return $id_pessoa_fisica;
-      
+
     } catch (\Exception $e) {
 
     }
@@ -81,7 +81,7 @@ class PessoaFisica_model extends CI_Model{
 
         if($id_pessoa_fisica)
         {
-          $this->relatorio->deleteLog('Pessoa_fisica', $id_pessoa_fisica, 'Deletou a pessoa fisica', $id_pessoa_fisica);
+          $this->relatorio->setLog('delete', 'Deletar', 'Pessoa_fisica', $id_pessoa_fisica, 'Deletou a pessoa fisica', $id_pessoa_fisica);
         }
         return $id_pessoa_fisica;
 

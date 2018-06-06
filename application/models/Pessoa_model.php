@@ -22,9 +22,9 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
-			$this->relatorio->insertLog('Pessoa', $id_pessoa, 'Inseriu a pessoa', $id_pessoa);
+			$this->relatorio->setLog('insert', 'Inserir', 'Pessoa', $id_pessoa, 'Inseriu a pessoa', $id_pessoa);
 		}
-		return $id_pessoa;	
+		return $id_pessoa;
 	}
 
 
@@ -66,7 +66,7 @@ class Pessoa_model extends CI_Model {
 
 		if($id_pessoa)
 		{
-			$this->relatorio->updateLog('Pessoa', $id_pessoa, 'Atualizou pessoa', $id_pessoa);
+			$this->relatorio->setLog('update', 'Atualizar', 'Pessoa', $id_pessoa, 'Atualizou pessoa', $id_pessoa);
 		}
 		return $id_pessoa;
 
@@ -85,7 +85,7 @@ class Pessoa_model extends CI_Model {
 
 		if($id)
 		{
-			$this->relatorio->deleteLog('Pessoa', $id, 'Deletou a pessoa', $id);
+			$this->relatorio->setLog('delete', 'Deletar', 'Pessoa', $id, 'Deletou a pessoa', $id);
 		}
 		return $id;
 	}

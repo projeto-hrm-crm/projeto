@@ -100,7 +100,7 @@ class Fornecedor_model extends CI_Model
 
       if($id_fornecedor)
       {
-        $this->relatorio->deleteLog('Fornecedor', $id_fornecedor, 'Deletou o fornecedor', $id);
+        $this->relatorio->setLog('delete', 'Deletar', 'Fornecedor', $id_fornecedor, 'Deletou o fornecedor', $id);
       }
       return $id_fornecedor;
     } catch (\Exception $e) {}

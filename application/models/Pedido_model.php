@@ -18,7 +18,7 @@ class Pedido_model extends CI_Model
 
 		if($id_pedido)
 		{
-			$this->relatorio->insertLog('Pedido', $id_pedido, 'Inseriu o pedido', $id_pedido);
+			$this->relatorio->setLog('insert', 'Inserir', 'Pedido', $id_pedido, 'Inseriu o pedido', $id_pedido);
 		}
 		return $id_pedido;
 	}
@@ -84,11 +84,11 @@ class Pedido_model extends CI_Model
 		    ->join('pedido', 'pedido.id_pedido = pedido_produto.id_pedido');
 
 		$sub_query = $this->db->get_compiled_select();
-		     
-		return 
+
+		return
 			$this->db->select(
-					'pedido.id_pedido AS id, pedido.tipo, descricao, pessoa.nome AS cliente, 
-					andamento.situacao, andamento.data,  SUM(subtotal) AS total, 
+					'pedido.id_pedido AS id, pedido.tipo, descricao, pessoa.nome AS cliente,
+					andamento.situacao, andamento.data,  SUM(subtotal) AS total,
 					documento.numero AS documento, documento.tipo AS tipo_documento,
 					telefone.numero AS telefone,
 					endereco.logradouro, endereco.bairro, endereco.numero AS endereco_numero, endereco.complemento,
@@ -131,16 +131,16 @@ class Pedido_model extends CI_Model
 	*/
 	public function getByIdCompleteDataProvider($id)
 	{
-		     
+
 		return
 			$this->db->select('
-				pessoa_juridica.razao_social, 
+				pessoa_juridica.razao_social,
 				documento.numero AS documento, documento.tipo AS tipo_documento,
-				telefone.numero AS telefone, 
+				telefone.numero AS telefone,
 				endereco.logradouro, endereco.bairro, endereco.complemento, endereco.numero AS endereco_numero,
-				cidade.nome AS cidade, 
+				cidade.nome AS cidade,
 				estado.uf AS estado,
-				andamento.situacao, andamento.data, 
+				andamento.situacao, andamento.data,
 				pedido.id_pedido, pedido.descricao')
 			->from('pedido')
 			->join('pessoa_juridica', 'pessoa_juridica.id_pessoa = pedido.id_pessoa')
@@ -164,7 +164,7 @@ class Pedido_model extends CI_Model
 	* @return: mixed
 	*/
 	public function getFromClients()
-	{	
+	{
 		$this->db->select('pedido.id_pedido, pedido.id_pessoa, pedido.descricao, pedido.tipo, (valor * pedido_produto.quantidade) as subtotal')
 		    ->from('produto')
 		    ->where('pedido.transacao', 'V')
@@ -199,7 +199,7 @@ class Pedido_model extends CI_Model
 	*/
 	public function getFromProviders($id = null)
 	{
-		
+
 		$this->db->select('pedido.id_pedido, pedido.id_pessoa, pedido.descricao, pedido.tipo, (valor * pedido_produto.quantidade) as subtotal')
 		    ->from('produto')
 		    ->where('pedido.transacao', 'C')
@@ -207,14 +207,14 @@ class Pedido_model extends CI_Model
 		    ->join('pedido', 'pedido.id_pedido = pedido_produto.id_pedido');
 
 		$sub_query = $this->db->get_compiled_select();
-		     
+
 		if($id)
 		{
 			$this->db->join('usuario', 'usuario.id_pessoa = pedido.id_pessoa');
 			$this->db->where('usuario.id_usuario', $id);
 		}
 
-		return 
+		return
 			$this->db->select(
 					'pedido.id_pedido AS id, pedido.tipo, descricao, pessoa_juridica.razao_social AS cliente, andamento.situacao, andamento.data,  SUM(subtotal) AS total'
 				)
@@ -250,9 +250,9 @@ class Pedido_model extends CI_Model
 
         if($id_pedido)
         {
-          $this->relatorio->updateLog('Pedido', $id_pedido, 'Atualizou o pedido', $pedido['id_pedido']);
+          $this->relatorio->setLog('update', 'Atualizar', 'Pedido', $id_pedido, 'Atualizou o pedido', $pedido['id_pedido']);
         }
-    
+
         return $id_pedido;
     }
 
@@ -271,7 +271,7 @@ class Pedido_model extends CI_Model
 
 		if($id_pedido)
 		{
-			$this->relatorio->deleteLog('Pedido', $id_pedido, 'Deletou o pedido', $id);
+			$this->relatorio->setLog('delete', 'Deletar', 'Pedido', $id_pedido, 'Deletou o pedido', $id);
 		}
 		return $id_pedido;
     }
