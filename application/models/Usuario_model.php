@@ -184,11 +184,12 @@ class Usuario_model extends CI_Model
         $this->db->where('login',$email)->where('id_usuario','!=',$id_usuario);
       }
       $query = $this->db->get('usuario');
+      
       if ($query->num_rows() > 0){
-          return 'false';
+          return false;
       }
       else{
-          return 'true';
+          return true;
       }
     }
 

@@ -112,7 +112,8 @@ class Usuario extends CI_Controller
     */
     public function unique($id_usuario)
     {
-      echo $this->usuario->uniqueMail($id_usuario,$this->input->get('email'));
+     echo json_encode($this->usuario->uniqueMail($id_usuario,$this->input->get('email')));
+
     }
 }
 ?>
