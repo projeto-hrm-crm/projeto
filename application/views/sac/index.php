@@ -22,8 +22,12 @@
                     <strong class="card-title">Ordens</strong>
                 </div>
                 <div class="card-body">
-                  
-                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                  <a href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                    <i class="fa fa-check"></i> Cadastrar
+                  </a><br />
+                  <br />
+
+                    <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
                                 <th width="10%">Código</th>
@@ -48,7 +52,7 @@
                                             <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
-                                           
+
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -57,7 +61,7 @@
                     </table>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

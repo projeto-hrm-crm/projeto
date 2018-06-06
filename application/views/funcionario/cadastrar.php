@@ -76,14 +76,14 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="cargo">cargos disponíveis</label>
-                <select name="cargo" id="cargo" class="form-control">
+                <select id="id_cargo" name="id_cargo" class="form-control">
                   <option value="">Selecionar cargo</option>
                   <?php foreach($cargos as $cargo): ?>
                     <option value="<?php echo $cargo->id_cargo; ?>"><?php echo $cargo->nome; ?></option>
                   <?php endforeach ?>
                 </select>
-              </div>
-            </div> <!-- FIM CARGOS -->
+              </div><!-- FIM CARGOS -->
+            </div> 
           </div>
           <div class="card-footer text-right">
             <a href="<?=site_url('funcionario')?>" class="btn btn-danger btn-sm">

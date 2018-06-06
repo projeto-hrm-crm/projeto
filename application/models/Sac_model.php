@@ -7,7 +7,11 @@ class Sac_model extends CI_Model {
   * Este método inserção de dados
   *
   */
+  public function __construct(){
+      parent::__construct();
+  }
   public function insert($data) {
+
      try {
 
       $this->db->insert('sac', $data);
