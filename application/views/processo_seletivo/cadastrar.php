@@ -56,7 +56,7 @@
            </div>
 
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição das Etapas do Processo</label>
+             <label class=" form-control-label">Descrição do Processo</label>
              <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
@@ -90,6 +90,6 @@
 <!-- Template -->
 <div class="form-group col-12" id="template1" style="display:none;">
   <input type="text" id="nome_etapa" name="nome_etapa" placeholder="Nome da Etapa" class="form-control" required>
-	<textarea auto-resize placeholder="Descrição da Etapa" id="descricao" name="descricao" class="form-control" required></textarea>
+	<textarea auto-resize placeholder="Descrição da Etapa" id="descricao_etapa" name="descricao_etapa" class="form-control" required></textarea>
   <a id='addnew' name="button" class="btn btn-danger btn-sm" href="javascript:remove_etapa()">Excluir</a><br><br>
 </div>

@@ -30,15 +30,15 @@
                               <td class="text-center"><?=$processo_seletivo->vagas; ?></td>
 
                               <td class="text-center">
-                                 <a href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo);?>" class="btn btn-danger">
+                                 <a href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger">
                                        <span class="fa fa-times"></span>
                                    </a>
 
-                                 <a href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo);?>" class="btn btn-primary">
+                                 <a href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary">
                                        <span class="fa fa-pencil-square-o"></span>
                                    </a>
 
-                                 <a href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo);?>" class="btn btn-warning">
+                                 <a href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
                                        <span class="fa fa-clipboard"></span>
                                    </a>
 

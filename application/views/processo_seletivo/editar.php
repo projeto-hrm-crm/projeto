@@ -20,7 +20,7 @@
 				<?php endif; ?>
 			</div>
 		</div>
-     <form action="<?php echo site_url('processo_seletivo/editar/'.$processo_seletivo[0]->id_processo); ?>" method="POST" id="form_processo_seletivo" >
+     <form action="<?php echo site_url('processo_seletivo/editar/'.$processo_seletivo[0]->id_processo_seletivo); ?>" method="POST" id="form_processo_seletivo" >
        <div class="card-body card-block">
 
         <div class="row">
@@ -45,27 +45,39 @@
              <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data" value="<?php echo($processo_seletivo[0]->data_fim); ?>">
            </div>
 
-           <div class="form-group col-12 col-md-6">
-            <label class=" form-control-label">Cargo</label>
-             <select class="form-control" name="id_cargo">
-               <?php foreach ($cargos as $cargo): ?>
-                 <option value="<?php echo $cargo->id_cargo ?>"><?php echo $cargo->nome; ?></option>
+           <div class="form-group col-12">
+            <label class=" form-control-label">Vaga</label>
+             <select class="form-control" name="id_vaga">
+               <?php foreach ($vagas as $vaga): ?>
+                 <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
                <?php endforeach; ?>
              </select>
            </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Número de Vagas</label>
-             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number" value="<?php echo($processo_seletivo[0]->vagas); ?>">
+             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number" value="<?php echo($vaga->id_vaga); ?>">
            </div>
 
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição das Etapas do Processo</label>
-             <textarea rows="30" cols="140" placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required><?php echo($processo_seletivo[0]->descricao); ?></textarea>
+             <label class=" form-control-label">Descrição do Processo</label>
+             <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required><?php echo($processo_seletivo[0]->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
            </div>
+
+           <!-- Aqui vai um //FIXME
+           <?php foreach ($etapas as $etapa): ?>
+           <div class="form-group col-12">
+             <label class=" form-control-label">Descrição da Etapa [<?php $etapa->nome ?>]</label>
+             <textarea auto-resize id="descricao_etapa" name="descricao_etapa" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
+             <span class="invalid-feedback" id="invalid-descricao">
+               Campo obrigatório
+             </span>
+           </div>
+           <?php endforeach; ?>
+          -->
 
        </div>
     </div>
@@ -82,8 +94,3 @@
        </form>
   </div>
 </div>
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-    var date = new DateUtil("yyyy/MM/dd");
-  } );
-</script> -->

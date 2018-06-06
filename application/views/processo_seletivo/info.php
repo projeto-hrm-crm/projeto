@@ -18,7 +18,7 @@
 				<?php endif; ?>
 			</div>
 		</div>
-     <form action="<?php echo site_url('processo_seletivo/info/'.$info[0]->id_processo); ?>" method="POST" id="form_processo_seletivo" >
+     <form action="<?php echo site_url('processo_seletivo/info/'.$info[0]->id_processo_seletivo); ?>" method="POST" id="form_processo_seletivo" >
        <div class="card-body card-block">
 
         <div class="row">
@@ -27,6 +27,20 @@
              <label class=" form-control-label">Nome</label>
              <input type="text" id="nome" name="nome" class="form-control" value="<?php echo($info[0]->nome); ?>" required>
            </div>
+
+
+           <!-- Aqui vai um //FIXME
+           <?php foreach ($etapas as $etapa): ?>
+           <div class="form-group col-12">
+             <label class=" form-control-label">Descrição da Etapa [<?php $etapa->nome ?>]</label>
+             <textarea auto-resize id="descricao_etapa" name="descricao_etapa" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
+             <span class="invalid-feedback" id="invalid-descricao">
+               Campo obrigatório
+             </span>
+           </div>
+           <?php endforeach; ?>
+          -->
+
 
            <div class="form-group col-12">
              <label class=" form-control-label">Descrição das Etapas do Processo</label>

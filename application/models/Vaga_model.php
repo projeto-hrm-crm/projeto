@@ -17,11 +17,11 @@ class Vaga_model extends CI_Model
     public function get(){
         $this->db->select(
             'vaga.id_vaga, vaga.data_oferta, vaga.quantidade,
-            cargo.nome AS cargo,
-            setor.nome AS setor'
+             cargo.nome AS cargo'
+             // setor.nome AS setor'
         );
         $this->db->join('cargo', 'vaga.id_cargo = cargo.id_cargo');
-        $this->db->join('setor', 'cargo.id_setor = setor.id_setor');
+        // $this->db->join('setor', 'cargo.id_setor = setor.id_setor');
 
         return $this->db->get('vaga')->result();
     }

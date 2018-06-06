@@ -37,6 +37,11 @@ class Processo_Seletivo extends CI_Controller
       $data = $this->input->post();
       if($this->form_validation->run('processo_seletivo'))
       {
+        print_r($data);
+        // $etapas = $this->input->post('etapas[]') FIXME
+        // unset($data('etapas[]')) FIXME
+        unset($data['nome_etapa']);
+        unset($data['descricao_etapa']);
         $this->processo_seletivo->insert($data);
         $this->session->set_flashdata('success', 'Processo Seletivo cadastrado com sucesso.');
         redirect('processo_seletivo');
