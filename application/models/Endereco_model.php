@@ -17,9 +17,9 @@ class Endereco_model extends CI_Model {
 
 		if($id_endereco)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Endereço', date('Y-m-d'), 'Endereço', $id_endereco);
-			return $id_endereco;
+			$this->relatorio->setLog('insert', 'Inserir', 'Endereco', $id_endereco, 'Inseriu o endereço', $id_endereco);
 		}
+		return $id_endereco;
 	}
 
 
@@ -34,9 +34,7 @@ class Endereco_model extends CI_Model {
 	*/
 	public function update($endereco)
 	{
-
 		$this->db->where('endereco.id_pessoa', $endereco['id_pessoa']);
-
 		$this->db->set('endereco.cep',         $endereco['cep']);
 		$this->db->set('endereco.bairro',      $endereco['bairro']);
 		$this->db->set('endereco.logradouro',  $endereco['logradouro']);
@@ -44,14 +42,14 @@ class Endereco_model extends CI_Model {
 		$this->db->set('endereco.complemento', $endereco['complemento']);
 		$this->db->set('endereco.id_cidade',   $endereco['id_cidade']);
 
-
-		$id_endereco = $this->db->update('endereco');
+		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
+		$this->db->update('endereco');
 
 		if($id_endereco)
 		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Endereço', date('Y-m-d'), 'Endereço', $endereco['id_pessoa']);
-			return $id_endereco;
+			$this->relatorio->setLog('update', 'Atualizar', 'Endereco', $id_endereco, 'Atualizou o endereço', $id_endereco);
 		}
+		return $id_endereco;
 	}
 
 
@@ -65,7 +63,16 @@ class Endereco_model extends CI_Model {
 	public function remove($id_pessoa)
 	{
 		$this->db->where('id_pessoa', $id_pessoa);
+		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
 		$this->db->delete('endereco');
+
+		if($id_endereco)
+		{
+			$this->relatorio->setLog('delete', 'Deletar', 'Endereco', $id_endereco, 'Deletou o endereço', $id_endereco);
+		}
+
+		return $id_endereco;
+
 	}
 
 }

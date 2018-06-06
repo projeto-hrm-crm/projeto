@@ -10,18 +10,18 @@ class Sac_model extends CI_Model {
   public function __construct(){
       parent::__construct();
   }
-  public function insert($dados) {
+  public function insert($data) {
+
      try {
 
-      $this->db->insert('sac', $dados);
+      $this->db->insert('sac', $data);
       $id_sac = $this->db->insert_id();
 
       if($id_sac)
       {
-          $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Sac', date('Y-m-d'), 'Sac',  $id_sac);
-          return $id_sac;
+        $this->relatorio->setLog('insert', 'Inserir', 'SAC', $id_sac, 'Inseriu o SAC', $id_sac);
       }
-
+      return $id_sac;
 
     } catch (\Exception $e) {}
 
@@ -52,15 +52,15 @@ class Sac_model extends CI_Model {
   * Este método atualiza as informações da ordem do sac referenciado pelo id
   *
   */
-  public function update($data, $id_sac) {
-    $this->db->where('id_sac', $id_sac);
+  public function update($data, $id) {
+    $this->db->where('id_sac', $id);
     $id_sac = $this->db->update('sac', $data);
 
     if($id_sac)
     {
-        $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Sac', date('Y-m-d'), 'Sac',  $id_sac);
-        return $id_sac;
+      $this->relatorio->setLog('update', 'Atualizar', 'SAC', $id_sac, 'Atualizou o SAC', $id);
     }
+    return $id_sac;
   }
 
   /**
@@ -79,14 +79,19 @@ class Sac_model extends CI_Model {
   * Apagar uma ordem sac do banco
   *
   */
-  public function remove($id_sac) {
+  public function remove($id) {
 
 
     try {
 
-      $this->db->where('id_sac', $id_sac);
-      return $this->db->delete('sac');
+      $this->db->where('id_sac', $id);
+      $id_sac = $this->db->delete('sac');
 
+      if($id_sac)
+      {
+        $this->relatorio->setLog('delete', 'Deletar', 'SAC', $id_sac, 'Deletou o SAC', $id);
+      }
+      return $id_sac;
 
     } catch (\Exception $e) {}
 

@@ -15,10 +15,10 @@ class Candidato_model extends CI_Model {
 		$id_candidato = $this->db->insert_id();
 
 		if($id_candidato)
-		{
-			$this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
-			return $id_candidato;
+	    {
+			$this->relatorio->setLog('insert', 'Inserir', 'Candidato', $id_candidato, 'Inseriu o candidato', $id_candidato);
 		}
+		return $id_candidato;
  	} catch (\Exception $e) {}
   }
 
@@ -29,10 +29,16 @@ class Candidato_model extends CI_Model {
 	*
 	* @param integer $id_candidato
 	*/
-	public function remove($id_candidato)
+	public function remove($id)
 	{
-		$this->db->where('id_candidato', $id_candidato);
-		$this->db->delete('candidato');
+		$this->db->where('id_candidato', $id);
+		$id_candidato = $this->db->delete('candidato');
+
+		if($id_candidato)
+		{
+			$this->relatorio->setLog('delete', 'Deletar', 'Candidato', $id_candidato, 'Deletou o candidato', $id);
+		}
+		return $id_candidato;
 		// delete pessoa fisica;
 	}
 
@@ -98,18 +104,16 @@ class Candidato_model extends CI_Model {
 		} catch (\Exception $e) {}
 	}
 
-	public function update($id_candidato, $data)
+	public function update($id)
 	{
-		try {
-			$this->db->where('id_candidato', $id_candidato);
-			$candidato = $this->db->update('candidato', $data);
+		$this->db->where('id_candidato', $id);
+		$this->db->update('candidato');
 
-			if($candidato)
-			{
-				$this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Candidato', date('Y-m-d'), 'Candidato',  $id_candidato);
-				return $candidato;
-			}
-		} catch (\Exception $e) {}
+		if($id)
+		{
+			$this->relatorio->setLog('update', 'Atualizar', 'Candidato', $id, 'Atualizou o candidato', $id);
+		}
+		return $id;
 	}
 
 	/**

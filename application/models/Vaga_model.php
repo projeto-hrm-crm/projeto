@@ -38,10 +38,8 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Vaga', date('Y-m-d'), 'Vaga', $id_vaga);
-            return $id_vaga;
+            $this->relatorio->setLog('insert', 'Inserir', 'Vaga', $id_vaga, 'Inseriu a vaga', $id_vaga);
         }
-
     }
      /*
      *@author: Lucilene Fidelis
@@ -60,12 +58,9 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->setLog($this->session->userdata('user_login'), 'update', 'Atualiza', 'Vaga', date('Y-m-d'), 'Vaga',  $vaga['id_vaga']);
-            return $id_vaga;
+            $this->relatorio->setLog('update', 'Atualizar', 'Vaga', $id_vaga, 'Atualizou a vaga', $vaga['id_vaga']);
         }
-
     }
-
 
     /*
      *@author: Lucilene Fidelis
@@ -74,9 +69,13 @@ class Vaga_model extends CI_Model
      *@return: boolean
     */
     public function remove($id){
-        $query = $this->db->where('vaga.id_vaga', $id);
-        $query->delete('vaga');
-        return $query->affected_rows() > 0 ? true : false;
+        $this->db->where('vaga.id_vaga', $id);
+        $id_vaga = $this->db->delete('vaga');
+
+        if($id_vaga)
+        {
+            $this->relatorio->setLog('delete', 'Deletar', 'Vaga', $id_vaga, 'Deletou a vaga', $id);
+        }
     }
 
     /*
@@ -91,8 +90,5 @@ class Vaga_model extends CI_Model
       $this->db->where('vaga.id_vaga', $id);
       return $this->db->get('vaga')->row();
     }
-
-
-
 
 }

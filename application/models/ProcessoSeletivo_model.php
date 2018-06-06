@@ -21,7 +21,13 @@ class ProcessoSeletivo_model extends CI_Model
   public function insert($data)
   {
     $this->db->insert('processo_seletivo', $data);
-    return $this->db->insert_id();
+    $id_processo_seletivo = $this->db->insert_id();
+
+    if($id_processo_seletivo)
+    {
+      $this->relatorio->setLog('insert', 'Inserir', 'Processo_seletivo', $id_processo_seletivo, 'Inseriu o processo seletivo', $id_processo_seletivo);
+    }
+    return $id_processo_seletivo;
   }
 
   public function find($id)
@@ -46,9 +52,14 @@ class ProcessoSeletivo_model extends CI_Model
   public function update($id, $data)
   {
     try {
-			$this->db->where('id_processo', $id);
-		  $this->db->update('processo_seletivo', $data);
-      return $data['id_processo'];
+		$this->db->where('id_processo', $id);
+		$id_processo_seletivo = $this->db->update('processo_seletivo', $data);
+
+        if($id_processo_seletivo)
+        {
+          $this->relatorio->setLog('update', 'Atualizar', 'Processo_seletivo', $id_processo_seletivo, 'Atualizou o processo seletivo', $id);
+        }
+        return $id_processo_seletivo;
 
 		} catch (\Exception $e) {}
   }
@@ -77,8 +88,14 @@ class ProcessoSeletivo_model extends CI_Model
   public function delete($id)
   {
     try {
-      $this->db->where('id', $id);
-      $this->db->delete('processo_seletivo');
+        $this->db->where('id_processo', $id);
+        $id_processo_seletivo = $this->db->delete('processo_seletivo');
+
+        if($id_processo_seletivo)
+        {
+          $this->relatorio->setLog('delete', 'Deletar', 'Processo_seletivo', $id_processo_seletivo, 'Deletou o processo seletivo', $id);
+        }
+        return $id_processo_seletivo;
     } catch (\Exception $e) {}
   }
 }

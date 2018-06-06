@@ -22,9 +22,10 @@ class PessoaFisica_model extends CI_Model{
 
       if($id_pessoa_fisica)
       {
-          $this->relatorio->setLog($this->session->userdata('user_login'), 'insert', 'Insere', 'Pessoa Fisica', date('Y-m-d'), 'Pessoa Fisica', $id_pessoa_fisica);
-          return $id_pessoa_fisica;
+        $this->relatorio->setLog('insert', 'Inserir', 'Pessoa_fisica', $id_pessoa_fisica, 'Inseriu a pessoa fisica', $id_pessoa_fisica);
       }
+      return $id_pessoa_fisica;
+
     } catch (\Exception $e) {
 
     }
@@ -61,7 +62,8 @@ class PessoaFisica_model extends CI_Model{
   public function update($id, $data)
   {
     try {
-      $this->db->update('pessoa_fisica', $data, "id_pessoa = ".$id);
+       // $this->db->update('pessoa_fisica', $data, "id_pessoa = ".$id);
+      $this->db->update('pessoa_fisica', $data, array('id_pessoa' => $id));
     } catch (\Exception $e) {}
   }
 
@@ -71,11 +73,18 @@ class PessoaFisica_model extends CI_Model{
   * pelo id do mesmo.
   *
   */
-  public function remove($id_pessoa)
+  public function remove($id_pessoa_fisica)
   {
     try {
-      $this->db->where('id_pessoa', $id_pessoa);
-      $this->db->delete('pessoa_fisica');
+        $this->db->where('id_pessoa', $id_pessoa_fisica);
+        $this->db->delete('pessoa_fisica');
+
+        if($id_pessoa_fisica)
+        {
+          $this->relatorio->setLog('delete', 'Deletar', 'Pessoa_fisica', $id_pessoa_fisica, 'Deletou a pessoa fisica', $id_pessoa_fisica);
+        }
+        return $id_pessoa_fisica;
+
     } catch (\Exception $e) {}
   }
 }

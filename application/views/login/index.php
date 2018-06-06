@@ -30,10 +30,16 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
+      
+      <?php if ($this->session->flashdata('success')): ?>
+        <div class="alert alert-success mt-4">
+          <?php echo $this->session->flashdata('success'); ?>
+        </div>
+      <?php endif; ?>
+
       <div class="login-content">
         <div class="login-form">
           <form method="post">
-
             <?php if ($this->session->flashdata('login_error')): ?>
               <div class="alert alert-danger"><?php echo $this->session->flashdata('login_error');?></div>
             <?php endif;?>

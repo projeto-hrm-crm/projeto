@@ -63,7 +63,7 @@ $route['make/seed'] = 'seed/index';
 $route['produto'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
-$route['produto/deletar/(:num)'] = 'Produto/delete/$1';
+$route['produto/excluir/(:num)'] = 'Produto/delete/$1';
 
 //Rotas Log
 $route['log'] = 'Log/index';
@@ -133,10 +133,19 @@ $route['candidato_etapa/editar/(:num)']  = 'CandidatoEtapa/edit/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
 //Rotas Pedido
-$route['pedido']                = 'Pedido/index';
-$route['pedido/cadastrar']      = 'Pedido/create';
-$route['pedido/editar/(:num)']  = 'Pedido/edit/$1';
-$route['pedido/excluir/(:num)'] = 'Pedido/delete/$1';
+$route['pedido']                            = 'Pedido/index';
+$route['pedido/cadastrar']                  = 'Pedido/create';
+$route['pedido/editar/(:num)']              = 'Pedido/edit/$1';
+$route['pedido/excluir/(:num)']             = 'Pedido/delete/$1';
+$route['pedido/cliente/pdf/(:num)']         = 'Pedido/pdfClient/$1';
+$route['pedido/fornecedor/pdf/(:num)']      = 'Pedido/pdfProvider/$1';
+$route['pedido/fornecedores']               = 'Pedido/getProvidersJSON';
+$route['pedido/clientes']                   = 'Pedido/getClientsJSON';
+$route['pedido/produtos']                   = 'Pedido/getProductsJSON';
+$route['pedido/produtos/fornecedor/(:num)'] = 'Pedido/getProductsByProviderJSON/$1';
+$route['pedido/fornecedor']                 = 'Pedido/indexProvider';
+$route['pedido/fornecedor/editar/(:num)']   = 'Pedido/editProvider/$1';
+
 
 //Rotas Processo Processo_Seletivo
 $route['processo_seletivo'] = 'Processo_Seletivo/index';
@@ -146,7 +155,10 @@ $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 //Rotas Perfil
-$route['perfil'] = 'Perfil/admin';
+$route['perfil'] = 'Perfil/index';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
+
+//Rotas Usuario
+$route['cadastro'] = 'Usuario/create';

@@ -1,5 +1,4 @@
- <form action="<?php echo site_url('sac/editar/'.$id); ?>" method="POST" id="form-sac">
-
+<form action="<?php echo site_url('sac/editar/'.$id); ?>" method="POST" id="form-sac">
 <div class="animated fadeIn">
    <div class="row justify-content-center align-items-center">
       <div class="col-lg-8">
@@ -54,11 +53,10 @@
                   <a href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-
-                 <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-pencil-square-o"></i> Editar
-              </button>
-
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar">
+                     <span class="fa fa-pencil-square-o"></span>
+                     Editar
+                 </button>
                </div>
 
          </div>

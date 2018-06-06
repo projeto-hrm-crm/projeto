@@ -21,19 +21,32 @@ class Cliente extends CI_Controller
   }
 
   /**
-  * @author Mayra Bueno
+  * @author Camila Sales
   * Metodo index que chama a view inicial de cliente
   **/
   public function index()
   {
     $data['title'] = 'Clientes';
     $data['clientes'] = $this->cliente->get();
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
+ 
+    foreach ($data['clientes'] as $key => $cliente) {
+      $data['clientes'][$key]->data_nascimento = switchDate($data['clientes'][$key]->data_nascimento);
+    }
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
 
 
   /**
+  * @author Camila Sales
   * @author Mayra Bueno
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
   * e envia para função insert de Cliente_model
@@ -56,7 +69,7 @@ class Cliente extends CI_Controller
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
         $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
-    		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> $data['data_nacimento'],'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
+    		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->cliente->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Cliente cadastrado com sucesso.');
         redirect('cliente');
@@ -97,7 +110,7 @@ class Cliente extends CI_Controller
 
         $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $cliente[0]->id_pessoa]);
 
-        $this->pessoa_fisica->update($cliente[0]->id_pessoa_fisica,['data_nascimento'=> $data['cliente']['data_nascimento'],'sexo'=>$data['cliente']['sexo']]);
+        $this->pessoa_fisica->update($cliente[0]->id_pessoa,['data_nascimento'=> switchDate($data['cliente']['data_nascimento']),'sexo'=>$data['cliente']['sexo']]);
         $this->session->set_flashdata('success', 'Cliente editado com sucesso.');
         redirect('cliente');
     }
@@ -119,14 +132,16 @@ class Cliente extends CI_Controller
   **/
   public function delete($id_cliente)
   {
-    $data['cliente'] = $this->cliente->getById($id_cliente);
-    if ($data)
-    {
-      $this->cliente->remove($id_cliente);
+    $cliente = $this->cliente->getById($id_cliente);
+    if ($cliente){
+      $this->cliente->delete($id_cliente);
       $this->session->set_flashdata('success', 'cliente excluido com sucesso');
+    }else {
+         $this->session->set_flashdata('danger', 'Impossível Deletar!');
+      }
       redirect('cliente');
-    }
   }
+
 
   /**
   * @author Pedro Henrique Guimarães
