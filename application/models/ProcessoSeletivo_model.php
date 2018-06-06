@@ -25,7 +25,7 @@ class ProcessoSeletivo_model extends CI_Model
 
     if($id_processo_seletivo)
     {
-      $this->relatorio->insertLog('Processo_seletivo', $id_processo_seletivo, 'Inseriu o processo seletivo', $id_processo_seletivo);
+      $this->relatorio->setLog('insert', 'Inserir', 'Processo_seletivo', $id_processo_seletivo, 'Inseriu o processo seletivo', $id_processo_seletivo);
     }
     return $id_processo_seletivo;
   }
@@ -57,7 +57,7 @@ class ProcessoSeletivo_model extends CI_Model
 
         if($id_processo_seletivo)
         {
-          $this->relatorio->updateLog('Processo_seletivo', $id_processo_seletivo, 'Atualizou o processo seletivo', $id);
+          $this->relatorio->setLog('update', 'Atualizar', 'Processo_seletivo', $id_processo_seletivo, 'Atualizou o processo seletivo', $id);
         }
         return $id_processo_seletivo;
 
@@ -93,7 +93,7 @@ class ProcessoSeletivo_model extends CI_Model
 
         if($id_processo_seletivo)
         {
-          $this->relatorio->deleteLog('Processo_seletivo', $id_processo_seletivo, 'Deletou o processo seletivo', $id);
+          $this->relatorio->setLog('delete', 'Deletar', 'Processo_seletivo', $id_processo_seletivo, 'Deletou o processo seletivo', $id);
         }
         return $id_processo_seletivo;
     } catch (\Exception $e) {}

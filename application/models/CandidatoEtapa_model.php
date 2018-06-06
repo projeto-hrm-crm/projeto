@@ -21,7 +21,7 @@ class CandidatoEtapa_model extends CI_Model
 
     if($id_candidato_etapa)
     {
-      $this->relatorio->insertLog('Candidato_etapa', $id_candidato_etapa, 'Inseriu a etapa do candidato', $id_candidato_etapa);
+      $this->relatorio->setLog('insert', 'Inserir', 'Candidato_etapa', $id_candidato_etapa, 'Inseriu a etapa do candidato', $id_candidato_etapa);
     }
     return $id_candidato_etapa;
   }
@@ -43,7 +43,7 @@ class CandidatoEtapa_model extends CI_Model
 
     if($id_candidato_etapa)
     {
-      $this->relatorio->deleteLog('Candidato_etapa', $id_candidato_etapa, 'Removeu a etapa do candidato', $id_candidato_etapa);
+      $this->relatorio->setLog('delete', 'Deletar', 'Candidato_etapa', $id_candidato_etapa, 'Removeu a etapa do candidato', $id_candidato_etapa);
     }
     return $id_candidato_etapa;
   }

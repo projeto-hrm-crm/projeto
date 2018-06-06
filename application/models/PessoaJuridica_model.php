@@ -24,7 +24,7 @@ class PessoaJuridica_model extends CI_Model
 
         if($id_pessoa_juridica)
         {
-          $this->relatorio->insertLog('Pessoa_juridica', $id_pessoa_juridica, 'Inseriu a pessoa juridica', $id_pessoa_juridica);
+          $this->relatorio->setLog('insert', 'Inserir', 'Pessoa_juridica', $id_pessoa_juridica, 'Inseriu a pessoa juridica', $id_pessoa_juridica);
         }
         return $id_pessoa_juridica;
   }
@@ -61,10 +61,10 @@ class PessoaJuridica_model extends CI_Model
   {
       $this->db->where('id_pessoa_juridica', $id_pessoa_juridica);
       $this->db->delete('pessoa_juridica');
-   
+
       if($id_pessoa_juridica)
       {
-        $this->relatorio->deleteLog('Pessoa_juridica', $id_pessoa_juridica, 'Deletou a pessoa juridica', $id_pessoa_juridica);
+        $this->relatorio->setLog('delete', 'Deletar', 'Pessoa_juridica', $id_pessoa_juridica, 'Deletou a pessoa juridica', $id_pessoa_juridica);
       }
       return $id_pessoa_juridica;
 

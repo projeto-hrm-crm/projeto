@@ -15,7 +15,7 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-        $this->relatorio->insertLog('SAC', $id_sac, 'Inseriu o SAC', $id_sac);
+        $this->relatorio->setLog('insert', 'Inserir', 'SAC', $id_sac, 'Inseriu o SAC', $id_sac);
       }
       return $id_sac;
 
@@ -54,7 +54,7 @@ class Sac_model extends CI_Model {
 
     if($id_sac)
     {
-      $this->relatorio->updateLog('SAC', $id_sac, 'Atualizou o SAC', $id);
+      $this->relatorio->setLog('update', 'Atualizar', 'SAC', $id_sac, 'Atualizou o SAC', $id);
     }
     return $id_sac;
   }
@@ -85,7 +85,7 @@ class Sac_model extends CI_Model {
 
       if($id_sac)
       {
-        $this->relatorio->deleteLog('SAC', $id_sac, 'Deletou o SAC', $id);
+        $this->relatorio->setLog('delete', 'Deletar', 'SAC', $id_sac, 'Deletou o SAC', $id);
       }
       return $id_sac;
 

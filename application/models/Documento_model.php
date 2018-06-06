@@ -17,7 +17,7 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
-			$this->relatorio->insertLog('Documento', $id_documento, 'Inseriu o documento', $id_documento);
+			$this->relatorio->setLog('insert', 'Inserir', 'Documento', $id_documento, 'Inseriu o documento', $id_documento);
 		}
 		return $id_documento;
 	}
@@ -44,7 +44,7 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
-			$this->relatorio->updateLog('Documento', $id_documento, 'Atualizou o documento', $id_documento);
+			$this->relatorio->setLog('update', 'Atualizar', 'Documento', $id_documento, 'Atualizou o documento', $id_documento);
 		}
 		return $id_documento;
 	}
@@ -64,7 +64,7 @@ class Documento_model extends CI_Model {
 
 		if($id_documento)
 		{
-			$this->relatorio->deleteLog('Documento', $id_documento, 'Deletou o documento', $id_documento);
+			$this->relatorio->setLog('delete', 'Deletar', 'Documento', $id_documento, 'Deletou o documento', $id_documento);
 		}
 		return $id_documento;
 

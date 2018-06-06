@@ -16,7 +16,7 @@ class Funcionario_model extends CI_Model {
 
 			if($id_funcionario)
 	        {
-				$this->relatorio->insertLog('Funcionario', $id_funcionario, 'Inseriu o funcionario', $id_funcionario);
+				$this->relatorio->setLog('insert', 'Inserir', 'Funcionario', $id_funcionario, 'Inseriu o funcionario', $id_funcionario);
 			}
 			return $id_funcionario;
     } catch (\Exception $e) {}
@@ -84,7 +84,7 @@ public function getById($id_funcionario)
 
 			if($id_funcionario)
 			{
-				$this->relatorio->deleteLog('Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
+				$this->relatorio->setLog('delete', 'Deletar', 'Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
 			}
 			return $id_funcionario;
 	    } catch (\Exception $e) {}

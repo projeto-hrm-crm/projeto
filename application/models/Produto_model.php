@@ -38,7 +38,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->insertLog('Produto', $id_produto, 'Inseriu o produto', $_POST['nome']);
+            $this->relatorio->setLog('insert', 'Inserir', 'Produto', $id_produto, 'Inseriu o produto', $_POST['nome']);
         }
         return $id_produto;
     }
@@ -64,7 +64,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->updateLog('Produto', $id_produto, 'Atualizou o produto', $array['nome']);
+            $this->relatorio->setLog('update', 'Atualizar', 'Produto', $id_produto, 'Atualizou o produto', $array['nome']);
         }
         return $id_produto;
     }
@@ -82,7 +82,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->deleteLog('Produto', $id_produto, 'Deletou o produto', $id);
+            $this->relatorio->setLog('delete', 'Deletar','Produto', $id_produto, 'Deletou o produto', $id);
         }
         return $id_produto;
     }
