@@ -77,7 +77,7 @@ class Candidato extends CI_Controller
 
         $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
 
-        $this->pessoa_fisica->insert(['data_nascimento'=> $data['candidato']['data_nacimento'],'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
+        $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['candidato']['data_nacimento']),'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
