@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
-                                    
-    $(function() {
-        $("#valor_produto").maskMoney();
-        $("#salario_cargo").maskMoney();
-    })                          
+
+    // $(function() {
+    //     $("#valor_produto").maskMoney();
+    //     $("#salario_cargo").maskMoney();
+    // })                          
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -44,18 +44,18 @@ jQuery(document).ready(function($) {
       unhighlight:function(input){
         jQuery(input).removeClass('is-invalid');
       },
- 
+
       errorPlacement:function(error, element)
       {
         jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
       },
-  
+
       submitHandler:function (form, event) {
-  
+
         event.preventDefault(); //Evita que o formulário seja submetido
-  
+
         var action = $(form).prop('action'); // Recupera o action do formulário
-  
+
         /*
         *   Verifica se a url do action do formulário contém a palavra editar
         *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
         if(action.indexOf('editar') >= 0)
         {
           jQuery("#modalAtualizar").modal('show');
-  
+
           jQuery('.btn-edit').click(function () {
             form.submit();
           });
@@ -74,14 +74,14 @@ jQuery(document).ready(function($) {
         {
           form.submit();
         }
-  
+
       },
-    
+
     rules: {
       nome: {
         required:true,
         // regex:/^[a-zA-ZÀ-Úà-ú ]+$/
-        letras:true,          
+        letras:true,
       },
 
       email: {
@@ -92,9 +92,9 @@ jQuery(document).ready(function($) {
       razao_social: {
         required:true,
         // regex:/^[a-zA-ZÀ-Úà-ú ]+$/
-        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/,       
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/,
       },
-      
+
       cnpj:{
         required:true,
         cnpj:true,
@@ -118,7 +118,7 @@ jQuery(document).ready(function($) {
         required:true,
         regex: /^[A-Za-z0-9]/,
       },
-       
+
       complemento: {
         required:false,
         regex: /^[A-Za-z0-9]/,
@@ -128,7 +128,7 @@ jQuery(document).ready(function($) {
         required:true,
         digits:true,
       },
-     
+
     },
 
     messages: {
@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
       },
 
       email:{
-        required: 'O campo E-mail é obrigatório',        
+        required: 'O campo E-mail é obrigatório',
       },
 
       razao_social:{
@@ -153,8 +153,8 @@ jQuery(document).ready(function($) {
       },
 
       logradouro:{
-        required: 'O campo logradouro é obrigatório',  
-        regex:    'O campo não está no formato correto',     
+        required: 'O campo logradouro é obrigatório',
+        regex:    'O campo não está no formato correto',
       },
 
       numero:{
@@ -662,13 +662,13 @@ jQuery(document).ready(function($) {
       },
 
       salario:{
-        required: true,       
+        required: true,
       },
 
       id_setor:{
-        required: true,  
+        required: true,
         digits:   true,
-        min:      1     
+        min:      1
       },
 
     },
@@ -681,16 +681,16 @@ jQuery(document).ready(function($) {
       },
 
       descricao:{
-        required:       'O campo Descriçao é obrigatório', 
-        regex:    'O campo Descricao não está no formato correto.'       
+        required:       'O campo Descriçao é obrigatório',
+        regex:    'O campo Descricao não está no formato correto.'
       },
 
       salario:{
-        required: 'O campo salário é obrigatório',       
+        required: 'O campo salário é obrigatório',
       },
 
      id_setor:{
-        required: 'O setor deve ser selecionado'        
+        required: 'O setor deve ser selecionado'
       },
 
     },
@@ -903,7 +903,7 @@ jQuery(document).ready(function($) {
 
   /**
   * @author: Beto Cadilhe
-  * Validação de cnpj: 
+  * Validação de cnpj:
   **/
 
  /* jQuery.validator.addMethod("cnpj", function (value, element) {
@@ -952,4 +952,3 @@ jQuery(document).ready(function($) {
 
     return (resultado == digitos.charAt(1));
 }) */
-

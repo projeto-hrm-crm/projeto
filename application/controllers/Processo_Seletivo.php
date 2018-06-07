@@ -35,6 +35,9 @@ class Processo_Seletivo extends CI_Controller
     if($this->input->post())
     {
       $data = $this->input->post();
+      // echo "<pre>";
+      // print_r($data);
+      // exit;
       if($this->form_validation->run('processo_seletivo'))
       {
         print_r($data);

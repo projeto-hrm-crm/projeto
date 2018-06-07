@@ -71,7 +71,7 @@
 					 </div>
 
        </div>
-       <a id="addnew" class="btn btn-success" href="javascript:add_etapa()">Adicionar Etapa</a>'
+       <a id="addnew" class="btn btn-success addDiv">Adicionar Etapa</a>'
     </div>
 
      <div class="card-footer text-right">
@@ -88,8 +88,10 @@
 </div>
 
 <!-- Template -->
-<div class="form-group col-12" id="template1" style="display:none;">
-  <input type="text" id="nome_etapa" name="nome_etapa" placeholder="Nome da Etapa" class="form-control" required>
-	<textarea auto-resize placeholder="Descrição da Etapa" id="descricao_etapa" name="descricao_etapa" class="form-control" required></textarea>
-  <a id='addnew' name="button" class="btn btn-danger btn-sm" href="javascript:remove_etapa()">Excluir</a><br><br>
+<div class="form-group col-12 cloned-main" id="template1" style="display:none;">
+  <div class="cloned-div">
+    <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
+    <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
+    <a  name="button" class="btn btn-danger btn-sm remDiv" >Excluir</a><br><br>
+  </div>
 </div>
