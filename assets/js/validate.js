@@ -607,7 +607,7 @@ jQuery(document).ready(function($) {;
       */
       if(action.indexOf('editar') >= 0)
       {
-        jQuery("#modalAtualizar").modal('show');
+        jQuery("#editarCargo").modal('show');
 
         jQuery('.btn-edit').click(function () {
           form.submit();
@@ -629,7 +629,8 @@ jQuery(document).ready(function($) {;
 
       descricao:{
         required:       true,
-        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
+        regex: /^[A-Za-z0-9]/
+        // regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/
       },
 
       salario:{
