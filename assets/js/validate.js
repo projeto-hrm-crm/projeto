@@ -231,6 +231,7 @@ jQuery(document).ready(function($) {
       }
       else
       {
+        jQuery('.btn.bg-primary').prop('disabled', true);
         form.submit();
       }
 
