@@ -178,18 +178,18 @@ class Usuario_model extends CI_Model
     */
     public function uniqueMail($id_usuario,$email)
     {
-      if(is_null($id_usuario)){
+      if(is_null($id_usuario) || $id_usuario == "null"){
         $this->db->where('login',$email);
       }else {
         $this->db->where('login',$email)->where('id_usuario','!=',$id_usuario);
       }
       $query = $this->db->get('usuario');
-      
+
       if ($query->num_rows() > 0){
           return false;
       }
       else{
-          return true;
+        return true;
       }
     }
 
