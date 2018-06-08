@@ -1,9 +1,9 @@
 <!-- CLIENTE -->
 <div class="row justify-content-center align-items-center">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong class="card-title">Editar informações de cliente</strong>
+        <strong class="card-title">Atualizar Cliente</strong>
       </div>
       <form action="<?php site_url('cliente/edit'.$id); ?>" method="POST" class="form-horizontal" id="form_cliente">
         <div class="card-body card-block">
@@ -75,36 +75,38 @@
               <label class=" form-control-label">Complemento</label>
               <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($cliente[0]->complemento)?>" placeholder="Complemento" class="form-control" >
             </div> <!-- FIM COMPLEMENTO -->
-
-
           </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCliente">
+
+           <div class="card-footer text-right">
+            <a title="Cancelar Atualização" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
+              <i class="fa fa-times"></i> Cancelar
+            </a>
+            <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
               <span class="fa fa-check"></span>
               Editar
             </button>
-            <a href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
-              <i class="fa fa-ban"></i> Cancelar
-            </a>
+            
           </div> <!-- FIM BOTÕES -->
+
+
           <div class="modal fade" id="editarCliente" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Editar Cliente</h5>
+                  <h5 class="modal-title">Atualizar Cliente</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                  Deseja realmente editar esse cliente?
+                  Deseja Atualizar Esse Cliente?
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                  <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">
                     Cancelar
                   </button>
-                  <button type="submit" class="btn btn-primary">
-                    Editar
+                  <button type="submit" class="btn btn-primary  btn-sm">
+                    Atualizar
                   </button>
                 </div>
               </div>
@@ -115,3 +117,5 @@
     </div>
   </div>
 </div>
+ </div>
+           
