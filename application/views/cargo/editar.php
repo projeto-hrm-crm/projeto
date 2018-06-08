@@ -1,24 +1,12 @@
-<!-- <div class="row justify-content-center">
-  <div class="col-8">
-  <?php if ($this->session->flashdata('success')): ?>
-      <div class="alert alert-success mt-4">
-        <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif; ?>
-  </div>
-</div> -->
-
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
-    
-    <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
+    <div class="col-lg-8">    
 
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Editar Cargo</strong>
         </div>
         
-      
+        <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
               <div class="card-body card-block">
           <div class="row justify-content-center">
             <div class="col">
@@ -53,55 +41,54 @@
                   <option value="">Selecionar</option>
                     <?php foreach ($setores as $setor): ?>
                     <option value="<?php echo $setor->id_setor ?>" <?php echo isset($old_data['id_setor']) && ($setor->id_setor == $old_data['id_setor']) || $cargo->id_setor == $setor->id_setor ? 'selected' : '' ?>>
-		                                		<?php echo $setor->nome ?>
-		                                	</option>
+		                  <?php echo $setor->nome ?>
+		                </option>
                   <?php endforeach; ?>
                 </select>
                 <span class="invalid-feedback">
-	                             		<?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
-	                             	</span>
+	               <?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
+	             </span>
               </div>
             </div>
           </div>
         </div>
         <div class="card-footer text-right">
          <!--ACTIONS-->
-        <a href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-times"></i> Cancelar
-              </a>
-        
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarCargo">
-              <span class="fa fa-check"></span>
-              Editar
-          </button>     
-        </div>      
-
-      </form>
-    </div>
-  </div>
-
-
-  <div class="modal fade" id="editarCargo" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Cargo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Deseja realmente editar o cargo?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secundary" data-dismiss="modal">
-                    Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary btn-edit">
-                    Confirmar
-                </button>
-            </div>
+         <a href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i>
+                        Cancelar
+                    </a>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarCargo">
+                        <span class="fa fa-check"></span>
+                        Salvar
+                    </button>
+                </div>
+                <div class="modal" id="editarCargo" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Editar cargo</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja realmente editar o Cargo?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Confirmar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 

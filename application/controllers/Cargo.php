@@ -115,8 +115,7 @@ class Cargo extends CI_Controller
       $data['old_data'] = $this->session->flashdata('old_data');
       $data['assets'] = array(
       'js' => array(
-        'lib/jquery/jquery.maskMoney.min.js',
-       // 'cargo/validate-form.js',
+        'lib/jquery/jquery.maskMoney.min.js',      
        'validate.js',
       ),
     );
@@ -139,7 +138,7 @@ class Cargo extends CI_Controller
     if ($this->input->post()){
 
       if($this->form_validation->run('cargo')){
-
+        $data["id_cargo"]=$this->input->post("id_cargo");
         $data["nome"]=$this->input->post("nome");
         $data["descricao"]=$this->input->post("descricao");
         $data["salario"]=$this->input->post("salario");
