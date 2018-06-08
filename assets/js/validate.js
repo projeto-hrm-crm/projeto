@@ -4,6 +4,10 @@ jQuery(document).ready(function($) {
     //     $("#valor_produto").maskMoney();
     //     $("#salario_cargo").maskMoney();
     // })
+    var id_usuario = null;
+    if($('#form').attr('usuario_id'))
+		  id_usuario = $('#form').attr('usuario_id');;
+
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -87,6 +91,8 @@ jQuery(document).ready(function($) {
       email: {
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
       },
 
       razao_social: {
@@ -140,6 +146,8 @@ jQuery(document).ready(function($) {
 
       email:{
         required: 'O campo E-mail é obrigatório',
+        remote: 'Este email já está em uso.'
+
       },
 
       razao_social:{
@@ -291,6 +299,8 @@ jQuery(document).ready(function($) {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
       },
       data_nacimento: {
         required: true,
@@ -334,6 +344,9 @@ jQuery(document).ready(function($) {
       },
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
+      },
+      email:{
+        remote: 'Este email já está em uso.'
       },
     },
   });
@@ -350,6 +363,8 @@ jQuery(document).ready(function($) {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
       },
       data_nacimento: {
         required: true,
@@ -393,10 +408,13 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
     },
 
   });
-  var id_usuario = null;
+
   $('#form_funcionario').validate({
     rules: {
       nome: {
@@ -409,7 +427,7 @@ jQuery(document).ready(function($) {
         maxlength: 150,
         required:true,
         email:true,
-        remote:'http://localhost/projeto/unique/'+id_usuario,
+        remote:BASE_URL+'unique/'+id_usuario,
 
       },
       data_nacimento: {
