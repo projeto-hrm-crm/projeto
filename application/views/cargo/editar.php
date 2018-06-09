@@ -1,16 +1,16 @@
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">    
+    <div class="col-lg-8">
 
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Editar Cargo</strong>
         </div>
-        
-        <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
+
+        <form id="form_cargo" action="" method="post" novalidate="novalidate">
               <div class="card-body card-block">
           <div class="row justify-content-center">
             <div class="col">
-               <!--NOME--> 
+               <!--NOME-->
               <div class="form-group">
               <label class=" form-control-label">Nome</label>
                 <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $cargo->nome;?>" name="nome" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
@@ -18,7 +18,7 @@
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
               </div>
-               <!--DESCRIÇÃO--> 
+               <!--DESCRIÇÃO-->
               <div class="form-group">
               <label class=" form-control-label">Descrição</label>
                 <textarea placeholder="Descrição do cargo" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : $cargo->descricao;?></textarea>
@@ -26,7 +26,7 @@
 	                <?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
 	              </span>
               </div>
-               <!--SALÁRIO--> 
+               <!--SALÁRIO-->
               <div class="form-group">
               <label class=" form-control-label">Salário por hora</label>
                 <input id="salario_cargo" type="text" placeholder="Salário por hora" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : $cargo->salario;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
@@ -34,7 +34,7 @@
 	                <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
 	              </span>
               </div>
-               <!--SETOR--> 
+               <!--SETOR-->
               <div class="form-group">
               <label class=" form-control-label">Setor</label>
               <select name="id_setor" id="id_setor" class="form-control <?php echo isset($errors['id_setor']) ? 'is-invalid' : '' ?>">
@@ -79,8 +79,8 @@
                                 <button type="button" class="btn btn-secundary" data-dismiss="modal">
                                     Cancelar
                                 </button>
-                                <button type="submit" class="btn btn-primary">
-                                    Confirmar
+                                <button type="submit" class="btn btn-primary btn-remove-ok">
+                                Confirmar
                                 </button>
                             </div>
                         </div>
@@ -90,5 +90,3 @@
         </div>
     </div>
 </div>
-
-
