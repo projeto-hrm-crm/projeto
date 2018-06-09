@@ -47,5 +47,6 @@ class Email extends CI_Controller {
          $this->session->set_flashdata('Mensagem enviada não pode ser enviada',$this->email->print_debugger());
          redirect($dados['retorno']);
       }
+      
    }
 }
