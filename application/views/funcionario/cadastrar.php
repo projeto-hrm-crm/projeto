@@ -1,7 +1,7 @@
 <!-- FUNCIONÁRIO -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cadastrar Funcionário</strong>
@@ -83,7 +83,7 @@
                   <?php endforeach ?>
                 </select>
               </div><!-- FIM CARGOS -->
-            </div> 
+            </div>
           </div>
           <div class="card-footer text-right">
             <a href="<?=site_url('funcionario')?>" class="btn btn-danger btn-sm">

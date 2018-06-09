@@ -1,10 +1,10 @@
 <!-- CANDIDATO -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar informações de candidato</strong>
+          <strong class="card-title">Editar Candidato</strong>
         </div>
         <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" class="form-horizontal" id="form_candidato">
           <div class="card-body card-block">
@@ -57,6 +57,10 @@
                 </select>
               </div>
               <div class="form-group col-12 col-md-6">
+                <label class=" form-control-label">CEP</label>
+                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
+              </div> <!-- FIM CEP -->
+              <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Bairro</label>
                 <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($candidato[0]->bairro)?>"  placeholder="Bairro" class="form-control" required>
               </div> <!-- FIM BAIRRO -->
@@ -73,10 +77,6 @@
                 <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($candidato[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 
-              <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
-              </div> <!-- FIM CEP -->
               <div class="form-group col-12 col-md-6">
                 <label for="vaga">Vagas disponíveis</label>
                 <select name="vaga" id="vaga" class="form-control">

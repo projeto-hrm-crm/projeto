@@ -1,9 +1,9 @@
 <!-- FUNCIONÁRIO -->
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar informações de funcionário</strong>
+          <strong class="card-title">Editar Funcionário</strong>
         </div>
 
         <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" class="form-horizontal">

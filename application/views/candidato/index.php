@@ -1,35 +1,35 @@
 <!-- CANDIDATO -->
 
 <div class="animated fadeIn">
-  <div class="row" >
-    <div class="col-md-12">
-      <?php if($this->session->flashdata('success')): ?>
-        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-          <?php echo $this->session->flashdata('success'); ?>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <?php endif; ?>
-      <?php if($this->session->flashdata('danger')): ?>
-        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-          <?php echo $this->session->flashdata('danger'); ?>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <?php endif; ?>
-      <div class="card">
-        <div class="card-header">
-          <strong class="card-title">Cliente</strong>
-        </div>
+    <div class="row">
+        <div class="col-md-12">
+            <?php if($this->session->flashdata('success')): ?>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('success'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <?php if($this->session->flashdata('danger')): ?>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('danger'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Candidato</strong>
+                </div>
         <div class="card-body">
 
-          <a href="<?= site_url('candidato/create')?>" class="btn btn-primary btn-sm">
+          <a href="<?= site_url('candidato/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar candidato">
             <i class="fa fa-check"></i> Cadastrar
           </a><br />
           <br />
-          <table id="bootstrap-data-table" class="table table-striped table-bordered">
+          <table class="table table-striped table-bordered datatable">
 
             <thead>
               <tr>
@@ -54,9 +54,9 @@
                     <?php echo $candidato->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Editar" href="<?= site_url('candidato/editar/'.$candidato->id_candidato)?>" class="btn btn-primary">
+                    <a title="Editar candidato" href="<?= site_url('candidato/editar/'.$candidato->id_candidato)?>" class="btn btn-primary">
                       <span class="fa fa-edit"></span></a>
-                        <button data-href="candidato/excluir/<?php echo $candidato->id_candidato?>" class="btn btn-danger" title="Excluir Candidato" data-toggle="modal" data-target="#modalRemover">
+                        <button data-href="candidato/excluir/<?php echo $candidato->id_candidato?>" class="btn btn-danger" title="Excluir candidato" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-close"></span>
                         </button>
                       </td>
