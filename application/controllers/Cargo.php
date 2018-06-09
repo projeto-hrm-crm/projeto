@@ -100,7 +100,7 @@ class Cargo extends CI_Controller
         $data["id_setor"]=$this->input->post("id_setor");
 
           $this->cargo->insert($data);
-          $this->session->set_flashdata('success','Cadastrado Com Sucesso!');
+          $this->session->set_flashdata('success','Cargo Cadastrado Com Sucesso!');
           redirect('cargo');
       }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());

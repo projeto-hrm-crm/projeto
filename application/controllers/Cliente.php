@@ -71,7 +71,7 @@ class Cliente extends CI_Controller
         $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->cliente->insert(['id_pessoa' => $id_pessoa]);
-        $this->session->set_flashdata('success', 'Cliente Cadastrado Com Sucesso.');
+        $this->session->set_flashdata('success', 'Cliente Cadastrado Com Sucesso!');
         redirect('cliente');
     }
 
@@ -111,7 +111,7 @@ class Cliente extends CI_Controller
         $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $cliente[0]->id_pessoa]);
 
         $this->pessoa_fisica->update($cliente[0]->id_pessoa,['data_nascimento'=> switchDate($data['cliente']['data_nascimento']),'sexo'=>$data['cliente']['sexo']]);
-        $this->session->set_flashdata('success', 'Cliente Atualizado Com Sucesso.');
+        $this->session->set_flashdata('success', 'Cliente Atualizado Com Sucesso!');
         redirect('cliente');
     }
     $data['cliente'] = $this->cliente->getById($id_cliente);
@@ -135,9 +135,9 @@ class Cliente extends CI_Controller
     $cliente = $this->cliente->getById($id_cliente);
     if ($cliente){
       $this->cliente->delete($id_cliente);
-      $this->session->set_flashdata('success', 'Cliente Excluido Com Sucesso');
+      $this->session->set_flashdata('success', 'Cliente Excluido Com Sucesso!');
     }else {
-         $this->session->set_flashdata('danger', 'Impossível Deletar!');
+         $this->session->set_flashdata('danger', 'Impossível Excluir!');
       }
       redirect('cliente');
   }

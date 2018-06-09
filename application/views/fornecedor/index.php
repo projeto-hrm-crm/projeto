@@ -19,11 +19,11 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Fornecedores</strong>
+                    <strong class="card-title">Fornecedor</strong>
                 </div>
                 <div class="card-body">
-          <a href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-check"></i> Cadastrar
+          <a title="Cadastrar Novo Fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
+            <i  class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />
 
@@ -49,10 +49,10 @@
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
                                  
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar">
-                                    <span class="fa fa-edit"></span>
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">
+                                    <span class="fa fa-pencil-square-o"></span>
                                 </a>
-                                <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir" data-toggle="modal" data-target="#modalRemover">
+                                <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir Fornecedor" data-toggle="modal" data-target="#modalRemover">
                                     <span class="fa fa-times"></span>
                                 </button>
                                    
@@ -79,10 +79,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse Fornecedor?
+                Deseja Realmente Excluir Esse Fornecedor?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
                     Cancelar
                 </button>
                 <a href="#" class="btn btn-primary btn-remove-ok">

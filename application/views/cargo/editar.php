@@ -12,7 +12,7 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar Cargo</strong>
+          <strong class="card-title">Atualizar Cargo</strong>
         </div>
         <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate"> 
       
