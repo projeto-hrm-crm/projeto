@@ -4,7 +4,7 @@
       <div class="col-lg-8">
          <div class="card">
             <div class="card-header">
-               <strong class="card-title">Editar SAC</strong>
+               <strong class="card-title">Atualizar SAC</strong>
             </div>
 
                <div class="card-body">
@@ -50,12 +50,12 @@
                </div>
 
                <div class="card-footer text-right">
-                  <a href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
+                  <a title="Cancelar Atualização" href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar">
-                     <span class="fa fa-pencil-square-o"></span>
-                     Editar
+                  <button title="Atualizar SAC" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editar">
+                     <span class="fa fa-check"></span>
+                    Editar
                  </button>
                </div>
 
@@ -68,20 +68,20 @@
        <div class="modal-dialog" role="document">
            <div class="modal-content">
                <div class="modal-header">
-                   <h5 class="modal-title">Excluir produto</h5>
+                   <h5 class="modal-title">Atualizar SAC</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
                <div class="modal-body">
-                   Deseja realmente editar esse Fornecedor?
+                   Deseja Realmente Atualizar Esse SAC?
                </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                   <button type="button" class="btn btn-danger" data-dismiss="modal">
                        Cancelar
                    </button>
                    <button  type="submit" class="btn btn-primary btn-remove-ok">
-                       Confirmar
+                       Atualizar
                    </button>
                </div>
            </div>

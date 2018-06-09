@@ -135,7 +135,7 @@ class Cliente extends CI_Controller
     $cliente = $this->cliente->getById($id_cliente);
     if ($cliente){
       $this->cliente->delete($id_cliente);
-      $this->session->set_flashdata('success', 'Cliente Excluido Com Sucesso!');
+      $this->session->set_flashdata('success', 'Cliente Excluído Com Sucesso!');
     }else {
          $this->session->set_flashdata('danger', 'Impossível Excluir!');
       }

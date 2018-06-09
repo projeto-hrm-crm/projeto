@@ -188,7 +188,7 @@ class Fornecedor extends CI_Controller
      $fornecedor = $this->fornecedor->find($id);
      if($fornecedor){
         $this->fornecedor->delete($id);
-        $this->session->set_flashdata('success', 'Fornecedor Excluido Com Sucesso!');
+        $this->session->set_flashdata('success', 'Fornecedor Excluído Com Sucesso!');
      }else{
        $this->session->set_flashdata('danger', 'Impossível Excluir!');
      }
