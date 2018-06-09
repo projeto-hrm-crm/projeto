@@ -86,7 +86,7 @@
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
-            <div title="Cancelar Cadastro"class="card-footer text-right">
+            <div title="Cancelar Cadastro" class="card-footer text-right">
               <a href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>

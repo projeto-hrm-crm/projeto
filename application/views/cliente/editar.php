@@ -10,7 +10,7 @@
           <div class="row">
             <div class="form-group col-12 col-md-6">
               <label class=" form-control-label">Nome</label>
-              <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($cliente[0]->nome)?>" required>
+              <input type="text" id="nome" name="nome" class="form-control"  value="<?= htmlspecialchars($cliente[0]->nome)?>" required>
             </div> <!-- FIM NOME -->
             <div class="form-group col-12 col-md-6">
               <label for="email-input" class=" form-control-label">Email</label>
@@ -81,7 +81,7 @@
             <a title="Cancelar Atualização" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
               <i class="fa fa-times"></i> Cancelar
             </a>
-            <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
+            <button title="Atualizar Cliente" type="submit" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
               <span class="fa fa-check"></span>
               Editar
             </button>

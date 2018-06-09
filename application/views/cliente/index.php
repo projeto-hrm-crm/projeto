@@ -49,10 +49,10 @@
                     <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Editar" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
-                      <span class="fa fa-edit"></span></a>
-                       <button data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-close"></span>
+                    <a title="Editar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary btn-sm">
+                      <span class="fa fa-pencil-square-o"></span></a>
+                       <button data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger btn-sm" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
+                            <span class="fa fa-times"></span>
                         </button>
                       </td>
                     </tr>
