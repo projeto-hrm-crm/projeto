@@ -20,6 +20,11 @@ class Sac extends CI_Controller {
             'confirm.modal.js',
          ),
       );
+       
+      foreach ($data['sac'] as $key => $sac) {
+         $cliente = $this->cliente->getById($data['sac'][$key]->id_cliente);
+         $data['sac'][$key]->id_cliente = $cliente[0]->nome;
+      }
 
       loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
     }
