@@ -85,7 +85,7 @@
               </div> <!-- FIM COMPLEMENTO -->
 
               <div class="form-group col-12 col-md-6">
-                <label for="cargo">cargos disponíveis</label>
+                <label for="cargo">Cargos</label>
                 <select id="id_cargo" name="id_cargo" class="form-control">
                   <option value="">Selecionar cargo</option>
                   <?php foreach($cargos as $cargo): ?>

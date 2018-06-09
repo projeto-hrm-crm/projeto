@@ -58,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="card-footer text-right">
                     <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i>
@@ -91,6 +92,7 @@
                         </div>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>
