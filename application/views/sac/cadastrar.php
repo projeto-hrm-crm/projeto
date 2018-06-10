@@ -8,7 +8,7 @@
             <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac">
                <div class="card-body">
                   <div class="row">
-                     <div class="col-lg-12 form-group">
+                     <div class="col-lg-6 form-group">
                         <label class=" form-control-label">Assunto</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Assunto" class="form-control titulo" required>
                      </div>
@@ -22,20 +22,10 @@
                            <?php endforeach; ?>
                         </select>                         
                      </div>
-                          
-                     <div class="form-group col-md-6 col-sm-12">
-                        <label for="id_cliente" class="form-control-label">Cliente</label>
-                        <select name="id_cliente" class="form-control" id="produto">
-                           <option value="0" disabled selected>Selecione um cliente</option>
-                           <?php foreach ($clientes as $cliente): ?>
-                              <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
-                           <?php endforeach; ?>
-                        </select>                         
-                     </div>
                        
                      <div class="col-md-12 form-group">
                         <label class=" form-control-label">Descrição</label>
-                        <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Fale o problema tido com o  produto." required></textarea>
+                        <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Relate aqui se problema" required></textarea>
                      </div>
                   </div>
                </div>

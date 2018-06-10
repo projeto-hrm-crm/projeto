@@ -82,6 +82,7 @@ class Usuario_model extends CI_Model
 
             if ($sql->num_rows() > 0) {
                 $this->session->set_userdata('user_login', $sql->result()[0]->id_usuario);
+                $this->session->set_userdata('user_id_pessoa', $sql->result()[0]->id_pessoa);
                 return true;
             }
             return false;
