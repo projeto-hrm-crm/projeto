@@ -13,10 +13,7 @@ class Pessoa_model extends CI_Model {
 	*/
 	public function insert($pessoa)
 	{
-
 		$pessoa['data_criacao'] = date("Y-m-d");
-		// print_r($pessoa);
-		// exit;
 		$this->db->insert('pessoa', $pessoa);
 		$id_pessoa = $this->db->insert_id();
 
@@ -24,6 +21,7 @@ class Pessoa_model extends CI_Model {
 		{
 			$this->relatorio->setLog('insert', 'Inserir', 'Pessoa', $id_pessoa, 'Inseriu a pessoa', $id_pessoa);
 		}
+
 		return $id_pessoa;
 	}
 
