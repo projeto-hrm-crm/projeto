@@ -47,10 +47,10 @@ class Sac extends CI_Controller {
                  'descricao' => $this->input->post('descricao'),
                );
                $this->sac->insert($array);
-               $this->session->set_flashdata('success', 'Sac Cadastrado Com Sucesso!');
+               $this->session->set_flashdata('success', 'SAC Cadastrado Com Sucesso!');
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'Sac Não Pode Ser Cadastrado!');
+               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Cadastrado!');
                redirect('sac');
             }
          }
@@ -85,10 +85,10 @@ class Sac extends CI_Controller {
                );
 
                $this->sac->update($array, $id);
-               $this->session->set_flashdata('success', 'Sac Atualizado Com Sucesso!');
+               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'Sac Não Pode Ser Atualizado!');
+               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
                redirect('sac');
             }
          }
@@ -110,7 +110,7 @@ class Sac extends CI_Controller {
     */
     public function delete($id_sac) {
        $this->sac->remove($id_sac);
-       $this->session->set_flashdata('success', 'Sac Excluído Com Sucesso!');
+       $this->session->set_flashdata('success', 'SAC Excluído Com Sucesso!');
        redirect('sac');
     }
 

@@ -81,12 +81,14 @@
             <a title="Cancelar Atualização" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
               <i class="fa fa-times"></i> Cancelar
             </a>
-            <button title="Atualizar Cliente" type="submit" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
+            <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
               <span class="fa fa-check"></span>
               Editar
             </button>
             
           </div> <!-- FIM BOTÕES -->
+          
+           
 
 
           <div class="modal fade" id="editarCliente" role="dialog" aria-hidden="true">
@@ -113,9 +115,9 @@
             </div>
           </div>
         </div>
+      
       </form>
     </div>
   </div>
 </div>
  </div>
-           

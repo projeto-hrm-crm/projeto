@@ -108,7 +108,7 @@
           <a href="<?= site_url('fornecedor')?>" class="btn btn-danger" title="Cancelar Atualização">
                <i class="fa fa-times"></i> Cancelar
             </a>
-            <button title="Atualizar Cadastro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editarFornecedor">
+            <button title="Atualizar Cadastro" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFornecedor">
                <span class="fa fa-check"></span>
                Editar
            </button>
@@ -119,6 +119,8 @@
    </div>
 </div>
 </div>
+</div>
+
  <div class="modal fade" id="editarFornecedor" role="dialog" aria-hidden="true">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
