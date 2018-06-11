@@ -30,7 +30,7 @@
                     <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                
+                                <th width="20%" class="text-center" >Codigo</th>
                                 <th class="text-center">Titulo</th>
                                 <th class="text-center">Cliente</th>
                                 <th class="text-center">Status</th>
@@ -41,7 +41,8 @@
                             <?php if(isset($sac)): ?>
                                 <?php foreach($sac as $item): ?>
                                     <tr>
-                                        
+                                       
+                                        <td><?php echo $item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
                                         <td><?=$item->id_cliente;?></td>
                                         <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>

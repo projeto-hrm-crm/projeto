@@ -43,7 +43,7 @@
                   <a title="Cancelar Cadastro" href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button title="Cadastra SAC" type="submit" class="btn btn-primary btn-sm">
+                  <button title="Cadastrar SAC" type="submit" class="btn btn-primary btn-sm">
                      <i class="fa fa-plus"></i> Cadastrar
                   </button>
                   
