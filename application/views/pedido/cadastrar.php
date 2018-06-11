@@ -206,7 +206,7 @@
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button type="submit" class="btn bg-primary text-white">
+	                    <button type="submit" class="btn bg-primary text-white" onclick="this.disabled=true;this.form.submit();">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>

@@ -63,7 +63,7 @@
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-primary btn-sm" onclick="this.disabled=true;this.form.submit();">
                         <i class="fa fa-plus"></i>
                         Cadastrar
                     </button>

@@ -65,7 +65,7 @@
               Deseja realmente excluir esse Setor?
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secundary" data-dismiss="modal">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
                   Cancelar
               </button>
               <a href="#" class="btn btn-primary btn-remove-ok">

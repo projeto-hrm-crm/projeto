@@ -28,8 +28,8 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Sexo</label><br>
-                <input type="radio" name="sexo" id="sexo_masc" value="0" required /><label for="sexo_masc">Masculino</label>
-                <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label for="sexo_fem" >Feminino</label>
+                <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : 'checked'?> /><label for="sexo_masc">Masculino</label>
+                <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '1' ? 'checked' : ''?> /><label for="sexo_fem" >Feminino</label>
               </div>
 
               <div class="form-group col-12 col-md-6">
@@ -71,7 +71,7 @@
               </div>
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa..." class="form-control" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Travessa..." class="form-control" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
@@ -100,7 +100,7 @@
                 <a href="<?=site_url('candidato')?>" class="btn btn-danger btn-sm">
                   <i class="fa fa-times"></i> Cancelar
                 </a>
-                <button type="submit" class="btn btn-primary btn-sm" name="cadastrar">
+                <button type="submit" class="btn btn-primary btn-sm" name="cadastrar" onclick="this.disabled=true;this.form.submit();">
                   <i class="fa fa-plus"></i> Cadastrar
                 </button>
               </div>

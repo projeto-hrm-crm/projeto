@@ -17,7 +17,7 @@
           <?php endif; ?>
         </div>
       </div>
-      <form action="<?php echo site_url('setor/cadastrar'); ?>" method="POST" class="form-horizontal" id="form_setor">
+      <form action="<?php echo site_url('setor/cadastrar'); ?>" method="POST" class="form-horizontal" id="form_setor" onsubmit="return checkForm(this);">
         <div class="card-body">
           <div class="row form-group">
             <div class="form-group col-12 col-md-6">
@@ -33,7 +33,7 @@
           <a href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button type="submit" class="btn btn-primary btn-sm">
+          <button type="submit" class="btn btn-primary btn-sm" onclick="this.disabled=true;this.form.submit();">
             <i class="fa fa-plus"></i> Enviar
           </button>
         </div>
