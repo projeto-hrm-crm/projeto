@@ -1,20 +1,35 @@
 <!-- <pre>
 <?php print_r($processos_seletivos); ?>
 </pre> -->
-<div class="animated fadeIn">
     <div class="row" >
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Processos Seletivos</strong>
-                    <a href="<?= site_url('processo_seletivo/cadastrar')?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-check"></i> Cadastrar
+                  </div>
+                  <?php if($this->session->flashdata('success')): ?>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('success'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <?php if($this->session->flashdata('danger')): ?>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                        <?php echo $this->session->flashdata('danger'); ?>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+             <div class="card-body">
+                    <a title="Cadastrar Novo Processo" href="<?= site_url('processo_seletivo/cadastrar')?>" class="btn btn-primary btn-sm">
+            <i class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />
                   
-                </div>
-                <div class="card-body">
-                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
+               <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
                      <thead>
                         <tr>
                            <th class="text-center">Codigo</th>
@@ -35,11 +50,11 @@
 
                               <td class="text-center">
                                  
-                                 <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary">
+                                 <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary btn-sm">
                                        <span class="fa fa-pencil-square-o"></span>
                                    </a>
                                    <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemover">
-                                       <span class="fa fa-close"></span>
+                                       <span class="fa fa-times"></span>
                                    </button>
 
                                  <button title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning btn-sm">
@@ -50,27 +65,11 @@
                        <?php endforeach ?>
                      </tbody>
                    </table>
+                 </div>
                </div>
-            </div>
-            <?php if($this->session->flashdata('success')): ?>
-                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('success'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
-            <?php endif; ?>
-            <?php if($this->session->flashdata('danger')): ?>
-                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('danger'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
+              </div>
+
 <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -84,7 +83,7 @@
                 Deseja Realmente Excluir Esse Processo Seletivo?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
                     Cancelar
                 </button>
                 <a href="#" class="btn btn-primary btn-remove-ok">
@@ -93,22 +92,9 @@
             </div>
         </div>
     </div>
+  </div>
 
 
-<script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/dataTables.buttons.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/buttons.bootstrap.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/jszip.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/pdfmake.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/vfs_fonts.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/buttons.html5.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/buttons.print.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/buttons.colVis.min.js');?>"></script>
-<script src="<?= base_url('assets/js/lib/data-table/datatables-init.js');?>"></script>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#bootstrap-data-table-export').DataTable();
-  } );
-</script>
+
+ 

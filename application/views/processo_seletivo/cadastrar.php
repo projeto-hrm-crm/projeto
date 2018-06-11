@@ -2,7 +2,7 @@
 <?php print_r($vagas); ?>
 </pre> -->
 <div class="row justify-content-center align-items-center">
-   <div class="col-lg-8">
+   <div class="col-lg-10">
   <div class="card">
     <div class="card-header">
       <strong>Cadastrar Processo Seletivo</strong>
@@ -71,14 +71,15 @@
 					 </div>
 
        </div>
-       <a id="addnew" class="btn btn-success addDiv">Adicionar Etapa</a>'
+       <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv">
+        <i class="fa fa-check"></i> Adicionar Etapa </a>'
     </div>
 
      <div class="card-footer text-right">
-        <a href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
+        <a title="Cancelar Cadastro" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button type="submit" class="btn btn-primary btn-sm">
+          <button title="Cadastrar Processo" type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-plus"></i> Cadastrar
           </button>
 
