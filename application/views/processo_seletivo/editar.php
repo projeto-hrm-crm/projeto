@@ -5,7 +5,7 @@
    <div class="col-lg-10">
   <div class="card">
     <div class="card-header">
-      <strong>Edição do Processo Seletivo <?php echo($processo_seletivo[0]->codigo) ?></strong>
+      <strong>Atualizar Processo Seletivo <?php echo($processo_seletivo[0]->codigo) ?></strong>
     </div>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
@@ -83,14 +83,42 @@
     </div>
 
      <div class="card-footer text-right">
-        <a href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
+        <a title="Cancelar Atualização" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-plus"></i> Salvar
+          <button title="Atualizar Processo" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarProcesso">>
+            <i class="fa fa-check"></i> Editar
           </button>
 
-        </div>
-       </form>
+        </div><!-- FIM BOTÕES -->
+
+         <!-- MODAL -->
+         <div class="modal fade" id="editarProcesso" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Atualizar Processo</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                  <div class="modal-body">
+                  Deseja Atualizar Esse Processo?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">
+                    Cancelar
+                  </button>
+                  <button type="submit" class="btn btn-primary  btn-sm">
+                    Atualizar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      
+      </form>
+    </div>
   </div>
 </div>

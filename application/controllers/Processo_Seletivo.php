@@ -86,7 +86,7 @@ class Processo_Seletivo extends CI_Controller
         redirect('processo_seletivo');
       }else{
         $this->session->set_flashdata('danger', 'Processo Seletivo Não Pode Ser Atualizado!');
-        redirect('processo_seletivo/edit/'.$id);
+        // redirect('processo_seletivo/edit/'.$id);
       }
     }
 
@@ -139,3 +139,4 @@ class Processo_Seletivo extends CI_Controller
     redirect('processo_seletivo');
   }
 }
+
