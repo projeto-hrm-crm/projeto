@@ -10,7 +10,7 @@
 	                    <div class="card-body">
 	                    	<div class="row">
 	                    		<div class="form-group col-6">
-	                        		<label for="tipo" class="control-label mb-1">Pedido para...</label>
+	                        		<label for="tipo" class="control-label mb-1">Pedido para:</label>
 	                        		<br>
 	                        		<div class="form-check-inline form-check">
 	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['transacao']) ? 'text-danger' : '' ?>">
@@ -65,30 +65,30 @@
 	                             	</span>
 	                            </div>
 	                        </div>
-	                
+
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
 	                                <label for="id_produto" class="control-label mb-1">Produtos/Serviços</label>
 	                                  <select id="id_produto" class="form-control <?php echo isset($errors['id_produto[]']) ? 'is-invalid' : '' ?>">
 	                                    <option value="">Selecione um Produto</option>
-	                                   <?php 
+	                                   <?php
 	                                    	$old_produtos = array();
-	                                    	foreach($produtos as $produto): 
+	                                    	foreach($produtos as $produto):
 
-	                                    		if(isset($old_data['id_produto'])): 
-	                                    			
-	                                    			$key = array_search($produto->id_produto, $old_data['id_produto']); 
+	                                    		if(isset($old_data['id_produto'])):
+
+	                                    			$key = array_search($produto->id_produto, $old_data['id_produto']);
 
 	                                    			if($key !== false) array_push($old_produtos, $produto);
-	                                    			
-	                                    		endif 
+
+	                                    		endif
 	                                    ?>
-	                                    	<option value="<?php echo $produto->id_produto ?>" 
-	                                    		<?php 
-	                                    			echo isset($old_data['id_produto']) && 
-	                                    			in_array($produto->id_produto, $old_data['id_produto']) ? 
-	                                    			'disabled' : '' 
-	                                    		?> 
+	                                    	<option value="<?php echo $produto->id_produto ?>"
+	                                    		<?php
+	                                    			echo isset($old_data['id_produto']) &&
+	                                    			in_array($produto->id_produto, $old_data['id_produto']) ?
+	                                    			'disabled' : ''
+	                                    		?>
 	                                    		data-value="<?php echo $produto->valor; ?>">
 	                                    		<?php echo $produto->nome ?>
 	                                    	</option>
@@ -99,7 +99,7 @@
 	                                </span>
 	                            </div>
 	                        </div>
-	                        
+
 	                        <div class="row">
 	                        	<div class="form-group col-lg-12">
 	                        		<table id="produtos-table" class="table table-sm">
@@ -113,33 +113,33 @@
     		                                </tr>
     		                            </thead>
     		                            <tbody>
-    		                            	<?php 
+    		                            	<?php
 
     		                            		if(isset($old_data['id_produto'])):
-    		                            			
+
     		                            			$qtd   = 0;
     		                            			$total = 0;
 
 	    		                            	 	foreach($old_produtos as $produto):
-	    		                            	 		
+
 	    		                            ?>
 			    		                            	<tr>
 			    		                            		<td width="5%" class="td-id">
-			    		                            			<input class="form-control form-control-sm" name="id_produto[]" readonly 
-			    		                            			style="background-color: transparent; border: 0px; font-size: 1em;" 
+			    		                            			<input class="form-control form-control-sm" name="id_produto[]" readonly
+			    		                            			style="background-color: transparent; border: 0px; font-size: 1em;"
 			    		                            			value="<?php echo $produto->id_produto; ?>">
 			    		                            		</td>
 			    		                            		<td width="50%" class="td-nome" data-id="<?php echo $produto->id_produto; ?>">
 			    		                            			<?php echo $produto->nome; ?>
 			    		                            		</td>
 			    		                            		<td width="15%" class="td-qtd">
-			    		                            			<input type="number" class="form-control form-control-sm input-qtd" min="1" 
+			    		                            			<input type="number" class="form-control form-control-sm input-qtd" min="1"
 			    		                            			value="<?php echo $old_data['qtd_produto'][$key]; ?>" name="qtd_produto[]">
 			    		                            		</td>
 			    		                            		<td width="20%" class="td-value" data-default="<?php echo $produto->valor ?>">
-			    		                            			<?php 
+			    		                            			<?php
 			    		                            				echo 'R$ ' . number_format($produto->valor *  $old_data['qtd_produto'][$key], 2, ',','');
-			    		                            				
+
 			    		                            			?>
 			    		                            		</td>
 			    		                            		<td width="10%">
@@ -149,11 +149,11 @@
 			    		                            		</td>
 			    		                            	</tr>
 
-	    		                            <?php 
+	    		                            <?php
 	    		                            			$qtd   += $old_data['qtd_produto'][$key];
 	    		                            			$total += $produto->valor *  $old_data['qtd_produto'][$key];
 	    		                            		endforeach;
-    		                            		endif; 
+    		                            		endif;
     		                            	?>
     		                            </tbody>
     		                            <tfoot class="<?php isset($old_data['id_produto']) ? '' : 'd-none' ?>">
@@ -189,13 +189,13 @@
 
 	                        <div class="row">
 	                        	<div class="form-group col-12">
-	                        	
+
 	                                <label for="data_oferta" class="control-label mb-1">Descrição</label>
 	                                <textarea name="descricao" id="descricao" rows="4" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
 	                                </span>
-	                           
+
 	                        	</div>
 	                        </div>
 

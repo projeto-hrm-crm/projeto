@@ -1,8 +1,8 @@
 <div class="row justify-content-center align-items-center">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong>Cadastro de setor</strong>
+        <strong>Cadastrar Setor</strong>
       </div>
       <div class="row" style="margin-top: 5px;">
         <div class="col-md-12">
@@ -22,7 +22,6 @@
           <div class="row form-group">
             <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Nome</label>
-
               </div>
             <div class="col-8 col-md-9">
                <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do setor" class="form-control" required>

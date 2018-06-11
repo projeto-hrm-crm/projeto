@@ -1,5 +1,4 @@
 <!-- CANDIDATO -->
-
 <div class="animated fadeIn">
     <div class="row">
         <div class="col-md-12">
@@ -21,7 +20,7 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Candidato</strong>
+                    <strong class="card-title">Candidatos</strong>
                 </div>
         <div class="card-body">
 

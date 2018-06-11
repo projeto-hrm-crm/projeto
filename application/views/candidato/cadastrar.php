@@ -18,7 +18,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="email-input" class=" form-control-label">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="e-mail" class="form-control" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" required>
+                <input type="email" id="email" name="email" placeholder="joao@provedor.com" class="form-control" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
@@ -76,7 +76,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número" class="form-control" required>
+                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da residência" class="form-control" required>
               </div>
 
               <div class="form-group col-12 col-md-6">

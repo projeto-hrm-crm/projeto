@@ -121,7 +121,7 @@
                           Deseja realmente editar esse candidato?
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">
                               Cancelar
                           </button>
                           <button type="submit" class="btn btn-primary">
