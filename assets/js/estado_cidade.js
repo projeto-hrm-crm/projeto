@@ -1,8 +1,5 @@
 jQuery(document).ready(function ($) {
-  $("#cidade").attr('disabled', 'disabled');
-
   $(document).on('change', '#estado', function() {
-  $("#cidade").attr('disabled', 'disabled');
     cidade = $('#cidade');
     mudaCidade($(this),cidade);
   });
@@ -28,11 +25,8 @@ jQuery(document).ready(function ($) {
 
         cidade.empty(); //ZERA O CAMPO DE CIDADE
         cidade.append(options); //ADICIONA AS CIDADES DE ACORDO COM ESTADO
-      }).done(function() {
-          $("#cidade").removeAttr('disabled');
       });
     }
-
     cidade.empty();
     cidade.append(options); //ADICIONA AS CIDADES DE ACORDO COM ESTADO
   }

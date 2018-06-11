@@ -62,6 +62,8 @@ class Funcionario_model extends CI_Model {
      */
 	public function update($id_funcionario, $data)
     {
+        //TODO descobrir o problema ao editar a data e ela ficar 00/00/0000
+
         $funcionario = $this->funcionario->getById($id_funcionario);
 
         if (!$this->pessoa->update(
@@ -127,6 +129,14 @@ class Funcionario_model extends CI_Model {
 		return null;
     }
 
+    /**
+     * @author Unknown
+     *
+     * Busca os dados do funciońario pelo id único dele.
+     *
+     * @param int $id_funcionario
+     * @return int
+     */
     public function getById($id_funcionario)
     {
         try {
@@ -149,13 +159,13 @@ class Funcionario_model extends CI_Model {
             ->join('estado',    'cidade.id_estado = estado.id_estado')
             ->where('funcionario.id_funcionario', $id_funcionario)->get();
 
-            if ($funcionario)
-            {
+            if ($funcionario) {
                 return $funcionario->result();
-            }else{
+            }else {
                 echo 'Candidato não existe';
                 return 1;
             }
+
         } catch (\Exception $e) {}
     }
 
@@ -163,8 +173,8 @@ class Funcionario_model extends CI_Model {
 	 * @author: Camila Sales
 	 * Remove o registro de funcionario associado à uma pessoa fisica
 	 *
-	 * @param integer $id
-     * @return integer
+	 * @param int $id
+     * @return int
 	*/
 	public function remove($id)
 	{
@@ -172,12 +182,11 @@ class Funcionario_model extends CI_Model {
 			$this->db->where('id_funcionario', $id);
 			$id_funcionario = $this->db->delete('funcionario');
 
-			if($id_funcionario)
-			{
+			if($id_funcionario) {
 				$this->relatorio->setLog('delete', 'Deletar', 'Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
 			}
 			return $id_funcionario;
 	    } catch (\Exception $e) {}
 			// delete pessoa fisica;
-		}
+    }
 }
