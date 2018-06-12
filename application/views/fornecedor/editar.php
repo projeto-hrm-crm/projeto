@@ -1,3 +1,4 @@
+<form action="<?php site_url('fornecedor/edit'.$id); ?>" method="POST" id="form_fornecedor">
 <div class="animated fadeIn">
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
@@ -18,7 +19,7 @@
   				<?php endif; ?>
   			</div>
   		</div>
-        <form action="<?php site_url('fornecedor/edit'.$id); ?>" method="POST" id="form_fornecedor">
+        
       <div class="card-body card-block">
       <div class="row">
 
@@ -115,11 +116,11 @@
 
           </div>
           </div>
-       </form>
+    
    </div>
 </div>
 </div>
-</div>
+
 
  <div class="modal fade" id="editarFornecedor" role="dialog" aria-hidden="true">
              <div class="modal-dialog" role="document">
@@ -143,7 +144,8 @@
                      </div>
                  </div>
              </div>
-
+           </div>
+</form>
 
 <script type="text/javascript">
    $("#estado").change(function(){
