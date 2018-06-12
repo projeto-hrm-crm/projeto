@@ -9,7 +9,7 @@
 </div>
 <div class="animated fadeIn">
   <div class="row justify-content-center">
-    <div class="col">
+    <div class="col=lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cargo</strong>

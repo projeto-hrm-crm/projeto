@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
     <div class="row" >
-        <div class="col-md-12">
+        <div class="col-lg-10">
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>

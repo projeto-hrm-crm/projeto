@@ -1,5 +1,5 @@
 <div class="row" style="margin-top: 5px;">
-        <div class="col-md-12">
+        <div class="col-lg-10">
           <?php if ($this->session->flashdata('success')) : ?>
           <div class="alert alert-success">
             <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>

@@ -1,7 +1,7 @@
 <form action="<?php echo site_url('sac/editar/'.$id); ?>" method="POST" id="form-sac">
 <div class="animated fadeIn">
    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-8">
+      <div class="col-lg-10">
          <div class="card">
             <div class="card-header">
                <strong class="card-title">Atualizar SAC</strong>
