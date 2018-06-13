@@ -65,12 +65,12 @@
 
 
                 <div class="form-group col-12 col-md-6">
-                  <label class="text-lowercase">Senha</label>
+                  <label class="form-control-label">Senha</label>
                   <input id="senha" value="<?php set_value('senha');?>" name="senha" type="password" placeholder="Password" class="form-control" required>
                 </div>
 
                 <div class="form-group col-12 col-md-6">
-                  <label class="text-lowercase">Confirmar Senha</label>
+                  <label class="form-control-label">Confirmar Senha</label>
                   <input id="senha2" value="<?php set_value('senha2');?>" name="senha2" type="password" placeholder="Repetir password" class="form-control" required>
                 </div>
 

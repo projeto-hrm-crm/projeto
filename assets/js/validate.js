@@ -95,6 +95,10 @@ jQuery(document).ready(function($) {
         remote:BASE_URL+'unique/'+id_usuario,
 
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
 
       razao_social: {
         required:true,
@@ -146,6 +150,7 @@ jQuery(document).ready(function($) {
       },
 
       email:{
+        email:"Digite um email válido",
         required: 'O campo E-mail é obrigatório',
         remote: 'Este email já está em uso.'
 

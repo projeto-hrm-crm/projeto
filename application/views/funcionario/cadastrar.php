@@ -19,12 +19,12 @@
                 <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
               </div> <!-- FIM EMAIL -->
               <div class="form-group col-12 col-md-6">
-                <label class="text-lowercase">Senha</label>
+                <label class="form-control-label">Senha</label>
                 <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
-                <label class="text-lowercase">Confirmar Senha</label>
+                <label class="form-control-label">Confirmar Senha</label>
                 <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir password" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
               </div>
               <div class="form-group col-12 col-md-6">
