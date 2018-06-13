@@ -69,9 +69,12 @@ class Candidato_model extends CI_Model {
 			cidade.id_cidade, cidade.nome AS cidade,
 			documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado
+			estado.id_estado,
+			usuario.id_usuario
+
 			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
 			->join('candidato', 'pessoa_fisica.id_pessoa = candidato.id_pessoa')
 			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
 			->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
