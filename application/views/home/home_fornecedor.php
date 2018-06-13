@@ -1,5 +1,2 @@
-<?php
-
-  echo "<h1>Fornecedor</h1>"
-
- ?>
+<!-- tag de teste remover assim que criar pagina !-->
+<h1>fornecedor</h1>
