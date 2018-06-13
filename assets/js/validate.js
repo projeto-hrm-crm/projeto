@@ -4,9 +4,10 @@ jQuery(document).ready(function($) {
     //     $("#valor_produto").maskMoney();
     //     $("#salario_cargo").maskMoney();
     // })
+    // console.log(23);
     var id_usuario = null;
-    if($('#form').attr('usuario_id'))
-		  id_usuario = $('#form').attr('usuario_id');;
+    if($("#form_funcionario, #form_candidato, #form_cliente").attr('data-id_usuario'))
+		  id_usuario = $('#form').attr('usuario_id');
 
   $("#form_produto").validate({
     rules: {
@@ -149,6 +150,9 @@ jQuery(document).ready(function($) {
         remote: 'Este email já está em uso.'
 
       },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
 
       razao_social:{
         required: 'O campo Razão Social é obrigatório',
@@ -295,6 +299,10 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       email: {
         maxlength: 150,
         required:true,
@@ -348,6 +356,9 @@ jQuery(document).ready(function($) {
       email:{
         remote: 'Este email já está em uso.'
       },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
   });
 
@@ -359,12 +370,20 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       email: {
         maxlength: 150,
         required:true,
         email:true,
         remote:BASE_URL+'unique/'+id_usuario,
 
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
       data_nacimento: {
         required: true,
@@ -411,10 +430,14 @@ jQuery(document).ready(function($) {
       email:{
         remote: 'Este email já está em uso.'
       },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
 
   });
 
+  console.log(id_usuario)
   $('#form_funcionario').validate({
     rules: {
       nome: {
@@ -430,6 +453,10 @@ jQuery(document).ready(function($) {
         remote:BASE_URL+'unique/'+id_usuario,
 
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       data_nacimento: {
         required: true,
         validaDataBR: true,
@@ -473,7 +500,10 @@ jQuery(document).ready(function($) {
       },
       email:{
         remote: 'Este email já está em uso.'
-      }
+      },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
   });
 
