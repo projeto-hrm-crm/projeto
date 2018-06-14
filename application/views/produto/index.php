@@ -22,7 +22,7 @@
                     <strong class="card-title">Produtos</strong>
                 </div>
                 <div class="card-body">
-                    <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm">
+                    <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
                         <i class="fa fa-check"></i> Cadastrar
                     </a><br><br>
                     <table class="table table-striped table-bordered datatable">
@@ -34,7 +34,7 @@
                                 <th>Recebimento</th>
                                 <th>Valor</th>
                                 <th>Fornecedor</th>
-                                <th>Opções</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,7 +79,7 @@
                 Deseja realmente excluir esse produto?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
                     Cancelar
                 </button>
                 <a href="#" class="btn btn-primary btn-remove-ok">

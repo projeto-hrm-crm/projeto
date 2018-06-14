@@ -3,78 +3,176 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Funcionario_model extends CI_Model {
 
 	/**
-	* @author: Camila Sales
-	* Salva o registro de funcionario associado à uma pessoa fisica
-	*
-	* @param integer $data
+	 * @author: Camila Sales
+     *
+	 * Salva o registro de funcionario associado à uma pessoa fisica
+	 *
+	 * @param array $data
+     * @return int
 	*/
 	public function insert($data)
 	{
-		try {
-			$this->db->insert('funcionario', $data);
-			$id_funcionario = $this->db->insert_id();
+        $id_pessoa = $this->pessoa->insert([
+            'nome'  => $data['nome'],
+            'email' => $data['email']
+        ]);
 
-			if($id_funcionario)
-	        {
-				$this->relatorio->insertLog('Funcionario', $id_funcionario, 'Inseriu o funcionario', $id_funcionario);
-			}
-			return $id_funcionario;
-    } catch (\Exception $e) {}
+        $this->endereco->insert([
+            'cep'           => $data['cep'],
+            'bairro'        => $data['bairro'],
+            'logradouro'    => $data['logradouro'],
+            'numero'        => $data['numero'],
+            'complemento'   => $data['complemento'],
+            'id_pessoa'     => $id_pessoa,
+            'id_cidade'     => $data['cidade']]);
+
+        $this->documento->insert([
+            'tipo'      => 'cpf',
+            'numero'    => $data['cpf'],
+            'id_pessoa' => $id_pessoa]);
+
+        $this->telefone->insert([
+            'numero'    => $data['tel'],
+            'id_pessoa' => $id_pessoa]);
+
+        $id_pessoa_fisica = $this->pessoa_fisica->insert([
+            'data_nascimento'   => switchDate($data['data_nacimento']),
+            'sexo'              =>$data['sexo'],
+            'id_pessoa'         =>$id_pessoa]);
+
+        $this->session->set_flashdata('success', 'funcionario cadastrado com sucesso.');
+
+        $this->db->insert('funcionario', ['id_pessoa' => $id_pessoa]);
+        $id_funcionario = $this->db->insert_id();
+
+        if($id_funcionario)
+            $this->relatorio->setLog('insert', 'Inserir', 'Funcionario', $id_funcionario, 'Inseriu o funcionario', $id_funcionario);
+
+        return $id_funcionario;
 	}
 
+    /**
+     * @author Pedro Henrique Guimarães
+     *
+     * Méotoodo responsável por atualizar os dados de um determinado usuário, baseado em seu id único.
+     * O método utilizará outros models devido a necessidade de modificar outras tabelas que possuem ligação com funcionário.
+     *
+     * @param $id_funcionario
+     * @return boolean
+     */
+	public function update($id_funcionario, $data)
+    {
+        //TODO descobrir o problema ao editar a data e ela ficar 00/00/0000
+
+        $funcionario = $this->funcionario->getById($id_funcionario);
+
+        if (!$this->pessoa->update(
+            [
+            'id_pessoa' => $funcionario[0]->id_pessoa,
+            'nome'  => $data['nome'],
+            'email' => $data['email']
+            ]
+        )) {
+            $this->session->set_flashdata('success', 'funcionario editado com sucesso.');
+            redirect(base_url('cliente/editar'));
+            return;
+        }
+
+        $this->endereco->update([
+            'cep'           => $data['cep'],
+            'bairro'        => $data['bairro'],
+            'logradouro'    => $data['logradouro'],
+            'numero'        => $data['numero'],
+            'complemento'   => $data['complemento'],
+            'id_pessoa'     => $funcionario[0]->id_pessoa,
+            'id_cidade'     => $data['cidade']]);
+
+        $this->documento->update([
+            'tipo'      => 'cpf',
+            'numero'    => $data['cpf'] ,
+            'id_pessoa' => $funcionario[0]->id_pessoa]);
+
+        $this->telefone->update([
+            'numero'    =>$data['tel'],
+            'id_pessoa' => $funcionario[0]->id_pessoa]);
+
+        $this->pessoa_fisica->update($funcionario[0]->id_pessoa,[
+            'data_nascimento'   => switchDate($data['funcionario']['data_nascimento']),
+            'sexo'              =>$data['funcionario']['sexo']]);
+
+        $this->session->set_flashdata('success', 'funcionario editado com sucesso.');
+
+        redirect('funcionario');
+    }
+
+
+    /**
+     * @author Pedro Henrique Guimarães
+     *
+     * Método responsável por retornar todos os funcionários.
+     *
+     * @return mixed
+     */
 
 	public function get()
 	{
-		try {
-			$query = $this->db->select("*")->from("pessoa")
-			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
-			->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa');
-    } catch (\Exception $e) {}
+	    $this->db->select('*')
+                 ->from('pessoa as p')
+                 ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
+                 ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
+	    $result = $this->db->get();
 
-	if ($query)
-	{
-		return $query->get()->result();
-	}else{
-		echo 'Não existem dados';
-		exit;
-	}
-}
-public function getById($id_funcionario)
-{
-	try {
-		$funcionario = $this->db->select("
-		pessoa.id_pessoa, pessoa.nome, pessoa.email,
-		pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
-		endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
-		endereco.complemento,
-		cidade.id_cidade,
-		documento.numero AS numero_documento,
-		telefone.numero AS telefone,
-		estado.id_estado
-		")->from("pessoa")
-		->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
-		->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
-		->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
-		->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
-		->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
-		->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
-		->join('estado',    'cidade.id_estado = estado.id_estado')
-		->where('funcionario.id_funcionario', $id_funcionario)->get();
-		if ($funcionario)
-		{
-			return $funcionario->result();
-		}else{
-			echo 'Candidato não existe';
-			return 1;
-		}
-	} catch (\Exception $e) {}
-}
+	    if ($result->num_rows() > 0)
+	        return $result->result();
 
+		return null;
+    }
+
+    /**
+     * @author Unknown
+     *
+     * Busca os dados do funciońario pelo id único dele.
+     *
+     * @param int $id_funcionario
+     * @return int
+     */
+    public function getById($id_funcionario)
+    {
+        try {
+            $funcionario = $this->db->select("
+            pessoa.id_pessoa, pessoa.nome, pessoa.email,
+            pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
+            endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
+            endereco.complemento,
+            cidade.id_cidade,
+            documento.numero AS numero_documento,
+            telefone.numero AS telefone,
+            estado.id_estado
+            ")->from("pessoa")
+            ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+            ->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
+            ->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+            ->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
+            ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
+            ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
+            ->join('estado',    'cidade.id_estado = estado.id_estado')
+            ->where('funcionario.id_funcionario', $id_funcionario)->get();
+
+            if ($funcionario) {
+                return $funcionario->result();
+            }else {
+                echo 'Candidato não existe';
+                return 1;
+            }
+
+        } catch (\Exception $e) {}
+    }
 	/**
-	* @author: Camila Sales
-	* Remove o registro de funcionario associado à uma pessoa fisica
-	*
-	* @param integer $id_pessoa
+	 * @author: Camila Sales
+	 * Remove o registro de funcionario associado à uma pessoa fisica
+	 *
+	 * @param int $id
+     * @return int
 	*/
 	public function remove($id)
 	{
@@ -82,29 +180,11 @@ public function getById($id_funcionario)
 			$this->db->where('id_funcionario', $id);
 			$id_funcionario = $this->db->delete('funcionario');
 
-			if($id_funcionario)
-			{
-				$this->relatorio->deleteLog('Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
+			if($id_funcionario) {
+				$this->relatorio->setLog('delete', 'Deletar', 'Funcionario', $id_funcionario, 'Deletou o funcionario', $id);
 			}
 			return $id_funcionario;
 	    } catch (\Exception $e) {}
 			// delete pessoa fisica;
-		}
-
-	/**
-	* @author: Mayra Bueno
-	* Métodos para a caixa de seleção dinâmica
-	* País, estado e cidade
-	*/
-	public function get_pais(){
-		$query = $this->db->get('pais');
-		return $query->result();
-	}
-
-	public function get_cargos(){
-		// $query = $this->db->get('vaga');
-
-		// return $query->result();
-	}
-
+    }
 }

@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
     <div class="row" >
-        <div class="col-md-12">
+        <div class="col-lg-10">
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -19,36 +19,41 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Ordens</strong>
+                    <strong class="card-title">SAC</strong>
                 </div>
                 <div class="card-body">
-                  
-                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                  <a href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                    <i class="fa fa-check"></i> Novo Cadastro
+                  </a><br />
+                  <br />
+
+                    <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                <th width="10%">Código</th>
-                                <th>Titulo</th>
-                                <th>Cliente</th>
-                                <th>Status</th>
-                                <th width="20%">Ação</th>
+                                <th width="20%" class="text-center" >Codigo</th>
+                                <th class="text-center">Titulo</th>
+                                <th class="text-center">Cliente</th>
+                                <th class="text-center">Status</th>
+                                <th width="20%" class="text-center" >Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(isset($sac)): ?>
                                 <?php foreach($sac as $item): ?>
                                     <tr>
-                                        <td><?=$item->id_sac;?></td>
+                                       
+                                        <td><?php echo $item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
                                         <td><?=$item->id_cliente;?></td>
                                         <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
                                         <td>
-                                            <a href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Editar">
-                                                <span class="fa fa-edit"></span>
+                                            <a  href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Atualizar SAC">
+                                                <span class="fa fa-pencil-square-o"></span>
                                             </a>
-                                            <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir" data-toggle="modal" data-target="#modalRemover">
+                                            <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir SAC" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
-                                           
+
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -57,7 +62,7 @@
                     </table>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -89,10 +94,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse SAC?
+                Deseja Realmente Excluir Esse SAC?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
                     Cancelar
                 </button>
                 <a href="#" class="btn btn-primary btn-remove-ok">

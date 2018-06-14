@@ -1,5 +1,5 @@
   <div class="row" >
-    <div class="col-md-12">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cliente</strong>
@@ -21,11 +21,11 @@
           </div>
         <?php endif; ?>
         <div class="card-body">
-          <a href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-check"></i> Cadastrar
+          <a title="Cadastrar Novo Cliente" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
+            <i class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />
-          <table id="bootstrap-data-table" class="table table-striped table-bordered">
+          <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
 
             <thead>
               <tr>
@@ -49,10 +49,10 @@
                     <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Editar" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
-                      <span class="fa fa-edit"></span></a>
-                       <button data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-close"></span>
+                    <a title="Editar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary btn-sm">
+                      <span class="fa fa-pencil-square-o"></span></a>
+                       <button data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger btn-sm" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
+                            <span class="fa fa-times"></span>
                         </button>
                       </td>
                     </tr>
@@ -74,13 +74,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse cliente?
+                Deseja Realmente Excluir Esse Cliente?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
                     Cancelar
                 </button>
-                <a href="#" class="btn btn-primary btn-remove-ok">
+                <a href="#" class="btn btn-primary btn-remove-ok btn-sm">
                     Confirmar
                 </a>
             </div>

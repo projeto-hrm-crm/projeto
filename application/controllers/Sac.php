@@ -1,6 +1,5 @@
 <?php
 class Sac extends CI_Controller {
-
    public function __construct() {
       parent::__construct();
       $user_id = $this->session->userdata('user_login');
@@ -43,7 +42,7 @@ class Sac extends CI_Controller {
     *
     */
     public function create() {
-       
+      
       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
       $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
        
@@ -116,10 +115,10 @@ class Sac extends CI_Controller {
                );
 
                $this->sac->update($array, $id);
-               $this->session->set_flashdata('success', 'Sac editado com sucesso.');
+               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'Sac não pode ser editado');
+               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
                redirect('sac');
             }
          }
@@ -142,7 +141,7 @@ class Sac extends CI_Controller {
     */
     public function delete($id_sac) {
        $this->sac->remove($id_sac);
-       $this->session->set_flashdata('success', 'Sac deletado com sucesso.');
+       $this->session->set_flashdata('success', 'SAC Excluído Com Sucesso!');
        redirect('sac');
     }
 

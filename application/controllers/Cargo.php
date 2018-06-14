@@ -100,7 +100,7 @@ class Cargo extends CI_Controller
         $data["id_setor"]=$this->input->post("id_setor");
 
           $this->cargo->insert($data);
-          $this->session->set_flashdata('success','Cadastrado com sucesso');
+          $this->session->set_flashdata('success','Cargo Cadastrado Com Sucesso!');
           redirect('cargo');
       }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -108,7 +108,7 @@ class Cargo extends CI_Controller
           redirect('cargo/cadastrar');
       }
     }else{
-      $data['title'] = 'Cadastrar cargo';
+      $data['title'] = 'Cadastrar Cargo';
       $data['errors'] = $this->session->flashdata('errors');
       $data['success_message'] = $this->session->flashdata('success');
       $data['error_message']   = $this->session->flashdata('danger');
@@ -147,7 +147,7 @@ class Cargo extends CI_Controller
 
         $this->cargo->update($id_cargo,$data);
 
-        $this->session->set_flashdata('success', 'Cargo editado com sucesso');
+        $this->session->set_flashdata('success', 'Cargo Atualizado Com Sucesso!');
 
         redirect('cargo');
 
@@ -194,7 +194,7 @@ class Cargo extends CI_Controller
   {
     $this->cargo->delete($id_cargo);
 
-    $this->session->set_flashdata('success', 'Cargo excluído com sucesso');
+    $this->session->set_flashdata('success', 'Cargo Excluído Com Sucesso!');
     redirect('cargo');
   }
 }
