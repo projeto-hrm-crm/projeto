@@ -16,13 +16,9 @@ jQuery(document).ready(function ($) {
       var url = "http://localhost/projeto/filtrar_cidades/" + estado.val();
       $.get(url, function (data) {
         data = JSON.parse(data);
-        console.log(data.length)
         $.each(data, function (index, element) {
-          console.log(1);
           options += "<option value='" + element.id_cidade + "'>" + element.nome + "</option>";
         });
-        console.log(options);
-
         cidade.empty();//ZERA O CAMPO DE CIDADE
         cidade.append(options);//ADICIONA AS CIDADES DE ACORDO COM ESTADO
       });

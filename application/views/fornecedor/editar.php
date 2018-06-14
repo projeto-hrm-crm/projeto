@@ -18,7 +18,7 @@
   				<?php endif; ?>
   			</div>
   		</div>
-        <form action="<?php site_url('fornecedor/edit'.$id); ?>" method="POST" id="form_fornecedor">
+        <form action="<?php site_url('fornecedor/edit'.$id); ?>" method="POST" data-id_usuario ="<?php echo $fornecedor[0]->id_usuario; ?>" id="form_fornecedor">
       <div class="card-body card-block">
       <div class="row">
 

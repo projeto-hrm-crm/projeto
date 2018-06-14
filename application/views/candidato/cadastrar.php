@@ -20,7 +20,15 @@
                 <label for="email-input" class=" form-control-label">E-mail</label>
                 <input type="email" id="email" name="email" placeholder="e-mail" class="form-control" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" required>
               </div>
+              <div class="form-group col-12 col-md-6">
+                <label class="form-control-label">Senha</label>
+                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
+              </div>
 
+              <div class="form-group col-12 col-md-6">
+                <label class="form-control-label">Confirmar Senha</label>
+                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir password" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
+              </div>
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
                 <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="Data de nascimento" class="form-control data">
