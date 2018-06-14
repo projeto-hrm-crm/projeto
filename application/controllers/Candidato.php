@@ -58,15 +58,15 @@ class Candidato extends CI_Controller
   {
     $data['candidato']  = $this->input->post();
     if($data['candidato']){
-      // if(!$this->form_validation->run('pessoa'))
-      // {
-      //       $data['old_data'] = $this->input->post();
-      //       $this->session->set_flashdata('errors', $this->form_validation->error_array());
-      //       $this->session->set_flashdata('old_data', $this->input->post());
-      //       redirect('candidato/cadastrar');
-      // }
-      // else
-      // {
+      if(!$this->form_validation->run('usuario'))
+      {
+            $data['old_data'] = $this->input->post();
+            $this->session->set_flashdata('errors', $this->form_validation->error_array());
+            $this->session->set_flashdata('old_data', $this->input->post());
+            redirect('candidato/cadastrar');
+      }
+      else
+      {
         $id_pessoa = $this->pessoa->insert(['nome' => $data['candidato']['nome'], 'email' => $data['candidato']['email']]);
 
         $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
@@ -79,9 +79,12 @@ class Candidato extends CI_Controller
 
         $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['candidato']['data_nacimento']),'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->candidato->insert(['id_pessoa' => $id_pessoa]);
+        //usuario
+       $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>5,'id_pessoa'=>$id_pessoa]);
+
         $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
         redirect('candidato');
-      // }
+      }
     }
     $data['title'] = 'Cadastrar Candidato';
     $data['errors'] = $this->session->flashdata('errors');
