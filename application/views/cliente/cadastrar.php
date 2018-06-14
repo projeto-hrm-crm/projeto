@@ -1,7 +1,7 @@
 <!-- CLIENTE -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cadastrar Cliente</strong>
@@ -96,11 +96,11 @@
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
-            <div class="card-footer text-right">
+            <div title="Cancelar Cadastro" class="card-footer text-right">
               <a href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>
-              <button type="submit" class="btn btn-primary btn-sm">
+              <button title="Cadastrar Cliente" type="submit" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus"></i> Cadastrar
               </button>
             </div>

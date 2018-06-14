@@ -1,5 +1,5 @@
 <div class="row" style="margin-top: 5px;">
-        <div class="col-md-12">
+        <div class="col-lg-10">
           <?php if ($this->session->flashdata('success')) : ?>
           <div class="alert alert-success">
             <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
@@ -14,7 +14,7 @@
 
 
 <div class="row justify-content-center align-items-center">
-   <div class="col-lg-8">
+   <div class="col-lg-10">
   <div class="card">
   <div class="card-header">
           <strong class="card-title">Cadastrar Fornecedor</strong>
@@ -26,7 +26,7 @@
           <!--NOME-->
           <div class="form-group col-12 col-md-6">
             <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
+                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome Completo da Empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
@@ -102,7 +102,7 @@
 
       <div class="form-group col-12 col-md-9">
          <label class=" form-control-label">Logradouro</label>
-         <input type="text" id="logradouro" name="logradouro" placeholder="Rua da Praia" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
+         <input type="text" id="logradouro" name="logradouro" placeholder="Nome da Rua" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['logradouro']) ? $errors['logradouro'] : '' ; ?>
 	              </span>
@@ -135,10 +135,10 @@
 
     </div>
      <div class="card-footer text-right">
-        <a href="<?=site_url('fornecedor')?>" class="btn btn-danger btn-sm">
+        <a title="Cancelar Cadastro" href="<?=site_url('fornecedor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button type="submit" class="btn btn-primary btn-sm">
+          <button title="Cadastrar Fornecedor" type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-plus"></i> Cadastrar
           </button>
 
