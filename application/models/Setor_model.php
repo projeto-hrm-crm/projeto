@@ -52,7 +52,7 @@ class Setor_model extends CI_Model
 
     if($id_setor)
     {
-      $this->relatorio->insertLog('Setor', $id_setor, 'Inseriu o setor', $id_setor);
+      $this->relatorio->setLog('insert', 'Inserir', 'Setor', $id_setor, 'Inseriu o setor', $id_setor);
     }
     return $id_setor;
   }
@@ -70,7 +70,7 @@ class Setor_model extends CI_Model
 
     if($id_setor)
     {
-      $this->relatorio->updateLog('Setor', $id_setor, 'Atualizou o setor', $id);
+      $this->relatorio->setLog('update', 'Atualizar', 'Setor', $id_setor, 'Atualizou o setor', $id);
     }
     return $id_setor;
   }
@@ -88,9 +88,8 @@ class Setor_model extends CI_Model
 
       if($id_setor)
       {
-        $this->relatorio->deleteLog('Setor', $id_setor, 'Deletou o setor', $id);
+        $this->relatorio->setLog('delete', 'Deletar', 'Setor', $id, 'Deletou o setor', $id);
       }
-      return $id_setor;
 	}
 }
 ?>

@@ -1,12 +1,12 @@
 <!-- FUNCIONÁRIO -->
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar informações de funcionário</strong>
+          <strong class="card-title">Editar Funcionário</strong>
         </div>
 
-        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" class="form-horizontal">
+        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" data-id_usuario ="<?php echo $funcionario[0]->id_usuario; ?>" class="form-horizontal">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">
@@ -84,6 +84,16 @@
                 <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 
+              <div class="form-group col-12 col-md-6">
+                <label for="cargo">Cargos</label>
+                <select id="id_cargo" name="id_cargo" class="form-control">
+                  <option value="">Selecionar cargo</option>
+                  <?php foreach($cargos as $cargo): ?>
+                    <option value="<?php echo $cargo->id_cargo; ?>"><?php echo $cargo->nome; ?></option>
+                  <?php endforeach ?>
+                </select>
+              </div><!-- FIM CARGOS -->
+
             </div>
 
             <div class="card-footer">
@@ -108,7 +118,7 @@
                     Deseja realmente editar esse funcionario?
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
                       Cancelar
                     </button>
                     <button type="submit" class="btn btn-primary">

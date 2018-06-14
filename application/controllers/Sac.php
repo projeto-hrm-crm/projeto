@@ -1,6 +1,8 @@
 <?php
 class Sac extends CI_Controller {
 
+  public $menus;
+
     public function __construct()
   {
     parent::__construct();
@@ -12,13 +14,13 @@ class Sac extends CI_Controller {
     public function index(){
         $data['title'] = 'Solicitações SAC';
         $data['sac'] = $this->sac->get();
-       $data['assets'] = array(
-     'js' => array(
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-     ),
+        $data['assets'] = array(
+          'js' => array(
+            'lib/data-table/datatables.min.js',
+            'lib/data-table/dataTables.bootstrap.min.js',
+            'datatable.js',
+            'confirm.modal.js',
+          ),
    );
 
         loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
@@ -45,10 +47,10 @@ class Sac extends CI_Controller {
                  'descricao' => $this->input->post('descricao'),
                );
                $this->sac->insert($array);
-               $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
+               $this->session->set_flashdata('success', 'SAC Cadastrado Com Sucesso!');
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
+               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Cadastrado!');
                redirect('sac');
             }
          }
@@ -83,10 +85,10 @@ class Sac extends CI_Controller {
                );
 
                $this->sac->update($array, $id);
-               $this->session->set_flashdata('success', 'Sac editado com sucesso.');
+               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'Sac não pode ser editado');
+               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
                redirect('sac');
             }
          }
@@ -108,7 +110,7 @@ class Sac extends CI_Controller {
     */
     public function delete($id_sac) {
        $this->sac->remove($id_sac);
-       $this->session->set_flashdata('success', 'Sac deletado com sucesso.');
+       $this->session->set_flashdata('success', 'SAC Excluído Com Sucesso!');
        redirect('sac');
     }
 

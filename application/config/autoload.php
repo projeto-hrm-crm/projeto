@@ -149,6 +149,7 @@ $autoload['model'] = array(
                     'Pessoa_model'               => 'pessoa',
                     'Endereco_model'             => 'endereco',
                     'Estado_model'               => 'estado',
+                    'Pais_model'                 => 'pais',
                     'Documento_model'            => 'documento',
                     'Telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',

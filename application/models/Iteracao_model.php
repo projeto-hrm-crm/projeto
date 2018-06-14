@@ -13,7 +13,7 @@ class Iteracao_model extends CI_Model {
 
     if($id_iteracao)
     {
-      $this->relatorio->insertLog('Iteracao', $id_iteracao, 'Inseriu a iteracao', $id_iteracao);
+      $this->relatorio->setLog('insert', 'Inserir', 'Iteracao', $id_iteracao, 'Inseriu a iteracao', $id_iteracao);
     }
     return $id_iteracao;
   }
@@ -49,10 +49,10 @@ class Iteracao_model extends CI_Model {
 
     if($id_iteracao)
     {
-      $this->relatorio->updateLog('Iteracao', $id_iteracao, 'Atualizou a iteracao', $id);
+      $this->relatorio->setLog('update', 'Atualizar', 'Iteracao', $id_iteracao, 'Atualizou a iteracao', $id);
     }
     return $id_iteracao;
-    
+
   }
 
   /**
@@ -63,10 +63,10 @@ class Iteracao_model extends CI_Model {
   public function remove($id) {
     $this->db->where('id_iteracao', $id);
     $id_iteracao = $this->db->delete('iteracao');
-    
+
     if($id_iteracao)
     {
-      $this->relatorio->deleteLog('Iteracao', $id_iteracao, 'Deletou a iteracao', $id);
+      $this->relatorio->setLog('delete', 'Deletar', 'Iteracao', $id_iteracao, 'Deletou a iteracao', $id);
     }
     return $id_iteracao;
   }

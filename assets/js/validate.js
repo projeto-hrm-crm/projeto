@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-
     // $(function() {
     //     $("#valor_produto").maskMoney();
     //     $("#salario_cargo").maskMoney();
@@ -87,6 +86,12 @@ jQuery(document).ready(function($) {
       email: {
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
 
       razao_social: {
@@ -139,8 +144,13 @@ jQuery(document).ready(function($) {
       },
 
       email:{
+        email:"Digite um email válido",
         required: 'O campo E-mail é obrigatório',
+        remote: 'Este email já está em uso.'
       },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
 
       razao_social:{
         required: 'O campo Razão Social é obrigatório',
@@ -181,6 +191,15 @@ jQuery(document).ready(function($) {
 
     },
 
+  });
+
+  $("#form_setor").validate({
+    rules: {
+      nome: {
+        required:true,
+        letras:true,
+      },
+    }
   });
 
   $('#form-vaga').validate({
@@ -287,10 +306,16 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       email: {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
       },
       data_nacimento: {
         required: true,
@@ -325,8 +350,10 @@ jQuery(document).ready(function($) {
         maxlength: 70,
         regex: /^[A-Za-z0-9]/,
       }
+      sexo:{
+        required:true }
+      },
 
-    },
     messages: {
 
       complemento:{
@@ -335,7 +362,18 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      sexo:{
+        required:"Please select a Color<br/>"
+      },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
+      senha2: {
+        equalTo: 'A confirmação de senha não confere.'
+      },
     },
+
+
   });
 
   $('#form_cliente').validate({
@@ -346,10 +384,20 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       email: {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
       data_nacimento: {
         required: true,
@@ -393,9 +441,17 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
 
   });
+
+  console.log(id_usuario)
   $('#form_funcionario').validate({
     rules: {
       nome: {
@@ -408,6 +464,12 @@ jQuery(document).ready(function($) {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
       data_nacimento: {
         required: true,
@@ -450,6 +512,12 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
   });
 
@@ -900,55 +968,3 @@ jQuery(document).ready(function($) {
   })
   //final da alteração do telefone
 });
-
-  /**
-  * @author: Beto Cadilhe
-  * Validação de cnpj:
-  **/
-
- /* jQuery.validator.addMethod("cnpj", function (value, element) {
-
-    var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
-    if (value.length == 0) {
-        return false;
-    }
-
-    value = value.replace(/\D+/g, '');
-    digitos_iguais = 1;
-
-    for (i = 0; i < value.length - 1; i++)
-        if (value.charAt(i) != value.charAt(i + 1)) {
-            digitos_iguais = 0;
-            break;
-        }
-    if (digitos_iguais)
-        return false;
-
-    tamanho = value.length - 2;
-    numeros = value.substring(0, tamanho);
-    digitos = value.substring(tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-            pos = 9;
-    }
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if (resultado != digitos.charAt(0)) {
-        return false;
-    }
-    tamanho = tamanho + 1;
-    numeros = value.substring(0, tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-            pos = 9;
-    }
-
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-
-    return (resultado == digitos.charAt(1));
-}) */

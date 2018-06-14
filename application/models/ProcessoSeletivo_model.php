@@ -35,7 +35,7 @@ class ProcessoSeletivo_model extends CI_Model
         $dados['descricao'] = $dados['id_usuario'] . ' Inseriu o processo seletivo ' . $dados['item_editado'] . ' na data de ' . $dados['data'];
 
         $this->relatorio->setLog($dados);
-        return $id_processo_seletivo;
+          return $id_processo_seletivo;
     }
   }
 

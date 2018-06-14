@@ -507,7 +507,7 @@ $config = array(
               'rules' => 'required'
           ),
           array(
-              'field' => 'telefone',
+              'field' => 'tel',
               'label' => 'telefone',
               'rules' => 'required'
           ),

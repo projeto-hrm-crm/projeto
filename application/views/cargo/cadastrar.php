@@ -9,7 +9,7 @@
 </div> -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cadastrar Cargo</strong>
@@ -23,7 +23,7 @@
                <!--NOME--> 
               <div class="form-group">
               <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" name="nome" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do Cargo. EX: Auxiliar Administrativo" name="nome" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                  <span class="invalid-feedback">
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
@@ -62,14 +62,14 @@
             </div>
           </div>
         </div>
-        <div class="card-footer text-right">
+        <div title="Cancelar Cadastro" class="card-footer text-right">
          <!--ACTIONS-->
         <a href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>
         
-          <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Cadastrar
+          <button title="Cadastrar Cargo" type="submit" class="btn btn-primary btn-sm">
+            <i class="fa fa-plus"></i> Cadastrar
           </button>
           
         </div>

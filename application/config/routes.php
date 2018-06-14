@@ -72,6 +72,10 @@ $route['log'] = 'Log/index';
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
+//Rota para verificando de email
+$route['unique/(:any)'] = 'Usuario/unique/$1';
+
+
 //Rotas Fornecedores
 $route['fornecedor/cadastrar'] = 'Fornecedor/create';
 $route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
@@ -88,9 +92,10 @@ $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
 
 //Rotas SAC
+$route['sac'] = 'Sac';
 $route['sac/cadastrar'] = 'Sac/create';
-$route['sac/excluir/(:num)'] = 'Sac/delete/$1';
 $route['sac/editar/(:num)'] = 'Sac/edit/$1';
+$route['sac/excluir/(:num)'] = 'Sac/delete/$1';
 
 //Rotas Setores
 

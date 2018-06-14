@@ -56,10 +56,10 @@ class Fornecedor extends CI_Controller
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->insert($data);
-        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso.');
+        $this->session->set_flashdata('success', 'Fornecedor Cadastrado Com Sucesso!');
         redirect('fornecedor');
       }else{
-        $this->session->set_flashdata('danger', 'Fornecedor não pode ser cadastrado');
+        $this->session->set_flashdata('danger', 'Fornecedor Não Pode Ser Cadastrado!');
         redirect('fornecedor/cadastrar');
       }
     }
@@ -149,10 +149,10 @@ class Fornecedor extends CI_Controller
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->update($id, $data);
-        $this->session->set_flashdata('success', 'Fornecedor editado com sucesso.');
+        $this->session->set_flashdata('success', 'Fornecedor Atualizado Com Sucesso!');
         redirect('fornecedor');
       }else{
-        $this->session->set_flashdata('danger', 'Fornecedor não pode ser atualizado.');
+        $this->session->set_flashdata('danger', 'Fornecedor Não Pode Ser Atualizado!');
         redirect('fornecedor/edit/'.$id);
       }
     }
@@ -164,16 +164,7 @@ class Fornecedor extends CI_Controller
     $data['estado_fornecedor'] = $state;
     $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
     $data['id'] = $id;
-    $data['assets'] = array(
-     'js' => array(       
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-       // 'fornecedor/validate-form.js',
-       'validate.js',
-     ),
-   );
+    
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
   }
   /**
@@ -188,9 +179,9 @@ class Fornecedor extends CI_Controller
      $fornecedor = $this->fornecedor->find($id);
      if($fornecedor){
         $this->fornecedor->delete($id);
-        $this->session->set_flashdata('success', 'fornecedor deletado com sucesso.');
+        $this->session->set_flashdata('success', 'Fornecedor Excluído Com Sucesso!');
      }else{
-       $this->session->set_flashdata('danger', 'Impossível Deletar!');
+       $this->session->set_flashdata('danger', 'Impossível Excluir!');
      }
      redirect('fornecedor');
   }

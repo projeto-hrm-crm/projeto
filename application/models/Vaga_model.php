@@ -38,10 +38,8 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->insertLog('Vaga', $id_vaga, 'Inseriu a vaga', $id_vaga);
+            $this->relatorio->setLog('insert', 'Inserir', 'Vaga', $id_vaga, 'Inseriu a vaga', $id_vaga);
         }
-        return $id_vaga;
-
     }
      /*
      *@author: Lucilene Fidelis
@@ -60,10 +58,8 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->updateLog('Vaga', $id_vaga, 'Atualizou a vaga', $vaga['id_vaga']);
+            $this->relatorio->setLog('update', 'Atualizar', 'Vaga', $id_vaga, 'Atualizou a vaga', $vaga['id_vaga']);
         }
-        return $id_vaga;
-
     }
 
     /*
@@ -78,9 +74,8 @@ class Vaga_model extends CI_Model
 
         if($id_vaga)
         {
-            $this->relatorio->deleteLog('Vaga', $id_vaga, 'Deletou a vaga', $id);
+            $this->relatorio->setLog('delete', 'Deletar', 'Vaga', $id_vaga, 'Deletou a vaga', $id);
         }
-        return $id_vaga;
     }
 
     /*
