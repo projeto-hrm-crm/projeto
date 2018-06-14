@@ -1,28 +1,20 @@
 <form action="<?php echo site_url('sac/editar/'.$id); ?>" method="POST" id="form-sac">
 <div class="animated fadeIn">
    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-8">
+      <div class="col-lg-10">
          <div class="card">
             <div class="card-header">
-               <strong class="card-title">Editar SAC</strong>
+               <strong class="card-title">Atualizar SAC</strong>
             </div>
 
                <div class="card-body">
                   <div class="row">
-                     <div class="col-lg-8 form-group">
+                     <div class="col-lg-5 form-group">
                         <label class=" form-control-label">Assunto</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Assunto" value="<?=htmlspecialchars($sac[0]->titulo)?>" class="form-control titulo" required>
                      </div>
-
+                     
                      <div class="col-lg-4 form-group">
-                        <label class="form-control-label">Status</label>
-                        <select name="encerrado" class="form-control" id="encerrado">
-                           <option value="0">Aberto</option>
-                           <option value="1" <?php if($sac[0]->encerrado){echo "selected";} ?>>Fechado</option>
-                        </select>
-                     </div>
-
-                     <div class="col-lg-6 form-group">
                         <label class="form-control-label">Produtos</label>
                         <select name="id_produto" class="form-control" id="produto">
                            <option value="0" disabled selected>Selecione um produto</option>
@@ -32,13 +24,11 @@
                         </select>
                      </div>
 
-                     <div class="col-lg-6 form-group">
-                        <label class="form-control-label">Cliente</label>
-                        <select name="id_cliente" class="form-control" id="produto">
-                           <option value="0" disabled selected>Selecione um cliente</option>
-                           <?php foreach ($clientes as $cliente): ?>
-                              <option value="<?php echo $cliente->id_cliente ?>"  <?php if($sac[0]->id_cliente == $cliente->id_cliente){echo "selected";} ?>><?php echo $cliente->nome; ?></option>
-                           <?php endforeach; ?>
+                     <div class="col-lg-3 form-group">
+                        <label class="form-control-label">Status</label>
+                        <select name="encerrado" class="form-control" id="encerrado">
+                           <option value="0">Aberto</option>
+                           <option value="1" <?php if($sac[0]->encerrado){echo "selected";} ?>>Fechado</option>
                         </select>
                      </div>
 
@@ -50,12 +40,12 @@
                </div>
 
                <div class="card-footer text-right">
-                  <a href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
+                  <a title="Cancelar Atualização" href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar">
-                     <span class="fa fa-pencil-square-o"></span>
-                     Editar
+                  <button title="Atualizar SAC" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editar">
+                     <span class="fa fa-check"></span>
+                    Editar
                  </button>
                </div>
 
@@ -68,20 +58,20 @@
        <div class="modal-dialog" role="document">
            <div class="modal-content">
                <div class="modal-header">
-                   <h5 class="modal-title">Excluir produto</h5>
+                   <h5 class="modal-title">Excluir</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
                <div class="modal-body">
-                   Deseja realmente editar esse Fornecedor?
+                   Deseja realmente editar esse SAC?
                </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                   <button type="button" class="btn btn-danger" data-dismiss="modal">
                        Cancelar
                    </button>
                    <button  type="submit" class="btn btn-primary btn-remove-ok">
-                       Confirmar
+                       Atualizar
                    </button>
                </div>
            </div>

@@ -70,9 +70,11 @@ class Cliente_model extends CI_Model {
 			cidade.id_cidade,
 			documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado
+			estado.id_estado,
+			usuario.id_usuario
 			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
 			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')
 			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
 			->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
@@ -84,6 +86,19 @@ class Cliente_model extends CI_Model {
 			{
 				return $cliente->result();
 			}else{
+				echo 'Candidato não existe';
+				return 1;
+			}
+		} catch (\Exception $e) {}
+	}
+   
+   public function GetIdCliente($id)
+	{
+		try {
+			$cliente = $this->db->select("id_cliente")->from("cliente")->where('id_pessoa', $id)->get();
+			if ($cliente) {
+				return $cliente->result();
+			}else {
 				echo 'Candidato não existe';
 				return 1;
 			}

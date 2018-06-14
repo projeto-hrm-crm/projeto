@@ -9,16 +9,23 @@
         <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger');?>
       </div>
     <?php endif; ?>
+
     <div class="card">
       <div class="card-header">
-        <strong class="card-title">Setor</strong><br>
-        <a class="btn btn-primary" title="cadastrar" href="<?= site_url('setor/cadastrar')?>">Cadastrar Setor</a><br>
+        <strong class="card-title">Setores</strong>
       </div>
+
       <div class="card-body">
+
+        <a href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
+          <i class="fa fa-check"></i> Cadastrar
+        </a><br />
+        <br />
+
         <table id="setorTable" class="table table-striped table-bordered datatable">
           <thead>
             <tr>
-              <th class="text-center">ID</th>
+              <!-- <th class="text-center">ID</th> -->
               <th class="text-center">Nome</th>
               <th class="text-center">Opções</th>
             </tr>
@@ -26,13 +33,13 @@
           <tbody>
             <?php foreach ($setores as $setor): ?>
             <tr>
-              <td class="text-center"><?= $setor->id_setor; ?></td>
+              <!-- <td class="text-center"><?= $setor->id_setor; ?></td> -->
               <td class="text-center"><?= $setor->nome; ?></td>
               <td class="text-center">
-                <a title="Editar" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
+                <a title="Editar setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
                   <span class="fa fa-edit"></span>
                 </a>
-                <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
+                <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" title="Excluir setor">
                   <i class="fa fa-times"></i>
                 </button>
               </td>
@@ -58,7 +65,7 @@
               Deseja realmente excluir esse Setor?
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secundary" data-dismiss="modal">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
                   Cancelar
               </button>
               <a href="#" class="btn btn-primary btn-remove-ok">

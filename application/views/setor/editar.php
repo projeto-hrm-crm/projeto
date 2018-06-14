@@ -2,7 +2,7 @@
   <?php print_r((array)$setor[0]->nome); ?>
   </pre> -->
 <div class="row justify-content-center align-items-center">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
         <strong>Edição de setores</strong>

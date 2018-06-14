@@ -100,7 +100,7 @@ class Cargo extends CI_Controller
         $data["id_setor"]=$this->input->post("id_setor");
 
           $this->cargo->insert($data);
-          $this->session->set_flashdata('success','Cadastrado com sucesso');
+          $this->session->set_flashdata('success','Cargo Cadastrado Com Sucesso!');
           redirect('cargo');
       }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -108,15 +108,14 @@ class Cargo extends CI_Controller
           redirect('cargo/cadastrar');
       }
     }else{
-      $data['title'] = 'Cadastrar cargo';
+      $data['title'] = 'Cadastrar Cargo';
       $data['errors'] = $this->session->flashdata('errors');
       $data['success_message'] = $this->session->flashdata('success');
       $data['error_message']   = $this->session->flashdata('danger');
       $data['old_data'] = $this->session->flashdata('old_data');
       $data['assets'] = array(
       'js' => array(
-        'lib/jquery/jquery.maskMoney.min.js',
-       // 'cargo/validate-form.js',
+        'lib/jquery/jquery.maskMoney.min.js',      
        'validate.js',
       ),
     );
@@ -139,7 +138,7 @@ class Cargo extends CI_Controller
     if ($this->input->post()){
 
       if($this->form_validation->run('cargo')){
-
+        $data["id_cargo"]=$this->input->post("id_cargo");
         $data["nome"]=$this->input->post("nome");
         $data["descricao"]=$this->input->post("descricao");
         $data["salario"]=$this->input->post("salario");
@@ -147,7 +146,7 @@ class Cargo extends CI_Controller
 
         $this->cargo->update($id_cargo,$data);
 
-        $this->session->set_flashdata('success', 'Cargo editado com sucesso');
+        $this->session->set_flashdata('success', 'Cargo Atualizado Com Sucesso!');
 
         redirect('cargo');
 
@@ -165,8 +164,9 @@ class Cargo extends CI_Controller
       $data['setores']       = $this->setor->get();       
       $data['assets'] = array(
         'js' => array(
-          'lib/jquery/jquery.maskMoney.min.js',
           'validate.js',
+          'lib/jquery/jquery.maskMoney.min.js',
+          'confirm.modal.js', 
         ),
       );
       
@@ -194,7 +194,7 @@ class Cargo extends CI_Controller
   {
     $this->cargo->delete($id_cargo);
 
-    $this->session->set_flashdata('success', 'Cargo excluído com sucesso');
+    $this->session->set_flashdata('success', 'Cargo Excluído Com Sucesso!');
     redirect('cargo');
   }
 }

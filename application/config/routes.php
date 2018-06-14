@@ -72,6 +72,10 @@ $route['log'] = 'Log/index';
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
+//Rota para verificando de email
+$route['unique/(:any)'] = 'Usuario/unique/$1';
+
+
 //Rotas Fornecedores
 $route['fornecedor/cadastrar'] = 'Fornecedor/create';
 $route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
