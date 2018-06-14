@@ -1,14 +1,12 @@
 jQuery(document).ready(function($) {
-
-    // $(function() {
-    //     $("#valor_produto").maskMoney();
-    //     $("#salario_cargo").maskMoney();
-    // })
-    // console.log(23);
+    $(function() {
+        $("#valor_produto").maskMoney();
+        $("#salario_cargo").maskMoney();
+    })
     var id_usuario = null;
     if($("#form_funcionario, #form_candidato, #form_cliente").attr('data-id_usuario'))
 		  id_usuario = $('#form').attr('usuario_id');
-
+  
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -153,7 +151,6 @@ jQuery(document).ready(function($) {
         email:"Digite um email válido",
         required: 'O campo E-mail é obrigatório',
         remote: 'Este email já está em uso.'
-
       },
       senha2: {
              equalTo: 'A confirmação de senha não confere.'
@@ -357,8 +354,10 @@ jQuery(document).ready(function($) {
         maxlength: 70,
         regex: /^[A-Za-z0-9]/,
       }
+      sexo:{
+        required:true }
+      },
 
-    },
     messages: {
 
       complemento:{
@@ -367,13 +366,18 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      sexo:{
+        required:"Please select a Color<br/>"
+      },
       email:{
         remote: 'Este email já está em uso.'
       },
       senha2: {
-             equalTo: 'A confirmação de senha não confere.'
-           },
+        equalTo: 'A confirmação de senha não confere.'
+      },
     },
+
+
   });
 
   $('#form_cliente').validate({
@@ -969,54 +973,3 @@ jQuery(document).ready(function($) {
   //final da alteração do telefone
 });
 
-  /**
-  * @author: Beto Cadilhe
-  * Validação de cnpj:
-  **/
-
- /* jQuery.validator.addMethod("cnpj", function (value, element) {
-
-    var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
-    if (value.length == 0) {
-        return false;
-    }
-
-    value = value.replace(/\D+/g, '');
-    digitos_iguais = 1;
-
-    for (i = 0; i < value.length - 1; i++)
-        if (value.charAt(i) != value.charAt(i + 1)) {
-            digitos_iguais = 0;
-            break;
-        }
-    if (digitos_iguais)
-        return false;
-
-    tamanho = value.length - 2;
-    numeros = value.substring(0, tamanho);
-    digitos = value.substring(tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-            pos = 9;
-    }
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if (resultado != digitos.charAt(0)) {
-        return false;
-    }
-    tamanho = tamanho + 1;
-    numeros = value.substring(0, tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-            pos = 9;
-    }
-
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-
-    return (resultado == digitos.charAt(1));
-}) */

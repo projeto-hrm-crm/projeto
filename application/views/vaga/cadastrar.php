@@ -32,7 +32,7 @@
 	                                </span>
 	                            </div>
 	                        </div>
-							
+
 	                        <div class="row">
 	                            <div class="form-group col-lg-6 col-sm-12">
 	                                <label for="quantidade" class="control-label mb-1">Quantidade</label>
@@ -59,7 +59,7 @@
 							<i class="fa fa-times"></i>
 							Cancelar
 						  </a>
-	                    <button type="submit" class="btn bg-primary text-white btn-sm">
+	                    <button type="submit" class="btn bg-primary text-white btn-sm" onclick="this.disabled=true;this.form.submit();">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>
