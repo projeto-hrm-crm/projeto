@@ -1,13 +1,12 @@
 <!-- FUNCIONÁRIO -->
-<div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar informações de funcionário</strong>
+          <strong class="card-title">Editar Funcionário</strong>
         </div>
 
-        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" class="form-horizontal">
+        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" data-id_usuario ="<?php echo $funcionario[0]->id_usuario; ?>" class="form-horizontal">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">
@@ -85,21 +84,52 @@
                 <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 
+              <div class="form-group col-12 col-md-6">
+                <label for="cargo">Cargos</label>
+                <select id="id_cargo" name="id_cargo" class="form-control">
+                  <option value="">Selecionar cargo</option>
+                  <?php foreach($cargos as $cargo): ?>
+                    <option value="<?php echo $cargo->id_cargo; ?>"><?php echo $cargo->nome; ?></option>
+                  <?php endforeach ?>
+                </select>
+              </div><!-- FIM CARGOS -->
+
             </div>
 
-            <div class="card-footer text-right">
-              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-times"></i> Cancelar
-              </a>
-              <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-pencil-square-o"></i> Editar
+            <div class="card-footer">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFuncionario">
+                <span class="fa fa-check"></span>
+                Editar
               </button>
+              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Cancelar
+              </a>
+            </div> <!-- FIM BOTÕES -->
+            <div class="modal fade" id="editarFuncionario" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Editar Funcionario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Deseja realmente editar esse funcionario?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                      Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Editar
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-
-          </form>
-
         </div>
+      </form>
       </div>
     </div>
   </div>
-</div>

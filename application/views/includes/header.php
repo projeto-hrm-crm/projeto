@@ -21,7 +21,9 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
   <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
-
+<script type="text/javascript">
+    var BASE_URL = "<?php echo base_url();?>";
+</script>
   <!-- inserção dinâmica de arquivos CSS -->
   <?php if (isset($assets['css'])): ?>
     <?php foreach ($assets['css'] as $css_file): ?>
@@ -177,17 +179,12 @@
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <!-- <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/admin.jpg" alt="User Avatar"> -->
+            <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/no-user.png" alt="User Avatar">
           </a>
 
           <div class="user-menu dropdown-menu">
-            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
-
-            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+            <a class="nav-link" href="<?php echo base_url();?>perfil"><i class="fa fa-user"></i> Meu Perfil</a>
+            <a class="nav-link" href="<?php echo base_url();?>logout"><i class="fa fa-power-off"></i> Logout</a>
           </div>
         </div>
 

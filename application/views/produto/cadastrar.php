@@ -1,5 +1,5 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">Novo Produto</strong>
@@ -45,12 +45,14 @@
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="id_fornecedor" class="control-label mb-1">Fornecedor</label>
-                                <select id="id_fornecedor" name="id_fornecedor" value="<?php echo isset($old_data['id_fornecedor']) ? $old_data['id_fornecedor']: null;?>" name="id_fornecedor" type="text" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>" required>
-                                    <option value="">Selecione</option>
-                                    <?php foreach($fornecedores as $fornecedor): ?>
-                                        <option value="<?php echo $fornecedor->id_fornecedor; ?>"><?php echo $fornecedor->razao_social; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <select name="id_fornecedor" id="id_fornecedor" class="form-control <?php echo isset($errors['id_fornecedor']) ? 'is-invalid' : '' ?>">
+		                                <option value="">Selecione</option>
+		                                <?php foreach ($fornecedores as $fornecedor): ?>
+		                                	<option value="<?php echo $fornecedor->id_fornecedor ?>" <?php echo isset($old_data['id_fornecedor']) && ($fornecedor->id_fornecedor == $old_data['id_fornecedor']) ? 'selected' : '' ?>>
+		                                		<?php echo $fornecedor->razao_social ?>
+		                                	</option>
+		                                <?php endforeach; ?>
+	                              	</select>
                                 <span class="invalid-feedback">Fornecedor inválido.</span>
                             </div>
                         </div>
@@ -61,7 +63,7 @@
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-primary btn-sm" onclick="this.disabled=true;this.form.submit();">
                         <i class="fa fa-plus"></i>
                         Cadastrar
                     </button>

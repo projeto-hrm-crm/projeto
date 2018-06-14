@@ -38,7 +38,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->insertLog('Produto', $id_produto, 'Inseriu o produto', $_POST['nome']);
+            $this->relatorio->setLog('insert', 'Inserir', 'Produto', $id_produto, 'Inseriu o produto', $_POST['nome']);
         }
         return $id_produto;
     }
@@ -64,7 +64,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->updateLog('Produto', $id_produto, 'Atualizou o produto', $array['nome']);
+            $this->relatorio->setLog('update', 'Atualizar', 'Produto', $id_produto, 'Atualizou o produto', $array['nome']);
         }
         return $id_produto;
     }
@@ -82,7 +82,7 @@ class Produto_model extends CI_Model
 
         if($id_produto)
         {
-            $this->relatorio->deleteLog('Produto', $id_produto, 'Deletou o produto', $id);
+            $this->relatorio->setLog('delete', 'Deletar','Produto', $id_produto, 'Deletou o produto', $id);
         }
         return $id_produto;
     }
@@ -116,15 +116,34 @@ class Produto_model extends CI_Model
       return $this->db->get('produto')->row();
     }
 
+    /**
+    * @author: Tiago Villalobos
+    * Retorna produtos pelo id do pedido
+    *
+    * @return: mixed
+    */
     public function getByOrder($id_pedido)
     {
         return
             $this->db->select('pedido_produto.quantidade, produto.id_produto, produto.nome, produto.valor')
-           ->join('pedido_produto', 'pedido_produto.id_produto = produto.id_produto')
-           ->where('pedido_produto.id_pedido', $id_pedido)
-           ->get('produto')
-           ->result();
+               ->join('pedido_produto', 'pedido_produto.id_produto = produto.id_produto')
+               ->where('pedido_produto.id_pedido', $id_pedido)
+               ->get('produto')
+               ->result();
 
+    }
+
+    /**
+    * @author: Tiago Villalobos
+    * Retorna produtos pelo id do fornecedor
+    *
+    * @return: mixed
+    */
+    public function getByProvider($id_fornecedor)
+    {
+        $this->db->where('produto.id_fornecedor', $id_fornecedor);
+
+        return $this->get();
     }
 
 }

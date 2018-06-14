@@ -1,11 +1,9 @@
   <div class="row justify-content-center align-items-center">
     <div class="col-lg-8">
-
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar Cargo</strong>
+          <strong class="card-title">Atualizar Cargo</strong>
         </div>
-
         <form id="form_cargo" action="" method="post" novalidate="novalidate">
               <div class="card-body card-block">
           <div class="row justify-content-center">
@@ -51,7 +49,7 @@
               </div>
             </div>
           </div>
-        </div>
+        
         <div class="card-footer text-right">
          <!--ACTIONS-->
          <a href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
@@ -90,3 +88,4 @@
         </div>
     </div>
 </div>
+

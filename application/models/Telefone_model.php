@@ -19,7 +19,7 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$this->relatorio->insertLog('Telefone', $id_telefone, 'Inseriu o telefone', $id_telefone);
+			$this->relatorio->setLog('insert', 'Inserir', 'Telefone', $id_telefone, 'Inseriu o telefone', $id_telefone);
 		}
 		return $id_telefone;
 	}
@@ -43,7 +43,7 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$this->relatorio->updateLog('Telefone', $id_telefone, 'Atualizou o telefone', $id_telefone);
+			$this->relatorio->setLog('update', 'Atualizar', 'Telefone', $id_telefone, 'Atualizou o telefone', $id_telefone);
 		}
 		return $id_telefone;
 	}
@@ -63,7 +63,7 @@ class Telefone_model extends CI_Model {
 
 		if($id_telefone)
 		{
-			$this->relatorio->deleteLog('Telefone', $id_telefone, 'Deletou o telefone', $id_telefone);
+			$this->relatorio->setLog('delete', 'Deletar', 'Telefone', $id_telefone, 'Deletou o telefone', $id_telefone);
 		}
 		return $id_telefone;
 

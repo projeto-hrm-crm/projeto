@@ -5,10 +5,11 @@ class Fornecedor_model extends CI_Model
   public function get()
   {
     try {
-      $query = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento')
+      $query = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento',		'usuario.id_usuario')
   		->from('fornecedor')
       ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
       ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+      ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
   		->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
   		->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
   		->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
@@ -49,10 +50,11 @@ class Fornecedor_model extends CI_Model
   public function find($id)
   {
     try {
-      $fornecedor = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento')
+      $fornecedor = $this->db->select('fornecedor.id_fornecedor, pessoa_juridica.id_pessoa_juridica, pessoa_juridica.razao_social, pessoa.id_pessoa, pessoa.nome, pessoa.email, telefone.numero AS telefone, documento.numero AS cnpj, endereco.cep, endereco.id_cidade, endereco.bairro, endereco.logradouro, endereco.numero AS numero, endereco.complemento','usuario.id_usuario')
   		->from('fornecedor')
       ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
       ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+      ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
   		->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
   		->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
   		->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
@@ -100,7 +102,7 @@ class Fornecedor_model extends CI_Model
 
       if($id_fornecedor)
       {
-        $this->relatorio->deleteLog('Fornecedor', $id_fornecedor, 'Deletou o fornecedor', $id);
+        $this->relatorio->setLog('delete', 'Deletar', 'Fornecedor', $id_fornecedor, 'Deletou o fornecedor', $id);
       }
       return $id_fornecedor;
     } catch (\Exception $e) {}

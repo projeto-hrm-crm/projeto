@@ -16,7 +16,7 @@ class Candidato_model extends CI_Model {
 
 		if($id_candidato)
 	    {
-			$this->relatorio->insertLog('Candidato', $id_candidato, 'Inseriu o candidato', $id_candidato);
+			$this->relatorio->setLog('insert', 'Inserir', 'Candidato', $id_candidato, 'Inseriu o candidato', $id_candidato);
 		}
 		return $id_candidato;
  	} catch (\Exception $e) {}
@@ -36,7 +36,7 @@ class Candidato_model extends CI_Model {
 
 		if($id_candidato)
 		{
-			$this->relatorio->deleteLog('Candidato', $id_candidato, 'Deletou o candidato', $id);
+			$this->relatorio->setLog('delete', 'Deletar', 'Candidato', $id_candidato, 'Deletou o candidato', $id);
 		}
 		return $id_candidato;
 		// delete pessoa fisica;
@@ -69,9 +69,12 @@ class Candidato_model extends CI_Model {
 			cidade.id_cidade, cidade.nome AS cidade,
 			documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado
+			estado.id_estado,
+			usuario.id_usuario
+
 			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
 			->join('candidato', 'pessoa_fisica.id_pessoa = candidato.id_pessoa')
 			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
 			->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
@@ -111,7 +114,7 @@ class Candidato_model extends CI_Model {
 
 		if($id)
 		{
-			$this->relatorio->updateLog('Candidato', $id, 'Atualizou o candidato', $id);
+			$this->relatorio->setLog('update', 'Atualizar', 'Candidato', $id, 'Atualizou o candidato', $id);
 		}
 		return $id;
 	}

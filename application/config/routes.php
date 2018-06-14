@@ -72,6 +72,10 @@ $route['log'] = 'Log/index';
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
+//Rota para verificando de email
+$route['unique/(:any)'] = 'Usuario/unique/$1';
+
+
 //Rotas Fornecedores
 $route['fornecedor/cadastrar'] = 'Fornecedor/create';
 $route['fornecedor/editar/(:num)'] = 'Fornecedor/edit/$1';
@@ -88,9 +92,10 @@ $route['login'] = 'Login/index';
 $route['logout'] = 'Login/logout';
 
 //Rotas SAC
+$route['sac'] = 'Sac';
 $route['sac/cadastrar'] = 'Sac/create';
-$route['sac/excluir/(:num)'] = 'Sac/delete/$1';
 $route['sac/editar/(:num)'] = 'Sac/edit/$1';
+$route['sac/excluir/(:num)'] = 'Sac/delete/$1';
 
 //Rotas Setores
 
@@ -132,10 +137,19 @@ $route['candidato_etapa/editar/(:num)']  = 'CandidatoEtapa/edit/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
 //Rotas Pedido
-$route['pedido']                = 'Pedido/index';
-$route['pedido/cadastrar']      = 'Pedido/create';
-$route['pedido/editar/(:num)']  = 'Pedido/edit/$1';
-$route['pedido/excluir/(:num)'] = 'Pedido/delete/$1';
+$route['pedido']                            = 'Pedido/index';
+$route['pedido/cadastrar']                  = 'Pedido/create';
+$route['pedido/editar/(:num)']              = 'Pedido/edit/$1';
+$route['pedido/excluir/(:num)']             = 'Pedido/delete/$1';
+$route['pedido/cliente/pdf/(:num)']         = 'Pedido/pdfClient/$1';
+$route['pedido/fornecedor/pdf/(:num)']      = 'Pedido/pdfProvider/$1';
+$route['pedido/fornecedores']               = 'Pedido/getProvidersJSON';
+$route['pedido/clientes']                   = 'Pedido/getClientsJSON';
+$route['pedido/produtos']                   = 'Pedido/getProductsJSON';
+$route['pedido/produtos/fornecedor/(:num)'] = 'Pedido/getProductsByProviderJSON/$1';
+$route['pedido/fornecedor']                 = 'Pedido/indexProvider';
+$route['pedido/fornecedor/editar/(:num)']   = 'Pedido/editProvider/$1';
+
 
 //Rotas Processo Processo_Seletivo
 $route['processo_seletivo'] = 'Processo_Seletivo/index';
@@ -145,7 +159,7 @@ $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 //Rotas Perfil
-$route['perfil'] = 'Perfil/admin';
+$route['perfil'] = 'Perfil/index';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';

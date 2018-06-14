@@ -11,10 +11,7 @@ class Setor extends CI_Controller
       $this->usuario->hasPermission($user_id, $currentUrl);
   }
 
-  /**
-  * @author: Matheus Ladislau
-  * Realiza o carregamento da página inicial de setor, apresentando os setores
-  */
+
   public function index()
   {
     $data['title'] = 'Setores';
@@ -39,14 +36,19 @@ class Setor extends CI_Controller
   */
   public function create()
   {
-    if($this->input->post())
-    {
-      $data["nome"]=$this->input->post("nome");
+    $data = $this->input->post();
+
+    if($data){
+        $id_pessoa = $this->pessoa->insert(['nome' => $data['nome']]);
+   
       $this->setor->insert($data);
       $this->session->set_flashdata('success', 'setor cadastrado com sucesso');
       redirect('setor');
     }else{
       $data['title'] = 'Cadastrar Setor';
+
+      $data['errors']          = $this->session->flashdata('errors');
+      $data['old_values']      = $this->session->flashdata('old_values');
       loadTemplate(
         'includes/header',
         'setor/cadastrar.php',
@@ -66,7 +68,7 @@ class Setor extends CI_Controller
     {
       $data["nome"]=$this->input->post("nome");
       $this->setor->update($data,$id_setor);
-      $this->session->set_flashdata('success', 'setor editado com sucesso');
+      $this->session->set_flashdata('success', 'setor alterado com sucesso');
       redirect('setor');
     }else{
       $data['setor'] = $this->setor->find($id_setor);

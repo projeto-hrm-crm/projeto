@@ -19,6 +19,7 @@ class Usuario extends CI_Controller
 
   /**
   * @author: Matheus Ladislau
+  * @author: Camila Sales
   * Realiza o cadastro de um usuario, dados recebidos da view setor/cadastro.php
   */
   public function create(){
@@ -46,36 +47,28 @@ class Usuario extends CI_Controller
           else
           {
             //pessoa
-            $data_pessoa["nome"]=$this->input->post("nome");
-            $data_pessoa["email"]=$this->input->post("email");
-            $id_pessoa=$this->pessoa->insert($data_pessoa);
+            $data = $this->input->post();
+            $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
 
             //endereco
-            $data_endereco['cep']=$this->input->post('cep');
-            $data_endereco['bairro']=$this->input->post('bairro');
-            $data_endereco['logradouro']=$this->input->post('logradouro');
-            $data_endereco['numero']=$this->input->post('numero');
-            $data_endereco['complemento']=$this->input->post('complemento');
-            $data_endereco['id_pessoa']=$id_pessoa;
-            $data_endereco['id_cidade']=$this->input->post('cidade');
-            $this->endereco->insert($data_endereco);
+            $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
+            'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
+            ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+
+            //documento
+            $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+
+            //telefone
+            $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
 
             //pessoa_fisica
-            $data_pessoa_fisica['id_pessoa']=$id_pessoa;
-            $data_pessoa_fisica['sexo']=$this->input->post('sexo');
-            $data_pessoa_fisica['data_nascimento']=$this->input->post('data_nascimento');
-            $this->pessoa_fisica->insert($data_pessoa_fisica);
+            $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
 
             //cliente
-            $dados_cliente['id_pessoa']=$id_pessoa;
-            $this->cliente->insert($dados_cliente);
+            $this->cliente->insert(['id_pessoa' => $id_pessoa]);
 
             //usuario
-            $data_usuario["login"]=$this->input->post("email");
-            $data_usuario["senha"]=$this->input->post("senha");
-            $data_usuario["id_grupo_acesso"]=3;
-            $data_usuario["id_pessoa"]=$id_pessoa;
-            $this->usuario->insert($data_usuario);
+           $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>4,'id_pessoa'=>$id_pessoa]);
 
             $this->session->set_flashdata('success','Usuário criado.<br>Já é possível acessar com seu e-mail e senha.');
             redirect('login');
@@ -102,6 +95,15 @@ class Usuario extends CI_Controller
       redirect('usuario');
     }
 
-
+    /**
+    * @author: Camila Sales
+    * Realiza a verificação do email
+    *
+    *@param integer: refere-se ao id do usuario
+    */
+    public function unique($id_usuario)
+    {
+      echo json_encode($this->usuario->uniqueMail($id_usuario,$this->input->get('email')));
+    }
 }
 ?>

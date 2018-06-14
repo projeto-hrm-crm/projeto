@@ -21,31 +21,28 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <img src="<?=site_url('assets/images/theme/no-user.png')?>" width="100%">
-                            <a href="#" class="btn btn-primary">Alterar Imagem</a>
-                            <a href="#" class="btn btn-primary">Editar Dados</a>
-                        </div>
-                        <div class="col-lg-9">
-                            <h1>Supremo Senhor Kaioh</h1> 
+                        
+                        <div class="col-lg-12">
+                            <h1 class="margin20">Teste  </h1> 
+                            <br>
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>E-mail</td>
+                                        <td><b>E-mail</b></td>
                                         <td colspan="6">xxxxxxxxxxx</td>                                    
                                     </tr>
                                     <tr>
-                                        <td>Endereço</td>
+                                        <td><b>Endereço</b></td>
                                         <td colspan="3">xxxxxxxxxxx</td>  
-                                        <td>Número</td>
+                                        <td><b>Número</b></td>
                                         <td>xxxxxxxxxxx</td>
                                     </tr>
                                     <tr>
-                                        <td>Bairro</td>
+                                        <td><b>Bairro</b></td>
                                         <td>xxxxxxxxxxx</td>  
-                                        <td>Complemento</td>
+                                        <td><b>Complemento</b></td>
                                         <td>xxxxxxxxxxx</td>
-                                        <td>CEP</td>
+                                        <td><b>CEP</b></td>
                                         <td>xxxxxxxxxxx</td>
                                     </tr>
                                 </tbody>                            

@@ -20,60 +20,50 @@
       <?php endif; ?>
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">funcionario</strong>
+          <strong class="card-title">Funcionarios</strong>
         </div>
+
         <div class="card-body">
 
-          <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm">
+          <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar funcionário">
             <i class="fa fa-check"></i> Cadastrar
           </a><br />
           <br />
-          <table id="bootstrap-data-table" class="table table-striped table-bordered">
+          <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
 
             <thead>
               <tr>
                 <th class="text-center">Nome</th>
                 <th class="text-center">E-mail</th>
                 <th class="text-center">Sexo</th>
-                <th class="text-center">Data Nascimento</th>
+                <th class="text-center">Data de Nascimento</th>
                 <th class="text-center">Ações</th>
               </tr>
             </thead>
 
             <tbody>
-              <?php foreach ($funcionarios as $funcionario): ?>
-                <tr>
-                  <td class="text-center"><?= $funcionario->nome; ?></td>
-                  <td class="text-center"><?= $funcionario->email; ?></td>
-                  <td class="text-center">
-                    <?php
-                    if($funcionario->sexo == 0){
-                      echo "Homem";
-                    }
-                    if($funcionario->sexo == 1){
-                      echo "Mulher";
-                    }
-                    ?>
-                  </td>
-
-                  <td class="text-center">
-                    <?php
-                    $source = $funcionario->data_nascimento;
-                    $date = new DateTime($source);
-                    echo $date->format('d/m/Y');
-                    ?>
-                  </td>
-                  <td class="text-center">
-                    <a title="Editar" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
-                      <span class="fa fa-edit"></span></a>
-                        <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir Funcionário" data-toggle="modal" data-target="#modalRemover">
+              <?php if (!is_null($funcionarios)): ?>
+                  <?php foreach ($funcionarios as $funcionario): ?>
+                    <tr>
+                      <td class="text-center"><?= $funcionario->nome; ?></td>
+                      <td class="text-center"><?= $funcionario->email; ?></td>
+                      <td class="text-center">
+                        <?php echo ($funcionario->sexo == '0')? "Masculino" : "Feminino"; ?>
+                      </td>
+                      <td class="text-center">
+                        <?php echo $funcionario->data_nascimento; ?>
+                      </td>
+                      <td class="text-center">
+                        <a title="Editar funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
+                        <span class="fa fa-edit"></span></a>
+                        <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
                           <span class="fa fa-times"></span>
                         </button>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
+                       </td>
+                     </tr>
+                   <?php endforeach ?>
+                  <?php endif;?>
                 </tbody>
-
               </table>
             </div>
           </div>
@@ -93,7 +83,7 @@
             Deseja realmente excluir esse funcionário?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secundary" data-dismiss="modal">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
               Cancelar
             </button>
             <a href="#" class="btn btn-primary btn-remove-ok">

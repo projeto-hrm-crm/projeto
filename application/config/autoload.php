@@ -99,6 +99,7 @@ $autoload['helper'] = array(
     'loadTemplate',
     'switchDate',
     'dataprep_fornecedor',
+    'translate'
 );
 
 /*
@@ -148,6 +149,7 @@ $autoload['model'] = array(
                     'Pessoa_model'               => 'pessoa',
                     'Endereco_model'             => 'endereco',
                     'Estado_model'               => 'estado',
+                    'Pais_model'                 => 'pais',
                     'Documento_model'            => 'documento',
                     'Telefone_model'             => 'telefone',
                     'Fornecedor_model'           => 'fornecedor',
@@ -169,6 +171,7 @@ $autoload['model'] = array(
                     'Pedido_model'               => 'pedido',
                     'Andamento_model'            => 'andamento',
                     'Log_model'                  => 'relatorio',
-                    'ProcessoSeletivo_model'     => 'processo_seletivo'
+                    'ProcessoSeletivo_model'     => 'processo_seletivo',
+                    'Etapa_model'                => 'etapa'
 
 );

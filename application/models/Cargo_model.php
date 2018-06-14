@@ -46,7 +46,7 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $this->relatorio->insertLog('Cargo', $id_cargo, 'Inseriu o cargo', $id_cargo);
+        $this->relatorio->setLog('insert', 'Inserir', 'Cargo', $id_cargo, 'Inseriu o cargo', $id_cargo);
     }
     return $id_cargo;
   }
@@ -64,7 +64,7 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $this->relatorio->updateLog('Cargo', $id_cargo, 'Atualizou o cargo', $id);
+        $this->relatorio->setLog('update', 'Atualizar', 'Cargo', $id_cargo, 'Atualizou o cargo', $id);
     }
     return $id_cargo;
   }
@@ -81,7 +81,7 @@ class Cargo_model extends CI_Model
 
     if($id_cargo)
     {
-        $this->relatorio->deleteLog('Cargo', $id_cargo, 'Deletou o cargo', $id);
+        $this->relatorio->setLog('delete', 'Deletar', 'Cargo', $id_cargo, 'Deletou o cargo', $id);
     }
     return $id_cargo;
   }
