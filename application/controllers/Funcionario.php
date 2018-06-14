@@ -70,6 +70,8 @@ class Funcionario extends CI_Controller
         $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
     		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
         $this->funcionario->insert(['id_pessoa' => $id_pessoa]);
+        $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>6,'id_pessoa'=>$id_pessoa]);
+
         $this->session->set_flashdata('success', 'funcionario cadastrado com sucesso.');
         redirect('funcionario');
     }

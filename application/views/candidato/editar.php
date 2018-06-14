@@ -6,7 +6,7 @@
         <div class="card-header">
           <strong class="card-title">Editar informações de candidato</strong>
         </div>
-        <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" class="form-horizontal" id="form_candidato">
+        <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" data-id_usuario ="<?php echo $candidato[0]->id_usuario; ?>" class="form-horizontal" id="form_candidato">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">
@@ -17,6 +17,7 @@
                 <label for="email-input" class=" form-control-label">Email</label>
                 <input type="text" id="email" name="email" value="<?= htmlspecialchars($candidato[0]->email)?>" class="form-control" required>
               </div> <!-- FIM EMAIL -->
+                
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
                 <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars(switchDate($candidato[0]->data_nascimento))?>" class="form-control data" required>
