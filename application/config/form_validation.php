@@ -397,15 +397,15 @@ $config = array(
                     'rules' => 'required'
             ),
             array(
-                    'field' => 'id_cargo',
-                    'label' => 'Cargo',
+                    'field' => 'id_vaga',
+                    'label' => 'Vaga',
                     'rules' => 'required|numeric'
             ),
-            array(
-                    'field' => 'vagas',
-                    'label' => 'Numero de vagas',
-                    'rules' => 'required|numeric'
-            ),
+            // array(
+            //         'field' => 'vagas',
+            //         'label' => 'Numero de vagas',
+            //         'rules' => 'required|numeric'
+            // ),
       ),
       'processo_seletivo_info' => array(
               array(

@@ -1,12 +1,8 @@
 jQuery(document).ready(function($) {
-    $(function() {
-        $("#valor_produto").maskMoney();
-        $("#salario_cargo").maskMoney();
-    })
-    var id_usuario = null;
-    if($("#form_funcionario, #form_candidato, #form_cliente").attr('data-id_usuario'))
-		  id_usuario = $('#form').attr('usuario_id');
-  
+    // $(function() {
+    //     $("#valor_produto").maskMoney();
+    //     $("#salario_cargo").maskMoney();
+    // })                          
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -972,4 +968,3 @@ jQuery(document).ready(function($) {
   })
   //final da alteração do telefone
 });
-
