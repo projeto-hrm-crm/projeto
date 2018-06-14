@@ -70,9 +70,11 @@ class Cliente_model extends CI_Model {
 			cidade.id_cidade,
 			documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado
+			estado.id_estado,
+			usuario.id_usuario
 			")->from("pessoa")
 			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
 			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')
 			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
 			->join('cidade',    'endereco.id_cidade = cidade.id_cidade')

@@ -120,7 +120,6 @@ class Funcionario_model extends CI_Model {
                  ->from('pessoa as p')
                  ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
                  ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
-
 	    $result = $this->db->get();
 
 	    if ($result->num_rows() > 0)
@@ -168,7 +167,6 @@ class Funcionario_model extends CI_Model {
 
         } catch (\Exception $e) {}
     }
-
 	/**
 	 * @author: Camila Sales
 	 * Remove o registro de funcionario associado à uma pessoa fisica

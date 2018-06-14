@@ -62,6 +62,7 @@ class Funcionario extends CI_Controller
    */
   public function create()
   {
+
     if($this->input->post()){
         $this->funcionario->insert($this->input->post());
         redirect('funcionario');

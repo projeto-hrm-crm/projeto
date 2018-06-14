@@ -19,10 +19,8 @@ jQuery(document).ready(function ($) {
       $.get(url, function (data) {
         data = JSON.parse(data);
         $.each(data, function (index, element) {
-          console.log(1);
           options += "<option value='" + element.id_cidade + "'>" + element.nome + "</option>";
         });
-
         cidade.empty(); //ZERA O CAMPO DE CIDADE
         cidade.append(options); //ADICIONA AS CIDADES DE ACORDO COM ESTADO
       });

@@ -80,7 +80,7 @@
 				Tem certeza que deseja excluir essa vaga?
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 				<a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
 			</div>
 		</div>
