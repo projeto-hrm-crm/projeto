@@ -1,7 +1,7 @@
 <!-- CLIENTE -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cadastrar Cliente</strong>
@@ -21,6 +21,16 @@
                 <label class=" form-control-label">E-mail</label>
                 <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
               </div> <!-- FIM EMAIL -->
+
+              <div class="form-group col-12 col-md-6">
+                <label class="form-control-label">Senha</label>
+                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
+              </div>
+
+              <div class="form-group col-12 col-md-6">
+                <label class="form-control-label">Confirmar Senha</label>
+                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir password" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
+              </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
@@ -86,11 +96,11 @@
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
-            <div class="card-footer text-right">
+            <div title="Cancelar Cadastro" class="card-footer text-right">
               <a href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>
-              <button type="submit" class="btn btn-primary btn-sm">
+              <button title="Cadastrar Cliente" type="submit" class="btn btn-primary btn-sm">
                 <i class="fa fa-plus"></i> Cadastrar
               </button>
             </div>

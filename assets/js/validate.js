@@ -1,9 +1,12 @@
 jQuery(document).ready(function($) {
-
     $(function() {
         $("#valor_produto").maskMoney();
         $("#salario_cargo").maskMoney();
     })
+    var id_usuario = null;
+    if($("#form_funcionario, #form_candidato, #form_cliente").attr('data-id_usuario'))
+		  id_usuario = $('#form').attr('usuario_id');
+  
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -87,6 +90,12 @@ jQuery(document).ready(function($) {
       email: {
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
 
       razao_social: {
@@ -139,8 +148,13 @@ jQuery(document).ready(function($) {
       },
 
       email:{
+        email:"Digite um email válido",
         required: 'O campo E-mail é obrigatório',
+        remote: 'Este email já está em uso.'
       },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
 
       razao_social:{
         required: 'O campo Razão Social é obrigatório',
@@ -296,10 +310,16 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       email: {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
       },
       data_nacimento: {
         required: true,
@@ -349,6 +369,12 @@ jQuery(document).ready(function($) {
       sexo:{
         required:"Please select a Color<br/>"
       },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
+      senha2: {
+        equalTo: 'A confirmação de senha não confere.'
+      },
     },
 
 
@@ -362,10 +388,20 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
+      },
       email: {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
       data_nacimento: {
         required: true,
@@ -409,9 +445,17 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
 
   });
+
+  console.log(id_usuario)
   $('#form_funcionario').validate({
     rules: {
       nome: {
@@ -424,6 +468,12 @@ jQuery(document).ready(function($) {
         maxlength: 150,
         required:true,
         email:true,
+        remote:BASE_URL+'unique/'+id_usuario,
+
+      },
+      senha: "required",
+      senha2: {
+        equalTo: "#senha"
       },
       data_nacimento: {
         required: true,
@@ -466,6 +516,12 @@ jQuery(document).ready(function($) {
       logradouro:{
         regex:    'O campo complemento pode conter apenas letras e numeros.'
       },
+      email:{
+        remote: 'Este email já está em uso.'
+      },
+      senha2: {
+             equalTo: 'A confirmação de senha não confere.'
+           },
     },
   });
 
@@ -915,5 +971,5 @@ jQuery(document).ready(function($) {
     }
   })
   //final da alteração do telefone
-
 });
+

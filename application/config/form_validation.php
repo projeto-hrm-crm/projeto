@@ -189,8 +189,8 @@ $config = array(
                   'field' => 'nome',
                   'label' => 'Nome',
                   'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]',
-                  'rules' => 'required|min_length[1]',     
-                  'rules' => 'required|max_length[45]'      
+                  'rules' => 'required|min_length[1]',
+                  'rules' => 'required|max_length[45]'
           ),
 
           array(
@@ -255,7 +255,7 @@ $config = array(
             'rules' => 'required',
             'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
        ),
-                 
+
 ),
         'login' => array(
                 array(
@@ -447,7 +447,7 @@ $config = array(
             'field' => 'descricao',
             'label' => 'Descrição',
             'rules' => 'required|max_length[200]',
-            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'                 
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
           ),
           array(
                   'field' => 'salario',
@@ -507,7 +507,7 @@ $config = array(
               'rules' => 'required'
           ),
           array(
-              'field' => 'telefone',
+              'field' => 'tel',
               'label' => 'telefone',
               'rules' => 'required'
           ),

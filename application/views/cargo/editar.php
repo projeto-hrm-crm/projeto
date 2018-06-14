@@ -9,12 +9,12 @@
 </div> -->
 <div class="animated fadeIn">
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar Cargo</strong>
+          <strong class="card-title">Atualizar Cargo</strong>
         </div>
-        <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
+        <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate"> 
       
               <div class="card-body card-block">
           <div class="row justify-content-center">
@@ -60,20 +60,48 @@
               </div>
             </div>
           </div>
-        </div>
+        
         <div class="card-footer text-right">
          <!--ACTIONS-->
-        <a href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
+        <a title="Cancelar Atualização" href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>
         
-          <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Salvar
+          <button title="Atualizar Cliente" type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarCargo">
+              <span class="fa fa-check"></span>
+              Editar
           </button>
           
         </div>
+
+
+               </div>
+
       </form>
     </div>
   </div>
 </div>
-
+</div>
+<div class="modal fade" id="editarCargo" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Atualizar Cargo</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Deseja Atualizar Esse Cargo?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger  text-white" data-dismiss="modal">
+                    Cancelar
+                  </button>
+                  <button type="button" class="btn btn-primary  btn-edit">
+                    Atualizar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>

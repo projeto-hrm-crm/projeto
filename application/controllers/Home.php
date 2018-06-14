@@ -14,8 +14,12 @@ class Home extends CI_Controller
       $this->usuario->hasPermission($user_id, $currentUrl);
   }
 
-	public function index()
+  public function index()
 	{
+    $user_id = $this->session->userdata('user_login');
+    $id_grupo_acesso=$this->usuario->getUserAccessGroup($user_id);
+    $grupo_acesso=$this->grupo->find($id_grupo_acesso);
+
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
@@ -26,7 +30,7 @@ class Home extends CI_Controller
 
 		loadTemplate(
         'includes/header',
-        'home',
+        'home/home_'.$grupo_acesso[0]->nome,
         'includes/footer',
         $data
       );

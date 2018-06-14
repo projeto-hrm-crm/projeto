@@ -6,7 +6,7 @@
           <strong class="card-title">Editar Funcionário</strong>
         </div>
 
-        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" class="form-horizontal">
+        <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" data-id_usuario ="<?php echo $funcionario[0]->id_usuario; ?>" class="form-horizontal">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">

@@ -3,7 +3,7 @@
    <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
-      <strong>Cadastro de Processos Seletivos</strong>
+      <strong>Cadastrar Processo Seletivo</strong>
     </div>
     <?php echo validation_errors(); ?>
     <div class="row" style="margin-top: 5px;">
@@ -31,7 +31,7 @@
 
           <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Nome</label>
-             <input type="text" id="nome" name="nome" placeholder="Nome" class="form-control" required>
+             <input type="text" id="nome" name="nome" placeholder="Ex:Processo seletivo Para Gerente" class="form-control" required>
            </div>
 
            <div class="form-group col-12 col-md-6">
