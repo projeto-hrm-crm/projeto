@@ -86,15 +86,10 @@
               </div> <!-- FIM COMPLEMENTO -->
 
               <div class="form-group col-12 col-md-6">
-                <label for="vaga">Vagas disponíveis</label>
-                <select name="vaga" id="vaga" class="form-control">
-                  <?php foreach($vagas as $vaga): ?>
-                    <option value="<?php echo $vaga->id_vaga; ?>"><?php echo $vaga->nome; ?></option>
-                  <?php endforeach ?>
-                </select>
-              </div>
-            </div> <!-- FIM VAGAS -->
-          </div>
+                <label class=" form-control-label">CEP</label>
+                <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
+              </div> <!-- FIM CEP -->
+            </div>
 
           <div class="card-footer text-right">
               <a href="<?php echo base_url('candidato');?>" class="btn btn-danger btn-sm">
