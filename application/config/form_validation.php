@@ -322,12 +322,6 @@ $config = array(
         ),
 
         array(
-            'field' => 'id_cliente',
-            'label' => 'Cliente',
-            'rules' => 'required|integer'
-        ),
-
-        array(
             'field' => 'descricao',
             'label' => 'Descrição',
             'rules' => 'required'

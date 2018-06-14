@@ -8,7 +8,7 @@
             <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac">
                <div class="card-body">
                   <div class="row">
-                     <div class="col-lg-12 form-group">
+                     <div class="col-lg-6 form-group">
                         <label class=" form-control-label">Assunto</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Titulo da Reclamação. EX: Produto Quebrado." class="form-control titulo" required>
                      </div>
@@ -22,8 +22,8 @@
                            <?php endforeach; ?>
                         </select>                         
                      </div>
-                          
-                     <div class="form-group col-md-6 col-sm-12">
+                     <?php if($tipo=="1"){ ?>
+                     <div class="form-group col-md-12 col-sm-12">
                         <label for="id_cliente" class="form-control-label">Cliente</label>
                         <select name="id_cliente" class="form-control" id="produto">
                            <option value="0" disabled selected>Selecione um cliente</option>
@@ -32,15 +32,15 @@
                            <?php endforeach; ?>
                         </select>                         
                      </div>
-                       
+                     <?php } ?> 
                      <div class="col-md-12 form-group">
                         <label class=" form-control-label">Descrição</label>
-                        <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Fale sobre o problema obtido com o  produto." required></textarea>
+                        <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Relate aqui se problema" required></textarea>
                      </div>
                   </div>
                </div>
                <div class="card-footer text-right">
-                  <a title="Cancelar Cadastro" href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
+                  <a href="<?=site_url('sac/index')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
                   <button title="Cadastrar SAC" type="submit" class="btn btn-primary btn-sm">

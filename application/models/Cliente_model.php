@@ -91,6 +91,19 @@ class Cliente_model extends CI_Model {
 			}
 		} catch (\Exception $e) {}
 	}
+   
+   public function GetIdCliente($id)
+	{
+		try {
+			$cliente = $this->db->select("id_cliente")->from("cliente")->where('id_pessoa', $id)->get();
+			if ($cliente) {
+				return $cliente->result();
+			}else {
+				echo 'Candidato não existe';
+				return 1;
+			}
+		} catch (\Exception $e) {}
+	}
 
 	public function update($id)
 	{
