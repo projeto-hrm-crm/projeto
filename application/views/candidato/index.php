@@ -1,7 +1,6 @@
 <!-- CANDIDATO -->
-<div class="animated fadeIn">
-    <div class="row">
-        <div class="col-md-12">
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
             <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -25,7 +24,7 @@
         <div class="card-body">
 
           <a href="<?= site_url('candidato/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar candidato">
-            <i class="fa fa-check"></i> Cadastrar
+            <i class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />
           <table class="table table-striped table-bordered datatable">
@@ -66,7 +65,6 @@
               </table>
             </div>
           </div>
-        </div>
       </div>
     </div>
 

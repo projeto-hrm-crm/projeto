@@ -1,6 +1,5 @@
-<div class="animated fadeIn">
-    <div class="row">
-        <div class="col-md-12">
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
 
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
@@ -35,9 +34,9 @@
         	    	    </thead>
 
         	    	    <tbody>
-        	    	        <?php 
-        	    	            if(isset($pedidos)): 
-        	    	                
+        	    	        <?php
+        	    	            if(isset($pedidos)):
+
         	    	        ?>
         	    	            <?php foreach($pedidos as $pedido): ?>
         	    	                <tr class="col-6">
@@ -49,22 +48,22 @@
         	    	                                    <strong>Pedido Nº </strong><?php echo $pedido->id; ?>
         	    	                                </div>
         	    	                                <div class="col-6 text-right">
-        	    	                                    <a href="<?php echo base_url('pedido/fornecedor/editar/'.$pedido->id); ?>" 
+        	    	                                    <a href="<?php echo base_url('pedido/fornecedor/editar/'.$pedido->id); ?>"
         	    	                                        class="btn bg-success btn-sm text-white">
         	    	                                        <i class="fa fa-check"></i>
         	    	                                    </a>
 
-        	    	                                    <a href="<?php echo base_url('pedido/fornecedor/pdf/'.$pedido->id) ?>" 
+        	    	                                    <a href="<?php echo base_url('pedido/fornecedor/pdf/'.$pedido->id) ?>"
         	    	                                        target="_blank"
         	    	                                        class="btn bg-secondary btn-sm text-white">
         	    	                                        <i class="fa fa-print"></i>
         	    	                                    </a>
-        	    	                                    
+
         	    	                                    <br>
         	    	                                    <small><?php echo swicthTimestamp($pedido->data) ?></small>
         	    	                                    <br>
         	    	                                    <span class="badge badge-<?php echo getSituationClass($pedido->situacao) ?>"><?php echo getSituationName($pedido->situacao); ?></span>
-        	    	                                    
+
         	    	                                </div>
         	    	                            </div>
         	    	                            <div class="row">
@@ -75,7 +74,7 @@
         	    	                            <div class="row">
         	    	                                <div class="col-12">
         	    	                                    <strong>Tipo: </strong>
-        	    	                                    <?php 
+        	    	                                    <?php
         	    	                                        switch($pedido->tipo)
         	    	                                        {
         	    	                                            case 'p':
@@ -87,7 +86,7 @@
         	    	                                            default:
         	    	                                                echo 'Produtos e Serviços';
         	    	                                                break;
-        	    	                                        } 
+        	    	                                        }
         	    	                                    ?>
         	    	                                </div>
         	    	                            </div>
@@ -109,8 +108,8 @@
         	    	                                    <div class="col-2 text-right"><?php echo $produto->quantidade ?></div>
         	    	                                </div>
         	    	                            <?php endforeach ?>
-        	    	                           
-        	    	                            
+
+
         	    	                        </div>
         	    	                    </td>
 
@@ -120,15 +119,13 @@
         	    	    </tbody>
 
         	    	</table>
-        	    	
+
         	    	<!-- / COMPRAS -->
 
 
 
        	 		</div>
     		</div>
-		</div>
-
 </div>
 
 

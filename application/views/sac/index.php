@@ -1,5 +1,4 @@
-<div class="animated fadeIn">
-    <div class="row" >
+<div class="row justify-content-center align-items-center">
         <div class="col-lg-10">
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
@@ -41,7 +40,7 @@
                             <?php if(isset($sac)): ?>
                                 <?php foreach($sac as $item): ?>
                                     <tr>
-                                       
+
                                         <td><?php echo $item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
                                         <td><?=$item->id_cliente;?></td>
@@ -61,8 +60,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -94,7 +91,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja Realmente Excluir Esse SAC?
+                Deseja realmente excluir esse SAC?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

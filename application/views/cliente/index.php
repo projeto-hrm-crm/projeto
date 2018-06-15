@@ -1,5 +1,5 @@
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-12">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cliente</strong>
@@ -74,7 +74,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja Realmente Excluir Esse Cliente?
+                Deseja realmente excluir esse cliente?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
