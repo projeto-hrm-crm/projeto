@@ -1,44 +1,44 @@
 <div class="row" style="margin-top: 5px;">
-        <div class="col-lg-10">
-          <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success">
+   <div class="col-lg-10">
+      <?php if ($this->session->flashdata('success')) : ?>
+         <div class="alert alert-success">
             <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
-          </div>
-          <?php elseif ($this->session->flashdata('danger')) : ?>
-          <div class="alert alert-danger">
+         </div>
+      <?php elseif ($this->session->flashdata('danger')) : ?>
+         <div class="alert alert-danger">
             <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?>
-          </div>
-          <?php endif; ?>
-        </div>
-      </div>
-
-
+         </div>
+      <?php endif; ?>
+   </div>
+</div>
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
-  <div class="card">
-  <div class="card-header">
-          <strong class="card-title">Cadastrar Fornecedor</strong>
-        </div>
-     <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
-
-    <div class="card-body card-block">
-        <div class="row">
-          <!--NOME-->
-          <div class="form-group col-12 col-md-6">
-            <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome Completo da Empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
-                <span class="invalid-feedback">
-	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
-	              </span>
-          </div>
-          <!--EMAIL-->
-          <div class="form-group col-12 col-md-6">
-             <label for="email-input" class=" form-control-label">E-mail</label>
-             <input type="email" id="email" name="email" placeholder="e-mail" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
-                <span class="invalid-feedback">
-	                <?php echo isset($errors['email']) ? $errors['email'] : '' ; ?>
-	              </span>
-          </div>
+      <div class="card">
+         <div class="card-header">
+            <strong class="card-title">Cadastrar Fornecedor</strong>
+         </div>
+         <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
+            <div class="card-body card-block">
+               <div class="row">
+                  <!--NOME-->
+                  <div class="form-group col-12 col-md-6">
+                     <label class=" form-control-label">Nome</label>
+                        <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome Completo da Empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
+                        <span class="invalid-feedback">
+                           <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
+                        </span>
+                  </div>
+                  
+                  
+                  <!--EMAIL-->
+                   <div class="form-group col-12 col-md-6">
+                      <label for="email-input" class=" form-control-label">E-mail</label>
+                      <input type="email" id="email" name="email" placeholder="e-mail" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
+                         <span class="invalid-feedback">
+                            <?php echo isset($errors['email']) ? $errors['email'] : '' ; ?>
+                          </span>
+                   </div>
+                  
           <div class="form-group col-12 col-md-6">
             <label class="form-control-label">Senha</label>
             <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
@@ -75,7 +75,7 @@
 
 
 
-          <div class="form-group col-12 col-md-6">
+      <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Estado</label>
            <select name="id_estado" class="form-control" id="estado">
               <option value="0" disabled selected>Selecione um estado</option>
@@ -94,7 +94,7 @@
 
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label">CEP</label>
-         <input type="num" id="cep" name="cep" placeholder="CEP" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
+         <input type="num" id="cep" name="cep" placeholder="CEP" maxlength="8" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
 	              </span>
