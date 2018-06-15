@@ -37,6 +37,7 @@ class Cargo extends CI_Controller
         'lib/data-table/dataTables.bootstrap.min.js',
         'datatable.js',
         'confirm.modal.js',
+        'maskMoney.js',
       ),
     );
     loadTemplate('includes/header', 'cargo/index', 'includes/footer', $data);
@@ -46,7 +47,7 @@ class Cargo extends CI_Controller
   /**
   * @author: Matheus Ladislau
   * Realiza o cadastro de um cargo, dados recebidos da view cargo/cadastro.php
- */ 
+ */
 
  /* public function create()
 {
@@ -115,8 +116,10 @@ class Cargo extends CI_Controller
       $data['old_data'] = $this->session->flashdata('old_data');
       $data['assets'] = array(
       'js' => array(
-        'lib/jquery/jquery.maskMoney.min.js',      
+        'lib/jquery/jquery.maskMoney.min.js',
        'validate.js',
+       'maskMoney.js',
+
       ),
     );
        $data['setores'] = $this->setor->get();
@@ -153,23 +156,24 @@ class Cargo extends CI_Controller
       } else{
         $this->session->set_flashdata('errors', $this->form_validation->error_array());
         $this->session->set_flashdata('old_data', $this->input->post());
-        redirect('cargo/editar/'.$id_cargo);  
+        redirect('cargo/editar/'.$id_cargo);
       }
-      
+
     } else{
       $data['errors'] = $this->session->flashdata('errors');
-      $data['title']         = 'Editar Cargo';     
+      $data['title']         = 'Editar Cargo';
       $data['cargo'] = $this->cargo->getById($id_cargo)[0];
       $data['old_data'] = $this->session->flashdata('old_data');
-      $data['setores']       = $this->setor->get();       
+      $data['setores']       = $this->setor->get();
       $data['assets'] = array(
         'js' => array(
           'validate.js',
           'lib/jquery/jquery.maskMoney.min.js',
-          'confirm.modal.js', 
+          'confirm.modal.js',
+          'maskMoney.js',
         ),
       );
-      
+
       loadTemplate(
 				'includes/header',
 				'cargo/editar',
@@ -177,12 +181,12 @@ class Cargo extends CI_Controller
 				$data
 			);
     }
-          
-    
-      
-    
+
+
+
+
   }
-  
+
 
   /**
   * @author: Peterson Munuera
