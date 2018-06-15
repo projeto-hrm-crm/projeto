@@ -57,7 +57,7 @@ class Cargo extends PR_Controller
         }
     }
 
-    /* *
+    /**
     * @author: Peteson Munuera
     * @author: Beto Cadilhe
     * Realiza edição de registro de um cargo pelo id, dados recebidos pela view cargo/editar.php
@@ -108,7 +108,12 @@ class Cargo extends PR_Controller
         $this->redirectSuccess();
     }
 
-    //Retorna um array com dados pegos por post
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post
+    * 
+    * @return: mixed
+    */
     private function getFromPost()
     {
         return array(
@@ -119,7 +124,12 @@ class Cargo extends PR_Controller
         );
     }
 
-    //Retorna um array com dados pegos por post adicionado a eles o id
+     /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post adicionado a eles o id_cargo
+    * 
+    * @return: mixed
+    */
     private function getFromPostEdit($id_cargo)
     {
         $postData = $this->getFromPost();
