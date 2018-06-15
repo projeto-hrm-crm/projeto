@@ -17,6 +17,7 @@ class Vaga extends CI_Controller
         $this->usuario->hasPermission($user_id, $currentUrl);
     }
     /**
+      *@author: Camila Sales
       *@author: Lucilene Fidelis
       * Esse método tem a finalidade de retornar uma lista com todos as vagas
       * cadastradas
