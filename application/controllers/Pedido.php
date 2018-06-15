@@ -312,13 +312,13 @@ class Pedido extends PR_Controller
   	{
 		foreach($this->input->post('id_produto') as $index => $id_produto)
 		{
-			$pedidoProduto = array(
+			$pedido_produto = array(
 				'id_pedido'  => $id_pedido,
 				'id_produto' => $id_produto,
 				'quantidade' => $this->input->post('qtd_produto')[$index]
 			);
 
-			$this->pedido->insertProducts($pedidoProduto);
+			$this->pedido->insertProducts($pedido_produto);
 			
 		}
   	}
