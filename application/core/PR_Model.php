@@ -7,20 +7,19 @@ class PR_Model extends CI_Model
 {	
 
 	// Seta o log de acordo com a última query executada
-	// 
-	protected function setLog($name, $id = null)
+	protected function setLog($name, $id = null, $message = null)
 	{
 		$query = explode(' ', $this->db->last_query());
 
-		switch ($query[0]) 
+		switch ($query[0])
 		{
 			case 'INSERT':
 				$this->relatorio->setLog(
 					$query[0], 
 					'Inserir', 
 					$this->clearLogData($query[2]), 
-					$this->db->insert_id(), 
-					'Inseriu '.$this->clearLogData($query[2]), 
+					is_null($id) ? $this->db->insert_id() : $id, 
+					is_null($message) ? 'Inseriu '.$this->clearLogData($query[2]) : $message, 
 					$name
 				);
 				break;
@@ -31,7 +30,7 @@ class PR_Model extends CI_Model
 					'Atualizar', 
 					$this->clearLogData($query[1]), 
 					$id, 
-					'Atualizou '.$this->clearLogData($query[1]), 
+					is_null($message) ? 'Atualizou '.$this->clearLogData($query[1]) : $message, 
 					$name
 				);
 				break;
@@ -42,7 +41,7 @@ class PR_Model extends CI_Model
 					'Deletar', 
 					$this->clearLogData($query[2]), 
 					$id, 
-					'Deletou '.$this->clearLogData($query[2]), 
+					is_null($message) ? 'Deletou '.$this->clearLogData($query[2]) : $message, 
 					$name
 				);
 				break;
