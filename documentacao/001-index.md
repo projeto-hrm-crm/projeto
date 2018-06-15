@@ -53,4 +53,16 @@ O sistema desenvolvido neste projeto aplica o padrão MVC com o uso do framework
 Requisitos funcionais e não-funcionais em: _01c-requisitos_sistema.md_
 
 ### Níveis de acesso
-É necessário login e senha para acessar o sistema.
+Para acessar o sistema é necessário que o usuário esteja cadastrado no sistema.
+O Projeto conta com 4 tipos de usuários:
+- Administrador
+Tem total acesso ao sistema.
+- Funcionário
+Tem acesso aos módulos:
+
+- Candidato
+Tem acesso aos processos seletivos disponíveis, para inscrição e monitoramento de inscrições anteriores
+- Cliente
+Pode ao modulo de SAC, podendo apenas criar atendimentos, e consultar os antendimentos anteriores
+- Fornecedor
+Pode ver os produtos que fornece a empresa.
