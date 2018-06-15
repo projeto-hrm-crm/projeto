@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class PR_Controller extends CI_Controller 
 {
 
-	private $data = array();
-	private $viewDirectory;
+	protected $data = array();
+	protected $viewDirectory;
 
 	// Construtor que recebe o diretório padrão das views que serão utilizadas pelo controller filho
 	// Inicializa os assets (js e css)
@@ -102,7 +102,7 @@ class PR_Controller extends CI_Controller
 	//Redireciona o usuário para a view padrão do diretório com uma mensagem de sucesso
 	protected function redirectSuccess()
 	{
-		$this->session->set_flashdata('success', 'Cadastrado com sucesso');
+		$this->session->set_flashdata('success', 'Operação realizada com sucesso');
 		
 		redirect($this->viewDirectory);
 	}
@@ -111,6 +111,7 @@ class PR_Controller extends CI_Controller
 	//Juntamente com as mensagens de erro e dados antigos do formulário
 	protected function redirectError($view)
 	{
+		$this->session->set_flashdata('danger', 'Não foi possível realizar a operação');
 		$this->session->set_flashdata('errors',   $this->form_validation->error_array());
         $this->session->set_flashdata('old_data', $this->input->post());
         
