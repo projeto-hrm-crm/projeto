@@ -1,8 +1,6 @@
 <?php
 class Cargo extends PR_Controller
 {
-
-
     public function __construct()
     {
         parent::__construct('cargo');
@@ -22,8 +20,7 @@ class Cargo extends PR_Controller
         
         $this->loadView('index');
     }
-
-    
+  
     /**
     * @author: Beto Cadilhe
     * Realiza o cadastro de um cargo, com validação dos dados recebidos da view cargo/cadastro.php

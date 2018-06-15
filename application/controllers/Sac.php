@@ -1,5 +1,6 @@
 <?php
 
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sac extends PR_Controller 
@@ -71,8 +72,7 @@ class Sac extends PR_Controller
     */
     public function edit($id_sac) 
     {
-        if ($this->input->post())
-        {
+        if ($this->input->post()){
             if($this->form_validation->run('sac'))
             {
                 $this->sac->update($this->getFromPostEdit($id_sac));
@@ -92,7 +92,6 @@ class Sac extends PR_Controller
             $this->addData('id',       $id_sac);
             $this->addData('clientes', $this->cliente->get());
             $this->addData('produtos', $this->produto->get());
-
             $this->loadFormDefaultScripts();
 
             $this->loadView('editar');
@@ -148,6 +147,4 @@ class Sac extends PR_Controller
 
         return $postData;
     }
-
-
 }

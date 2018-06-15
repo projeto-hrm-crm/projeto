@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<!-- <div class="animated fadeIn"> -->
 	<div class="row justify-content-center align-items-center">
 		<div class="col-lg-8">
 	        <div class="card">
@@ -69,12 +69,38 @@
 	                        Editar
 	                    </button>
 	                </div>
+
+									<!-- Modal atualizar -->
+
+									<div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body text-center">
+													Tem certeza que deseja atualizar essa vaga?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger" data-dismiss="modal">
+														Cancelar
+													</button>
+													<button type="button" class="btn btn-primary btn-edit">
+														Confirmar
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
 	            </form>
 	        </div>
     	</div>
 	</div>
 </div>
-
 <!-- Modal atualizar -->
 
 <div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +119,7 @@
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">
 					Cancelar
 				</button>
-				<button type="button" class="btn btn-primary btn-edit">
+				<button type="button" class="btn btn-primary btn-edit" data-dismiss="modal">
 					Confirmar
 				</button>
 			</div>

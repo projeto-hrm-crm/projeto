@@ -37,5 +37,4 @@ class Estado extends CI_Controller {
 		return $this->estado->get();
 	}
 
-
 }
