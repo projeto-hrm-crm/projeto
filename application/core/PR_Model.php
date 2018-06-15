@@ -1,12 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Este model tem como função facilitar a geração de logs
-// e agrupar alguns métodos para models
+/**
+* @author: Tiago Villalobos
+* Este model tem como função facilitar a geração de logs
+* e agrupar alguns métodos para models
+*/ 
 class PR_Model extends CI_Model 
 {	
-
-	// Seta o log de acordo com a última query executada
+	/**
+	* @author: Tiago Villalobos
+	* Seta o log de acordo com a última query executada
+	* Utilize o campo id quando a operação for de UPDATE ou DELETE
+	* O parâmetro message deverá ser utilizado quando for necessária uma mensagem específica
+	* No model Pedido existe um bom exemplo de mensagem customizada
+	* 
+	* @param: $name    string
+	* @param: $id      integer
+	* @param: $message string
+	* @see:   application/models/Pedido_model.php
+	*/ 
 	protected function setLog($name, $id = null, $message = null)
 	{
 		$query = explode(' ', $this->db->last_query());
@@ -50,11 +63,16 @@ class PR_Model extends CI_Model
 
 	}
 
-	// Limpa algumas sujeiras ;)
+	/**
+	* @author: Tiago Villalobos
+	* Realiza a limpeza de alguns caracteres desnecessários na construção do log
+	* 
+	* @param:  $data string
+	* @return: $string
+	*/ 
 	private function clearLogData($data)
 	{
 		return str_replace('WHERE', '', str_replace('_', ' ', str_replace('`', '', $data)));
 	}
 	
-
 }

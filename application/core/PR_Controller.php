@@ -2,9 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
-*	@author: Tiago Villalobos
-*
-*	Este controller tem como função agrupar métodos para evitar reescrita de código
+* @author: Tiago Villalobos
+* Este controller tem como função agrupar métodos para evitar reescrita de código
 */
 class PR_Controller extends CI_Controller 
 {
@@ -12,9 +11,14 @@ class PR_Controller extends CI_Controller
 	protected $data = array();
 	protected $viewDirectory;
 
-	// Construtor que recebe o diretório padrão das views que serão utilizadas pelo controller filho
-	// Inicializa os assets (js e css)
-	// Define as permissões do usuário com base em seu grupo de acesso
+	/**
+	* @author: Tiago Villalobos
+	* Construtor que recebe o diretório padrão das views que serão utilizadas pelo controller filho
+	* Inicializa os assets (js e css)
+	* Define as permissões do usuário com base em seu grupo de acesso
+	* 
+	* @param: $viewDirectory string
+	*/ 
 	public function __construct($viewDirectory)
 	{
 		parent::__construct();
@@ -32,8 +36,13 @@ class PR_Controller extends CI_Controller
 
 	}
 
-	// Carrega a view especificada do diretório padrão, definido no construtor
-	// Redireciona para a view as mensagens definidas por flashdata e demais dados
+	/**
+	* @author: Tiago Villalobos
+	* Carrega a view especificada do diretório padrão, definido no construtor
+	* Redireciona para a view as mensagens definidas por flashdata e demais dados
+	* 
+	* @param: $view string
+	*/ 
 	protected function loadView($view)
 	{
 		$this->setFlashMessages();
@@ -43,20 +52,36 @@ class PR_Controller extends CI_Controller
 		$this->load->view('includes/footer');
 	}	
 
-	//Adiciona um novo dado para o atributo data
-	//Associando o nome ao valor, que pode ser um array
+	/**
+	* @author: Tiago Villalobos
+	* Adiciona um novo dado para o atributo data
+	* Associando o nome ao valor, que pode ser um array
+	* 
+	* @param: $dataName  string
+	* @param: $dataValue mixed
+	*/ 
 	protected function addData($dataName, $dataValue)
 	{
 		$this->data[$dataName] = $dataValue;
 	}
 
-	//Permite a definição do título da página
+	/**
+	* @author: Tiago Villalobos
+	* Permite a definição do título da página
+	* 
+	* @param: $title string
+	*/ 
 	protected function setTitle($title)
 	{
 		$this->data['title'] = $title;
 	}
 
-	//Adiciona novos javascripts ao assets, por meio de um array
+	/**
+	* @author: Tiago Villalobos
+	* Adiciona novos javascripts ao assets, por meio de um array
+	* 
+	* @param: $scripts mixed
+	*/ 
 	protected function addScripts($scripts)
 	{
 		foreach($scripts as $script)
@@ -66,7 +91,12 @@ class PR_Controller extends CI_Controller
 
 	}
 
-	//Adiciona novos folhas de estilo ao assets, por meio de um array
+	/**
+	* @author: Tiago Villalobos
+	* Adiciona novos folhas de estilo ao assets, por meio de um array
+	* 
+	* @param: $styles mixed
+	*/ 
 	protected function addStyles($styles)
 	{
 		foreach($styles as $style)
@@ -76,7 +106,10 @@ class PR_Controller extends CI_Controller
 
 	}
 
-	//Carrega javascripts padrão que são utilizados em todas as views de listagem
+	/**
+	* @author: Tiago Villalobos
+	* Carrega javascripts padrão que são utilizados em todas as views de listagem
+	*/ 
 	protected function loadIndexDefaultScripts()
 	{
 		$this->addScripts(
@@ -89,7 +122,10 @@ class PR_Controller extends CI_Controller
 		);
 	}
 
-	//Carrega javascripts padrão que são utilizados em todas as views com formulário
+	/**
+	* @author: Tiago Villalobos
+	* Carrega javascripts padrão que são utilizados em todas as views com formulário
+	*/ 
 	protected function loadFormDefaultScripts()
 	{
 		$this->addScripts(
@@ -99,7 +135,10 @@ class PR_Controller extends CI_Controller
 		);
 	}
 
-	//Redireciona o usuário para a view padrão do diretório com uma mensagem de sucesso
+	/**
+	* @author: Tiago Villalobos
+	* Redireciona o usuário para a view padrão do diretório com uma mensagem de sucesso
+	*/ 
 	protected function redirectSuccess()
 	{
 		$this->session->set_flashdata('success', 'Operação realizada com sucesso');
@@ -107,8 +146,13 @@ class PR_Controller extends CI_Controller
 		redirect($this->viewDirectory);
 	}
 
-	//Redireciona o usuário para uma view do diretório 
-	//Juntamente com as mensagens de erro e dados antigos do formulário
+	/**
+	* @author: Tiago Villalobos
+	* Redireciona o usuário para uma view do diretório 
+	* Juntamente com as mensagens de erro e dados antigos do formulário
+	* 
+	* @param: $view string
+	*/ 
 	protected function redirectError($view)
 	{
 		$this->session->set_flashdata('danger', 'Não foi possível realizar a operação');
@@ -118,7 +162,10 @@ class PR_Controller extends CI_Controller
         redirect($this->viewDirectory.'/'.$view);
 	}
 
-	//Define as mensagens de alerta assim como recupera os erros e dados antigos do formulário
+	/**
+	* @author: Tiago Villalobos
+	* Define as mensagens de alerta assim como recupera os erros e dados antigos do formulário
+	*/ 
 	private function setFlashMessages()
 	{
 		$this->data['success_message'] = $this->session->flashdata('success');
