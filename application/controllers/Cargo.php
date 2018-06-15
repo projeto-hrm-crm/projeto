@@ -124,7 +124,7 @@ class Cargo extends PR_Controller
         );
     }
 
-     /**
+    /**
     * @author: Tiago Villalobos
     * Retorna um array com dados pegos por post adicionado a eles o id_cargo
     * 
