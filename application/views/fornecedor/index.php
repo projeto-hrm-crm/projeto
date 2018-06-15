@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
-    <div class="row" >
-        <div class="col-lg-10">
+    <div class="row row justify-content-center align-items-center">
+        <div class="col-lg-12">
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -39,6 +39,7 @@
                      </thead>
 
                      <tbody>
+                     <?php if (!is_null($fornecedores)): ?>
                         <?php foreach ($fornecedores as $fornecedor): ?>
                            <tr>
                               <td class="text-center"><?=$fornecedor->id_fornecedor; ?></td>
@@ -59,6 +60,7 @@
                               </td>
                            </tr>
                        <?php endforeach ?>
+                     <?php endif;?>
                      </tbody>
                    </table>
                </div>

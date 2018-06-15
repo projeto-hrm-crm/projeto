@@ -60,18 +60,46 @@ class Cliente extends CI_Controller
     $data = $this->input->post();
 
     if($data){
-        $id_pessoa = $this->pessoa->insert(['nome' => $data['nome'], 'email' => $data['email']]);
 
-        $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
-        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
-        ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+        $id_pessoa = $this->pessoa->insert([
+            'nome' => $data['nome'],
+            'email' => $data['email']]
+        );
 
-        $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
+        $this->usuario->insert([
+            'login'             => $data['email'],
+            'senha'             => $data['senha2'],
+            'id_grupo_acesso'   => 1,
+            'id_pessoa'         => $id_pessoa
+        ]);
 
-        $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
-    		$id_pessoa_fisica = $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
+        $this->endereco->insert([
+            'cep'           => $this->input->post('cep'),
+            'bairro'        => $this->input->post('bairro'),
+            'logradouro'    => $this->input->post('logradouro'),
+            'numero'        => $this->input->post('numero'),
+            'complemento'   => $this->input->post('complemento'),
+            'id_pessoa'     => $id_pessoa,
+            'id_cidade'     => $this->input->post('cidade')]);
+
+        $this->documento->insert([
+            'tipo'      => 'cpf',
+            'numero'    => $this->input->post('cpf'),
+            'id_pessoa' => $id_pessoa]);
+
+        $this->telefone->insert([
+            'numero'=>$this->input->post('tel'),
+            'id_pessoa' => $id_pessoa]);
+
+        $id_pessoa_fisica = $this->pessoa_fisica->insert([
+            'data_nascimento'=> switchDate($data['data_nacimento']),
+            'sexo'=>$data['sexo'],
+            'id_pessoa'=>$id_pessoa]);
+
         $this->cliente->insert(['id_pessoa' => $id_pessoa]);
+
         $this->session->set_flashdata('success', 'Cliente Cadastrado Com Sucesso!');
+
         redirect('cliente');
     }
 

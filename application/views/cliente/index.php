@@ -1,5 +1,5 @@
-  <div class="row" >
-    <div class="col-lg-10">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cliente</strong>
