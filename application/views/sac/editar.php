@@ -45,7 +45,7 @@
                   </a>
                   <button title="Atualizar SAC" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editar">
                      <span class="fa fa-check"></span>
-                    Editar
+                    Atualizar
                  </button>
                </div>
 

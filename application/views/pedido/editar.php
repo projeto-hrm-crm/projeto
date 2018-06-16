@@ -224,9 +224,9 @@
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button title="Atualizar Pedido" type="submit" class="btn bg-primary text-white btn-submit">
-	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Editar
+	                    <button title="Atualizar Pedido" type="submit" class="btn bg-primary btn-sm text-white btn-submit">
+	                        <i class="fa fa-check btn-sm" aria-hidden="true"></i>
+	                        Atualizar
 	                    </button>
 	                </div>
 

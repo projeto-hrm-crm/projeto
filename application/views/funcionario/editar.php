@@ -96,14 +96,15 @@
 
             </div>
 
-            <div class="card-footer">
-              <button title="Atualizar Funcionário" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFuncionario">
-                <span class="fa fa-check"></span>
-                Editar
-              </button>
+            <div class="card-footer text-right">
+             
               <a title="Cancelar Edição" href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Cancelar
+                <i class="fa fa-times"></i> Cancelar
               </a>
+               <button title="Atualizar Funcionário" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarFuncionario">
+                <span class="fa fa-check"></span>
+                Atualizar
+              </button>
             </div> <!-- FIM BOTÕES -->
             <div class="modal fade" id="editarFuncionario" role="dialog" aria-hidden="true">
               <div class="modal-dialog" role="document">

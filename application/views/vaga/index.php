@@ -22,7 +22,7 @@
 					<strong class="card-title">Vagas</strong>
 				</div>
 				<div class="card-body">
-					<a title="cadastrar Nova Vaga"> href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
+					<a title="Cadastrar Nova Vaga" href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
 					  	<i class="fa fa-check"></i> Novo Cadastro
 				  	</a><br><br>
 					<table class="datatable table table-striped table-bordered">

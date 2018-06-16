@@ -116,7 +116,7 @@
             </a>
             <button title="Atualizar Cadastro" type="button" class="btn btn-primary  btn-sm" data-toggle="modal" data-target="#editarFornecedor">
                <span class="fa fa-check"></span>
-               Editar
+               Atualizar
            </button>
 
           </div>

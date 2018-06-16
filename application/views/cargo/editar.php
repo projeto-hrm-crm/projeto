@@ -45,7 +45,7 @@
                     </a>
                     <button title="Atualizar Cargo" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAtualizar">
                         <span class="fa fa-check"></span>
-                        Editar
+                        Atualizar
                     </button>
                 </div>
                 <div class="modal fade" id="modalAtualizar" role="dialog" aria-hidden="true">

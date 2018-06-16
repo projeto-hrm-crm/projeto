@@ -45,10 +45,10 @@
                                         <td><?= $pedido->transacao;?></td>
                                         <td>
                                             <a title="Atualizar Pedido" href="pedido/editar/<?php echo $pedido->id_produto?>" class="btn btn-primary" title="Editar produto">
-                                                <span class="fa fa-edit"></span>
+                                                <span class="fa fa-edi btn-sm"></span>
                                             </a>
                                             <button title="Excluir Pedido" data-href="pedido/excluir/<?php echo $pedido->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
-                                                <span class="fa fa-times"></span>
+                                                <span class="fa fa-times btn-sm"></span>
                                             </button>
                                         </td>
                                     </tr>

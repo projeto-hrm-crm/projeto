@@ -54,9 +54,9 @@
                         <?php echo $funcionario->data_nascimento; ?>
                       </td>
                       <td class="text-center">
-                        <a title="Atualizar Funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
+                        <a title="Atualizar Funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary btn-sm">
                         <span class="fa fa-edit"></span></a>
-                        <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir Funcionário" data-toggle="modal" data-target="#modalRemover">
+                        <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger btn-sm" title="Excluir Funcionário" data-toggle="modal" data-target="#modalRemover">
                           <span class="fa fa-times"></span>
                         </button>
                        </td>

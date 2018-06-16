@@ -2,7 +2,7 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Cliente</strong>
+          <strong class="card-title">Clientes</strong>
         </div>
         <?php if($this->session->flashdata('success')): ?>
           <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">

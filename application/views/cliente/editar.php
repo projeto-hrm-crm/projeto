@@ -83,7 +83,7 @@
             </a>
             <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
               <span class="fa fa-check"></span>
-              Confirmar
+              Atualizar
             </button>
 
           </div> <!-- FIM BOTÕES -->
@@ -101,7 +101,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  Deseja Realmente Editar Esse Cliente?
+                  Deseja Realmente Atualizar Esse Cliente?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">

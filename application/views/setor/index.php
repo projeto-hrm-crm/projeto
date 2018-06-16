@@ -17,7 +17,7 @@
 
       <div class="card-body">
 
-        <a title="Cadastrar Novo Setor"> href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
+        <a title="Cadastrar Novo Setor" href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
           <i class="fa fa-check"></i> Novo Cadastro
         </a><br />
         <br />
@@ -37,10 +37,10 @@
               <td class="text-center"><?= $setor->nome; ?></td>
               <td class="text-center">
                 <a title="Atualizar Setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
-                  <span class="fa fa-edit"></span> Editar
+                  <span class="fa fa-edit btn-sm"></span> 
                 </a>
                 <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" title="Excluir Setor">
-                  <i class="fa fa-times"></i> Cancelar
+                  <i class="fa fa-times btn-sm"></i>
                 </button>
               </td>
             </tr>

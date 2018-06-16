@@ -66,7 +66,7 @@
                     </a>
                     <button title="Atualizar Produto" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarProduto">
                         <span class="fa fa-check"></span>
-                        Editar
+                        Atualizar
                     </button>
                 </div>
                 <div class="modal fade" id="editarProduto" role="dialog" aria-hidden="true">
