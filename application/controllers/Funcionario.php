@@ -5,7 +5,7 @@
 * Controller de funcionario
 **/
 
-class Funcionario extends CI_Controller
+class Funcionario extends PR_Controller
 {
   /**
    * @author Pedro Henrique Guimarães
@@ -15,10 +15,7 @@ class Funcionario extends CI_Controller
    */
   public function __construct()
   {
-    parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+    parent::__construct('funcionario');
   }
 
   /**
@@ -28,24 +25,13 @@ class Funcionario extends CI_Controller
   */
   public function index()
   {
-    $data['title'] = 'funcionarios';
-    $data['funcionarios'] = $this->funcionario->get();
-    $data['assets'] = array(
-        'js' => array(
-          'lib/data-table/datatables.min.js',
-          'lib/data-table/dataTables.bootstrap.min.js',
-          'datatable.js',
-          'confirm.modal.js',
-        ),
-    );
+    $this->setTitle('Funcionarios');
 
-    if (!is_null($data['funcionarios'])) {
-        foreach ($data['funcionarios'] as $key => $funcionario) {
-          $data['funcionarios'][$key]->data_nascimento = switchDate($data['funcionarios'][$key]->data_nascimento);
-        }
-    }
+    $this->addData('funcionarios',$this->funcionario->get())
+    
+    $this->loadIndexDefaultScripts();
 
-    loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
+    $this->loadView('index');
 
   }
 
@@ -62,18 +48,33 @@ class Funcionario extends CI_Controller
    */
   public function create()
   {
+    if($this->input->post())
+    {
 
-    if($this->input->post()){
-        $this->funcionario->insert($this->input->post());
-        redirect('funcionario');
+        if($this->form_validation->run('funcionario'))
+        {
+            $this->cargo->insert($this->getFromPost());
+            
+            $this->redirectSuccess('Funcionario cadastrado com sucesso');
+        }
+        else
+        {
+            $this->redirectError('cadastrar');
+        }
+    }
+    else
+    {
+        $this->setTitle('Cadastrar Funcionario');
+        $this->addData('cargos', $this->cargo->get());
+        $this->addData('estados', $this->estado->get());
+        
+        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
+        $this->loadFormDefaultScripts();
+    
+        $this->loadView('cadastrar');
+        
     }
 
-    $data['paises'] = $this->pais->get();
-    $data['estados'] =  $this->estado->get();
-    $data['title'] = 'Cadastrar funcionario';
-    $data['cargos'] = $this->cargo->get();
-
-    loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
   }
 
 

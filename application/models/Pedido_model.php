@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pedido_model extends CI_Model
+class Pedido_model extends PR_Model
 {
 
 	/**
@@ -16,10 +16,8 @@ class Pedido_model extends CI_Model
 		$this->db->insert('pedido', $pedido);
 		$id_pedido = $this->db->insert_id();
 
-		if($id_pedido)
-		{
-			$this->relatorio->setLog('insert', 'Inserir', 'Pedido', $id_pedido, 'Inseriu o pedido', $id_pedido);
-		}
+		$this->setLog($id_pedido);
+
 		return $id_pedido;
 	}
 
@@ -27,41 +25,38 @@ class Pedido_model extends CI_Model
 	* @author: Tiago Villalobos
 	* Insere dados na tabela relacional entre pedido e produto: pedido_produto
 	*
-	* @param: $products mixed
+	* @param: $pedido_produto mixed
 	*/
-	public function insertProducts($products)
+	public function insertProducts($pedido_produto)
 	{
-		$this->db->insert('pedido_produto', $products);
+		$produto = $this->produto->getById($pedido_produto['id_produto']);
+
+		$this->db->insert('pedido_produto', $pedido_produto);
+		$this->setLog(
+			'', 
+			$pedido_produto['id_pedido'], 
+			'Inseriu no pedido '.
+			$pedido_produto['id_pedido'].
+			' o produto '
+			.$produto->nome.
+			' quantidade de '.$pedido_produto['quantidade']
+		);
 	}
 
-	/**
-	* @author: Tiago Villalobos
-	* Remove todos os dados da tabela relacional entre pedido e produto: pedido_produto
-	* utilizando o id do pedido e retorna verdadeiro ou falso caso consiga remove-los
-	*
-	* @param: $id integer
-	* @return boolean
-	*/
-	public function removeProducts($id)
-	{
-		$query = $this->db->where('pedido_produto.id_pedido', $id);
-        $query->delete('pedido_produto');
-
-        return $query->affected_rows() > 0 ? true : false;
-	}
+	
 
 	/**
 	* @author: Tiago Villalobos
 	* Retorna um pedido do banco pelo id do mesmo
 	*
-	* @param: $id integer
+	* @param:  $id_pedido integer
 	* @return: mixed
 	*/
-	public function getById($id)
+	public function getById($id_pedido)
 	{
 		return
 			$this->db->select('pedido.*, andamento.situacao')
-			->where('pedido.id_pedido', $id)
+			->where('pedido.id_pedido', $id_pedido)
 			->where('andamento.atual', TRUE)
 			->join('andamento', 'pedido.id_pedido = andamento.id_pedido')
 			->get('pedido')
@@ -73,10 +68,10 @@ class Pedido_model extends CI_Model
 	* @author: Tiago Villalobos
 	* Retorna um pedido de cliente do banco pelo id do mesmo, contando com todos os dados relativos de outras tabelas
 	*
-	* @param: $id integer
+	* @param:  $id_pedido integer
 	* @return: mixed
 	*/
-	public function getByIdCompleteDataClient($id)
+	public function getByIdCompleteDataClient($id_pedido)
 	{
 		$this->db->select('pedido.id_pedido, pedido.id_pessoa, pedido.descricao, pedido.tipo, (valor * pedido_produto.quantidade) as subtotal')
 		    ->from('produto')
@@ -105,7 +100,7 @@ class Pedido_model extends CI_Model
 				->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
 				->join('estado',    'estado.id_estado = cidade.id_estado')
 				->where('andamento.atual', TRUE)
-				->where('pedido.id_pedido', $id)
+				->where('pedido.id_pedido', $id_pedido)
 				->group_by('andamento.situacao')
 				->group_by('andamento.data')
 				->group_by('documento.numero')
@@ -126,10 +121,10 @@ class Pedido_model extends CI_Model
 	* @author: Tiago Villalobos
 	* Retorna um pedido de fornecedor do banco pelo id do mesmo, contando com todos os dados relativos de outras tabelas
 	*
-	* @param: $id integer
+	* @param:  $id_pedido integer
 	* @return: mixed
 	*/
-	public function getByIdCompleteDataProvider($id)
+	public function getByIdCompleteDataProvider($id_pedido)
 	{
 
 		return
@@ -151,7 +146,7 @@ class Pedido_model extends CI_Model
 			->join('estado', 'cidade.id_estado = estado.id_estado')
 			->join('andamento', 'andamento.id_pedido = pedido.id_pedido')
 			->where('andamento.atual', TRUE)
-			->where('pedido.id_pedido', $id)
+			->where('pedido.id_pedido', $id_pedido)
 			->order_by('andamento.data', 'DESC')
 			->get()
 			->row();
@@ -243,37 +238,54 @@ class Pedido_model extends CI_Model
 	public function update($pedido)
 	{
         $this->db->where('pedido.id_pedido', $pedido['id_pedido']);
+
         if(isset($pedido['id_pessoa'])) $this->db->set('pedido.id_pessoa', $pedido['id_pessoa']);
         if(isset($pedido['tipo']))      $this->db->set('pedido.tipo',      $pedido['tipo']);
-        $this->db->set('pedido.descricao', $pedido['descricao']);
-        $id_pedido = $this->db->update('pedido');
 
-        if($id_pedido)
-        {
-          $this->relatorio->setLog('update', 'Atualizar', 'Pedido', $id_pedido, 'Atualizou o pedido', $pedido['id_pedido']);
-        }
+        $this->db
+        ->set('pedido.descricao', $pedido['descricao'])
+        ->update('pedido');
 
-        return $id_pedido;
+        $this->setLog($pedido['id_pedido'], $pedido['id_pedido']);
+       
     }
 
     /**
 	* @author: Tiago Villalobos
 	* Remove um pedido do banco utilizando o id do mesmo e
-	* retorna verdadeiro ou falso caso consiga remove-lo
 	*
-	* @param: $id integer
+	* @param:  $id_pedido integer
 	* @return: boolean
 	*/
-    public function remove($id)
+    public function remove($id_pedido)
     {
-       	$this->db->where('pedido.id_pedido', $id);
-    	$id_pedido = $this->db->delete('pedido');
+    	$pedido = $this->db->where('id_pedido', $id_pedido)->get('pedido')->row();
 
-		if($id_pedido)
-		{
-			$this->relatorio->setLog('delete', 'Deletar', 'Pedido', $id_pedido, 'Deletou o pedido', $id);
-		}
-		return $id_pedido;
+       	$this->db
+       	->where('pedido.id_pedido', $id_pedido)
+       	->delete('pedido');
+
+       	$this->setLog($pedido->id_pedido, $pedido->id_pedido);
     }
+
+    /**
+	* @author: Tiago Villalobos
+	* Remove todos os dados da tabela relacional entre pedido e produto: pedido_produto
+	* utilizando o id do pedido
+	*
+	* @param: $id_pedido integer
+	*/
+	public function removeProducts($id_pedido)
+	{
+		$this->db
+		->where('pedido_produto.id_pedido', $id_pedido)
+		->delete('pedido_produto');
+
+        $this->setLog(
+			'', 
+			$id_pedido, 
+			'Removeu os produtos do pedido '.$id_pedido
+		);
+	}
 
 }
