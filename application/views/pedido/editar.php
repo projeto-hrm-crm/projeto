@@ -3,7 +3,7 @@
 			<div class="col-lg-8">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Atualização de Pedido</strong>
+	                <strong class="card-title">Editar Pedido</strong>
 	            </div>
 	            <form id="form-pedido" action="<?php echo base_url('pedido/editar/'.$pedido->id_pedido); ?>" method="POST">
 	                <div class="card-body">
@@ -226,7 +226,7 @@
 	                    </a>
 	                    <button type="submit" class="btn bg-primary text-white btn-submit">
 	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Editar
+	                        Confirmar
 	                    </button>
 	                </div>
 
@@ -236,13 +236,13 @@
 									  <div class="modal-dialog" role="document">
 									    <div class="modal-content">
 									      <div class="modal-header">
-									        <h5 class="modal-title" id="exampleModalLabel">Atualizar Pedido</h5>
+									        <h5 class="modal-title" id="exampleModalLabel">Editar Pedido</h5>
 									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									          <span aria-hidden="true">&times;</span>
 									        </button>
 									      </div>
 									      <div class="modal-body text-center">
-									        Tem certeza que deseja atualizar esse Pedido ?
+									        Deseja realmente editar esse Pedido?
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
