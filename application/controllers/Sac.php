@@ -66,10 +66,10 @@ class Sac extends CI_Controller {
               'descricao' => $this->input->post('descricao'),
             );
             $this->sac->insert($array);
-            $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
+            $this->session->set_flashdata('success', 'Sac Cadastrado Com Sucesso!');
             redirect('sac');
          }else{
-            $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
+            $this->session->set_flashdata('danger', 'Impossível Cadastrar');
             redirect('sac');
          }
       }

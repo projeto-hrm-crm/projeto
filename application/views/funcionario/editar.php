@@ -3,7 +3,7 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar Funcionário</strong>
+          <strong class="card-title">Atualizar Funcionário</strong>
         </div>
 
         <form action="<?php site_url('funcionario/edit'.$id); ?>" method="POST" id="form_funcionario" data-id_usuario ="<?php echo $funcionario[0]->id_usuario; ?>" class="form-horizontal">
@@ -96,33 +96,34 @@
 
             </div>
 
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarFuncionario">
-                <span class="fa fa-check"></span>
-                Editar
-              </button>
-              <a href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Cancelar
+            <div class="card-footer text-right">
+             
+              <a title="Cancelar Edição" href="<?= site_url('funcionario')?>" class="btn btn-danger btn-sm">
+                <i class="fa fa-times"></i> Cancelar
               </a>
+               <button title="Atualizar Funcionário" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarFuncionario">
+                <span class="fa fa-check"></span>
+                Atualizar
+              </button>
             </div> <!-- FIM BOTÕES -->
             <div class="modal fade" id="editarFuncionario" role="dialog" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Editar Funcionario</h5>
+                    <h5 class="modal-title">Atualizar Funcionário</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    Deseja realmente editar esse funcionario?
+                    Deseja Realmente Atualizar Esse Funcionário?
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">
                       Cancelar
                     </button>
                     <button type="submit" class="btn btn-primary">
-                      Editar
+                      Confirmar
                     </button>
                   </div>
                 </div>

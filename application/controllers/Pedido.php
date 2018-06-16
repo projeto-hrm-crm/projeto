@@ -136,7 +136,7 @@ class Pedido extends CI_Controller
   					
   				}
 
-  				$this->session->set_flashdata('success', 'Cadastrado com sucesso');
+  				$this->session->set_flashdata('success', 'Pedido Cadastrado Com Sucesso!');
   				redirect('pedido');
 
   			}
@@ -221,7 +221,7 @@ class Pedido extends CI_Controller
   					
   				}
 
-  				$this->session->set_flashdata('success', 'Atualizado com sucesso.');
+  				$this->session->set_flashdata('success', 'Pedido Atualizado Com Sucesso!');
   				redirect('pedido');
   				
 			}
@@ -311,7 +311,7 @@ class Pedido extends CI_Controller
 
 		  				$this->andamento->update($andamento);
 
-		  				$this->session->set_flashdata('success', 'Atualizado com sucesso.');
+		  				$this->session->set_flashdata('success', 'Pedido Atualizado Com Sucesso!');
 		  				redirect('pedido/fornecedor');
 		  				
 					}
@@ -367,11 +367,11 @@ class Pedido extends CI_Controller
 			$this->pedido->removeProducts($id);
 			$this->pedido->remove($id);
 
-			$this->session->set_flashdata('success', 'Pedido removido com sucesso.');
+			$this->session->set_flashdata('success', 'Pedido Excluído Com Sucesso!');
 		}
 		else
 		{
-			$this->session->set_flashdata('danger', 'Não foi possível remover o Pedido!');
+			$this->session->set_flashdata('danger', 'Impossível Excluir!');
 		}
 		
 		redirect('pedido');

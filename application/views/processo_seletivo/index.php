@@ -2,7 +2,7 @@
 <?php print_r($processos_seletivos); ?>
 </pre> -->
     <div class="row" >
-        <div class="col-md-12">
+        <div class="col-lg-10">
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Processos Seletivos</strong>

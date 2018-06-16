@@ -83,7 +83,7 @@
     </div>
 
      <div class="card-footer text-right">
-        <a title="Cancelar Atualização" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
+        <a title="Cancelar Edição" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
           <button title="Atualizar Processo" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarProcesso">>
@@ -110,7 +110,7 @@
                     Cancelar
                   </button>
                   <button type="submit" class="btn btn-primary  btn-sm">
-                    Atualizar
+                    Confirmar
                   </button>
                 </div>
               </div>

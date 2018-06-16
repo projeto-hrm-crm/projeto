@@ -1,7 +1,7 @@
 <!-- FUNCIONÁRIO -->
 <div class="animated fadeIn">
   <div class="row" >
-    <div class="col-md-12">
+    <div class="col-lg-10">
       <?php if($this->session->flashdata('success')): ?>
         <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
           <?php echo $this->session->flashdata('success'); ?>
@@ -20,13 +20,13 @@
       <?php endif; ?>
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Funcionarios</strong>
+          <strong class="card-title">Funcionários</strong>
         </div>
 
         <div class="card-body">
 
-          <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar funcionário">
-            <i class="fa fa-check"></i> Cadastrar
+          <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
+            <i class="fa fa-check"></i>Novo Cadastro
           </a><br />
           <br />
           <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
@@ -54,9 +54,9 @@
                         <?php echo $funcionario->data_nascimento; ?>
                       </td>
                       <td class="text-center">
-                        <a title="Editar funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
+                        <a title="Atualizar Funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary btn-sm">
                         <span class="fa fa-edit"></span></a>
-                        <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
+                        <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger btn-sm" title="Excluir Funcionário" data-toggle="modal" data-target="#modalRemover">
                           <span class="fa fa-times"></span>
                         </button>
                        </td>
@@ -80,7 +80,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Deseja realmente excluir esse funcionário?
+            Deseja Realmente Excluir Esse Funcionário?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">

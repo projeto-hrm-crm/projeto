@@ -2,7 +2,7 @@
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Editar Produto</strong>
+                <strong class="card-title">Atualizar Produto</strong>
             </div>
             <form id="form_cargo" action="<?php echo base_url('cargo/editar/'.$cargo->id_cargo);?>" method="post" novalidate="novalidate">
                 <div class="card-body">
@@ -39,29 +39,29 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
+                    <a title="Cancelar edição" href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAtualizar">
+                    <button title="Atualizar Cargo" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAtualizar">
                         <span class="fa fa-check"></span>
-                        Editar
+                        Atualizar
                     </button>
                 </div>
                 <div class="modal fade" id="modalAtualizar" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Editar cargo</h5>
+                                <h5 class="modal-title">Atualizar cargo</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja realmente editar esse cargo?
+                                Deseja Realmente Atualizar Esse Cargo?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                     Cancelar
                                 </button>
                                 <button type="submit" class="btn btn-primary">

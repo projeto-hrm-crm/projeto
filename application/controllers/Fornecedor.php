@@ -57,10 +57,10 @@ class Fornecedor extends CI_Controller
     if($data) {       
       if ($this->form_validation->run('fornecedor')) {
         $this->fornecedor->insert($data);
-        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso! :)');
+        $this->session->set_flashdata('success', 'Fornecedor Cadastrado Com Sucesso!');
         redirect('fornecedor');
       }else {
-        $this->session->set_flashdata('danger', 'Desculpe, tivemos um problema. Entre em contato com o administrador do sistema :(');
+        $this->session->set_flashdata('danger', 'Não Foi Possível Cadastrar!');
         redirect('fornecedor/cadastrar');
          
       }

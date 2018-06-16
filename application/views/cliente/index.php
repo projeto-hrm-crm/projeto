@@ -1,8 +1,8 @@
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-12">
+    <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Cliente</strong>
+          <strong class="card-title">Clientes</strong>
         </div>
         <?php if($this->session->flashdata('success')): ?>
           <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
@@ -49,9 +49,9 @@
                     <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Editar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary btn-sm">
+                    <a title="Atualizar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary btn-sm">
                       <span class="fa fa-pencil-square-o"></span></a>
-                       <button data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger btn-sm" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
+                       <button title="Excluir Cliente" data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger btn-sm" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                         </button>
                       </td>

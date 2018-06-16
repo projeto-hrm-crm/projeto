@@ -111,12 +111,12 @@
       </div>
    </div>
        <div class="card-footer text-right">
-          <a href="<?= site_url('fornecedor')?>" class="btn btn-danger  btn-sm" title="Cancelar Atualização">
+          <a href="<?= site_url('fornecedor')?>" class="btn btn-danger  btn-sm" title="Cancelar Edição">
                <i class="fa fa-times"></i> Cancelar
             </a>
             <button title="Atualizar Cadastro" type="button" class="btn btn-primary  btn-sm" data-toggle="modal" data-target="#editarFornecedor">
                <span class="fa fa-check"></span>
-               Editar
+               Atualizar
            </button>
 
           </div>
@@ -144,7 +144,7 @@
                              Cancelar
                          </button>
                          <button  type="submit" class="btn btn-primary btn-edit">
-                             Atualizar
+                             Confirmar
                          </button>
                      </div>
                  </div>

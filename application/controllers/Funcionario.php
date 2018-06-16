@@ -125,7 +125,7 @@ class Funcionario extends CI_Controller
 
     if ($data) {
       $this->funcionario->remove($id_funcionario);
-      $this->session->set_flashdata('success', 'funcionario excluido com sucesso');
+      $this->session->set_flashdata('success', 'Funcionário Excluído Com Sucesso!');
       redirect('funcionario');
     }
   }
