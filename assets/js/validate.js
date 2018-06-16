@@ -35,6 +35,32 @@ jQuery(document).ready(function($) {
     },
   });
 
+  $("#form_processo_seletivo").validate({
+    rules: {
+      nome: "required",
+      id_vaga: "required",
+      descricao: "required",
+      "nome_etapa[]":"required",
+      "descricao_etapa[]":"required",
+      codigo: {
+        required: true,
+        digits:true,
+      },
+
+      data_inicio: {
+        required: true,
+        brazilian_date: true,
+      },
+
+      data_fim: {
+        required: true,
+        brazilian_date: true,
+        dataMaiorQue: '#data_inicio',
+      },
+    },
+  });
+
+
   // @Beto Cadilhe
   $("#form_fornecedor").validate({
 
