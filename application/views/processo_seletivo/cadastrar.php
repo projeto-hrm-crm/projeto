@@ -72,7 +72,7 @@
 
        </div>
        <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv" href="javascript:add_etapa()">
-        <i class="fa fa-check"></i> Adicionar Etapa </a>'
+        <i class="fa fa-check"></i> Adicionar Etapa </a>
     </div>
 
      <div class="card-footer text-right">
@@ -93,6 +93,6 @@
   <div class="cloned-div">
     <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
     <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
-    <a name="button" class="btn btn-danger btn-sm remDiv" href="javascript:remove_etapa()">Excluir</a><br><br>
+    <a name="button" class="btn btn-danger btn-sm remDiv">Excluir</a><br><br>
   </div>
 </div>

@@ -1,8 +1,5 @@
 jQuery(document).ready(function($) {
-    // $(function() {
-    //     $("#valor_produto").maskMoney();
-    //     $("#salario_cargo").maskMoney();
-    // })                          
+    var id_usuario =null;
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -349,7 +346,7 @@ jQuery(document).ready(function($) {
       complemento:{
         maxlength: 70,
         regex: /^[A-Za-z0-9]/,
-      }
+      },
       sexo:{
         required:true }
       },
