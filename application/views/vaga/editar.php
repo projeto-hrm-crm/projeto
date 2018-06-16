@@ -3,7 +3,7 @@
 		<div class="col-lg-8">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Edição de Vaga</strong>
+	                <strong class="card-title">Editar Vaga</strong>
 	            </div>
 	            <form id="form-vaga" action="<?php echo base_url('vaga/editar/'.$vaga->id_vaga); ?>" method="POST" novalidate="novalidate">
 	                <div class="card-body">
@@ -66,7 +66,7 @@
 						  </a>
 	                    <button  title="Atualizar vaga" type="submit" class="btn bg-primary text-white btn-sm" >
 	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Editar
+	                        Confirmar
 	                    </button>
 	                </div>
 
@@ -76,13 +76,13 @@
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
+													<h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
 												<div class="modal-body text-center">
-													Deseja realmente editar esta vaga?
+													Deseja realmente editar essa vaga?
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -107,13 +107,13 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body text-center">
-				Tem certeza que deseja atualizar essa vaga?
+				Deseja realmente editar essa vaga?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">
