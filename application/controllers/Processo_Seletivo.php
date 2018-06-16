@@ -48,9 +48,7 @@ class Processo_Seletivo extends CI_Controller
       // exit;
       if($this->form_validation->run('processo_seletivo'))
       {
-        print_r($data);
-        // $etapas = $this->input->post('etapas[]') FIXME
-        // unset($data('etapas[]')) FIXME
+
         unset($data['nome_etapa']);
         unset($data['descricao_etapa']);
         $this->processo_seletivo->insert($data);
@@ -139,4 +137,3 @@ class Processo_Seletivo extends CI_Controller
     redirect('processo_seletivo');
   }
 }
-
