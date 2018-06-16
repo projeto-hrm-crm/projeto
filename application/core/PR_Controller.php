@@ -139,11 +139,13 @@ class PR_Controller extends CI_Controller
 	* @author: Tiago Villalobos
 	* Redireciona o usuário para a view padrão do diretório com uma mensagem de sucesso
 	*/ 
-	protected function redirectSuccess()
+	protected function redirectSuccess($message, $subView = null)
 	{
-		$this->session->set_flashdata('success', 'Operação realizada com sucesso');
+		$this->session->set_flashdata('success', $message);
 		
-		redirect($this->viewDirectory);
+		$path = is_null($subView) ? $this->viewDirectory : $this->viewDirectory.'/'.$subView;   
+
+		redirect($path);
 	}
 
 	/**
@@ -153,9 +155,9 @@ class PR_Controller extends CI_Controller
 	* 
 	* @param: $view string
 	*/ 
-	protected function redirectError($view)
+	protected function redirectError($view, $message = 'Não foi possível realizar a operação')
 	{
-		$this->session->set_flashdata('danger', 'Não foi possível realizar a operação');
+		$this->session->set_flashdata('danger', $message);
 		$this->session->set_flashdata('errors',   $this->form_validation->error_array());
         $this->session->set_flashdata('old_data', $this->input->post());
         

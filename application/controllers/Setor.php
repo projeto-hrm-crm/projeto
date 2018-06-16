@@ -37,7 +37,7 @@ class Setor extends PR_Controller
             {
                 $this->setor->insert($this->getFromPost());
                 
-                $this->redirectSuccess();
+                $this->redirectSuccess('Setor cadastrado com sucesso');
             }
             else
             {
@@ -70,7 +70,7 @@ class Setor extends PR_Controller
             if($this->form_validation->run('setor'))
             {
                 $this->setor->update($this->getFromPostEdit($id_setor));
-                $this->redirectSuccess();
+                $this->redirectSuccess('Setor atualizado com sucesso');
             }
             else
             {
@@ -102,7 +102,7 @@ class Setor extends PR_Controller
     {
         $this->setor->remove($id_setor);
         
-        $this->redirectSuccess();
+        $this->redirectSuccess('Setor removido com sucesso');
     }
 
     /**

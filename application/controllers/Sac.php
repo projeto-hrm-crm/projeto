@@ -21,8 +21,28 @@ class Sac extends PR_Controller
     */
     public function index()
     {
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+        $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa')); 
+
         $this->setTitle('Solicitações SAC');
-        $this->addData('sac', $this->sac->get());
+        $this->addData('tipo', $this->usuario->getUserAccessGroup($this->session->userdata('user_login')));
+
+
+        if($this->data['tipo'] == '1')
+        {
+            $this->addData('sac', $this->sac->get());
+        }
+        else
+        {
+            $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+            $this->addData('sac',  $this->sac->getClient($cliente[0]->id_cliente));
+        }
+
+        foreach ($this->data['sac'] as $key => $sac) 
+        {
+            $cliente = $this->cliente->getById($this->data['sac'][$key]->id_cliente);
+            $this->data['sac'][$key]->id_cliente = $cliente[0]->nome;
+        }
 
         $this->loadIndexDefaultScripts();
 
@@ -35,6 +55,18 @@ class Sac extends PR_Controller
     */
     public function create() 
     {
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+        $cliente  = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+         
+         
+        if($typeUser == '1')
+        {
+            $id_cliente = $this->input->post('id_cliente');
+        }
+        else 
+        {
+            $id_cliente = $cliente[0]->id_cliente;
+        }
 
         if($this->input->post())
         {
@@ -42,7 +74,7 @@ class Sac extends PR_Controller
             {
                 $this->sac->insert($this->getFromPost());
                 
-                $this->redirectSuccess();
+                $this->redirectSuccess('SAC cadastrado com sucesso');
             }
             else
             {
@@ -55,6 +87,7 @@ class Sac extends PR_Controller
 
             $this->addData('clientes', $this->cliente->get());
             $this->addData('produtos', $this->produto->get());
+            $this->addData('tipo', $typeUser);
 
             $this->loadFormDefaultScripts();
         
@@ -72,11 +105,14 @@ class Sac extends PR_Controller
     */
     public function edit($id_sac) 
     {
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+        $cliente  = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+
         if ($this->input->post()){
             if($this->form_validation->run('sac'))
             {
                 $this->sac->update($this->getFromPostEdit($id_sac));
-                $this->redirectSuccess();
+                $this->redirectSuccess('SAC atualizado com sucesso');
             }
             else
             {
@@ -92,6 +128,8 @@ class Sac extends PR_Controller
             $this->addData('id',       $id_sac);
             $this->addData('clientes', $this->cliente->get());
             $this->addData('produtos', $this->produto->get());
+            $this->addData('tipo',     $typeUser);
+
             $this->loadFormDefaultScripts();
 
             $this->loadView('editar');
@@ -109,7 +147,7 @@ class Sac extends PR_Controller
     {
         $this->sac->remove($id_sac);
         
-        $this->redirectSuccess();
+        $this->redirectSuccess('SAC removido com sucesso');
     }
 
     /**
