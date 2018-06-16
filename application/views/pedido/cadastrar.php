@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
 	<div class="row justify-content-center align-items-center">
-			<div class="col-lg-8">
+			<div class="col-lg-10">
 	        <div class="card">
 	            <div class="card-header">
 	                <strong class="card-title">Novo Pedido</strong>
