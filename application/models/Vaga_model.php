@@ -10,15 +10,20 @@ class Vaga_model extends CI_Model
     *@return: mixed
     */
     public function get(){
-        $this->db->select(
-            'vaga.id_vaga, vaga.data_oferta, vaga.quantidade,
-             cargo.nome AS cargo'
-             // setor.nome AS setor'
-        );
-        $this->db->join('cargo', 'vaga.id_cargo = cargo.id_cargo');
-        // $this->db->join('setor', 'cargo.id_setor = setor.id_setor');
+      $vaga =  $this->db->select(
+            'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade,
+             cargo.nome AS cargo,
+             setor.nome AS setor'
+        )->from('vaga')
+        ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
+        ->join('setor', 'cargo.id_setor = setor.id_setor')
+        ->get();
 
-        return $this->db->get('vaga')->result();
+        if ($vaga) {
+            return $vaga->result();
+        }
+        return null;
+
     }
      /*
      *@author: Lucilene Fidelis
