@@ -54,8 +54,7 @@ class Fornecedor extends CI_Controller
   public function create()
   {
     $data = $this->input->post();
-    if($data) {
-       
+    if($data) {       
       if ($this->form_validation->run('fornecedor')) {
         $this->fornecedor->insert($data);
         $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso! :)');
@@ -63,6 +62,7 @@ class Fornecedor extends CI_Controller
       }else {
         $this->session->set_flashdata('danger', 'Desculpe, tivemos um problema. Entre em contato com o administrador do sistema :(');
         redirect('fornecedor/cadastrar');
+         
       }
     }
     $data['title'] = 'Cadastrar Fornecedor';

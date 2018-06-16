@@ -1,4 +1,5 @@
-<div class="row" style="margin-top: 5px;">
+
+<div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
       <?php if ($this->session->flashdata('success')) : ?>
          <div class="alert alert-success">
@@ -10,20 +11,18 @@
          </div>
       <?php endif; ?>
    </div>
-</div>
-<div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
       <div class="card">
          <div class="card-header">
             <strong class="card-title">Cadastrar Fornecedor</strong>
          </div>
-         <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
+         <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor">
             <div class="card-body card-block">
                <div class="row">
                   <!--NOME-->
                   <div class="form-group col-12 col-md-6">
                      <label class=" form-control-label">Nome</label>
-                        <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome Completo da Empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
+                        <input type="text" id="nome" name="nome" value="<?php echo isset($data['nome']) ? $data['nome'] : null;?>" placeholder="Nome Completo da Empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                         <span class="invalid-feedback">
                            <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
                         </span>
@@ -94,7 +93,7 @@
 
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label">CEP</label>
-         <input type="num" id="cep" name="cep" placeholder="CEP" maxlength="8" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
+         <input type="num" id="cep" name="cep" placeholder="CEP" maxlength="8" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control cep <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
 	              </span>
