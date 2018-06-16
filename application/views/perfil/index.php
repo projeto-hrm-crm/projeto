@@ -23,13 +23,13 @@
                     <div class="row">
                         
                         <div class="col-lg-12">
-                            <h1 class="margin20">Teste  </h1> 
+                            <h1 class="margin20"><?=$perfil[0]->nome;?></h1> 
                             <br>
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td><b>E-mail</b></td>
-                                        <td colspan="6">xxxxxxxxxxx</td>                                    
+                                        <td colspan="6"><?=$perfil[0]->email;?></td>                                    
                                     </tr>
                                     <tr>
                                         <td><b>Endereço</b></td>

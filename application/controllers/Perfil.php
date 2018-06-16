@@ -17,10 +17,10 @@ class Perfil extends CI_Controller {
         
         
         $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-        $pessoa = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+        $user_id = $this->session->userdata('user_login');
         
         $data['title'] = 'Meu Perfil';         
-        $data['perfil'] = $user_id;
+        $data['perfil'] = $this->usuario->getUserNameById($user_id);
         
         
         
