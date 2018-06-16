@@ -29,21 +29,21 @@
            </div>
 
 
-           <!-- Aqui vai um //FIXME
            <?php foreach ($etapas as $etapa): ?>
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição da Etapa [<?php $etapa->nome ?>]</label>
-             <textarea auto-resize id="descricao_etapa" name="descricao_etapa" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
+             <label class=" form-control-label">Descrição da Etapa</label>
+             <input type="number" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>" readonly>
+             <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
            </div>
            <?php endforeach; ?>
-          -->
+
 
 
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição das Etapas do Processo</label>
+             <label class=" form-control-label">Descrição do Processo</label>
              <textarea auto-resize id="descricao" name="descricao" class="form-control" required><?php print_r($info[0]->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório

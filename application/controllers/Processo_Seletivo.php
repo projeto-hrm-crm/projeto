@@ -118,9 +118,17 @@ class Processo_Seletivo extends CI_Controller
     if ($this->input->post())
     {
       $data = $this->input->post();
+      
       if ($this->form_validation->run('processo_seletivo_info'))
       {
         $this->processo_seletivo->update($id, $data);
+        for ($i=0; $i < count($data['id_etapa']); $i++) {
+          $etapa[] = array(
+            'id_etapa' => $data['id_etapa'][$i],
+            'descricao' => $data['descricao_etapa'][$i]
+          );
+        }
+        $this->etapa->update($id, $etapa);
         $this->session->set_flashdata('success', 'Processo Seletivo Atualizado Com Sucesso!');
         redirect('processo_seletivo');
       }else{
@@ -130,6 +138,7 @@ class Processo_Seletivo extends CI_Controller
     }
     $data['info'] = $this->processo_seletivo->info($id);
     $data['title'] = 'Informações Processo Seletivo';
+    $data['etapas'] = $this->etapa->find($id);
     $data['assets'] = array(
       'js' => array(
         'processo_seletivo/textarea_auto_expand.js',
