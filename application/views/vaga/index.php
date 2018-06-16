@@ -23,7 +23,7 @@
 				</div>
 				<div class="card-body">
 					<a href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
-					  	<i class="fa fa-check"></i> Cadastrar
+					  	<i class="fa fa-check"></i> Novo Cadastro
 				  	</a><br><br>
 					<table class="datatable table table-striped table-bordered">
 						<thead>
@@ -77,11 +77,15 @@
 				</button>
 			</div>
 			<div class="modal-body text-center">
-				Tem certeza que deseja excluir essa vaga?
+				Deseja realmente excluir essa vaga?
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-				<a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
+						Cancelar
+				</button>
+				<a href="#" class="btn btn-primary btn-remove-ok">
+						Confirmar
+				</a>
 			</div>
 		</div>
 	</div>

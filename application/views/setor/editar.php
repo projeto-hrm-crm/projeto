@@ -2,10 +2,10 @@
   <?php print_r((array)$setor[0]->nome); ?>
   </pre> -->
 <div class="row justify-content-center align-items-center">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong>Edição de setores</strong>
+        <strong>Editar Setor</strong>
       </div>
       <div class="col-md-8">
         <?php if ($this->session->flashdata('success')) : ?>
@@ -32,7 +32,7 @@
             <i class="fa fa-times"></i> Cancelar
           </a>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarSetor">
-            <i class="fa fa-pencil-square-o"></i> Editar
+            <i class="fa fa-pencil-square-o"></i> Confirmar
           </button>
                 </div>
                 <div class="modal fade" id="editarSetor" role="dialog" aria-hidden="true">
@@ -52,7 +52,7 @@
                                     Cancelar
                                 </button>
                                 <button type="submit" class="btn btn-primary">
-                                    Editar
+                                    Confirmar
                                 </button>
                             </div>
                         </div>

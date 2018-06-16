@@ -1,9 +1,9 @@
-<div class="animated fadeIn">
+<!-- <div class="animated fadeIn"> -->
 	<div class="row justify-content-center align-items-center">
 		<div class="col-lg-8">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Edição de Vaga</strong>
+	                <strong class="card-title">Editar Vaga</strong>
 	            </div>
 	            <form id="form-vaga" action="<?php echo base_url('vaga/editar/'.$vaga->id_vaga); ?>" method="POST" novalidate="novalidate">
 	                <div class="card-body">
@@ -66,34 +66,60 @@
 						  </a>
 	                    <button  title="Atualizar vaga" type="submit" class="btn bg-primary text-white btn-sm" >
 	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Editar
+	                        Confirmar
 	                    </button>
 	                </div>
+
+									<!-- Modal atualizar -->
+
+									<div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body text-center">
+													Deseja realmente editar essa vaga?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger" data-dismiss="modal">
+														Cancelar
+													</button>
+													<button type="button" class="btn btn-primary btn-edit">
+														Confirmar
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
 	            </form>
 	        </div>
     	</div>
 	</div>
 </div>
-
 <!-- Modal atualizar -->
 
 <div class="modal fade" id="modalAtualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body text-center">
-				Tem certeza que deseja atualizar essa vaga?
+				Deseja realmente editar essa vaga?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">
 					Cancelar
 				</button>
-				<button type="button" class="btn btn-primary btn-edit">
+				<button type="button" class="btn btn-primary btn-edit" data-dismiss="modal">
 					Confirmar
 				</button>
 			</div>

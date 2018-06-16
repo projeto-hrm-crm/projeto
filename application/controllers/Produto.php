@@ -37,6 +37,7 @@ class Produto extends CI_Controller
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
           'datatable.js',
+          'maskMoney.js',
           'confirm.modal.js',
         ),
       );
@@ -92,6 +93,7 @@ class Produto extends CI_Controller
          'js' => array(
            'lib/jquery/jquery.maskMoney.min.js',
            'validate.js',
+           'maskMoney.js',
          ),
        );
         loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
@@ -143,6 +145,7 @@ class Produto extends CI_Controller
          'js' => array(
            'lib/jquery/jquery.maskMoney.min.js',
            'validate.js',
+           'maskMoney.js',
          ),
        );
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);

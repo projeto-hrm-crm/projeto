@@ -1,5 +1,5 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">Editar Produto</strong>
@@ -58,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card-footer text-right">
                     <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i>
@@ -81,7 +82,7 @@
                                 Deseja realmente editar esse produto?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                     Cancelar
                                 </button>
                                 <button type="submit" class="btn btn-primary">
@@ -91,6 +92,7 @@
                         </div>
                     </div>
                 </div>
+
             </form>
         </div>
     </div>

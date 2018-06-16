@@ -1,9 +1,8 @@
-
 <div class="row justify-content-center align-items-center">
-   <div class="col-lg-8">
+   <div class="col-lg-10">
   <div class="card">
     <div class="card-header">
-      <strong>Cadastro de Processos Seletivos</strong>
+      <strong>Cadastrar Processo Seletivo</strong>
     </div>
     <?php echo validation_errors(); ?>
     <div class="row" style="margin-top: 5px;">
@@ -31,53 +30,59 @@
 
           <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Nome</label>
-             <input type="text" id="nome" name="nome" placeholder="Nome" class="form-control" required>
+             <input type="text" id="nome" name="nome" placeholder="Ex: Processo Seletivo Para Gerente" class="form-control" required>
            </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Inicio</label>
-             <date-util format="yyyy/MM/dd">
-               <input type="date" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control">
-             </date-util>
-           </div>
+                 <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
+             </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Término</label>
-             <date-util format="yyyy/MM/dd">
-               <input type="date" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control">
-             </date-util>
-           </div>
+                 <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
+             </div>
 
-           <div class="form-group col-12 col-md-6">
-            <label class=" form-control-label">Cargo</label>
-             <select class="form-control" name="id_cargo">
-               <?php foreach ($cargos as $cargo): ?>
-                 <option value="<?php echo $cargo->id_cargo ?>"><?php echo $cargo->nome; ?></option>
+           <div class="form-group col-12">
+            <label class=" form-control-label">Vaga</label>
+             <select class="form-control" name="id_vaga">
+               <?php foreach ($vagas as $vaga): ?>
+                 <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
                <?php endforeach; ?>
              </select>
            </div>
 
-           <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Número de Vagas</label>
-             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number">
-           </div>
-
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição das Etapas do Processo</label>
-             <textarea rows="30" cols="140" placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
+             <label class=" form-control-label">Descrição do Processo</label>
+             <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
            </div>
 
+						 <div class="form-group col-12">
+							 <div id="newlink">
+  							 <!-- <label class=" form-control-label">Etapas</label>
+                 <div class="form-group col-12 cloned-main" id="template1" hidden>
+                   <div class="cloned-div">
+                     <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required hidden>
+                     <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required hidden></textarea>
+                     <a  name="button" class="btn btn-danger btn-sm remDiv" >Excluir</a><br><br>
+                   </div> -->
+                 <!-- </div> -->
+  						 </div>
+					   </div>
+
        </div>
+       <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv">
+        <i class="fa fa-check"></i> Adicionar Etapa </a>
     </div>
 
      <div class="card-footer text-right">
-        <a href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
+        <a title="Cancelar Cadastro" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button type="submit" class="btn btn-primary btn-sm">
+          <button title="Cadastrar Processo" type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-plus"></i> Cadastrar
           </button>
 
@@ -85,3 +90,5 @@
        </form>
   </div>
 </div>
+
+<!-- Template -->

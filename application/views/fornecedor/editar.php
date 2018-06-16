@@ -1,25 +1,31 @@
-<div class="animated fadeIn">
-<div class="row justify-content-center align-items-center">
-   <div class="col-lg-8">
-    <div class="card">
-      <div class="card-header">
-        <strong>Cadastro de Fornecedores</strong>
-      </div>
-      <div class="row" style="margin-top: 5px;">
-  			<div class="col-md-12">
-  				<?php if ($this->session->flashdata('success')) : ?>
-  					<div class="alert alert-success">
-  						<p><span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?></p>
-  					</div>
-  				<?php elseif ($this->session->flashdata('danger')) : ?>
-  					<div class="alert alert-danger">
-  						<p><span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?></p>
-  					</div>
-  				<?php endif; ?>
-  			</div>
-  		</div>
-        <form action="<?php site_url('fornecedor/edit'.$id); ?>" method="POST" id="form_fornecedor">
+<form action="<?php echo site_url('fornecedor/editar/'.$fornecedor[0]->id_fornecedor); ?>" method="POST" id="form_fornecedor">
+
+   <div class="animated fadeIn">
+      <div class="row justify-content-center align-items-center">
+         <div class="col-lg-10">
+            <div class="card">
+               
+               <div class="card-header">
+                 <strong>Atualizar Fornecedor</strong>
+               </div>
+               
+               
+               <div class="row" style="margin-top: 5px;">
+                  <div class="col-md-12">
+                     <?php if ($this->session->flashdata('success')) : ?>
+                        <div class="alert alert-success">
+                           <p><span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?></p>
+                        </div>
+                     <?php elseif ($this->session->flashdata('danger')) : ?>
+                        <div class="alert alert-danger">
+                           <p><span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?></p>
+                        </div>
+                     <?php endif; ?>
+                  </div>
+               </div>
+               
       <div class="card-body card-block">
+         
       <div class="row">
 
               <div class="form-group col-12 col-md-6">
@@ -29,7 +35,7 @@
               </div>
 
              <div class="form-group col-12 col-md-6">
-                <label for="email-input" class=" form-control-label">E-mail</label>
+                <label for="email-input" class=" form-control-label">Email</label>
                 <input type="email" id="email" name="email" placeholder="e-mail" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->email)?>" required>
               </div>
 
@@ -53,14 +59,14 @@
                <select name="id_estado" class="form-control" id="estado">
                   <option value="0" disabled selected>Selecione um estado</option>
                  <?php foreach ($estados as $estado): ?>
-                   <option value="<?php echo $estado->id_estado ?>" <?php if($estado_fornecedor[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
+                   <option value="<?php echo $estado->id_estado ?>" <?php if($estado_atual[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
                  <?php endforeach; ?>
                </select>
           </div>
 
            <div class="form-group col-12 col-md-6">
               <label class="form-control-label">Cidade</label>
-              <select name="id_cidade" class="form-control" id="estado">
+              <select name="id_cidade" class="form-control" id="cidade">
                  <?php foreach ($cidades as $cidade): ?>
                    <option value="<?php echo $cidade->id_cidade; ?>" <?php if($fornecedor[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
                  <?php endforeach; ?>
@@ -105,42 +111,46 @@
       </div>
    </div>
        <div class="card-footer text-right">
-          <a href="<?= site_url('fornecedor')?>" class="btn btn-danger" title="Cancelar">
+          <a href="<?= site_url('fornecedor')?>" class="btn btn-danger  btn-sm" title="Cancelar Atualização">
                <i class="fa fa-times"></i> Cancelar
             </a>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editar">
-               <span class="fa fa-pencil-square-o"></span>
+            <button title="Atualizar Cadastro" type="button" class="btn btn-primary  btn-sm" data-toggle="modal" data-target="#editarFornecedor">
+               <span class="fa fa-check"></span>
                Editar
            </button>
 
           </div>
-           <div class="modal fade" id="editar" role="dialog" aria-hidden="true">
+          </div>
+    
+   </div>
+</div>
+</div>
+
+
+ <div class="modal fade" id="editarFornecedor" role="dialog" aria-hidden="true">
              <div class="modal-dialog" role="document">
                  <div class="modal-content">
                      <div class="modal-header">
-                         <h5 class="modal-title">Editar Fornecedor</h5>
+                         <h5 class="modal-title">Atualizar Fornecedor</h5>
                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                              <span aria-hidden="true">&times;</span>
                          </button>
                      </div>
                      <div class="modal-body">
-                         Deseja realmente editar esse Fornecedor?
+                         Deseja Realmente Atualizar Esse Fornecedor?
                      </div>
                      <div class="modal-footer">
-                         <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                         <button type="button" class="btn btn-danger" data-dismiss="modal">
                              Cancelar
                          </button>
-                         <button  type="submit" class="btn btn-primary btn-remove-ok">
-                             Confirmar
+                         <button  type="submit" class="btn btn-primary btn-edit">
+                             Atualizar
                          </button>
                      </div>
                  </div>
              </div>
-         </div>
-       </form>
-   </div>
-</div>
-</div>
+           </div>
+</form>
 
 <script type="text/javascript">
    $("#estado").change(function(){

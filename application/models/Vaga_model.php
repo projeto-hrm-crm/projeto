@@ -4,26 +4,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Vaga_model extends CI_Model
 {
 
-
-    public function __construct(){
-        parent::__construct();
-    }
-
     /*
     *@author: Lucilene Fidelis
     *
     *@return: mixed
     */
     public function get(){
-        $this->db->select(
-            'vaga.id_vaga, vaga.data_oferta, vaga.quantidade,
-            cargo.nome AS cargo,
-            setor.nome AS setor'
-        );
-        $this->db->join('cargo', 'vaga.id_cargo = cargo.id_cargo');
-        $this->db->join('setor', 'cargo.id_setor = setor.id_setor');
+      $vaga =  $this->db->select(
+            'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade,
+             cargo.nome AS cargo,
+             setor.nome AS setor'
+        )->from('vaga')
+        ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
+        ->join('setor', 'cargo.id_setor = setor.id_setor')
+        ->get();
 
-        return $this->db->get('vaga')->result();
+        if ($vaga) {
+            return $vaga->result();
+        }
+        return null;
+
     }
      /*
      *@author: Lucilene Fidelis
@@ -89,6 +89,24 @@ class Vaga_model extends CI_Model
 
       $this->db->where('vaga.id_vaga', $id);
       return $this->db->get('vaga')->row();
+    }
+
+    /**
+    * @author: Pedro Henrique
+    * Método responsável por contar o total de vagas
+    *
+    * @param void
+    * @return int
+    */
+
+    public function count()
+    {
+        $this->db->select('count(*) as vagas')
+                 ->from('vaga')
+                 ->join('cargo', 'vaga.id_cargo = cargo.id_cargo');
+        $query = $this->db->get();
+
+        return $query->result()[0]->vagas;
     }
 
 }

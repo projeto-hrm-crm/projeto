@@ -146,4 +146,22 @@ class Produto_model extends CI_Model
         return $this->get();
     }
 
+    /**
+    * @author: Pedro Henrique
+    *
+    * Método responsável por trazer o total de clientes cadastrados no banco
+    * @param void
+    * @return int
+    */
+    public function count()
+    {
+        $this->db->select('count(*) as produtos')
+            ->from('produto')
+            ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
+            ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica');
+        $query = $this->db->get();
+         
+        return $query->result()[0]->produtos;
+    }
+
 }

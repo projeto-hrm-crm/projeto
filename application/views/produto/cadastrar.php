@@ -1,5 +1,5 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-8">
+    <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">Novo Produto</strong>
@@ -63,7 +63,7 @@
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-primary btn-sm" onclick="this.disabled=true;this.form.submit();">
                         <i class="fa fa-plus"></i>
                         Cadastrar
                     </button>
