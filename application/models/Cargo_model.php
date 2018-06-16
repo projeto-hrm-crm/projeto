@@ -85,5 +85,22 @@ class Cargo_model extends CI_Model
     }
     return $id_cargo;
   }
+
+  /**
+  * @author: Pedro Henrique
+  * Método responsável por contar o total de cargos em aberto
+  *
+  * @param void
+  * @return int
+  */
+
+  public function count()
+  {
+    $this->db->select('count(*) as cargos')
+             ->from('cargo');
+             
+    $query = $this->db->get();
+    return $query->result()[0]->cargos;
+  }
 }
 ?>

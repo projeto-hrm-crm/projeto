@@ -178,4 +178,26 @@ class Fornecedor_model extends CI_Model
       return $id_fornecedor;
     } catch (\Exception $e) {}
   }
+
+  /**
+  * @author: Pedro Henrique
+  *
+  * Método responsável por trazer o total de fornecedores cadastrados no banco
+  * @param void
+  * @return int
+  */
+  public function count()
+  {
+    $this->db->select('count(*) as fornecedores')
+        ->from('fornecedor')
+        ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+        ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+        ->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
+        ->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
+        ->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa');
+        $query = $this->db->get();
+
+     return $query->result()[0]->fornecedores;
+  }
 }
