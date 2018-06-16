@@ -38,13 +38,13 @@
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Inicio</label>
-                 <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
-             </div>
+             <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
+           </div>
 
            <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Data de Término</label>
-                 <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
-             </div>
+             <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
+           </div>
 
            <div class="form-group col-12">
             <label class=" form-control-label">Vaga</label>
@@ -71,7 +71,7 @@
 					 </div>
 
        </div>
-       <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv">
+       <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv" href="javascript:add_etapa()">
         <i class="fa fa-check"></i> Adicionar Etapa </a>'
     </div>
 
@@ -93,6 +93,6 @@
   <div class="cloned-div">
     <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
     <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
-    <a  name="button" class="btn btn-danger btn-sm remDiv" >Excluir</a><br><br>
+    <a name="button" class="btn btn-danger btn-sm remDiv" href="javascript:remove_etapa()">Excluir</a><br><br>
   </div>
 </div>

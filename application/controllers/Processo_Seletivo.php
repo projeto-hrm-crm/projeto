@@ -43,18 +43,21 @@ class Processo_Seletivo extends CI_Controller
     if($this->input->post())
     {
       $data = $this->input->post();
-      // echo "<pre>";
-      // print_r($data);
-      // exit;
+
       if($this->form_validation->run('processo_seletivo'))
       {
-        print_r($data);
-        // $etapas = $this->input->post('etapas[]') FIXME
-        // unset($data('etapas[]')) FIXME
+        $etapas['nome_etapa'] = $data['nome_etapa'];
+        $etapas['descricao_etapa'] = $data['descricao_etapa'];
+
         unset($data['nome_etapa']);
         unset($data['descricao_etapa']);
-        $this->processo_seletivo->insert($data);
+
+        $id_processo = $this->processo_seletivo->insert($data);
+
+        $this->etapa->insert($id_processo, $etapas['nome_etapa'], $etapas['descricao_etapa']);
+
         $this->session->set_flashdata('success', 'Processo Seletivo Cadastrado Com Sucesso!');
+
         redirect('processo_seletivo');
       }else {
         $this->session->set_flashdata('danger', 'Processo Seletivo Não Pode Ser Cadastrado');
@@ -139,4 +142,3 @@ class Processo_Seletivo extends CI_Controller
     redirect('processo_seletivo');
   }
 }
-
