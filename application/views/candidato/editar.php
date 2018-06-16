@@ -4,7 +4,7 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Editar informações de candidato</strong>
+          <strong class="card-title">Editar Candidato</strong>
         </div>
         <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" class="form-horizontal" id="form_candidato">
 
@@ -98,7 +98,7 @@
               </a>
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarCandidato">
                   <span class="fa fa-check"></span>
-                  Editar
+                  Confirmar
               </button>
           </div>
 

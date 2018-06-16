@@ -23,7 +23,7 @@
 				</div>
 				<div class="card-body">
 					<a href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
-					  	<i class="fa fa-check"></i> Cadastrar
+					  	<i class="fa fa-check"></i> Novo Cadastro
 				  	</a><br><br>
 					<table class="datatable table table-striped table-bordered">
 						<thead>

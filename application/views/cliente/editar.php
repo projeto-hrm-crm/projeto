@@ -3,7 +3,7 @@
   <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong class="card-title">Atualizar Cliente</strong>
+        <strong class="card-title">Editar Cliente</strong>
       </div>
       <form action="<?php site_url('cliente/edit'.$id); ?>" method="POST" data-id_usuario ="<?php echo $cliente[0]->id_usuario; ?>" class="form-horizontal" id="form_cliente">
         <div class="card-body card-block">
@@ -83,39 +83,39 @@
             </a>
             <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
               <span class="fa fa-check"></span>
-              Editar
+              Confirmar
             </button>
-            
+
           </div> <!-- FIM BOTÕES -->
-          
-           
+
+
 
 
           <div class="modal fade" id="editarCliente" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Atualizar Cliente</h5>
+                  <h5 class="modal-title">Editar Cliente</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                  Deseja Atualizar Esse Cliente?
+                  Deseja realmente editar esse cliente?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">
                     Cancelar
                   </button>
                   <button type="submit" class="btn btn-primary  btn-sm">
-                    Atualizar
+                    Confirmar
                   </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      
+
       </form>
     </div>
   </div>
