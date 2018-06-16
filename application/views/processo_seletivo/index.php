@@ -1,8 +1,8 @@
 <!-- <pre>
 <?php print_r($processos_seletivos); ?>
 </pre> -->
-<div class="row justify-content-center align-items-center">
-
+    <div class="row" >
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Processos Seletivos</strong>
@@ -53,13 +53,14 @@
                                  <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary btn-sm">
                                        <span class="fa fa-pencil-square-o"></span>
                                    </a>
-                                   <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemover">
-                                       <span class="fa fa-times"></span>
-                                   </button>
 
-                                 <button title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning btn-sm">
+                                 <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning btn-sm">
                                        <span class="fa fa-clipboard"></span>
-                                   </button>
+                                 </a>
+
+                                 <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemover">
+                                   <span class="fa fa-times"></span>
+                                 </button>
                               </td>
                            </tr>
                        <?php endforeach ?>
@@ -67,8 +68,8 @@
                    </table>
                  </div>
                </div>
+                </div>
               </div>
-            </div>
 
 <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">

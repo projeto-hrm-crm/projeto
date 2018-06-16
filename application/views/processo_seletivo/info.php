@@ -1,8 +1,9 @@
+
 <div class="row justify-content-center align-items-center">
-   <div class="col-lg-10">
+   <div class="col-lg-8">
   <div class="card">
     <div class="card-header">
-      <strong>Informação do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
+      <strong>Info do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
     </div>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
@@ -28,21 +29,21 @@
            </div>
 
 
-           <!-- Aqui vai um //FIXME
            <?php foreach ($etapas as $etapa): ?>
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição da Etapa [<?php $etapa->nome ?>]</label>
-             <textarea auto-resize id="descricao_etapa" name="descricao_etapa" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
+             <label class=" form-control-label">Descrição da Etapa</label>
+             <input type="number" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>" readonly>
+             <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
            </div>
            <?php endforeach; ?>
-          -->
+
 
 
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição das Etapas do Processo</label>
+             <label class=" form-control-label">Descrição do Processo</label>
              <textarea auto-resize id="descricao" name="descricao" class="form-control" required><?php print_r($info[0]->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
@@ -53,8 +54,8 @@
     </div>
 
      <div class="card-footer text-right">
-        <a title="Cancelar Edição" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Cancelar</a>
-        <button title="Atualizar Informação" type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Atualizar</button>
+        <a href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Cancelar</a>
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Salvar</button>
 
         </div>
        </form>
