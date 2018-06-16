@@ -2,16 +2,16 @@
     <div class="col-lg-10">
             <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('success'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <?php echo $success_message; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             <?php endif; ?>
-            <?php if($this->session->flashdata('danger')): ?>
+            <?php if(isset($error_message)): ?>
                 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('danger'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <?php echo $error_message; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -56,30 +56,30 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
         </div>
 </div>
 
-<div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Excluir produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Deseja realmente excluir esse produto?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    Cancelar
-                </button>
-                <a href="#" class="btn btn-primary btn-remove-ok">
-                    Confirmar
-                </a>
-            </div>
-        </div>
+</div>
+
+
+ <!-- Modal remover -->
+
+<div class="modal fade" id="modalRemover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Pedido</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Tem certeza que deseja excluir esse Pedido?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
+      </div>
     </div>
+  </div>
 </div>

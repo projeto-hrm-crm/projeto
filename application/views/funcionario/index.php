@@ -21,15 +21,12 @@
           <div class="card-header">
             <strong class="card-title">Funcionarios</strong>
           </div>
-
           <div class="card-body">
-
             <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar funcionário">
               <i class="fa fa-check"></i> Novo Cadastro
             </a><br />
             <br />
             <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
-
               <thead>
                 <tr>
                   <th class="text-center">Nome</th>
@@ -39,7 +36,6 @@
                   <th class="text-center">Ações</th>
                 </tr>
               </thead>
-
               <tbody>
                 <?php if (!is_null($funcionarios)): ?>
                     <?php foreach ($funcionarios as $funcionario): ?>
@@ -79,7 +75,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Deseja realmente excluir esse funcionário?
+            Deseja Realmente Excluir Esse Funcionário?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">

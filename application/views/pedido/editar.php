@@ -3,7 +3,7 @@
 			<div class="col-lg-10">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Atualização de Pedido</strong>
+	                <strong class="card-title">Atualizar Pedido</strong>
 	            </div>
 	            <form id="form-pedido" action="<?php echo base_url('pedido/editar/'.$pedido->id_pedido); ?>" method="POST">
 	                <div class="card-body">
@@ -220,13 +220,13 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-	                    <a href="<?php echo base_url('pedido')?>" class="btn bg-danger text-white">
+	                    <a title="Cancelar Edição" href="<?php echo base_url('pedido')?>" class="btn bg-danger text-white">
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button type="submit" class="btn bg-primary text-white btn-submit">
-	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Editar
+	                    <button title="Atualizar Pedido" type="submit" class="btn bg-primary btn-sm text-white btn-submit">
+	                        <i class="fa fa-check btn-sm" aria-hidden="true"></i>
+	                        Atualizar
 	                    </button>
 	                </div>
 
@@ -242,7 +242,7 @@
 									        </button>
 									      </div>
 									      <div class="modal-body text-center">
-									        Tem certeza que deseja atualizar esse Pedido ?
+									        Deseja Realmente Atualizar Esse Pedido?
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

@@ -106,11 +106,11 @@
 	                    </div>
 
 	                <div class="card-footer text-right">
-	                    <a href="<?php echo base_url('pedido/fornecedor')?>" class="btn bg-danger text-white">
+	                    <a title="Cancelar Fornecedor" href="<?php echo base_url('pedido/fornecedor')?>" class="btn bg-danger text-white">
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button type="submit" class="btn bg-primary text-white btn-submit">
+	                    <button title="Atualizar Fornecedor" type="submit" class="btn bg-primary text-white btn-submit">
 	                        <i class="fa fa-check" aria-hidden="true"></i>
 	                        Editar
 	                    </button>
@@ -137,7 +137,7 @@
         Deseja realmente editar esse pedido ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary btn-edit">Confirmar</button>
       </div>
     </div>

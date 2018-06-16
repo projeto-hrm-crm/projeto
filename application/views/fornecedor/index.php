@@ -19,7 +19,7 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Fornecedor</strong>
+                    <strong class="card-title">Fornecedores</strong>
                 </div>
                 <div class="card-body">
           <a title="Cadastrar Novo Fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
@@ -49,8 +49,7 @@
                               <td><?= $fornecedor->email; ?></td>
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
-
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">r
                                     <span class="fa fa-pencil-square-o"></span>
                                 </a>
                                 <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir Fornecedor" data-toggle="modal" data-target="#modalRemover">

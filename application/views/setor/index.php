@@ -16,7 +16,6 @@
       </div>
 
       <div class="card-body">
-
         <a href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
           <i class="fa fa-check"></i> Novo Cadastro
         </a><br />
@@ -27,7 +26,7 @@
             <tr>
               <!-- <th class="text-center">ID</th> -->
               <th class="text-center">Nome</th>
-              <th class="text-center">Opções</th>
+              <th class="text-center">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -36,11 +35,11 @@
               <!-- <td class="text-center"><?= $setor->id_setor; ?></td> -->
               <td class="text-center"><?= $setor->nome; ?></td>
               <td class="text-center">
-                <a title="Editar setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
-                  <span class="fa fa-edit"></span>
+                <a title="Atualizar Setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
+                  <span class="fa fa-edit btn-sm"></span> 
                 </a>
-                <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" title="Excluir setor">
-                  <i class="fa fa-times"></i>
+                <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" title="Excluir Setor">
+                  <i class="fa fa-times btn-sm"></i>
                 </button>
               </td>
             </tr>

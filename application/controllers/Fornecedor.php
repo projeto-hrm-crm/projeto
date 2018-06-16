@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * author: Nikolas Lencioni
 * Controller de fornecedor
 **/
+
 class Fornecedor extends CI_Controller
 {
    /**
@@ -19,6 +20,7 @@ class Fornecedor extends CI_Controller
        $this->usuario->hasPermission($user_id, $currentUrl);
        $this->menus = $this->menu->getUserMenu($user_id);
    }
+   
   /**
   * author: Nikolas Lencioni
   * Metodo index que chama a view inicial de fornecedores
@@ -39,6 +41,7 @@ class Fornecedor extends CI_Controller
     // exit();
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
+   
   /**
   * author: Nikolas Lencioni
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
@@ -51,14 +54,15 @@ class Fornecedor extends CI_Controller
   public function create()
   {
     $data = $this->input->post();
-    if($data) {
+    if($data) {       
       if ($this->form_validation->run('fornecedor')) {
         $this->fornecedor->insert($data);
-        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso! :)');
+        $this->session->set_flashdata('success', 'Fornecedor Cadastrado Com Sucesso!');
         redirect('fornecedor');
       }else {
-        $this->session->set_flashdata('danger', 'Desculpe, tivemos um problema. Entre em contato com o administrador do sistema :(');
+        $this->session->set_flashdata('danger', 'Não Foi Possível Cadastrar!');
         redirect('fornecedor/cadastrar');
+         
       }
     }
     $data['title'] = 'Cadastrar Fornecedor';
@@ -91,6 +95,7 @@ class Fornecedor extends CI_Controller
   public function edit($id)
   {
     $data = $this->input->post();
+     
     if ($data)
     {
       if ($this->form_validation->run('fornecedor'))
@@ -103,12 +108,17 @@ class Fornecedor extends CI_Controller
         redirect('fornecedor/edit/'.$id);
       }
     }
-      $data['fornecedor'] = $this->fornecedor->find($id)[0];
-      $data['title'] = 'Editar Fornecedor';
-      $data['estados'] = $this->estado->get();
-      $data['cidades'] = $this->cidade->get();
+     
+     $data['fornecedor'] = $this->fornecedor->find($id);
+     $data['title'] = 'Editar Fornecedor';
+     
+     $data['estado_atual'] = $this->cidade->findState($data['fornecedor'][0]->id_cidade);
+     
+     $data['estados'] =  $this->estado->get();
+     $data['cidades'] = $this->cidade->getByState($data['estado_atual'][0]->id_estado);
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
+     
   }
   /**
   * author: Nikolas Lencioni

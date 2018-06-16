@@ -2,6 +2,7 @@
 <?php print_r($processos_seletivos); ?>
 </pre> -->
 <div class="row justify-content-center align-items-center">
+
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Processos Seletivos</strong>

@@ -96,7 +96,7 @@ class Usuario_model extends CI_Model
         $this->db->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa');
         $this->db->where('usuario.id_usuario', $user_id);
         $query = $this->db->get();
-        return $query->row();
+        return $query->result();
     }
 
     /**

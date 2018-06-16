@@ -55,13 +55,13 @@
 												<!--
 												<input type="checkbox" name="" value="">
 											-->
-												<a href="CandidatoEtapa/createCandidatoEtapa/<?php echo $vaga->id_vaga ?>"
+												<a title="Candidatar à Vaga"> href="CandidatoEtapa/createCandidatoEtapa/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-primary text-white">
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
 										    </a>
 
-												<a  href="CandidatoEtapa/delete/<?php echo $vaga->id_vaga ?>"
+												<a title="Excluir candidatura"> href="CandidatoEtapa/delete/<?php echo $vaga->id_vaga ?>"
 													class="btn bg-danger text-white">
 															<i class="fa fa-times"></i>
 												</a>
@@ -103,7 +103,7 @@
         Deseja realmente excluir essa candidatura?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
       </div>
     </div>

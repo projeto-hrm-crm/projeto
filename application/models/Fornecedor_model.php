@@ -74,11 +74,12 @@ class Fornecedor_model extends CI_Model
 
     $this->endereco->insert([
         'cep'           => $data['cep'],
-        'bairro'        => $data['logradouro'],
+        'bairro'        => $data['bairro'],
+        'logradouro'        => $data['logradouro'],
         'numero'        => $data['numero'],
         'complemento'   => $data['complemento'],
         'id_pessoa'     => $id_pessoa,
-        'id_cidade'     => $data['cidade']
+        'id_cidade'     => $data['id_cidade']
     ]);
 
     $this->telefone->insert([
@@ -113,28 +114,25 @@ class Fornecedor_model extends CI_Model
           pessoa.id_pessoa, pessoa.nome, 
           pessoa.email, 
           telefone.numero AS telefone, 
-          documento.numero AS cnpj, 
+          documento.numero AS cnpj,
           endereco.cep, 
           endereco.id_cidade, 
           endereco.bairro, 
           endereco.logradouro, 
           endereco.numero AS numero, 
-          endereco.complemento,
-          cidade.id_estado,
-          usuario.id_usuario'
-      )
-          ->from('fornecedor')
-          ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
-          ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
-          ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
-          ->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
-          ->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
-          ->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
-          ->join('cidade', 'cidade.id_cidade = endereco.id_cidade')
-          ->where('fornecedor.id_fornecedor', $id);
-      $fornecedor = $this->db->get();
+          endereco.complemento',
+          'usuario.id_usuario')
+        ->from('fornecedor')
+        ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+        ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+        ->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
+        ->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
+        ->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa')
+        ->where('fornecedor.id_fornecedor', $id);
+       $fornecedor = $this->db->get();
 
-      if ($fornecedor->num_rows() > 0)
+      if ($fornecedor)
           return $fornecedor->result();
       return null;
   }
@@ -177,5 +175,27 @@ class Fornecedor_model extends CI_Model
       }
       return $id_fornecedor;
     } catch (\Exception $e) {}
+  }
+
+  /**
+  * @author: Pedro Henrique
+  *
+  * Método responsável por trazer o total de fornecedores cadastrados no banco
+  * @param void
+  * @return int
+  */
+  public function count()
+  {
+    $this->db->select('count(*) as fornecedores')
+        ->from('fornecedor')
+        ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+        ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+        ->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
+        ->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
+        ->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa');
+        $query = $this->db->get();
+
+     return $query->result()[0]->fornecedores;
   }
 }

@@ -1,17 +1,3 @@
-<div class="row" style="margin-top: 5px;">
-        <div class="col-lg-10">
-          <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success">
-            <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
-          </div>
-          <?php elseif ($this->session->flashdata('danger')) : ?>
-          <div class="alert alert-danger">
-            <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?>
-          </div>
-          <?php endif; ?>
-        </div>
-      </div>
-
 
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
@@ -75,7 +61,7 @@
 
 
 
-          <div class="form-group col-12 col-md-6">
+      <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Estado</label>
            <select name="id_estado" class="form-control" id="estado">
               <option value="0" disabled selected>Selecione um estado</option>

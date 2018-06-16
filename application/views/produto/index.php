@@ -47,10 +47,10 @@
                                         <td><?= $produto->valor;?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Editar produto">
+                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary btn-sm" title="Atualizar Produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
+                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger btn-sm" title="Excluir Produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
@@ -74,7 +74,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse produto?
+                Deseja Realmente Excluir Esse Produto?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

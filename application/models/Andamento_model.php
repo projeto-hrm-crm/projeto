@@ -1,97 +1,93 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Andamento_model extends CI_Model
+class Andamento_model extends PR_Model
 {
 
     /**
     * @author: Tiago Villalobos
     * Insere andamento no banco
+    * 
     * @param: $andamento mixed
     */
 	public function insert($andamento)
 	{
         $this->db->insert('andamento', $andamento);
-        $id_andamento = $this->db->insert_id();
 
-        if($id_andamento)
-        {
-            $this->relatorio->setLog('insert', 'Inserir', 'Andamento', $id_andamento, 'Inseriu o andamento', $id_andamento);
-        }
-        return $id_andamento;
+        $this->setLog(getSituationName($andamento['situacao']).' para o pedido '.$andamento['id_pedido']);
 	}
 
     /**
     * @author: Tiago Villalobos
     * Atualiza andamento no banco
+    * Desabilita os outros andamentos deixando apenas o atual habilitado
+    * Insere um novo andamento caso necessário
     *
     * @param: $andamento mixed
     */
 	public function update($andamento)
 	{
-        $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
-        $this->db->where('andamento.atual', TRUE);
+        $andamento_atual = $this->db
+        ->where('andamento.id_pedido', $andamento['id_pedido'])
+        ->where('andamento.atual', TRUE)
+        ->get('andamento')->row();
 
-        $situacao_atual = $this->db->get('andamento')->row()->situacao;
-
-        if($situacao_atual == $andamento['situacao'])
+        if($andamento_atual->situacao == $andamento['situacao'])
         {
-            $this->db->set('andamento.data', $andamento['data']);
+            $this->db
+            ->set('andamento.data', $andamento['data'])
+            ->where('andamento.id_pedido', $andamento['id_pedido'])
+            ->where('andamento.atual', TRUE)
+            ->update('andamento');
 
-            $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
-            $this->db->where('andamento.atual', TRUE);
-
-            $this->db->update('andamento');
+            $this->setLog(
+                getSituationName($andamento['situacao']).' para o pedido '.$andamento['id_pedido'], 
+                $andamento_atual->id_andamento
+            );
         }
         else
         {
-            $this->db->where('andamento.id_pedido', $andamento['id_pedido']);
-            $this->db->set('andamento.atual', FALSE);
-            $this->db->update('andamento');
+            $this->db
+            ->where('andamento.id_pedido', $andamento['id_pedido'])
+            ->set('andamento.atual', FALSE)
+            ->update('andamento');
+
+            $this->setLog(
+                getSituationName($andamento['situacao']).' para o pedido '.$andamento['id_pedido'], 
+                $andamento_atual->id_andamento
+            );
 
             $this->insert($andamento);
+
+            $this->setLog(getSituationName($andamento['situacao']).' para o pedido '.$andamento['id_pedido']);
         }
-        $id_andamento = $this->db->get('andamento')->row()->id_andamento;
-
-        $this->db->set('andamento.data', $andamento['data']);
-        $this->db->set('andamento.situacao', $andamento['situacao']);
-
-        $this->db->update('andamento');
-
-        if($id_andamento)
-        {
-            $this->relatorio->setLog('update', 'Atualizar', 'Andamento', $id_andamento, 'Atualizou o andamento', $id_andamento);
-        }
-
-        return $id_andamento;
+        
     }
 
     /**
     * @author: Tiago Villalobos
     * Remove andamento do banco utilizado o id do pedido
-    * e retorna verdadeiro ou falso caso consiga remove-lo
     *
-    *
-    * @param: $id integer
+    * @param: $id_pedido integer
     */
-    public function remove($id)
+    public function remove($id_pedido)
     {
-        $id_andamento = $this->db->get('andamento')->row()->id_andamento;
-        $this->db->where('andamento.id_pedido', $id);
-        $this->db->delete('andamento');
+        $andamentos = $this->db->where('id_pedido', $id_pedido)->get('andamento')->result();
 
-        if($id_andamento)
+        $this->db
+        ->where('andamento.id_pedido', $id_pedido)
+        ->delete('andamento');
+
+        foreach($andamentos as $andamento)
         {
-            $this->relatorio->setLog('delete', 'Deletar', 'Andamento', $id_andamento, 'Deletou o andamento', $id_andamento);
+            $this->setLog(getSituationName($andamento->situacao).' para o pedido '.$id_pedido, $andamento->id_andamento);
         }
-        return $id_andamento;
 
     }
 
     /**
     * @author: Tiago Villalobos
-    * Transforma o campo enum de situacao em array
-    *
+    * Transforma o campo enum da tabela andamento, situacao em array
     *
     * @return: mixed
     */

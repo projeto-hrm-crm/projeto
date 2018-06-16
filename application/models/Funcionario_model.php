@@ -187,4 +187,22 @@ class Funcionario_model extends CI_Model {
 	    } catch (\Exception $e) {}
 			// delete pessoa fisica;
     }
+
+    /**
+    * @author: Pedro Henrique
+    * Método responsável por contar o total de funcionários
+    *
+    * @param void
+    * @return int
+    */
+
+    public function count()
+    {
+        $this->db->select('count(*) as funcionarios')
+                 ->from('pessoa as p')
+                 ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
+                 ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
+        $result = $this->db->get();
+        return $result->result()[0]->funcionarios;
+    }
 }

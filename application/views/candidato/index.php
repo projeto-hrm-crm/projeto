@@ -3,16 +3,16 @@
     <div class="col-lg-10">
             <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('success'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <?php echo $this->session->flashdata('success'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             <?php endif; ?>
             <?php if($this->session->flashdata('danger')): ?>
                 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('danger'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <?php echo $this->session->flashdata('danger'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -67,27 +67,28 @@
           </div>
       </div>
     </div>
+</div>
 
-    <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+<div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Excluir Candidato</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Deseja realmente excluir esse candidato?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">
-              Cancelar
-            </button>
-            <a href="#" class="btn btn-primary btn-remove-ok">
-              Confirmar
-            </a>
-          </div>
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir Candidato</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja Realmente Excluir Esse Candidato?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger " data-dismiss="modal">
+                    Cancelar
+                </button>
+                <a href="#" class="btn btn-primary btn-remove-ok">
+                    Confirmar
+                </a>
+            </div>
         </div>
-      </div>
     </div>
+</div>

@@ -21,7 +21,7 @@
                     <strong class="card-title">SAC</strong>
                 </div>
                 <div class="card-body">
-                  <a href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                  <a title="Cadastrar Novo SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
                     <i class="fa fa-check"></i> Novo Cadastro
                   </a><br />
                   <br />
@@ -85,7 +85,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Excluir</h5>
+                <h5 class="modal-title">Excluir SAC</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
