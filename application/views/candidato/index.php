@@ -25,7 +25,7 @@
         <div class="card-body">
 
           <a href="<?= site_url('candidato/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar candidato">
-            <i class="fa fa-check"></i> Cadastrar
+            <i class="fa fa-check"></i> Novo Candidato
           </a><br />
           <br />
           <table class="table table-striped table-bordered datatable">
