@@ -26,17 +26,18 @@ class Etapa_model extends CI_Model
       $this->db->insert_batch('etapa', $etapas);
     }
 
-    public function update($id){
-
+    public function update($id, $data){
+        return $this->db->update_batch('etapa', $data, 'id_etapa');
     }
+
 
     public function remove($id){
 
     }
 
-    public function getById($id){
-      $this->db->where('etapa.id_etapa', $id);
-      return $this->db->get('etapa')->row();
+    public function find($id){
+      $this->db->where('etapa.id_processo_seletivo', $id);
+      return $this->db->get('etapa')->result();
     }
 
 }

@@ -1,6 +1,8 @@
-<!-- <pre>
-<?php print_r($processo_seletivo) ?>
-</pre> -->
+  <!-- <pre>
+  <?php print_r($processo_seletivo);
+  print_r($etapas);
+  ?> -->
+  <!-- </pre> -->
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
   <div class="card">
@@ -54,11 +56,6 @@
              </select>
            </div>
 
-           <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Número de Vagas</label>
-             <input type="number" id="vagas" name="vagas" placeholder="Número de Vagas" class="form-control number" value="<?php echo($vaga->id_vaga); ?>">
-           </div>
-
            <div class="form-group col-12">
              <label class=" form-control-label">Descrição do Processo</label>
              <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required><?php echo($processo_seletivo[0]->descricao); ?></textarea>
@@ -67,17 +64,17 @@
              </span>
            </div>
 
-           <!-- Aqui vai um //FIXME
            <?php foreach ($etapas as $etapa): ?>
-           <div class="form-group col-12">
-             <label class=" form-control-label">Descrição da Etapa [<?php $etapa->nome ?>]</label>
-             <textarea auto-resize id="descricao_etapa" name="descricao_etapa" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
-             <span class="invalid-feedback" id="invalid-descricao">
-               Campo obrigatório
-             </span>
-           </div>
+             <div class="form-group col-12">
+               <label class=" form-control-label">Descrição da Etapa</label>
+               <input type="number" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>" readonly>
+               <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
+               <span class="invalid-feedback" id="invalid-descricao">
+                 Campo obrigatório
+               </span>
+             </div>
            <?php endforeach; ?>
-          -->
+
 
        </div>
     </div>
@@ -116,8 +113,8 @@
               </div>
             </div>
           </div>
-        
-      
+
+
       </form>
     </div>
   </div>
