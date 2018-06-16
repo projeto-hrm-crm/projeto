@@ -80,7 +80,7 @@ class Pedido extends PR_Controller
   				$this->insertOrderProducts($id_pedido);
 
   				
-  				$this->redirectSuccess();
+  				$this->redirectSuccess('Pedido cadastrado com sucesso');
 
   			}
   			else
@@ -124,7 +124,7 @@ class Pedido extends PR_Controller
   				$this->pedido->removeProducts($id_pedido);
   				$this->insertOrderProducts($id_pedido);
 
-  				$this->redirectSuccess();
+  				$this->redirectSuccess('Pedido atualizado com sucesso');
   				
 			}
 			else
@@ -167,7 +167,7 @@ class Pedido extends PR_Controller
 
   				$this->andamento->update($this->getProgressFromPost($id_pedido));
 
-  				$this->redirectSuccess('fornecedor');
+  				$this->redirectSuccess('Pedido atualizado com sucesso', 'fornecedor');
   				
 			}
 			else
@@ -202,7 +202,7 @@ class Pedido extends PR_Controller
 		$this->pedido->removeProducts($id_pedido);
 		$this->pedido->remove($id_pedido);
 		
-		$this->redirectSuccess();
+		$this->redirectSuccess('Pedido removido com sucesso');
 	}
 
 	/**
