@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
-                        <i class="fa fa-check"></i> Cadastrar
+                        <i class="fa fa-check"></i> Novo Cadastro
                     </a><br><br>
                     <table class="table table-striped table-bordered datatable">
                         <thead>
