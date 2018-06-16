@@ -866,7 +866,7 @@ jQuery(document).ready(function($) {
 
       return new Date(dataAtual) > new Date(dataFinal);
 
-  }, 'Data menor ou igual a data de fabricação');
+  }, 'Informe uma data maior que a data anterior');
 
   /**
   * @author: Camila Sales
