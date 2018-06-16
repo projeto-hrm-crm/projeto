@@ -80,5 +80,4 @@ class Cargo_model extends PR_Model
         ->get('cargo')
         ->row();
     }
-    
 }

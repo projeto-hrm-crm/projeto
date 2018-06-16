@@ -37,6 +37,7 @@ class Produto extends CI_Controller
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
           'datatable.js',
+          'maskMoney.js',
           'confirm.modal.js',
         ),
       );
@@ -76,7 +77,7 @@ class Produto extends CI_Controller
            'valor'         => $this->input->post('valor'),
           );
             $this->produto->insert($array);
-            $this->session->set_flashdata('success','Cadastrado com sucesso');
+            $this->session->set_flashdata('success','Produto Cadastrado Com Sucesso!');
             redirect('produto');
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -92,6 +93,7 @@ class Produto extends CI_Controller
          'js' => array(
            'lib/jquery/jquery.maskMoney.min.js',
            'validate.js',
+           'maskMoney.js',
          ),
        );
         loadTemplate('includes/header', 'produto/cadastrar', 'includes/footer', $dados);
@@ -123,7 +125,7 @@ class Produto extends CI_Controller
            'valor'         => $this->input->post('valor'),
          );
           $this->produto->update($array);
-          $this->session->set_flashdata('success','Alterado com sucesso.');
+          $this->session->set_flashdata('success','Produto Atualizado Com Sucesso!');
           redirect('produto');
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -143,6 +145,7 @@ class Produto extends CI_Controller
          'js' => array(
            'lib/jquery/jquery.maskMoney.min.js',
            'validate.js',
+           'maskMoney.js',
          ),
        );
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
@@ -161,9 +164,9 @@ class Produto extends CI_Controller
       $produto = $this->produto->getById($id);
       if($produto){
         $this->produto->delete($id);
-        $this->session->set_flashdata('success', 'Produto deletado com sucesso.');
+        $this->session->set_flashdata('success', 'Produto Excluído Com Sucesso!');
       }else{
-        $this->session->set_flashdata('danger', 'Impossível Deletar!');
+        $this->session->set_flashdata('danger', 'Impossível Excluir!');
       }
       redirect('produto');
     }

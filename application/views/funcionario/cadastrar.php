@@ -124,7 +124,7 @@
 
           </div>
           <div class="card-footer text-right">
-            <a href="<?=site_url('funcionario')?>" class="btn btn-danger btn-sm">
+            <a title="Cancelar Cadastro" href="<?=site_url('funcionario')?>" class="btn btn-danger btn-sm">
               <i class="fa fa-times"></i> Cancelar
             </a>
             <button type="submit" class="btn btn-primary btn-sm">

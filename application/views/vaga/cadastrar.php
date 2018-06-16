@@ -1,10 +1,10 @@
 
 <div class="animated fadeIn">
 	<div class="row justify-content-center align-items-center">
-			<div class="col-lg-8">
+			<div class="col-lg-10">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Nova Vaga</strong>
+	                <strong class="card-title">Cadastrar Vaga</strong>
 	            </div>
 	            <form id="form-vaga" action="<?php echo base_url('vaga/cadastrar'); ?>" method="post" novalidate="novalidate">
 	                <div class="card-body">
@@ -55,11 +55,11 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-						<a href="<?=site_url('vaga')?>" class="btn btn-danger btn-sm">
+						<a title="Cancelar Cadastro" href="<?=site_url('vaga')?>" class="btn btn-danger btn-sm">
 							<i class="fa fa-times"></i>
 							Cancelar
 						  </a>
-	                    <button type="submit" class="btn bg-primary text-white btn-sm" onclick="this.disabled=true;this.form.submit();">
+	                    <button title="Cadastrar Vaga" type="submit" class="btn bg-primary text-white btn-sm" onclick="this.disabled=true;this.form.submit();">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>

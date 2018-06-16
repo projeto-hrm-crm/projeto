@@ -33,11 +33,12 @@ jQuery(document).ready(($) => {
             type: 'line',
             data: {
               labels: month,
-              borderColor: '#0984e3',
               datasets: [{
+                backgroundColor: '#63c2de',
+                borderColor: '#63c2de',
       					label: getCurrentDate(),
       					data: data.data,
-      					fill: false,
+      					fill: true,
       				}]
             }
           });

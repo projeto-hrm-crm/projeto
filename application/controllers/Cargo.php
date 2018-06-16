@@ -132,7 +132,7 @@ class Cargo extends PR_Controller
         $postData = $this->getFromPost();
 
         $postData['id_cargo'] = $id_cargo;
-
         return $postData;
     }
 }
+

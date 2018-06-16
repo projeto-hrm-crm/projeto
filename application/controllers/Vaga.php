@@ -17,6 +17,7 @@ class Vaga extends CI_Controller
         $this->usuario->hasPermission($user_id, $currentUrl);
     }
     /**
+      *@author: Camila Sales
       *@author: Lucilene Fidelis
       * Esse método tem a finalidade de retornar uma lista com todos as vagas
       * cadastradas
@@ -66,7 +67,7 @@ class Vaga extends CI_Controller
 
           );
             $this->vaga->insert($array);
-            $this->session->set_flashdata('success','Cadastrado com sucesso');
+            $this->session->set_flashdata('success','Vaga Cadastrada Com Sucesso!');
             redirect('vaga');
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -115,7 +116,7 @@ class Vaga extends CI_Controller
 
           );
           $this->vaga->update($array);
-          $this->session->set_flashdata('success','Atualizado com sucesso.');
+          $this->session->set_flashdata('success','Vaga Atualizada Com Sucesso!');
           redirect('vaga');
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -156,9 +157,9 @@ class Vaga extends CI_Controller
       $vaga = $this->vaga->getById($id);
       if($vaga){
         $this->vaga->remove($id);
-        $this->session->set_flashdata('success', 'Vaga removida com sucesso.');
+        $this->session->set_flashdata('success', 'Vaga Excluída Com Sucesso!');
       }else{
-        $this->session->set_flashdata('danger', 'Não foi possível remover a Vaga!');
+        $this->session->set_flashdata('danger', 'Impossível Excluir!');
       }
       redirect('vaga');
     }

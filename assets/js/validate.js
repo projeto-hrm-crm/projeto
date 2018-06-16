@@ -1,9 +1,9 @@
-jQuery(document).ready(function($) {;
+jQuery(document).ready(function($) {
 
-  // $(function() {
-  //     $("#valor_produto").maskMoney();
-  //     $("#salario_cargo").maskMoney();
-  // })                          
+  var id_usuario = null;
+   if($("#form_funcionario, #form_candidato, #form_cliente").attr('data-id_usuario'))
+     id_usuario = $('#form').attr('usuario_id');
+
   $("#form_produto").validate({
     rules: {
       nome: "required",
@@ -351,7 +351,7 @@ jQuery(document).ready(function($) {;
       complemento:{
         maxlength: 70,
         regex: /^[A-Za-z0-9]/,
-      }
+      },
       sexo:{
         required:true }
       },
@@ -453,7 +453,6 @@ jQuery(document).ready(function($) {;
 
   });
 
-  console.log(id_usuario)
   $('#form_funcionario').validate({
     rules: {
       nome: {
@@ -676,49 +675,6 @@ jQuery(document).ready(function($) {;
   });
 
   $('#form_cargo').validate({
-
-    highlight:function(input)
-    {
-      jQuery(input).addClass('is-invalid');
-    },
-
-    unhighlight:function(input)
-    {
-      jQuery(input).removeClass('is-invalid');
-    },
-
-    errorPlacement:function(error, element)
-    {
-      jQuery(element).parents('.form-group').find('.invalid-feedback').append(error);
-    },
-
-    submitHandler:function (form, event) {
-
-      event.preventDefault(); //Evita que o formulário seja submetido
-
-      var action = $(form).prop('action'); // Recupera o action do formulário
-
-      /*
-      *   Verifica se a url do action do formulário contém a palavra editar
-      *   Se sim abre, abre o modal para confirmação setando o evento de submissão do
-      *   formulário para o click do botão do modal.
-      *   Caso não contenha a palavra editar, o formulário é submetido normalmente.
-      */
-      if(action.indexOf('editar') >= 0)
-      {
-        jQuery("#editarCargo").modal('show');
-
-        jQuery('.btn-edit').click(function () {
-          form.submit();
-        });
-      }
-      else
-      {
-        form.submit();
-      }
-
-    },
-
     rules: {
 
       nome:{
@@ -830,7 +786,7 @@ jQuery(document).ready(function($) {;
   * @author: Camila Sales
   * Verifica se o cpf é válido
   **/
-  jQuery.validator.addMethod("cpf", function(value, element) {
+  $.validator.addMethod("cpf", function(value, element) {
     value = jQuery.trim(value);
     cpf = value.replace(/[^\d]+/g,'')
 
@@ -858,7 +814,7 @@ jQuery(document).ready(function($) {;
   * @author: Camila Sales
   * Verifica se o campo contem apenas letras
   **/
-  jQuery.validator.addMethod("letras", function(value, element) {
+  $.validator.addMethod("letras", function(value, element) {
     return this.optional(element) || /^[a-z-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/i.test(value);
   }, "Somente letras");
 
@@ -866,7 +822,7 @@ jQuery(document).ready(function($) {;
   * @author: Camila Sales
   * Mensagens Padroes
   **/
-  jQuery.extend(jQuery.validator.messages, {
+  $.extend($.validator.messages, {
     required: "Esse campo é obrigatorio",
     brazilian_date: "Digite uma data valida!",
     email: "Digite um email valido",
@@ -876,7 +832,7 @@ jQuery(document).ready(function($) {;
 
   });
 
-  jQuery.validator.addMethod("dataMaiorQue", function(value, element, params){
+  $.validator.addMethod("dataMaiorQue", function(value, element, params){
       var data = value.split('/');
       var dataAtual = data[2] + '-' + data[1] + '-' + data[0];
       var data = jQuery(params).val().split('/');
@@ -890,7 +846,7 @@ jQuery(document).ready(function($) {;
   * @author: Camila Sales
   * Validação data
   **/
-  jQuery.validator.addMethod("validaDataBR", function (value, element) {
+  $.validator.addMethod("validaDataBR", function (value, element) {
     //contando chars
     if (value.length != 10) return (this.optional(element) || false);
     // verificando data
@@ -922,7 +878,7 @@ jQuery(document).ready(function($) {;
   * @author: Camila Sales
   * Validação telefone
   **/
-  jQuery.validator.addMethod("telefone", function (value, element) {
+  $.validator.addMethod("telefone", function (value, element) {
       return this.optional(element) || /\([0-9]{2}\) [0-9]{4}-[0-9]{4}/.test(value);
   }, "Insira um telefone válido");
 
@@ -930,7 +886,7 @@ jQuery(document).ready(function($) {;
   * @author: Camila Sales
   * Validação celular
   **/
-  jQuery.validator.addMethod("celular", function (value, element) {
+  $.validator.addMethod("celular", function (value, element) {
       return this.optional(element) || /\([0-9]{2}\) [0-9]{5}-[0-9]{4}/.test(value);
   }, "Insira um celular válido ");
 

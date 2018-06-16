@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
     <div class="row row justify-content-center align-items-center">
-        <div class="col-lg-12">
+        <div class="col-lg-10">
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -19,7 +19,7 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Fornecedor</strong>
+                    <strong class="card-title">Fornecedores</strong>
                 </div>
                 <div class="card-body">
           <a title="Cadastrar Novo Fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
@@ -50,7 +50,7 @@
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
                                  
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Atualizar Fornecedor">
                                     <span class="fa fa-pencil-square-o"></span>
                                 </a>
                                 <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir Fornecedor" data-toggle="modal" data-target="#modalRemover">

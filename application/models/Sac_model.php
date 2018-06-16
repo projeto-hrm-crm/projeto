@@ -116,4 +116,22 @@ class Sac_model extends PR_Model
         $this->setLog($sac->titulo, $id_sac);
     }
 
+  /**
+  * @author: Pedro Henrique Guimarães
+  * Busca o último SAC
+  *
+  * @return mixed
+  */
+  public function getLastSac()
+  {
+      $this->db->select('*')
+               ->from('sac as s')
+               ->join('cliente as c', 's.id_cliente = c.id_cliente')
+               ->join('pessoa as p', 'c.id_pessoa = p.id_pessoa');
+      $query = $this->db->get();
+
+      if ($query->num_rows() > 0) 
+        return $query->result()[0];
+      return null;
+  }
 }

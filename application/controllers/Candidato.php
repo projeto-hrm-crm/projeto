@@ -77,12 +77,13 @@ class Candidato extends CI_Controller
 
         $this->telefone->insert(['numero'=>$this->input->post('tel'),'id_pessoa' => $id_pessoa]);
 
-        $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['candidato']['data_nacimento']),'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
-        $this->candidato->insert(['id_pessoa' => $id_pessoa]);
-        //usuario
-       $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>5,'id_pessoa'=>$id_pessoa]);
+        $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['candidato']['data_nascimento']),
+        'sexo'=>$data['candidato']['sexo'],'id_pessoa'=>$id_pessoa]);
 
-        $this->session->set_flashdata('success', 'Candidato cadastrado com sucesso.');
+        $this->candidato->insert(['id_pessoa' => $id_pessoa]);
+
+
+        $this->session->set_flashdata('success', 'Candidato Cadastrado Com Sucesso!');
         redirect('candidato');
       }
     }
@@ -124,7 +125,8 @@ class Candidato extends CI_Controller
 
       $this->pessoa->update(['id_pessoa' => $candidato[0]->id_pessoa, 'nome'=> $data['candidato']['nome'],'email'=>$data['candidato']['email']]);
       $this->pessoa_fisica->update($candidato[0]->id_pessoa,['data_nascimento'=> switchDate($data['candidato']['data_nascimento']),'sexo'=>$data['candidato']['sexo']]);
-      $this->session->set_flashdata('success', 'Candidato editado com sucesso.');
+
+      $this->session->set_flashdata('success', 'Candidato Atualizado Com Sucesso!');
       redirect('candidato');
     }
 
@@ -150,7 +152,7 @@ class Candidato extends CI_Controller
     if ($data)
     {
       $this->candidato->remove($id_candidato);
-      $this->session->set_flashdata('success', 'Candidato excluido com sucesso');
+      $this->session->set_flashdata('success', 'Candidato Excluído Com Sucesso!');
       redirect('candidato');
     }
   }

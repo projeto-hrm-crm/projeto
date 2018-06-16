@@ -105,6 +105,7 @@ class Setor extends PR_Controller
         $this->redirectSuccess('Setor removido com sucesso');
     }
 
+
     /**
     * @author: Tiago Villalobos
     * Retorna um array com dados pegos por post
