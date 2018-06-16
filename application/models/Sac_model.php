@@ -68,7 +68,6 @@ class Sac_model extends PR_Model
     
         $this->db
         ->set('sac.id_produto', $sac['id_produto'])
-        ->set('sac.id_cliente', $sac['id_cliente'])
         ->set('sac.titulo', $sac['titulo'])
         ->set('sac.descricao', $sac['descricao'])
         ->set('sac.abertura', $sac['abertura'])
