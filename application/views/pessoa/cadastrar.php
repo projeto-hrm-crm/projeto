@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col-lg-10">
     <?php if ($this->session->flashdata('success')): ?>
       <div class="alert alert-success mt-4">
         <?php echo $this->session->flashdata('success'); ?>

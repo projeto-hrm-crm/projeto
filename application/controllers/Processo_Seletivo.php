@@ -118,7 +118,7 @@ class Processo_Seletivo extends CI_Controller
     if ($this->input->post())
     {
       $data = $this->input->post();
-      
+
       if ($this->form_validation->run('processo_seletivo_info'))
       {
         $this->processo_seletivo->update($id, $data);

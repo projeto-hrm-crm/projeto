@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * author: Nikolas Lencioni
 * Controller de fornecedor
 **/
+
 class Fornecedor extends CI_Controller
 {
    /**
@@ -19,6 +20,7 @@ class Fornecedor extends CI_Controller
        $this->usuario->hasPermission($user_id, $currentUrl);
        $this->menus = $this->menu->getUserMenu($user_id);
    }
+   
   /**
   * author: Nikolas Lencioni
   * Metodo index que chama a view inicial de fornecedores
@@ -39,6 +41,7 @@ class Fornecedor extends CI_Controller
     // exit();
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
+   
   /**
   * author: Nikolas Lencioni
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
@@ -51,16 +54,15 @@ class Fornecedor extends CI_Controller
   public function create()
   {
     $data = $this->input->post();
-    if($data)
-    {
-      if ($this->form_validation->run('fornecedor'))
-      {
+    if($data) {       
+      if ($this->form_validation->run('fornecedor')) {
         $this->fornecedor->insert($data);
         $this->session->set_flashdata('success', 'Fornecedor Cadastrado Com Sucesso!');
         redirect('fornecedor');
-      }else{
-        $this->session->set_flashdata('danger', 'Fornecedor Não Pode Ser Cadastrado!');
+      }else {
+        $this->session->set_flashdata('danger', 'Não Foi Possível Cadastrar!');
         redirect('fornecedor/cadastrar');
+         
       }
     }
     $data['title'] = 'Cadastrar Fornecedor';
@@ -76,60 +78,9 @@ class Fornecedor extends CI_Controller
        'validate.js',
      ),
    );
+
     loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
-
-/**
-  * author: Beto Cadilhe
-  * Metodo create, apresenta o formulario de cadastro, recebe os dados, faz a validação
-  * e envia para função insert de Fornecedor_model
-  **/
-
-  /* public function create()
-  {
-    if($this->input->post()){
-
-      if($this->form_validation->run('fornecedor')){
-        $fornecedor = array(
-         'nome' => $this->input->post('nome'),
-         'email' => $this->input->post('email'),
-         'razao_social' => $this->input->post('razao_social'),
-         'cnpj' => $this->input->post('cnpj'),
-         'telefone' => $this->input->post('telefone'),
-         'estado' => $this->input->post('estado'),
-         'cidade' => $this->input->post('cidade'),
-         'logradouro' => $this->input->post('logradouro'),
-         'numero' => $this->input->post('numero'),
-         'bairro' => $this->input->post('bairro'), 
-         'cep' => $this->input->post('cep'),        
-         'complemento' => $this->input->post('complemento'),
-        );
-          $this->fornecedor->insert($fornecedor);
-          $this->session->set_flashdata('success','Cadastrado com sucesso');
-          redirect('fornecedor');
-      }else{
-          $this->session->set_flashdata('errors', $this->form_validation->error_array());
-          $this->session->set_flashdata('old_data', $this->input->post());
-          redirect('fornecedor/cadastrar');
-      }
-    }else{
-      $data['title'] = 'Cadastrar Fornecedor';
-      $data['errors'] = $this->session->flashdata('errors');
-      $data['success_message'] = $this->session->flashdata('success');
-      $data['error_message']   = $this->session->flashdata('danger');
-      $data['old_data'] = $this->session->flashdata('old_data');
-      $data['assets'] = array(
-      'js' => array(
-
-        'validate.js',
-      ),
-
-    );
-       $data['estados'] = $this->estado->get();
-
-      loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
-    }
-  } */
 
   /**
   * author: Nikolas Lencioni
@@ -144,6 +95,7 @@ class Fornecedor extends CI_Controller
   public function edit($id)
   {
     $data = $this->input->post();
+     
     if ($data)
     {
       if ($this->form_validation->run('fornecedor'))
@@ -156,16 +108,17 @@ class Fornecedor extends CI_Controller
         redirect('fornecedor/edit/'.$id);
       }
     }
-    $fornecedor = $this->fornecedor->find($id); //FIXME ARRUMAR
-    $state = $this->cidade->findState($fornecedor[0]->id_cidade);
-    $data['fornecedor'] = $this->fornecedor->find($id);
-    $data['title'] = 'Editar Fornecedor';
-    $data['estados'] = $this->estado->get();
-    $data['estado_fornecedor'] = $state;
-    $data['cidades'] = $this->cidade->getByState($state[0]->id_estado);
-    $data['id'] = $id;
-    
+     
+     $data['fornecedor'] = $this->fornecedor->find($id);
+     $data['title'] = 'Editar Fornecedor';
+     
+     $data['estado_atual'] = $this->cidade->findState($data['fornecedor'][0]->id_cidade);
+     
+     $data['estados'] =  $this->estado->get();
+     $data['cidades'] = $this->cidade->getByState($data['estado_atual'][0]->id_estado);
+
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
+     
   }
   /**
   * author: Nikolas Lencioni
@@ -176,8 +129,7 @@ class Fornecedor extends CI_Controller
   **/
   public function delete($id)
   {
-     $fornecedor = $this->fornecedor->find($id);
-     if($fornecedor){
+     if($id){
         $this->fornecedor->delete($id);
         $this->session->set_flashdata('success', 'Fornecedor Excluído Com Sucesso!');
      }else{

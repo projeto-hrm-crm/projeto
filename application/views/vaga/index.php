@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10">
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                     <?php echo $success_message; ?>
@@ -22,8 +22,8 @@
 					<strong class="card-title">Vagas</strong>
 				</div>
 				<div class="card-body">
-					<a href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
-					  	<i class="fa fa-check"></i> Cadastrar
+					<a title="Cadastrar Nova Vaga" href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
+					  	<i class="fa fa-check"></i> Novo Cadastro
 				  	</a><br><br>
 					<table class="datatable table table-striped table-bordered">
 						<thead>
@@ -32,7 +32,7 @@
 								<th>Setor</th>
 								<th>Quantidade</th>
 								<th>Data de Oferta</th>
-								<th>Opções</th>
+								<th>Ações</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,11 +44,11 @@
 										<td><?php echo $vaga->quantidade; ?></td>
 										<td><?php echo switchDate($vaga->data_oferta); ?></td>
 										<td >
-										    <a href="vaga/editar/<?php echo $vaga->id_vaga ?>"
+										    <a title="Atualizar Vaga" href="vaga/editar/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-primary text-white">
 										        <i class="fa fa-pencil-square-o"></i>
 										    </a>
-										    <button  data-href="vaga/excluir/<?php echo $vaga->id_vaga ?>"
+										    <button title="Excluir Vaga"  data-href="vaga/excluir/<?php echo $vaga->id_vaga ?>"
 										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
 										        <i class="fa fa-times"></i>
   									    	</button>
@@ -76,12 +76,16 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body text-center">
-				Tem certeza que deseja excluir essa vaga?
+			<div class="modal-body ">
+				Deseja Realmente Excluir Essa Vaga?
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<a href="#" class="btn btn-primary btn-remove-ok">Confirmar</a>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">
+						Cancelar
+				</button>
+				<a href="#" class="btn btn-primary btn-remove-ok">
+						Confirmar
+				</a>
 			</div>
 		</div>
 	</div>

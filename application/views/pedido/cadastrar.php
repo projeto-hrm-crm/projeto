@@ -1,9 +1,9 @@
 <div class="animated fadeIn">
 	<div class="row justify-content-center align-items-center">
-			<div class="col-lg-8">
+			<div class="col-lg-10">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Novo Pedido</strong>
+	                <strong class="card-title">Cadastrar Pedido</strong>
 	            </div>
 	            <form id="form-pedido" action="<?php echo base_url('pedido/cadastrar'); ?>" method="POST">
 	                <div class="card-body">
@@ -202,11 +202,11 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-	                   	<a href="<?php echo base_url('pedido')?>" class="btn bg-danger text-white">
-	                        <i class="fa fa-times" aria-hidden="true"></i>
+	                   	<a title="Cancelar Cadastro" href="<?php echo base_url('pedido')?>" class="btn bg-danger text-white">
+	                        <i class="fa fa-times btn-sm" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button type="submit" class="btn bg-primary text-white" onclick="this.disabled=true;this.form.submit();">
+	                    <button type="submit" class="btn bg-primary text-white">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>

@@ -57,7 +57,7 @@ class CandidatoEtapa extends CI_Controller
     $data['id_candidato']=$usuario->id_candidato;
     $data['id_vaga_etapa']=$id_vaga_etapa;
     $this->candidato_etapa->insert($data);
-    $this->session->set_flashdata('success', 'Realizada candidatura à vaga com sucesso');
+    $this->session->set_flashdata('success', 'Candidatura à Vaga Com Sucesso!');
     redirect('candidato_etapa');
   }
 
@@ -73,7 +73,7 @@ class CandidatoEtapa extends CI_Controller
     $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
     $id_candidato=$usuario->id_candidato;
     $this->candidato_etapa->remove($id_candidato,$id_vaga_etapa);
-    $this->session->set_flashdata('success', 'Candidatura excluída');
+    $this->session->set_flashdata('success', 'Candidatura Excluída Com Sucesso!');
 
     redirect('candidato_etapa');
   }

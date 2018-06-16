@@ -1,5 +1,5 @@
 <div class="animated fadeIn">
-    <div class="row" >
+    <div class="row row justify-content-center align-items-center">
         <div class="col-lg-10">
            <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
@@ -19,7 +19,7 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Fornecedor</strong>
+                    <strong class="card-title">Fornecedores</strong>
                 </div>
                 <div class="card-body">
           <a title="Cadastrar Novo Fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
@@ -39,31 +39,32 @@
                      </thead>
 
                      <tbody>
+                     <?php if (!is_null($fornecedores)): ?>
                         <?php foreach ($fornecedores as $fornecedor): ?>
                            <tr>
                               <td class="text-center"><?=$fornecedor->id_fornecedor; ?></td>
                               <td>
-                                 <?= $fornecedor->nome;?> 
+                                 <?= $fornecedor->nome;?>
                               </td>
                               <td><?= $fornecedor->email; ?></td>
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
-                                 
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">r
                                     <span class="fa fa-pencil-square-o"></span>
                                 </a>
                                 <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir Fornecedor" data-toggle="modal" data-target="#modalRemover">
                                     <span class="fa fa-times"></span>
                                 </button>
-                                   
+
                               </td>
                            </tr>
                        <?php endforeach ?>
+                     <?php endif;?>
                      </tbody>
                    </table>
                </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -79,7 +80,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja Realmente Excluir Esse Fornecedor?
+                Deseja realmente excluir esse fornecedor?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

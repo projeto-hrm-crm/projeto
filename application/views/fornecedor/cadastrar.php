@@ -1,17 +1,3 @@
-<div class="row" style="margin-top: 5px;">
-        <div class="col-lg-10">
-          <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success">
-            <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
-          </div>
-          <?php elseif ($this->session->flashdata('danger')) : ?>
-          <div class="alert alert-danger">
-            <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?>
-          </div>
-          <?php endif; ?>
-        </div>
-      </div>
-
 
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
@@ -26,7 +12,7 @@
           <!--NOME-->
           <div class="form-group col-12 col-md-6">
             <label class=" form-control-label">Nome</label>
-                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome Completo da Empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
+                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo da empresa" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>"required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
@@ -34,19 +20,19 @@
           <!--EMAIL-->
           <div class="form-group col-12 col-md-6">
              <label for="email-input" class=" form-control-label">E-mail</label>
-             <input type="email" id="email" name="email" placeholder="e-mail" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
+             <input type="email" id="email" name="email" placeholder="jose@provedor.com" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['email']) ? $errors['email'] : '' ; ?>
 	              </span>
           </div>
           <div class="form-group col-12 col-md-6">
             <label class="form-control-label">Senha</label>
-            <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
+            <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Digite sua senha" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
           </div>
 
           <div class="form-group col-12 col-md-6">
             <label class="form-control-label">Confirmar Senha</label>
-            <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir password" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
+            <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir a senha" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
           </div>
 
           <div class="form-group col-12 col-md-4">
@@ -67,15 +53,15 @@
 
           <div class="col-12 col-md-4">
              <label class=" form-control-label">Telefone</label>
-             <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" maxlength="15" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control telefone <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
+             <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" maxlength="15" value="<?php echo isset($old_data['telefone']) ? $old_data['telefone'] : null;?>" class="form-control telefone <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
-	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
+	                <?php echo isset($errors['telefone']) ? $errors['telefone'] : '' ; ?>
 	              </span>
           </div>
 
 
 
-          <div class="form-group col-12 col-md-6">
+      <div class="form-group col-12 col-md-6">
           <label class="form-control-label">Estado</label>
            <select name="id_estado" class="form-control" id="estado">
               <option value="0" disabled selected>Selecione um estado</option>
@@ -94,7 +80,7 @@
 
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label">CEP</label>
-         <input type="num" id="cep" name="cep" placeholder="CEP" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
+         <input type="num" id="cep" name="cep" placeholder="00000-000" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
 	              </span>
@@ -102,7 +88,7 @@
 
       <div class="form-group col-12 col-md-9">
          <label class=" form-control-label">Logradouro</label>
-         <input type="text" id="logradouro" name="logradouro" placeholder="Nome da Rua" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
+         <input type="text" id="logradouro" name="logradouro" placeholder="Nome da rua" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['logradouro']) ? $errors['logradouro'] : '' ; ?>
 	              </span>

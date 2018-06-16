@@ -1,104 +1,139 @@
 <?php
-class Sac extends CI_Controller {
 
-  public $menus;
 
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Sac extends PR_Controller 
+{
+
+    /**
+    * @author: Tiago Villalobos
+    * Construtor que define o diretório de views
+    */
     public function __construct()
-  {
-    parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
-  }
+    {
+        parent::__construct('sac');
+    }
 
-    public function index(){
-        $data['title'] = 'Solicitações SAC';
-        $data['sac'] = $this->sac->get();
-        $data['assets'] = array(
-          'js' => array(
-            'lib/data-table/datatables.min.js',
-            'lib/data-table/dataTables.bootstrap.min.js',
-            'datatable.js',
-            'confirm.modal.js',
-          ),
-   );
+    /**
+    * @author: Tiago Villalobos
+    * Listagem de Sacs
+    */
+    public function index()
+    {
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+        $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa')); 
 
-        loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
+        $this->setTitle('Solicitações SAC');
+        $this->addData('tipo', $this->usuario->getUserAccessGroup($this->session->userdata('user_login')));
+
+
+        if($this->data['tipo'] == '1')
+        {
+            $this->addData('sac', $this->sac->get());
+        }
+        else
+        {
+            $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+            $this->addData('sac',  $this->sac->getClient($cliente[0]->id_cliente));
+        }
+
+        foreach ($this->data['sac'] as $key => $sac) 
+        {
+            $cliente = $this->cliente->getById($this->data['sac'][$key]->id_cliente);
+            $this->data['sac'][$key]->id_cliente = $cliente[0]->nome;
+        }
+
+        $this->loadIndexDefaultScripts();
+
+        $this->loadView('index');
     }
 
     /**
     * @author: Rodrigo Alves
     * Página de cadastro.
-    *
     */
-    public function create() {
+    public function create() 
+    {
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+        $cliente  = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+         
+         
+        if($typeUser == '1')
+        {
+            $id_cliente = $this->input->post('id_cliente');
+        }
+        else 
+        {
+            $id_cliente = $cliente[0]->id_cliente;
+        }
 
-         $data = $this->input->post();
-
-         if($data){
-            if ($this->form_validation->run('sac')) {
-               $array = array(
-                 'id_produto' => $this->input->post('id_produto'),
-                 'id_cliente' => $this->input->post('id_cliente'),
-                 'abertura' => date("Y-m-d H:i:s"),
-                 'fechamento' => 0,
-                 'encerrado' => 0,
-                 'titulo' => $this->input->post('titulo'),
-                 'descricao' => $this->input->post('descricao'),
-               );
-               $this->sac->insert($array);
-               $this->session->set_flashdata('success', 'SAC Cadastrado Com Sucesso!');
-               redirect('sac');
-            }else{
-               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Cadastrado!');
-               redirect('sac');
+        if($this->input->post())
+        {
+            if($this->form_validation->run('sac'))
+            {
+                $this->sac->insert($this->getFromPost());
+                
+                $this->redirectSuccess('SAC cadastrado com sucesso');
             }
-         }
+            else
+            {
+                $this->redirectError('cadastrar');
+            }
+        }
+        else
+        {
+            $this->setTitle('Cadastrar SAC');
 
-        $data['title'] = 'Cadastrar SAC';
-        $data['produtos'] = $this->produto->get();
-        $data['clientes'] = $this->cliente->get();
-        loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
+            $this->addData('clientes', $this->cliente->get());
+            $this->addData('produtos', $this->produto->get());
+            $this->addData('tipo', $typeUser);
+
+            $this->loadFormDefaultScripts();
+        
+            $this->loadView('cadastrar');
+            
+        }
     }
 
-    public function edit($id) {
+    
+    /**
+    * @author: Tiago Villalobos
+    * Formulário para edição de sac
+    *
+    * @param: $id_sac integer
+    */
+    public function edit($id_sac) 
+    {
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+        $cliente  = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
 
-       $data = $this->input->post();
-
-         if($data){
-            if ($this->form_validation->run('sac')) {
-
-               if($this->input->post('encerrado')){
-                  $fec = date("Y-m-d H:i:s");
-               }else {
-                  $fec = 0;
-               }
-
-               $array = array(
-                 'id_produto' => $this->input->post('id_produto'),
-                 'id_cliente' => $this->input->post('id_cliente'),
-                 'abertura' => date("Y-m-d H:i:s"),
-                 'fechamento' => $fec,
-                 'encerrado' => $this->input->post('encerrado'),
-                 'titulo' => $this->input->post('titulo'),
-                 'descricao' => $this->input->post('descricao'),
-               );
-
-               $this->sac->update($array, $id);
-               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
-               redirect('sac');
-            }else{
-               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
-               redirect('sac');
+        if ($this->input->post()){
+            if($this->form_validation->run('sac'))
+            {
+                $this->sac->update($this->getFromPostEdit($id_sac));
+                $this->redirectSuccess('SAC atualizado com sucesso');
             }
-         }
+            else
+            {
+                $this->redirectError('editar/'.$id_sac);
+            }
 
-        $data['title'] = 'Editar SAC';
-        $data['sac'] = $this->sac->get();
-        $data['produtos'] = $this->produto->get();
-        $data['clientes'] = $this->cliente->get();
-        $data['id'] = $id;
-        loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
+        } 
+        else
+        {
+            $this->setTitle('Editar Sac');
+            
+            $this->addData('sac',      $this->sac->getById($id_sac));
+            $this->addData('id',       $id_sac);
+            $this->addData('clientes', $this->cliente->get());
+            $this->addData('produtos', $this->produto->get());
+            $this->addData('tipo',     $typeUser);
+
+            $this->loadFormDefaultScripts();
+
+            $this->loadView('editar');
+        }
 
     }
 
@@ -108,11 +143,46 @@ class Sac extends CI_Controller {
     *
     * @param integer $id_sac
     */
-    public function delete($id_sac) {
-       $this->sac->remove($id_sac);
-       $this->session->set_flashdata('success', 'SAC Excluído Com Sucesso!');
-       redirect('sac');
+    public function delete($id_sac) 
+    {
+        $this->sac->remove($id_sac);
+        
+        $this->redirectSuccess('SAC removido com sucesso');
     }
 
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post
+    *
+    * @param: $id_sac integer
+    */
+    private function getFromPost()
+    {
+        return array(
+            'id_produto' => $this->input->post('id_produto'),
+            'id_cliente' => $this->input->post('id_cliente'),
+            'abertura'   => date("Y-m-d H:i:s"),
+            'fechamento' => 0,
+            'encerrado'  => 0,
+            'titulo'     => $this->input->post('titulo'),
+            'descricao'  => $this->input->post('descricao'),
+        );
+    }
 
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post adicionado a eles o id_sac
+    *
+    * @param: $id_sac integer
+    */
+    private function getFromPostEdit($id_sac)
+    {
+        $postData = $this->getFromPost();
+
+        $postData['id_sac']     = $id_sac;
+        $postData['fechamento'] = $this->input->post('encerrado') ? date('Y-m-d H:i:s') : 0;
+        $postData['encerrado']  = $this->input->post('encerrado');
+
+        return $postData;
+    }
 }

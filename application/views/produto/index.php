@@ -1,6 +1,5 @@
-<div class="animated fadeIn">
-    <div class="row">
-        <div class="col-md-12">
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
             <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -23,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
-                        <i class="fa fa-check"></i> Cadastrar
+                        <i class="fa fa-check"></i> Novo Cadastro
                     </a><br><br>
                     <table class="table table-striped table-bordered datatable">
                         <thead>
@@ -48,10 +47,10 @@
                                         <td><?= $produto->valor;?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Editar produto">
+                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary btn-sm" title="Atualizar Produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
+                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger btn-sm" title="Excluir Produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
@@ -63,7 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
@@ -76,7 +74,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse produto?
+                Deseja Realmente Excluir Esse Produto?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">
