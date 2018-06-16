@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <a href="<?php echo base_url('candidato/cadastrar');?>" class="btn btn-primary btn-sm mb-4">
                         <i class="fa fa-check"></i>
-                        Cadastrar
+                        Novo cadastro
                     </a>
                     <table class="table table-striped table-bordered datatable">
                         <thead>
