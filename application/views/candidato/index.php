@@ -1,6 +1,6 @@
-<div class="animated fadeIn">
-    <div class="row" >
-        <div class="col-lg-10">
+<!-- CANDIDATO -->
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
             <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                     <?php echo $this->session->flashdata('success'); ?>
@@ -21,43 +21,51 @@
                 <div class="card-header">
                     <strong class="card-title">Candidatos</strong>
                 </div>
-                <div class="card-body">
-                    <a title="Cadastrar Novo Candidato" href="<?php echo base_url('candidato/cadastrar');?>" class="btn btn-primary btn-sm mb-4">
-                        <i class="fa fa-check"></i>
-                        Novo Cadastro
-                    </a>
-                    <table class="table table-striped table-bordered datatable">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">E-mail</th>
-                                <th class="text-center">Sexo</th>
-                                <th class="text-center">Data Nascimento</th>
-                                <th class="text-center">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($candidatos as $candidato): ?>
-                                <tr>
-                                    <td class="text-center"><?= $candidato->nome; ?></td>
-                                    <td class="text-center"><?= $candidato->email; ?></td>
-                                    <td class="text-center"><?php echo ($candidato->sexo == 0)? "Masculino" : "Feminino"; ?></td>
-                                    <td class="text-center"><?php echo $candidato->data_nascimento; ?></td>
-                                    <td class="text-center">
-                                        <a title="Atualizar Candidato" href="<?= site_url('candidato/editar/'.$candidato->id_candidato)?>" class="btn btn-primary btn-sm">
-                                            <span class="fa fa-edit"></span>
-                                        </a>
-                                        <button data-href="candidato/excluir/<?php echo $candidato->id_candidato?>" class="btn btn-danger btn-sm" title="Excluir Candidato" data-toggle="modal" data-target="#modalRemover">
-                                            <span class="fa fa-close"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="card-body">
+
+          <a href="<?= site_url('candidato/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar candidato">
+            <i class="fa fa-check"></i> Novo Cadastro
+          </a><br />
+          <br />
+          <table class="table table-striped table-bordered datatable">
+
+            <thead>
+              <tr>
+                <th class="text-center">Nome</th>
+                <th class="text-center">E-mail</th>
+                <th class="text-center">Sexo</th>
+                <th class="text-center">Data Nascimento</th>
+                <!-- <th class="text-center">Vaga</th> -->
+                <th class="text-center">Ações</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php foreach ($candidatos as $candidato): ?>
+                <tr>
+                  <td class="text-center"><?= $candidato->nome; ?></td>
+                  <td class="text-center"><?= $candidato->email; ?></td>
+                  <td class="text-center">
+                    <?php echo ($candidato->sexo == 0)? "Masculino" : "Feminino"; ?>
+                  </td>
+                  <td class="text-center">
+                    <?php echo $candidato->data_nascimento; ?>
+                  </td>
+                  <td class="text-center">
+                    <a title="Editar candidato" href="<?= site_url('candidato/editar/'.$candidato->id_candidato)?>" class="btn btn-primary">
+                      <span class="fa fa-edit"></span></a>
+                        <button data-href="candidato/excluir/<?php echo $candidato->id_candidato?>" class="btn btn-danger" title="Excluir candidato" data-toggle="modal" data-target="#modalRemover">
+                            <span class="fa fa-close"></span>
+                        </button>
+                      </td>
+                    </tr>
+                  <?php endforeach ?>
+                </tbody>
+
+              </table>
             </div>
-        </div>
+          </div>
+      </div>
     </div>
 </div>
 

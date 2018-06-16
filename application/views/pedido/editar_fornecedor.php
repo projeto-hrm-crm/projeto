@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<!-- <div class="animated fadeIn"> -->
 	<div class="row justify-content-center align-items-center">
 			<div class="col-lg-10">
 	        <div class="card">
@@ -6,12 +6,12 @@
 	                <strong class="card-title">Atualização de Pedido</strong>
 	            </div>
 	            <form id="form-pedido" action="<?php echo base_url('pedido/fornecedor/editar/'.$pedido->id_pedido); ?>" method="POST">
-	               
-	                    <div class="card-body">
-	                        
 
-	                        
-	                        
+	                    <div class="card-body">
+
+
+
+
 	                        <div class="row">
 	                        	<div class="form-group col-lg-12">
 	                        		<table id="produtos-table" class="table table-sm">
@@ -23,24 +23,24 @@
     		                                </tr>
     		                            </thead>
     		                            <tbody>
-    		                            	<?php 
+    		                            	<?php
 
-    		                            		
+
 
     		                            		if(isset($old_data['id_produto']) || isset($pedido_produtos)):
-    		                            			
+
     		                            			$qtd   = 0;
     		                            			$total = 0;
 
     		                            			$old_produtos = isset($old_data['id_produto']) ? $old_produtos : $pedido_produtos;
 
 	    		                            	 	foreach($old_produtos as $produto):
-	    		                       
+
 	    		                            ?>
 			    		                            	<tr>
 			    		                            		<td width="5%" class="td-id">
-			    		                            			<input class="form-control form-control-sm" name="id_produto[]" readonly 
-			    		                            			style="background-color: transparent; border: 0px; font-size: 1em;" 
+			    		                            			<input class="form-control form-control-sm" name="id_produto[]" readonly
+			    		                            			style="background-color: transparent; border: 0px; font-size: 1em;"
 			    		                            			value="<?php echo $produto->id_produto; ?>">
 			    		                            		</td>
 
@@ -52,14 +52,14 @@
 			    		                            			<?php echo $produto->quantidade; ?>
 			    		                            		</td>
 
-			    		                            		
+
 			    		                            	</tr>
 
-	    		                            <?php 			
-		    		                            			
-	    		                            			
+	    		                            <?php
+
+
 	    		                            		endforeach;
-    		                            		endif; 
+    		                            		endif;
     		                            	?>
     		                            </tbody>
 
@@ -73,9 +73,9 @@
 	                                <select name="situacao" id="situacao" class="form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($situacoes as $index => $situacao): ?>
-		                                	<option value="<?php echo $index ?>" 
-			                                		<?php 
-			                                			echo isset($old_data['situacao']) && ($index == $old_data['situacao']) || !isset($errors['situacao']) && 
+		                                	<option value="<?php echo $index ?>"
+			                                		<?php
+			                                			echo isset($old_data['situacao']) && ($index == $old_data['situacao']) || !isset($errors['situacao']) &&
 			                                			($pedido->situacao == $index)? 'selected' : ''
 			                                		?>
 		                                		>
@@ -87,24 +87,24 @@
 	                             		<?php echo isset($errors['situacao']) ? $errors['situacao'] : '' ; ?>
 	                             	</span>
 	                            </div>
-	                        	
+
 	                        </div>
 
 
 	                        <div class="row">
 	                        	<div class="form-group col-12">
-	                        	
+
 	                                <label for="data_oferta" class="control-label mb-1">Descrição</label>
 	                                <textarea name="descricao" id="descricao" rows="4" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : $pedido->descricao;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
 	                                </span>
-	                           
+
 	                        	</div>
 	                        </div>
 
 	                    </div>
-	                
+
 	                <div class="card-footer text-right">
 	                    <a title="Cancelar Fornecedor" href="<?php echo base_url('pedido/fornecedor')?>" class="btn bg-danger text-white">
 	                        <i class="fa fa-times" aria-hidden="true"></i>
@@ -119,7 +119,7 @@
 	        </div>
 	    </div>
 	</div>
-</div>
+<!-- </div> -->
 
 
 <!-- Modal atualizar -->
@@ -133,8 +133,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        Deseja Realmente Atualizar Esse Pedido ?
+      <div class="modal-body text-center">
+        Deseja realmente editar esse pedido ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

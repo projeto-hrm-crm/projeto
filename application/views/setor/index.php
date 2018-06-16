@@ -1,5 +1,5 @@
-<div class="row" >
-  <div class="col-lg-10">
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
     <?php if ($this->session->flashdata('success')) : ?>
       <div class="alert alert-success">
         <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
@@ -16,8 +16,7 @@
       </div>
 
       <div class="card-body">
-
-        <a title="Cadastrar Novo Setor" href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
+        <a href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
           <i class="fa fa-check"></i> Novo Cadastro
         </a><br />
         <br />
@@ -62,7 +61,7 @@
               </button>
           </div>
           <div class="modal-body">
-              Deseja Realmente Excluir Esse Setor?
+              Deseja realmente excluir esse setor?
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">

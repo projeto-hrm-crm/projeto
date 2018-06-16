@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-lg-10">
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
     <?php if ($this->session->flashdata('success')): ?>
       <div class="alert alert-success mt-4">
         <?php echo $this->session->flashdata('success'); ?>
@@ -100,7 +100,7 @@
         </button>
       </div>
       <div class="modal-body text-center">
-        Deseja Realmente Excluir Essa Candidatura?
+        Deseja realmente excluir essa candidatura?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

@@ -1,8 +1,8 @@
 <!-- <pre>
 <?php print_r($processos_seletivos); ?>
 </pre> -->
-    <div class="row" >
-        <div class="col-lg-10">
+<div class="row justify-content-center align-items-center">
+
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Processos Seletivos</strong>
@@ -28,7 +28,7 @@
             <i class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />
-                  
+
                <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
                      <thead>
                         <tr>
@@ -49,7 +49,7 @@
                               <td class="text-center"><?=$processo_seletivo->vagas; ?></td>
 
                               <td class="text-center">
-                                 
+
                                  <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary btn-sm">
                                        <span class="fa fa-pencil-square-o"></span>
                                    </a>
@@ -67,8 +67,8 @@
                    </table>
                  </div>
                </div>
-                </div>
               </div>
+            </div>
 
 <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -93,8 +93,3 @@
         </div>
     </div>
   </div>
-
-
-
-
- 

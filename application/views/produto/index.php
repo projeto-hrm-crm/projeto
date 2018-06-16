@@ -1,6 +1,5 @@
-<div class="animated fadeIn">
-    <div class="row">
-        <div class="col-lg-10">
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
             <?php if($this->session->flashdata('success')): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                         <?php echo $this->session->flashdata('success'); ?>
@@ -22,7 +21,7 @@
                     <strong class="card-title">Produtos</strong>
                 </div>
                 <div class="card-body">
-                    <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Produto">
+                    <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
                         <i class="fa fa-check"></i> Novo Cadastro
                     </a><br><br>
                     <table class="table table-striped table-bordered datatable">
@@ -63,7 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">

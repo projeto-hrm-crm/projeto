@@ -44,19 +44,18 @@
                            <tr>
                               <td class="text-center"><?=$fornecedor->id_fornecedor; ?></td>
                               <td>
-                                 <?= $fornecedor->nome;?> 
+                                 <?= $fornecedor->nome;?>
                               </td>
                               <td><?= $fornecedor->email; ?></td>
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
-                                 
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Atualizar Fornecedor">
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">r
                                     <span class="fa fa-pencil-square-o"></span>
                                 </a>
                                 <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir Fornecedor" data-toggle="modal" data-target="#modalRemover">
                                     <span class="fa fa-times"></span>
                                 </button>
-                                   
+
                               </td>
                            </tr>
                        <?php endforeach ?>
@@ -65,7 +64,7 @@
                    </table>
                </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -81,7 +80,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja Realmente Excluir Esse Fornecedor?
+                Deseja realmente excluir esse fornecedor?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">
