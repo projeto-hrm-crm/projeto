@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-10">
+        <div class="col-lg-10">
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Cadastrar Cargo</strong>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
+                        <a title="Cancelar Cadastro" href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i>
                             Cancelar
                         </a>

@@ -42,7 +42,7 @@ class Setor extends CI_Controller
         $id_pessoa = $this->pessoa->insert(['nome' => $data['nome']]);
    
       $this->setor->insert($data);
-      $this->session->set_flashdata('success', 'setor cadastrado com sucesso');
+      $this->session->set_flashdata('success', 'Setor Cadastrado Com Sucesso');
       redirect('setor');
     }else{
       $data['title'] = 'Cadastrar Setor';
@@ -68,7 +68,7 @@ class Setor extends CI_Controller
     {
       $data["nome"]=$this->input->post("nome");
       $this->setor->update($data,$id_setor);
-      $this->session->set_flashdata('success', 'setor alterado com sucesso');
+      $this->session->set_flashdata('success', 'Setor Atualizado Com Sucesso!');
       redirect('setor');
     }else{
       $data['setor'] = $this->setor->find($id_setor);
@@ -91,7 +91,7 @@ class Setor extends CI_Controller
   public function delete($id_setor)
   {
     $this->setor->remove($id_setor);
-    $this->session->set_flashdata('success', 'setor excluído com sucesso');
+    $this->session->set_flashdata('success', 'Setor Excluído Com Sucesso!');
     redirect('setor');
   }
 }

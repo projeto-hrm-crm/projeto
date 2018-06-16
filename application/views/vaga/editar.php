@@ -1,9 +1,9 @@
 <!-- <div class="animated fadeIn"> -->
 	<div class="row justify-content-center align-items-center">
-		<div class="col-lg-8">
+		<div class="col-lg-10">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Editar Vaga</strong>
+	                <strong class="card-title">Atualizar Vaga</strong>
 	            </div>
 	            <form id="form-vaga" action="<?php echo base_url('vaga/editar/'.$vaga->id_vaga); ?>" method="POST" novalidate="novalidate">
 	                <div class="card-body">
@@ -60,13 +60,13 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-						<a href="<?=site_url('vaga')?>" title="Cancelar edição Vaga" class="btn btn-danger btn-sm">
+						<a href="<?=site_url('vaga')?>" title="Cancelar Edição" class="btn btn-danger btn-sm">
 							<i class="fa fa-times"></i>
 							Cancelar
 						  </a>
-	                    <button  title="Atualizar vaga" type="submit" class="btn bg-primary text-white btn-sm" >
+	                    <button  title="Atualizar Vaga" type="submit" class="btn bg-primary text-white btn-sm" >
 	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Confirmar
+	                        Editar
 	                    </button>
 	                </div>
 
@@ -76,13 +76,13 @@
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
+													<h5 class="modal-title" id="exampleModalLabel">Atualizar Vaga</h5>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
-												<div class="modal-body text-center">
-													Deseja realmente editar essa vaga?
+												<div class="modal-body ">
+													Deseja Realmente Atualizar Essa Vaga?
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-danger" data-dismiss="modal">

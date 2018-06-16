@@ -1,6 +1,6 @@
     <div class="animated fadeIn">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-lg-10">
                 <?php if($this->session->flashdata('success')): ?>
                     <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                             <?php echo $this->session->flashdata('success'); ?>
@@ -19,7 +19,7 @@
                 <?php endif; ?>
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Cargo</strong>
+                        <strong class="card-title">Cargos</strong>
                     </div>
                     <div class="card-body">
                         <a title="Cadastrar Novo Cargo" href="<?= site_url('cargo/cadastrar')?>" class="btn btn-primary btn-sm">
@@ -72,7 +72,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse Cargo?
+                Deseja Realmente Excluir Esse Cargo?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

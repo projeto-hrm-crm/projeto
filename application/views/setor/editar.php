@@ -5,7 +5,7 @@
   <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong>Editar Setor</strong>
+        <strong>Atualizar Setor</strong>
       </div>
       <div class="col-md-8">
         <?php if ($this->session->flashdata('success')) : ?>
@@ -28,27 +28,27 @@
           </div>
         </div>
         <div class="card-footer text-right">
-          <a href="<?= site_url('setor')?>" class="btn btn-danger">
+          <a title="Cancelar Edição" href="<?= site_url('setor')?>" class="btn btn-danger">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarSetor">
-            <i class="fa fa-pencil-square-o"></i> Confirmar
+          <button title="Atualizar Setor" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarSetor">
+            <i class="fa fa-check"></i> Editar
           </button>
                 </div>
                 <div class="modal fade" id="editarSetor" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Editar Setor</h5>
+                                <h5 class="modal-title">Atualizar Setor</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja realmente alterar esse Setor?
+                                Deseja Realmente Atrualizar Esse Setor?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secundary" data-dismiss="modal">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                     Cancelar
                                 </button>
                                 <button type="submit" class="btn btn-primary">

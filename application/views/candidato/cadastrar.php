@@ -72,11 +72,11 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="<?=site_url('candidato')?>" class="btn btn-danger btn-sm">
+                        <a title="Cancelar Cadastro" href="<?=site_url('candidato')?>" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i>
                             Cancelar
                         </a>
-                        <button type="submit" class="btn btn-primary btn-sm" name="cadastrar">
+                        <button title="Cadastrar Candidato" type="submit" class="btn btn-primary btn-sm" name="cadastrar">
                             <i class="fa fa-plus"></i>
                             Cadastrar
                         </button>

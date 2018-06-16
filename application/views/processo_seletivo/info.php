@@ -1,9 +1,9 @@
 
 <div class="row justify-content-center align-items-center">
-   <div class="col-lg-8">
+   <div class="col-lg-10">
   <div class="card">
     <div class="card-header">
-      <strong>Info do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
+      <strong>Informação do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
     </div>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
@@ -54,8 +54,8 @@
     </div>
 
      <div class="card-footer text-right">
-        <a href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Cancelar</a>
-        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Salvar</button>
+        <a title="Cancelar Edição" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Cancelar</a>
+        <button title="Atualizar Informação" type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Atualizar</button>
 
         </div>
        </form>

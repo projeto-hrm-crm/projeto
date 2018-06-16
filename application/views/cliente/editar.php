@@ -3,7 +3,7 @@
   <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong class="card-title">Editar Cliente</strong>
+        <strong class="card-title">Atualizar Cliente</strong>
       </div>
       <form action="<?php site_url('cliente/edit'.$id); ?>" method="POST" data-id_usuario ="<?php echo $cliente[0]->id_usuario; ?>" class="form-horizontal" id="form_cliente">
         <div class="card-body card-block">
@@ -78,7 +78,7 @@
           </div>
 
            <div class="card-footer text-right">
-            <a title="Cancelar Atualização" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
+            <a title="Cancelar Edição" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
               <i class="fa fa-times"></i> Cancelar
             </a>
             <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
@@ -95,13 +95,13 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Editar Cliente</h5>
+                  <h5 class="modal-title">Atualizar Cliente</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                  Deseja realmente editar esse cliente?
+                  Deseja Realmente Editar Esse Cliente?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">

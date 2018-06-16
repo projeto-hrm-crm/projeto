@@ -4,7 +4,7 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Novo Cliente</strong>
+          <strong class="card-title">Cadastrar Cliente</strong>
         </div>
 
         <form action="<?php echo site_url('cliente/cadastrar'); ?>" method="POST" id="form_cliente" class="form-horizontal" novalidate="novalidate">

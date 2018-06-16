@@ -22,7 +22,7 @@
                     <strong class="card-title">Pedidos</strong>
                 </div>
                 <div class="card-body">
-                    <a href="<?= site_url('pedido/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
+                    <a href="<?= site_url('pedido/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Produto">
                         <i class="fa fa-check"></i> Novo Cadastro
                     </a><br><br>
                     <table class="table table-striped table-bordered datatable">
@@ -44,10 +44,10 @@
                                         <td><?= $pedido->tipo;?></td>
                                         <td><?= $pedido->transacao;?></td>
                                         <td>
-                                            <a href="pedido/editar/<?php echo $pedido->id_produto?>" class="btn btn-primary" title="Editar produto">
+                                            <a title="Atualizar Pedido" href="pedido/editar/<?php echo $pedido->id_produto?>" class="btn btn-primary" title="Editar produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="pedido/excluir/<?php echo $pedido->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
+                                            <button title="Excluir Pedido" data-href="pedido/excluir/<?php echo $pedido->id_produto?>" class="btn btn-danger" title="Excluir produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>
@@ -72,7 +72,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir esse produto?
+                Deseja Realmente Excluir Esse Produto?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

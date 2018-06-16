@@ -2,7 +2,7 @@
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Editar Produto</strong>
+                <strong class="card-title">Atualizar Produto</strong>
             </div>
             <form id="form_produto" action="<?php echo base_url('produto/editar/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
                 <div class="card-body">
@@ -60,11 +60,11 @@
                 </div>
 
                 <div class="card-footer text-right">
-                    <a href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
+                    <a title="Cancelar Edição" href="<?php echo base_url('produto');?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarProduto">
+                    <button title="Atualizar Produto" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarProduto">
                         <span class="fa fa-check"></span>
                         Editar
                     </button>
@@ -73,13 +73,13 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Editar produto</h5>
+                                <h5 class="modal-title">Atualizar produto</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja realmente editar esse produto?
+                                Deseja Realmente Atualizar Esse Produto?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">
