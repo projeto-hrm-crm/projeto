@@ -8,7 +8,8 @@
 cadastrar = "Cadastrar Cliente/Produto/Fornecedor...etc"
 deletar = "Deletar ' ' "
 editar = "Editar ' ' "
-•	Css e JS customizados precisam ser inseridos no script do header. Para evitar carregamento de JS e CSS desnecessário à outras páginas adotou-se o padrão de carregar eles só quando necessário e direto pelo controller, já existe alguns controllers que fazem isso. Caso tenham algum arquivo JS e/ou CSS que só seja necessário em sua página adicione-o no array de assets.
+
+-	Css e JS customizados precisam ser inseridos no script do header. Para evitar carregamento de JS e CSS desnecessário à outras páginas adotou-se o padrão de carregar eles só quando necessário e direto pelo controller, já existe alguns controllers que fazem isso. Caso tenham algum arquivo JS e/ou CSS que só seja necessário em sua página adicione-o no array de assets.
 
 ### Listas
 
@@ -38,7 +39,7 @@ editar = "Editar ' ' "
 ```html
 <div class="form-group col-12 col-md-6">
     <label class=" form-control-label">Nome</label>
-    <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome completo" class="form-control" required>
+    <input type="text" id="nome"placeholder="Nome completo" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" class="form-control" required>
 </div>
 ```
 
@@ -57,4 +58,11 @@ editar = "Editar ' ' "
 -	Botão de cancelar à esquerda e botão de cadastrar à direita em *todos os formulários*.
 
 - Todos os botões de ação devem conter _title_.
-  -	<input type="submit" title="Excluir informação"> ou <button title="Editar informação">
+```html
+  <input type="submit" title="Excluir informação">
+```
+  ou
+
+```html
+  <button title="Editar informação">
+```
