@@ -22,6 +22,8 @@ class Perfil extends CI_Controller {
         $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
         $id = $data['pessoa']->id_pessoa;
+       
+        $data['endereco'] = $this->endereco->findAddress($id);
         
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
