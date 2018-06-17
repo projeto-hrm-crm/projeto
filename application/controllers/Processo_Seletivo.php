@@ -46,15 +46,20 @@ class Processo_Seletivo extends CI_Controller
 
       if($this->form_validation->run('processo_seletivo'))
       {
-        $etapas['nome_etapa'] = $data['nome_etapa'];
-        $etapas['descricao_etapa'] = $data['descricao_etapa'];
+        if (isset($data['nome_etapa'])) {
+          $etapas['nome_etapa'] = $data['nome_etapa'];
+          $etapas['descricao_etapa'] = $data['descricao_etapa'];
+          unset($data['nome_etapa']);
+          unset($data['descricao_etapa']);
+        }
 
-        unset($data['nome_etapa']);
-        unset($data['descricao_etapa']);
-
+        $data['data_inicio'] = switchDate($data['data_inicio']);
+        $data['data_fim'] = switchDate($data['data_fim']);
         $id_processo = $this->processo_seletivo->insert($data);
 
-        $this->etapa->insert($id_processo, $etapas['nome_etapa'], $etapas['descricao_etapa']);
+        if (isset($etapas['nome_etapa'])) {
+          $this->etapa->insert($id_processo, $etapas['nome_etapa'], $etapas['descricao_etapa']);
+        }
 
         $this->session->set_flashdata('success', 'Processo Seletivo Cadastrado Com Sucesso!');
 
@@ -85,6 +90,8 @@ class Processo_Seletivo extends CI_Controller
 
       if ($this->form_validation->run('processo_seletivo'))
       {
+        $data['data_inicio'] = switchDate($data['data_inicio']);
+        $data['data_fim'] = switchDate($data['data_fim']);
         $this->processo_seletivo->update($id, $data);
         for ($i=0; $i < count($data['id_etapa']); $i++) {
           $etapa[] = array(
@@ -105,6 +112,10 @@ class Processo_Seletivo extends CI_Controller
     $data['vagas'] = $this->vaga->get();
     $data['etapas'] = $this->etapa->find($id);
     $data['processo_seletivo'] = $this->processo_seletivo->find($id);
+
+    $data['processo_seletivo'][0]->data_inicio = switchDate($data['processo_seletivo'][0]->data_inicio);
+    $data['processo_seletivo'][0]->data_fim = switchDate($data['processo_seletivo'][0]->data_fim);
+
     $data['assets'] = array(
       'js' => array(
         'processo_seletivo/cadastro_etapas.js',
