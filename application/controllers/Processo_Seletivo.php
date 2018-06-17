@@ -107,6 +107,7 @@ class Processo_Seletivo extends CI_Controller
     $data['processo_seletivo'] = $this->processo_seletivo->find($id);
     $data['assets'] = array(
       'js' => array(
+        'processo_seletivo/cadastro_etapas.js',
         'processo_seletivo/textarea_auto_expand.js',
       ),
     );

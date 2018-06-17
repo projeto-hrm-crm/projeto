@@ -63,38 +63,38 @@
              Campo obrigatório
            </span>
          </div>
-
+         <div class="card-header col-12">
+           <strong>Etapas</strong>
+         </div>
+         <?php if(isset($etapas[0])) { ?>
          <?php foreach ($etapas as $etapa): ?>
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição da Etapa</label>
-             <input type="number" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>" readonly>
+             <label class="form-control-label">Nome da Etapa</label>
+             <input type="number" class="form-control" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>">
+             <label class="form-control-label">Descrição da Etapa</label>
              <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
            </div>
          <?php endforeach; ?>
+       <?php } ?>
 
-           <?php foreach ($etapas as $etapa): ?>
-             <div class="form-group col-12">
-               <label class=" form-control-label">Descrição da Etapa</label>
-               <input type="number" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>" readonly>
-               <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
-               <span class="invalid-feedback" id="invalid-descricao">
-                 Campo obrigatório
-               </span>
-             </div>
-           <?php endforeach; ?>
-
-
+       <div class="form-group col-12">
+         <div id="newlink">
+           <!-- Aqui vai o template -->
+         </div>
+       </div>
      </div>
+     <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv" href="javascript:add_etapa()">
+      <i class="fa fa-check"></i> Adicionar Etapa </a>
   </div>
 
    <div class="card-footer text-right">
       <a title="Cancelar Atualização" href="<?=site_url('processo_seletivo')?>" class="btn btn-danger btn-sm">
           <i class="fa fa-times"></i> Cancelar
         </a>
-        <button title="Atualizar Processo" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarProcesso">>
+        <button title="Atualizar Processo" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarProcesso">
           <i class="fa fa-check"></i> Editar
         </button>
 
@@ -129,4 +129,13 @@
     </form>
   </div>
 </div>
+</div>
+
+<!-- Template -->
+<div class="form-group col-12 cloned-main" id="template1" style="display:none;">
+  <div class="cloned-div">
+    <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
+    <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
+    <a name="button" class="btn btn-danger btn-sm remDiv">Excluir</a><br><br>
+  </div>
 </div>
