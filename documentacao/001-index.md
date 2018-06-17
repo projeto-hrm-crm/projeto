@@ -20,10 +20,10 @@ Requisitos funcionais e não-funcionais em: _01a-requisitos_sistema.md_
 Linguagens e ferramentas utilizados no desenvolvimento:
 
 ### Linguagens
-- HTML5 - HyperText Markup Language
+- HTML5 -- HyperText Markup Language
 - PHP (HyperText Preprocessor)
 - CSS (Cascading Style Sheets)
-- JavaScript
+- JavaScript e JQuery
 - Markdown -- linguagem de marcação para documentação
 
 ### Frameworks
@@ -48,21 +48,21 @@ Diagrama entidade-relacionamento (DER) pode ser encontrado em: _01b-banco_de_dad
 O controle das versões do sistema é mantido no Github, acessado pelo link: https://github.com/ProjetoPR12018/projeto
 
 ### Arquitetura MVC
-O sistema desenvolvido neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP. A seguir listamos as classes, pastas e os arquivos que compõem a estrutura do projeto.
+O sistema desenvolvido neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP.
 
-Requisitos funcionais e não-funcionais em: _01c-requisitos_sistema.md_
+As classes e pastas que compõe a estrutura do projeto estão listadas em: _01a-arquiteturaMVC.md_
 
 ### Níveis de acesso
 Para acessar o sistema é necessário que o usuário esteja cadastrado no sistema.
 O Projeto conta com 4 tipos de usuários:
-- Administrador
+- Administrador:
 Tem total acesso ao sistema.
-- Funcionário
+- Funcionário:
 Tem acesso aos módulos:
 
-- Candidato
+- Candidato:
 Tem acesso aos processos seletivos disponíveis, para inscrição e monitoramento de inscrições anteriores
-- Cliente
+- Cliente:
 Pode ao modulo de SAC, podendo apenas criar atendimentos, e consultar os antendimentos anteriores
-- Fornecedor
+- Fornecedor:
 Pode ver os produtos que fornece a empresa.
