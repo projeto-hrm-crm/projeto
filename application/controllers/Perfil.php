@@ -5,7 +5,7 @@ class Perfil extends CI_Controller {
         parent::__construct();
         $user_id = $this->session->userdata('user_login');
         $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-        $this->usuario->hasPermission($user_id, $currentUrl);
+        //$this->usuario->hasPermission($user_id, $currentUrl);
     }
     
     /**
@@ -19,9 +19,9 @@ class Perfil extends CI_Controller {
         $user_id = $this->session->userdata('user_login');
         
         $data['title'] = 'Meu Perfil';         
-        $data['id'] = $user_id;
+        $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
-        
+        $id = $data['pessoa']->id_pessoa;
         
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         

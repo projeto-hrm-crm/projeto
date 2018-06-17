@@ -9,8 +9,14 @@ class Sac extends CI_Controller {
 
     public function index(){  
        
-      $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-      $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));      
+      $user_id = $this->session->userdata('user_login');
+       
+      $typeUser = $this->usuario->getUserAccessGroup($user_id);
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+        
+      $id = $data['pessoa']->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id);      
        
       $data['title'] = 'Solicitações SAC';
       $data['tipo'] = $typeUser;
@@ -43,8 +49,14 @@ class Sac extends CI_Controller {
     */
     public function create() {
       
-      $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-      $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));
+      $user_id = $this->session->userdata('user_login');
+       
+      $typeUser = $this->usuario->getUserAccessGroup($user_id);
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+        
+      $id = $data['pessoa']->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id); 
        
       $data = $this->input->post();
        
@@ -91,8 +103,14 @@ class Sac extends CI_Controller {
 
     public function edit($id) {
        
-       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-       $cliente = $this->cliente->getIdCliente($this->session->userdata('user_id_pessoa'));   
+       $user_id = $this->session->userdata('user_login');
+       
+      $typeUser = $this->usuario->getUserAccessGroup($user_id);
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+        
+      $id = $data['pessoa']->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id);   
 
        $data = $this->input->post();
 
