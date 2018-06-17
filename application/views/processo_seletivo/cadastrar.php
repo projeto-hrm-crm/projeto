@@ -91,7 +91,9 @@
 <!-- Template -->
 <div class="form-group col-12 cloned-main" id="template1" style="display:none;">
   <div class="cloned-div">
+    <label class="form-control-label">Nome da Etapa</label>
     <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
+    <label class="form-control-label">Descrição da Etapa</label>
     <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
     <a name="button" class="btn btn-danger btn-sm remDiv">Excluir</a><br><br>
   </div>

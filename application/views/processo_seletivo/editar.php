@@ -70,7 +70,7 @@
          <?php foreach ($etapas as $etapa): ?>
            <div class="form-group col-12">
              <label class="form-control-label">Nome da Etapa</label>
-             <input type="number" class="form-control" name="id_etapa[]" value="<?php echo $etapa->id_etapa ?>">
+             <input type="text" class="form-control" name="nome_etapa[]" value="<?php echo $etapa->nome ?>">
              <label class="form-control-label">Descrição da Etapa</label>
              <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
@@ -134,7 +134,9 @@
 <!-- Template -->
 <div class="form-group col-12 cloned-main" id="template1" style="display:none;">
   <div class="cloned-div">
+    <label class="form-control-label">Nome da Etapa</label>
     <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
+    <label class="form-control-label">Descrição da Etapa</label>
     <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
     <a name="button" class="btn btn-danger btn-sm remDiv">Excluir</a><br><br>
   </div>

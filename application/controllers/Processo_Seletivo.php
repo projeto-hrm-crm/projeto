@@ -92,14 +92,29 @@ class Processo_Seletivo extends CI_Controller
       {
         $data['data_inicio'] = switchDate($data['data_inicio']);
         $data['data_fim'] = switchDate($data['data_fim']);
-        $this->processo_seletivo->update($id, $data);
-        for ($i=0; $i < count($data['id_etapa']); $i++) {
+        $etapas = $this->etapa->find($id);
+        foreach ($etapas as $key => $etapa_ant) {
           $etapa[] = array(
-            'id_etapa' => $data['id_etapa'][$i],
-            'descricao' => $data['descricao_etapa'][$i]
+            'id_etapa' => $etapa_ant->id_etapa,
+            'nome' => $data['nome_etapa'][$key],
+            'descricao' => $data['descricao_etapa'][$key]
           );
         }
         $this->etapa->update($id, $etapa);
+        echo count($data['nome_etapa']);
+        echo count($etapas);
+        if (count($data['nome_etapa'])>count($etapas)) {
+          foreach ($data['nome_etapa'] as $key => $novaEtapa) {
+            if(!isset($etapas[$key])){
+              $novas['nome_etapa'][$key] =  $data['nome_etapa'][$key];
+              $novas['descricao_etapa'][$key] = $data['descricao_etapa'][$key];
+            }
+          }
+          $this->etapa->insert($id, $novas['nome_etapa'], $novas['descricao_etapa']);
+        }
+        unset($data['nome_etapa']);
+        unset($data['descricao_etapa']);
+        $this->processo_seletivo->update($id, $data);
         $this->session->set_flashdata('success', 'Processo Seletivo Atualizado Com Sucesso!');
         redirect('processo_seletivo');
       }else{
