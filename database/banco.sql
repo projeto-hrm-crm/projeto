@@ -440,6 +440,7 @@ DROP TABLE IF EXISTS `etapa`;
 
 CREATE TABLE `etapa` (
   `id_etapa` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
   `descricao` LONGTEXT NOT NULL,
   `status` TINYINT NOT NULL,
   `id_processo_seletivo` INT(10) UNSIGNED NOT NULL,

@@ -16,13 +16,15 @@ class Etapa_model extends CI_Model
     public function insert($id_processo, $nomes, $descs) {
 
       $etapas = array();
-      for ($i=0; $i < count($nomes); $i++) {
+      foreach ($nomes as $i => $nome) {
         $etapas[] = array(
           'id_processo_seletivo' => $id_processo,
+          'nome' => $nomes[$i],
           'descricao' => $descs[$i],
           'status' => 1
         );
       }
+      
       $this->db->insert_batch('etapa', $etapas);
     }
 
