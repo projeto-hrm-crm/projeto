@@ -5,13 +5,21 @@
 
 -	Divs col-lg-10 (sistema grid -- padrão Bootstrap) e centralizadas.
 
-cadastrar = "Cadastrar Cliente/Produto/Fornecedor...etc"
-deletar = "Deletar ' ' "
-editar = "Editar ' ' "
-
 -	Css e JS customizados precisam ser inseridos no script do header. Para evitar carregamento de JS e CSS desnecessário à outras páginas adotou-se o padrão de carregar eles só quando necessário e direto pelo controller, já existe alguns controllers que fazem isso. Caso tenham algum arquivo JS e/ou CSS que só seja necessário em sua página adicione-o no array de assets.
 
 ### Listas
+
+- Título da lista deve ser o título referente à página.
+
+- Devem ser exibidos no máximo 10 resultados por página (a não ser que o usuário escolha opção diferente).
+
+- Botão de "Novo Cadastro" azul com ícone e letras brancos no canto superior esquerdo da lista (dentro do "card-body").
+  - Bootstrap: class="btn btn-primary btn-sm"
+  - Fontawesome: class="fa fa-check"
+
+- Barra de pesquisa no lado direito superior da lista.
+
+- Classe Bootstrap para a tabela de listagem: "table table-striped table-bordered datatable"
 
 ### Formulários
 -	Formulário com col-10 e os inputs precisam ter colunas diferentes para cada tela.  Quando temos uma tela de notebook/computador os botões não devem ficar um embaixo do outro (col-12), eles precisam, no mínimo, ficar um ao lado do outro (no mínimo col-6), apenas em telas menores os campos devem ocupar todo o tamanho da div.
@@ -33,6 +41,10 @@ editar = "Editar ' ' "
     </button>
 </div>
 ```
+
+- Formulário de edição deve conter o título "Atualizar *nome do formulário*". Ex.: Atualizar Candidato.
+
+- Formulário de cadastro deve conter o título "Cadastrar *nome do formulário*". Ex.: Cadastrar Candidato.
 
 - Colocar informação em todo *placeholder* de tipo texto.
 
@@ -62,7 +74,6 @@ editar = "Editar ' ' "
   <input type="submit" title="Excluir informação">
 ```
   ou
-
 ```html
   <button title="Editar informação">
 ```
