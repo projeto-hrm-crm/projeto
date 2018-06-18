@@ -82,7 +82,7 @@
 													</button>
 												</div>
 												<div class="modal-body ">
-													Deseja Realmente Atualizar Essa Vaga?
+													Deseja realmente atualizar essa vaga?
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-danger" data-dismiss="modal">
