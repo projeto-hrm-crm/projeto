@@ -74,5 +74,16 @@ class Endereco_model extends CI_Model {
 		return $id_endereco;
 
 	}
+   
+   /**
+	* @author Rodrigo
+	* Retorna o endereço de uma pessoa
+	* 
+	* @return mixed array de objetos
+	*/
+	public function findAddress($id){
+      $this->db->select('*');
+		return $this->db->get_where('endereco', array('id_pessoa' => $id))->result();
+   }
 
 }

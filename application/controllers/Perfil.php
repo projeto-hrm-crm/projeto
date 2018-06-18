@@ -20,9 +20,11 @@ class Perfil extends CI_Controller {
         $user_id = $this->session->userdata('user_login');
         
         $data['title'] = 'Meu Perfil';         
-        $data['perfil'] = $this->usuario->getUserNameById($user_id);
+        $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
-        
+        $id = $data['pessoa']->id_pessoa;
+       
+        $data['endereco'] = $this->endereco->findAddress($id);
         
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
