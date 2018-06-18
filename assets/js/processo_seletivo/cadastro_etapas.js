@@ -4,24 +4,7 @@ function add_etapa()
 	div1.innerHTML = document.getElementById('template1').innerHTML;
 	document.getElementById('newlink').appendChild(div1);
 }
-cloneform = jQuery('#template1').html();
 
-jQuery(document).on('click','.remDiv, .addDiv', function(e){
-   thisClass = e.target.className;
-   thisClass == 'remDiv' ?
-   (jQuery('.'+thisClass).length > 1 ?
-   jQuery(this).closest('.cloned-div').prev().add(jQuery(this).closest('.cloned-div')).remove() : 0) :
-   jQuery('#template1').append(cloneform);
+jQuery(document).on('click','.remDiv', function(e){
+	jQuery(this).parent().remove();
 });
-
-function remove_etapa()
-{
-	var clonedParent = jQuery(this);
-}
-
-
-
-jQuery(document).ready(($) => {
-
-
-})
