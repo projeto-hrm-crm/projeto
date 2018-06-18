@@ -49,7 +49,7 @@
                               <td><?= $fornecedor->email; ?></td>
                               <td><?= $fornecedor->telefone; ?></td>
                               <td class="text-center">
-                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">r
+                                 <a href="<?=site_url('fornecedor/editar/'.$fornecedor->id_fornecedor);?>" class="btn btn-primary" title="Editar Fornecedor">
                                     <span class="fa fa-pencil-square-o"></span>
                                 </a>
                                 <button data-href="<?=site_url('fornecedor/excluir/'.$fornecedor->id_fornecedor);?>" class="btn btn-danger" title="Excluir Fornecedor" data-toggle="modal" data-target="#modalRemover">
