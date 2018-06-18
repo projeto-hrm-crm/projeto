@@ -18,7 +18,7 @@ class Setor extends PR_Controller
     {
         $this->setTitle('Setores');
         $this->addData('setores', $this->setor->get());
-        
+
         $this->loadIndexDefaultScripts();
 
         $this->loadView('index');
@@ -36,8 +36,8 @@ class Setor extends PR_Controller
             if($this->form_validation->run('setor'))
             {
                 $this->setor->insert($this->getFromPost());
-                
-                $this->redirectSuccess('Setor cadastrado com sucesso');
+
+                $this->redirectSuccess('Setor cadastrado com sucesso!');
             }
             else
             {
@@ -47,11 +47,11 @@ class Setor extends PR_Controller
         else
         {
             $this->setTitle('Cadastrar Setor');
-            
+
             $this->loadFormDefaultScripts();
-        
+
             $this->loadView('cadastrar');
-            
+
         }
 
     }
@@ -70,21 +70,21 @@ class Setor extends PR_Controller
             if($this->form_validation->run('setor'))
             {
                 $this->setor->update($this->getFromPostEdit($id_setor));
-                $this->redirectSuccess('Setor atualizado com sucesso');
+                $this->redirectSuccess('Setor atualizado com sucesso!');
             }
             else
             {
                 $this->redirectError('editar/'.$id_setor);
             }
 
-        } 
+        }
         else
         {
             $this->setTitle('Editar Setor');
-            
+
             $this->addData('setor',    $this->setor->getById($id_setor));
             $this->addData('id_setor', $id_setor);
-            
+
             $this->loadFormDefaultScripts();
 
             $this->loadView('editar');
@@ -101,15 +101,15 @@ class Setor extends PR_Controller
     public function delete($id_setor)
     {
         $this->setor->remove($id_setor);
-        
-        $this->redirectSuccess('Setor removido com sucesso');
+
+        $this->redirectSuccess('Setor removido com sucesso!');
     }
 
 
     /**
     * @author: Tiago Villalobos
     * Retorna um array com dados pegos por post
-    * 
+    *
     * @return: mixed
     */
     private function getFromPost()
@@ -122,7 +122,7 @@ class Setor extends PR_Controller
     /**
     * @author: Tiago Villalobos
     * Retorna um array com dados pegos por post adicionado a eles o id_setor
-    * 
+    *
     * @return: mixed
     */
     private function getFromPostEdit($id_setor)

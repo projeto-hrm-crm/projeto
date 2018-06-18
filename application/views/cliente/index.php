@@ -21,7 +21,7 @@
           </div>
         <?php endif; ?>
         <div class="card-body">
-          <a title="Cadastrar Novo Cliente" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
+          <a title="Cadastrar Cliente" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
             <i class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />

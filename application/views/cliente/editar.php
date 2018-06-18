@@ -101,7 +101,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  Deseja Realmente Atualizar Esse Cliente?
+                  Deseja realmente atualizar esse cliente?
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">

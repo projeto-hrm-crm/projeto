@@ -1,4 +1,3 @@
-<div class="animated fadeIn">
     <div class="row" >
         <div class="col-lg-12">
            <?php if($this->session->flashdata('success')): ?>
@@ -22,7 +21,7 @@
                     <strong class="card-title">SAC</strong>
                 </div>
                 <div class="card-body">
-                  <a title="Cadastrar Novo SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                  <a title="Cadastrar SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
                     <i class="fa fa-check"></i> Novo Cadastro
                   </a><br />
                   <br />
@@ -30,8 +29,8 @@
                     <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                <th width="20%" class="text-center" >Codigo</th>
-                                <th class="text-center">Titulo</th>
+                                <th width="20%" class="text-center" >Código</th>
+                                <th class="text-center">Tíitulo</th>
                                 <th class="text-center">Cliente</th>
                                 <th class="text-center">Status</th>
                                 <th width="20%" class="text-center" >Ações</th>

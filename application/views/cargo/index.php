@@ -14,7 +14,7 @@
           <strong class="card-title">Cargo</strong>
         </div>
         <div class="card-body">
-          <a title="Cadastrar Novo Cargo" href="<?= site_url('cargo/cadastrar')?>" class="btn btn-primary btn-sm">
+          <a title="Cadastrar Cargo" href="<?= site_url('cargo/cadastrar')?>" class="btn btn-primary btn-sm">
             <i  class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />

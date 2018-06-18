@@ -3,7 +3,7 @@
 			<div class="col-lg-10">
 	        <div class="card">
 	            <div class="card-header">
-	                <strong class="card-title">Atualização de Pedido</strong>
+	                <strong class="card-title">Atualizar Pedido</strong>
 	            </div>
 	            <form id="form-pedido" action="<?php echo base_url('pedido/fornecedor/editar/'.$pedido->id_pedido); ?>" method="POST">
 

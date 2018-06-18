@@ -7,17 +7,17 @@ class Sac extends CI_Controller {
       //$this->usuario->hasPermission($user_id, $currentUrl);
    }
 
-    public function index(){  
-       
+    public function index(){
+
       $user_id = $this->session->userdata('user_login');
-       
+
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
+
       $id = $data['pessoa']->id_pessoa;
-       
-      $cliente = $this->cliente->getIdCliente($id);      
-       
+
+      $cliente = $this->cliente->getIdCliente($id);
+
       $data['title'] = 'Solicitações SAC';
       $data['tipo'] = $typeUser;
       if($typeUser=="1"){
@@ -33,7 +33,7 @@ class Sac extends CI_Controller {
           'confirm.modal.js',
         ),
       );
-       
+
       foreach ($data['sac'] as $key => $sac) {
          $cliente = $this->cliente->getById($data['sac'][$key]->id_cliente);
          $data['sac'][$key]->id_cliente = $cliente[0]->nome;
@@ -47,18 +47,18 @@ class Sac extends CI_Controller {
     * Página de cadastro.
     */
     public function create() {
-      
+
       $user_id = $this->session->userdata('user_login');
-       
+
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
+
       $id = $data['pessoa']->id_pessoa;
-       
-      $cliente = $this->cliente->getIdCliente($id); 
-       
+
+      $cliente = $this->cliente->getIdCliente($id);
+
       $data = $this->input->post();
-       
+
       if($typeUser=="1"){
          $id_cliente = $this->input->post('id_cliente');
       }else {
@@ -77,10 +77,10 @@ class Sac extends CI_Controller {
               'descricao' => $this->input->post('descricao'),
             );
             $this->sac->insert($array);
-            $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
+            $this->session->set_flashdata('success', 'SAC cadastrado com sucesso!');
             redirect('sac');
          }else{
-            $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
+            $this->session->set_flashdata('danger', 'Não foi possível cadastrar SAC!');
             redirect('sac');
          }
       }
@@ -101,15 +101,15 @@ class Sac extends CI_Controller {
     }
 
     public function edit($id) {
-       
+
        $user_id = $this->session->userdata('user_login');
-       
+
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
+
       $id = $data['pessoa']->id_pessoa;
-       
-      $cliente = $this->cliente->getIdCliente($id);   
+
+      $cliente = $this->cliente->getIdCliente($id);
 
        $data = $this->input->post();
 
@@ -132,18 +132,18 @@ class Sac extends CI_Controller {
                );
 
                $this->sac->update($array, $id);
-               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
+               $this->session->set_flashdata('success', 'SAC atualizado com sucesso!');
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
+               $this->session->set_flashdata('danger', 'SAC não pode ser atualizado!');
                redirect('sac');
             }
 
-        } 
+        }
         else
         {
             $this->setTitle('Editar Sac');
-            
+
             $this->addData('sac',      $this->sac->getById($id_sac));
             $this->addData('id',       $id_sac);
             $this->addData('clientes', $this->cliente->get());
@@ -163,10 +163,10 @@ class Sac extends CI_Controller {
     *
     * @param integer $id_sac
     */
-    public function delete($id_sac) 
+    public function delete($id_sac)
     {
         $this->sac->remove($id_sac);
-        
+
         $this->redirectSuccess('SAC removido com sucesso');
     }
 
