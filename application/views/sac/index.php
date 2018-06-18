@@ -22,7 +22,7 @@
                     <strong class="card-title">SAC</strong>
                 </div>
                 <div class="card-body">
-                  <a href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                  <a title="Cadastrar Novo SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
                     <i class="fa fa-check"></i> Novo Cadastro
                   </a><br />
                   <br />
@@ -41,7 +41,7 @@
                             <?php if(isset($sac)): ?>
                                 <?php foreach($sac as $item): ?>
                                     <tr>
-                                       
+
                                         <td><?php echo $item->id_sac;?></td>
                                         <td><?=$item->titulo;?></td>
                                         <td><?=$item->id_cliente;?></td>
@@ -61,8 +61,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -88,13 +86,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Excluir</h5>
+                <h5 class="modal-title">Excluir SAC</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Deseja Realmente Excluir Esse SAC?
+                Deseja realmente excluir esse SAC?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

@@ -15,8 +15,14 @@
 
         public function setLog($tipo, $acao, $tabela, $id, $mensagem, $nome_item)
         {
-            $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'))->nome;
-            $dados['id_usuario'] = $this->session->userdata('user_login');
+            #quando usuario esta cadastrando a propria conta, não possui id_usuario ou nome
+            if($this->session->userdata('user_login')==null){
+              $dados['id_usuario']=-1;
+              $nome="usuario_inexistente";
+            }else{
+              $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome;
+              $dados['id_usuario'] = $this->session->userdata('user_login');
+            }
             $dados['tipo'] = $tipo;
             $dados['acao'] = $acao;
             $dados['data'] = date('Y-m-d H:i:s');

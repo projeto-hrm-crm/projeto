@@ -16,6 +16,7 @@ class Perfil extends CI_Controller {
     public function index(){
         
         
+        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
         $user_id = $this->session->userdata('user_login');
         
         $data['title'] = 'Meu Perfil';         

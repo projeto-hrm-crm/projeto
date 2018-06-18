@@ -45,7 +45,6 @@ class Sac extends CI_Controller {
     /**
     * @author: Rodrigo Alves
     * Página de cadastro.
-    *
     */
     public function create() {
       
@@ -139,15 +138,22 @@ class Sac extends CI_Controller {
                $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
                redirect('sac');
             }
-         }
 
-        $data['title'] = 'Editar SAC';
-        $data['sac'] = $this->sac->get();
-        $data['produtos'] = $this->produto->get();
-        $data['clientes'] = $this->cliente->get();
-        $data['tipo'] = $typeUser;
-        $data['id'] = $id;
-        loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
+        } 
+        else
+        {
+            $this->setTitle('Editar Sac');
+            
+            $this->addData('sac',      $this->sac->getById($id_sac));
+            $this->addData('id',       $id_sac);
+            $this->addData('clientes', $this->cliente->get());
+            $this->addData('produtos', $this->produto->get());
+            $this->addData('tipo',     $typeUser);
+
+            $this->loadFormDefaultScripts();
+
+            $this->loadView('editar');
+        }
 
     }
 
@@ -157,11 +163,46 @@ class Sac extends CI_Controller {
     *
     * @param integer $id_sac
     */
-    public function delete($id_sac) {
-       $this->sac->remove($id_sac);
-       $this->session->set_flashdata('success', 'SAC Excluído Com Sucesso!');
-       redirect('sac');
+    public function delete($id_sac) 
+    {
+        $this->sac->remove($id_sac);
+        
+        $this->redirectSuccess('SAC removido com sucesso');
     }
 
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post
+    *
+    * @param: $id_sac integer
+    */
+    private function getFromPost()
+    {
+        return array(
+            'id_produto' => $this->input->post('id_produto'),
+            'id_cliente' => $this->input->post('id_cliente'),
+            'abertura'   => date("Y-m-d H:i:s"),
+            'fechamento' => 0,
+            'encerrado'  => 0,
+            'titulo'     => $this->input->post('titulo'),
+            'descricao'  => $this->input->post('descricao'),
+        );
+    }
 
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post adicionado a eles o id_sac
+    *
+    * @param: $id_sac integer
+    */
+    private function getFromPostEdit($id_sac)
+    {
+        $postData = $this->getFromPost();
+
+        $postData['id_sac']     = $id_sac;
+        $postData['fechamento'] = $this->input->post('encerrado') ? date('Y-m-d H:i:s') : 0;
+        $postData['encerrado']  = $this->input->post('encerrado');
+
+        return $postData;
+    }
 }

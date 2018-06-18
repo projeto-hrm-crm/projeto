@@ -50,13 +50,12 @@ class Cliente_model extends CI_Model {
 			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa');
 		} catch (\Exception $e) {}
 
-	if ($query)
-	{
-		return $query->get()->result();
-	}else{
-		echo 'Não existem dados';
-		exit;
-	}
+		if ($query){
+			return $query->get()->result();
+		}else{
+			echo 'Não existem dados';
+			exit;
+		}
 	}
 
 	public function getById($id_cliente)
@@ -146,8 +145,26 @@ class Cliente_model extends CI_Model {
 			'data' => $chart,
 			'status' => 'ok'
 		];
+
 		return $data;
 	}
 
+	/**
+	* @author: Pedro Henrique
+	*
+	* Método responsável por trazer o total de clientes cadastrados no banco
+	* @param void
+	* @return int
+	*/
+	public function count()
+	{
+		$this->db->select("count(*) as clientes")
+			->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa');
+		$query = $this->db->get();
+
+		return $query->result()[0]->clientes;
+	}
 
 }

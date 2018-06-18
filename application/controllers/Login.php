@@ -12,15 +12,17 @@ class Login extends CI_Controller
     public function index()
     {
         $data = $this->input->post();
+       
         if ($this->form_validation->run('login')) {
            if (!$this->usuario->login($data)) {
                 $this->session->set_flashdata('login_error', 'Erro ao logar: Usuário e/ou senha inválidos');
             } else {
                 redirect(base_url());
-            }
-          
+            }          
         }
+       
         $this->load->view('login/index.php');
+       
     }
 
     /**

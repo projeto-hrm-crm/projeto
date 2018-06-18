@@ -1,97 +1,136 @@
 <?php
-class Setor extends CI_Controller
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Setor extends PR_Controller
 {
-  public $menus;
 
-  function __construct()
-  {
-    parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
-  }
-
-
-  public function index()
-  {
-    $data['title'] = 'Setores';
-    $data['setores'] = $this->setor->get();
-    $data['assets']= array(
-      'js' =>array(
-        'lib/data-table/datatables.min.js',
-        'lib/data-table/datatables.bootstrap.min.js',
-        'datatable.js',
-        'confirm.modal.js',
-      ),
-    );
-    loadTemplate(
-      'includes/header',
-      'setor/index',
-      'includes/footer', $data);
-  }
+    function __construct()
+    {
+        parent::__construct('setor');
+    }
 
     /**
-  * @author: Matheus Ladislau
-  * Realiza o cadastro de um setor, dados recebidos da view setor/cadastro.php
-  */
-  public function create()
-  {
-    $data = $this->input->post();
-
-    if($data){
-        $id_pessoa = $this->pessoa->insert(['nome' => $data['nome']]);
-   
-      $this->setor->insert($data);
-      $this->session->set_flashdata('success', 'setor cadastrado com sucesso');
-      redirect('setor');
-    }else{
-      $data['title'] = 'Cadastrar Setor';
-
-      $data['errors']          = $this->session->flashdata('errors');
-      $data['old_values']      = $this->session->flashdata('old_values');
-      loadTemplate(
-        'includes/header',
-        'setor/cadastrar.php',
-        'includes/footer',$data);
-  }
-}
-
-  /**
-  * @author: Matheus Ladislau
-  *Realiza edição de registro de um setor pelo id, dados recebidos pela view setor/editar.php
-  *
-  *@param integer: referen-se ao id do setor a ser alterado
-  */
-  public function edit($id_setor)
-  {
-    if($this->input->post())
+    * @author: Desconhecido
+    * Carrega a listagem de setores
+    */
+    public function index()
     {
-      $data["nome"]=$this->input->post("nome");
-      $this->setor->update($data,$id_setor);
-      $this->session->set_flashdata('success', 'setor alterado com sucesso');
-      redirect('setor');
-    }else{
-      $data['setor'] = $this->setor->find($id_setor);
-      $data['title'] = 'Editar Setor';
-      $data['id_setor'] = $id_setor;
-      loadTemplate(
-        'includes/header',
-        'setor/editar',
-        'includes/footer', $data);
-      }
+        $this->setTitle('Setores');
+        $this->addData('setores', $this->setor->get());
+        
+        $this->loadIndexDefaultScripts();
 
-  }
+        $this->loadView('index');
+    }
 
-  /**
-  * @author: Matheus Ladislau
-  * Realiza remoção de registro de um setor pelo id, dados recebidos pela view setor/delete.php
-  *
-  *@param integer: referen-se ao id do setor a ser alterado
-  */
-  public function delete($id_setor)
-  {
-    $this->setor->remove($id_setor);
-    $this->session->set_flashdata('success', 'setor excluído com sucesso');
-    redirect('setor');
-  }
+    /**
+    * @author: Matheus Ladislau
+    * Realiza o cadastro de um setor, dados recebidos da view setor/cadastro.php
+    */
+    public function create()
+    {
+        if($this->input->post())
+        {
+
+            if($this->form_validation->run('setor'))
+            {
+                $this->setor->insert($this->getFromPost());
+                
+                $this->redirectSuccess('Setor cadastrado com sucesso');
+            }
+            else
+            {
+                $this->redirectError('cadastrar');
+            }
+        }
+        else
+        {
+            $this->setTitle('Cadastrar Setor');
+            
+            $this->loadFormDefaultScripts();
+        
+            $this->loadView('cadastrar');
+            
+        }
+
+    }
+
+    /**
+    * @author: Matheus Ladislau
+    *Realiza edição de registro de um setor pelo id, dados recebidos pela view setor/editar.php
+    *
+    *@param integer: referen-se ao id do setor a ser alterado
+    */
+    public function edit($id_setor)
+    {
+        if ($this->input->post())
+        {
+
+            if($this->form_validation->run('setor'))
+            {
+                $this->setor->update($this->getFromPostEdit($id_setor));
+                $this->redirectSuccess('Setor atualizado com sucesso');
+            }
+            else
+            {
+                $this->redirectError('editar/'.$id_setor);
+            }
+
+        } 
+        else
+        {
+            $this->setTitle('Editar Setor');
+            
+            $this->addData('setor',    $this->setor->getById($id_setor));
+            $this->addData('id_setor', $id_setor);
+            
+            $this->loadFormDefaultScripts();
+
+            $this->loadView('editar');
+        }
+
+    }
+
+    /**
+    * @author: Matheus Ladislau
+    * Realiza remoção de registro de um setor pelo id, dados recebidos pela view setor/delete.php
+    *
+    *@param integer: referen-se ao id do setor a ser alterado
+    */
+    public function delete($id_setor)
+    {
+        $this->setor->remove($id_setor);
+        
+        $this->redirectSuccess('Setor removido com sucesso');
+    }
+
+
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post
+    * 
+    * @return: mixed
+    */
+    private function getFromPost()
+    {
+        return array(
+            'nome' => $this->input->post('nome')
+        );
+    }
+
+    /**
+    * @author: Tiago Villalobos
+    * Retorna um array com dados pegos por post adicionado a eles o id_setor
+    * 
+    * @return: mixed
+    */
+    private function getFromPostEdit($id_setor)
+    {
+        $postData = $this->getFromPost();
+
+        $postData['id_setor'] =  $id_setor;
+
+        return $postData;
+    }
 }

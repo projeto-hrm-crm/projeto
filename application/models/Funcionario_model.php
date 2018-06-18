@@ -17,6 +17,14 @@ class Funcionario_model extends CI_Model {
             'email' => $data['email']
         ]);
 
+        $this->usuario->insert([
+            'login'             => $data['nome'],
+            'senha'             => md5(rand(0, 9999)), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
+            'id_grupo_acesso'   => 6,
+            'id_pessoa'         => $id_pessoa
+        ]);
+
+
         $this->endereco->insert([
             'cep'           => $data['cep'],
             'bairro'        => $data['bairro'],
@@ -186,5 +194,23 @@ class Funcionario_model extends CI_Model {
 			return $id_funcionario;
 	    } catch (\Exception $e) {}
 			// delete pessoa fisica;
+    }
+
+    /**
+    * @author: Pedro Henrique
+    * Método responsável por contar o total de funcionários
+    *
+    * @param void
+    * @return int
+    */
+
+    public function count()
+    {
+        $this->db->select('count(*) as funcionarios')
+                 ->from('pessoa as p')
+                 ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
+                 ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
+        $result = $this->db->get();
+        return $result->result()[0]->funcionarios;
     }
 }

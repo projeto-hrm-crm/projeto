@@ -546,6 +546,65 @@ $config = array(
               'rules' => 'required'
           ),
       ),
+
+    'candidato' =>
+        array(
+            array(
+                'field' => 'nome',
+                'label' => 'nome completo',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'email',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'sexo',
+                'label' => 'sexo',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'cpf',
+                'label' => 'cpf',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'tel',
+                'label' => 'telefone',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'cep',
+                'label' => 'cep',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'estado',
+                'label' => 'estado',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'cidade',
+                'label' => 'cidade',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'bairro',
+                'label' => 'bairro',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'logradouro',
+                'label' => 'endereço',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'numero',
+                'label' => 'número',
+                'rules' => 'required|numeric'
+            ),
+        ),
 );
 
 /**

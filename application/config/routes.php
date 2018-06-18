@@ -166,3 +166,4 @@ $route['cliente/chart']        = 'Cliente/getChartData';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
