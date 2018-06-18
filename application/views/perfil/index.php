@@ -32,7 +32,7 @@
                                           <b>Nome</b><br>
                                           <?=$pessoa[0]->nome;?>
                                        </td>
-                                       <td>
+                                       <td colspan="2">
                                           <b>E-mail</b><br>
                                           <?=$pessoa[0]->email;?>
                                        </td>                                
@@ -54,13 +54,13 @@
                                        </td>
                                         <td>
                                            <b>Cidade</b>
-                                          <?=$endereco[0]->cep;?>
+                                          <?=$cidade[0]->nome;?> -  <?=$estado[0]->uf;?>
                                        </td>
                                     </tr>
                                 </tbody>                            
                             </table>
-                           <button class="btn btn-primary btn-sm">Alterar Dados</button>
-                           <button class="btn btn-primary btn-sm">Alterar Senha</button>
+                           <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Alterar Dados</a>
+                           <a href="<?=site_url('perfil/alterar-senha/')?>" class="btn btn-primary btn-sm">Alterar Senha</a>
                         </div>
                     </div>
                 </div>

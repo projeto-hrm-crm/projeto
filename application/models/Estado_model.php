@@ -17,6 +17,18 @@ class Estado_model extends CI_Model
 		$this->db->order_by('estado.nome', 'ASC');
 		return $this->db->get('estado')->result();
 	}
+   
+   /**
+	* @author Rodrigo
+	* Retorna uma cidade especifica
+	* 
+	* @return mixed array de objetos
+	*/
+	public function getById($id)
+	{	
+		$this->db->select('*');
+		return $this->db->get_where('estado', array('id_estado' => $id))->result();
+	}
 
 	public function update(){}
 
