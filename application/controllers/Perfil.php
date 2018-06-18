@@ -22,7 +22,7 @@ class Perfil extends CI_Controller {
         $data['title'] = 'Meu Perfil';         
         $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
-        $id = $data['pessoa']->id_pessoa;
+        $id = $data['pessoa'][0]->id_pessoa;
        
         $data['endereco'] = $this->endereco->findAddress($id);
         

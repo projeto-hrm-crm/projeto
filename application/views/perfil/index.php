@@ -29,10 +29,10 @@
                                 <tbody>
                                     <tr>
                                         <td><b>Nome</b></td>
-                                        <td><?=$pessoa->nome;?></td> 
+                                        <td><?=$pessoa[0]->nome;?></td> 
                                        
                                         <td><b>E-mail</b></td>
-                                        <td colspan="4"><?=$pessoa->email;?></td>                                    
+                                        <td colspan="4"><?=$pessoa[0]->email;?></td>                                    
                                     </tr>
                                     <tr>
                                         <td><b>Endereço</b></td>

@@ -14,7 +14,7 @@ class Sac extends CI_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
-      $id = $data['pessoa']->id_pessoa;
+      $id = $data['pessoa'][0]->id_pessoa;
        
       $cliente = $this->cliente->getIdCliente($id);      
        
@@ -53,7 +53,7 @@ class Sac extends CI_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
-      $id = $data['pessoa']->id_pessoa;
+      $id = $data['pessoa'][0]->id_pessoa;
        
       $cliente = $this->cliente->getIdCliente($id); 
        
@@ -107,7 +107,7 @@ class Sac extends CI_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
-      $id = $data['pessoa']->id_pessoa;
+      $id = $data['pessoa'][0]->id_pessoa;
        
       $cliente = $this->cliente->getIdCliente($id);   
 
@@ -165,8 +165,7 @@ class Sac extends CI_Controller {
     */
     public function delete($id_sac) 
     {
-        $this->sac->remove($id_sac);
-        
+        $this->sac->remove($id_sac);        
         $this->redirectSuccess('SAC removido com sucesso');
     }
 
