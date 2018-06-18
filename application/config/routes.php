@@ -160,6 +160,8 @@ $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 //Rotas Perfil
 $route['perfil'] = 'Perfil/index';
+$route['perfil/editar'] = 'Perfil/edit';
+$route['perfil/alterar-senha'] = 'Perfil/changePassword';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
