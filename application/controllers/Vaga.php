@@ -40,7 +40,7 @@ class Vaga extends CI_Controller
         ),
       );
 
-      loadTemplate('includes/header', 'Vaga/index', 'includes/footer', $data);
+      loadTemplate('includes/header', 'vaga/index', 'includes/footer', $data);
     }
 
 

@@ -80,4 +80,21 @@ class Cargo_model extends PR_Model
         ->get('cargo')
         ->row();
     }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * Método Responsável por buscar todos os cargos cadastrados
+     *
+     * @param void
+     * @return int
+     */
+    public function count()
+    {
+        $this->db->select('count(*) as cargos')
+                 ->from('cargo');
+        $query = $this->db->get();
+
+        return $query->result()[0]->cargos;
+
+    }
 }

@@ -69,7 +69,7 @@ class Cliente extends CI_Controller
         $this->usuario->insert([
             'login'             => $data['email'],
             'senha'             => $data['senha2'],
-            'id_grupo_acesso'   => 1,
+            'id_grupo_acesso'   => 4,
             'id_pessoa'         => $id_pessoa
         ]);
 

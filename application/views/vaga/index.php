@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
 	<div class="row">
-		<div class="col-lg-10">
+		<div class="col-lg-12">
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
                     <?php echo $success_message; ?>

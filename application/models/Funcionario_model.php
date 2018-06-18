@@ -17,6 +17,14 @@ class Funcionario_model extends CI_Model {
             'email' => $data['email']
         ]);
 
+        $this->usuario->insert([
+            'login'             => $data['nome'],
+            'senha'             => md5(rand(0, 9999)), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
+            'id_grupo_acesso'   => 6,
+            'id_pessoa'         => $id_pessoa
+        ]);
+
+
         $this->endereco->insert([
             'cep'           => $data['cep'],
             'bairro'        => $data['bairro'],

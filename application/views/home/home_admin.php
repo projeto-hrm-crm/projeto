@@ -1,3 +1,6 @@
+<?php if ($this->session->flashdata('permissions_ok') != ""): ?>
+    <div class="alert alert-success"><?php echo $this->session->flashdata('permissions_ok');?></div>
+<?php endif;?>
 <div class="default-tab">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -98,22 +101,28 @@
 							  	<span class="text-center text-muted">Último contato registrado</span>
 							  	<hr>
 						  	</div>
-						  	<div class="stat-widget-four">
-				                <div class="stat-icon dib">
-				                    <i class="ti-user text-muted"></i>
-				                </div>
-				                <div class="stat-content">
-				                    <div class="text-left dib">
-				                        <div class="stat-text"><?php echo $admin['last_sac']->nome;?></div>
-				                        <div class="stat-text">Data: <?php echo switchDate($admin['last_sac']->data_criacao);?></div>
-				                    </div>
-				                </div>
-				            </div>
+                              <?php if ($admin['last_sac']): ?>
+                                <div class="stat-widget-four">
+                                    <div class="stat-icon dib">
+                                        <i class="ti-user text-muted"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><?php echo $admin['last_sac']->nome;?></div>
+                                            <div class="stat-text">Data: <?php echo switchDate($admin['last_sac']->data_criacao);?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                              <?php else: ?>
+                              <div class="text-center text-muted"> Nenhum contato registrado. </div>
+                              <?php endif;?>
 						  </div>
 						  <div class="card-footer text-center">
-						    <button type="submit" class="btn bg-flat-color-1 text-light btn-sm">
-						      <i class="fa fa-dot-circle-o"></i> Responder
-						    </button>
+						    <?php if ($admin['last_sac']): ?>
+                              <button type="submit" class="btn bg-flat-color-1 text-light btn-sm">
+                                  <i class="fa fa-dot-circle-o"></i> Responder
+                              </button>
+                            <?php endif;?>
 						  </div>
 					</div>
 				</div>

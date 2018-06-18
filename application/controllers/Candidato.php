@@ -57,21 +57,35 @@ class Candidato extends CI_Controller
   public function create()
   {
     $data['candidato']  = $this->input->post();
+
+
     if($data['candidato']){
-      if(!$this->form_validation->run('usuario'))
-      {
+      if(!$this->form_validation->run('candidato')) {
             $data['old_data'] = $this->input->post();
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             $this->session->set_flashdata('old_data', $this->input->post());
             redirect('candidato/cadastrar');
       }
-      else
-      {
-        $id_pessoa = $this->pessoa->insert(['nome' => $data['candidato']['nome'], 'email' => $data['candidato']['email']]);
+      else {
+        $id_pessoa = $this->pessoa->insert([
+            'nome' => $data['candidato']['nome'],
+            'email' => $data['candidato']['email']]);
 
-        $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
-        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
-        ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+          $this->usuario->insert([
+              'login'             => $data['candidato']['email'],
+              'senha'             => md5($data['candidato']['email']), /*essa é a forma correta para qualquer usuário. Gerar uma senha default baseada no e-mail e depois ele muda. */
+              'id_grupo_acesso'   => 5,
+              'id_pessoa'         => $id_pessoa
+          ]);
+
+        $this->endereco->insert([
+            'cep'=> $this->input->post('cep'),
+            'bairro' => $this->input->post('bairro'),
+            'logradouro'  => $this->input->post('logradouro'),
+            'numero' => $this->input->post('numero'),
+            'complemento' => $this->input->post('complemento'),
+            'id_pessoa'  => $id_pessoa,
+            'id_cidade' => $this->input->post('cidade')]);
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 

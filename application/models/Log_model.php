@@ -20,7 +20,7 @@
               $dados['id_usuario']=-1;
               $nome="usuario_inexistente";
             }else{
-              $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'))->nome;
+              $nome = $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome;
               $dados['id_usuario'] = $this->session->userdata('user_login');
             }
             $dados['tipo'] = $tipo;

@@ -109,4 +109,25 @@ class Vaga_model extends CI_Model
         return $query->result()[0]->vagas;
     }
 
+    /**
+     * @author Pedro Henrique Guimarães
+     * Método responsável por buscar as últimas vagas
+     *
+     * @param int $total - total de vagas a retornar
+     * @return mixed
+     */
+    public function getLastJobOpportunity($total)
+    {
+        $this->db->limit($total);
+
+        $this->db->select('*')
+                 ->from('vaga')
+                 ->join('cargo', 'vaga.id_cargo = cargo.id_cargo');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0)
+            return $query->result();
+        return null;
+    }
+
 }

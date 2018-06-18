@@ -63,7 +63,7 @@ class Fornecedor_model extends CI_Model
     $this->usuario->insert([
        'login'          => $data['email'],
        'senha'          => $data['senha2'],
-       'id_grupo_acesso'=> 1,
+       'id_grupo_acesso'=> 3,
        'id_pessoa'      => $id_pessoa
     ]);
 

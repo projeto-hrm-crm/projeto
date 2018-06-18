@@ -66,7 +66,7 @@
 						  </a>
 	                    <button  title="Atualizar Vaga" type="submit" class="btn bg-primary text-white btn-sm" >
 	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        EAtualizar
+	                        Atualizar
 	                    </button>
 	                </div>
 

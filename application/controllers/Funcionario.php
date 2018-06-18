@@ -27,7 +27,7 @@ class Funcionario extends PR_Controller
   {
     $this->setTitle('Funcionarios');
 
-    $this->addData('funcionarios',$this->funcionario->get())
+    $this->addData('funcionarios',$this->funcionario->get());
     
     $this->loadIndexDefaultScripts();
 

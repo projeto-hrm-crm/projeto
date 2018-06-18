@@ -56,13 +56,18 @@ class Home extends CI_Controller
   {
     $data = [];
 
-    $data['clientes']     = $this->cliente->count();
-    $data['fornecedores'] = $this->fornecedor->count();
-    $data['produtos']     = $this->produto->count();
-    $data['funcionarios'] = $this->funcionario->count();
-    $data['cargos']       = $this->cargo->count();
-    $data['vagas']        = $this->vaga->count();
-    $data['last_sac']     = $this->sac->getLastSac();
+    //CRM
+    $data['clientes']           = $this->cliente->count();
+    $data['fornecedores']       = $this->fornecedor->count();
+    $data['produtos']           = $this->produto->count();
+    $data['last_sac']           = $this->sac->getLastSac();
+
+    //HRM
+    $data['funcionarios']       = $this->funcionario->count();
+    $data['cargos']             = $this->cargo->count();
+    $data['vagas']              = $this->vaga->count();
+    $data['job_opportunity']    = $this->vaga->getLastJobOpportunity(3);
+
     return $data;
   }
 
