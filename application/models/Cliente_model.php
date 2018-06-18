@@ -58,6 +58,21 @@ class Cliente_model extends CI_Model {
 		}
 	}
 
+	public function getClienteByUserID($id)
+	{
+		try {
+			$query = $this->db->select("*")->from("cliente")
+			->join('usuario', 'cliente.id_pessoa = usuario.id_pessoa');
+		} catch (\Exception $e) {}
+
+		if ($query){
+			return $query->get()->result();
+		}else{
+			echo 'Não existem dados';
+			exit;
+		}
+	}
+
 	public function getById($id_cliente)
 	{
 		try {
@@ -90,7 +105,7 @@ class Cliente_model extends CI_Model {
 			}
 		} catch (\Exception $e) {}
 	}
-   
+
    public function GetIdCliente($id)
 	{
 		try {
