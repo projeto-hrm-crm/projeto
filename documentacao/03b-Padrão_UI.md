@@ -61,11 +61,13 @@
   - Botão de cadastrar (bg-primary) azul
   - Botão de editar(bg-primary) azul
 
+
 - Ícones dos botões (Fontawesome):
   -	Botão de cadastro: https://fontawesome.com/v4.7.0/icon/plus/
   - Botão de exclusão: https://fontawesome.com/v4.7.0/icon/times/
   - Botão de edição: https://fontawesome.com/v4.7.0/icon/pencil-square-o/
   -	A cor dos ícones deve ser branca.
+  
 
 -	Botão de cancelar à esquerda e botão de cadastrar à direita em *todos os formulários*.
 
