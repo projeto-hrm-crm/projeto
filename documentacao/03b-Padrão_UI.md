@@ -19,7 +19,7 @@
 
 - Barra de pesquisa no lado direito superior da lista.
 
-- Classe Bootstrap para a tabela de listagem: "table table-striped table-bordered datatable"
+- Classe Bootstrap para a tabela de listagem: "table table-striped table-bordered datatable".
 
 ### Formulários
 -	Formulário com col-10 e os inputs precisam ter colunas diferentes para cada tela.  Quando temos uma tela de notebook/computador os botões não devem ficar um embaixo do outro (col-12), eles precisam, no mínimo, ficar um ao lado do outro (no mínimo col-6), apenas em telas menores os campos devem ocupar todo o tamanho da div.
@@ -57,7 +57,7 @@
 
 ### Botões
 -	Cores dos botões (Bootstrap):
-  -	Botão de excluir (bg-danger) vermelho
+  - Botão de excluir (bg-danger) vermelho
   - Botão de cadastrar (bg-primary) azul
   - Botão de editar(bg-primary) azul
 
