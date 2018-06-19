@@ -143,8 +143,14 @@ class Processo_Seletivo extends CI_Controller
   public function info($id)
   {
     $data['info'] = $this->processo_seletivo->info($id);
+    $data['vaga'] = $this->vaga->getById($data['info'][0]->id_vaga);
+    $data['info'][0]->data_fim = switchDate($data['info'][0]->data_fim);
+    $data['info'][0]->data_inicio = switchDate($data['info'][0]->data_inicio);
     $data['title'] = 'Informações Processo Seletivo';
     $data['etapas'] = $this->etapa->find($id);
+    foreach ($data['etapas'] as $key => $etapa) {
+      $data['etapas'][$key]->candidatos = $this->candidato_etapa->get($etapa->id_etapa);
+    }
     $data['assets'] = array(
       'js' => array(
         'processo_seletivo/textarea_auto_expand.js',
