@@ -6,24 +6,28 @@ class Sac extends PR_Controller {
   }
 
     public function index(){
-
+       
+      //Pega o id de usuario da sessão
       $user_id = $this->session->userdata('user_login');
-
+       
+      //Pega o tipo de usuario e informações de pessoas
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      // $id_pessoa = $data['pessoa']->id_pessoa;
-      // $cliente = $this->cliente->getIdCliente($id);
-
-      $data['title'] = 'Solicitações SAC';
-      $data['tipo'] = $typeUser;
+      // Pegar informações de cliente
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;  
+       
       if($typeUser=="1"){
          $data['sac'] = $this->sac->get();
       }else{
-          $cliente=$this->cliente->getClienteByUserID($user_id);
-          $id_cliente=$cliente[0]->id_cliente;
+          $cliente = $this->cliente->getIdCliente($id_pessoa);
+          $id_cliente = $cliente[0]->id_cliente;
           $data['sac'] = $this->sac->getClient($id_cliente);
       }
+       
+      $data['title'] = 'Solicitações SAC';
+      $data['tipo'] = $typeUser;
+       
       $data['assets'] = array(
         'js' => array(
           'lib/data-table/datatables.min.js',
@@ -49,24 +53,24 @@ class Sac extends PR_Controller {
 
       $user_id = $this->session->userdata('user_login');
 
+      //Pega o tipo de usuario e informações de pessoas
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      // $id = $data['pessoa']->id_pessoa;
-      // $cliente = $this->cliente->getIdCliente($id);
-
-      $data = $this->input->post();
+      // Pegar informações de cliente
+      $id_pessoa = $data['pessoa'][0]->id_pessoa; 
+      $cliente = $this->cliente->getIdCliente($id_pessoa);      
 
       if($typeUser=="1"){
          $id_cliente = $this->input->post('id_cliente');
       }else {
-         $id_cliente = $user_id;
+         $id_cliente = $cliente[0]->id_cliente;
       }
+       
+      $data = $this->input->post();
 
       if($data){
 
-        $cliente=$this->cliente->getClienteByUserID($user_id);
-        $id_cliente=$cliente[0]->id_cliente;
          if ($this->form_validation->run('sac')) {
             $array = array(
               'id_produto' => $this->input->post('id_produto'),
@@ -110,9 +114,15 @@ class Sac extends PR_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      // $id = $data['pessoa']->id_pessoa;
-
-      // $cliente = $this->cliente->getIdCliente($id);
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;
+      $cliente = $this->cliente->getIdCliente($id_pessoa);
+       
+       
+       if($typeUser=="1"){
+         $id_cliente = $this->input->post('id_cliente');
+      }else {
+         $id_cliente = $cliente[0]->id_cliente;
+      }
 
        $data = $this->input->post();
 
@@ -144,21 +154,12 @@ class Sac extends PR_Controller {
             }
 
         }
-        else
-        {
+        else {
             $data['title']='Editar Sac';
             $data['id']=$id;
             $data['sac']=$this->sac->find($id);
             $data['produtos']=$this->produto->get();
-            // $this->addData('sac',      $this->sac->getById($id_sac));
-            // $this->addData('id',       $id_sac);
-            // $this->addData('clientes', $this->cliente->get());
-            // $this->addData('produtos', $this->produto->get());
-            // $this->addData('tipo',     $typeUser);
-
-            // $this->loadFormDefaultScripts();
-
-            // $this->loadView('editar');
+           
             loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
         }
 
