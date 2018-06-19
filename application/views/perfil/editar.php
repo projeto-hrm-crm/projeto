@@ -98,10 +98,10 @@
       </div>
    </div>
        <div class="card-footer text-right">
-          <a href="<?= site_url('fornecedor')?>" class="btn btn-danger  btn-sm" title="Cancelar Edição">
+          <a href="<?= site_url('perfil')?>" class="btn btn-danger  btn-sm" title="Cancelar Edição">
                <i class="fa fa-times"></i> Cancelar
             </a>
-            <button title="Atualizar Cadastro" type="button" class="btn btn-primary  btn-sm" data-toggle="modal" data-target="#editarFornecedor">
+            <button title="Atualizar Cadastro" type="button" class="btn btn-primary  btn-sm" data-toggle="modal" data-target="#editarPerfil">
                <span class="fa fa-check"></span>
                Atualizar
            </button>
@@ -114,7 +114,7 @@
 </div>
 
 
- <div class="modal fade" id="editarFornecedor" role="dialog" aria-hidden="true">
+ <div class="modal fade" id="editarPerfil" role="dialog" aria-hidden="true">
        <div class="modal-dialog" role="document">
            <div class="modal-content">
                <div class="modal-header">
