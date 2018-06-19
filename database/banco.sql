@@ -151,7 +151,13 @@ CREATE TABLE `grupo_acesso` (
   PRIMARY KEY (`id_grupo_acesso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `grupo_acesso` VALUES (1,'admin'),(2,'teste'),(3,'fornecedor'),(4,'cliente'),(5,'candidato'),(6,'funcionario');
+INSERT INTO `grupo_acesso` VALUES
+(1,'admin'),
+(2,'teste'),
+(3,'fornecedor'),
+(4,'cliente'),
+(5,'candidato'),
+(6,'funcionario');
 
 DROP TABLE IF EXISTS `grupo_acesso_menu`;
 
@@ -166,7 +172,20 @@ CREATE TABLE `grupo_acesso_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `grupo_acesso_menu` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(3,13),(1,14);
+INSERT INTO `grupo_acesso_menu` VALUES (1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(1,6),
+(1,7),
+(1,8),
+(1,9),
+(1,10),
+(1,11),
+(1,12),
+(3,13),
+(1,14);
 
 
 DROP TABLE IF EXISTS `iteracao`;
@@ -178,8 +197,11 @@ CREATE TABLE `iteracao` (
   `id_sac` int(11) NOT NULL,
   `id_funcionario` int(11) NOT NULL,
   PRIMARY KEY (`id_iteracao`),
+
   KEY `fk_iteracao_sac1_idx` (`id_sac`),
+
   KEY `fk_iteracao_funcionario1_idx` (`id_funcionario`),
+
   CONSTRAINT `fk_iteracao_funcionario1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_iteracao_sac1` FOREIGN KEY (`id_sac`) REFERENCES `sac` (`id_sac`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -209,7 +231,24 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `menu` VALUES (1,'Produto','fa fa-gift'),(2,'Cliente','fa fa-user'),(3,'Candidato','fa fa-address-book'),(4,'Fornecedor','fa fa-truck'),(5,'Funcionario','fa fa-address-card'),(6,'Cargo','fa fa-briefcase'),(7,'Setor','fa fa-building'),(8,'SAC','fa fa-phone-square'),(9,'Vaga','fa fa-newspaper-o'),(10,'Processo Seletivo','fa fa-address-card'),(11,'Candidato Etapa','fa fa-bars'),(12,'Pedido','fa fa-archive');
+INSERT INTO `menu` VALUES (1,'Produto','fa fa-gift'),
+(2,'Cliente','fa fa-user'),
+(3,'Candidato','fa fa-address-book'),
+(4,'Fornecedor','fa fa-truck'),
+(5,'Funcionario','fa fa-address-card'),
+(6,'Cargo','fa fa-briefcase'),
+(7,'Setor','fa fa-building'),
+(8,'SAC','fa fa-phone-square'),
+(9,'Vaga','fa fa-newspaper-o'),
+(10,'Processo Seletivo','fa fa-address-card'),
+(11,'Candidato Etapa','fa fa-bars'),
+(12,'Pedido','fa fa-archive')
+-- FORNECEDOR
+-- CLIENTE
+-- FUNCIIONARIO
+-- CANDIDATO
+
+;
 
 
 DROP TABLE IF EXISTS `pais`;
@@ -365,7 +404,68 @@ CREATE TABLE `sub_menu` (
   CONSTRAINT `fk_sub_menu_menu1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
-INSERT INTO `sub_menu` VALUES (1,'Cadastrar',1,'produto/cadastrar','fa fa-plus',1),(2,'Listar',1,'produto','fa fa-list',1),(3,'Cadastrar',2,'cliente/cadastrar','fa fa-plus',1),(4,'Listar',2,'cliente','fa fa-list',1),(5,'Cadastrar',3,'candidato/cadastrar','fa fa-plus',1),(6,'Listar',3,'candidato','fa fa-list',1),(7,'Cadastrar',4,'fornecedor/cadastrar','fa fa-plus',1),(8,'Listar',4,'fornecedor','fa fa-list',1),(9,'Cadastrar',5,'funcionario/cadastrar','fa fa-plus',1),(10,'Listar',5,'funcionario','fa fa-list',1),(11,'Cadastrar',6,'cargo/cadastrar','fa fa-plus',1),(12,'Listar',6,'cargo','fa fa-list',1),(13,'Cadastrar',7,'setor/cadastrar','fa fa-plus',1),(14,'Listar',7,'setor','fa fa-list',1),(15,'Cadastrar',8,'sac/cadastrar','fa fa-plus',1),(16,'Listar',8,'sac','fa fa-list',1),(17,'Editar',1,'produto/editar',NULL,0),(18,'Editar',2,'cliente/editar',NULL,0),(19,'Editar',3,'candidato/editar',NULL,0),(20,'Editar',4,'fornecedor/editar',NULL,0),(21,'Editar',5,'funcionario/editar',NULL,0),(22,'Editar',6,'cargo/editar',NULL,0),(23,'Editar',7,'setor/editar',NULL,0),(24,'Editar',8,'sac/editar',NULL,0),(25,'Cadastrar',9,'vaga/cadastrar','fa fa-plus',1),(26,'Listar',9,'vaga','fa fa-list',1),(27,'Editar',9,'vaga/editar',NULL,0),(28,'Excluir',1,'produto/excluir',NULL,0),(29,'Excluir',2,'cliente/excluir',NULL,0),(30,'Excluir',3,'candidato/excluir',NULL,0),(31,'Excluir',4,'fornecedor/excluir',NULL,0),(32,'Excluir',5,'funcionario/excluir',NULL,0),(33,'Excluir',6,'cargo/excluir',NULL,0),(34,'Excluir',7,'setor/excluir',NULL,0),(35,'Excluir',8,'sac/excluir',NULL,0),(36,'Excluir',9,'vaga/excluir',NULL,0),(37,'Cadastrar',10,'processo_seletivo/cadastrar','fa fa-plus',1),(38,'Cadastrar',11,'candidato_etapa/cadastrar','fa fa-plus',1),(39,'Cadastrar',12,'pedido/cadastrar','fa fa-plus',1),(40,'Listar',10,'processo_seletivo','fa fa-list',1),(41,'Listar',11,'candidato_etapa','fa fa-list',1),(42,'Listar',12,'pedido','fa fa-list',1),(43,'Excluir',10,'processo_seletivo/excluir',NULL,0),(44,'Excluir',11,'candidato_etapa/excluir',NULL,0),(45,'Excluir',12,'pedido/excluir',NULL,0),(46,'Informação',10,'processo_seletivo/info','fa fa-info',1),(47,'Editar',10,'proceso_seletivo/editar',NULL,0),(48,'Editar',11,'candidato_etapa/editar',NULL,0),(49,'Editar',12,'pedido/editar',NULL,0),(50,'PDF',12,'pedido/pdf',NULL,0),(51,'JSON',12,'pedido/fornecedores',NULL,0),(52,'JSON',12,'pedido/clientes',NULL,0),(53,'JSON',12,'pedido/produtos',NULL,0),(54,'JSON',12,'pedido/produtos/fornecedor',NULL,0),(55,'Listar',13,'pedido/fornecedor','fa fa-list',1),(56,'Editar',12,'pedido/fornecedor/editar',NULL,0),(57,'Home',2,'cliente/chart',NULL,0);
+INSERT INTO `sub_menu` VALUES (1,'Cadastrar',1,'produto/cadastrar','fa fa-plus',1),
+(2,'Listar',1,'produto','fa fa-list',1),
+(3,'Cadastrar',2,'cliente/cadastrar','fa fa-plus',1),
+(4,'Listar',2,'cliente','fa fa-list',1),
+(5,'Cadastrar',3,'candidato/cadastrar','fa fa-plus',1),
+(6,'Listar',3,'candidato','fa fa-list',1),
+(7,'Cadastrar',4,'fornecedor/cadastrar','fa fa-plus',1),
+(8,'Listar',4,'fornecedor','fa fa-list',1),
+(9,'Cadastrar',5,'funcionario/cadastrar','fa fa-plus',1),
+(10,'Listar',5,'funcionario','fa fa-list',1),
+(11,'Cadastrar',6,'cargo/cadastrar','fa fa-plus',1),
+(12,'Listar',6,'cargo','fa fa-list',1),
+(13,'Cadastrar',7,'setor/cadastrar','fa fa-plus',1),
+(14,'Listar',7,'setor','fa fa-list',1),
+(15,'Cadastrar',8,'sac/cadastrar','fa fa-plus',1),
+(16,'Listar',8,'sac','fa fa-list',1),
+(17,'Editar',1,'produto/editar',NULL,0),
+(18,'Editar',2,'cliente/editar',NULL,0),
+(19,'Editar',3,'candidato/editar',NULL,0),
+(20,'Editar',4,'fornecedor/editar',NULL,0),
+(21,'Editar',5,'funcionario/editar',NULL,0),
+(22,'Editar',6,'cargo/editar',NULL,0),
+(23,'Editar',7,'setor/editar',NULL,0),
+(24,'Editar',8,'sac/editar',NULL,0),
+(25,'Cadastrar',9,'vaga/cadastrar','fa fa-plus',1),
+(26,'Listar',9,'vaga','fa fa-list',1),
+(27,'Editar',9,'vaga/editar',NULL,0),
+(28,'Excluir',1,'produto/excluir',NULL,0),
+(29,'Excluir',2,'cliente/excluir',NULL,0),
+(30,'Excluir',3,'candidato/excluir',NULL,0),
+(31,'Excluir',4,'fornecedor/excluir',NULL,0),
+(32,'Excluir',5,'funcionario/excluir',NULL,0),
+(33,'Excluir',6,'cargo/excluir',NULL,0),
+(34,'Excluir',7,'setor/excluir',NULL,0),
+(35,'Excluir',8,'sac/excluir',NULL,0),
+(36,'Excluir',9,'vaga/excluir',NULL,0),
+(37,'Cadastrar',10,'processo_seletivo/cadastrar','fa fa-plus',1),
+(38,'Cadastrar',11,'candidato_etapa/cadastrar','fa fa-plus',1),
+(39,'Cadastrar',12,'pedido/cadastrar','fa fa-plus',1),
+(40,'Listar',10,'processo_seletivo','fa fa-list',1),
+(41,'Listar',11,'candidato_etapa','fa fa-list',1),
+(42,'Listar',12,'pedido','fa fa-list',1),
+(43,'Excluir',10,'processo_seletivo/excluir',NULL,0),
+(44,'Excluir',11,'candidato_etapa/excluir',NULL,0),
+(45,'Excluir',12,'pedido/excluir',NULL,0),
+(46,'Informação',10,'processo_seletivo/info','fa fa-info',1),
+(47,'Editar',10,'proceso_seletivo/editar',NULL,0),
+(48,'Editar',11,'candidato_etapa/editar',NULL,0),
+(49,'Editar',12,'pedido/editar',NULL,0),
+(50,'PDF',12,'pedido/pdf',NULL,0),
+(51,'JSON',12,'pedido/fornecedores',NULL,0),
+(52,'JSON',12,'pedido/clientes',NULL,0),
+(53,'JSON',12,'pedido/produtos',NULL,0),
+(54,'JSON',12,'pedido/produtos/fornecedor',NULL,0),
+(55,'Listar',13,'pedido/fornecedor','fa fa-list',1),
+(56,'Editar',12,'pedido/fornecedor/editar',NULL,0),
+(57,'Home',2,'cliente/chart',NULL,0)
+-- FORNECEDOR
+-- CLIENTE
+-- FUNCIIONARIO
+-- CANDIDATO
+;
 
 
 DROP TABLE IF EXISTS `telefone`;
