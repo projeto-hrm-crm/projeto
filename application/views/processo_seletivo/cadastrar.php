@@ -49,6 +49,7 @@
            <div class="form-group col-12">
             <label class=" form-control-label">Vaga</label>
              <select class="form-control" name="id_vaga">
+               <option value="">Selecione uma Vaga</option>
                <?php foreach ($vagas as $vaga): ?>
                  <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
                <?php endforeach; ?>
