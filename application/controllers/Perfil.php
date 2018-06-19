@@ -43,23 +43,47 @@ class Perfil extends CI_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
       $user_id = $this->session->userdata('user_login');
       
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+        
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;
       
       $data = $this->input->post();
      
        if ($data)  {
          if ($this->form_validation->run('perfil'))
          {
-           $this->usuario->update($id, $data);
-           $this->session->set_flashdata('success', 'Fornecedor Atualizado Com Sucesso!');
-           redirect('fornecedor');
+            
+            $this->pessoa->update([
+               'nome' => $data['nome'],
+               'email' => $data['email'],
+               'id_pessoa'     => $id_pessoa
+             ]);
+            
+            $this->usuario->update([
+               'login' => $data['email'],
+               'id_usuario'     => $user_id
+             ]);
+            
+            $this->endereco->update([
+              'cep'           => $data['cep'],
+              'bairro'        => $data['bairro'],
+              'logradouro'    => $data['logradouro'],
+              'numero'        => $data['numero'],
+              'complemento'   => $data['complemento'],
+              'id_pessoa'     => $id_pessoa,
+              'id_cidade'     => $data['id_cidade']
+          ]);
+            
+           $this->session->set_flashdata('success', 'Perfil Atualizado Com Sucesso!');
+           redirect('perfil');
          }else{
-           $this->session->set_flashdata('danger', 'Fornecedor Não Pode Ser Atualizado!');
-           redirect('fornecedor/edit/'.$id);
+           $this->session->set_flashdata('danger', 'Perfil Não Pode Ser Atualizado!');
+           redirect('perfil/editar/');
          }
        }
       
 
-      $data['title'] = 'Meu Perfil';         
+      $data['title'] = 'Editar Dados';         
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
       $id = $data['pessoa'][0]->id_pessoa;
