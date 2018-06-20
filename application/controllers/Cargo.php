@@ -33,7 +33,6 @@ class Cargo extends PR_Controller
             if($this->form_validation->run('cargo'))
             {
                 $this->cargo->insert($this->getFromPost());
-
                 $this->redirectSuccess('Cargo cadastrado com sucesso!');
             }
             else
@@ -46,7 +45,7 @@ class Cargo extends PR_Controller
             $this->setTitle('Cadastrar Cargo');
             $this->addData('setores', $this->setor->get());
 
-            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
+            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js','maskMoney.js'));
             $this->loadFormDefaultScripts();
 
             $this->loadView('cadastrar');
@@ -85,7 +84,7 @@ class Cargo extends PR_Controller
             $this->addData('setores', $this->setor->get());
 
             $this->loadFormDefaultScripts();
-            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
+            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js','maskMoney.js'));
 
             $this->loadView('editar');
         }

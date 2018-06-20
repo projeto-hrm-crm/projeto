@@ -16,10 +16,9 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css">
+  <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
 <script type="text/javascript">
     var BASE_URL = "<?php echo base_url();?>";

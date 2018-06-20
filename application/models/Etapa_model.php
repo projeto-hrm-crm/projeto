@@ -24,7 +24,7 @@ class Etapa_model extends CI_Model
           'status' => 1
         );
       }
-      
+
       $this->db->insert_batch('etapa', $etapas);
     }
 

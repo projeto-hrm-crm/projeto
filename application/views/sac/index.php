@@ -60,8 +60,9 @@
                         </tbody>
                     </table>
                 </div>
-        </div>
-    </div>
+          </div>
+      </div>
+  </div>
 </div>
 <script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
 <script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>
