@@ -151,14 +151,6 @@ CREATE TABLE `grupo_acesso` (
   PRIMARY KEY (`id_grupo_acesso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `grupo_acesso` VALUES
-(1,'admin'),
-(2,'teste'),
-(3,'fornecedor'),
-(4,'cliente'),
-(5,'candidato'),
-(6,'funcionario');
-
 DROP TABLE IF EXISTS `grupo_acesso_menu`;
 
 CREATE TABLE `grupo_acesso_menu` (
@@ -171,21 +163,22 @@ CREATE TABLE `grupo_acesso_menu` (
   CONSTRAINT `fk_grupo_acesso_has_menu_menu1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `grupo_acesso` VALUES
+(1,'admin'),
+(2,'teste'),
+(3,'fornecedor'),
+(4,'cliente'),
+(5,'candidato'),
+(6,'funcionario');
+
 
 INSERT INTO `grupo_acesso_menu` VALUES (1,1),
-(1,2),
-(1,3),
-(1,4),
-(1,5),
-(1,6),
-(1,7),
-(1,8),
-(1,9),
-(1,10),
-(1,11),
-(1,12),
-(3,13),
-(1,14);
+(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(3,13),(1,14),
+(3,1),(3,12),
+(4,8),
+(5,13),
+(6,1)
+;
 
 
 DROP TABLE IF EXISTS `iteracao`;
@@ -242,7 +235,8 @@ INSERT INTO `menu` VALUES (1,'Produto','fa fa-gift'),
 (9,'Vaga','fa fa-newspaper-o'),
 (10,'Processo Seletivo','fa fa-address-card'),
 (11,'Candidato Etapa','fa fa-bars'),
-(12,'Pedido','fa fa-archive')
+(12,'Pedido','fa fa-archive'),
+(13,'Processos Seletivos','fa fa-newspaper-o')
 -- FORNECEDOR
 -- CLIENTE
 -- FUNCIIONARIO
@@ -458,14 +452,10 @@ INSERT INTO `sub_menu` VALUES (1,'Cadastrar',1,'produto/cadastrar','fa fa-plus',
 (52,'JSON',12,'pedido/clientes',NULL,0),
 (53,'JSON',12,'pedido/produtos',NULL,0),
 (54,'JSON',12,'pedido/produtos/fornecedor',NULL,0),
-(55,'Listar',13,'pedido/fornecedor','fa fa-list',1),
+(55,'Listar',12,'pedido/fornecedor','fa fa-list',1),
 (56,'Editar',12,'pedido/fornecedor/editar',NULL,0),
-(57,'Home',2,'cliente/chart',NULL,0)
--- FORNECEDOR
--- CLIENTE
--- FUNCIIONARIO
--- CANDIDATO
-;
+(57,'Home',2,'cliente/chart',NULL,0),
+(58,'Listar',13,'proceso_seletivo/',NULL,0);
 
 
 DROP TABLE IF EXISTS `telefone`;
