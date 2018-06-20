@@ -28,7 +28,7 @@ class Funcionario extends PR_Controller
     $this->setTitle('Funcionarios');
 
     $this->addData('funcionarios',$this->funcionario->get());
-    
+
     $this->loadIndexDefaultScripts();
 
     $this->loadView('index');
@@ -54,8 +54,8 @@ class Funcionario extends PR_Controller
         if($this->form_validation->run('funcionario'))
         {
             $this->cargo->insert($this->getFromPost());
-            
-            $this->redirectSuccess('Funcionario cadastrado com sucesso');
+
+            $this->redirectSuccess('Funcionario cadastrado com sucesso!');
         }
         else
         {
@@ -67,12 +67,12 @@ class Funcionario extends PR_Controller
         $this->setTitle('Cadastrar Funcionario');
         $this->addData('cargos', $this->cargo->get());
         $this->addData('estados', $this->estado->get());
-        
+
         $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
         $this->loadFormDefaultScripts();
-    
+
         $this->loadView('cadastrar');
-        
+
     }
 
   }
@@ -126,7 +126,7 @@ class Funcionario extends PR_Controller
 
     if ($data) {
       $this->funcionario->remove($id_funcionario);
-      $this->session->set_flashdata('success', 'Funcionário Excluído Com Sucesso!');
+      $this->session->set_flashdata('success', 'Funcionário excluído com sucesso!');
       redirect('funcionario');
     }
   }

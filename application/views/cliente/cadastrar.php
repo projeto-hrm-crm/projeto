@@ -24,38 +24,38 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class="form-control-label">Senha</label>
-                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
+                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Digite sua senha" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class="form-control-label">Confirmar Senha</label>
-                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir password" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
+                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Digite novamente a senha" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
-                <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="Data de nascimento" class="form-control data">
+                <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="00/00/0000" class="form-control data">
               </div> <!-- FIM DATA DE NASCIMENTO -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Sexo</label><br>
-                <input type="radio" name="sexo" id="sexo_masc" value="0" required /><label for="sexo_masc">Masculino</label>
-                <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label for="sexo_fem" >Feminino</label>
-              </div> <!-- FIM SEXO -->
+                <label class="form-control-label" for='sexo'>Sexo</label><br>
+                <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : ''?> checked/><label for="sexo_masc">Masculino</label>
+                <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '1' ? 'checked' : ''?> /><label for="sexo_fem" >Feminino</label>
+              </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf">
+                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="000.000.000-00" class="form-control cpf">
               </div> <!-- FIM CPF -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control alter_mask" >
+                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(00)00000-0000" class="form-control alter_mask" >
               </div> <!-- FIM TELEFONE -->
               <!-- INÍCIO ENDEREÇO -->
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CEP</label>
-                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" required>
+                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="00000-000" class="form-control cep" required>
               </div> <!-- FIM CEP -->
 
               <div class="form-group col-12 col-md-6">
@@ -82,12 +82,12 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Nome da rua/av./praça/alameda" class="form-control" required>
               </div> <!-- FIM ENDEREÇO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Número</label>
-                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" required>
+                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da residência" class="form-control" required>
               </div> <!-- FIM NÚMERO -->
 
               <div class="form-group col-12 col-md-6">
@@ -96,8 +96,8 @@
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
-            <div title="Cancelar Cadastro" class="card-footer text-right">
-              <a href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
+            <div class="card-footer text-right">
+              <a title="Cancelar Cadastro" href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-times"></i> Cancelar
               </a>
               <button title="Cadastrar Cliente" type="submit" class="btn btn-primary btn-sm">

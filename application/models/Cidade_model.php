@@ -51,5 +51,17 @@ class Cidade_model extends CI_Model
 		$this->db->select('id_cidade, nome');
 		return $this->db->get_where('cidade', array('id_estado' => $state))->result();
 	}
+   
+   /**
+	* @author Rodrigo
+	* Retorna uma cidade especifica
+	* 
+	* @return mixed array de objetos
+	*/
+	public function getById($id)
+	{	
+		$this->db->select('*');
+		return $this->db->get_where('cidade', array('id_cidade' => $id))->result();
+	}
 
 }

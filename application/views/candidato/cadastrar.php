@@ -14,29 +14,29 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label for="email-input" class=" form-control-label">E-mail</label>
-                                <input type="email" id="email" name="email" placeholder="e-mail" class="form-control" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" required>
+                                <input type="email" id="email" name="email" placeholder="email@provedor.com" class="form-control" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" required>
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class="form-control-label">Data de Nascimento</label>
-                                <input type="text" id="data_nascimento" name="data_nascimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="Data de nascimento" class="form-control data" required>
+                                <input type="text" id="data_nascimento" name="data_nascimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="00/00/0000" class="form-control data" required>
                             </div>
                             <div class="form-group col-12 col-md-6">
-                                <label class=" form-control-label">Sexo</label><br>
-                                <input type="radio" name="sexo" id="sexo_masc" value="0" required /><label for="sexo_masc">Masculino</label>
-                                <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label for="sexo_fem" >Feminino</label>
+                              <label class="form-control-label" for='sexo'>Sexo</label><br>
+                              <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : ''?> checked/><label for="sexo_masc">Masculino</label>
+                              <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '1' ? 'checked' : ''?> /><label for="sexo_fem" >Feminino</label>
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">CPF</label>
-                                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf">
+                                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="000.000.000-00" class="form-control cpf">
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">Telefone</label>
-                                <input type="text" id="telefone" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX) XXXX-XXXX" class="form-control alter_mask">
+                                <input type="text" id="telefone" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(00)0000-0000" class="form-control alter_mask">
                             </div>
                             <!-- INÍCIO ENDEREÇO -->
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">CEP</label>
-                                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="C.E.P" class="form-control cep" required>
+                                <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="00000-000" class="form-control cep" required>
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label for="estado">Estado</label>
@@ -59,11 +59,11 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">Endereço</label>
-                                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control" required>
+                                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Nome da rua/av./praça/alameda" class="form-control" required>
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">Número</label>
-                                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da casa" class="form-control" required>
+                                <input type="numero" id="numero" name="numero" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>"  placeholder="Número da residência" class="form-control" required>
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">Complemento</label>

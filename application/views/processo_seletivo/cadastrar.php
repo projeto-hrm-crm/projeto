@@ -27,28 +27,29 @@
         <div class="row">
 
           <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Codigo</label>
-             <input type="text" id="codigo" name="codigo" placeholder="Codigo do Processo" class="form-control" required>
+             <label class=" form-control-label">Código</label>
+             <input type="text" id="codigo" name="codigo" placeholder="Código do processo seletivo" class="form-control" required>
            </div>
 
           <div class="form-group col-12 col-md-6">
              <label class=" form-control-label">Nome</label>
-             <input type="text" id="nome" name="nome" placeholder="Ex: Processo Seletivo Para Gerente" class="form-control" required>
+             <input type="text" id="nome" name="nome" placeholder="Nome do processo seletivo" class="form-control" required>
            </div>
 
            <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Data de Inicio</label>
-             <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data">
+             <label class=" form-control-label">Data de início</label>
+             <input type="text" id="data_inicio" name="data_inicio" placeholder="00/00/0000" class="form-control data">
            </div>
 
            <div class="form-group col-12 col-md-6">
-             <label class=" form-control-label">Data de Término</label>
-             <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data">
+             <label class=" form-control-label">Data de término</label>
+             <input type="text" id="data_fim" name="data_fim" placeholder="00/00/0000" class="form-control data">
            </div>
 
            <div class="form-group col-12">
             <label class=" form-control-label">Vaga</label>
              <select class="form-control" name="id_vaga">
+               <option value="">Selecionar vaga</option>
                <?php foreach ($vagas as $vaga): ?>
                  <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
                <?php endforeach; ?>
@@ -56,8 +57,8 @@
            </div>
 
            <div class="form-group col-12">
-             <label class=" form-control-label">Descrição do Processo</label>
-             <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
+             <label class=" form-control-label">Descrição</label>
+             <textarea auto-resize placeholder="Descrição do processo seletivo" id="descricao" name="descricao" class="form-control" required></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório
              </span>
@@ -72,7 +73,7 @@
 
        </div>
        <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv" href="javascript:add_etapa()">
-        <i class="fa fa-check"></i> Adicionar Etapa </a>
+        <i class="fa fa-plus"></i> Adicionar Etapa </a>
     </div>
 
      <div class="card-footer text-right">
@@ -91,10 +92,10 @@
 <!-- Template -->
 <div class="form-group col-12 cloned-main" id="template1" style="display:none;">
   <div class="cloned-div">
-    <label class="form-control-label">Nome da Etapa</label>
-    <input type="text" name="nome_etapa[]" placeholder="Nome da Etapa" class="form-control" required>
-    <label class="form-control-label">Descrição da Etapa</label>
-    <textarea auto-resize placeholder="Descrição da Etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
-    <a name="button" class="btn btn-danger btn-sm remDiv">Excluir</a><br><br>
+    <label class="form-control-label">Nome</label>
+    <input type="text" name="nome_etapa[]" placeholder="Nome da etapa" class="form-control" required>
+    <label class="form-control-label">Descrição</label>
+    <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
+    <a name="button" class="btn btn-danger btn-sm remDiv"><i class="fa fa-times"></i> Excluir</a><br><br>
   </div>
 </div>

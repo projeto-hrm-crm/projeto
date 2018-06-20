@@ -10,9 +10,9 @@
                   <div class="row">
                      <div class="col-lg-6 form-group">
                         <label class=" form-control-label">Assunto</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Titulo da Reclamação. EX: Produto Quebrado." class="form-control titulo" required>
+                        <input type="text" id="titulo" name="titulo" placeholder="Título da Reclamação" class="form-control titulo" required>
                      </div>
-                       
+
                      <div class="col-lg-6 form-group">
                         <label class="form-control-label">Produto</label>
                         <select name="id_produto" class="form-control" id="produto">
@@ -20,22 +20,22 @@
                            <?php foreach ($produtos as $produto): ?>
                               <option value="<?php echo $produto->id_produto ?>"><?php echo $produto->nome; ?></option>
                            <?php endforeach; ?>
-                        </select>                         
+                        </select>
                      </div>
                      <?php if($tipo=="1"){ ?>
                      <div class="form-group col-md-12 col-sm-12">
                         <label for="id_cliente" class="form-control-label">Cliente</label>
                         <select name="id_cliente" class="form-control" id="produto">
-                           <option value="0" disabled selected>Selecione um cliente</option>
+                           <option value="0" disabled selected>Selecione cliente</option>
                            <?php foreach ($clientes as $cliente): ?>
                               <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
                            <?php endforeach; ?>
-                        </select>                         
+                        </select>
                      </div>
-                     <?php } ?> 
+                     <?php } ?>
                      <div class="col-md-12 form-group">
                         <label class=" form-control-label">Descrição</label>
-                        <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Relate aqui se problema" required></textarea>
+                        <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Relate aqui seu problema" required></textarea>
                      </div>
                   </div>
                </div>
@@ -46,7 +46,7 @@
                   <button title="Cadastrar SAC" type="submit" class="btn btn-primary btn-sm">
                      <i class="fa fa-plus"></i> Cadastrar
                   </button>
-                  
+
                </div>
             </form>
          </div>

@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pedido extends PR_Controller 
+class Pedido extends PR_Controller
 {
 	/**
 	* @author: Tiago Villalobos
 	* Construtor que recebe o nome do diretório aonde estão as views
-	*/	
+	*/
 	public function __construct()
 	{
 	  	parent::__construct('pedido');
@@ -34,7 +34,7 @@ class Pedido extends PR_Controller
 		{
 			$compra->produtos = $this->produto->getByOrder($compra->id);
 		}
-		
+
        	$this->loadIndexDefaultScripts();
 
 		$this->loadView('index');
@@ -72,13 +72,13 @@ class Pedido extends PR_Controller
   		{
   			if($this->form_validation->run('pedido'))
   			{
-  				
+
   				$id_pedido = $this->pedido->insert($this->getOrderFromPost());
 
   				$this->andamento->insert($this->getProgressFromPost($id_pedido));
 
   				$this->insertOrderProducts($id_pedido);
-  
+
   				$this->redirectSuccess('Pedido cadastrado com sucesso');
 
   			}
@@ -94,10 +94,10 @@ class Pedido extends PR_Controller
 	  		$this->addData('produtos',  $this->produto->get());
 	  		$this->addData('clientes',  $this->cliente->get());
 	  		$this->addData('situacoes', $this->andamento->getSituations());
-  			
+
   			$this->addScripts(array('pedido/main.js'));
   			$this->loadFormDefaultScripts();
-  			
+
   			$this->loadView('cadastrar');
 
   		}
@@ -122,7 +122,7 @@ class Pedido extends PR_Controller
 
   				$this->pedido->removeProducts($id_pedido);
   				$this->insertOrderProducts($id_pedido);
-  				$this->redirectSuccess('Pedido atualizado com sucesso');
+  				$this->redirectSuccess('Pedido atualizado com sucesso!');
 			}
 			else
 			{
@@ -137,9 +137,9 @@ class Pedido extends PR_Controller
   			$this->loadFormDefaultScripts();
 
 			$this->addData('pedido', $this->pedido->getById($id_pedido));
-			
+
 			$this->filterDataByTransaction();
-	 
+
 	  		$this->addData('situacoes',       $this->andamento->getSituations());
 	  		$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
 
@@ -165,7 +165,7 @@ class Pedido extends PR_Controller
   				$this->andamento->update($this->getProgressFromPost($id_pedido));
 
   				$this->redirectSuccess('Pedido atualizado com sucesso', 'fornecedor');
-  				
+
 			}
 			else
 			{
@@ -177,7 +177,7 @@ class Pedido extends PR_Controller
 			$this->setTitle('Edição de Pedido');
 
 			$this->loadFormDefaultScripts();
-			
+
 	  		$this->addData('situacoes',       $this->andamento->getSituations());
 	  		$this->addData('pedido',          $this->pedido->getById($id_pedido));
 	  		$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
@@ -198,8 +198,8 @@ class Pedido extends PR_Controller
 		$this->andamento->remove($id_pedido);
 		$this->pedido->removeProducts($id_pedido);
 		$this->pedido->remove($id_pedido);
-		
-		$this->redirectSuccess('Pedido removido com sucesso');
+
+		$this->redirectSuccess('Pedido removido com sucesso!');
 	}
 
 	/**
@@ -208,7 +208,7 @@ class Pedido extends PR_Controller
 	*/
 	private function filterDataByTransaction()
 	{
-  		
+
   		if($this->data['pedido']->transacao == 'V')
   		{
   			$this->addData('label',    'Cliente');
@@ -236,7 +236,7 @@ class Pedido extends PR_Controller
 	/**
 	* @author: Tiago Villalobos
 	* Retorna os dados enviados por post referentes aos dados básicos do pedido
-	* 
+	*
 	* @return: mixed
 	*/
   	private function getOrderFromPost()
@@ -244,7 +244,7 @@ class Pedido extends PR_Controller
   		return array(
 			'id_pessoa' => $this->input->post('id_pessoa'),
 			'descricao' => $this->input->post('descricao'),
-			'transacao' => $this->input->post('transacao'), 
+			'transacao' => $this->input->post('transacao'),
 			'tipo'      => $this->input->post('tipo')
 		);
   	}
@@ -252,7 +252,7 @@ class Pedido extends PR_Controller
   	/**
 	* @author: Tiago Villalobos
 	* Retorna os dados para edição de um pedido
-	* 
+	*
 	* @param:  $id_pedido integer
 	* @return: mixed
 	*/
@@ -269,7 +269,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Retorna os dados para edição de um pedido à um fornecedor
 	* Apenas para utilização de usuários logados como fornecedor
-	* 
+	*
 	* @param:  $id_pedido integer
 	* @return: mixed
 	*/
@@ -284,7 +284,7 @@ class Pedido extends PR_Controller
   	/**
 	* @author: Tiago Villalobos
 	* Retorna dados do andamento do pedido para edição
-	* 
+	*
 	* @param:  $id_pedido integer
 	* @return: mixed
 	*/
@@ -301,7 +301,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Insere dados relativos aos produtos e pedido na tabela de relação entre os mesmos
 	* utlizando um foreach para iterar sobre os posts
-	* 
+	*
 	* @param: $id_pedido integer
 	*/
   	private function insertOrderProducts($id_pedido)
@@ -315,7 +315,7 @@ class Pedido extends PR_Controller
 			);
 
 			$this->pedido->insertProducts($pedido_produto);
-			
+
 		}
   	}
 
@@ -323,7 +323,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Retorna JSON com fornecedores utilizado para adequação do formulário para cadastro de pedidos aos fornecedores
 	*
-	* @return: mixed 
+	* @return: mixed
 	*/
 	public function getProvidersJSON()
 	{
@@ -334,7 +334,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Retorna JSON com clientes
 	*
-	* @return: mixed 
+	* @return: mixed
 	*/
 	public function getClientsJSON()
 	{
@@ -345,7 +345,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Retorna JSON com produtos
 	*
-	* @return: mixed 
+	* @return: mixed
 	*/
 	public function getProductsJSON()
 	{
@@ -356,7 +356,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Retorna JSON com produtos de um determinado fornecedor
 	*
-	* @return: mixed 
+	* @return: mixed
 	*/
 	public function getProductsByProviderJSON($id_fornecedor)
 	{
@@ -367,7 +367,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Gera PDF para Cliente
 	*
-	* @param: $id_pedido integer 
+	* @param: $id_pedido integer
 	*/
 	public function pdfClient($id_pedido)
 	{
@@ -378,7 +378,7 @@ class Pedido extends PR_Controller
 	* @author: Tiago Villalobos
 	* Gera PDF para Fornecedor
 	*
-	* @param: $id_pedido integer 
+	* @param: $id_pedido integer
 	*/
 	public function pdfProvider($id_pedido)
 	{
@@ -409,15 +409,15 @@ class Pedido extends PR_Controller
 	  	$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
 
 		$mpdf = new \Mpdf\Mpdf();
-		
+
 		$html = $this->load->view($this->viewDirectory.'/'.$view, $this->data, TRUE);
-		
+
 		$mpdf->SetTitle('Pedido Nº '.$id_pedido);
-		
+
 		$mpdf->SetFooter('{PAGENO}');
-		
+
 		$mpdf->writeHTML($html);
-		
+
 		$mpdf->Output('pedido-'.$id_pedido.'.pdf', 'I');
 	}
 

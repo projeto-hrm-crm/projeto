@@ -10,7 +10,7 @@
 	                    <div class="card-body">
 	                    	<div class="row">
 	                    		<div class="form-group col-6">
-	                        		<label for="tipo" class="control-label mb-1">Pedido para:</label>
+	                        		<label for="tipo" class="control-label mb-1">Pedido para</label>
 	                        		<br>
 	                        		<div class="form-check-inline form-check">
 	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['transacao']) ? 'text-danger' : '' ?>">
@@ -31,7 +31,7 @@
 	                        		<br>
 	                        		<div class="form-check-inline form-check">
 	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
-	                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'P' ? 'checked' : ''?>>
+	                        		    <input type="radio" name="tipo" value="P" class="form-check-input" <?php echo isset($old_data['tipo']) && $old_data['tipo'] == 'P' ? 'checked' : 'checked'?>>
 	                        		    Produtos
 	                        		  </label>
 	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
@@ -53,7 +53,7 @@
 	                            <div class="form-group col-lg-12">
 	                                <label for="id_pessoa" class="control-label mb-1" id="label_pessoa">Cliente</label>
 	                                <select name="id_pessoa" id="id_pessoa" class="form-control <?php echo isset($errors['id_pessoa']) ? 'is-invalid' : '' ?>">
-		                                <option value="">Selecione</option>
+		                                <option value="">Selecione cliente</option>
 		                                <?php foreach ($clientes as $cliente): ?>
 		                                	<option value="<?php echo $cliente->id_pessoa ?>" <?php echo isset($old_data['id_pessoa']) && ($cliente->id_pessoa == $old_data['id_pessoa']) ? 'selected' : '' ?>>
 		                                		<?php echo $cliente->nome ?>
@@ -70,7 +70,7 @@
 	                            <div class="form-group col-lg-12">
 	                                <label for="id_produto" class="control-label mb-1">Produtos/Serviços</label>
 	                                  <select id="id_produto" class="form-control <?php echo isset($errors['id_produto[]']) ? 'is-invalid' : '' ?>">
-	                                    <option value="">Selecione um Produto</option>
+	                                    <option value="">Selecione um produto</option>
 	                                   <?php
 	                                    	$old_produtos = array();
 	                                    	foreach($produtos as $produto):
@@ -173,7 +173,7 @@
 	                        	<div class="form-group col-lg-12 col-sm-12">
 	                                <label for="situacao" class="control-label mb-1" id="main_label">Situação</label>
 	                                <select name="situacao" id="situacao" class="form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
-		                                <option value="">Selecione</option>
+		                                <option value="">Selecione situação</option>
 		                                <?php foreach ($situacoes as $index => $situacao): ?>
 		                                	<option value="<?php echo $index ?>" <?php echo isset($old_data['situacao']) && ($index == $old_data['situacao']) ? 'selected' : '' ?>>
 		                                		<?php echo $situacao ?>
@@ -191,7 +191,7 @@
 	                        	<div class="form-group col-12">
 
 	                                <label for="data_oferta" class="control-label mb-1">Descrição</label>
-	                                <textarea name="descricao" id="descricao" rows="4" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
+	                                <textarea name="descricao" id="descricao" rows="4" placeholder="Descrição do pedido" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
 	                                </span>
@@ -206,7 +206,7 @@
 	                        <i class="fa fa-times btn-sm" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button type="submit" class="btn bg-primary text-white">
+	                    <button title="Cadastrar pedido" type="submit" class="btn bg-primary text-white">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>

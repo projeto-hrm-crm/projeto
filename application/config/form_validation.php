@@ -605,6 +605,49 @@ $config = array(
                 'rules' => 'required|numeric'
             ),
         ),
+   'perfil' =>
+      array(
+          array(
+              'field' => 'nome',
+              'label' => 'nome completo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'email',
+              'label' => 'email',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'cep',
+              'label' => 'cep',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'id_estado',
+              'label' => 'id_estado',
+              'rules' => 'required|numeric'
+          ),
+          array(
+              'field' => 'id_cidade',
+              'label' => 'id_cidade',
+              'rules' => 'required|numeric'
+          ),
+          array(
+              'field' => 'bairro',
+              'label' => 'bairro',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'logradouro',
+              'label' => 'endereço',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'numero',
+              'label' => 'número',
+              'rules' => 'required|numeric'
+          ),
+      ),
 );
 
 /**

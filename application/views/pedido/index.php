@@ -274,7 +274,7 @@
         </button>
       </div>
       <div class="modal-body text-center">
-        Tem certeza que deseja excluir esse Pedido?
+        Deseja realmente excluir esse pedido?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

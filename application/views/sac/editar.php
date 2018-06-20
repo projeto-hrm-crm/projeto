@@ -13,7 +13,7 @@
                         <label class=" form-control-label">Assunto</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Assunto" value="<?=htmlspecialchars($sac[0]->titulo)?>" class="form-control titulo" required>
                      </div>
-                     
+
                      <div class="col-lg-4 form-group">
                         <label class="form-control-label">Produtos</label>
                         <select name="id_produto" class="form-control" id="produto">
@@ -64,7 +64,7 @@
                    </button>
                </div>
                <div class="modal-body">
-                   Deseja Realmente Atualizar Esse SAC?
+                   Deseja realmente atualizar esse SAC?
                </div>
                <div class="modal-footer">
                    <button type="button" class="btn btn-danger" data-dismiss="modal">

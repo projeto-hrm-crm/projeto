@@ -1,6 +1,6 @@
 ## Requisitos Funcionais
 
-O sistema tem como objetivo auxiliar no gerencoamento de clientes, funcionáriosee o serviço de atendimento ao consumidor. Os requisitos que seguem descrevem as funcionalidades que o sistema deve prover:
+O sistema tem como objetivo auxiliar no gerenciamento de clientes, funcionários e o serviço de atendimento ao consumidor. Os requisitos que seguem descrevem as funcionalidades que o sistema deve prover:
 
 <table>
 <!--start table-->
@@ -107,10 +107,10 @@ Os requisitos de processo estão relacionados ao processo de desenvolvimento do 
 Identificação	| Descrição
 --- | ---
 RNF 001	| Utilização de SCRUM como o processo para o desenvolvimento do sistema
-RNF 002	| Deve-se utilizar SQL padrão, para se ter indepêndencia de banco de dados
+RNF 002	| Deve-se utilizar SQL padrão, para se ter independência de banco de dados
 RNF 003	| A camada de apresentação utilizará o Framework Bootstrap para facilitar o tratamento das ações dos usuários.
 RNF 004	| Todo o sistema deverá ser desenvolvido utilizando o padrão de software MVC.
-RNF 005	| O sistema deverá ser desenvolvido em PHP, utlizando o framework CodeIgniter.
+RNF 005	| O sistema deverá ser desenvolvido em PHP, utilizando o framework CodeIgniter.
 RNF 006	| 	O banco de dados que suportará o ambiente será o MySQL;
 
 

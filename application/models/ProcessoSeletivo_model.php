@@ -95,7 +95,9 @@ class ProcessoSeletivo_model extends CI_Model
   public function info($id)
   {
     try {
-      $processo_seletivo = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.descricao')
+      $processo_seletivo = $this->db->select('processo_seletivo.id_processo_seletivo,
+       processo_seletivo.data_fim, processo_seletivo.data_inicio, processo_seletivo.id_vaga,
+       processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.descricao')
       ->from('processo_seletivo')
       ->where('id_processo_seletivo', $id)
       ->get();

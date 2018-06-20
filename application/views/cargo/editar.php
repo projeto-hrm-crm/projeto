@@ -52,7 +52,7 @@
 
         <div class="card-footer text-right">
          <!--ACTIONS-->
-         <a href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
+         <a title="Cancelar Edição" href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
@@ -71,7 +71,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja Realmente Atualizar Esse Cargo?
+                                Deseja realmente atualizar esse cargo?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">

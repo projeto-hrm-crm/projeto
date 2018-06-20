@@ -14,21 +14,27 @@ A aplicação desenvolvida neste projeto aplica o padrão MVC com o uso do frame
 
 Estes são os _models_ que compõem o projeto e cada _model_ é uma classe/arquivo .php
 
+- Andamento_model
 - Candidato_model
+- CandidatoEtapa_model
 - Cargo_model
 - Cidade_model
 - Cliente_model
 - Documento_model
 - Endereco_model
 - Estado_model
+- Etapa_model
 - Fornecedor_model
 - Funcionario_model
 - Grupo_model
 - Iteracao_model
+- Log_model
+- Pais_model
 - Menu_model
 - Pessoa_model
 - PessoaFisica_model
 - PessoaJuridica_model
+- ProcessoSeletivo_model
 - Produto_model
 - Sac_model
 - Setor_model
@@ -41,32 +47,48 @@ Estes são os _models_ que compõem o projeto e cada _model_ é uma classe/arqui
 Estes são os _controllers_ que compõem o projeto e cada _controller_ é uma classe/arquivo .php
 
 - Candidato
+- CandidatoEtapa
 - Cargo
 - Cidade
 - Cliente
+- Email
+- Estado
 - Fornecedor
 - Funcionario
+- Home
+- Log
 - Login
+- Pedido
+- Perfil
 - Pessoa
-- PessoaFisica
+- Processo_Seletivo
 - Produto
 - Sac
+- Seed
 - Setor
+- Teste_Controller
+- Usuario
 - Vaga
 
 ### Views
 Os arquivos das _views_ do projeto estão organizadas nas pastas listadas a seguir:
 
 - candidato
+- candidato_etapa
 - cargo
 - cliente
+- email
 - errors
 - fornecedor
 - funcionario
+- home
 - images
 - includes
 - login
+- pedido
+- perfil
 - pessoa
+- processo_seletivo
 - produto
 - sac
 - setor

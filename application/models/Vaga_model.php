@@ -87,8 +87,19 @@ class Vaga_model extends CI_Model
      */
     public function getById($id){
 
-      $this->db->where('vaga.id_vaga', $id);
-      return $this->db->get('vaga')->row();
+      $vaga = $this->db->select(
+           'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade,
+            cargo.nome AS cargo,
+            setor.nome AS setor'
+       )->from('vaga')
+       ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
+       ->join('setor', 'cargo.id_setor = setor.id_setor')->where('vaga.id_vaga',$id)
+       ->get();
+
+       if ($vaga) {
+           return $vaga->result();
+       }
+       return null;
     }
 
     /**

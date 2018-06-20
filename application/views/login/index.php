@@ -30,7 +30,7 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
-      
+
       <?php if ($this->session->flashdata('success')): ?>
         <div class="alert alert-success mt-4">
           <?php echo $this->session->flashdata('success'); ?>
@@ -60,7 +60,7 @@
                 <a href="#">Esqueceu a senha?</a>
               </label>
             </div>
-            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
+            <button type="submit" title="Entrar" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
             <div class="text-success m-t-15 text-center">
               <p>Ainda não está cadastrado? <a href="<?php echo base_url();?>cadastro"> Cadastre-se aqui</a></p>
             </div>
