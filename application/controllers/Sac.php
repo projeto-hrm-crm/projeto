@@ -1,29 +1,28 @@
 <?php
-class Sac extends CI_Controller {
-   public function __construct() {
-      parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      //$this->usuario->hasPermission($user_id, $currentUrl);
-   }
+class Sac extends PR_Controller {
+  public function __construct()
+  {
+      parent::__construct('sac');
+  }
 
-    public function index(){  
-       
+    public function index(){
+
       $user_id = $this->session->userdata('user_login');
-       
+
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-      $id = $data['pessoa']->id_pessoa;
-       
-      $cliente = $this->cliente->getIdCliente($id);      
-       
+
+      // $id_pessoa = $data['pessoa']->id_pessoa;
+      // $cliente = $this->cliente->getIdCliente($id);
+
       $data['title'] = 'Solicitações SAC';
       $data['tipo'] = $typeUser;
       if($typeUser=="1"){
          $data['sac'] = $this->sac->get();
       }else{
-         $data['sac'] = $this->sac->getClient($cliente[0]->id_cliente);
+          $cliente=$this->cliente->getClienteByUserID($user_id);
+          $id_cliente=$cliente[0]->id_cliente;
+          $data['sac'] = $this->sac->getClient($id_cliente);
       }
       $data['assets'] = array(
         'js' => array(
@@ -33,7 +32,7 @@ class Sac extends CI_Controller {
           'confirm.modal.js',
         ),
       );
-       
+
       foreach ($data['sac'] as $key => $sac) {
          $cliente = $this->cliente->getById($data['sac'][$key]->id_cliente);
          $data['sac'][$key]->id_cliente = $cliente[0]->nome;
@@ -47,25 +46,27 @@ class Sac extends CI_Controller {
     * Página de cadastro.
     */
     public function create() {
-      
+
       $user_id = $this->session->userdata('user_login');
-       
+
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-      $id = $data['pessoa']->id_pessoa;
-       
-      $cliente = $this->cliente->getIdCliente($id); 
-       
+
+      // $id = $data['pessoa']->id_pessoa;
+      // $cliente = $this->cliente->getIdCliente($id);
+
       $data = $this->input->post();
-       
+
       if($typeUser=="1"){
          $id_cliente = $this->input->post('id_cliente');
       }else {
-         $id_cliente = $cliente[0]->id_cliente;
+         $id_cliente = $user_id;
       }
 
       if($data){
+
+        $cliente=$this->cliente->getClienteByUserID($user_id);
+        $id_cliente=$cliente[0]->id_cliente;
          if ($this->form_validation->run('sac')) {
             $array = array(
               'id_produto' => $this->input->post('id_produto'),
@@ -76,9 +77,11 @@ class Sac extends CI_Controller {
               'titulo' => $this->input->post('titulo'),
               'descricao' => $this->input->post('descricao'),
             );
+
             $this->sac->insert($array);
             $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
             redirect('sac');
+
          }else{
             $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
             redirect('sac');
@@ -101,15 +104,15 @@ class Sac extends CI_Controller {
     }
 
     public function edit($id) {
-       
+
        $user_id = $this->session->userdata('user_login');
-       
+
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-      $id = $data['pessoa']->id_pessoa;
-       
-      $cliente = $this->cliente->getIdCliente($id);   
+
+      // $id = $data['pessoa']->id_pessoa;
+
+      // $cliente = $this->cliente->getIdCliente($id);
 
        $data = $this->input->post();
 
@@ -129,9 +132,10 @@ class Sac extends CI_Controller {
                  'encerrado' => $this->input->post('encerrado'),
                  'titulo' => $this->input->post('titulo'),
                  'descricao' => $this->input->post('descricao'),
+                 'id_sac'=>$id,
                );
-
-               $this->sac->update($array, $id);
+               $id_sac=$id;
+               $this->sac->update($array, $id_sac);
                $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
                redirect('sac');
             }else{
@@ -139,20 +143,23 @@ class Sac extends CI_Controller {
                redirect('sac');
             }
 
-        } 
+        }
         else
         {
-            $this->setTitle('Editar Sac');
-            
-            $this->addData('sac',      $this->sac->getById($id_sac));
-            $this->addData('id',       $id_sac);
-            $this->addData('clientes', $this->cliente->get());
-            $this->addData('produtos', $this->produto->get());
-            $this->addData('tipo',     $typeUser);
+            $data['title']='Editar Sac';
+            $data['id']=$id;
+            $data['sac']=$this->sac->find($id);
+            $data['produtos']=$this->produto->get();
+            // $this->addData('sac',      $this->sac->getById($id_sac));
+            // $this->addData('id',       $id_sac);
+            // $this->addData('clientes', $this->cliente->get());
+            // $this->addData('produtos', $this->produto->get());
+            // $this->addData('tipo',     $typeUser);
 
-            $this->loadFormDefaultScripts();
+            // $this->loadFormDefaultScripts();
 
-            $this->loadView('editar');
+            // $this->loadView('editar');
+            loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
         }
 
     }
@@ -163,12 +170,14 @@ class Sac extends CI_Controller {
     *
     * @param integer $id_sac
     */
-    public function delete($id_sac) 
+    public function delete($id_sac)
     {
         $this->sac->remove($id_sac);
-        
+
         $this->redirectSuccess('SAC removido com sucesso');
     }
+
+
 
     /**
     * @author: Tiago Villalobos
