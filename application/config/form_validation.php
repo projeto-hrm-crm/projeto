@@ -496,6 +496,11 @@ $config = array(
               'rules' => 'required'
           ),
           array(
+              'field' => 'tipo_us',
+              'label' => 'tipo_us',
+              'rules' => 'required'
+          ),
+          array(
               'field' => 'cpf',
               'label' => 'cpf',
               'rules' => 'required'

@@ -1,14 +1,10 @@
-<div class="row">
-  <div class="col-md-10">
-    <?php if ($this->session->flashdata('success')): ?>
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10">
+      <?php if ($this->session->flashdata('success')): ?>
       <div class="alert alert-success mt-4">
         <?php echo $this->session->flashdata('success'); ?>
       </div>
-    <?php endif; ?>
-  </div>
-</div>
-<div class="row justify-content-center align-items-center">
-    <div class="col-lg-10">
+     <?php endif; ?>
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cargo</strong>

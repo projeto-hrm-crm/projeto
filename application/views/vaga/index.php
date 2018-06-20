@@ -44,11 +44,11 @@
 										<td><?php echo $vaga->quantidade; ?></td>
 										<td><?php echo switchDate($vaga->data_oferta); ?></td>
 										<td >
-										    <a title="Atualizar Vaga" href="vaga/editar/<?php echo $vaga->id_vaga ?>"
-										    	class="btn bg-primary text-white">
+										    <a href="vaga/editar/<?php echo $vaga->id_vaga; ?>"
+										    	class="btn bg-primary text-white" title="Atualizar Vaga">
 										        <i class="fa fa-pencil-square-o"></i>
 										    </a>
-										    <button title="Excluir Vaga"  data-href="vaga/excluir/<?php echo $vaga->id_vaga ?>"
+										    <button title="Excluir Vaga"  data-href="vaga/excluir/<?php echo $vaga->id_vaga; ?>"
 										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
 										        <i class="fa fa-times"></i>
   									    	</button>
