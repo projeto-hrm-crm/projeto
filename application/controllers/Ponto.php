@@ -1,7 +1,7 @@
 <?php
 
 
-class Funcionario extends CI_Controller
+class Ponto extends PR_Controller
 {
 
   public function __construct()
@@ -11,6 +11,7 @@ class Funcionario extends CI_Controller
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
       $this->usuario->hasPermission($user_id, $currentUrl);
     $this->load->model('funcionario_model');
+    $this->load->model('cargo_model');
   }
 
 
