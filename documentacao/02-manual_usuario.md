@@ -195,6 +195,50 @@ O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; 
 
 Todas as informações podem ser editadas posteriormente na página de edição do cadastro alcançada através do botão azul com um lápis na página principal da vaga.
 
+## Pedido
+
+Referente à listagem, cadastro, edição e exclusão de pedido.
+
+- Página principal
+
+Nesta página, são listadas as informações principais de cada vaga já cadastrada. Aqui, é possível exclui-la individualmente ao clicar no botão vermelho com um X no centro ao fim de cada linha.
+
+Também pode-se editar as informações individuais clicando no botão azul com o desenho de um lápis no centro. Ao clicar neste botão, o usuário é levado à página de editar o cadastro.
+
+Ao clicar no botão "cadastrar", o usuário é levado à página de pedido.
+
+- Cadastrar
+
+Nesta página, o usuário pode cadastrar as informações da vaga e selecionar o setor (um setor só aparecerá como opção se já tiver sido cadastrado). Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
+
+O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
+
+Todas as informações podem ser editadas posteriormente na página de edição do cadastro alcançada através do botão azul com um lápis na página principal do pedido.
+
+- PDF
+
+O pedido gera um arquivo PDF que pode acessado e impresso.
+
+## Processo Seletivo
+
+Referente à listagem, cadastro, edição e exclusão de processo seletivo.
+
+- Página principal
+
+Nesta página, são listadas as informações principais de cada vaga já cadastrada. Aqui, é possível exclui-la individualmente ao clicar no botão vermelho com um X no centro ao fim de cada linha.
+
+Também pode-se editar as informações individuais clicando no botão azul com o desenho de um lápis no centro. Ao clicar neste botão, o usuário é levado à página de editar o cadastro.
+
+Ao clicar no botão "cadastrar", o usuário é levado à página de processo seletivo.
+
+- Cadastrar
+
+Nesta página, o usuário pode cadastrar as informações da vaga e selecionar o setor (um setor só aparecerá como opção se já tiver sido cadastrado). Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
+
+O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
+
+Todas as informações podem ser editadas posteriormente na página de edição do cadastro alcançada através do botão azul com um lápis na página principal do processo seletivo.
+
 <!-- ## Contratação  de Funcionário
 - processo seletivo de diversas fases
 - atualização (status) das fases do processo de seleção
