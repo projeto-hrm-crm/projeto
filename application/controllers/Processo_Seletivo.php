@@ -17,7 +17,7 @@ class Processo_Seletivo extends CI_Controller
     parent::__construct();
       $user_id = $this->session->userdata('user_login');
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      // $this->usuario->hasPermission($user_id, $currentUrl);
+      $this->usuario->hasPermission($user_id, $currentUrl);
     $this->load->model('ProcessoSeletivo_model');
   }
 
