@@ -17,10 +17,10 @@ class Cargo extends PR_Controller
         $this->addData('cargos', $this->cargo->get());
 
         $this->loadIndexDefaultScripts();
-        
+
         $this->loadView('index');
     }
-  
+
     /**
     * @author: Beto Cadilhe
     * Realiza o cadastro de um cargo, com validação dos dados recebidos da view cargo/cadastro.php
@@ -33,7 +33,7 @@ class Cargo extends PR_Controller
             if($this->form_validation->run('cargo'))
             {
                 $this->cargo->insert($this->getFromPost());
-                
+
                 $this->redirectSuccess('Cargo cadastrado com sucesso');
             }
             else
@@ -45,12 +45,12 @@ class Cargo extends PR_Controller
         {
             $this->setTitle('Cadastrar Cargo');
             $this->addData('setores', $this->setor->get());
-            
-            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
+
+            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js','maskMoney.js'));
             $this->loadFormDefaultScripts();
-        
+
             $this->loadView('cadastrar');
-            
+
         }
     }
 
@@ -76,16 +76,16 @@ class Cargo extends PR_Controller
                 $this->redirectError('editar/'.$id_cargo);
             }
 
-        } 
+        }
         else
         {
             $this->setTitle('Editar Cargo');
-            
+
             $this->addData('cargo',   $this->cargo->getById($id_cargo));
             $this->addData('setores', $this->setor->get());
-            
+
             $this->loadFormDefaultScripts();
-            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
+            $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js','maskMoney.js'));
 
             $this->loadView('editar');
         }
@@ -108,7 +108,7 @@ class Cargo extends PR_Controller
     /**
     * @author: Tiago Villalobos
     * Retorna um array com dados pegos por post
-    * 
+    *
     * @return: mixed
     */
     private function getFromPost()
@@ -124,7 +124,7 @@ class Cargo extends PR_Controller
     /**
     * @author: Tiago Villalobos
     * Retorna um array com dados pegos por post adicionado a eles o id_cargo
-    * 
+    *
     * @return: mixed
     */
     private function getFromPostEdit($id_cargo)
@@ -135,4 +135,3 @@ class Cargo extends PR_Controller
         return $postData;
     }
 }
-
