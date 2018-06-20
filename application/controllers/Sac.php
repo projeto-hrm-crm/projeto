@@ -6,17 +6,15 @@ class Sac extends PR_Controller {
   }
 
     public function index(){
-       
       //Pega o id de usuario da sessão
       $user_id = $this->session->userdata('user_login');
        
       //Pega o tipo de usuario e informações de pessoas
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-
       // Pegar informações de cliente
       $id_pessoa = $data['pessoa'][0]->id_pessoa;  
-       
+      
       if($typeUser=="1"){
          $data['sac'] = $this->sac->get();
       }else{
@@ -83,11 +81,11 @@ class Sac extends PR_Controller {
             );
 
             $this->sac->insert($array);
-            $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
+            $this->session->set_flashdata('success', 'SAC cadastrado com sucesso!');
             redirect('sac');
 
          }else{
-            $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
+            $this->session->set_flashdata('danger', 'Não foi possível cadastrar SAC!');
             redirect('sac');
          }
       }
@@ -113,6 +111,10 @@ class Sac extends PR_Controller {
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+        
+      $id = $data['pessoa'][0]->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id);   
 
       $id_pessoa = $data['pessoa'][0]->id_pessoa;
       $cliente = $this->cliente->getIdCliente($id_pessoa);
@@ -123,7 +125,7 @@ class Sac extends PR_Controller {
       }else {
          $id_cliente = $cliente[0]->id_cliente;
       }
-
+      
        $data = $this->input->post();
 
          if($data){
@@ -144,12 +146,12 @@ class Sac extends PR_Controller {
                  'descricao' => $this->input->post('descricao'),
                  'id_sac'=>$id,
                );
-               $id_sac=$id;
-               $this->sac->update($array, $id_sac);
-               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
+               $this->sac->update($array, $id);
+               $this->session->set_flashdata('success', 'SAC atualizado com sucesso!');
+
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
+               $this->session->set_flashdata('danger', 'SAC não pode ser atualizado!');
                redirect('sac');
             }
 
@@ -173,7 +175,7 @@ class Sac extends PR_Controller {
     */
     public function delete($id_sac)
     {
-        $this->sac->remove($id_sac);
+        $this->sac->remove($id_sac);        
 
         $this->redirectSuccess('SAC removido com sucesso');
     }

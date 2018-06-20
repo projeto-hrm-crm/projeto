@@ -1,4 +1,3 @@
-<div class="animated fadeIn">
     <div class="row" >
         <div class="col-lg-12">
            <?php if($this->session->flashdata('success')): ?>
@@ -22,7 +21,7 @@
                     <strong class="card-title">SAC</strong>
                 </div>
                 <div class="card-body">
-                  <a title="Cadastrar Novo SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                  <a title="Cadastrar SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
                     <i class="fa fa-check"></i> Novo Cadastro
                   </a><br />
                   <br />
@@ -30,8 +29,8 @@
                     <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                <th width="20%" class="text-center" >Codigo</th>
-                                <th class="text-center">Titulo</th>
+                                <th width="20%" class="text-center" >Código</th>
+                                <th class="text-center">Tíitulo</th>
                                 <th class="text-center">Cliente</th>
                                 <th class="text-center">Status</th>
                                 <th width="20%" class="text-center" >Ações</th>
@@ -61,9 +60,9 @@
                         </tbody>
                     </table>
                 </div>
-          </div>
-      </div>
-  </div>
+        </div>
+    </div>
+
 </div>
 <script src="<?= base_url('assets/js/lib/data-table/datatables.min.js');?>"></script>
 <script src="<?= base_url('assets/js/lib/data-table/dataTables.bootstrap.min.js');?>"></script>
@@ -83,7 +82,9 @@
   } );
 </script>
 
-<div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+
+</div>
+       <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

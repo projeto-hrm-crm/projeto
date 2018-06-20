@@ -90,7 +90,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja Realmente Editar Esse Candidato?
+                                Deseja realmente editar esse candidato?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">

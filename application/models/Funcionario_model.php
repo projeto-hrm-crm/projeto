@@ -81,7 +81,7 @@ class Funcionario_model extends CI_Model {
             'email' => $data['email']
             ]
         )) {
-            $this->session->set_flashdata('success', 'funcionario editado com sucesso.');
+            $this->session->set_flashdata('success', 'Funcionario editado com sucesso!');
             redirect(base_url('cliente/editar'));
             return;
         }
@@ -108,7 +108,7 @@ class Funcionario_model extends CI_Model {
             'data_nascimento'   => switchDate($data['funcionario']['data_nascimento']),
             'sexo'              =>$data['funcionario']['sexo']]);
 
-        $this->session->set_flashdata('success', 'funcionario editado com sucesso.');
+        $this->session->set_flashdata('success', 'Funcionario editado com sucesso!');
 
         redirect('funcionario');
     }

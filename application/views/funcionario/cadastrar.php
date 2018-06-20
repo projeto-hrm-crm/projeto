@@ -26,13 +26,13 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class="form-control-label">Senha</label>
-                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Password" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
+                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Digite sua senha" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback"></span>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label class="form-control-label">Confirmar Senha</label>
-                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Repetir password" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
+                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Digite novamente a senha" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback"></span>
               </div>
               <div class="form-group col-12 col-md-6">
@@ -43,7 +43,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class="form-control-label" for='sexo'>Sexo</label><br>
-                <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : ''?> /><label for="sexo_masc">Masculino</label>
+                <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : ''?> checked/><label for="sexo_masc">Masculino</label>
                 <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '1' ? 'checked' : ''?> /><label for="sexo_fem" >Feminino</label>
               </div> <!-- FIM SEXO -->
 
@@ -93,7 +93,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Endereço</label>
-                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Rua/Av./Travessa..." class="form-control"  required>
+                <input type="logradouro" id="logradouro" name="logradouro"  value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>"  placeholder="Nome da rua/av./praça/alameda" class="form-control"  required>
                 <span class="invalid-feedback"></span>
               </div>
 
@@ -127,7 +127,7 @@
             <a title="Cancelar Cadastro" href="<?=site_url('funcionario')?>" class="btn btn-danger btn-sm">
               <i class="fa fa-times"></i> Cancelar
             </a>
-            <button type="submit" class="btn btn-primary btn-sm">
+            <button title="Cadastrar Funcionário" type="submit" class="btn btn-primary btn-sm">
               <i class="fa fa-plus"></i> Cadastrar
             </button>
           </div>

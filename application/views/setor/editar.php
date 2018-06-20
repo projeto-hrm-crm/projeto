@@ -45,7 +45,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Deseja Realmente Atualizar Esse Setor?
+                                Deseja realmente atualizar esse setor?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">

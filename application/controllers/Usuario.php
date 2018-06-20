@@ -27,7 +27,7 @@ class Usuario extends CI_Controller
     {
       if(!$this->form_validation->run('usuario'))
       {
-        $this->session->set_flashdata('errors','Não foi possível realizar o cadastro<br>Verifique os campos abaixo');
+        $this->session->set_flashdata('errors','Não foi possível realizar o cadastro<br>Verifique os campos abaixo.');
         $this->index();
       }
       else
@@ -41,7 +41,7 @@ class Usuario extends CI_Controller
         {
           if($this->usuario->existsLogin($this->input->post("email")))
           {
-            $this->session->set_flashdata('errors','E-mail já cadastrado no sistema.<br>Favor inserir outro e-mail');
+            $this->session->set_flashdata('errors','E-mail já cadastrado no sistema.<br>Favor inserir outro e-mail.');
             $this->index();
           }
           else
@@ -91,7 +91,7 @@ class Usuario extends CI_Controller
     public function delete($id_usuario)
     {
       $this->usuario->remove($id_usuario);
-      $this->session->set_flashdata('success', 'Usuário excluído com sucesso');
+      $this->session->set_flashdata('success', 'Usuário excluído com sucesso!');
       redirect('usuario');
     }
 
