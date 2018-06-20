@@ -22,7 +22,7 @@
                     <strong class="card-title">Fornecedores</strong>
                 </div>
                 <div class="card-body">
-          <a title="Cadastrar Novo Fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
+          <a title="Cadastrar fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
             <i  class="fa fa-check"></i> Novo Cadastro
           </a><br />
           <br />

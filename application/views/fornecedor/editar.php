@@ -4,12 +4,12 @@
       <div class="row justify-content-center align-items-center">
          <div class="col-lg-10">
             <div class="card">
-               
+
                <div class="card-header">
                  <strong>Atualizar Fornecedor</strong>
                </div>
-               
-               
+
+
                <div class="row" style="margin-top: 5px;">
                   <div class="col-md-12">
                      <?php if ($this->session->flashdata('success')) : ?>
@@ -23,9 +23,9 @@
                      <?php endif; ?>
                   </div>
                </div>
-               
+
       <div class="card-body card-block">
-         
+
       <div class="row">
 
               <div class="form-group col-12 col-md-6">
@@ -121,7 +121,7 @@
 
           </div>
           </div>
-    
+
    </div>
 </div>
 </div>
@@ -137,7 +137,7 @@
                          </button>
                      </div>
                      <div class="modal-body">
-                         Deseja Realmente Atualizar Esse Fornecedor?
+                         Deseja realmente atualizar esse fornecedor?
                      </div>
                      <div class="modal-footer">
                          <button type="button" class="btn btn-danger" data-dismiss="modal">

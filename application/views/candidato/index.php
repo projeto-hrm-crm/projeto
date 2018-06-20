@@ -79,7 +79,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Deseja Realmente Excluir Esse Candidato?
+                Deseja realmente excluir esse candidato?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger " data-dismiss="modal">

@@ -242,7 +242,7 @@
 									        </button>
 									      </div>
 									      <div class="modal-body text-center">
-									        Deseja Realmente Atualizar Esse Pedido?
+									        Deseja realmente atualizar esse pedido?
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
