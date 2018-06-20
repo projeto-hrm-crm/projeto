@@ -28,30 +28,39 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td><b>Nome</b></td>
-                                        <td><?=$pessoa->nome;?></td> 
-                                       
-                                        <td><b>E-mail</b></td>
-                                        <td colspan="4"><?=$pessoa->email;?></td>                                    
+                                       <td>
+                                          <b>Nome</b><br>
+                                          <?=$pessoa[0]->nome;?>
+                                       </td>
+                                       <td colspan="2">
+                                          <b>E-mail</b><br>
+                                          <?=$pessoa[0]->email;?>
+                                       </td>                                
                                     </tr>
                                     <tr>
-                                        <td><b>Endereço</b></td>
-                                        <td colspan="3"><?=$endereco[0]->logradouro;?></td>  
-                                        <td><b>Número</b></td>
-                                        <td><?=$endereco[0]->numero;?></td>
+                                        <td colspan="3">
+                                           <b>Endereço</b><br>
+                                           <?=$endereco[0]->logradouro;?>, <?=$endereco[0]->numero;?> - <?=$endereco[0]->bairro;?>                                       
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Bairro</b></td>
-                                        <td><?=$endereco[0]->bairro;?></td>  
-                                        <td><b>Complemento</b></td>
-                                        <td><?=$endereco[0]->complemento;?></td>
-                                        <td><b>CEP</b></td>
-                                        <td><?=$endereco[0]->cep;?></td>
+                                        <td>
+                                           <b>Complemento</b><br>
+                                          <?=$endereco[0]->complemento;?>
+                                       </td>
+                                        <td>
+                                           <b>CEP</b>
+                                          <?=$endereco[0]->cep;?>
+                                       </td>
+                                        <td>
+                                           <b>Cidade</b>
+                                          <?=$cidade[0]->nome;?> -  <?=$estado[0]->uf;?>
+                                       </td>
                                     </tr>
                                 </tbody>                            
                             </table>
-                           <button class="btn btn-primary btn-sm">Alterar Dados</button>
-                           <button class="btn btn-primary btn-sm">Alterar Senha</button>
+                           <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Alterar Dados</a>
+                           <a href="<?=site_url('perfil/alterar-senha/')?>" class="btn btn-primary btn-sm">Alterar Senha</a>
                         </div>
                     </div>
                 </div>

@@ -27,6 +27,34 @@ class Usuario_model extends CI_Model
     {
       $this->db->insert('usuario',$data);
     }
+   
+   /**
+    * @author: Rodrigo Alves
+    * Atualiza usuario
+    *
+    */
+   public function update($data)
+	{
+		$this->db->where('usuario.id_usuario', $data['id_usuario']);
+		$this->db->set('usuario.login', $data['login']);
+		$this->db->update('usuario', $data);
+
+
+	}
+   
+   /**
+    * @author: Rodrigo Alves
+    * Alterar senha
+    *
+    */
+   public function changePassword($data)
+	{
+		$this->db->where('usuario.id_usuario', $data['id_usuario']);
+		$this->db->set('usuario.senha', $data['senha']);
+		$this->db->update('usuario', $data);
+
+
+	}
 
     /**
     * @author: Matheus Ladislau

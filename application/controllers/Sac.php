@@ -10,11 +10,11 @@ class Sac extends PR_Controller {
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-
-      $id = $data['pessoa']->id_pessoa;
-      $cliente = $this->cliente->getIdCliente($id);
-
-
+        
+      $id = $data['pessoa'][0]->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id);      
+       
       $data['title'] = 'Solicitações SAC';
       $data['tipo'] = $typeUser;
       if($typeUser=="1"){
@@ -51,11 +51,11 @@ class Sac extends PR_Controller {
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-
-      $id = $data['pessoa']->id_pessoa;
-      $cliente = $this->cliente->getIdCliente($id);
-
-
+        
+      $id = $data['pessoa'][0]->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id); 
+       
       $data = $this->input->post();
 
       if($typeUser=="1"){
@@ -110,9 +110,10 @@ class Sac extends PR_Controller {
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-
-      $id = $data['pessoa']->id_pessoa;
-      $cliente = $this->cliente->getIdCliente($id);
+        
+      $id = $data['pessoa'][0]->id_pessoa;
+       
+      $cliente = $this->cliente->getIdCliente($id);   
 
 
        $data = $this->input->post();
@@ -170,7 +171,7 @@ class Sac extends PR_Controller {
     */
     public function delete($id_sac)
     {
-        $this->sac->remove($id_sac);
+        $this->sac->remove($id_sac);        
 
         $this->redirectSuccess('SAC removido com sucesso');
     }
