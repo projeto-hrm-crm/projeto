@@ -22,7 +22,7 @@
 					<strong class="card-title">Vagas</strong>
 				</div>
 				<div class="card-body">
-					<a title="Cadastrar Nova Vaga" href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
+					<a title="Cadastrar vaga" href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm">
 					  	<i class="fa fa-check"></i> Novo Cadastro
 				  	</a><br><br>
 					<table class="datatable table table-striped table-bordered">
@@ -77,7 +77,7 @@
 				</button>
 			</div>
 			<div class="modal-body ">
-				Deseja Realmente Excluir Essa Vaga?
+				Deseja realmente excluir essa vaga?
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">

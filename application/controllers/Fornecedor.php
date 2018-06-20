@@ -20,7 +20,7 @@ class Fornecedor extends CI_Controller
        $this->usuario->hasPermission($user_id, $currentUrl);
        $this->menus = $this->menu->getUserMenu($user_id);
    }
-   
+
   /**
   * author: Nikolas Lencioni
   * Metodo index que chama a view inicial de fornecedores
@@ -41,7 +41,7 @@ class Fornecedor extends CI_Controller
     // exit();
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
-   
+
   /**
   * author: Nikolas Lencioni
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
@@ -54,15 +54,15 @@ class Fornecedor extends CI_Controller
   public function create()
   {
     $data = $this->input->post();
-    if($data) {       
+    if($data) {
       if ($this->form_validation->run('fornecedor')) {
         $this->fornecedor->insert($data);
-        $this->session->set_flashdata('success', 'Fornecedor Cadastrado Com Sucesso!');
+        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso!');
         redirect('fornecedor');
       }else {
-        $this->session->set_flashdata('danger', 'Não Foi Possível Cadastrar!');
+        $this->session->set_flashdata('danger', 'Não foi possível cadastrar!');
         redirect('fornecedor/cadastrar');
-         
+
       }
     }
     $data['title'] = 'Cadastrar Fornecedor';
@@ -95,30 +95,30 @@ class Fornecedor extends CI_Controller
   public function edit($id)
   {
     $data = $this->input->post();
-     
+
     if ($data)
     {
       if ($this->form_validation->run('fornecedor'))
       {
         $this->fornecedor->update($id, $data);
-        $this->session->set_flashdata('success', 'Fornecedor Atualizado Com Sucesso!');
+        $this->session->set_flashdata('success', 'Fornecedor atualizado com sucesso!');
         redirect('fornecedor');
       }else{
-        $this->session->set_flashdata('danger', 'Fornecedor Não Pode Ser Atualizado!');
+        $this->session->set_flashdata('danger', 'Não foi possível atualizar fornecedor!');
         redirect('fornecedor/edit/'.$id);
       }
     }
-     
+
      $data['fornecedor'] = $this->fornecedor->find($id);
      $data['title'] = 'Editar Fornecedor';
-     
+
      $data['estado_atual'] = $this->cidade->findState($data['fornecedor'][0]->id_cidade);
-     
+
      $data['estados'] =  $this->estado->get();
      $data['cidades'] = $this->cidade->getByState($data['estado_atual'][0]->id_estado);
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
-     
+
   }
   /**
   * author: Nikolas Lencioni
@@ -131,9 +131,9 @@ class Fornecedor extends CI_Controller
   {
      if($id){
         $this->fornecedor->delete($id);
-        $this->session->set_flashdata('success', 'Fornecedor Excluído Com Sucesso!');
+        $this->session->set_flashdata('success', 'Fornecedor excluído com sucesso!');
      }else{
-       $this->session->set_flashdata('danger', 'Impossível Excluir!');
+       $this->session->set_flashdata('danger', 'Não foi possível excluir!');
      }
      redirect('fornecedor');
   }

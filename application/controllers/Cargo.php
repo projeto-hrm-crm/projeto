@@ -33,8 +33,7 @@ class Cargo extends PR_Controller
             if($this->form_validation->run('cargo'))
             {
                 $this->cargo->insert($this->getFromPost());
-
-                $this->redirectSuccess('Cargo cadastrado com sucesso');
+                $this->redirectSuccess('Cargo cadastrado com sucesso!');
             }
             else
             {
@@ -69,7 +68,7 @@ class Cargo extends PR_Controller
             if($this->form_validation->run('cargo'))
             {
                 $this->cargo->update($this->getFromPostEdit($id_cargo));
-                $this->redirectSuccess('Cargo atualizado com sucesso');
+                $this->redirectSuccess('Cargo atualizado com sucesso!');
             }
             else
             {
@@ -102,7 +101,7 @@ class Cargo extends PR_Controller
     {
         $this->cargo->remove($id_cargo);
 
-        $this->redirectSuccess('Cargo removido com sucesso');
+        $this->redirectSuccess('Cargo removido com sucesso!');
     }
 
     /**

@@ -61,11 +61,11 @@ class Processo_Seletivo extends CI_Controller
           $this->etapa->insert($id_processo, $etapas['nome_etapa'], $etapas['descricao_etapa']);
         }
 
-        $this->session->set_flashdata('success', 'Processo Seletivo Cadastrado Com Sucesso!');
+        $this->session->set_flashdata('success', 'Processo Seletivo cadastrado com sucesso!');
 
         redirect('processo_seletivo');
       }else {
-        $this->session->set_flashdata('danger', 'Processo Seletivo Não Pode Ser Cadastrado');
+        $this->session->set_flashdata('danger', 'Não foi possível cadastrar Processo Seletivo!');
         // redirect('processo_seletivo');
       }
     }
@@ -115,10 +115,10 @@ class Processo_Seletivo extends CI_Controller
         unset($data['nome_etapa']);
         unset($data['descricao_etapa']);
         $this->processo_seletivo->update($id, $data);
-        $this->session->set_flashdata('success', 'Processo Seletivo Atualizado Com Sucesso!');
+        $this->session->set_flashdata('success', 'Processo Seletivo atualizado com sucesso!');
         redirect('processo_seletivo');
       }else{
-        $this->session->set_flashdata('danger', 'Processo Seletivo Não Pode Ser Atualizado!');
+        $this->session->set_flashdata('danger', 'Não foi possível atualizar o Processo Seletivo!');
         // redirect('processo_seletivo/edit/'.$id);
       }
     }
@@ -164,9 +164,9 @@ class Processo_Seletivo extends CI_Controller
     $processo_seletivo = $this->processo_seletivo->find($id);
     if($processo_seletivo){
        $this->processo_seletivo->delete($id);
-       $this->session->set_flashdata('success', 'Processo Seletivo Excluído Com Sucesso!');
+       $this->session->set_flashdata('success', 'Processo Seletivo excluído com sucesso!');
     }else{
-      $this->session->set_flashdata('danger', 'Impossível Excluir!');
+      $this->session->set_flashdata('danger', 'Não foi possível excluir!');
     }
     redirect('processo_seletivo');
   }

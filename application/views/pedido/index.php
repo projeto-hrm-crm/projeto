@@ -21,7 +21,7 @@
                     <strong class="card-title">Pedidos</strong>
                 </div>
                 <div class="card-body">
-                    <a href="<?= site_url('pedido/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
+                    <a href="<?= site_url('pedido/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar pedido">
                         <i class="fa fa-check"></i> Novo Cadastro
                     </a><br><br>
                     <table class="table table-striped table-bordered datatable">
@@ -74,7 +74,7 @@
         </button>
       </div>
       <div class="modal-body text-center">
-        Tem certeza que deseja excluir esse Pedido?
+        Deseja realmente excluir esse pedido?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

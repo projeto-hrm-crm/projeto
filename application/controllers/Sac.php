@@ -6,14 +6,14 @@ class Sac extends PR_Controller {
   }
 
     public function index(){
-
       $user_id = $this->session->userdata('user_login');
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      // $id_pessoa = $data['pessoa']->id_pessoa;
-      // $cliente = $this->cliente->getIdCliente($id);
+      $id = $data['pessoa']->id_pessoa;
+      $cliente = $this->cliente->getIdCliente($id);
+
 
       $data['title'] = 'Solicitações SAC';
       $data['tipo'] = $typeUser;
@@ -52,8 +52,9 @@ class Sac extends PR_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      // $id = $data['pessoa']->id_pessoa;
-      // $cliente = $this->cliente->getIdCliente($id);
+      $id = $data['pessoa']->id_pessoa;
+      $cliente = $this->cliente->getIdCliente($id);
+
 
       $data = $this->input->post();
 
@@ -79,11 +80,11 @@ class Sac extends PR_Controller {
             );
 
             $this->sac->insert($array);
-            $this->session->set_flashdata('success', 'Sac cadastrado com sucesso.');
+            $this->session->set_flashdata('success', 'SAC cadastrado com sucesso!');
             redirect('sac');
 
          }else{
-            $this->session->set_flashdata('danger', 'Sac não pode ser cadastrado');
+            $this->session->set_flashdata('danger', 'Não foi possível cadastrar SAC!');
             redirect('sac');
          }
       }
@@ -110,9 +111,9 @@ class Sac extends PR_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      // $id = $data['pessoa']->id_pessoa;
+      $id = $data['pessoa']->id_pessoa;
+      $cliente = $this->cliente->getIdCliente($id);
 
-      // $cliente = $this->cliente->getIdCliente($id);
 
        $data = $this->input->post();
 
@@ -134,32 +135,29 @@ class Sac extends PR_Controller {
                  'descricao' => $this->input->post('descricao'),
                  'id_sac'=>$id,
                );
-               $id_sac=$id;
-               $this->sac->update($array, $id_sac);
-               $this->session->set_flashdata('success', 'SAC Atualizado Com Sucesso!');
+               $this->sac->update($array, $id);
+               $this->session->set_flashdata('success', 'SAC atualizado com sucesso!');
+
                redirect('sac');
             }else{
-               $this->session->set_flashdata('danger', 'SAC Não Pode Ser Atualizado!');
+               $this->session->set_flashdata('danger', 'SAC não pode ser atualizado!');
                redirect('sac');
             }
 
         }
         else
         {
-            $data['title']='Editar Sac';
-            $data['id']=$id;
-            $data['sac']=$this->sac->find($id);
-            $data['produtos']=$this->produto->get();
-            // $this->addData('sac',      $this->sac->getById($id_sac));
-            // $this->addData('id',       $id_sac);
-            // $this->addData('clientes', $this->cliente->get());
-            // $this->addData('produtos', $this->produto->get());
-            // $this->addData('tipo',     $typeUser);
+            $this->setTitle('Editar Sac');
 
-            // $this->loadFormDefaultScripts();
+            $this->addData('sac',      $this->sac->getById($id_sac));
+            $this->addData('id',       $id_sac);
+            $this->addData('clientes', $this->cliente->get());
+            $this->addData('produtos', $this->produto->get());
+            $this->addData('tipo',     $typeUser);
 
-            // $this->loadView('editar');
-            loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
+            $this->loadFormDefaultScripts();
+
+            $this->loadView('editar');
         }
 
     }

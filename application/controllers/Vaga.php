@@ -67,7 +67,7 @@ class Vaga extends CI_Controller
 
           );
             $this->vaga->insert($array);
-            $this->session->set_flashdata('success','Vaga Cadastrada Com Sucesso!');
+            $this->session->set_flashdata('success','Vaga cadastrada com sucesso!');
             redirect('vaga');
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -116,7 +116,7 @@ class Vaga extends CI_Controller
 
           );
           $this->vaga->update($array);
-          $this->session->set_flashdata('success','Vaga Atualizada Com Sucesso!');
+          $this->session->set_flashdata('success','Vaga atualizada com sucesso!');
           redirect('vaga');
         }else{
           $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -157,9 +157,9 @@ class Vaga extends CI_Controller
       $vaga = $this->vaga->getById($id);
       if($vaga){
         $this->vaga->remove($id);
-        $this->session->set_flashdata('success', 'Vaga Excluída Com Sucesso!');
+        $this->session->set_flashdata('success', 'Vaga excluída com sucesso!');
       }else{
-        $this->session->set_flashdata('danger', 'Impossível Excluir!');
+        $this->session->set_flashdata('danger', 'Não foi possível excluir!');
       }
       redirect('vaga');
     }
