@@ -96,6 +96,8 @@ $route['sac'] = 'Sac';
 $route['sac/cadastrar'] = 'Sac/create';
 $route['sac/editar/(:num)'] = 'Sac/edit/$1';
 $route['sac/excluir/(:num)'] = 'Sac/delete/$1';
+$route['sac/iteracao/(:num)'] = 'Iteracao/loadMensagem/$1';
+$route['sac/mensagem/(:num)'] = 'Iteracao/create/$1';
 
 //Rotas Setores
 

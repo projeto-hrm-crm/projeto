@@ -327,6 +327,15 @@ $config = array(
             'rules' => 'required'
         )
     ),
+    
+    'iteracao' => array(
+
+        array(
+            'field' => 'mensagem',
+            'label' => 'Mensagem',
+            'rules' => 'required'
+        )
+    ),
 
     'pedido' => array(
 
