@@ -25,7 +25,6 @@
                     <i class="fa fa-check"></i> Novo Cadastro
                   </a><br />
                   <br />
-
                     <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>

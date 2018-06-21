@@ -1,9 +1,5 @@
   <div class="row justify-content-center align-items-center">
-    <div class="col-lg-10">
-      <div class="card">
-        <div class="card-header">
-          <strong class="card-title">Clientes</strong>
-        </div>
+    <div class="col-lg-12">
         <?php if($this->session->flashdata('success')): ?>
           <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
             <?php echo $this->session->flashdata('success'); ?>
@@ -20,6 +16,10 @@
             </button>
           </div>
         <?php endif; ?>
+      <div class="card">
+        <div class="card-header">
+          <strong class="card-title">Clientes</strong>
+        </div>
         <div class="card-body">
           <a title="Cadastrar Cliente" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
             <i class="fa fa-check"></i> Novo Cadastro
@@ -49,9 +49,9 @@
                     <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Atualizar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary btn-sm">
+                    <a title="Atualizar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
                       <span class="fa fa-pencil-square-o"></span></a>
-                       <button title="Excluir Cliente" data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger btn-sm" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
+                       <button title="Excluir Cliente" data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                         </button>
                       </td>

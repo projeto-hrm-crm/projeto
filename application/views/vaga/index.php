@@ -64,7 +64,6 @@
 	</div>
 </div>
 
-
  <!-- Modal remover -->
 
 <div class="modal fade" id="modalRemover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,10 +80,10 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">
-						Cancelar
+					Cancelar
 				</button>
 				<a href="#" class="btn btn-primary btn-remove-ok">
-						Confirmar
+					Confirmar
 				</a>
 			</div>
 		</div>

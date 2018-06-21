@@ -1,8 +1,3 @@
-  <!-- <pre>
-  <?php print_r($processo_seletivo);
-  print_r($etapas);
-  ?> -->
-  <!-- </pre> -->
 <div class="row justify-content-center align-items-center">
  <div class="col-lg-10">
 <div class="card">

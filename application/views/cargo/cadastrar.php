@@ -7,6 +7,19 @@
                 </div>
                 <form action="<?php echo base_url() ?>cargo/cadastrar" method="post" id="form_cargo" novalidate="novalidate">
                     <div class="card-body card-block">
+                        <?php if(sizeof($setores) <= 0): ?>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-12">
+                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                                        Não existe nenhum setor cadastrado no sistema, favor cadastre um setor!
+                                    </div>
+                                    <a title="Novo setor" href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+                                        <i class="fa fa-check"></i>
+                                        Novo setor
+                                    </a>
+                                </div>
+                            </div>
+                        <?php else: ?>
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class=" form-control-label">Nome</label>
@@ -55,6 +68,7 @@
                             Cadastrar
                         </button>
                     </div>
+                <?php endif;?>
                 </form>
             </div>
         </div>
