@@ -49,7 +49,7 @@
               </div>
             </div>
           </div>
-
+      </div>
         <div class="card-footer text-right">
          <!--ACTIONS-->
          <a title="Cancelar Edição" href="<?php echo base_url('cargo');?>" class="btn btn-danger btn-sm">

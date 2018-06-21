@@ -96,15 +96,16 @@
               </div> <!-- FIM COMPLEMENTO -->
 
             </div>
-            <div class="card-footer text-right">
-              <a title="Cancelar Cadastro" href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
-                <i class="fa fa-times"></i> Cancelar
-              </a>
-              <button title="Cadastrar Cliente" type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-plus"></i> Cadastrar
-              </button>
-            </div>
 
+
+          </div>
+          <div class="card-footer text-right">
+            <a title="Cancelar Cadastro" href="<?=site_url('cliente')?>" class="btn btn-danger btn-sm">
+              <i class="fa fa-times"></i> Cancelar
+            </a>
+            <button title="Cadastrar Cliente" type="submit" class="btn btn-primary btn-sm">
+              <i class="fa fa-plus"></i> Cadastrar
+            </button>
           </div>
         </div>
       </form>

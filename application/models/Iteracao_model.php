@@ -37,6 +37,21 @@ class Iteracao_model extends CI_Model {
     $query = $this->db->select('*')->from('iteracao')->where('id_iteracao', $id_iteracao);
     return $query->get()->result();
   }
+    
+ /**
+  * @author: Rodrigo Alves
+  * lista iterações pelo sac
+  *
+  */
+  public function getBySac($sac) {
+    $query = $this->db->select('*')
+        ->from('iteracao')
+        ->join('pessoa', 'pessoa.id_pessoa = iteracao.id_pessoa')
+        ->join('usuario', 'usuario.id_pessoa = iteracao.id_pessoa')
+        ->where('iteracao.id_sac', $sac)
+        ->order_by("iteracao.data", "asc");
+    return $query->get()->result();
+  }
 
   /**
   * @author: Rodrigo Alves

@@ -31,7 +31,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Clientes</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Fornecedores</a>
-                                
+
                             </div>
                         </nav>
                         <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -56,26 +56,26 @@
                                                                     <strong>Pedido Nº </strong><?php echo $pedido->id; ?>
                                                                 </div>
                                                                 <div class="col-6 text-right">
-                                                                    <a href="<?php echo base_url('pedido/editar/'.$pedido->id) ?>" 
-                                                                        class="btn bg-primary btn-sm text-white">
+                                                                    <a href="<?php echo base_url('pedido/editar/'.$pedido->id) ?>"
+                                                                        class="btn bg-primary text-white">
                                                                         <i class="fa fa-pencil-square-o"></i>
                                                                     </a>
 
-                                                                    <a href="<?php echo base_url('pedido/cliente/pdf/'.$pedido->id); ?>" 
+                                                                    <a href="<?php echo base_url('pedido/cliente/pdf/'.$pedido->id); ?>"
                                                                         target="_blank"
-                                                                        class="btn bg-secondary btn-sm text-white">
+                                                                        class="btn bg-secondary text-white">
                                                                         <i class="fa fa-print"></i>
                                                                     </a>
-                                                                    
-                                                                    <button data-href="<?php echo base_url('pedido/excluir/'.$pedido->id); ?>" 
-                                                                        class="btn bg-danger btn-sm text-white" data-toggle="modal" data-target="#modalRemover">
+
+                                                                    <button data-href="<?php echo base_url('pedido/excluir/'.$pedido->id); ?>"
+                                                                        class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
                                                                         <i class="fa fa-times"></i>
                                                                     </button>
                                                                     <br>
                                                                     <small><?php echo swicthTimestamp($pedido->data) ?></small>
                                                                     <br>
                                                                     <span class="badge badge-<?php echo getSituationClass($pedido->situacao) ?>"><?php echo getSituationName($pedido->situacao); ?></span>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -86,7 +86,7 @@
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <strong>Tipo: </strong>
-                                                                    <?php 
+                                                                    <?php
                                                                         switch($pedido->tipo)
                                                                         {
                                                                             case 'p':
@@ -98,7 +98,7 @@
                                                                             default:
                                                                                 echo 'Produtos e Serviços';
                                                                                 break;
-                                                                        } 
+                                                                        }
                                                                     ?>
                                                                 </div>
                                                             </div>
@@ -141,11 +141,11 @@
                                     </tbody>
 
                                 </table>
-                                
+
                                 <!-- / PEDIDOS -->
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                
+
 
 
 
@@ -158,8 +158,8 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php 
-                                            if(isset($compras)): 
+                                        <?php
+                                            if(isset($compras)):
                                                 $pedidos = $compras;
                                         ?>
                                             <?php foreach($pedidos as $pedido): ?>
@@ -172,26 +172,26 @@
                                                                     <strong>Pedido Nº </strong><?php echo $pedido->id; ?>
                                                                 </div>
                                                                 <div class="col-6 text-right">
-                                                                    <a href="pedido/editar/<?php echo $pedido->id ?>" 
-                                                                        class="btn bg-primary btn-sm text-white">
+                                                                    <a href="pedido/editar/<?php echo $pedido->id ?>"
+                                                                        class="btn bg-primary text-white">
                                                                         <i class="fa fa-pencil-square-o"></i>
                                                                     </a>
 
-                                                                    <a href="<?php echo base_url('pedido/fornecedor/pdf/'.$pedido->id) ?>" 
+                                                                    <a href="<?php echo base_url('pedido/fornecedor/pdf/'.$pedido->id) ?>"
                                                                         target="_blank"
-                                                                        class="btn bg-secondary btn-sm text-white">
+                                                                        class="btn bg-secondary text-white">
                                                                         <i class="fa fa-print"></i>
                                                                     </a>
-                                                                    
-                                                                    <button  data-href="pedido/excluir/<?php echo $pedido->id ?>" 
-                                                                        class="btn bg-danger btn-sm text-white" data-toggle="modal" data-target="#modalRemover">
+
+                                                                    <button  data-href="pedido/excluir/<?php echo $pedido->id ?>"
+                                                                        class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
                                                                         <i class="fa fa-times"></i>
                                                                     </button>
                                                                     <br>
                                                                     <small><?php echo swicthTimestamp($pedido->data) ?></small>
                                                                     <br>
                                                                     <span class="badge badge-<?php echo getSituationClass($pedido->situacao) ?>"><?php echo getSituationName($pedido->situacao); ?></span>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -202,7 +202,7 @@
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <strong>Tipo: </strong>
-                                                                    <?php 
+                                                                    <?php
                                                                         switch($pedido->tipo)
                                                                         {
                                                                             case 'p':
@@ -214,7 +214,7 @@
                                                                             default:
                                                                                 echo 'Produtos e Serviços';
                                                                                 break;
-                                                                        } 
+                                                                        }
                                                                     ?>
                                                                 </div>
                                                             </div>
@@ -236,8 +236,8 @@
                                                                     <div class="col-2 text-right"><?php echo $produto->quantidade ?></div>
                                                                 </div>
                                                             <?php endforeach ?>
-                                                           
-                                                            
+
+
                                                         </div>
                                                     </td>
 
@@ -247,7 +247,7 @@
                                     </tbody>
 
                                 </table>
-                                
+
                                 <!-- / COMPRAS -->
 
                             </div>

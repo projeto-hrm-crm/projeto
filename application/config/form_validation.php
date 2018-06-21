@@ -327,6 +327,15 @@ $config = array(
             'rules' => 'required'
         )
     ),
+    
+    'iteracao' => array(
+
+        array(
+            'field' => 'mensagem',
+            'label' => 'Mensagem',
+            'rules' => 'required'
+        )
+    ),
 
     'pedido' => array(
 
@@ -635,6 +644,69 @@ $config = array(
           array(
               'field' => 'id_cidade',
               'label' => 'id_cidade',
+              'rules' => 'required|numeric'
+          ),
+          array(
+              'field' => 'bairro',
+              'label' => 'bairro',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'logradouro',
+              'label' => 'endereço',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'numero',
+              'label' => 'número',
+              'rules' => 'required|numeric'
+          ),
+      ),
+      'funcionario' =>
+      array(
+          array(
+              'field' => 'nome',
+              'label' => 'nome completo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'email',
+              'label' => 'email',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'senha',
+              'label' => 'senha',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'senha2',
+              'label' => 'confirmar senha',
+              'rules' => 'required'
+          ),
+          array(
+                'field' => 'sexo',
+                'label' => 'sexo',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'cpf',
+                'label' => 'cpf',
+                'rules' => 'required'
+            ),
+          array(
+              'field' => 'cep',
+              'label' => 'cep',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'estado',
+              'label' => 'estado',
+              'rules' => 'required|numeric'
+          ),
+          array(
+              'field' => 'cidade',
+              'label' => 'cidade',
               'rules' => 'required|numeric'
           ),
           array(

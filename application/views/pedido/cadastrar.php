@@ -8,19 +8,56 @@
 	            <form id="form-pedido" action="<?php echo base_url('pedido/cadastrar'); ?>" method="POST">
 	                <div class="card-body">
 	                    <div class="card-body">
+	                    	<?php if(sizeof($fornecedores) <= 0 && sizeof($clientes) <= 0): ?>
+	                    	    <div class="row justify-content-center align-items-center">
+	                    	        <div class="col-12">
+	                    	            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+	                    	                Não existe nenhum fornecedor ou cliente cadastrado no sistema, favor cadastre um fornecedor ou cliente!
+	                    	            </div>
+	                    	            <a title="Cadastrar fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+	                    	                <i class="fa fa-check"></i>
+	                    	                Novo fornecedor
+	                    	            </a>
+	                    	            <a title="Cadastrar fornecedor" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+	                    	                <i class="fa fa-check"></i>
+	                    	                Novo cliente
+	                    	            </a>
+	                    	        </div>
+	                    	    </div>
+	                    	<?php else: ?>
+	                    	<?php if(sizeof($produtos) <= 0): ?>
+                    		    <div class="row justify-content-center align-items-center">
+                    		        <div class="col-12">
+                    		            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    		                Não existe nenhum produto cadastrado no sistema, favor cadastre um produto!
+                    		            </div>
+                    		            <a title="Cadastrar fornecedor" href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+                    		                <i class="fa fa-check"></i>
+                    		                Novo produto
+                    		            </a>
+                    		        </div>
+                    		    </div>
+                    		<?php else: ?>
 	                    	<div class="row">
 	                    		<div class="form-group col-6">
 	                        		<label for="tipo" class="control-label mb-1">Pedido para</label>
 	                        		<br>
 	                        		<div class="form-check-inline form-check">
-	                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['transacao']) ? 'text-danger' : '' ?>">
-	                        		    <input type="radio" name="transacao" value="V" class="form-check-input compra-radio" <?php echo isset($old_data['transacao']) && $old_data['transacao'] == 'V' ? 'checked' : 'checked'?>>
-	                        		    Cliente
-	                        		  </label>
-	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['transacao']) ? 'text-danger' : '' ?>">
-	                        		    <input type="radio" name="transacao" value="C" class="form-check-input compra-radio" <?php echo isset($old_data['transacao']) && $old_data['transacao'] == 'C' ? 'checked' : ''?>>
-	                        		    Fornecedor
-	                        		  </label>
+	                        		  	
+	                        		  	<?php if(sizeof($clientes) > 0): ?>
+			                        		  <label for="tipo2" class="form-check-label mr-2 <?php echo isset($errors['transacao']) ? 'text-danger' : '' ?>">
+			                        		    	<input type="radio" name="transacao" value="V" class="form-check-input compra-radio" <?php echo isset($old_data['transacao']) && $old_data['transacao'] == 'V' ? 'checked' : 'checked'?>>
+			                        		    	Cliente
+			                        		  </label>
+	                        			<?php endif ?>
+
+	                        			<?php if(sizeof($fornecedores) > 0): ?>
+			                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['transacao']) ? 'text-danger' : '' ?>">
+			                        		    <input type="radio" name="transacao" value="C" class="form-check-input compra-radio" <?php echo isset($old_data['transacao']) && $old_data['transacao'] == 'C' ? 'checked' : ''?>>
+			                        		    Fornecedor
+			                        		  </label>
+	                        		  	<?php endif ?>
+
 	                        		</div>
                         			<div class="text-danger">
                         				<small class="d-none" id="error-compra"><?php echo isset($errors['tipo']) ? $errors['tipo'] : '' ?></small>
@@ -202,15 +239,17 @@
 	                    </div>
 	                </div>
 	                <div class="card-footer text-right">
-	                   	<a title="Cancelar Cadastro" href="<?php echo base_url('pedido')?>" class="btn bg-danger text-white">
-	                        <i class="fa fa-times btn-sm" aria-hidden="true"></i>
+	                   	<a title="Cancelar Cadastro" href="<?php echo base_url('pedido')?>" class="btn bg-danger btn-sm text-white">
+	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button title="Cadastrar pedido" type="submit" class="btn bg-primary text-white">
+	                    <button title="Cadastrar pedido" type="submit" class="btn bg-primary btn-sm text-white">
 	                        <i class="fa fa-plus" aria-hidden="true"></i>
 	                        Cadastrar
 	                    </button>
 	                </div>
+	                <?php endif ?>
+	                <?php endif ?>
 	            </form>
 	        </div>
 	    </div>

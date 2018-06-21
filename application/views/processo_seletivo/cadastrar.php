@@ -8,6 +8,19 @@
       <strong>Cadastrar Processo Seletivo</strong>
     </div>
     <?php echo validation_errors(); ?>
+    <?php if(sizeof($vagas) <= 0): ?>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    Não existe nenhuma vaga cadastrado no sistema, favor cadastre uma vaga!
+                </div>
+                <a title="Nova vaga" href="<?= site_url('vaga/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+                    <i class="fa fa-check"></i>
+                    Nova vaga
+                </a>
+            </div>
+        </div>
+    <?php else: ?>
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
 				<?php if ($this->session->flashdata('success')) : ?>
@@ -85,6 +98,7 @@
           </button>
 
         </div>
+    <?php endif; ?>
        </form>
   </div>
 </div>

@@ -93,6 +93,7 @@ class Pedido extends PR_Controller
   			$this->setTitle('Cadastrar Pedido');
 	  		$this->addData('produtos',  $this->produto->get());
 	  		$this->addData('clientes',  $this->cliente->get());
+	  		$this->addData('fornecedores', $this->fornecedor->get());
 	  		$this->addData('situacoes', $this->andamento->getSituations());
 
   			$this->addScripts(array('pedido/main.js'));

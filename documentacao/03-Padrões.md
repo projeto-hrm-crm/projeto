@@ -13,4 +13,4 @@ Os padrões básicos do código estão descritos em: _03a-Padrões_código.md_
 ## Padrões da interface do usuário
 Os padrões de interface foram modificadas levemente ao longo do desenvolvimento do projeto buscando um acesso cada vez mais prático para os usuários futuros. Portanto, foram definidos padrões para os botões, tabelas, tamanho de colunas e outros elementos visuais.
 
-Os padrões da ui estão descritos em: _03b-Padrões_UI.md
+Os padrões da ui estão descritos em: _03b-Padrões_UI.md_
