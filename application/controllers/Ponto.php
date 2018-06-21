@@ -1,7 +1,7 @@
 <?php
 
 
-class Ponto extends PR_Controller
+class Ponto extends CI_Controller
 {
 
   public function __construct()
@@ -9,7 +9,7 @@ class Ponto extends PR_Controller
     parent::__construct();
       $user_id = $this->session->userdata('user_login');
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+     /* $this->usuario->hasPermission($user_id, $currentUrl); */
     $this->load->model('funcionario_model');
     $this->load->model('cargo_model');
   }

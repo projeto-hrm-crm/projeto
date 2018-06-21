@@ -95,7 +95,7 @@ class Andamento_model extends PR_Model
 
         $query = "SHOW COLUMNS FROM andamento LIKE 'situacao'";
 
-        $row = $this->db->query("SHOW COLUMNS FROM andamento LIKE 'situacao'")->row()->Type;
+        $row = $this->db->query("SHOW COLUMNS FROM andamento")->row()->Type;
 
         $regex = "/'(.*?)'/";
 

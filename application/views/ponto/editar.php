@@ -32,17 +32,17 @@
               <fieldset>
                 <div class="form-group col-12 col-md-6">
                   <label class=" form-control-label">Data</label>
-                  <!-- <input type="text" id="Data"  name="Data" value="<?= htmlspecialchars($cargo[0]->dias)?>" class="form-control alter_mask" > -->
+                  < <input type="text" id="Data"  name="Data" value="<?= htmlspecialchars($cargo[0]->dias)?>" class="form-control alter_mask" > 
                 </div> <!-- data -->
 
                 <div class="form-group col-12 col-md-6">
                   <label class=" form-control-label">Entrada</label>
-                  <!-- <input type="text" id="horario-entrada"  name="entrada" value="<?= htmlspecialchars($cargo[0]->entrada)?>" class="form-control alter_mask" > -->
+                   <input type="text" id="horario-entrada"  name="entrada" value="<?= htmlspecialchars($cargo[0]->entrada)?>" class="form-control alter_mask" > 
                 </div> <!-- horario de entrada -->
 
                 <div class="form-group col-12 col-md-6">
                   <label class=" form-control-label">Saída</label>
-                   <!-- <input type="text" id="horario-saida"  name="saida" value="<?= htmlspecialchars($cargo[0]->saida)?>" class="form-control alter_mask" > -->
+                    <input type="text" id="horario-saida"  name="saida" value="<?= htmlspecialchars($cargo[0]->saida)?>" class="form-control alter_mask" > 
                 </div> <!-- Horario de saida -->
               </fieldset>
             

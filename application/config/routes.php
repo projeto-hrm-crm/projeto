@@ -150,6 +150,10 @@ $route['pedido/produtos/fornecedor/(:num)'] = 'Pedido/getProductsByProviderJSON/
 $route['pedido/fornecedor']                 = 'Pedido/indexProvider';
 $route['pedido/fornecedor/editar/(:num)']   = 'Pedido/editProvider/$1';
 
+//Rotas Ponto
+$route['ponto']                = 'Ponto/index';
+$route['ponto/editar/(:num)']      = 'Ponto/edit/$1';
+
 
 //Rotas Processo Processo_Seletivo
 $route['processo_seletivo'] = 'Processo_Seletivo/index';
