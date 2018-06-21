@@ -48,7 +48,7 @@
 			            	<a href="<?php echo base_url();?>fornecedor/cadastrar">
 			            		<button class="btn btn-sm bg-flat-color-5 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
 			            	</a>
-			                
+
 			                <a href="<?php echo base_url();?>fornecedor">
 			                	<button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
 			                </a>
@@ -71,7 +71,7 @@
 			            	<a href="<?php echo base_url();?>produto/cadastrar">
 			            		<button class="btn btn-sm bg-flat-color-4 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
 			            	</a>
-			                
+
 			                <a href="<?php echo base_url();?>produto">
 			                	<button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
 			                </a>
@@ -186,7 +186,7 @@
 			    </div>
 			</div>
 
-			<div class="card-block">
+			<!-- <div class="card-block">
 				<div class="col-lg-6">
 				      <div class="card">
 						  <div class="card-header">
@@ -220,7 +220,7 @@
 						  </div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="card-block">
 				<div class="col-lg-6">
@@ -230,26 +230,28 @@
 						  </div>
 						  <div class="card-body card-block">
 						    <div class="card-title">
-							  	<span class="text-muted">Últimos 3 processos seletivos</span>
+							  	<span class="text-muted">Últimos processos seletivos</span>
 							  	<hr>
 						  	</div>
 
-						  	<?php for($i = 0; $i < 3; $i++): ?>
-						  	<div class="stat-widget-four">
-				                <div class="stat-icon dib">
-				                    <i class="ti-book text-muted"></i>
-				                </div>
-				                <div class="stat-content">
-				                    <div class="text-left dib">
-				                        <div class="stat-heading">Nome do processo</div>
-				                        <div class="stat-text">Vaga: Desenvolvedor web</div>
-				                        <div class="stat-text">Data término: 22/03/2018</div>
+                <?php for($i = 0; $i < 3; $i++): ?>
+                  <?php if (isset($admin['processos_seletivos'][$i])): ?>
+                    <div class="stat-widget-four">
+                      <div class="stat-icon dib">
+                        <i class="ti-book text-muted"></i>
+                      </div>
+                      <div class="stat-content">
+                        <div class="text-left dib">
+                          <div class="stat-heading">Nome do processo <?php echo $admin['processos_seletivos'][$i]->nome ?></div>
+                          <div class="stat-text">Vaga: <?php echo $admin['processos_seletivos'][$i]->nome_cargo ?></div>
+                          <div class="stat-text">Data término: <?php echo $admin['processos_seletivos'][$i]->data_fim ?></div>
 
-				                    </div>
-				                </div>
-				            </div>
-				            <hr>
-				       		<?php endfor;?>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                  <?php endif; ?>
+                <?php endfor;?>
 						  </div>
 						  <div class="card-footer text-center">
 						    <button type="submit" class="btn bg-flat-color-2 text-light btn-sm">
@@ -263,10 +265,3 @@
         <!-- HRM -->
     </div>
 </div>
-
-
-
-
-
-
-

@@ -19,6 +19,23 @@ class ProcessoSeletivo_model extends CI_Model
     } catch (\Exception $e) {}
   }
 
+  public function getUltimos()
+  {
+    try {
+      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas')
+      ->from('processo_seletivo')
+      ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
+      ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')->order_by('id_processo_seletivo','desc')
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    } catch (\Exception $e) {}
+  }
+
   public function insert($data)
   {
     $this->db->insert('processo_seletivo', $data);

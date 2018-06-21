@@ -67,6 +67,10 @@ class Home extends CI_Controller
     $data['cargos']             = $this->cargo->count();
     $data['vagas']              = $this->vaga->count();
     $data['job_opportunity']    = $this->vaga->getLastJobOpportunity(3);
+    $data['processos_seletivos']= $this->processo_seletivo->getUltimos();
+    foreach ($data['processos_seletivos'] as $key => $value) {
+      $data['processos_seletivos'][$key]->data_fim = switchDate($data['processos_seletivos'][$key]->data_fim);
+    }
 
     return $data;
   }
