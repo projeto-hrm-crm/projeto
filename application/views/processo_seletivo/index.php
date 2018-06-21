@@ -1,28 +1,26 @@
-<!-- <pre>
-<?php print_r($processos_seletivos); ?>
-</pre> -->
     <div class="row" >
         <div class="col-md-12">
+            <?php if($this->session->flashdata('success')): ?>
+              <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                      <?php echo $this->session->flashdata('success'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          <?php endif; ?>
+          <?php if($this->session->flashdata('danger')): ?>
+              <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                      <?php echo $this->session->flashdata('danger'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          <?php endif; ?>
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Processos Seletivos</strong>
                   </div>
-                  <?php if($this->session->flashdata('success')): ?>
-                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('success'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
-            <?php if($this->session->flashdata('danger')): ?>
-                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                        <?php echo $this->session->flashdata('danger'); ?>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
+
              <div class="card-body">
                     <a title="Cadastrar Processo Seletivo" href="<?= site_url('processo_seletivo/cadastrar')?>" class="btn btn-primary btn-sm">
             <i class="fa fa-check"></i> Novo Cadastro
@@ -50,15 +48,15 @@
 
                               <td class="text-center">
 
-                                 <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary btn-sm">
+                                 <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary">
                                        <span class="fa fa-pencil-square-o"></span>
                                    </a>
 
-                                 <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning btn-sm">
+                                 <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
                                        <span class="fa fa-clipboard"></span>
                                  </a>
 
-                                 <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemover">
+                                 <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger" data-toggle="modal" data-target="#modalRemover">
                                    <span class="fa fa-times"></span>
                                  </button>
                               </td>

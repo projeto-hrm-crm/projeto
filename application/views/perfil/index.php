@@ -57,10 +57,23 @@
                                           <?=$cidade[0]->nome;?> -  <?=$estado[0]->uf;?>
                                        </td>
                                     </tr>
+
+                                    <form method="POST" action="<?php echo base_url('perfil/upload'); ?>" enctype="multipart/form-data">
+                                    <tr>
+                                      <td>
+                                        <b>Enviar curriculum</b> <br>
+                                           <input type="file" name="curriculum">
+                                       </td>
+                                       <td><br><input type="submit" class="btn btn-sm btn-primary" value="Enviar curriculum"></td>
+                                       <td></td>
+                                    </tr>
+                                    </form>
+
                                 </tbody>                            
                             </table>
                            <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Alterar Dados</a>
                            <a href="<?=site_url('perfil/alterar-senha/')?>" class="btn btn-primary btn-sm">Alterar Senha</a>
+                        
                         </div>
                     </div>
                 </div>

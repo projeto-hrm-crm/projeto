@@ -76,17 +76,18 @@
               <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($cliente[0]->complemento)?>" placeholder="Complemento" class="form-control" >
             </div> <!-- FIM COMPLEMENTO -->
           </div>
+      </div>
 
-           <div class="card-footer text-right">
-            <a title="Cancelar Edição" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
-              <i class="fa fa-times"></i> Cancelar
-            </a>
-            <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
-              <span class="fa fa-check"></span>
-              Atualizar
-            </button>
+          <div class="card-footer text-right">
+           <a title="Cancelar Edição" href="<?= site_url('cliente')?>" class="btn btn-danger btn-sm">
+             <i class="fa fa-times"></i> Cancelar
+           </a>
+           <button title="Atualizar Cliente" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarCliente">
+             <span class="fa fa-check"></span>
+             Atualizar
+           </button>
 
-          </div> <!-- FIM BOTÕES -->
+         </div> <!-- FIM BOTÕES -->
 
 
 
@@ -104,10 +105,10 @@
                   Deseja realmente atualizar esse cliente?
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">
+                  <button type="button" class="btn btn-danger text-white" data-dismiss="modal">
                     Cancelar
                   </button>
-                  <button type="submit" class="btn btn-primary  btn-sm">
+                  <button type="submit" class="btn btn-primary">
                     Confirmar
                   </button>
                 </div>

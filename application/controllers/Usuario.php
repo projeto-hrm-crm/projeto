@@ -68,7 +68,7 @@ class Usuario extends CI_Controller
             $this->cliente->insert(['id_pessoa' => $id_pessoa]);
 
             //usuario
-           $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>4,'id_pessoa'=>$id_pessoa]);
+           $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>$this->input->post("tipo_us"),'id_pessoa'=>$id_pessoa]);
 
             $this->session->set_flashdata('success','Usuário criado.<br>Já é possível acessar com seu e-mail e senha.');
             redirect('login');

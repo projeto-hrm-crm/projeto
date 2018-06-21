@@ -1,14 +1,21 @@
-<div class="row">
-  <div class="col-md-10">
-    <?php if ($this->session->flashdata('success')): ?>
-      <div class="alert alert-success mt-4">
-        <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif; ?>
-  </div>
-</div>
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-10">
+    <div class="col-lg-12">
+        <?php if($this->session->flashdata('success')): ?>
+            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                    <?php echo $this->session->flashdata('success'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php if($this->session->flashdata('danger')): ?>
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    <?php echo $this->session->flashdata('danger'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
       <div class="card">
         <div class="card-header">
           <strong class="card-title">Cargo</strong>
@@ -21,10 +28,10 @@
           <table class="table table-striped table-bordered datatable">
             <thead>
               <tr>
-                <th class="text-center">Nome</th>
-                <th class="text-center">Descrição</th>
-                <th class="text-center">Salário por hora</th>
-                <th class="text-center">Ações</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Salário por hora</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -35,11 +42,11 @@
                     <td><?= $cargo->descricao;?></td>
                     <td><?= $cargo->salario;?></td>
 
-                    <td class="text-center">
-                      <a title="Editar Cargo" href="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" class="btn btn-primary btn-sm">
+                    <td>
+                      <a title="Editar Cargo" href="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" class="btn btn-primary">
                         <span class="fa fa-pencil-square-o "></span>
                       </a>
-                      <button data-href="cargo/excluir/<?php echo $cargo->id_cargo?>" class="btn btn-danger btn-sm" title="Excluir Cargo" data-toggle="modal" data-target="#modalRemover">
+                      <button data-href="cargo/excluir/<?php echo $cargo->id_cargo?>" class="btn btn-danger" title="Excluir Cargo" data-toggle="modal" data-target="#modalRemover">
                         <span class="fa fa-times"></span>
                       </button>
                     </td>
@@ -66,10 +73,10 @@
         Deseja realmente excluir esse cargo?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
           Cancelar
         </button>
-        <a href="#" class="btn btn-primary btn-remove-ok btn-sm">
+        <a href="#" class="btn btn-primary btn-remove-ok">
           Confirmar
         </a>
       </div>

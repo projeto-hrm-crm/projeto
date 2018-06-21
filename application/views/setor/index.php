@@ -1,14 +1,14 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-10">
-    <?php if ($this->session->flashdata('success')) : ?>
-      <div class="alert alert-success">
-        <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
-      </div>
-    <?php elseif ($this->session->flashdata('danger')) : ?>
-      <div class="alert alert-danger">
-        <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger');?>
-      </div>
-    <?php endif; ?>
+    <div class="col-lg-12">
+        <?php if ($this->session->flashdata('success')) : ?>
+          <div class="alert alert-success">
+            <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
+          </div>
+        <?php elseif ($this->session->flashdata('danger')) : ?>
+          <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger');?>
+          </div>
+        <?php endif; ?>
 
     <div class="card">
       <div class="card-header">
@@ -21,22 +21,20 @@
         </a><br />
         <br />
 
-        <table id="setorTable" class="table table-striped table-bordered datatable">
+        <table class="table table-striped table-bordered datatable">
           <thead>
             <tr>
-              <!-- <th class="text-center">ID</th> -->
-              <th class="text-center">Nome</th>
-              <th class="text-center">Ações</th>
+              <th>Nome</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($setores as $setor): ?>
             <tr>
-              <!-- <td class="text-center"><?= $setor->id_setor; ?></td> -->
-              <td class="text-center"><?= $setor->nome; ?></td>
-              <td class="text-center">
+              <td><?= $setor->nome; ?></td>
+              <td>
                 <a title="Atualizar Setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
-                  <span class="fa fa-edit btn-sm"></span> 
+                  <span class="fa fa-edit btn-sm"></span>
                 </a>
                 <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" title="Excluir Setor">
                   <i class="fa fa-times btn-sm"></i>

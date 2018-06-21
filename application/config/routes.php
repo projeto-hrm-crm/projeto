@@ -96,6 +96,8 @@ $route['sac'] = 'Sac';
 $route['sac/cadastrar'] = 'Sac/create';
 $route['sac/editar/(:num)'] = 'Sac/edit/$1';
 $route['sac/excluir/(:num)'] = 'Sac/delete/$1';
+$route['sac/iteracao/(:num)'] = 'Iteracao/loadMensagem/$1';
+$route['sac/mensagem/(:num)'] = 'Iteracao/create/$1';
 
 //Rotas Setores
 
@@ -162,6 +164,7 @@ $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 $route['perfil'] = 'Perfil/index';
 $route['perfil/editar'] = 'Perfil/edit';
 $route['perfil/alterar-senha'] = 'Perfil/changePassword';
+$route['perfil/upload']		   = 'Perfil/fileUpload';
 
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';

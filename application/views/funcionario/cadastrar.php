@@ -6,12 +6,23 @@
         <div class="card-header">
           <strong class="card-title">Cadastrar Funcionário</strong>
         </div>
-
         <form action="<?php echo site_url('funcionario/cadastrar'); ?>" method="POST" id="form_funcionario" novalidate="novalidate">
 
           <?php print_r($this->session->flashdata('errors')); ?>
           <div class="card-body">
-
+              <?php if(sizeof($cargos) <= 0): ?>
+                  <div class="row justify-content-center align-items-center">
+                      <div class="col-12">
+                          <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                              Não existe nenhum cargo cadastrado no sistema, favor cadastre um cargo!
+                          </div>
+                          <a title="Novo cargo" href="<?= site_url('cargo/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+                              <i class="fa fa-check"></i>
+                              Novo cargo
+                          </a>
+                      </div>
+                  </div>
+              <?php else: ?>
             <div class="row">
 
               <div class="form-group col-12 col-md-6">
@@ -124,6 +135,7 @@
               <i class="fa fa-plus"></i> Cadastrar
             </button>
           </div>
+      <?php endif; ?>
         </form>
 
       </div>

@@ -25,12 +25,11 @@
                     <i class="fa fa-check"></i> Novo Cadastro
                   </a><br />
                   <br />
-
                     <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
                                 <th width="20%" class="text-center" >Código</th>
-                                <th class="text-center">Tíitulo</th>
+                                <th class="text-center">Título</th>
                                 <th class="text-center">Cliente</th>
                                 <th class="text-center">Status</th>
                                 <th width="20%" class="text-center" >Ações</th>
@@ -49,10 +48,14 @@
                                             <a  href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Atualizar SAC">
                                                 <span class="fa fa-pencil-square-o"></span>
                                             </a>
+                                            
                                             <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir SAC" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
-
+                                            
+                                            <a  href="<?=site_url('sac/iteracao/'.$item->id_sac);?>" class="btn btn-success" title="Iterações SAC">
+                                                <span class="fa fa-comment-o"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

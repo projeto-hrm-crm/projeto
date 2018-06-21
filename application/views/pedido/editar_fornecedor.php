@@ -106,13 +106,13 @@
 	                    </div>
 
 	                <div class="card-footer text-right">
-	                    <a title="Cancelar Fornecedor" href="<?php echo base_url('pedido/fornecedor')?>" class="btn bg-danger text-white">
+	                    <a title="Cancelar Fornecedor" href="<?php echo base_url('pedido/fornecedor')?>" class="btn bg-danger btn-sm text-white">
 	                        <i class="fa fa-times" aria-hidden="true"></i>
 	                        Cancelar
 	                    </a>
-	                    <button title="Atualizar Fornecedor" type="submit" class="btn bg-primary text-white btn-submit">
+	                    <button title="Atualizar Fornecedor" type="submit" class="btn bg-primary text-white btn-sm btn-submit">
 	                        <i class="fa fa-check" aria-hidden="true"></i>
-	                        Editar
+	                        Atualizar
 	                    </button>
 	                </div>
 	            </form>

@@ -12,7 +12,7 @@ Com o sistema HRM (Human Resource Management, ou Gerenciador de Recursos Humanos
 ## Requisitos de Sistema
 Embora o cliente tenha explicitado um conjunto de necessidades que deverão ser atendidas pelo sistema para solucionar o problema do seu negócio, coube à equipe de consultores identificar a real necessidade do negócio e deduzir os requisitos de sistema.
 
-Requisitos funcionais e não-funcionais em: _01a-requisitos_sistema.md_
+Requisitos funcionais e não-funcionais em: _01a-Requisitos_sistema.md_
 
 ## Desenvolvimento
 Linguagens e ferramentas utilizados no desenvolvimento:
@@ -32,7 +32,9 @@ Linguagens e ferramentas utilizados no desenvolvimento:
 ### Banco de Dados
 - MySQL
 
-Diagrama entidade-relacionamento (DER) pode ser encontrado em: _01b-banco_de_dados_DER_mwb_
+Diagrama entidade-relacionamento (DER)
+
+![alt text](images/banco_de_dados.png "Diagrama entidade-relacionamento")
 
 ## Metodologia
 A metodologia utilizada para o desenvolvimento do projeto foi a metodologia ágil Scrum.
@@ -46,12 +48,12 @@ A metodologia utilizada para o desenvolvimento do projeto foi a metodologia ági
 - FontAwesome
 
 ### Controle de Versões
-O controle das versões do sistema é mantido no Github, acessado pelo link: https://github.com/ProjetoPR12018/projeto
+O controle das versões do sistema é mantido no Github, acessado pelo link: [Github](https://github.com/ProjetoPR12018/projeto)
 
 ### Arquitetura MVC
 O sistema desenvolvido neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP.
 
-As classes e pastas que compõe a estrutura do projeto estão listadas em: _01a-arquiteturaMVC.md_
+As classes e pastas que compõe a estrutura do projeto estão listadas em: [01a-ArquiteturaMVC](01a-ArquiteturaMVC.md)
 
 ### Níveis de acesso
 Para acessar o sistema é necessário que o usuário esteja cadastrado no sistema.
