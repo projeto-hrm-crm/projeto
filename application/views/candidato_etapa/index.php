@@ -35,36 +35,37 @@
 
 						<thead>
 							<tr>
-								<th>Cargo</th>
-								<th>Setor</th>
-								<th>Quantidade</th>
-								<th>Data de Oferta</th>
+								<th>Código</th>
+								<th>Nome do processo</th>
+                <th>Cargo</th>
+                <th>Descrição</th>
+								<th>Data de Início</th>
+								<th>Data de Término</th>
 								<th>Candidatar</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<?php if(isset($vagas)): ?>
-								<?php foreach($vagas as $vaga): ?>
+							<?php if(isset($processo_seletivo)): ?>
+								<?php foreach($processo_seletivo as $ps): ?>
 									<tr>
-										<td><?php echo $vaga->cargo; ?></td>
-										<td><?php echo $vaga->setor; ?></td>
-										<td><?php echo $vaga->quantidade; ?></td>
-										<td><?php echo switchDate($vaga->data_oferta); ?></td>
-										<td >
+										<td><?php echo $ps->codigo; ?></td>
+										<td><?php echo $ps->nome; ?></td>
+                    <td><?php echo $ps->nome_cargo; ?></td>
+                    <td><?php echo $ps->descricao; ?></td>
+                    <td><?php echo $ps->data_inicio; ?></td>
+                    <td><?php echo $ps->data_fim; ?></td>
+										<td>
 												<!--
 												<input type="checkbox" name="" value="">
 											-->
-												<a title="Candidatar à Vaga" href="CandidatoEtapa/createCandidatoEtapa/<?php echo $vaga->id_vaga; ?>"
+												<a title="Candidatar à Vaga" href=<?php echo site_url("candidato_etapa/cadastrar/$ps->id_processo_seletivo");?>
 										    	class="btn bg-primary text-white">
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
-														<p align="center" style="color:white;height:10px;width:80px">Candidatar</p>
+														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
 										    </a>
 
-												<a title="Excluir candidatura" href="CandidatoEtapa/delete/<?php echo $vaga->id_vaga; ?>"
-													class="btn bg-danger text-white">
-															<i class="fa fa-times"></i>
-												</a>
+												
 
 										    <!--
 												<button  data-href="canditato_etapa/excluir/ < ?php echo $vaga->id_vaga ?>"

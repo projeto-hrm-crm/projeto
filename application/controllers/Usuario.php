@@ -65,7 +65,11 @@ class Usuario extends CI_Controller
             $this->pessoa_fisica->insert(['data_nascimento'=> switchDate($data['data_nacimento']),'sexo'=>$data['sexo'],'id_pessoa'=>$id_pessoa]);
 
             //cliente
+            if($this->input->post('tipo_us')==4)
             $this->cliente->insert(['id_pessoa' => $id_pessoa]);
+            else {
+              $this->candidato->insert(['id_pessoa' => $id_pessoa]);
+            }
 
             //usuario
            $this->usuario->insert(['login' => $this->input->post("email"), 'senha'=>$this->input->post("senha"),'id_grupo_acesso'=>$this->input->post("tipo_us"),'id_pessoa'=>$id_pessoa]);

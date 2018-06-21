@@ -16,7 +16,7 @@ class CandidatoEtapa_model extends CI_Model
   */
   public function insert($data)
   {
-    $this->db->insert('candidato_etapa',$data);
+    $this->db->insert('processo_seletivo_candidato',$data);
     $id_candidato_etapa = $this->db->insert_id();
 
     if($id_candidato_etapa)
@@ -39,7 +39,7 @@ class CandidatoEtapa_model extends CI_Model
     $id_candidato_etapa = $this->db->get('candidato_etapa')->row()->id_candidato_etapa;
 
     $this->db->where('id_vaga_etapa', $id_vaga_etapa);
-    $this->db->delete('candidato_etapa');
+    $this->db->delete('processo_seletivo_candidato');
 
     if($id_candidato_etapa)
     {
@@ -48,6 +48,14 @@ class CandidatoEtapa_model extends CI_Model
     return $id_candidato_etapa;
   }
 
+  public function find($id_candidato,$id_etapa){
+    $this->db->select('*')
+    ->from('processo_seletivo_candidato')
+    ->where('id_candidato',$id_candidato)
+    ->where('id_etapa',$id_etapa);
+    $query=$this->db->get();
+    return $query->result()[0];
+  }
 
   public function selectAll()
   {
@@ -61,11 +69,46 @@ class CandidatoEtapa_model extends CI_Model
   public function selectCandidatoByIdUsuario($id_usuario)
   {
     $this->db->select('*');
-    $this->db->from('candidato');
-    $this->db->join('usuario', 'candidato.id_pessoa = usuario.id_pessoa');
+    $this->db->from('usuario');
+    $this->db->join('candidato', 'candidato.id_pessoa = usuario.id_pessoa');
+    $this->db->where('usuario.id_usuario',$id_usuario);
     $query=$this->db->get();
-    return $query->row();
+    return $query->result()[0];
   }
+
+  public function getProcessoSeletivo()
+  {
+    try {
+      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas')
+      ->from('processo_seletivo')
+      // ->join('etapa', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+      ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
+      ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    } catch (\Exception $e) {}
+  }
+
+  public function getIdEtapaByProcessoID($id_processo_seletivo){
+    try {
+      $query = $this->db->select('*')
+      ->from('processo_seletivo')
+      ->join('etapa', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+      ->where('processo_seletivo.id_processo_seletivo',$id_processo_seletivo)
+      ->get();
+      if ($query)
+      {
+        return $query->result()[0];
+      }else{
+        return 0;
+      }
+    } catch (\Exception $e) {}
+    }
 
   public function get($id){
     $this->db->select('*');
