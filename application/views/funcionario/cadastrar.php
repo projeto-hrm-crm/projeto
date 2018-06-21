@@ -120,7 +120,7 @@
                   <?php endforeach ?>
                 </select>
                 <span class="invalid-feedback"></span>
-              </div><!-- FIM CARGOS -->
+              </div><!-- FIM CARGOS - -->
 
             </div>
 
