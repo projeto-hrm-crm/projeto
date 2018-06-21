@@ -55,14 +55,14 @@
 												<!--
 												<input type="checkbox" name="" value="">
 											-->
-												<a title="Candidatar à Vaga"> href="CandidatoEtapa/createCandidatoEtapa/<?php echo $vaga->id_vaga ?>"
-										    	class="btn bg-primary text-white">
+												<a title="Candidatar à Vaga" href="CandidatoEtapa/createCandidatoEtapa/<?php echo $vaga->id_vaga ?>"
+										    	class="btn bg-primary text-white"> 
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
-														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
+														<p align="center" style="color:white;height:10px;width:80px">Candidatar</p>
 										    </a>
 
-												<a title="Excluir candidatura"> href="CandidatoEtapa/delete/<?php echo $vaga->id_vaga ?>"
-													class="btn bg-danger text-white">
+												<a title="Excluir candidatura" href="CandidatoEtapa/delete/<?php echo $vaga->id_vaga ?>"
+													class="btn bg-danger text-white"> 
 															<i class="fa fa-times"></i>
 												</a>
 
