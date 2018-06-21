@@ -132,8 +132,7 @@ $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
 
 //Rotas CandidatoVaga
 $route['candidato_etapa']                = 'CandidatoEtapa/index';
-$route['candidato_etapa/cadastrar']      = 'CandidatoEtapa/create';
-$route['candidato_etapa/editar/(:num)']  = 'CandidatoEtapa/edit/$1';
+$route['candidato_etapa/cadastrar/(:num)']      = 'CandidatoEtapa/create/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
 //Rotas Pedido
@@ -168,4 +167,3 @@ $route['cliente/chart']        = 'Cliente/getChartData';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
-
