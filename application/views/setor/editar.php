@@ -26,10 +26,12 @@
         </div>
         <div class="card-footer text-right">
           <a title="Cancelar Edição" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
-            <i class="fa fa-times btn-sm"></i> Cancelar
+            <i class="fa fa-times"></i>
+            Cancelar
           </a>
           <button title="Atualizar Setor" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarSetor">
-            <i class="fa fa-check btn-sm"></i> Atualizar
+            <i class="fa fa-check"></i>
+            Atualizar
           </button>
                 </div>
                 <div class="modal fade" id="editarSetor" role="dialog" aria-hidden="true">

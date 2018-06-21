@@ -105,10 +105,10 @@
                   Deseja realmente atualizar esse cliente?
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">
+                  <button type="button" class="btn btn-danger text-white" data-dismiss="modal">
                     Cancelar
                   </button>
-                  <button type="submit" class="btn btn-primary  btn-sm">
+                  <button type="submit" class="btn btn-primary">
                     Confirmar
                   </button>
                 </div>
