@@ -48,7 +48,7 @@ class Funcionario_model extends CI_Model {
             'sexo'              =>$data['sexo'],
             'id_pessoa'         =>$id_pessoa]);
 
-        $this->session->set_flashdata('success', 'funcionario cadastrado com sucesso.');
+        $this->session->set_flashdata('success', 'Funcionario Cadastrado Com Sucesso!');
 
         $this->db->insert('funcionario', ['id_pessoa' => $id_pessoa]);
         $id_funcionario = $this->db->insert_id();
@@ -81,7 +81,7 @@ class Funcionario_model extends CI_Model {
             'email' => $data['email']
             ]
         )) {
-            $this->session->set_flashdata('success', 'Funcionario editado com sucesso!');
+            $this->session->set_flashdata('success', 'Funcionario Atualizado Com Sucesso!');
             redirect(base_url('cliente/editar'));
             return;
         }
@@ -108,7 +108,7 @@ class Funcionario_model extends CI_Model {
             'data_nascimento'   => switchDate($data['funcionario']['data_nascimento']),
             'sexo'              =>$data['funcionario']['sexo']]);
 
-        $this->session->set_flashdata('success', 'Funcionario editado com sucesso!');
+        $this->session->set_flashdata('success', 'Funcionario Atualizado Com Sucesso!');
 
         redirect('funcionario');
     }

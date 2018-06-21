@@ -53,9 +53,9 @@ class Funcionario extends PR_Controller
 
         if($this->form_validation->run('funcionario'))
         {
-            $this->cargo->insert($this->getFromPost());
+            $this->funcionario->insert($this->getFromPost());
 
-            $this->redirectSuccess('Funcionario cadastrado com sucesso!');
+            $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
         }
         else
         {
@@ -105,7 +105,7 @@ class Funcionario extends PR_Controller
     $data['cidades']        = $this->cidade->getByState($data['funcionario'][0]->id_estado);
     $data['title']          = 'Editar funcionario';
     $data['id']             = $id_funcionario;
-    $data['cargos']         = $this->cargo->get();
+   
 
 
 
@@ -126,8 +126,48 @@ class Funcionario extends PR_Controller
 
     if ($data) {
       $this->funcionario->remove($id_funcionario);
-      $this->session->set_flashdata('success', 'Funcionário excluído com sucesso!');
+      $this->session->set_flashdata('success', 'Funcionário Excluído Com Sucesso!');
       redirect('funcionario');
     }
   }
+
+ /**
+    * @author: Lucilene Fidelis
+  
+    */
+   private function getFromPost()
+    {
+        return array(
+            'nome'      => $this->input->post('nome'),
+            'email' => $this->input->post('email'),
+            'senha'   => $this->input->post('senha'),
+            'senha2'  => $this->input->post('senha2'),
+            'data_nascimento'      => $this->input->post('data_nascimento'),
+            'sexo' => $this->input->post('sexo'),
+            'cpf'   => $this->input->post('cpf'),
+            'tel'  => $this->input->post('tel'),
+            'cep'  => $this->input->post('cep'),
+            'estado' => $this->input->post('estado'),
+            'cidade' => $this->input->post('cidade'),
+            'bairro' => $this->input->post('bairro'),
+            'logradouro' => $this->input->post('logradouro'),
+            'numero' => $this->input->post('numero'),
+            'complemento' => $this->input->post('complemento'),
+            
+        );
+    }
+
+    /**
+    * @author: Lucilene Fidelis
+    * Retorna um array com dados pegos por post adicionado a eles o id_cargo
+    *
+    * @return: mixed
+    */
+    private function getFromPostEdit($id_funcionario)
+    {
+        $postData = $this->getFromPost();
+
+        $postData['id_funcionario'] = $id_funcionario;
+        return $postData;
+    }
 }

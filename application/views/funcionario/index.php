@@ -22,7 +22,7 @@
             <strong class="card-title">Funcionarios</strong>
           </div>
           <div class="card-body">
-            <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar funcionário">
+            <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
               <i class="fa fa-check"></i> Novo Cadastro
             </a><br />
             <br />
@@ -49,7 +49,7 @@
                           <?php echo $funcionario->data_nascimento; ?>
                         </td>
                         <td class="text-center">
-                          <a title="Editar funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
+                          <a title="Atualizar funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
                           <span class="fa fa-edit"></span></a>
                           <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
@@ -75,7 +75,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Deseja realmente excluir esse funcionário?
+            Deseja Realmente Excluir Esse Funcionário?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">
