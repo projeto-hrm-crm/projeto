@@ -12,7 +12,6 @@ class CandidatoEtapa extends CI_Controller
     $user_id = $this->session->userdata('user_login');
     $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
     #$this->usuario->hasPermission($user_id, $currentUrl);
-
   }
   /**
   * author: Matheus Ladislau
@@ -21,7 +20,6 @@ class CandidatoEtapa extends CI_Controller
   public function index()
   {
     $data['title'] = 'Candidatar-se à Vaga';
-    // $data['vagas'] = $this->vaga->get();
     $data['processo_seletivo']=$this->candidato_etapa->getProcessoSeletivo();
     loadTemplate(
       'includes/header',
@@ -36,22 +34,24 @@ class CandidatoEtapa extends CI_Controller
   *
   *@param integer: refere-se ao id da vaga a ser vinculada ao usuário/candidato atual
   */
-  function create($id_processo_seletivo)
+  public function create($id_processo_seletivo)
   {
+    if(isset($id_processo_seletivo))
+    {
     $id_usuario = $this->session->userdata('user_login');
     $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
     $get_idEtapa= $this->candidato_etapa->getIdEtapaByProcessoID($id_processo_seletivo);
     $data['id_etapa']=$get_idEtapa->id_etapa;
     $data['id_candidato']=$usuario->id_candidato;
-    if(($this->processo_seletivo_candidato->find($data['id_candidato'],$data['id_etapa']))==null){
-      $this->candidato_etapa->insert($data);
-      $this->session->set_flashdata('sucess',"Candidatura realizada com sucesso");
-    }else{
+    $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$data['id_etapa']);
+    if($cadastrado!=null)
       $this->session->set_flashdata('danger',"Candidatura já realizada");
-
+      else {
+        $this->candidato_etapa->insert($data);
+        $this->session->set_flashdata('success',"Candidatura realizada com sucesso");
+      }
     }
-
-        redirect('candidato_etapa');
+    redirect('candidato_etapa');
   }
 
 
