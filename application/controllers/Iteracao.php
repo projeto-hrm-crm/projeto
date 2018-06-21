@@ -30,62 +30,42 @@ class Iteracao extends CI_Controller {
     * @author: Rodrigo Alves
     * Página de cadastro.
     */
-    public function create() {
+    public function create($id) {
 
       $user_id = $this->session->userdata('user_login');
 
-      //Pega o tipo de usuario e informações de pessoas
+      //Pega o tipo de usuario e pega id de pessoa do usuario
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-
-      // Pegar informações de cliente
       $id_pessoa = $data['pessoa'][0]->id_pessoa; 
-      $cliente = $this->cliente->getIdCliente($id_pessoa);      
-
-      if($typeUser=="1"){
-         $id_cliente = $this->input->post('id_cliente');
-      }else {
-         $id_cliente = $cliente[0]->id_cliente;
-      }
+      
        
       $data = $this->input->post();
 
       if($data){
 
-         if ($this->form_validation->run('sac')) {
+         if ($this->form_validation->run('iteracao')) {
             $array = array(
-              'id_produto' => $this->input->post('id_produto'),
-              'id_cliente' => $id_cliente,
-              'abertura' => date("Y-m-d H:i:s"),
-              'fechamento' => 0,
-              'encerrado' => 0,
-              'titulo' => $this->input->post('titulo'),
-              'descricao' => $this->input->post('descricao'),
+              'mensagem' => $this->input->post('mensagem'),
+              'data' => date("Y-m-d H:i:s"),
+              'id_sac' => $id,              
+              'id_pessoa' => $id_pessoa,
             );
 
-            $this->sac->insert($array);
-            $this->session->set_flashdata('success', 'SAC cadastrado com sucesso!');
-            redirect('sac');
+            $this->iteracao->insert($array);
+            $this->session->set_flashdata('success', 'Sua resposta foi cadastrada com sucesso!');
+            redirect('sac/iteracao/'.$id);
 
          }else{
-            $this->session->set_flashdata('danger', 'Não foi possível cadastrar SAC!');
-            redirect('sac');
+            $this->session->set_flashdata('danger', 'Não foi possível enviar sua resposta!');
+            redirect('sac/iteracao/'.$id);
          }
       }
 
-     $data['title'] = 'Cadastrar SAC';
-     $data['produtos'] = $this->produto->get();
-     $data['clientes'] = $this->cliente->get();
-     $data['tipo'] = $typeUser;
-     $data['assets'] = array(
-            'js' => array(
-            'lib/data-table/datatables.min.js',
-            'lib/data-table/dataTables.bootstrap.min.js',
-            'datatable.js',
-            'confirm.modal.js',
-         ),
-      );
-     loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
+     $data['title'] = 'Enviar Mensagem';
+     $data['id'] = $id;
+     
+     loadTemplate('includes/header', 'sac/mensagem', 'includes/footer', $data);
     }
 
     

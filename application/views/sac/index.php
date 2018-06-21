@@ -30,7 +30,7 @@
                         <thead>
                             <tr>
                                 <th width="20%" class="text-center" >Código</th>
-                                <th class="text-center">Tíitulo</th>
+                                <th class="text-center">Título</th>
                                 <th class="text-center">Cliente</th>
                                 <th class="text-center">Status</th>
                                 <th width="20%" class="text-center" >Ações</th>

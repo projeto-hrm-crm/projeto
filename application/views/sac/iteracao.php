@@ -41,8 +41,11 @@
                                             <?php echo $item->mensagem;?>
                                             <br>
                                             <br>
-                                            <b><?php echo $item->nome;?></b><br>
-                                            <small><?php echo $item->data;?></small>
+                                            <b>
+                                                <?php if($tipo=="1"){ echo "Suporte: "; }else{ echo "Cliente: "; } ?>
+                                                <?php echo $item->nome;?></b>
+                                            <br>
+                                            <small>Respondido: <?php echo switchDate(substr($item->data, 0, 10))." as ".substr($item->data, 10, 10);?></small>
                                         </td>
                                         
                                     </tr>
@@ -50,8 +53,7 @@
                             <?php endif; ?>
                         </tbody>
                     </table>
-                    
-                    <a title="Cadastrar SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                    <a title="Cadastrar SAC" href="<?= site_url('sac/mensagem/'.$sac[0]->id_sac)?>" class="btn btn-primary btn-sm">
                         <i class="fa fa-check"></i> Responder
                     </a>
                   
