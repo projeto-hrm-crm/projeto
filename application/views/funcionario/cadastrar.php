@@ -43,7 +43,7 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class="form-control-label" for='sexo'>Sexo</label><br>
-                <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : ''?> /><label for="sexo_masc">Masculino</label>
+                <input type="radio" name="sexo" id="sexo_masc" value="0" checked="checked" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '0' ? 'checked' : ''?> /><label for="sexo_masc">Masculino</label>
                 <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo isset($old_data['sexo']) && $old_data['sexo'] == '1' ? 'checked' : ''?> /><label for="sexo_fem" >Feminino</label>
               </div> <!-- FIM SEXO -->
 

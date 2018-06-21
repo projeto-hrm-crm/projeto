@@ -39,18 +39,18 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Sexo</label><br>
-                <input type="radio" name="sexo" id="sexo_masc" value="0" required /><label for="sexo_masc">Masculino</label>
+                <input type="radio" name="sexo" id="sexo_masc" value="0" checked="checked" required /><label for="sexo_masc">Masculino</label>
                 <input type="radio" name="sexo" id="sexo_fem" value="1" required /><label for="sexo_fem" >Feminino</label>
               </div> <!-- FIM SEXO -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="XXX.XXX.XXX-XX" class="form-control cpf">
+                <input type="text" id="cpf" name="cpf" value="<?php echo isset($old_data['cpf']) ? $old_data['cpf'] : null;?>" placeholder="000.000.000-00" class="form-control cpf">
               </div> <!-- FIM CPF -->
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Telefone</label>
-                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(XX)XXXX-XXXX" class="form-control alter_mask" >
+                <input type="text" id="tel" name="tel"  value="<?php echo isset($old_data['tel']) ? $old_data['tel'] : null;?>" placeholder="(00) 0000-0000" class="form-control alter_mask" >
               </div> <!-- FIM TELEFONE -->
               <!-- INÍCIO ENDEREÇO -->
               <div class="form-group col-12 col-md-6">

@@ -53,9 +53,14 @@ class Sac extends CI_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
+      
+      /* $id e  $cliente estão dando erro */
+
       $id = $data['pessoa']->id_pessoa;
        
       $cliente = $this->cliente->getIdCliente($id); 
+
+      /* $id e  $cliente estão dando erro */
        
       $data = $this->input->post();
        
