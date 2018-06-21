@@ -327,6 +327,15 @@ $config = array(
             'rules' => 'required'
         )
     ),
+    
+    'iteracao' => array(
+
+        array(
+            'field' => 'mensagem',
+            'label' => 'Mensagem',
+            'rules' => 'required'
+        )
+    ),
 
     'pedido' => array(
 
@@ -493,6 +502,11 @@ $config = array(
           array(
               'field' => 'sexo',
               'label' => 'sexo',
+              'rules' => 'required'
+          ),
+          array(
+              'field' => 'tipo_us',
+              'label' => 'tipo_us',
               'rules' => 'required'
           ),
           array(

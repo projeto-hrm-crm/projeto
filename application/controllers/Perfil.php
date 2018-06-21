@@ -97,6 +97,34 @@ class Perfil extends CI_Controller {
       loadTemplate('includes/header', 'perfil/editar', 'includes/footer', $data);
         
     }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     *
+     * Faz o upload do curriculum
+     *
+     * @param void
+     * @return void
+     */
+    public function fileUpload()
+    {
+            $config['upload_path']          =  'uploads/';
+            $config['allowed_types']        = 'pdf|doc|docx';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('curriculum')) {
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->load->view('uploads/upload_error', $error);
+                    loadTemplate('includes/header', 'uploads/upload_error', 'includes/footer', $error);
+            } else{
+                    $data = array('upload_data' => $this->upload->data());
+                    loadTemplate('includes/header', 'uploads/upload_success', 'includes/footer', $data);
+            }
+    }
    
    /**
     * @author: Rodrigo Alves

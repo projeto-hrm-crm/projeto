@@ -32,7 +32,7 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
-      <div class="login-content">
+      <div style="max-width: 950px; margin: 8vh auto;">
         <div class="login-form">
           <form action="<?php echo site_url('Usuario/create'); ?>" method="POST" id="form_cliente" class="form-horizontal" novalidate="novalidate">
 
@@ -89,6 +89,12 @@
                   <label class=" form-control-label">CPF</label>
                   <input type="text" id="cpf" name="cpf" value="<?php set_value('cpf');?>" placeholder="000.000.000-00" class="form-control cpf">
                 </div> <!-- FIM CPF -->
+
+                 <div class="form-group col-12 col-md-6">
+                  <label class=" form-control-label">Tipo de usuário</label><br>
+                  <input type="radio" name="tipo_us" id="tipo_us_cli" value="4" required /><label for="tipo_us_cli">Cliente</label>
+                  <input type="radio" name="tipo_us"  value="5" id="tipo_us_cand" required /><label for="tipo_us_cand" >Candidato</label>
+                </div> <!-- FIM SEXO -->
 
                 <div class="form-group col-12 col-md-6">
                   <label class=" form-control-label">Telefone</label>
