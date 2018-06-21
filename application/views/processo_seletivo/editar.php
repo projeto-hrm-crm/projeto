@@ -1,8 +1,3 @@
-  <!-- <pre>
-  <?php print_r($processo_seletivo);
-  print_r($etapas);
-  ?> -->
-  <!-- </pre> -->
 <div class="row justify-content-center align-items-center">
  <div class="col-lg-10">
 <div class="card">
@@ -95,7 +90,7 @@
           <i class="fa fa-times"></i> Cancelar
         </a>
         <button title="Atualizar Processo" type="button" class="btn btn-primary text-white btn-sm" data-toggle="modal" data-target="#editarProcesso">
-          <i class="fa fa-check"></i> Editar
+          <i class="fa fa-check"></i> Atualizar
         </button>
 
       </div><!-- FIM BOTÕES -->
@@ -114,11 +109,11 @@
                 Deseja realmente atualizar esse processo?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-sm text-white" data-dismiss="modal">
+                <button type="button" class="btn btn-danger text-white" data-dismiss="modal">
                   Cancelar
                 </button>
-                <button type="submit" class="btn btn-primary  btn-sm">
-                  Atualizar
+                <button type="submit" class="btn btn-primary">
+                  Confirmar
                 </button>
               </div>
             </div>

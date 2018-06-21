@@ -7,6 +7,19 @@
             <form id="form_produto" action="<?php echo base_url('produto/cadastrar'); ?>" method="post" novalidate="novalidate">
                 <div class="card-body">
                     <div class="card-body">
+                        <?php if(sizeof($fornecedores) <= 0): ?>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-12">
+                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                                        Não existe nenhum fornecedor cadastrado no sistema, favor cadastre um fornecedor!
+                                    </div>
+                                    <a title="Cadastrar fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+                                        <i class="fa fa-check"></i>
+                                        Novo fornecedor
+                                    </a>
+                                </div>
+                            </div>
+                        <?php else: ?>
                         <div class="row">
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="nome" class="control-label mb-1" >Nome</label>
@@ -68,6 +81,7 @@
                         Cadastrar
                     </button>
                 </div>
+                <?php endif; ?>
             </form>
         </div>
     </div>

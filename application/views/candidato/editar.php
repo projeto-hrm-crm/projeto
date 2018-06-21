@@ -77,7 +77,7 @@
                     </a>
                     <button title="Atualizar Candidato" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editarCandidato">
                         <span class="fa fa-check"></span>
-                        Editar
+                        Atualizar
                     </button>
                 </div>
                 <div class="modal fade" id="editarCandidato" role="dialog" aria-hidden="true">
@@ -93,11 +93,11 @@
                                 Deseja realmente editar esse candidato?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                     Cancelar
                                 </button>
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    Atualizar
+                                <button type="submit" class="btn btn-primary">
+                                    Confirmar
                                 </button>
                             </div>
                         </div>
