@@ -43,7 +43,7 @@ class CandidatoEtapa extends CI_Controller
     $get_idEtapa= $this->candidato_etapa->getIdEtapaByProcessoID($id_processo_seletivo);
     $data['id_etapa']=$get_idEtapa->id_etapa;
     $data['id_candidato']=$usuario->id_candidato;
-    if(()$this->processo_seletivo_candidato->find($data['id_candidato'],$data['id_etapa']))==null){
+    if(($this->processo_seletivo_candidato->find($data['id_candidato'],$data['id_etapa']))==null){
       $this->candidato_etapa->insert($data);
       $this->session->set_flashdata('sucess',"Candidatura realizada com sucesso");
     }else{
