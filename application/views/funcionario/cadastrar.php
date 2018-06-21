@@ -8,6 +8,8 @@
         </div>
 
         <form action="<?php echo site_url('funcionario/cadastrar'); ?>" method="POST" id="form_funcionario" novalidate="novalidate">
+
+          <?php print_r($this->session->flashdata('errors')); ?>
           <div class="card-body">
 
             <div class="row">
