@@ -20,6 +20,8 @@ Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
 
+![alt text](images/tela_cadastro_candidato.png "Formulário de Cadastro de Candidato")
+
 Nesta página, o usuário pode cadastrar diversas informações pessoais do candidato e, ao fim do formulário, selecionar a vaga a qual se está concorrendo (uma vaga só aparecerá como opção se já tiver sido cadastrada). Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
 O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
@@ -39,6 +41,8 @@ Também pode-se editar as informações individuais clicando no botão azul com 
 Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
+
+![alt text](images/tela_cadastro_cargo.png "Formulário de Cadastro de Cargo")
 
 Nesta página, o usuário pode cadastrar nome, descrição e selecionar o setor (um setor só aparecerá como opção para ser selecionado caso já esteja cadastrado). Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
@@ -60,6 +64,8 @@ Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
 
+![alt text](images/tela_cadastro_cliente.png "Formulário de Cadastro de Cliente")
+
 Nesta página, o usuário pode cadastrar diversas informações pessoais do cliente. Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
 O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
@@ -79,6 +85,8 @@ Também pode-se editar as informações individuais clicando no botão azul com 
 Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
+
+![alt text](images/tela_cadastro_fornecedor.png "Formulário de Cadastro de Fornecedor")
 
 Nesta página, o usuário pode cadastrar informações do fornecedor. Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
@@ -100,6 +108,8 @@ Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
 
+![alt text](images/tela_cadastro_funcionario.png "Formulário de Cadastro de Funcionário")
+
 Nesta página, o usuário pode cadastrar diversas informações pessoais do funcionário e, ao fim do formulário, selecionar seu cargo. Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
 O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
@@ -119,6 +129,8 @@ Também pode-se editar as informações individuais clicando no botão azul com 
 Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
+
+![alt text](images/tela_cadastro_produto.png "Formulário de Cadastro de Produto")
 
 Nesta página, o usuário pode cadastrar as informações do produto e selecionar o fornecedor (um fornecedor só aparecerá como opção se já tiver sido cadastrado). Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
@@ -140,20 +152,13 @@ Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
 
+![alt text](images/tela_cadastro_sac.png "Formulário de Cadastro de SAC")
+
 Nesta página, o usuário pode cadastrar informações do SAC. Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
 O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
 
 Todas as informações podem ser editadas posteriormente na página de edição do cadastro alcançada através do botão azul com um lápis na página principal do SAC.
-
-<!-- - cadastro de cliente
-- opção de troca ou reembolso para produtos
-- inserção de fotos/descritivo opcional
-- aprovação prévia pelos administradores do software
-- feedback, reclamação, troca (ouvidoria)
-- comentários do técnico/atendimento
-- envio de emails com resposta
-- avaliação do atendimento após a troca/encerramento da reclamação -->
 
 ## Setor
 
@@ -168,6 +173,8 @@ Também pode-se editar as informações individuais clicando no botão azul com 
 Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
+
+![alt text](images/tela_cadastro_setor.png "Formulário de Cadastro de Setor")
 
 Nesta página, o usuário pode cadastrar as informações do setor. Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
@@ -189,20 +196,10 @@ Ao clicar no botão "cadastrar", o usuário é levado à página de cadastro.
 
 - Cadastrar
 
+![alt text](images/tela_cadastro_vaga.png "Formulário de Cadastro de Vagas")
+
 Nesta página, o usuário pode cadastrar as informações da vaga e selecionar o setor (um setor só aparecerá como opção se já tiver sido cadastrado). Após completar o cadastro e clicar no botão de salvar, as informações são salvas no banco de dados e exibidas na página principal em uma lista.
 
 O cadastro pode ser cancelado a qualquer momento clicando no botão "cancelar"; se clicado o botão, o usuário é redirecionado para a página principal.
 
 Todas as informações podem ser editadas posteriormente na página de edição do cadastro alcançada através do botão azul com um lápis na página principal da vaga.
-
-<!-- ## Contratação  de Funcionário
-- processo seletivo de diversas fases
-- atualização (status) das fases do processo de seleção
-- disparo de email automático para o candidato a cada atualização no processo de seleção
-- anexo de arquivos/documentos
-
-## Remanejamento de Funcionário
-- cadastro de filiais
-- cadastro de funcionário
-- remanejamento de funcionários entre filiais
-- histórico de remanejamento de funcionários, qual funcionário esteve em qual setor -->
