@@ -2,6 +2,7 @@
 
 - [Introdução](#Introdução)
 - [Requisitos de Sistema](#Requisitos de Sistema)
+- [Desenvolvimento](#Desenvolvimento)
 
 ## Introdução
 O sistema em desenvolvimento tem o objetivo de auxiliar empresas a agilizar o gerenciamento de clientes, funcionários e produtos. Neste sentido, pode-se afirmar que se trata de um sistema ERP -- Enterprise Resource Planning, ou Planejamento de Recursos Empresarias com foco nos módulos de CRM e HRM.
