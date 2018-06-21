@@ -160,6 +160,7 @@ $autoload['model'] = array(
                     'Candidato_model'            => 'candidato',
                     'Usuario_model'              => 'usuario',
                     'Sac_model'                  => 'sac',
+                    'Iteracao_model'             => 'iteracao',
                     'Setor_model'                => 'setor',
                     'Vaga_model'                 => 'vaga',
                     'Cidade_model'               => 'cidade',

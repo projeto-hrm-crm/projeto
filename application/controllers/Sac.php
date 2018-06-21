@@ -111,10 +111,8 @@ class Sac extends PR_Controller {
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-      $id = $data['pessoa'][0]->id_pessoa;
        
-      $cliente = $this->cliente->getIdCliente($id);   
+      $cliente = $this->cliente->getIdCliente($data['pessoa'][0]->id_pessoa);   
 
       $id_pessoa = $data['pessoa'][0]->id_pessoa;
       $cliente = $this->cliente->getIdCliente($id_pessoa);

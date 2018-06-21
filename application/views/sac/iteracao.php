@@ -18,51 +18,43 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">SAC</strong>
+                    <strong class="card-title"><?=$sac[0]->titulo;?></strong><br>
+                    
                 </div>
                 <div class="card-body">
-                  <a title="Cadastrar SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
-                    <i class="fa fa-check"></i> Novo Cadastro
-                  </a><br />
-                  <br />
-
+                  
+                    <?=$sac[0]->descricao;?><br>
+                    <br>
                     <table  class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                <th width="20%" class="text-center" >Código</th>
-                                <th class="text-center">Tíitulo</th>
-                                <th class="text-center">Cliente</th>
-                                <th class="text-center">Status</th>
-                                <th width="20%" class="text-center" >Ações</th>
+                                <th>Mensagens</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if(isset($sac)): ?>
-                                <?php foreach($sac as $item): ?>
+                            <?php if(isset($iteracao)): ?>
+                                <?php foreach($iteracao as $item): ?>
                                     <tr>
 
-                                        <td><?php echo $item->id_sac;?></td>
-                                        <td><?=$item->titulo;?></td>
-                                        <td><?=$item->id_cliente;?></td>
-                                        <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
                                         <td>
-                                            <a  href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Atualizar SAC">
-                                                <span class="fa fa-pencil-square-o"></span>
-                                            </a>
                                             
-                                            <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir SAC" data-toggle="modal" data-target="#modalRemover">
-                                                <span class="fa fa-times"></span>
-                                            </button>
-                                            
-                                            <a  href="<?=site_url('sac/iteracao/'.$item->id_sac);?>" class="btn btn-success" title="Iterações SAC">
-                                                <span class="fa fa-comment-o"></span>
-                                            </a>
+                                            <?php echo $item->mensagem;?>
+                                            <br>
+                                            <br>
+                                            <b><?php echo $item->nome;?></b><br>
+                                            <small><?php echo $item->data;?></small>
                                         </td>
+                                        
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </tbody>
                     </table>
+                    
+                    <a title="Cadastrar SAC" href="<?= site_url('sac/cadastrar')?>" class="btn btn-primary btn-sm">
+                        <i class="fa fa-check"></i> Responder
+                    </a>
+                  
                 </div>
         </div>
     </div>
