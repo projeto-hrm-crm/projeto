@@ -105,7 +105,7 @@ class Funcionario extends PR_Controller
     $data['cidades']        = $this->cidade->getByState($data['funcionario'][0]->id_estado);
     $data['title']          = 'Editar funcionario';
     $data['id']             = $id_funcionario;
-   
+
 
 
 
@@ -133,7 +133,7 @@ class Funcionario extends PR_Controller
 
  /**
     * @author: Lucilene Fidelis
-  
+
     */
    private function getFromPost()
     {
@@ -142,7 +142,7 @@ class Funcionario extends PR_Controller
             'email' => $this->input->post('email'),
             'senha'   => $this->input->post('senha'),
             'senha2'  => $this->input->post('senha2'),
-            'data_nascimento'      => $this->input->post('data_nascimento'),
+            'data_nacimento'      => $this->input->post('data_nacimento'),
             'sexo' => $this->input->post('sexo'),
             'cpf'   => $this->input->post('cpf'),
             'tel'  => $this->input->post('tel'),
@@ -153,7 +153,7 @@ class Funcionario extends PR_Controller
             'logradouro' => $this->input->post('logradouro'),
             'numero' => $this->input->post('numero'),
             'complemento' => $this->input->post('complemento'),
-            
+
         );
     }
 
