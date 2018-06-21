@@ -1,5 +1,5 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-10">
+    <div class="col-lg-12">
 
 			<?php if(isset($success_message)): ?>
                 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">

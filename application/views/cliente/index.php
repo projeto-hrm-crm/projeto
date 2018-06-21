@@ -77,10 +77,10 @@
                 Deseja realmente excluir esse cliente?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
                     Cancelar
                 </button>
-                <a href="#" class="btn btn-primary btn-remove-ok btn-sm">
+                <a href="#" class="btn btn-primary btn-remove-ok">
                     Confirmar
                 </a>
             </div>

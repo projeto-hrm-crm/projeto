@@ -47,10 +47,10 @@
                                         <td><?= $produto->valor;?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary btn-sm" title="Atualizar Produto">
+                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Atualizar Produto">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger btn-sm" title="Excluir Produto" data-toggle="modal" data-target="#modalRemover">
+                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir Produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>

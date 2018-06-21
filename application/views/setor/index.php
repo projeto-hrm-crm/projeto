@@ -1,14 +1,14 @@
 <div class="row justify-content-center align-items-center">
     <div class="col-lg-12">
-    <?php if ($this->session->flashdata('success')) : ?>
-      <div class="alert alert-success">
-        <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
-      </div>
-    <?php elseif ($this->session->flashdata('danger')) : ?>
-      <div class="alert alert-danger">
-        <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger');?>
-      </div>
-    <?php endif; ?>
+        <?php if ($this->session->flashdata('success')) : ?>
+          <div class="alert alert-success">
+            <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
+          </div>
+        <?php elseif ($this->session->flashdata('danger')) : ?>
+          <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger');?>
+          </div>
+        <?php endif; ?>
 
     <div class="card">
       <div class="card-header">
