@@ -42,7 +42,7 @@
                                             <br>
                                             <br>
                                             <b>
-                                                <?php if($tipo=="1"){ echo "Suporte: "; }else{ echo "Cliente: "; } ?>
+                                                <?php if($item->id_grupo_acesso=="1"){ echo "Suporte: "; }else{ echo "Cliente: "; } ?>
                                                 <?php echo $item->nome;?></b>
                                             <br>
                                             <small>Respondido: <?php echo switchDate(substr($item->data, 0, 10))." as ".substr($item->data, 10, 10);?></small>

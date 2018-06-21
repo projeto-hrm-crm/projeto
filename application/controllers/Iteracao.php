@@ -15,8 +15,7 @@ class Iteracao extends CI_Controller {
       $user_id = $this->session->userdata('user_login');
        
       //Pega o tipo de usuario
-      $typeUser = $this->usuario->getUserAccessGroup($user_id);        
-      $data['tipo'] = $typeUser;
+      $typeUser = $this->usuario->getUserAccessGroup($user_id); 
       
       $data['sac'] = $this->sac->getById($id);
       $data['iteracao'] = $this->iteracao->getBySac($id);
