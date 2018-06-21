@@ -39,7 +39,7 @@
               </div>
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label">Data de Nascimento</label>
-                <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="00/00/0000" class="form-control data">
+                <input type="text" id="data_nascimento" name="data_nascimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="00/00/0000" class="form-control data">
                 <span class="invalid-feedback"></span>
               </div> <!-- FIM DATA DE NASCIMENTO -->
 
@@ -111,16 +111,7 @@
                 <span class="invalid-feedback"></span>
               </div> <!-- FIM COMPLEMENTO -->
 
-              <div class="form-group col-12 col-md-6">
-                <label for="cargo">Cargos</label>
-                <select id="id_cargo" name="id_cargo" class="form-control">
-                  <option value="">Selecionar cargo</option>
-                  <?php foreach($cargos as $cargo): ?>
-                    <option value="<?php echo $cargo->id_cargo; ?>"><?php echo $cargo->nome; ?></option>
-                  <?php endforeach ?>
-                </select>
-                <span class="invalid-feedback"></span>
-              </div><!-- FIM CARGOS - -->
+              
 
             </div>
 
