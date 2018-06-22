@@ -54,7 +54,7 @@ class CandidatoEtapa_model extends CI_Model
     ->where('id_candidato',$id_candidato)
     ->where('id_etapa',$id_etapa);
     $query=$this->db->get();
-    return $query->result()[0];
+    return $query->result();
   }
 
   public function selectAll()

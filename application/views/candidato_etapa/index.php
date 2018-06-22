@@ -1,31 +1,21 @@
 <div class="row justify-content-center align-items-center">
-    <div class="col-lg-10">
-    <?php if ($this->session->flashdata('success')): ?>
-      <div class="alert alert-success mt-4">
-        <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif; ?>
-  </div>
-</div>
-<div class="animated fadeIn">
-	<div class="row">
-		<div class="col-12">
-			<?php if(isset($success_message)): ?>
-                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                    <?php echo $success_message; ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
-			<?php if(isset($error_message)): ?>
-                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                    <?php echo $error_message; ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-      <?php endif; ?>
+    <div class="col-lg-12">
+        <?php if($this->session->flashdata('success')): ?>
+            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
+                    <?php echo $this->session->flashdata('success'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php if($this->session->flashdata('danger')): ?>
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    <?php echo $this->session->flashdata('danger'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
 			<div class="card">
 				<div class="card-header">
 					<strong class="card-title">Candidatar-se à Vaga</strong>
@@ -65,7 +55,7 @@
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
 										    </a>
 
-												
+
 
 										    <!--
 												<button  data-href="canditato_etapa/excluir/ < ?php echo $vaga->id_vaga ?>"
