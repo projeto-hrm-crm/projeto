@@ -14,14 +14,17 @@
 	                    	            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
 	                    	                Não existe nenhum fornecedor ou cliente cadastrado no sistema, favor cadastre um fornecedor ou cliente!
 	                    	            </div>
-	                    	            <a title="Cadastrar fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+										<div class="card-footer text-right">
+	                    	            <a title="Cadastrar fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
 	                    	                <i class="fa fa-check"></i>
 	                    	                Novo fornecedor
 	                    	            </a>
-	                    	            <a title="Cadastrar fornecedor" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+										
+	                    	            <a title="Cadastrar fornecedor" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
 	                    	                <i class="fa fa-check"></i>
 	                    	                Novo cliente
 	                    	            </a>
+										</div>
 	                    	        </div>
 	                    	    </div>
 	                    	<?php else: ?>
