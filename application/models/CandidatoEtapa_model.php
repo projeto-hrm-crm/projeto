@@ -73,7 +73,7 @@ class CandidatoEtapa_model extends CI_Model
     $this->db->join('candidato', 'candidato.id_pessoa = usuario.id_pessoa');
     $this->db->where('usuario.id_usuario',$id_usuario);
     $query=$this->db->get();
-    return $query->result()[0];
+    return $query->result();
   }
 
   public function getProcessoSeletivo()

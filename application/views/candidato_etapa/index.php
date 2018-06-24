@@ -51,11 +51,10 @@
 											-->
 												<a title="Candidatar à Vaga" href=<?php echo site_url("candidato_etapa/cadastrar/$ps->id_processo_seletivo");?>
 										    	class="btn bg-primary text-white">
+
 										        	<!--<i class="fa fa-pencil-square-o"></i>-->
 														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
 										    </a>
-
-
 
 										    <!--
 												<button  data-href="canditato_etapa/excluir/ < ?php echo $vaga->id_vaga ?>"
