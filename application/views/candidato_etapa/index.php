@@ -46,22 +46,25 @@
                     <td><?php echo $ps->data_inicio; ?></td>
                     <td><?php echo $ps->data_fim; ?></td>
 										<td>
-												<!--
-												<input type="checkbox" name="" value="">
-											-->
-												<a title="Candidatar à Vaga" href=<?php echo site_url("candidato_etapa/cadastrar/$ps->id_processo_seletivo");?>
-										    	class="btn bg-primary text-white">
+                      <?php
+                        $data['id_candidato']=$this->candidato_etapa->selectCandidatoByIdUsuario($this->session->userdata('user_login'))[0]->id_candidato;
+                        $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$this->candidato_etapa->getIdEtapaByProcessoID($ps->id_processo_seletivo)->id_etapa);
+                        if($cadastrado!=null)
+                        {
+                          echo "<p>Concorrendo</p>";
+                        }
+                        else
+                        {
+                          echo
+                            "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
+                              <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
+                            </a>";
+                        }
+                        ?>
 
-										        	<!--<i class="fa fa-pencil-square-o"></i>-->
-														<p align="center"style="color:white;height:10px;width:80px">Candidatar</p>
-										    </a>
 
-										    <!--
-												<button  data-href="canditato_etapa/excluir/ < ?php echo $vaga->id_vaga ?>"
-										    	class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover">
-										        <i class="fa fa-times"></i>
-  									    	</button>
-												-->
+
+
 										</td>
 									</tr>
 								<?php endforeach; ?>
