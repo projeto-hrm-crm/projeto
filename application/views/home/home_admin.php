@@ -119,9 +119,9 @@
 						  </div>
 						  <div class="card-footer text-center">
 						    <?php if ($admin['last_sac']): ?>
-                              <button type="submit" class="btn bg-flat-color-1 text-light btn-sm">
+                              <a href="<?php echo base_url('sac/iteracao/'.$admin['last_sac']->id_sac); ?>" class="btn bg-flat-color-1 text-light btn-sm">
                                   <i class="fa fa-dot-circle-o"></i> Responder
-                              </button>
+                              </a>
                             <?php endif;?>
 						  </div>
 					</div>
@@ -143,8 +143,8 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <button class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
-			                <button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
+			                <a href="<?php echo base_url('funcionario/cadastrar') ?>" class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
+			                <a href="<?php echo base_url('funcionario') ?>" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
 			            </div>
 			        </div>
 			    </div>
@@ -161,8 +161,8 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <button class="btn btn-sm bg-flat-color-5 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
-			                <button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
+			                <a href="<?php echo base_url('cargo/cadastrar') ?>" class="btn btn-sm bg-flat-color-5 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
+			                <a href="<?php echo base_url('cargo') ?>" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
 			            </div>
 			        </div>
 			    </div>
@@ -179,8 +179,8 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <button class="btn btn-sm bg-flat-color-4 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
-			                <button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
+			                <a href="<?php echo base_url('vaga/cadastrar') ?>" class="btn btn-sm bg-flat-color-4 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
+			                <a href="<?php echo base_url('vaga') ?>" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
 			            </div>
 			        </div>
 			    </div>
@@ -254,9 +254,9 @@
                 <?php endfor;?>
 						  </div>
 						  <div class="card-footer text-center">
-						    <button type="submit" class="btn bg-flat-color-2 text-light btn-sm">
+						    <a href="<?php echo base_url('processo_seletivo'); ?>" class="btn bg-flat-color-2 text-light btn-sm">
 						      <i class="fa fa-eye"></i> Analisar processos
-						    </button>
+						    </a>
 						  </div>
 					</div>
 				</div>
