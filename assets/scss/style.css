@@ -208,6 +208,11 @@
     .switch.switch-text.switch-xs .switch-input:checked ~ .switch-handle {
       left: 18px; }
 
+      
+red {
+  color: red;
+}
+
 .switch.switch-icon {
   position: relative;
   display: inline-block;
