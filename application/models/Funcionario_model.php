@@ -213,4 +213,47 @@ class Funcionario_model extends CI_Model {
         $result = $this->db->get();
         return $result->result()[0]->funcionarios;
     }
+
+		/**
+		 * @author Mayra D Bueno
+		 *
+		 * Método responsável por inserir avaliação do funcionário no bd
+		 *
+		 * @param $id_funcionario
+		 *
+		 */
+		 public function insertEvaluation($id_funcionario){
+
+        $funcionario = $this->funcionario->getById($id_funcionario);
+				$usuario = $this->usuario->getUserNameById($id_funcionario);
+
+        $this->avaliacao->insert([
+            'pontualidade'           => $data['pontualidade'],
+            'comprometimento'        => $data['comprometimento'],
+            'produtividade'   	 		 => $data['produtividade'],
+            'relacaointerpessoal'    => $data['relacaointerpessoal'],
+            'proatividade'   				 => $data['proatividade'],
+            'id_usuario'     				 => $this->session->userdata('user_login'))[0]->id_usuario,
+            'id_funcionario'     		 => $funcionario[0]->id_pessoa]);
+
+        $this->session->set_flashdata('success', 'Avaliação cadastrada com sucesso!');
+
+        $this->db->insert('funcionario', ['id_pessoa' => $id_pessoa]);
+        $id_funcionario = $this->db->insert_id();
+
+        if($id_funcionario)
+            $this->relatorio->setLog('insert', 'Inserir', 'Funcionario', $id_funcionario, 'Inseriu avaliação do funcionario', $id_funcionario);
+
+        return $id_funcionario;
+	}
+
+	public function getUserNameById($user_id)
+	{
+			$this->db->select('*');
+			$this->db->from('pessoa');
+			$this->db->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa');
+			$this->db->where('usuario.id_usuario', $user_id);
+			$query = $this->db->get();
+			return $query->result();
+	}
 }

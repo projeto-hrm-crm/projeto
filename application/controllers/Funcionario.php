@@ -171,7 +171,7 @@ class Funcionario extends PR_Controller
     /**
      * @author Mayra Bueno
      *
-     * Metodo evaluate refere-se à avaliação do funcionário.
+     * Método evaluate refere-se à avaliação do funcionário.
      *
      * Se avaliado com sucesso, apresenta mensagem de sucesso.
      * Se não, mostra mensagem de erro e redireciona para a mesma pagina.
@@ -189,8 +189,6 @@ class Funcionario extends PR_Controller
       }
 
       $data['funcionario']    = $this->funcionario->getById($id_funcionario);
-      $data['estados']        = $this->estado->get();
-      $data['cidades']        = $this->cidade->getByState($data['funcionario'][0]->id_estado);
       $data['title']          = 'Avaliar funcionario';
       $data['id']             = $id_funcionario;
 
