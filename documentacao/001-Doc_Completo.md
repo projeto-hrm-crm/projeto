@@ -74,7 +74,7 @@ A metodologia utilizada para o desenvolvimento do projeto foi a metodologia ági
 - FontAwesome
 
 ### Controle de Versões
-O controle das versões do sistema é mantido no Github, acessado pelo link: https://github.com/ProjetoPR12018/projeto
+O controle das versões do sistema é mantido no Github, acessado pelo link: https://github.com/projeto-hrm-crm/projeto
 
 ### Arquitetura MVC
 O sistema desenvolvido neste projeto aplica o padrão MVC com o uso do framework **CodeIgniter** para desenvolvimento em PHP.
@@ -378,7 +378,7 @@ Tem acesso aos módulos:
   --- | ---
   RNF 018	| O tempo com o desenvolvimento, implantação e treinamento do sistema não poderá superar a data estimada no calendário de desenvolvimento proposto.
 
-  # Padrões do Projeto PR1 2018
+  # Padrões do Projeto 
 
   ## Introdução
   A fim de facilitar o trabalho em grupo, foram definidos padrões de front-end e back-end, assim, com a mudança de uma sprint e a possível mudança de função de algum membro da equipe, não haveria problemas de adaptação ao código.
