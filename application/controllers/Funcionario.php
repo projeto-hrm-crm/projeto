@@ -55,7 +55,7 @@ class Funcionario extends PR_Controller
         {
             $this->funcionario->insert($this->getFromPost());
 
-            $this->redirectSuccess('Funcionário cadastrado com sucesso!');
+            $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
         }
         else
         {
@@ -106,6 +106,9 @@ class Funcionario extends PR_Controller
     $data['title']          = 'Editar funcionario';
     $data['id']             = $id_funcionario;
 
+
+
+
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);
   }
 
@@ -123,7 +126,7 @@ class Funcionario extends PR_Controller
 
     if ($data) {
       $this->funcionario->remove($id_funcionario);
-      $this->session->set_flashdata('success', 'Funcionário excluído com sucesso!');
+      $this->session->set_flashdata('success', 'Funcionário Excluído Com Sucesso!');
       redirect('funcionario');
     }
   }
@@ -167,32 +170,4 @@ class Funcionario extends PR_Controller
         $postData['id_funcionario'] = $id_funcionario;
         return $postData;
     }
-
-    /**
-     * @author Mayra Bueno
-     *
-     * Método evaluate refere-se à avaliação do funcionário.
-     *
-     * Se avaliado com sucesso, apresenta mensagem de sucesso.
-     * Se não, mostra mensagem de erro e redireciona para a mesma pagina.
-     *
-     * @param int $id_funcionario
-     */
-    public function evaluate($id_funcionario)
-    {
-      if ($this->input->post()) {
-          $data['funcionario'] = $this->input->post();
-
-          echo "<pre>";
-
-          $this->funcionario->update($id_funcionario, $this->input->post());
-      }
-
-      $data['funcionario']    = $this->funcionario->getById($id_funcionario);
-      $data['title']          = 'Avaliar funcionario';
-      $data['id']             = $id_funcionario;
-
-      loadTemplate('includes/header', 'funcionario/avaliar', 'includes/footer', $data);
-    }
-
 }

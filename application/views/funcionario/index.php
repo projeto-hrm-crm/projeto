@@ -54,8 +54,6 @@
                           <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                           </button>
-                          <a title="Avaliar funcionário" href="<?= site_url('funcionario/avaliar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
-                          <i class="fa fa-star"></i></a>
                          </td>
                        </tr>
                      <?php endforeach ?>
@@ -77,7 +75,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Deseja realmente excluir esse funcionário?
+            Deseja Realmente Excluir Esse Funcionário?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">
