@@ -86,6 +86,7 @@ $route['funcionario'] = 'Funcionario';
 $route['funcionario/cadastrar'] = 'Funcionario/create';
 $route['funcionario/editar/(:num)'] = 'Funcionario/edit/$1';
 $route['funcionario/excluir/(:num)'] = 'Funcionario/delete/$1';
+$route['funcionario/avaliar/(:num)'] = 'Funcionario/evaluate/$1';
 
 /** LOGIN */
 $route['login'] = 'Login/index';
