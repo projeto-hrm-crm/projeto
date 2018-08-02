@@ -135,4 +135,18 @@ class Candidato_model extends CI_Model {
 		// return $query->result();
 	}
 
+	/**
+	* @author: Matheus Ladislau
+	* Retorna o registro de candidato, resultado de busca por id_usuario referente
+	*/
+	public function findCandidatoByIdUsuario($id_usuario)
+	{
+		$query=$this->db->select('*')
+		->from('candidato')
+		// ->join('pessoa',  'pessoa.id_pessoa = candidato.id_pessoa')
+		->join('usuario',  'usuario.id_pessoa = candidato.id_pessoa')
+		->get();
+		return $query->result();
+	}
+
 }

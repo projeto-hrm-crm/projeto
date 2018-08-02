@@ -36,25 +36,33 @@ class CandidatoEtapa extends CI_Controller
   */
   public function create($id_processo_seletivo)
   {
-    if(isset($id_processo_seletivo))
-    {
     $id_usuario = $this->session->userdata('user_login');
-    $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario);
-    $get_idEtapa= $this->candidato_etapa->getIdEtapaByProcessoID($id_processo_seletivo);
-    $data['id_etapa']=$get_idEtapa->id_etapa;
-    $data['id_candidato']=$usuario->id_candidato;
-    $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$data['id_etapa']);
-    if($cadastrado!=null)
-      $this->session->set_flashdata('danger',"Candidatura já realizada");
-      else {
-        $this->candidato_etapa->insert($data);
-        $this->session->set_flashdata('success',"Candidatura realizada com sucesso");
+    $usuario=$this->candidato_etapa->selectCandidatoByIdUsuario($id_usuario)[0];
+    if($usuario==null)
+    {
+      $this->session->set_flashdata('danger',"É necessário ter perfil de candidato para se candidatar à uma vaga.");
+    }
+    else
+    {
+      if($usuario!=null)
+      {
+        if(isset($id_processo_seletivo))
+        {
+        $get_idEtapa= $this->candidato_etapa->getIdEtapaByProcessoID($id_processo_seletivo);
+        $data['id_etapa']=$get_idEtapa->id_etapa;
+        $data['id_candidato']=$usuario->id_candidato;
+        $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$data['id_etapa']);
+        if($cadastrado!=null)
+          $this->session->set_flashdata('danger',"Candidatura já realizada");
+          else {
+            $this->candidato_etapa->insert($data);
+            $this->session->set_flashdata('success',"Candidatura realizada com sucesso");
+        }
       }
     }
+  }
     redirect('candidato_etapa');
   }
-
-
 
   /**
   * @author: Matheus Ladislau
