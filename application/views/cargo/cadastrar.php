@@ -22,28 +22,28 @@
                         <?php else: ?>
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class=" form-control-label">Nome</label>
+                                <label class=" form-control-label"><red>*</red>Nome</label>
                                 <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do Cargo" name="nome" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">
                                     <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
                                 </span>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class=" form-control-label">Descrição</label>
+                                <label class=" form-control-label"><red>*</red>Descrição</label>
                                 <textarea placeholder="Descrição do cargo" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>" required><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
                                 <span class="invalid-feedback">
                                     <?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
                                 </span>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class=" form-control-label">Salário por hora</label>
+                                <label class=" form-control-label"><red>*</red>Salário por hora</label>
                                 <input id="salario_cargo" type="text" data-thousands="." data-decimal="," placeholder="00,00" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : null;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">
                                     <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
                                 </span>
                             </div>
                             <div class="form-group col-md-12">
-                                <label class=" form-control-label">Setor</label>
+                                <label class=" form-control-label"><red>*</red>Setor</label>
                                 <select name="id_setor" id="id_setor" class="form-control <?php echo isset($errors['id_setor']) ? 'is-invalid' : '' ?>">
                                     <option value="">Selecionar setor</option>
                                     <?php foreach ($setores as $setor): ?>
