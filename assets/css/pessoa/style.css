@@ -6,15 +6,3 @@
 .content h2 { font-size: 28px }
 .content .card { margin: 20px 0 }
 .hide { display: none }
-
-/* Botões radio personalizados */
-.estrelas input[type=radio] {
-  display: none;
-}
-.estrelas label i.fa:before {
-  content:'\f005';
-  color: #FC0;
-}
-.estrelas input[type=radio]:checked ~ label i.fa:before {
-  color: #CCC;
-}
