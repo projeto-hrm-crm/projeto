@@ -30,22 +30,22 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
-
       <div class="login-content">
-        <div class="login-form">
-            <?php if ($this->session->flashdata('success')): ?>
-             <div class="alert alert-success mt-4">
-               <?php echo $this->session->flashdata('success'); ?>
-             </div>
-            <?php endif; ?>
-          <form method="post">
-            <?php if ($this->session->flashdata('login_error')): ?>
-              <div class="alert alert-danger"><?php echo $this->session->flashdata('login_error');?></div>
-            <?php endif;?>
-            <?php if (validation_errors()) : ?>
-              <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
-            <?php endif;?>
 
+        <?php if ($this->session->flashdata('success')): ?>
+         <div class="alert alert-success mt-4">
+           <?php echo $this->session->flashdata('success'); ?>
+         </div>
+        <?php endif; ?>
+        <form method="post">
+        <?php if ($this->session->flashdata('login_error')): ?>
+          <div class="alert alert-danger"><?php echo $this->session->flashdata('login_error');?></div>
+        <?php endif;?>
+        <?php if (validation_errors()) : ?>
+          <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
+        <?php endif;?>
+        
+        <div class="login-form">
             <div class="form-group">
               <label class="text-lowercase">E-mail</label>
               <input type="email" class="form-control" placeholder="Email" name="email">
