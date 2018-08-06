@@ -88,7 +88,7 @@ class Vaga_model extends CI_Model
     public function getById($id){
 
       $vaga = $this->db->select(
-           'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade,
+           'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade, vaga.requisitos, vaga.id_cargo,
             cargo.nome AS cargo,
             setor.nome AS setor'
        )->from('vaga')
@@ -97,7 +97,7 @@ class Vaga_model extends CI_Model
        ->get();
 
        if ($vaga) {
-           return $vaga->result();
+           return $vaga->row();
        }
        return null;
     }
