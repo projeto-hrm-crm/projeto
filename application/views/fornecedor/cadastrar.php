@@ -24,16 +24,7 @@
 	                <?php echo isset($errors['email']) ? $errors['email'] : '' ; ?>
 	              </span>
           </div>
-          <div class="form-group col-12 col-md-6">
-            <label class="form-control-label"><red>*</red>Senha</label>
-            <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Digite sua senha" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
-          </div>
-
-          <div class="form-group col-12 col-md-6">
-            <label class="form-control-label"><red>*</red>Confirmar Senha</label>
-            <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Digite novamente a senha" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
-          </div>
-
+          
           <div class="form-group col-12 col-md-4">
              <label class=" form-control-label"><red>*</red>Razão Social</label>
              <input type="text" id="razao_social" name="razao_social" placeholder="Nome registrado da empresa" value="<?php echo isset($old_data['razao_social']) ? $old_data['razao_social'] : null;?>" class="form-control <?php echo isset($errors['razao_social']) ? 'is-invalid' : '' ?>" required>
