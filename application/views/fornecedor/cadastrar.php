@@ -50,9 +50,9 @@
 	              </span>
           </div>
 
-          <div class="col-12 col-md-4">
+          <div class="form-group col-12 col-md-4">
              <label class=" form-control-label"><red>*</red>Telefone</label>
-             <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" maxlength="15" value="<?php echo isset($old_data['telefone']) ? $old_data['telefone'] : null;?>" class="form-control telefone <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
+             <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" maxlength="15" value="<?php echo isset($old_data['telefone']) ? $old_data['telefone'] : null;?>" class="form-control telefone alter_mask <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['telefone']) ? $errors['telefone'] : '' ; ?>
 	              </span>
@@ -66,13 +66,15 @@
                <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
              <?php endforeach; ?>
            </select>
+           <span class="invalid-feedback"></span>
       </div>
 
        <div class="form-group col-12 col-md-6">
           <label class="form-control-label"><red>*</red>Cidade</label>
           <select name="id_cidade" class="form-control" id="cidade">
-             <option value="0">Selecione cidade</option>
+             <option value="">Selecione cidade</option>
           </select>
+          <span class="invalid-feedback"></span>
       </div>
 
       <div class="form-group col-12 col-md-3">
