@@ -99,11 +99,17 @@ class Setor extends PR_Controller
     *@param integer: referen-se ao id do setor a ser alterado
     */
     public function delete($id_setor)
-    {
-        $this->setor->remove($id_setor);
+{
+  $setor =  $this->db->where('cargo.id_setor', $id_setor)->get('cargo')->row();
 
-        $this->redirectSuccess('Setor removido com sucesso!');
-    }
+  if(!$setor){
+     $this->setor->remove($id_setor);
+     $this->session->set_flashdata('success','Setor removido com sucesso!');
+  }else{
+    $this->session->set_flashdata('danger','Não foi possivel Realizar esta operação, Existem cargos cadastrados no Setor!');
+  }
+  redirect('setor');
+}
 
 
     /**
