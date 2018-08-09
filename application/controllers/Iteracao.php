@@ -50,7 +50,9 @@ class Iteracao extends CI_Controller {
               'id_sac' => $id,              
               'id_pessoa' => $id_pessoa,
             );
-
+             
+            $this->sac->changeStatus(0, $id);
+             
             $this->iteracao->insert($array);
             $this->session->set_flashdata('success', 'Sua resposta foi cadastrada com sucesso!');
             redirect('sac/iteracao/'.$id);
