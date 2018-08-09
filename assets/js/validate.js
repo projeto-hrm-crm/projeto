@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
 
 
   // @Beto Cadilhe
-  $("#form_fornecedor").validate({
+  $("#form_fornecedr").validate({
 
     highlight:function(input) {
         jQuery(input).addClass('is-invalid');
