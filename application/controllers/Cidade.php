@@ -1,8 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cidade extends CI_Controller {
+class Cidade extends PR_Controller {
 
+	/**
+	* @author: Tiago Villalobos
+	* Construtor que recebe o nome do diretório aonde estão as views
+	*/
+	public function __construct()
+	{
+			parent::__construct('cidade');
+	}
 
 	public function index()
 	{
@@ -16,6 +24,11 @@ class Cidade extends CI_Controller {
 
 	public function edit()
 	{
+		$cidades = $this->cidade->get();
+		foreach ($cidades as $key => $cidade) {
+			$teste = mb_convert_case($cidade->nome, MB_CASE_TITLE, 'UTF-8');
+			$this->cidade->update(['id_cidade'=>$cidade->id_cidade,'nome'=> $teste,'id_estado'=>$cidade->id_estado]);
+		}
 
 	}
 

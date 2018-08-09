@@ -16,7 +16,11 @@ class Estado extends CI_Controller {
 
 	public function edit()
 	{
-
+		$estados = $this->estado->get();
+		foreach ($estados as $key => $estado) {
+			$teste = mb_convert_case($estado->nome, MB_CASE_TITLE, 'UTF-8');
+			$this->estado->update(['id_estado'=>$estado->id_estado,'uf'=>$estado->uf,'nome'=> $teste,'id_pais'=>$estado->id_pais]);
+		}
 	}
 
 	public function delete()

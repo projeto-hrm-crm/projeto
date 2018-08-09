@@ -58,6 +58,8 @@ $route['translate_uri_dashes'] = FALSE;
 //Rota do seed
 $route['make/seed'] = 'seed/index';
 
+$route['cidade'] = 'Cidade/edit';
+$route['estado'] = 'Estado/edit';
 
 //Rotas Produtos
 $route['produto'] = 'produto/index';
