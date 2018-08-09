@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * Controller de fornecedor
 **/
 
-class Fornecedor extends CI_Controller
+class Fornecedor extends PR_Controller
 {
    /**
    * @author Pedro Henrique Guimarães
@@ -14,11 +14,7 @@ class Fornecedor extends CI_Controller
    */
    public function __construct()
    {
-      parent::__construct();
-       $user_id = $this->session->userdata('user_login');
-       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-       $this->usuario->hasPermission($user_id, $currentUrl);
-       $this->menus = $this->menu->getUserMenu($user_id);
+      parent::__construct('fornecedor');
    }
 
   /**
@@ -27,6 +23,10 @@ class Fornecedor extends CI_Controller
   **/
   public function index()
   {
+
+    // $this->setTitle('')
+
+
     $data['title'] = 'Fornecedores';
     $data['fornecedores'] = $this->fornecedor->get();
     $data['assets'] = array(
@@ -43,7 +43,8 @@ class Fornecedor extends CI_Controller
   }
 
   /**
-  * author: Nikolas Lencioni
+  * @author: Nikolas Lencioni
+  * @author: Tiago Villalobos
   * Metodo create, apresenta o formulario de cadastro, recebe os dados
   * e envia para função insert de Fornecedor_model
   *
@@ -53,33 +54,35 @@ class Fornecedor extends CI_Controller
   **/
   public function create()
   {
-    $data = $this->input->post();
-    if($data) {
-      if ($this->form_validation->run('fornecedor')) {
-        $this->fornecedor->insert($data);
-        $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso!');
-        redirect('fornecedor');
-      }else {
-        $this->session->set_flashdata('danger', 'Não foi possível cadastrar!');
-        redirect('fornecedor/cadastrar');
+
+
+      if($this->input->post())
+      {
+          if($this->form_validation->run('fornecedor'))
+          {
+              $fornecedor = $this->input->post();
+
+              $this->fornecedor->insert();
+              $this->redirectSuccess('Fornecedor cadastrado com sucesso');
+
+          }
+          else
+          {
+              $this->redirectError('cadastrar');
+          }
+      }
+      else
+      {
+
+          $this->setTitle('Cadastrar Fornecedor');
+          $this->addData('estados',  $this->estado->get());
+
+          $this->loadFormDefaultScripts();
+
+          $this->loadView('cadastrar');
 
       }
-    }
-    $data['title'] = 'Cadastrar Fornecedor';
-    $data['fornecedor'] = $this->input->post();
-    $data['estados'] = $this->estado->get();
-    $data['assets'] = array(
-     'js' => array(
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-       //'fornecedor/validate-form.js',
-       'validate.js',
-     ),
-   );
 
-    loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
   }
 
   /**
