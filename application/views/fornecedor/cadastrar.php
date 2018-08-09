@@ -7,6 +7,7 @@
      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
 
     <div class="card-body card-block">
+
         <div class="row">
           <!--NOME-->
           <div class="form-group col-12 col-md-6">
@@ -60,21 +61,25 @@
 
       <div class="form-group col-12 col-md-6">
           <label class="form-control-label"><red>*</red>Estado</label>
-           <select name="id_estado" class="form-control" id="estado">
-              <option value="0" disabled selected>Selecione estado</option>
+           <select name="id_estado" class="form-control <?php echo isset($errors['id_estado']) ? 'is-invalid' : '' ?>" id="estado">
+              <option value="" disabled selected>Selecione o estado</option>
              <?php foreach ($estados as $estado): ?>
                <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
              <?php endforeach; ?>
            </select>
-           <span class="invalid-feedback"></span>
+           <span class="invalid-feedback">
+               <?php echo isset($errors['id_estado']) ? $errors['id_estado'] : '' ; ?>
+           </span>
       </div>
 
        <div class="form-group col-12 col-md-6">
           <label class="form-control-label"><red>*</red>Cidade</label>
-          <select name="id_cidade" class="form-control" id="cidade">
-             <option value="">Selecione cidade</option>
+          <select name="id_cidade" class="form-control <?php echo isset($errors['id_cidade']) ? 'is-invalid' : '' ?>" id="cidade">
+             <option value="">Selecione a cidade</option>
           </select>
-          <span class="invalid-feedback"></span>
+          <span class="invalid-feedback">
+               <?php echo isset($errors['id_cidade']) ? $errors['id_cidade'] : '' ; ?>
+          </span>
       </div>
 
       <div class="form-group col-12 col-md-3">
