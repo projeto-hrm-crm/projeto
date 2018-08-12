@@ -93,7 +93,7 @@ class Setor extends PR_Controller
     }
 
     /**
-    * @author: Matheus Ladislau
+    * @author: Matheus Romeo
     * Realiza remoção de registro de um setor pelo id, dados recebidos pela view setor/delete.php
     *
     *@param integer: referen-se ao id do setor a ser alterado

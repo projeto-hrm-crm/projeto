@@ -127,13 +127,17 @@ class Fornecedor extends CI_Controller
   *
   * @param $id int
   **/
-  public function delete($id)
+
+
+  public function delete($id_fornecedor)
   {
-     if($id){
-        $this->fornecedor->delete($id);
-        $this->session->set_flashdata('success', 'Fornecedor excluído com sucesso!');
-     }else{
-       $this->session->set_flashdata('danger', 'Não foi possível excluir!');
+    $fornecedor =  $this->db->where('produto.id_fornecedor', $id_fornecedor)->get('produto')->row();
+    
+     if(!$fornecedor){
+        $this->fornecedor->delete($id_fornecedor);
+        $this->session->set_flashdata('success','fornecedor removido com sucesso!');
+      }else{
+        $this->session->set_flashdata('danger', 'Não foi possível Realizar esta operação, Existem produtos relacionados a este fornecedor!'); 
      }
      redirect('fornecedor');
   }
