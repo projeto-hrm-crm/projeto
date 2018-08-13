@@ -71,6 +71,7 @@ class Processo_Seletivo extends CI_Controller
     }
     $data['title'] = 'Cadastrar Processo Seletivo';
     $data['vagas'] = $this->vaga->get();
+    $data['funcionarios'] = $this->funcionario->get();
     $data['etapas'] = $this->etapa->get();
     $data['processo_seletivo'] = $this->input->post();
     $data['assets'] = array(
@@ -100,20 +101,23 @@ class Processo_Seletivo extends CI_Controller
             'descricao' => $data['descricao_etapa'][$key]
           );
         }
-        $this->etapa->update($id, $etapa);
-        echo count($data['nome_etapa']);
-        echo count($etapas);
-        if (count($data['nome_etapa'])>count($etapas)) {
-          foreach ($data['nome_etapa'] as $key => $novaEtapa) {
-            if(!isset($etapas[$key])){
-              $novas['nome_etapa'][$key] =  $data['nome_etapa'][$key];
-              $novas['descricao_etapa'][$key] = $data['descricao_etapa'][$key];
+        if(isset($etapa))
+          $this->etapa->update($id, $etapa);
+        // echo count($data['nome_etapa']);
+        // echo count($etapas);
+        if(isset($data['nome_etapa'])){
+          if (count($data['nome_etapa'])>count($etapas)) {
+            foreach ($data['nome_etapa'] as $key => $novaEtapa) {
+              if(!isset($etapas[$key])){
+                $novas['nome_etapa'][$key] =  $data['nome_etapa'][$key];
+                $novas['descricao_etapa'][$key] = $data['descricao_etapa'][$key];
+              }
             }
+            $this->etapa->insert($id, $novas['nome_etapa'], $novas['descricao_etapa']);
           }
-          $this->etapa->insert($id, $novas['nome_etapa'], $novas['descricao_etapa']);
+          unset($data['nome_etapa']);
+          unset($data['descricao_etapa']);
         }
-        unset($data['nome_etapa']);
-        unset($data['descricao_etapa']);
         $this->processo_seletivo->update($id, $data);
         $this->session->set_flashdata('success', 'Processo Seletivo atualizado com sucesso!');
         redirect('processo_seletivo');
@@ -126,6 +130,8 @@ class Processo_Seletivo extends CI_Controller
     $data['title'] = 'Editar Processo Seletivo';
     $data['vagas'] = $this->vaga->get();
     $data['etapas'] = $this->etapa->find($id);
+    $data['funcionarios'] = $this->funcionario->get();
+
     $data['processo_seletivo'] = $this->processo_seletivo->find($id);
 
     $data['processo_seletivo'][0]->data_inicio = switchDate($data['processo_seletivo'][0]->data_inicio);
