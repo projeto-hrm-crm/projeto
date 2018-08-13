@@ -54,15 +54,13 @@ class Fornecedor extends PR_Controller
   **/
   public function create()
   {
-
-
       if($this->input->post())
       {
           if($this->form_validation->run('fornecedor'))
           {
-              $fornecedor = $this->input->post();
+              $fornecedor = $this->getFromPost();
 
-              $this->fornecedor->insert();
+              $this->fornecedor->insert($fornecedor);
               $this->redirectSuccess('Fornecedor cadastrado com sucesso');
 
           }
@@ -85,6 +83,35 @@ class Fornecedor extends PR_Controller
 
   }
 
+  private function getFromPost()
+  {
+      return [
+          'nome'         => $this->input->post('nome'),
+          'email'        => $this->input->post('email'),
+          'senha'        => $this->input->post('senha'),
+          'senha2'       => $this->input->post('senha2'),
+          'razao_social' => $this->input->post('razao_social'),
+          'cnpj'         => $this->input->post('cnpj'),
+          'telefone'     => $this->input->post('telefone'),
+          'id_estado'    => $this->input->post('id_estado'),
+          'id_cidade'    => $this->input->post('id_cidade'),
+          'cep'          => $this->input->post('cep'),
+          'logradouro'   => $this->input->post('logradouro'),
+          'numero'       => $this->input->post('numero'),
+          'bairro'       => $this->input->post('bairro'),
+          'complemento'  => $this->input->post('complemento')
+      ];
+  }
+
+  private function getFromPostEdit($id_fornecedor)
+  {
+      $postData = $this->getFromPost();
+
+      $postData['id_fornecedor'] = $id_fornecedor;
+
+      return $postData;
+  }
+
   /**
   * author: Nikolas Lencioni
   * Metodo edit, apresenta o formulario de edição, com os dados do fornecedor a ser editado,
@@ -95,34 +122,37 @@ class Fornecedor extends PR_Controller
   *
   * @param $id int, id do fornecedor
   **/
-  public function edit($id)
+  public function edit($id_fornecedor)
   {
-    $data = $this->input->post();
-
-    if ($data)
-    {
-      if ($this->form_validation->run('fornecedor'))
+      if($this->input->post())
       {
-        $this->fornecedor->update($id, $data);
-        $this->session->set_flashdata('success', 'Fornecedor atualizado com sucesso!');
-        redirect('fornecedor');
-      }else{
-        $this->session->set_flashdata('danger', 'Não foi possível atualizar fornecedor!');
-        redirect('fornecedor/edit/'.$id);
+          if($this->form_validation->run('fornecedor'))
+          {
+              $this->fornecedor->update($this->getFromPostEdit($id_fornecedor));
+
+              $this->redirectSuccess('Fornecedor atualizado com sucesso!');
+          }
+          else
+          {
+              $this->redirectError('editar/'.$id_fornecedor);
+          }
       }
-    }
+      else
+      {
+          $this->setTitle('Atualizar Fornecedor');
 
-     $data['fornecedor'] = $this->fornecedor->find($id);
-     $data['title'] = 'Editar Fornecedor';
+          $this->loadFormDefaultScripts();
 
-     $data['estado_atual'] = $this->cidade->findState($data['fornecedor'][0]->id_cidade);
+          $this->addData('fornecedor', $this->fornecedor->find($id_fornecedor));
 
-     $data['estados'] =  $this->estado->get();
-     $data['cidades'] = $this->cidade->getByState($data['estado_atual'][0]->id_estado);
+          $this->addData('estado_atual', $this->cidade->findState($this->data['fornecedor'][0]->id_cidade));
+          $this->addData('estados', $this->estado->get());
+          $this->addData('cidades', $this->cidade->getByState($this->data['estado_atual'][0]->id_estado));
 
-    loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
-
+          $this->loadView('editar');
+      }
   }
+
   /**
   * author: Nikolas Lencioni
   * Metodo delete, chama a funçao delete de Fornecedor_model, passando o id do fornecedores
