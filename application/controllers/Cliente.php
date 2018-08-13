@@ -106,6 +106,11 @@ class Cliente extends CI_Controller
     $data['paises'] = $this->cliente->get_pais();
     $data['estados'] = $this->estado->get();
     $data['title'] = 'Cadastrar cliente';
+    $data['assets'] = array(
+        'js' => array(
+          'thirdy_party/apicep.js',
+        ),
+    );
     loadTemplate('includes/header', 'cliente/cadastrar', 'includes/footer', $data);
   }
 

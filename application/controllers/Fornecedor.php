@@ -70,6 +70,7 @@ class Fornecedor extends CI_Controller
     $data['estados'] = $this->estado->get();
     $data['assets'] = array(
      'js' => array(
+       'thirdy_party/apicep.js',
        'lib/data-table/datatables.min.js',
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
