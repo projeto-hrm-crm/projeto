@@ -35,11 +35,18 @@ class Telefone_model extends CI_Model {
 	*/
 	public function update($telefone)
 	{
-		$this->db->where('telefone.id_pessoa', $telefone['id_pessoa']);
-		$id_telefone = $this->db->get('telefone')->row()->id_telefone;
+		$this->db
+		->where('telefone.id_pessoa', $telefone['id_pessoa'])
+		->set('telefone.numero', $telefone['numero'])
+		->update('telefone');
 
-		$this->db->set('telefone.numero', $telefone['numero']);
-		$this->db->update('telefone');
+		$this->db->flush_cache();
+
+		$id_telefone = $this->db
+		->where('telefone.id_pessoa', $telefone['id_pessoa'])
+		->get('telefone')
+		->row()
+		->id_telefone;
 
 		if($id_telefone)
 		{
