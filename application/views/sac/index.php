@@ -44,15 +44,15 @@
                                         <td><?=$item->titulo;?></td>
                                         <td><?=$item->id_cliente;?></td>
                                         <td><?php if($item->encerrado){echo "FECHADO";}else{echo "EM ABERTO";} ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <a  href="<?=site_url('sac/editar/'.$item->id_sac);?>" class="btn btn-primary" title="Atualizar SAC">
                                                 <span class="fa fa-pencil-square-o"></span>
                                             </a>
-                                            
-                                            <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir SAC" data-toggle="modal" data-target="#modalRemover">
+
+                                            <!-- <button data-href="" class="btn btn-danger" title="Excluir SAC" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
-                                            </button>
-                                            
+                                            </button> -->
+
                                             <a  href="<?=site_url('sac/iteracao/'.$item->id_sac);?>" class="btn btn-success" title="Iterações SAC">
                                                 <span class="fa fa-comment-o"></span>
                                             </a>
@@ -87,7 +87,10 @@
 
 
 </div>
-       <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+
+  <!-- funcao removida, sac nao sera excluido -->
+
+   <!-- <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -109,4 +112,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
