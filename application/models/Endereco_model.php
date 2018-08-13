@@ -41,9 +41,12 @@ class Endereco_model extends CI_Model {
 		$this->db->set('endereco.numero',      $endereco['numero']);
 		$this->db->set('endereco.complemento', $endereco['complemento']);
 		$this->db->set('endereco.id_cidade',   $endereco['id_cidade']);
-
-		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
 		$this->db->update('endereco');
+
+		$this->db->flush_cache();
+
+		$this->db->where('endereco.id_pessoa', $endereco['id_pessoa']);
+		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
 
 		if($id_endereco)
 		{
@@ -74,11 +77,11 @@ class Endereco_model extends CI_Model {
 		return $id_endereco;
 
 	}
-   
+
    /**
 	* @author Rodrigo
 	* Retorna o endereço de uma pessoa
-	* 
+	*
 	* @return mixed array de objetos
 	*/
 	public function findAddress($id){
