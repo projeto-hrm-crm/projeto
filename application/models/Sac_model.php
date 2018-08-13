@@ -119,24 +119,22 @@ class Sac_model extends PR_Model
         $this->setLog($sac->titulo, $id_sac);
     }
 
-    //funcao removida, sac nao sera excluido
-
     /**
     * @author: Rodrigo Alves
     * Apagar uma ordem sac do banco
     *
     * @param: $id_sac integer
     */
-    // public function remove($id_sac)
-    // {
-    //     $sac = $this->db->where('sac.id_sac', $id_sac)->get('sac')->row();
-    //
-    //     $this->db
-    //     ->where('id_sac', $id_sac)
-    //     ->delete('sac');
-    //
-    //     $this->setLog($sac->titulo, $id_sac);
-    // }
+    public function remove($id_sac)
+    {
+        $sac = $this->db->where('sac.id_sac', $id_sac)->get('sac')->row();
+
+        $this->db
+        ->where('id_sac', $id_sac)
+        ->delete('sac');
+
+        $this->setLog($sac->titulo, $id_sac);
+    }
 
   /**
   * @author: Pedro Henrique Guimarães
