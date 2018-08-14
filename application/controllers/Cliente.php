@@ -185,6 +185,11 @@ class Cliente extends CI_Controller
     $data['cliente'] = $this->cliente->getById($id_cliente);
     $data['title']   = 'Editar cliente';
     $data['id']      = $id_cliente;
+	$data['assets'] = array(
+        'js' => array(
+          'thirdy_party/apicep.js',
+        ),
+    );
 
     loadTemplate('includes/header', 'cliente/editar', 'includes/footer', $data);
   }
