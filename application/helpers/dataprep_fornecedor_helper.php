@@ -19,7 +19,8 @@ function data_preparation($data, $id=NULL)
 
     'endereco' => array(
       'cep' => $data['cep'],
-      'id_cidade' => $data['id_cidade'],
+      'cidade' => $data['cidade'],
+      'estado' => $data['estado'],
       'bairro' => $data['bairro'],
       'logradouro' => $data['logradouro'],
       'numero' => $data['numero'],

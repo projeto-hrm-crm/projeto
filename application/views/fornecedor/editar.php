@@ -56,21 +56,12 @@
 
           <div class="form-group col-12 col-md-6">
               <label class="form-control-label">Estado</label>
-               <select name="id_estado" class="form-control" id="estado">
-                  <option value="0" disabled selected>Selecione um estado</option>
-                 <?php foreach ($estados as $estado): ?>
-                   <option value="<?php echo $estado->id_estado ?>" <?php if($estado_atual[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
-                 <?php endforeach; ?>
-               </select>
+              <input type="text" name="estado" class="form-control" id="estado" value="<?php echo $fornecedor[0]->estado;?>">
           </div>
 
            <div class="form-group col-12 col-md-6">
               <label class="form-control-label">Cidade</label>
-              <select name="id_cidade" class="form-control" id="cidade">
-                 <?php foreach ($cidades as $cidade): ?>
-                   <option value="<?php echo $cidade->id_cidade; ?>" <?php if($fornecedor[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
-                 <?php endforeach; ?>
-               </select>
+              <input type="text" name="cidade" class="form-control" id="cidade" value="<?php echo $fornecedor[0]->cidade;?>">
           </div>
 
          <div class="form-group col-12 col-md-3">

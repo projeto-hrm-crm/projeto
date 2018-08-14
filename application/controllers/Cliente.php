@@ -80,7 +80,8 @@ class Cliente extends CI_Controller
             'numero'        => $this->input->post('numero'),
             'complemento'   => $this->input->post('complemento'),
             'id_pessoa'     => $id_pessoa,
-            'id_cidade'     => $this->input->post('cidade')]);
+            'estado'        => $this->input->post('estado'),
+            'cidade'        => $this->input->post('cidade')]);
 
         $this->documento->insert([
             'tipo'      => 'cpf',
@@ -130,28 +131,60 @@ class Cliente extends CI_Controller
   {
     if ($this->input->post())
     {
-      $data['cliente'] = $this->input->post();
+        $data['cliente'] = $this->input->post();
         $cliente = $this->cliente->getById($id_cliente);
 
-        $this->pessoa->update(['id_pessoa' => $cliente[0]->id_pessoa, 'nome'=> $data['cliente']['nome'],'email'=>$data['cliente']['email']]);
+        $this->pessoa->update(
+              [
+                'id_pessoa' => $cliente[0]->id_pessoa, 
+                'nome'      => $data['cliente']['nome'],
+                'email'     =>$data['cliente']['email']
+              ]
+            );
 
-        $this->endereco->update(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
-        'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento'),
-        'id_pessoa'   => $cliente[0]->id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+        $this->endereco->update(
+          [
+            'cep'         => $this->input->post('cep'),
+            'bairro'      => $this->input->post('bairro'),
+            'logradouro'  => $this->input->post('logradouro'),
+            'numero'      => $this->input->post('numero'), 
+            'complemento' => $this->input->post('complemento'),
+            'id_pessoa'   => $cliente[0]->id_pessoa, 
+            'id_cidade'   => $this->input->post('cidade')
+          ]
+        );
 
-        $this->documento->update(['tipo' => 'cpf','numero' => $this->input->post('cpf') , 'id_pessoa' => $cliente[0]->id_pessoa]);
 
-        $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $cliente[0]->id_pessoa]);
+        $this->documento->update(
+          [
+            'tipo'      => 'cpf',
+            'numero'    => $this->input->post('cpf') , 
+            'id_pessoa' => $cliente[0]->id_pessoa
+          ]
+        );
 
-        $this->pessoa_fisica->update($cliente[0]->id_pessoa,['data_nascimento'=> switchDate($data['cliente']['data_nascimento']),'sexo'=>$data['cliente']['sexo']]);
+        $this->telefone->update(
+          [
+            'numero'    =>  $this->input->post('tel'),  
+            'id_pessoa' =>  $cliente[0]->id_pessoa
+          ]
+        );
+
+        $this->pessoa_fisica->update($cliente[0]->id_pessoa,
+          [
+            'data_nascimento' =>  switchDate($data['cliente']['data_nascimento']),
+            'sexo'            =>  $data['cliente']['sexo']
+          ]
+        );
+
         $this->session->set_flashdata('success', 'Cliente atualizado com sucesso!');
+
         redirect('cliente');
     }
+
     $data['cliente'] = $this->cliente->getById($id_cliente);
-    $data['estados'] =  $this->estado->get();
-    $data['cidades'] = $this->cidade->getByState($data['cliente'][0]->id_estado);
-    $data['title'] = 'Editar cliente';
-    $data['id'] = $id_cliente;
+    $data['title']   = 'Editar cliente';
+    $data['id']      = $id_cliente;
 
     loadTemplate('includes/header', 'cliente/editar', 'includes/footer', $data);
   }

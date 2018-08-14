@@ -40,7 +40,8 @@ class Endereco_model extends CI_Model {
 		$this->db->set('endereco.logradouro',  $endereco['logradouro']);
 		$this->db->set('endereco.numero',      $endereco['numero']);
 		$this->db->set('endereco.complemento', $endereco['complemento']);
-		$this->db->set('endereco.id_cidade',   $endereco['id_cidade']);
+		$this->db->set('endereco.cidade',      $endereco['cidade']);
+		$this->db->set('endereco.estado',      $endereco['estado']);
 
 		$id_endereco = $this->db->get('endereco')->row()->id_endereco;
 		$this->db->update('endereco');

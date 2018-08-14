@@ -20,7 +20,6 @@ class Fornecedor_model extends CI_Model
           telefone.numero AS telefone, 
           documento.numero AS cnpj, 
           endereco.cep, 
-          endereco.id_cidade, 
           endereco.bairro, 
           endereco.logradouro, 
           endereco.numero AS numero, 
@@ -79,7 +78,8 @@ class Fornecedor_model extends CI_Model
         'numero'        => $data['numero'],
         'complemento'   => $data['complemento'],
         'id_pessoa'     => $id_pessoa,
-        'id_cidade'     => $data['id_cidade']
+        'estado'        => $data['estado'],
+        'cidade'        => $data['cidade']
     ]);
 
     $this->telefone->insert([
@@ -116,11 +116,12 @@ class Fornecedor_model extends CI_Model
           telefone.numero AS telefone, 
           documento.numero AS cnpj,
           endereco.cep, 
-          endereco.id_cidade, 
           endereco.bairro, 
           endereco.logradouro, 
           endereco.numero AS numero, 
-          endereco.complemento',
+          endereco.complemento,
+          endereco.cidade,
+          endereco.estado',
           'usuario.id_usuario')
         ->from('fornecedor')
         ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')

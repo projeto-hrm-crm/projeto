@@ -113,10 +113,11 @@ class Fornecedor extends CI_Controller
      $data['fornecedor'] = $this->fornecedor->find($id);
      $data['title'] = 'Editar Fornecedor';
 
-     $data['estado_atual'] = $this->cidade->findState($data['fornecedor'][0]->id_cidade);
-
-     $data['estados'] =  $this->estado->get();
-     $data['cidades'] = $this->cidade->getByState($data['estado_atual'][0]->id_estado);
+     $data['assets'] = array(
+     'js' => array(
+       'thirdy_party/apicep.js',
+     ),
+   );
 
     loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
 

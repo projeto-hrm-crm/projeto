@@ -60,12 +60,12 @@
 
       <div class="form-group col-12 col-md-6">
           <label class="form-control-label"><red>*</red>Estado</label>
-          <input type="text" name="id_estado" class="form-control" id="estado">
+          <input type="text" name="estado" class="form-control" id="estado">
       </div>
 
        <div class="form-group col-12 col-md-6">
           <label class="form-control-label"><red>*</red>Cidade</label>
-          <input type="text" name="id_cidade" class="form-control" id="cidade">
+          <input type="text" name="cidade" class="form-control" id="cidade">
       </div>
 
       <div class="form-group col-12 col-md-3">

@@ -93,20 +93,18 @@ class Funcionario extends PR_Controller
   {
     if ($this->input->post()) {
         $data['funcionario'] = $this->input->post();
-
-        echo "<pre>";
-
         $this->funcionario->update($id_funcionario, $this->input->post());
     }
 
     $data['funcionario']    = $this->funcionario->getById($id_funcionario);
-    $data['estados']        = $this->estado->get();
-    $data['cidades']        = $this->cidade->getByState($data['funcionario'][0]->id_estado);
     $data['title']          = 'Editar funcionario';
     $data['id']             = $id_funcionario;
 
-
-
+    $data['assets'] = array(
+        'js' => array(
+          'thirdy_party/apicep.js',
+        ),
+    );
 
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);
   }

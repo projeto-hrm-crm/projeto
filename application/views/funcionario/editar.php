@@ -50,20 +50,12 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="estado">Estado</label>
-                <select name="estado" id="estado" class="form-control">
-                  <?php foreach ($estados as $estado): ?>
-                    <option value="<?php echo $estado->id_estado ?>" <?php if($funcionario[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
-                  <?php endforeach; ?>
-                </select>
+                <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $funcionario[0]->estado;?>">
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label for="cidade">Cidade</label>
-                <select name="cidade" id="cidade" class="form-control">
-                  <?php foreach($cidades as $cidade): ?>
-                    <option value="<?php echo $cidade->id_cidade?>" <?php if($funcionario[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
-                  <?php endforeach ?>
-                </select>
+                <input type="text" name="cidade" id="cidade" class="form-control" value="<?php echo $funcionario[0]->cidade;?>">
               </div>
 
               <div class="form-group col-12 col-md-6">
