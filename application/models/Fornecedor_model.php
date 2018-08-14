@@ -23,6 +23,7 @@ class Fornecedor_model extends CI_Model
           endereco.bairro, 
           endereco.logradouro, 
           endereco.numero AS numero, 
+
           endereco.complemento',
           'usuario.id_usuario')
         ->from('fornecedor')
@@ -61,7 +62,7 @@ class Fornecedor_model extends CI_Model
 
     $this->usuario->insert([
        'login'          => $data['email'],
-       'senha'          => $data['senha2'],
+       'senha'          => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
        'id_grupo_acesso'=> 3,
        'id_pessoa'      => $id_pessoa
     ]);
@@ -108,12 +109,12 @@ class Fornecedor_model extends CI_Model
   public function find($id)
   {
       $this->db->select(
-          'fornecedor.id_fornecedor, 
-          pessoa_juridica.id_pessoa_juridica, 
-          pessoa_juridica.razao_social, 
-          pessoa.id_pessoa, pessoa.nome, 
-          pessoa.email, 
-          telefone.numero AS telefone, 
+         'fornecedor.id_fornecedor,
+          pessoa_juridica.id_pessoa_juridica,
+          pessoa_juridica.razao_social,
+          pessoa.id_pessoa, pessoa.nome,
+          pessoa.email,
+          telefone.numero AS telefone,
           documento.numero AS cnpj,
           endereco.cep, 
           endereco.bairro, 
@@ -123,6 +124,7 @@ class Fornecedor_model extends CI_Model
           endereco.cidade,
           endereco.estado',
           'usuario.id_usuario')
+
         ->from('fornecedor')
         ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
         ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
@@ -138,30 +140,52 @@ class Fornecedor_model extends CI_Model
       return null;
   }
 
-  public function update($id, $data)
+  public function update($data)
   {
-    try {
-      $cleaned = data_preparation($data, $id);
-      if($cleaned)
-      {
-        $id = $this->pessoa->update($cleaned['pessoa']);
-        $cleaned['documento']['id_pessoa'] = $id;
-        $cleaned['telefone']['id_pessoa'] = $id;
-        $cleaned['endereco']['id_pessoa'] = $id;
-        $cleaned['pessoa_juridica']['id_pessoa'] = $id;
-        $this->documento->update($cleaned['documento']);
-        $this->telefone->update($cleaned['telefone']);
-        $this->endereco->update($cleaned['endereco']);
-        $aux['id_pessoa_juridica'] = $this->pessoa_juridica->update($cleaned['pessoa_juridica']);
-        $this->db->where('id_fornecedor', $id);
-        if($this->db->update('fornecedor', $aux))
-    		{
-    			return $aux['id_fornecedor'];
-    		}else {
-    			return 0;
-    		}
-      }
-    } catch (\Exception $e) {}
+      $fornecedor = $this->find($data['id_fornecedor']);
+
+      $this->pessoa->update(
+          [
+              'id_pessoa' => $fornecedor[0]->id_pessoa,
+              'nome' => $data['nome'],
+              'email' => $data['email']
+          ]
+      );
+
+      $this->pessoa_juridica->update(
+          [
+              'id_pessoa_juridica' => $fornecedor[0]->id_pessoa_juridica,
+              'razao_social'       => $data['razao_social']
+          ]
+      );
+
+      $this->documento->update(
+          [
+              'id_pessoa' => $fornecedor[0]->id_pessoa,
+              'numero'    => $data['cnpj'],
+              'tipo'      => 'cnpj'
+          ]
+      );
+
+      $this->telefone->update(
+          [
+              'id_pessoa' => $fornecedor[0]->id_pessoa,
+              'numero'    => $data['telefone'],
+          ]
+      );
+
+        $this->endereco->update(
+            [
+                'cep'           => $data['cep'],
+                'bairro'        => $data['bairro'],
+                'logradouro'    => $data['logradouro'],
+                'numero'        => $data['numero'],
+                'complemento'   => $data['complemento'],
+                'id_pessoa'     => $fornecedor[0]->id_pessoa,
+                'id_cidade'     => $data['id_cidade']
+            ]
+        );
+
   }
 
 

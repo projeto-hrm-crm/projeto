@@ -10,7 +10,7 @@
 	                    <div class="card-body">
 	                    	<div class="row">
 	                        	<div class="form-group col-6">
-	                        		<label for="tipo" class="control-label mb-1">Tipo de Pedido</label>
+	                        		<label for="tipo" class="control-label mb-1"><red>*</red>Tipo de Pedido</label>
 	                        		<br>
 	                        		<div class="form-check-inline form-check">
 	                        		  <label for="tipo1" class="form-check-label mr-2 <?php echo isset($errors['tipo']) ? 'text-danger' : '' ?>">
@@ -34,7 +34,7 @@
 	                    	</div>
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
-	                                <label for="id_pessoa" class="control-label mb-1" id="label_pessoa"><?php echo $label ?></label>
+	                                <label for="id_pessoa" class="control-label mb-1" id="label_pessoa"><red>*</red><?php echo $label ?></label>
 	                                <select name="id_pessoa" id="id_pessoa" class="form-control <?php echo isset($errors['id_pessoa']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($clientes as $cliente): ?>
@@ -57,7 +57,7 @@
 
 	                        <div class="row">
 	                            <div class="form-group col-lg-12">
-	                                <label for="id_produto" class="control-label mb-1">Produtos/Serviços</label>
+	                                <label for="id_produto" class="control-label mb-1"><red>*</red>Produtos/Serviços</label>
 	                                  <select id="id_produto" class="form-control <?php echo isset($errors['id_produto[]']) ? 'is-invalid' : '' ?>">
 	                                    <option value="">Selecione</option>
 	                                    <?php
@@ -183,7 +183,7 @@
 
 	                        <div class="row">
 	                        	<div class="form-group col-lg-12 col-sm-12">
-	                                 <label for="situacao" class="control-label mb-1" id="main_label">Situação</label>
+	                                 <label for="situacao" class="control-label mb-1" id="main_label"><red>*</red>Situação</label>
 	                                <select name="situacao" id="situacao" class="form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($situacoes as $index => $situacao): ?>
@@ -208,7 +208,7 @@
 	                        <div class="row">
 	                        	<div class="form-group col-12">
 
-	                                <label for="data_oferta" class="control-label mb-1">Descrição</label>
+	                                <label for="data_oferta" class="control-label mb-1"><red>*</red>Descrição</label>
 	                                <textarea name="descricao" id="descricao" rows="4" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : $pedido->descricao;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>

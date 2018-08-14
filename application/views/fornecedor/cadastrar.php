@@ -7,7 +7,9 @@
      <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
 
     <div class="card-body card-block">
+
         <div class="row">
+
           <!--NOME-->
           <div class="form-group col-12 col-md-6">
             <label class=" form-control-label"><red>*</red>Nome</label>
@@ -16,14 +18,16 @@
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
           </div>
+
           <!--EMAIL-->
           <div class="form-group col-12 col-md-6">
              <label for="email-input" class=" form-control-label"><red>*</red>E-mail</label>
-             <input type="email" id="email" name="email" placeholder="email@provedor.com" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
+             <input type="text" id="email" name="email" placeholder="email@provedor.com" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['email']) ? $errors['email'] : '' ; ?>
 	              </span>
           </div>
+
           <div class="form-group col-12 col-md-6">
             <label class="form-control-label"><red>*</red>Senha</label>
             <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Digite sua senha" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
@@ -50,17 +54,41 @@
 	              </span>
           </div>
 
-          <div class="col-12 col-md-4">
+          <div class="form-group col-12 col-md-4">
              <label class=" form-control-label"><red>*</red>Telefone</label>
-             <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" maxlength="15" value="<?php echo isset($old_data['telefone']) ? $old_data['telefone'] : null;?>" class="form-control telefone <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
+             <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" maxlength="15" value="<?php echo isset($old_data['telefone']) ? $old_data['telefone'] : null;?>" class="form-control telefone alter_mask <?php echo isset($errors['telefone']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['telefone']) ? $errors['telefone'] : '' ; ?>
 	              </span>
           </div>
 
+
+      <div class="form-group col-12 col-md-6">
+          <label class="form-control-label"><red>*</red>Estado</label>
+           <select name="id_estado" class="form-control <?php echo isset($errors['id_estado']) ? 'is-invalid' : '' ?>" id="estado">
+              <option value="" disabled selected>Selecione o estado</option>
+             <?php foreach ($estados as $estado): ?>
+               <option value="<?php echo $estado->id_estado ?>"><?php echo $estado->nome; ?></option>
+             <?php endforeach; ?>
+           </select>
+           <span class="invalid-feedback">
+               <?php echo isset($errors['id_estado']) ? $errors['id_estado'] : '' ; ?>
+           </span>
+      </div>
+
+       <div class="form-group col-12 col-md-6">
+          <label class="form-control-label"><red>*</red>Cidade</label>
+          <select name="id_cidade" class="form-control <?php echo isset($errors['id_cidade']) ? 'is-invalid' : '' ?>" id="cidade">
+             <option value="">Selecione a cidade</option>
+          </select>
+          <span class="invalid-feedback">
+               <?php echo isset($errors['id_cidade']) ? $errors['id_cidade'] : '' ; ?>
+          </span>
+      </div>
+
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label"><red>*</red>CEP</label>
-         <input type="num" id="cep" name="cep" placeholder="00000-000" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
+         <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control cep <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
                   <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
                 </span>
@@ -86,7 +114,7 @@
 
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label"><red>*</red>Número</label>
-         <input type="num" id="numero" name="numero" placeholder="Número da residência" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>" class="form-control <?php echo isset($errors['numero']) ? 'is-invalid' : '' ?>" required>
+         <input type="text" id="numero" name="numero" placeholder="Número da residência" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>" class="form-control <?php echo isset($errors['numero']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['numero']) ? $errors['numero'] : '' ; ?>
 	              </span>
@@ -122,30 +150,3 @@
   </div>
 </div>
 </div>
-<script type="text/javascript">
-   $("#estado").change(function(){
-
-      var id = $("#estado").val();
-
-      $.ajax({
-           type: "GET",
-           url: "<?=site_url("filtrar_cidades");?>/"+id,
-           contentType: "application/json; charset=utf-8",
-           cache: false,
-           success: function(retorno) {
-             // Interpretando retorno JSON...
-
-             var cidades = JSON.parse(retorno);
-
-            $("#cidade").html(null);
-
-             // Listando cada cliente encontrado na lista...
-             $.each(cidades,function(i, cidade){
-                 var item = "<option value='"+cidade.id_cidade+"'> "+cidade.nome+"</option>";
-                 $("#cidade").append(item);
-             });
-
-           }
-       });
-   });
-</script>

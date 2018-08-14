@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 
   var id_usuario = null;
-   if($("#form_funcionario, #form_candidato, #form_cliente").attr('data-id_usuario'))
+   if($("#form_funcionario, #form_candidato, #form_cliente, #form_fornecedor").attr('data-id_usuario'))
      id_usuario = $('#form').attr('usuario_id');
 
   $("#form_produto").validate({
@@ -46,7 +46,9 @@ jQuery(document).ready(function($) {
         required: true,
         digits:true,
       },
-
+      id_usuario: {
+        required: true,
+      },
       data_inicio: {
         required: true,
         brazilian_date: true,
@@ -64,9 +66,11 @@ jQuery(document).ready(function($) {
   // @Beto Cadilhe
   $("#form_fornecedor").validate({
 
-    highlight:function(input) {
+    highlight:function(input)
+    {
         jQuery(input).addClass('is-invalid');
       },
+
       unhighlight:function(input){
         jQuery(input).removeClass('is-invalid');
       },
@@ -106,7 +110,6 @@ jQuery(document).ready(function($) {
     rules: {
       nome: {
         required:true,
-        // regex:/^[a-zA-ZÀ-Úà-ú ]+$/
         letras:true,
       },
 
@@ -123,7 +126,6 @@ jQuery(document).ready(function($) {
 
       razao_social: {
         required:true,
-        // regex:/^[a-zA-ZÀ-Úà-ú ]+$/
         regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/,
       },
 
@@ -152,14 +154,13 @@ jQuery(document).ready(function($) {
       },
 
       complemento: {
-        required:false,
         regex: /^[A-Za-z0-9]/,
       },
 
       cep: {
         required:true,
-        digits:true,
-      },
+        minlength: 9
+      }
 
     },
 
@@ -802,12 +803,6 @@ jQuery(document).ready(function($) {
     return this.optional(element) || re.test(value);
   });
 
-
-  $.validator.addMethod('table_rows', function(value, element){
-    return
-  });
-
-
   /**
   * @author: Camila Sales
   * Verifica se o cpf é válido
@@ -867,6 +862,58 @@ jQuery(document).ready(function($) {
       return new Date(dataAtual) > new Date(dataFinal);
 
   }, 'Informe uma data maior que a data anterior');
+
+  /**
+  * @author Tiago Villalobos
+  *
+  * Validação de CNPJ
+  */
+  $.validator.addMethod("cnpj", function (value, element) {
+
+            var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
+            if (value.length == 0) {
+                return false;
+            }
+
+            value = value.replace(/\D+/g, '');
+            digitos_iguais = 1;
+
+            for (i = 0; i < value.length - 1; i++)
+                if (value.charAt(i) != value.charAt(i + 1)) {
+                    digitos_iguais = 0;
+                    break;
+                }
+            if (digitos_iguais)
+                return false;
+
+            tamanho = value.length - 2;
+            numeros = value.substring(0, tamanho);
+            digitos = value.substring(tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                    pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado != digitos.charAt(0)) {
+                return false;
+            }
+            tamanho = tamanho + 1;
+            numeros = value.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                    pos = 9;
+            }
+
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
+            return (resultado == digitos.charAt(1));
+        }, 'Informe um CNPJ válido');
 
   /**
   * @author: Camila Sales

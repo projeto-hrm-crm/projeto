@@ -58,6 +58,7 @@ class ProcessoSeletivo_model extends CI_Model
       processo_seletivo.data_inicio,
       processo_seletivo.descricao,
       processo_seletivo.data_fim,
+      processo_seletivo.id_usuario,
       cargo.nome as nome_cargo')
       ->from('processo_seletivo')
       ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
