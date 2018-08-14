@@ -11,6 +11,11 @@ class Usuario extends CI_Controller
   public function index(){
     $data['cidades'] = $this->cidade->get();
     $data['estados'] = $this->estado->get();
+    $data['assets'] = array(
+      'js' => array(
+        'thirdy_party/apicep.js',
+      ),
+    );
     $this->load->view(
       'login/cadastrar.php',
       $data

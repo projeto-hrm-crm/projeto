@@ -33,20 +33,17 @@
                             <input type="text" id="telefone" name="tel" class="form-control alter_mask"  value="<?php echo htmlspecialchars($candidato[0]->telefone)?>"  >
                         </div>
                         <div class="form-group col-12 col-md-6">
+                            <label class=" form-control-label">CEP</label>
+                            <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
                             <label for="estado"><red>*</red>Estado</label>
-                            <select name="estado" id="estado" class="form-control">
-                                <?php foreach ($estados as $estado): ?>
-                                    <option value="<?php echo $estado->id_estado ?>" <?php if($candidato[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $candidato[0]->estado;?>">
                         </div>
                         <div class="form-group col-12 col-md-6">
                             <label for="cidade"><red>*</red>Cidade</label>
-                            <select name="cidade" id="cidade" class="form-control">
-                                <?php foreach ($cidades as $cidade): ?>
-                                    <option value="<?php echo $cidade->id_cidade; ?>" <?php if($candidato[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input type="text"name="cidade" id="cidade" class="form-control" value="<?php echo $candidato[0]->cidade;?>">
+
                         </div>
                         <div class="form-group col-12 col-md-6">
                             <label class=" form-control-label"><red>*</red>Bairro</label>
@@ -64,6 +61,7 @@
                             <label class=" form-control-label">Complemento</label>
                             <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($candidato[0]->complemento)?>" placeholder="Complemento" class="form-control" >
                         </div>
+
                         <div class="form-group col-12 col-md-6">
                             <label class=" form-control-label"><red>*</red>CEP</label>
                             <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>

@@ -105,19 +105,12 @@
 
                                       <div class="form-group col-12 col-md-6">
                                           <label for="estado">Estado</label>
-                                          <select name="estado" id="estado" class="form-control">
-                                              <option value="">Selecionar estado</option>
-                                              <?php foreach($estados as $estado): ?>
-                                                  <option value="<?php echo $estado->id_estado; ?>"><?php echo $estado->nome; ?></option>
-                                              <?php endforeach ?>
-                                          </select>
+                                          <input type="text" name="estado" id="estado" class="form-control">
                                       </div>
 
                                       <div class="form-group col-12 col-md-6">
                                           <label for="cidade">Cidade</label>
-                                          <select name="cidade" id="cidade" class="form-control">
-                                              <option value="">Selecionar cidade</option>
-                                          </select>
+                                          <input type="text" name="cidade" id="cidade" class="form-control">
                                       </div>
                                       <div class="form-group col-12 col-md-6">
                                           <label class=" form-control-label">Bairro</label>
@@ -166,5 +159,6 @@
     <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.validate.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.mask.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/estado_cidade.js"></script>
+    <script src="<?php echo base_url();?>assets/js/thirdy_party/apicep.js"></script>
     </body>
 </html>

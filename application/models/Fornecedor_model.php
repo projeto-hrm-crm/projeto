@@ -12,18 +12,18 @@ class Fornecedor_model extends CI_Model
   public function get()
   {
       $this->db->select(
-          'fornecedor.id_fornecedor,
-          pessoa_juridica.id_pessoa_juridica,
-          pessoa_juridica.razao_social,
-          pessoa.id_pessoa, pessoa.nome,
-          pessoa.email,
-          telefone.numero AS telefone,
-          documento.numero AS cnpj,
-          endereco.cep,
-          endereco.id_cidade,
-          endereco.bairro,
-          endereco.logradouro,
-          endereco.numero AS numero,
+          'fornecedor.id_fornecedor, 
+          pessoa_juridica.id_pessoa_juridica, 
+          pessoa_juridica.razao_social, 
+          pessoa.id_pessoa, pessoa.nome, 
+          pessoa.email, 
+          telefone.numero AS telefone, 
+          documento.numero AS cnpj, 
+          endereco.cep, 
+          endereco.bairro, 
+          endereco.logradouro, 
+          endereco.numero AS numero, 
+
           endereco.complemento',
           'usuario.id_usuario')
         ->from('fornecedor')
@@ -79,7 +79,8 @@ class Fornecedor_model extends CI_Model
         'numero'        => $data['numero'],
         'complemento'   => $data['complemento'],
         'id_pessoa'     => $id_pessoa,
-        'id_cidade'     => $data['id_cidade']
+        'estado'        => $data['estado'],
+        'cidade'        => $data['cidade']
     ]);
 
     $this->telefone->insert([
@@ -115,13 +116,15 @@ class Fornecedor_model extends CI_Model
           pessoa.email,
           telefone.numero AS telefone,
           documento.numero AS cnpj,
-          endereco.cep,
-          endereco.id_cidade,
-          endereco.bairro,
-          endereco.logradouro,
-          endereco.numero AS numero,
+          endereco.cep, 
+          endereco.bairro, 
+          endereco.logradouro, 
+          endereco.numero AS numero, 
           endereco.complemento,
-          usuario.id_usuario')
+          endereco.cidade,
+          endereco.estado',
+          'usuario.id_usuario')
+
         ->from('fornecedor')
         ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
         ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')

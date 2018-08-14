@@ -32,7 +32,8 @@ class Funcionario_model extends CI_Model {
             'numero'        => $data['numero'],
             'complemento'   => $data['complemento'],
             'id_pessoa'     => $id_pessoa,
-            'id_cidade'     => $data['cidade']]);
+            'estado'        => $data['estado'],
+            'cidade'        => $data['cidade']]);
 
         $this->documento->insert([
             'tipo'      => 'cpf',
@@ -93,7 +94,8 @@ class Funcionario_model extends CI_Model {
             'numero'        => $data['numero'],
             'complemento'   => $data['complemento'],
             'id_pessoa'     => $funcionario[0]->id_pessoa,
-            'id_cidade'     => $data['cidade']]);
+            'estado'        => $data['estado'],
+            'cidade'        => $data['cidade']]);
 
         $this->documento->update([
             'tipo'      => 'cpf',
@@ -148,22 +150,27 @@ class Funcionario_model extends CI_Model {
     {
         try {
             $funcionario = $this->db->select("
-            pessoa.id_pessoa, pessoa.nome, pessoa.email,
-            pessoa_fisica.sexo,pessoa_fisica.data_nascimento,
-            endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco,
+            pessoa.id_pessoa, 
+            pessoa.nome, 
+            pessoa.email,
+            pessoa_fisica.sexo,
+            pessoa_fisica.data_nascimento,
+            endereco.cep, 
+            endereco.bairro, 
+            endereco.logradouro, 
+            endereco.numero AS numero_endereco,
             endereco.complemento,
-            cidade.id_cidade,
+            endereco.estado,
+            endereco.cidade,
             documento.numero AS numero_documento,
             telefone.numero AS telefone,
-            estado.id_estado
-            ")->from("pessoa")
+            ")
+            ->from("pessoa")
             ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
             ->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
             ->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
-            ->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
             ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
             ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
-            ->join('estado',    'cidade.id_estado = estado.id_estado')
             ->where('funcionario.id_funcionario', $id_funcionario)->get();
 
             if ($funcionario) {

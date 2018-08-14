@@ -70,20 +70,13 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="estado"><red>*</red>Estado</label>
-                <select name="estado" id="estado" class="form-control">
-                  <option value="">Selecionar estado</option>
-                  <?php foreach($estados as $estado): ?>
-                    <option value="<?php echo $estado->id_estado; ?>"><?php echo $estado->nome; ?></option>
-                  <?php endforeach ?>
-                </select>
+                <input type="text" name="estado" id="estado" class="form-control">
                 <span class="invalid-feedback"></span>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label for="cidade"><red>*</red>Cidade</label>
-                <select name="cidade" id="cidade" class="form-control">
-                  <option value="">Selecionar cidade</option>
-                </select>
+                <input type="text" name="cidade" id="cidade" class="form-control">
                 <span class="invalid-feedback"></span>
               </div>
 

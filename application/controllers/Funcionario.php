@@ -68,11 +68,10 @@ class Funcionario extends PR_Controller
         $this->addData('cargos', $this->cargo->get());
         $this->addData('estados', $this->estado->get());
 
-        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js'));
+        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
         $this->loadFormDefaultScripts();
 
         $this->loadView('cadastrar');
-
     }
 
   }
@@ -94,20 +93,18 @@ class Funcionario extends PR_Controller
   {
     if ($this->input->post()) {
         $data['funcionario'] = $this->input->post();
-
-        echo "<pre>";
-
         $this->funcionario->update($id_funcionario, $this->input->post());
     }
 
     $data['funcionario']    = $this->funcionario->getById($id_funcionario);
-    $data['estados']        = $this->estado->get();
-    $data['cidades']        = $this->cidade->getByState($data['funcionario'][0]->id_estado);
     $data['title']          = 'Editar funcionario';
     $data['id']             = $id_funcionario;
 
-
-
+    $data['assets'] = array(
+        'js' => array(
+          'thirdy_party/apicep.js',
+        ),
+    );
 
     loadTemplate('includes/header', 'funcionario/editar', 'includes/footer', $data);
   }

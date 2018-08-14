@@ -678,12 +678,12 @@ $config = array(
         array(
             'field' => 'estado',
             'label' => 'estado',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'cidade',
             'label' => 'cidade',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'bairro',

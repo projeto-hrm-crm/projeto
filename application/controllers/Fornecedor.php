@@ -80,6 +80,22 @@ class Fornecedor extends PR_Controller
           $this->loadView('cadastrar');
 
       }
+    }
+    $data['title'] = 'Cadastrar Fornecedor';
+    $data['fornecedor'] = $this->input->post();
+    $data['estados'] = $this->estado->get();
+    $data['assets'] = array(
+     'js' => array(
+       'thirdy_party/apicep.js',
+       'lib/data-table/datatables.min.js',
+       'lib/data-table/dataTables.bootstrap.min.js',
+       'datatable.js',
+       'confirm.modal.js',
+       //'fornecedor/validate-form.js',
+       'validate.js',
+     ),
+   );
+
 
   }
 
@@ -141,10 +157,10 @@ class Fornecedor extends PR_Controller
       {
           $this->setTitle('Atualizar Fornecedor');
 
-          $this->loadFormDefaultScripts();
+
+          $this->loadFormDefaultScripts(array('thirdy_party/apicep.js'));
 
           $this->addData('fornecedor', $this->fornecedor->find($id_fornecedor));
-
           $this->addData('estado_atual', $this->cidade->findState($this->data['fornecedor'][0]->id_cidade));
           $this->addData('estados', $this->estado->get());
           $this->addData('cidades', $this->cidade->getByState($this->data['estado_atual'][0]->id_estado));

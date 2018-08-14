@@ -79,13 +79,14 @@ class Candidato extends CI_Controller
           ]);
 
         $this->endereco->insert([
-            'cep'=> $this->input->post('cep'),
-            'bairro' => $this->input->post('bairro'),
+            'cep'         => $this->input->post('cep'),
+            'bairro'      => $this->input->post('bairro'),
             'logradouro'  => $this->input->post('logradouro'),
-            'numero' => $this->input->post('numero'),
+            'numero'      => $this->input->post('numero'),
             'complemento' => $this->input->post('complemento'),
-            'id_pessoa'  => $id_pessoa,
-            'id_cidade' => $this->input->post('cidade')]);
+            'id_pessoa'   => $id_pessoa,
+            'estado'      => $this->input->post('estado'),
+            'cidade'      => $this->input->post('cidade')]);
 
         $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
 
@@ -107,6 +108,12 @@ class Candidato extends CI_Controller
     $data['paises'] = $this->candidato->get_pais();
     $data['estados'] =  $this->estado->get();
     $data['vagas'] = $this->candidato->get_vagas();
+
+    $data['assets'] = array(
+      'js' => array(
+        'thirdy_party/apicep.js',
+      ),
+    );
 
     loadTemplate('includes/header', 'candidato/cadastrar', 'includes/footer', $data);
   }
@@ -147,9 +154,13 @@ class Candidato extends CI_Controller
     $data['candidato'] = $this->candidato->getById($id_candidato);
     $data['title'] = 'Editar Candidato';
     $data['id'] = $id_candidato;
-    $data['cidades'] = $this->cidade->getByState($data['candidato'][0]->id_estado);
-    $data['estados'] =  $this->estado->get();
     $data['vagas'] = $this->candidato->get_vagas();
+
+    $data['assets'] = array(
+      'js' => array(
+        'thirdy_party/apicep.js',
+      ),
+    );
     loadTemplate('includes/header', 'candidato/editar', 'includes/footer', $data);
   }
 
