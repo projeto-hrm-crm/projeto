@@ -46,7 +46,9 @@ jQuery(document).ready(function($) {
         required: true,
         digits:true,
       },
-
+      id_usuario: {
+        required: true,
+      },
       data_inicio: {
         required: true,
         brazilian_date: true,

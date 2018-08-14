@@ -23,27 +23,27 @@
       <div class="row">
 
         <div class="form-group col-12 col-md-6">
-           <label class=" form-control-label">Codigo</label>
+           <label class=" form-control-label"><red>*</red>Codigo</label>
            <input type="text" id="codigo" name="codigo" placeholder="Codigo do Processo" class="form-control" value="<?php echo($processo_seletivo[0]->codigo); ?>" required>
          </div>
 
         <div class="form-group col-12 col-md-6">
-           <label class=" form-control-label">Nome</label>
+           <label class=" form-control-label"><red>*</red>Nome</label>
            <input type="text" id="nome" name="nome" placeholder="Nome" class="form-control" value="<?php echo($processo_seletivo[0]->nome); ?>" required>
          </div>
 
          <div class="form-group col-12 col-md-6">
-           <label class=" form-control-label">Data de Inicio</label>
+           <label class=" form-control-label"><red>*</red>Data de Inicio</label>
            <input type="text" id="data_inicio" name="data_inicio" placeholder="Data de Inicio" class="form-control data" value="<?php echo($processo_seletivo[0]->data_inicio); ?>">
          </div>
 
          <div class="form-group col-12 col-md-6">
-           <label class=" form-control-label">Data de Término</label>
+           <label class=" form-control-label"><red>*</red>Data de Término</label>
            <input type="text" id="data_fim" name="data_fim" placeholder="Data de Término" class="form-control data" value="<?php echo($processo_seletivo[0]->data_fim); ?>">
          </div>
 
          <div class="form-group col-12">
-          <label class=" form-control-label">Vaga</label>
+          <label class=" form-control-label"><red>*</red>Vaga</label>
            <select class="form-control" name="id_vaga">
              <?php foreach ($vagas as $vaga): ?>
                <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
@@ -51,8 +51,19 @@
            </select>
          </div>
 
+         <div class="col-lg-12 form-group">
+            <label class="form-control-label">Responsável</label>
+            <select name="id_usuario" class="form-control" id="usuario">
+                <option  disabled selected>Selecione um Responsável</option>
+               <?php var_dump($vagas);?>
+                <?php foreach ($funcionarios as $funcionario): ?>
+                  <option value="<?php echo $funcionario->id_funcionario ?>" <?php if($processo_seletivo[0]->id_usuario == $funcionario->id_funcionario){echo "selected";} ?>><?php echo $funcionario->nome; ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+
          <div class="form-group col-12">
-           <label class=" form-control-label">Descrição do Processo</label>
+           <label class=" form-control-label"><red>*</red>Descrição do Processo</label>
            <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required><?php echo($processo_seletivo[0]->descricao); ?></textarea>
            <span class="invalid-feedback" id="invalid-descricao">
              Campo obrigatório
@@ -64,9 +75,9 @@
          <?php if(isset($etapas[0])) { ?>
          <?php foreach ($etapas as $etapa): ?>
            <div class="form-group col-12">
-             <label class="form-control-label">Nome da Etapa</label>
+             <label class="form-control-label"><red>*</red>Nome da Etapa</label>
              <input type="text" class="form-control" name="nome_etapa[]" value="<?php echo $etapa->nome ?>">
-             <label class="form-control-label">Descrição da Etapa</label>
+             <label class="form-control-label"><red>*</red>Descrição da Etapa</label>
              <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
              <span class="invalid-feedback" id="invalid-descricao">
                Campo obrigatório

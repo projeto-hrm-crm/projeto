@@ -17,7 +17,9 @@ jQuery(document).ready(function ($) {
     if(estado.val() !== "") {
       var url = "http://localhost/projeto/filtrar_cidades/" + estado.val();
       $.get(url, function (data) {
+        console.log(data)
         data = JSON.parse(data);
+
         $.each(data, function (index, element) {
           options += "<option value='" + element.id_cidade + "'>" + element.nome + "</option>";
         });

@@ -95,6 +95,83 @@
 
                         </div>
 
+                     <?php elseif ($this->session->flashdata('danger')) : ?>
+                        <div class="alert alert-danger">
+                           <p><span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?></p>
+                        </div>
+                     <?php endif; ?>
+                  </div>
+               </div>
+
+      <div class="card-body card-block">
+
+      <div class="row">
+
+              <div class="form-group col-12 col-md-6">
+                <label class=" form-control-label"><red>*</red>Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome" value="<?= htmlspecialchars($fornecedor[0]->nome)?>" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+                 <span class="invalid-feedback">Nome inválido.</span>
+              </div>
+
+             <div class="form-group col-12 col-md-6">
+                <label for="email-input" class=" form-control-label"><red>*</red>Email</label>
+                <input type="email" id="email" name="email" placeholder="e-mail" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->email)?>" required>
+              </div>
+
+             <div class="form-group col-12 col-md-4">
+                <label class=" form-control-label"><red>*</red>Razão Social</label>
+                <input type="text" id="razao_social" name="razao_social" placeholder="Razão Social" class="form-control" value="<?= htmlspecialchars($fornecedor[0]->razao_social)?>" required>
+              </div>
+
+              <div class="form-group col col-md-4">
+                 <label class=" form-control-label"><red>*</red>CNPJ</label>
+                  <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" class="form-control cnpj" value="<?= htmlspecialchars($fornecedor[0]->cnpj)?>" required>
+              </div>
+
+             <div class="col-12 col-md-4">
+                <label class=" form-control-label"><red>*</red>Telefone</label>
+                <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control telefone" maxlength="15"  value="<?= htmlspecialchars($fornecedor[0]->telefone)?>" required>
+            </div>
+
+          <div class="form-group col-12 col-md-6">
+              <label class="form-control-label"><red>*</red>Estado</label>
+               <select name="id_estado" class="form-control" id="estado">
+                  <option value="0" disabled selected>Selecione um estado</option>
+                 <?php foreach ($estados as $estado): ?>
+                   <option value="<?php echo $estado->id_estado ?>" <?php if($estado_atual[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
+                 <?php endforeach; ?>
+               </select>
+          </div>
+
+           <div class="form-group col-12 col-md-6">
+              <label class="form-control-label"><red>*</red>Cidade</label>
+              <select name="id_cidade" class="form-control" id="cidade">
+                 <?php foreach ($cidades as $cidade): ?>
+                   <option value="<?php echo $cidade->id_cidade; ?>" <?php if($fornecedor[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
+                 <?php endforeach; ?>
+               </select>
+          </div>
+
+         <div class="form-group col-12 col-md-3">
+            <label class=" form-control-label"><red>*</red>CEP</label>
+            <input type="num" id="cep" name="cep" placeholder="CEP" class="form-control cep"  value="<?= htmlspecialchars($fornecedor[0]->cep)?>" required>
+         </div>
+
+        <div class="form-group col-12 col-md-9">
+            <label class=" form-control-label"><red>*</red>Logradouro</label>
+            <input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->logradouro)?>" required>
+         </div>
+
+          <div class="form-group col-12 col-md-3">
+            <label class=" form-control-label"><red>*</red>Número</label>
+            <input type="num" id="numero" name="numero" placeholder="" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->numero)?>" required>
+         </div>
+
+         <div class="form-group col-12 col-md-5">
+            <label class=" form-control-label"><red>*</red>Bairro</label>
+            <input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->bairro)?>" required>
+         </div>
+
                 </div>
                 <div class="card-footer text-right">
                     <a href="<?= base_url('fornecedor')?>" class="btn btn-danger btn-sm" title="Cancelar Edição">

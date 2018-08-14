@@ -10,7 +10,7 @@
 	                    <div class="card-body">
 	                        <div class="row">
 	                            <div class="form-group col-lg-6 col-sm-12">
-	                                <label for="id_cargo" class="control-label mb-1">Cargo</label>
+	                                <label for="id_cargo" class="control-label mb-1"><red>*</red>Cargo</label>
 	                                <select name="id_cargo" id="id_cargo" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($cargos as $cargo): ?>
@@ -32,7 +32,7 @@
 	                             	</span>
 	                            </div>
 	                            <div class="form-group col-lg-6 col-sm-12">
-	                                <label for="data_oferta" class="control-label mb-1">Data da Oferta</label>
+	                                <label for="data_oferta" class="control-label mb-1"><red>*</red>Data da Oferta</label>
 	                                <input id="data_oferta" value="<?php echo isset($old_data['data_oferta']) ? $old_data['data_oferta'] : $vaga->data_oferta;?>" name="data_oferta" type="text" class="data form-control <?php echo isset($errors['data_oferta']) ? 'is-invalid' : '' ?>" required>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['data_oferta']) ? $errors['data_oferta'] : '' ; ?>
@@ -41,7 +41,7 @@
 	                        </div>
 	                        <div class="row">
 	                            <div class="form-group col-lg-6 col-sm-12">
-	                                <label for="quantidade" class="control-label mb-1">Quantidade</label>
+	                                <label for="quantidade" class="control-label mb-1"><red>*</red>Quantidade</label>
 	                                <input id="quantidade" value="<?php echo isset($old_data['quantidade']) ? $old_data['quantidade'] : $vaga->quantidade;?>" name="quantidade" type="text" class="form-control <?php echo isset($errors['quantidade']) ? 'is-invalid' : '' ?>" required>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['quantidade']) ? $errors['quantidade'] : '' ; ?>
@@ -50,7 +50,7 @@
 	                        </div>
 	                        <div class="row">
 	                        	<div class="form-group col-12">
-	                                <label for="data_oferta" class="control-label mb-1">Requisitos</label>
+	                                <label for="data_oferta" class="control-label mb-1"><red>*</red>Requisitos</label>
 	                                <textarea name="requisitos" id="requisitos" rows="6" class="form-control <?php echo isset($errors['requisitos']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['requisitos']) ? $old_data['requisitos'] : $vaga->requisitos;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['requisitos']) ? $errors['requisitos'] : '' ; ?>

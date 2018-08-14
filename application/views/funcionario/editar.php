@@ -12,44 +12,44 @@
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Nome</label>
+                <label class=" form-control-label"><red>*</red>Nome</label>
                 <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($funcionario[0]->nome)?>"  required>
               </div> <!-- FIM NOME -->
 
               <div class="form-group col-12 col-md-6">
-                <label for="email-input" class=" form-control-label">Email</label>
+                <label for="email-input" class=" form-control-label"><red>*</red>Email</label>
                 <input type="text" id="email" name="email" value="<?= htmlspecialchars($funcionario[0]->email)?>" class="form-control" required>
               </div> <!-- FIM EMAIL -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Data de Nascimento</label>
+                <label class=" form-control-label"><red>*</red>Data de Nascimento</label>
                 <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars(switchDate($funcionario[0]->data_nascimento))?>" class="form-control data" required>
               </div> <!-- DATA DE NASCIMENTO -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Sexo</label><br>
+                <label class=" form-control-label"><red>*</red>Sexo</label><br>
                 <input type="radio" name="sexo" id="sexo_masc" value="0" <?php echo ($funcionario[0]->sexo=='0')?'checked':'' ?> /><label for="sexo_masc">Masculino</label>
                 <input type="radio" name="sexo" id="sexo_fem" value="1" <?php echo ($funcionario[0]->sexo=='1')?'checked':'' ?> /><label for="sexo_fem">Feminino</label>
               </div> <!-- FIM SEXO -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">CPF</label>
+                <label class=" form-control-label"><red>*</red>CPF</label>
                 <input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($funcionario[0]->numero_documento)?>" class="form-control cpf" >
               </div> <!-- FIM CPF -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Telefone</label>
+                <label class=" form-control-label"><red>*</red>Telefone</label>
                 <input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($funcionario[0]->telefone)?>" class="form-control alter_mask" >
               </div> <!-- FIM TELEFONE -->
 
               <!-- INÍCIO ENDEREÇO -->
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">CEP</label>
+                <label class=" form-control-label"><red>*</red>CEP</label>
                 <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($funcionario[0]->cep)?>"  placeholder="C.E.P" class="form-control cep"  required>
               </div> <!-- FIM CEP -->
 
               <div class="form-group col-12 col-md-6">
-                <label for="estado">Estado</label>
+                <label for="estado"><red>*</red>Estado</label>
                 <select name="estado" id="estado" class="form-control">
                   <?php foreach ($estados as $estado): ?>
                     <option value="<?php echo $estado->id_estado ?>" <?php if($funcionario[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
@@ -58,7 +58,7 @@
               </div>
 
               <div class="form-group col-12 col-md-6">
-                <label for="cidade">Cidade</label>
+                <label for="cidade"><red>*</red>Cidade</label>
                 <select name="cidade" id="cidade" class="form-control">
                   <?php foreach($cidades as $cidade): ?>
                     <option value="<?php echo $cidade->id_cidade?>" <?php if($funcionario[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
@@ -67,17 +67,17 @@
               </div>
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Bairro</label>
+                <label class=" form-control-label"><red>*</red>Bairro</label>
                 <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($funcionario[0]->bairro)?>"  placeholder="Bairro" class="form-control"  required>
               </div> <!-- FIM BAIRRO -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Endereço</label>
+                <label class=" form-control-label"><red>*</red>Endereço</label>
                 <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($funcionario[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control"  required>
               </div> <!-- FIM ENDEREÇO -->
 
               <div class="form-group col-12 col-md-6">
-                <label class=" form-control-label">Número</label>
+                <label class=" form-control-label"><red>*</red>Número</label>
                 <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($funcionario[0]->numero_endereco)?>"  placeholder="Número da casa" class="form-control"  required>
               </div> <!-- FIM NÚMERO -->
 
@@ -86,7 +86,7 @@
                 <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
 </div>
-              
+
 
             <div class="card-footer text-right">
 
