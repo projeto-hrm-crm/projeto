@@ -51,6 +51,17 @@
            </select>
          </div>
 
+         <div class="col-lg-12 form-group">
+            <label class="form-control-label">Responsável</label>
+            <select name="id_usuario" class="form-control" id="usuario">
+                <option  disabled selected>Selecione um Responsável</option>
+               <?php var_dump($vagas);?>
+                <?php foreach ($funcionarios as $funcionario): ?>
+                  <option value="<?php echo $funcionario->id_funcionario ?>" <?php if($processo_seletivo[0]->id_usuario == $funcionario->id_funcionario){echo "selected";} ?>><?php echo $funcionario->nome; ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+
          <div class="form-group col-12">
            <label class=" form-control-label"><red>*</red>Descrição do Processo</label>
            <textarea auto-resize placeholder="Descrição do Processo Seletivo" id="descricao" name="descricao" class="form-control" required><?php echo($processo_seletivo[0]->descricao); ?></textarea>

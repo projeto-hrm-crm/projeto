@@ -137,7 +137,7 @@ class Funcionario_model extends CI_Model {
     }
 
     /**
-     * @author Unknown
+     * @author Camila Sales
      *
      * Busca os dados do funciońario pelo id único dele.
      *

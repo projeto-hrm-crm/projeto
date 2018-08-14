@@ -21,6 +21,7 @@
             </div>
         </div>
     <?php else: ?>
+    
     <div class="row" style="margin-top: 5px;">
 			<div class="col-md-12">
 				<?php if ($this->session->flashdata('success')) : ?>
@@ -65,6 +66,16 @@
                <option value="">Selecionar vaga</option>
                <?php foreach ($vagas as $vaga): ?>
                  <option value="<?php echo $vaga->id_vaga ?>"><?php echo $vaga->cargo; ?></option>
+               <?php endforeach; ?>
+             </select>
+           </div>
+
+           <div class="form-group col-12">
+            <label class=" form-control-label">Responsável</label>
+             <select class="form-control" name="id_usuario">
+               <option value="">Selecionar um responsável</option>
+               <?php foreach ($funcionarios as $funcionario): ?>
+                 <option value="<?php echo $funcionario->id_funcionario ?>"><?php echo $funcionario->nome; ?></option>
                <?php endforeach; ?>
              </select>
            </div>
