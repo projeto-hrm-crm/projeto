@@ -21,17 +21,7 @@
                 <label class=" form-control-label"><red>*</red>E-mail</label>
                 <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
               </div> <!-- FIM EMAIL -->
-
-              <div class="form-group col-12 col-md-6">
-                <label class="form-control-label"><red>*</red>Senha</label>
-                <input id="senha" value="<?php echo isset($old_data['senha']) ? $old_data['senha'] : null;?>" name="senha" type="password" placeholder="Digite sua senha" class="form-control <?php echo isset($errors['senha']) ? 'is-invalid' : '' ?>" required>
-              </div>
-
-              <div class="form-group col-12 col-md-6">
-                <label class="form-control-label"><red>*</red>Confirmar Senha</label>
-                <input id="senha2" value="<?php echo isset($old_data['senha2']) ? $old_data['senha2'] : null;?>" name="senha2" type="password" placeholder="Digite novamente a senha" class="form-control <?php echo isset($errors['senha2']) ? 'is-invalid' : '' ?>" required>
-              </div>
-
+              
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label"><red>*</red>Data de Nascimento</label>
                 <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="00/00/0000" class="form-control data">

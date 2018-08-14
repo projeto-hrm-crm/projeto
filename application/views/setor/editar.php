@@ -19,7 +19,7 @@
         <div class="card-body">
           <div class="row justify-content-center">
             <div class="form-group col-8">
-              <label class="control-label">Nome do Setor</label>
+              <label class="control-label"><red>*</red>Nome do Setor</label>
               <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($setor[0]->nome)?>" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" required>
             </div>
           </div>

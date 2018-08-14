@@ -8,7 +8,7 @@ class Sac extends PR_Controller {
     public function index(){
       //Pega o id de usuario da sessão
       $user_id = $this->session->userdata('user_login');
-       
+
       //Pega o tipo de usuario e informações de pessoas
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);

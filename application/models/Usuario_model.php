@@ -168,9 +168,19 @@ class Usuario_model extends CI_Model
                         ->join('sub_menu as s', 's.id_menu = m.id_menu')
                         ->where('s.link', $url);
                 $result = $this->db->get();
-                if (!$result->num_rows() > 0 || $result->result()[0]->id_grupo_acesso != $access_group) {
+                
+                $info = false;                
+                foreach ($result->result() as $key => $idGrupo) {
+                     if($result->result()[$key]->id_grupo_acesso == $access_group){
+                         $info = true;
+                     }
+                  }
+
+                
+                if ($result->num_rows() == 0 || $info == false) {
                     redirect(base_url());
                 }
+                
             } else {
                 redirect(base_url());
             }
