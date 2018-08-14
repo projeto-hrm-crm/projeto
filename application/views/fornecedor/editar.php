@@ -54,24 +54,24 @@
                 <input type="text" id="telefone" name="telefone" placeholder="(12)3889-9090" class="form-control telefone" maxlength="15"  value="<?= htmlspecialchars($fornecedor[0]->telefone)?>" required>
             </div>
 
-          <div class="form-group col-12 col-md-6">
-              <label class="form-control-label">Estado</label>
-              <input type="text" name="estado" class="form-control" id="estado" value="<?php echo $fornecedor[0]->estado;?>">
-          </div>
-
-           <div class="form-group col-12 col-md-6">
-              <label class="form-control-label">Cidade</label>
-              <input type="text" name="cidade" class="form-control" id="cidade" value="<?php echo $fornecedor[0]->cidade;?>">
-          </div>
-
-         <div class="form-group col-12 col-md-3">
+          <div class="form-group col-12 col-md-3">
             <label class=" form-control-label">CEP</label>
             <input type="num" id="cep" name="cep" placeholder="CEP" class="form-control cep"  value="<?= htmlspecialchars($fornecedor[0]->cep)?>" required>
          </div>
 
+          <div class="form-group col-12 col-md-4">
+              <label class="form-control-label">Estado</label>
+              <input type="text" name="estado" class="form-control" id="estado" value="<?php echo $fornecedor[0]->estado;?>">
+          </div>
+
+           <div class="form-group col-12 col-md-5">
+              <label class="form-control-label">Cidade</label>
+              <input type="text" name="cidade" class="form-control" id="cidade" value="<?php echo $fornecedor[0]->cidade;?>">
+          </div>
+
         <div class="form-group col-12 col-md-9">
             <label class=" form-control-label">Logradouro</label>
-            <input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->logradouro)?>" required>
+            <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->logradouro)?>" required>
          </div>
 
           <div class="form-group col-12 col-md-3">

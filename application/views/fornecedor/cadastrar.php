@@ -58,23 +58,22 @@
 	              </span>
           </div>
 
-      <div class="form-group col-12 col-md-6">
-          <label class="form-control-label"><red>*</red>Estado</label>
-          <input type="text" name="estado" class="form-control" id="estado">
-      </div>
-
-       <div class="form-group col-12 col-md-6">
-          <label class="form-control-label"><red>*</red>Cidade</label>
-          <input type="text" name="cidade" class="form-control" id="cidade">
-      </div>
-
       <div class="form-group col-12 col-md-3">
          <label class=" form-control-label"><red>*</red>CEP</label>
          <input type="num" id="cep" name="cep" placeholder="00000-000" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
-	                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
-	              </span>
+                  <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
+                </span>
           </div>
+      <div class="form-group col-12 col-md-4">
+          <label class="form-control-label"><red>*</red>Estado</label>
+          <input type="text" name="estado" class="form-control" id="estado">
+      </div>
+
+       <div class="form-group col-12 col-md-5">
+          <label class="form-control-label"><red>*</red>Cidade</label>
+          <input type="text" name="cidade" class="form-control" id="cidade">
+      </div>
 
       <div class="form-group col-12 col-md-9">
          <label class=" form-control-label"><red>*</red>Logradouro</label>

@@ -155,6 +155,12 @@ class Candidato extends CI_Controller
     $data['title'] = 'Editar Candidato';
     $data['id'] = $id_candidato;
     $data['vagas'] = $this->candidato->get_vagas();
+
+    $data['assets'] = array(
+      'js' => array(
+        'thirdy_party/apicep.js',
+      ),
+    );
     loadTemplate('includes/header', 'candidato/editar', 'includes/footer', $data);
   }
 

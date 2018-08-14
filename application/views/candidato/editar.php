@@ -33,6 +33,10 @@
                             <input type="text" id="telefone" name="tel" class="form-control alter_mask"  value="<?php echo htmlspecialchars($candidato[0]->telefone)?>"  >
                         </div>
                         <div class="form-group col-12 col-md-6">
+                            <label class=" form-control-label">CEP</label>
+                            <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
                             <label for="estado">Estado</label>
                             <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $candidato[0]->estado;?>">
                         </div>
@@ -55,10 +59,6 @@
                         <div class="form-group col-12 col-md-6">
                             <label class=" form-control-label">Complemento</label>
                             <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($candidato[0]->complemento)?>" placeholder="Complemento" class="form-control" >
-                        </div>
-                        <div class="form-group col-12 col-md-6">
-                            <label class=" form-control-label">CEP</label>
-                            <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($candidato[0]->cep)?>"  placeholder="C.E.P" class="form-control cep" data-mask="00000-000" required>
                         </div>
                     </div>
                 </div>
