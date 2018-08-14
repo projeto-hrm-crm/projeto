@@ -18,9 +18,7 @@
                             </div>
 
                             <div class="form-group col-12 col-md-6">
-                                <label for="email-input" class=" form-control-label">Email</label>
-                                <input type="text" id="email" name="email" placeholder="e-mail" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->email)?>" required>
-                                <span class="invalid-feedback"></span>
+                                
                             </div>
 
                             <div class="form-group col-12 col-md-4">
@@ -35,9 +33,9 @@
                                 <span class="invalid-feedback"></span>
                             </div>
 
-                            <div class="col-12 col-md-4">
-                                <label class=" form-control-label">Telefone</label>
-                                <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" class="form-control telefone alter_mask" maxlength="15"  value="<?= htmlspecialchars($fornecedor[0]->telefone)?>" required>
+                            <div class="form-group col-12 col-md-4">
+                                <label class="form-control-label">Telefone</label>
+                                <input type="text" id="telefone" name="telefone" placeholder="(00)0000-0000" class="form-control telefone alter_mask" value="<?php echo htmlspecialchars($fornecedor[0]->telefone); ?>" >
                                 <span class="invalid-feedback"></span>
                             </div>
 
