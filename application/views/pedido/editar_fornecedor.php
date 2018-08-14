@@ -69,7 +69,7 @@
 
 	                        <div class="row">
 	                        	<div class="form-group col-lg-12 col-sm-12">
-	                                 <label for="situacao" class="control-label mb-1" id="main_label">Situação</label>
+	                                 <label for="situacao" class="control-label mb-1" id="main_label"><red>*</red>Situação</label>
 	                                <select name="situacao" id="situacao" class="form-control <?php echo isset($errors['situacao']) ? 'is-invalid' : '' ?>">
 		                                <option value="">Selecione</option>
 		                                <?php foreach ($situacoes as $index => $situacao): ?>
@@ -94,7 +94,7 @@
 	                        <div class="row">
 	                        	<div class="form-group col-12">
 
-	                                <label for="data_oferta" class="control-label mb-1">Descrição</label>
+	                                <label for="data_oferta" class="control-label mb-1"><red>*</red>Descrição</label>
 	                                <textarea name="descricao" id="descricao" rows="4" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : $pedido->descricao;?></textarea>
 	                                <span class="invalid-feedback">
 	                                	<?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>

@@ -21,7 +21,7 @@
         <div class="card-body">
           <div class="row justify-content-center">
             <div class="form-group col-8">
-                <label class=" form-control-label">Nome do setor</label>
+                <label class=" form-control-label"><red>*</red>Nome do setor</label>
                 <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do setor" class="form-control" required>
             </div>
           </div>
