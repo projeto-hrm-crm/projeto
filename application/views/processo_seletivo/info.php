@@ -29,13 +29,13 @@
         <div class="row">
 
           <div class="form-group col-12 col-md-6">
-            <h4>Cargo</h4><span><?php echo($vaga[0]->cargo); ?></span>
+            <h4>Cargo</h4><span><?php echo($vaga->cargo); ?></span>
           </div>
           <div class="form-group col-12 col-md-6">
-            <h4>Setor</h4><span><?php echo($vaga[0]->setor); ?></span>
+            <h4>Setor</h4><span><?php echo($vaga->setor); ?></span>
           </div>
           <div class="form-group col-12 col-md-6">
-            <h4>Quantidade de Vagas</h4><span><?php echo($vaga[0]->quantidade); ?></span>
+            <h4>Quantidade de Vagas</h4><span><?php echo($vaga->quantidade); ?></span>
           </div>
         </div>
         <hr>

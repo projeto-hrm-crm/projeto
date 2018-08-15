@@ -157,6 +157,9 @@ class Processo_Seletivo extends CI_Controller
     foreach ($data['etapas'] as $key => $etapa) {
       $data['etapas'][$key]->candidatos = $this->candidato_etapa->get($etapa->id_etapa);
     }
+
+    // print_r($data);
+    // exit;
     $data['assets'] = array(
       'js' => array(
         'processo_seletivo/textarea_auto_expand.js',
