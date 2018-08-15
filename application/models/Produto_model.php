@@ -77,10 +77,6 @@ class Produto_model extends CI_Model
      *@return: boolean
     */
     public function delete($id){
-        
-        $this->db->where('id_produto', $id)
-                 ->delete('pedido_produto');
-                  
         $this->db->where('id_produto', $id);
         $id_produto = $this->db->delete('produto');
 
