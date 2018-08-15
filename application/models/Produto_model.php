@@ -80,8 +80,7 @@ class Produto_model extends CI_Model
         $this->db->where('id_produto', $id);
         $id_produto = $this->db->delete('produto');
 
-        if($id_produto)
-        {
+        if($id_produto){
             $this->relatorio->setLog('delete', 'Deletar','Produto', $id_produto, 'Deletou o produto', $id);
         }
         return $id_produto;

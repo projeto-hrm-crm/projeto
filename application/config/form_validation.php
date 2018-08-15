@@ -651,16 +651,6 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'senha',
-            'label' => 'senha',
-            'rules' => 'required'
-        ),
-        array(
-            'field' => 'senha2',
-            'label' => 'confirmar senha',
-            'rules' => 'required'
-        ),
-        array(
             'field' => 'sexo',
             'label' => 'sexo',
             'rules' => 'required'
