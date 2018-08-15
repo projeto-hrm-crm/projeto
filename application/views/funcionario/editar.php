@@ -8,7 +8,7 @@
           <strong class="card-title">Atualizar Funcionário</strong>
         </div>
 
-        <form action="<?php site_url('funcionario/edit'.$id); ?>" id_usuario ="<?php echo $funcionario[0]->id_usuario; method="POST" id="form_funcionario"  class="form-horizontal">
+        <form action="<?php site_url('funcionario/edit'.$id); ?>" id_usuario ="<?php echo $funcionario[0]->id_usuario;?>" method="POST" id="form_funcionario"  class="form-horizontal">
           <div class="card-body card-block">
             <div class="row">
               <div class="form-group col-12 col-md-6">

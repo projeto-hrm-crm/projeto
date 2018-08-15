@@ -220,10 +220,9 @@ class Usuario_model extends CI_Model
       if(is_null($id_usuario) || $id_usuario == "null"){
         $this->db->where('login',$email);
       }else {
-        $this->db->where('login',$email)->where('id_usuario','!=',$id_usuario);
+        $this->db->where('login',$email)->where('id_usuario !=',$id_usuario);
       }
       $query = $this->db->get('usuario');
-
       if ($query->num_rows() > 0){
           return false;
       }
