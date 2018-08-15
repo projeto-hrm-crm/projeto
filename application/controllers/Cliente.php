@@ -104,8 +104,6 @@ class Cliente extends CI_Controller
         redirect('cliente');
     }
 
-    $data['paises'] = $this->cliente->get_pais();
-    $data['estados'] = $this->estado->get();
     $data['title'] = 'Cadastrar cliente';
     $data['assets'] = array(
         'js' => array(
@@ -150,7 +148,8 @@ class Cliente extends CI_Controller
             'numero'      => $this->input->post('numero'), 
             'complemento' => $this->input->post('complemento'),
             'id_pessoa'   => $cliente[0]->id_pessoa, 
-            'id_cidade'   => $this->input->post('cidade')
+            'estado'        => $this->input->post('estado'),
+            'cidade'        => $this->input->post('cidade')
           ]
         );
 

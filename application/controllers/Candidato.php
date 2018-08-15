@@ -105,8 +105,6 @@ class Candidato extends CI_Controller
     $data['title'] = 'Cadastrar Candidato';
     $data['errors'] = $this->session->flashdata('errors');
     $data['old_data'] = $this->session->flashdata('old_data');
-    $data['paises'] = $this->candidato->get_pais();
-    $data['estados'] =  $this->estado->get();
     $data['vagas'] = $this->candidato->get_vagas();
 
     $data['assets'] = array(
@@ -136,10 +134,19 @@ class Candidato extends CI_Controller
       $data['candidato'] = $this->input->post();
       $candidato = $this->candidato->getById($id_candidato);
 
-      $this->endereco->update(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
-      'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento'),
-      'id_pessoa'   => $candidato[0]->id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
-
+      $this->endereco->update(
+          [
+            'cep'         => $this->input->post('cep'),
+            'bairro'      => $this->input->post('bairro'),
+            'logradouro'  => $this->input->post('logradouro'),
+            'numero'      => $this->input->post('numero'), 
+            'complemento' => $this->input->post('complemento'),
+            'id_pessoa'   => $candidato[0]->id_pessoa, 
+            'estado'      => $this->input->post('estado'),
+            'cidade'      => $this->input->post('cidade')
+          ]
+        );
+        
       $this->documento->update(['tipo' => 'cpf','numero' => $this->input->post('cpf') , 'id_pessoa' => $candidato[0]->id_pessoa]);
 
       $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $candidato[0]->id_pessoa]);
