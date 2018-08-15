@@ -1,6 +1,3 @@
-<!-- <pre>
-<?php print_r($vagas); ?>
-</pre> -->
 <div class="row justify-content-center align-items-center">
    <div class="col-lg-10">
   <div class="card">
@@ -8,7 +5,21 @@
       <strong>Cadastrar Processo Seletivo</strong>
     </div>
     <?php echo validation_errors(); ?>
-    <?php if(sizeof($vagas) <= 0): ?>
+
+
+    <?php if(is_null($funcionarios)): ?>
+      <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
+                    Não existe funcionário cadastrado no sistema, favor cadastre uma funcionário!
+                </div>
+                <a title="Nova vaga" href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm float-right">
+                    <i class="fa fa-check"></i>
+                    Novo funcionário
+                </a>
+            </div>
+        </div>
+    <?php elseif(sizeof($vagas) <= 0): ?>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
                 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
