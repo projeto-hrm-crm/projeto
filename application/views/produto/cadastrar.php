@@ -76,7 +76,7 @@
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button title="Cadastrar Produto" type="submit" class="btn btn-primary btn-sm" onclick="this.disabled=true;this.form.submit();">
+                    <button title="Cadastrar Produto" type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-plus"></i>
                         Cadastrar
                     </button>
