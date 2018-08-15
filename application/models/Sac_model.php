@@ -119,12 +119,10 @@ class Sac_model extends PR_Model
         $this->setLog($sac->titulo, $id_sac);
     }
 
-    /**
-    * @author: Rodrigo Alves
-    * Apagar uma ordem sac do banco
+     /**
+    *analizando o desenvolvimento do projeto, esta função de remoção se tornou inviavel para uso
     *
-    * @param: $id_sac integer
-    */
+    
     public function remove($id_sac)
     {
         $sac = $this->db->where('sac.id_sac', $id_sac)->get('sac')->row();
@@ -136,6 +134,7 @@ class Sac_model extends PR_Model
         $this->setLog($sac->titulo, $id_sac);
     }
 
+   */
   /**
   * @author: Pedro Henrique Guimarães
   * Busca o último SAC

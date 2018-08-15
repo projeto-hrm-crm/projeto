@@ -166,11 +166,9 @@ class Sac extends PR_Controller {
     }
 
     /**
-    * @author: Rodrigo Alves
-    * Este método tem como finalidade apagar uma ordem de SAC.
+    *analizando o desenvolvimento do projeto, esta função de delete se tornou inviavel para uso
     *
-    * @param integer $id_sac
-    */
+    
     public function delete($id_sac)
     {
         $this->sac->remove($id_sac);        
@@ -178,7 +176,7 @@ class Sac extends PR_Controller {
         $this->redirectSuccess('SAC removido com sucesso');
     }
 
-
+    */
 
     /**
     * @author: Tiago Villalobos
