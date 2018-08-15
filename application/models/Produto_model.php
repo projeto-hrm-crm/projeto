@@ -77,11 +77,14 @@ class Produto_model extends CI_Model
      *@return: boolean
     */
     public function delete($id){
+        
+        $this->db->where('id_produto', $id)
+                 ->delete('pedido_produto');
+                  
         $this->db->where('id_produto', $id);
         $id_produto = $this->db->delete('produto');
 
-        if($id_produto)
-        {
+        if($id_produto){
             $this->relatorio->setLog('delete', 'Deletar','Produto', $id_produto, 'Deletou o produto', $id);
         }
         return $id_produto;
