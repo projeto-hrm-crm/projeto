@@ -70,6 +70,11 @@ $config = array(
             'rules' => 'required|numeric'
         ),
         array(
+            'field' => 'valor',
+            'label' => 'Valor',
+            'rules' => 'required',
+        ),
+        array(
             'field' => 'fabricacao',
             'label' => 'Fabricacao',
             'rules'  => 'required|validDate',
@@ -92,6 +97,11 @@ $config = array(
             'errors' => array(
                 'validDate' => 'O campo {field} deve conter uma data válida'
             ),
+        ),
+        array(
+            'field' => 'id_fornecedor',
+            'label' => 'Fornecedor',
+            'rules' => 'required',
         ),
 
     ),
