@@ -58,11 +58,12 @@
 
           <?php endforeach; ?>
 
-
-          <a title="Voltar a todos os processos seletivos" href="<?=site_url('processo_seletivo')?>" class="btn btn-primary btn-sm">
-            VOLTAR PARA TODOS OS PROCESSOR
+		<a>
+          <a title="Voltar a todos os processos seletivos"  href="<?=site_url('processo_seletivo')?>" class="btn btn-primary btn-sm">
+            VOLTAR PARA VISUALIZAÇÃO DE TODOS OS PROCESSOS SELETIVOS
           </a>
-
+		</a>
+		  
       </div>
 
     </div>
