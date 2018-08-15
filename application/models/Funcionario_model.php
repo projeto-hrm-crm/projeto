@@ -150,25 +150,27 @@ class Funcionario_model extends CI_Model {
     {
         try {
             $funcionario = $this->db->select("
-            pessoa.id_pessoa, 
-            pessoa.nome, 
+            pessoa.id_pessoa,
+            pessoa.nome,
             pessoa.email,
             pessoa_fisica.sexo,
             pessoa_fisica.data_nascimento,
-            endereco.cep, 
-            endereco.bairro, 
-            endereco.logradouro, 
+            endereco.cep,
+            endereco.bairro,
+            endereco.logradouro,
             endereco.numero AS numero_endereco,
             endereco.complemento,
             endereco.estado,
             endereco.cidade,
             documento.numero AS numero_documento,
             telefone.numero AS telefone,
+						'usuario.id_usuario',
             ")
             ->from("pessoa")
             ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
             ->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
             ->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+						->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
             ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
             ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
             ->where('funcionario.id_funcionario', $id_funcionario)->get();

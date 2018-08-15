@@ -9,7 +9,7 @@
 
                 <div class="card-body card-block">
 
-                    <form action="<?php echo base_url('fornecedor/editar/'.$fornecedor[0]->id_fornecedor); ?>" method="POST" id="form_fornecedor" data-id_usuario ="<?php echo $fornecedor[0]->id_usuario; ?>">
+                    <form action="<?php echo base_url('fornecedor/editar/'.$fornecedor[0]->id_fornecedor); ?>" method="POST" id="form_fornecedor" id_usuario ="<?php echo $fornecedor[0]->id_usuario; ?>">
                         <div class="row">
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label">Nome</label>
@@ -18,7 +18,7 @@
                             </div>
 
                             <div class="form-group col-12 col-md-6">
-                                
+
                             </div>
 
                             <div class="form-group col-12 col-md-4">

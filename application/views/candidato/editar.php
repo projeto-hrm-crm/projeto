@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Atualizar Candidato</strong>
             </div>
-            <form action="<?php site_url('candidato/edit'.$id); ?>" method="POST" class="form-horizontal" id="form_candidato">
+            <form action="<?php site_url('candidato/edit'.$id); ?>" id_usuario ="<?php echo $candidato[0]->id_usuario;?>" method="POST" class="form-horizontal" id="form_candidato">
                 <div class="card-body card-block">
                     <div class="row">
                         <div class="form-group col-12 col-md-6">

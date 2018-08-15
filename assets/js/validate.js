@@ -1,8 +1,12 @@
 jQuery(document).ready(function($) {
 
   var id_usuario = null;
-   if($("#form_funcionario, #form_candidato, #form_cliente, #form_fornecedor").attr('data-id_usuario'))
-     id_usuario = $('#form').attr('usuario_id');
+   if($("#form_funcionario, #form_candidato, #form_cliente, #form_fornecedor").attr('id_usuario')){
+     id_usuario = $("#form_funcionario, #form_candidato, #form_cliente, #form_fornecedor").attr('id_usuario');
+     console.log(id_usuario)
+
+     console.log($('#form'))
+   }
 
   $("#form_produto").validate({
     rules: {
