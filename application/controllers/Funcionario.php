@@ -66,7 +66,6 @@ class Funcionario extends PR_Controller
     {
         $this->setTitle('Cadastrar Funcionario');
         $this->addData('cargos', $this->cargo->get());
-        $this->addData('estados', $this->estado->get());
 
         $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
         $this->loadFormDefaultScripts();
