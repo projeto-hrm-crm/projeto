@@ -54,7 +54,7 @@
                                        </td>
                                         <td>
                                            <b>Cidade</b>
-                                          <?=$cidade[0]->nome;?> -  <?=$estado[0]->uf;?>
+                                          <?=$endereco[0]->cidade;?> -  <?=$endereco[0]->estado;?>
                                        </td>
                                     </tr>
 
