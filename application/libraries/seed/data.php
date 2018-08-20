@@ -225,11 +225,72 @@ $seeds = array(
               'amandasantos@teste.com',
               '1996-11-23'
           ),
+        ),
+        // --------------------------Fornecedor--------------------------------
+        array(
+          'fields' => array(
+            'nome',
+            'email',
+            'data_criacao'
+          ),
+          'values' => array(
+              'João Carlos',
+              'joaocarlos@teste.com',
+              '1998-10-20'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'email',
+            'data_criacao'
+          ),
+          'values' => array(
+              'Diana Costa',
+              'dianacoste@teste.com',
+              '1990-10-20'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'email',
+            'data_criacao'
+          ),
+          'values' => array(
+              'Amanda Ribeiro',
+              'amandaribeiro@teste.com',
+              '1996-11-23'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'email',
+            'data_criacao'
+          ),
+          'values' => array(
+              'Joaquim Costa',
+              'joaquincosta@teste.com',
+              '1996-11-23'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'email',
+            'data_criacao'
+          ),
+          'values' => array(
+              'Carlos Lopes',
+              'carloslopes@teste.com',
+              '1996-11-23'
+          ),
         )
       )
     ),
   ),
-
+  // id_pessoa 1 - 15 
   'pessoa_fisica' => array(
     'dataset' => array(
       array(
@@ -425,7 +486,75 @@ $seeds = array(
       )
     ),
   ),
-
+  // id_pessoa 16 - 20 
+  'pessoa_juridica' => array(
+    'dataset' => array(
+      array(
+        // --------------------------Cliente--------------------------------
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'razao_social'
+          ),
+          'values' => array(
+              '15',
+              'RDSF - Engenharia'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'razao_social'
+          ),
+          'values' => array(
+              '16',
+              'HGT - Contrabilidade'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'razao_social'
+          ),
+          'values' => array(
+              '17',
+              'Faber Castel'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'razao_social'
+          ),
+          'values' => array(
+              '18',
+              'Recort - Papelaria'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'razao_social'
+          ),
+          'values' => array(
+              '19',
+              'Bic - Canetas'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'razao_social'
+          ),
+          'values' => array(
+              '20',
+              'Tilibra'
+          ),
+        ),
+      )
+    ),
+  ),       
+  // id_pessoa 1 - 5
   'cliente' => array(
     'dataset' => array(
       array(
@@ -472,6 +601,7 @@ $seeds = array(
       )
     ),
   ),
+  // id_pessoa 6 - 10
   'candidato' => array(
     'dataset' => array(
       array(
@@ -518,7 +648,7 @@ $seeds = array(
       )
     ),
   ),
-
+  // id_pessoa 11 - 15
   'funcionario' => array(
     'dataset' => array(
       array(
@@ -565,5 +695,52 @@ $seeds = array(
       )
     ),
   ),
+   // id_pessoa 11 - 15
+   'fornecedor' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'id_pessoa_juridica'
+          ),
+          'values' => array(
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa_juridica'
+          ),
+          'values' => array(
+              '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa_juridica'
+          ),
+          'values' => array(
+              '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa_juridica'
+          ),
+          'values' => array(
+              '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa_juridica'
+          ),
+          'values' => array(
+              '5'
+          ),
+        )
+      )
+    ),
+  )
   #'próxima tabela' => array();
 );
