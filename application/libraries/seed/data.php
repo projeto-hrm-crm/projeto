@@ -1179,4 +1179,143 @@ $seeds = array(
       ),
     )
   ),
+  // id_pessoa 16 - 20
+  'produto' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'codigo',
+            'nome',
+            'fabricacao',
+            'validade',
+            'lote',
+            'recebimento',
+            'id_fornecedor',
+            'valor'
+          ),
+          'values' => array(
+            '741',
+            'imposto de renda',
+            '2018-01-02',
+            '2018-03-03',
+            '15987x',
+            '2018-01-03',
+            '1',
+            '1,417.98'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'codigo',
+            'nome',
+            'fabricacao',
+            'validade',
+            'lote',
+            'recebimento',
+            'id_fornecedor',
+            'valor'
+          ),
+          'values' => array(
+            '369',
+            'lapis',
+            '2017-01-02',
+            '2018-01-03',
+            '15987x',
+            '2018-01-01',
+            '4',
+            '1.98'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'codigo',
+            'nome',
+            'fabricacao',
+            'validade',
+            'lote',
+            'recebimento',
+            'id_fornecedor',
+            'valor'
+          ),
+          'values' => array(
+            '23494',
+            'lapis',
+            '2017-01-02',
+            '2018-02-03',
+            '15987x',
+            '2018-01-03',
+            '4',
+            '117.98'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'codigo',
+            'nome',
+            'fabricacao',
+            'validade',
+            'lote',
+            'recebimento',
+            'id_fornecedor',
+            'valor'
+          ),
+          'values' => array(
+            '2336494',
+            'caderno',
+            '2017-01-02',
+            '2018-02-03',
+            '152547x',
+            '2018-01-03',
+            '5',
+            '117.98'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'codigo',
+            'nome',
+            'fabricacao',
+            'validade',
+            'lote',
+            'recebimento',
+            'id_fornecedor',
+            'valor'
+          ),
+          'values' => array(
+            '2336494',
+            'resma',
+            '2017-01-02',
+            '2020-12-03',
+            '152547x',
+            '2018-01-03',
+            '3',
+            '15.98'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'codigo',
+            'nome',
+            'fabricacao',
+            'validade',
+            'lote',
+            'recebimento',
+            'id_fornecedor',
+            'valor'
+          ),
+          'values' => array(
+            '233464364',
+            'cartucho',
+            '2017-01-02',
+            '2020-12-03',
+            '152547x',
+            '2018-01-03',
+            '3',
+            '15.98'
+          ),
+        ),
+      )
+    ),
+  ),
 );
