@@ -497,16 +497,6 @@ $seeds = array(
             'razao_social'
           ),
           'values' => array(
-              '15',
-              'RDSF - Engenharia'
-          ),
-        ),
-        array(
-          'fields' => array(
-            'id_pessoa',
-            'razao_social'
-          ),
-          'values' => array(
               '16',
               'HGT - Contrabilidade'
           ),
@@ -695,8 +685,8 @@ $seeds = array(
       )
     ),
   ),
-   // id_pessoa 11 - 15
-   'fornecedor' => array(
+   // id_pessoa 16 - 20
+  'fornecedor' => array(
     'dataset' => array(
       array(
         array(
@@ -741,6 +731,452 @@ $seeds = array(
         )
       )
     ),
-  )
-  #'próxima tabela' => array();
+  ),
+ 'endereco' => array(
+  'dataset' => array(
+    array(
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11673-040',
+          'Poiares',
+          'Rua José Miranda de Faria',
+          '125',
+          '',
+          '1',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-405',
+          'Benfica',
+          'Rua Antônio Mathias dos Reis Filho',
+          '658',
+          'Fundos',
+          '2',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11674-640',
+          'Tinga',
+          'Rua Filadelfo Reis',
+          '658',
+          'Fundos',
+          '3',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11675-030',
+          'Ponte Seca',
+          'Rua José Benedito de Faria',
+          '658',
+          '',
+          '4',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11665-070',
+          'Indaiá',
+          'Avenida Pernambuco',
+          '32',
+          '',
+          '5',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '13560-970',
+          'Centro',
+          'Rua Episcopal',
+          '112',
+          '',
+          '6',
+          'São Carlos',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '13566-590',
+          'Parque Arnold Schimidt',
+          'Avenida Trabalhador Sancarlense',
+          '474',
+          '',
+          '7',
+          'São Carlos',
+          'SP'
+        ),
+      ),
+
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '13575-004',
+          'Vila Boa Vista 1',
+          'Rua Sebastião José Alexandre',
+          '856',
+          '',
+          '8',
+          'São Carlos',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '13575-004',
+          'Vila Boa Vista 1',
+          'Rua Sebastião José Alexandre',
+          '856',
+          '',
+          '9',
+          'São Carlos',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-005',
+          'Centro',
+          'Avenida Arthur Costa Filho',
+          '248',
+          '',
+          '10',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-005',
+          'Centro',
+          'Avenida Arthur Costa Filho',
+          '248',
+          '',
+          '11',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-300',
+          'Centro',
+          'Avenida Oswaldo Cruz',
+          '248',
+          '',
+          '12',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-130',
+          'Centro',
+          'Rua Sebastião Mariano Nepomuceno',
+          '168',
+          '',
+          '13',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-270',
+          'Centro',
+          'Rua Luiz Passos Júnior',
+          '168',
+          '',
+          '14',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11661-300',
+          'Balneário Forest',
+          'Avenida Presidente Castelo Branco',
+          '168',
+          '',
+          '15',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11660-005',
+          'Centro',
+          'Avenida Arthur Costa Filho',
+          '168',
+          '',
+          '16',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11661-230',
+          'Balneário Forest',
+          'Rua Queluz',
+          '351',
+          '',
+          '17',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11661-415',
+          'Sumaré',
+          'Rua Horácio Valério dos Santos',
+          '957',
+          '',
+          '18',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11674-560',
+          'Tinga',
+          'Rua Miguel Adelaide',
+          '841',
+          '',
+          '19',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      array(
+        'fields' => array(
+          'cep',
+          'bairro',
+          'logradouro',
+          'numero',
+          'complemento',
+          'id_pessoa',
+          'cidade',
+          'estado'
+        ),
+        'values' => array(
+          '11670-020',
+          'Barranco Alto',
+          'Rua Ismael Iglesias',
+          '351',
+          '',
+          '20',
+          'Caraguatatuba',
+          'SP'
+        ),
+      ),
+      ),
+    )
+  ),
 );
