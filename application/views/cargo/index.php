@@ -30,7 +30,7 @@
               <tr>
                 <th>Nome</th>
                 <th>Descrição</th>
-                <th>Salário por hora</th>
+                <th>Salário Mensal</th>
                 <th>Ações</th>
               </tr>
             </thead>
