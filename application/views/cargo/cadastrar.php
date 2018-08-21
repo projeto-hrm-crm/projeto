@@ -67,15 +67,6 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label class=" form-control-label"><red>*</red>Horario de Entradao</label>
-                                <input type="time" id="horario_cargo" name="appt-time"
-                                        min="00:00" max="23:59" required />
-                                <span class="invalid-feedback">
-                                    <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
-                                </span>
-                            </div>
-
-                            <div class="form-group col-md-12">
                                 <label class=" form-control-label"><red>*</red>Horario de Entrada</label>
                                 <input type="time" id="horario_entrada" name="appt-time"
                                         min="00:00" max="23:59" required />
