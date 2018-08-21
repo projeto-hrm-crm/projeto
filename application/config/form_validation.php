@@ -206,7 +206,7 @@ $config = array(
         array(
             'field' => 'email',
             'label' => 'E-Mail',
-            'rules' => 'required|valid_email|is_unique[pessoa.email]'
+            'rules' => 'required|valid_email'
         ),
 
         array(
@@ -225,15 +225,15 @@ $config = array(
         ),
 
         array(
-            'field' => 'id_estado',
+            'field' => 'estado',
             'label' => 'Estado',
-            'rules' => 'required|integer'
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
 
         array(
-            'field' => 'id_cidade',
+            'field' => 'cidade',
             'label' => 'Cidade',
-            'rules' => 'required|integer'
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
 
         array(
