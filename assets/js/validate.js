@@ -139,8 +139,8 @@ jQuery(document).ready(function($) {
       },
 
       telefone: "required",
-      id_estado: "required",
-      id_cidade: "required",
+      estado: "required",
+      cidade: "required",
 
       logradouro: {
         required:true,
