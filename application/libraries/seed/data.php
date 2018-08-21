@@ -1179,6 +1179,254 @@ $seeds = array(
       ),
     )
   ),
+
+'documento' => array(
+  'dataset' => array(
+    array(
+      array(
+        'fields' => array(
+          'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '374.792.834-07',
+          'cpf',
+          '1'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '731.236.712-75',
+          'cpf',
+          '2'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '394.837.759-65',
+          'cpf',
+          '3'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '215.735.616-90',
+          'cpf',
+          '4'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '173.832.582-23',
+          'cpf',
+          '5'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '939.556.578-09',
+          'cpf',
+          '6'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '833.281.143-00',
+          'cpf',
+          '7'
+        ),
+      ),
+
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '427.484.675-07',
+          'cpf',
+          '8'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '433.055.654-54',
+          'cpf',
+          '9'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '556.347.541-78',
+          'cpf',
+          '10'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '584.258.854-42',
+          'cpf',
+          '11'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '218.367.372-97',
+          'cpf',
+          '12'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '804.992.368-15',
+          'cpf',
+          '13'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '147.342.332-50',
+          'cpf',
+          '14'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '176.315.189-12',
+          'cpf',
+          '15'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '35.477.426/0001-15',
+          'cnpj',
+          '16'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '13.386.062/0001-25',
+          'cnpj',
+          '17'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '00.652.062/0001-88',
+          'cnpj',
+          '18'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '99.450.233/0001-53',
+          'cnpj',
+          '19'
+        ),
+      ),
+      array(
+        'fields' => array(
+         'numero',
+          'tipo',
+          'id_pessoa'
+        ),
+        'values' => array(
+          '52.096.012/0001-65',
+          'cnpj',
+          '20'
+        ),
+      ),
+      ),
+    )
+  ),
   // id_pessoa 16 - 20
   'produto' => array(
     'dataset' => array(
