@@ -10,10 +10,33 @@ class Sugestao extends CI_Controller {
     */
     public function index() {
         
-        $data['sugestao'] = $this->sugestao->get();
-        $data['title'] = 'Sugestões'; 
         
-        $this->load->view('sugestao/index.php', $data);
+        $data['title'] = 'Sugestões'; 
+        $data['sugestao'] = $this->sugestao->get();
+        $data['assets'] = array(
+            'js' => array(
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'confirm.modal.js',
+            ),
+        );        
+        loadTemplate('includes/header', 'sugestao/index.php', 'includes/footer', $data);
+        
+    }
+    
+    /**
+    * @author: Rodrigão
+    * Carrega a listagem de sugestao
+    */
+    public function details($id_sugestao) {
+        
+        
+        $data['title'] = 'Sugestões'; 
+        $data['sugestao'] = $this->sugestao->getById($id_sugestao);
+        
+        loadTemplate('includes/header', 'sugestao/visualizar.php', 'includes/footer', $data);
+        
     }
 
     /**
@@ -47,56 +70,16 @@ class Sugestao extends CI_Controller {
 
     /**
     * @author: Rodrigão
-    *Realiza edição de registro de um sugestao pelo id, dados recebidos pela view sugestao/editar.php
-    *
-    *@param integer: referen-se ao id do sugestao a ser alterado
-    */
-    public function edit($id_sugestao)
-    {
-        if ($this->input->post())
-        {
-
-            if($this->form_validation->run('sugestao'))
-            {
-                $this->sugestao->update($this->getFromPostEdit($id_sugestao));
-                $this->redirectSuccess('sugestao atualizado com sucesso!');
-            }
-            else
-            {
-                $this->redirectError('editar/'.$id_sugestao);
-            }
-
-        }
-        else
-        {
-            $this->setTitle('Editar sugestao');
-
-            $this->addData('sugestao',    $this->sugestao->getById($id_sugestao));
-            $this->addData('id_sugestao', $id_sugestao);
-
-            $this->loadFormDefaultScripts();
-
-            $this->loadView('editar');
-        }
-
-    }
-
-    /**
-    * @author: Rodrigão
     * Realiza remoção de registro de um sugestao pelo id, dados recebidos pela view sugestao/delete.php
     *
     *@param integer: referen-se ao id do sugestao a ser alterado
     */
-    public function delete($id_sugestao) {
-      $sugestao =  $this->db->where('cargo.id_sugestao', $id_sugestao)->get('cargo')->row();
+    public function delete($id_sugestao) {      
+        $id_pessoa = $this->sugestao->remove($id_sugestao);
+        $this->pessoa->remove($id_pessoa);
+        $this->session->set_flashdata('success','sugestao removido com sucesso!');
 
-      if(!$sugestao){
-         $this->sugestao->remove($id_sugestao);
-         $this->session->set_flashdata('success','sugestao removido com sucesso!');
-      }else{
-        $this->session->set_flashdata('danger','Não foi possivel Realizar esta operação, Existem cargos cadastrados no sugestao!');
-      }
-      redirect('sugestao');
+        redirect('sugestao');
     }
 
 }

@@ -104,7 +104,7 @@ $route['sac/mensagem/(:num)'] = 'Iteracao/create/$1';
 //Rotas Sugestões
 $route['sugestao'] = 'Sugestao';
 $route['sugestao/cadastrar'] = 'Sugestao/create';
-$route['sugestao/editar/(:num)'] = 'Sugestao/edit/$1';
+$route['sugestao/visualizar/(:num)'] = 'Sugestao/details/$1';
 $route['sugestao/excluir/(:num)'] = 'Sugestao/delete/$1';
 
 //Rotas Setores

@@ -38,6 +38,21 @@ jQuery(document).ready(function($) {
       },
     },
   });
+    
+  $("#form_sugestao").validate({
+    rules: {
+      nome: "required",
+
+      email: {
+        required: true,
+        email:true
+      },
+
+      sugestao: {
+        required: true,
+      }
+    },
+  });
 
   $("#form_processo_seletivo").validate({
     rules: {

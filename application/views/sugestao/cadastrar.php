@@ -34,7 +34,7 @@
                     <!-- <div style="max-width: 950px; margin: 8vh auto;"> -->
                     <!-- <div class="login-form"> -->
                     <div style="color:#878787">
-                      <form action="<?php echo site_url('Sugestao/create'); ?>" method="POST" id="form_cliente" class="form-horizontal" novalidate="novalidate">
+                      <form action="<?php echo site_url('Sugestao/create'); ?>" method="POST" id="form_sugestao" class="form-horizontal" novalidate="novalidate">
                           <?php if ($this->session->flashdata('errors')): ?>
                               <div class="alert alert-danger"><?php echo $this->session->flashdata('errors');?></div>
                           <?php endif;?>
