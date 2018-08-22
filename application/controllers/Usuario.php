@@ -58,7 +58,7 @@ class Usuario extends CI_Controller
             //endereco
             $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
             'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
-            ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+            ,'id_pessoa'  => $id_pessoa, 'cidade' => $this->input->post('cidade')]);
 
             //documento
             $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
