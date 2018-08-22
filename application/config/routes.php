@@ -101,6 +101,12 @@ $route['sac/excluir/(:num)'] = 'Sac/delete/$1';
 $route['sac/iteracao/(:num)'] = 'Iteracao/loadMensagem/$1';
 $route['sac/mensagem/(:num)'] = 'Iteracao/create/$1';
 
+//Rotas Sugestões
+$route['sugestao'] = 'Sugestao';
+$route['sugestao/cadastrar'] = 'Sugestao/create';
+$route['sugestao/editar/(:num)'] = 'Sugestao/edit/$1';
+$route['sugestao/excluir/(:num)'] = 'Sugestao/delete/$1';
+
 //Rotas Setores
 
 $route['setor']='Setor';

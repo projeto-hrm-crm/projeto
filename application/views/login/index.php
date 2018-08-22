@@ -30,7 +30,7 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
-      <div class="login-content">
+      <div class="login-content margin30">
 
         <?php if ($this->session->flashdata('success')): ?>
          <div class="alert alert-success mt-4">
@@ -43,29 +43,34 @@
         <?php endif;?>
         <?php if (validation_errors()) : ?>
           <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
-        <?php endif;?>
-        
-        <div class="login-form">
-            <div class="form-group">
-              <label class="text-lowercase">E-mail</label>
-              <input type="email" class="form-control" placeholder="Email" name="email">
-            </div>
-            <div class="form-group">
-              <label class="text-lowercase">Senha</label>
-              <input type="password" class="form-control" placeholder="Password" name="senha">
-            </div>
-            <div class="checkbox">
-              <label class="pull-right">
-                <a href="#">Esqueceu a senha?</a>
-              </label>
-            </div>
-            <button type="submit" title="Entrar" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
-            <div class="text-success m-t-15 text-center">
-              <p>Ainda não está cadastrado? <a href="<?php echo base_url();?>cadastro"> Cadastre-se aqui</a></p>
+        <?php endif;?>        
+            <div class="login-form">
+                <div class="form-group">
+                  <label class="text-lowercase">E-mail</label>
+                  <input type="email" class="form-control" placeholder="Email" name="email">
+                </div>
+                <div class="form-group">
+                  <label class="text-lowercase">Senha</label>
+                  <input type="password" class="form-control" placeholder="Password" name="senha">
+                </div>
+                <div class="checkbox">
+                  <label class="pull-right">
+                    <a href="#">Esqueceu a senha?</a>
+                  </label>
+                </div>
+                <button type="submit" title="Entrar" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
+                <div class="text-success m-t-15 text-center">
+                  <p>Ainda não está cadastrado? <a href="<?php echo base_url();?>cadastro"> Cadastre-se aqui</a></p>
+                </div>
             </div>
           </form>
-        </div>
+          
+          
+          
       </div>
+    <center>
+        <a href="<?php echo site_url('sugestao/cadastrar')?>">Deixe sua sugestão aqui!</a>
+    </center>
     </div>
   </div>
   <script src="<?php echo base_url();?>assets/js/vendor/jquery-2.1.4.min.js"></script>

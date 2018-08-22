@@ -174,4 +174,5 @@ $autoload['model'] = array(
                     'Log_model'                  => 'relatorio',
                     'ProcessoSeletivo_model'     => 'processo_seletivo',
                     'Etapa_model'                => 'etapa',
+                    'Sugestao_model'             => 'sugestao',
 );
