@@ -63,6 +63,7 @@ $autoload['libraries'] = array(
     'form_validation',
     'session',
     'seed/Seeds' => 'Seed',
+    'notifications/Notification' => 'Notification',
 );
 
 /*
@@ -174,4 +175,5 @@ $autoload['model'] = array(
                     'Log_model'                  => 'relatorio',
                     'ProcessoSeletivo_model'     => 'processo_seletivo',
                     'Etapa_model'                => 'etapa',
+                    'Notificacao_model'          => 'notificacao',
 );

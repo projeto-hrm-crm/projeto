@@ -114,5 +114,18 @@ class Usuario extends CI_Controller
     {
       echo json_encode($this->usuario->uniqueMail($id_usuario,$this->input->get('email')));
     }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por buscar as notificações do sistema. 
+     * 
+     * @return json 
+     */
+    public function getNotifications()
+    {
+      $to_id = $this->session->userdata('user_login');
+      echo $this->Notification->getNotifications($to_id);
+    }
 }
 ?>
