@@ -2123,7 +2123,6 @@ $seeds = array(
     ),
 
   
-  // id_pessoa 16 - 20
   'produto' => array(
     'dataset' => array(
       array(
@@ -2262,4 +2261,98 @@ $seeds = array(
       )
     ),
   ),
+
+  'cargo' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'salario',
+            'id_setor'
+          ),
+          'values' => array(
+            'Contador',
+            'Realiza a contabilidade da empresa',
+            '417.98',
+            '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'salario',
+            'id_setor'
+          ),
+          'values' => array(
+            'Auxiliar Financeiro',
+            'Auxilia nas tarefas financeiras da empresa',
+            '417.98',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'salario',
+            'id_setor'
+          ),
+          'values' => array(
+            'Recrutador',
+            'Realiza o rerutamento da empresa',
+            '317.98',
+            '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'salario',
+            'id_setor'
+          ),
+          'values' => array(
+            'Agente Administrativo',
+            'Realiza a prestação de contas da empresa',
+            '417.98',
+            '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'salario',
+            'id_setor'
+          ),
+          'values' => array(
+            'Auxiliar de RH',
+            'Realiza o controle do RH da empresa',
+            '287.98',
+            '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'salario',
+            'id_setor'
+          ),
+          'values' => array(
+            'Gerente Financeiro',
+            'Realiza o controle financeiro da empresa',
+            '617.98',
+            '1'
+          ),
+        ),
+      )
+    ),
+  ),
+
+
+
 );
