@@ -13,6 +13,11 @@ class Notification
     public $notifications = array();
 
     /**
+     * @var array notifications
+     */
+    public $count = 0;    
+
+    /**
      * @author Pedro Henrique Guimarães
      * 
      * Start point. 
@@ -28,6 +33,12 @@ class Notification
         return json_encode($this->notifications);
     }
 
+    public function getCount($to_id) 
+    {
+        $this->count = $this->getInstance->notificacao->getCount($to_id);
+        return json_encode($this->count);
+    }
+
     public function notify()
     {
 
@@ -38,16 +49,29 @@ class Notification
      * 
      * Formatação de informações 
      */
-    private function format(Array $notifications)
+    private function format($notifications)
     {
         if (!is_array($notifications))
-            return; 
+            return array(); 
 
         foreach ($notifications as $key => $notification) {
-            if ($key == 'created')
-                $this->getInstance->swicthTimestamp($key);
+            if ($notification->criacao)
+                $notifications[$key]->criacao = $this->swicthTimestamp($notification->criacao, true);
         }
-        return json_encode($notifications);
+
+        return $notifications;
     }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Formatação de data 
+     */
+    private function swicthTimestamp($timestamp, $full = TRUE)
+    {
+        $parts = explode(' ', $timestamp);
+        return $full ? switchDate($parts[0]).' '.$parts[1] : switchDate($parts[0]);
+    }
+
 
 }
