@@ -304,7 +304,7 @@ $seeds = array(
           'values' => array(
               '1',
               '1996-03-22',
-              '2'
+              '0'
           ),
         ),
         array(
@@ -316,7 +316,7 @@ $seeds = array(
           'values' => array(
               '2',
               '1996-03-22',
-              '2'
+              '0'
           ),
         ),
 
@@ -329,7 +329,7 @@ $seeds = array(
           'values' => array(
               '3',
               '1999-12-03',
-              '2'
+              '0'
           ),
         ),
         array(
@@ -341,7 +341,7 @@ $seeds = array(
           'values' => array(
               '4',
               '1999-12-01',
-              '2'
+              '0'
           ),
         ),
         array(
@@ -353,7 +353,7 @@ $seeds = array(
           'values' => array(
               '5',
               '1999-12-21',
-              '2'
+              '0'
           ),
         ),
         // --------------------------Candidato--------------------------------
@@ -432,7 +432,494 @@ $seeds = array(
           'values' => array(
               '11',
               '1996-03-22',
+              '0'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '12',
+              '1996-03-22',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '13',
+              '1999-12-03',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '14',
+              '1999-12-01',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '15',
+              '1999-12-21',
+              '1'
+          ),
+        ),
+      )
+    ),
+  ),
+  'usuario' => array(
+    'dataset' => array(
+      array(
+        // --------------------------Cliente--------------------------------
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+              'admin@adimin.com',
+              'admin',
+              '1',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+              'pedrosilva@teste.com',
+              'pedrosilva',
+              '4',
               '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'matheussantos@teste.com',
+            'matheussantos',
+            '4',
+            '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'rodrigosantos@teste.com',
+            'rodrigosantos',
+            '4',
+            '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'fernandosantos@teste.com',
+              'fernandosantos',
+              '4',
+              '5'
+          ),
+        ),
+        // --------------------------Candidato--------------------------------
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'camilamota@teste.com',
+              'camilamota',
+              '5',
+              '6'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'pietrasilva@teste.com',
+              'pietrasilva',
+              '5',
+              '7'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'maitesantos@teste.com',
+              'maitesantos',
+              '5',
+              '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'yasminsantos@teste.com',
+              'yasminsantos',
+              '5',
+              '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'carlasantos@teste.com',
+              'carlasantos',
+              '5',
+              '10'
+          ),
+        ),
+
+        // --------------------------Funcionario--------------------------------
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'edersonpia@teste.com',
+              'edersonpia',
+              '6',
+              '11'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'luciansantos@teste.com',
+              'luciansantos',
+              '6',
+              '12'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'palomacabral@teste.com',
+              'palomacabral',
+              '6',
+              '13'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'carolsantos@teste.com',
+              'carolsantos',
+              '6',
+              '14'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+              'Amanda Santos',
+              'amandasantos@teste.com',
+              '6',
+              '15'
+          ),
+        ),
+        // --------------------------Fornecedor--------------------------------
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+              'joaocarlos@teste.com',
+              'joaocarlos',
+              '3',
+              '16'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+              'dianacoste@teste.com',
+              'dianacoste',
+              '3',
+              '17'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+              'amandaribeiro@teste.com',
+              'amandaribeiro',
+              '3',
+              '18'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'joaquincosta@teste.com',
+              'joaquincosta',
+              '3',
+              '19'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'login',
+            'senha',
+            'id_grupo_acesso',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'carloslopes@teste.com',
+              'carloslopes',
+              '3',
+              '20'
+          ),
+        )
+      )
+    ),
+  ),
+  // id_pessoa 1 - 15 
+  'pessoa_fisica' => array(
+    'dataset' => array(
+      array(
+        // --------------------------Cliente--------------------------------
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '1',
+              '1996-03-22',
+              '0'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '2',
+              '1996-03-22',
+              '0'
+          ),
+        ),
+
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '3',
+              '1999-12-03',
+              '0'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '4',
+              '1999-12-01',
+              '0'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '5',
+              '1999-12-21',
+              '0'
+          ),
+        ),
+        // --------------------------Candidato--------------------------------
+
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '6',
+              '1996-03-22',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '7',
+              '1996-03-22',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '8',
+              '1999-12-03',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '9',
+              '1999-12-01',
+              '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '10',
+              '1999-12-21',
+              '1'
+          ),
+        ),
+
+
+
+        // --------------------------Funcionário--------------------------------
+
+        array(
+          'fields' => array(
+            'id_pessoa',
+            'data_nascimento',
+            'sexo'
+          ),
+          'values' => array(
+              '11',
+              '1996-03-22',
+              '0'
           ),
         ),
         array(
@@ -1427,6 +1914,215 @@ $seeds = array(
       ),
     )
   ),
+  'telefone' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 99587-3123',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 98875-3123',
+            '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95877-3123',
+            '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 97748-3123',
+            '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 99915-3123',
+            '5'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95248-3123',
+            '6'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 98754-3123',
+            '7'
+          ),
+        ),
+  
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 99745-3123',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 98875-3123',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 98574-3123',
+            '10'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95487-3123',
+            '11'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95326-3123',
+            '12'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95872-3123',
+            '13'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95872-3123',
+            '14'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95874-3123',
+            '15'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 55484-3123',
+            '16'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 95872-3123',
+            '17'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 98542-3123',
+            '18'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 65214-3123',
+            '19'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'numero',
+            'id_pessoa'
+          ),
+          'values' => array(
+            '(13) 25415-3123',
+            '20'
+          ),
+        ),
+        ),
+      )
+    ),
+
+  
   // id_pessoa 16 - 20
   'produto' => array(
     'dataset' => array(
