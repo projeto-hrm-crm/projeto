@@ -118,9 +118,7 @@
                     <div class="form-group col-12">
                         <label class="form-control-label">Nome</label>
                         <input type="text" name="nome_etapa[]" placeholder="Nome da etapa" class="form-control" required>
-                    </div>
-                    <div class="form-group col-12">
-                        <label class="form-control-label">Descrição</label>
+                        <label class="form-control-label mt-2">Descrição</label>
                         <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
                         <a name="button" class="btn btn-danger btn-sm remDiv mt-2 text-white">
                             <span class="fa fa-times"></span>

@@ -63,14 +63,21 @@
                         </div>
                         <?php if(isset($etapas[0])) { ?>
                             <?php foreach ($etapas as $etapa): ?>
-                                <div class="form-group col-12">
-                                    <label class="form-control-label"><red>*</red>Nome da Etapa</label>
-                                    <input type="text" class="form-control" name="nome_etapa[]" value="<?php echo $etapa->nome ?>">
-                                    <label class="form-control-label"><red>*</red>Descrição da Etapa</label>
-                                    <textarea auto-resize name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
-                                    <span class="invalid-feedback" id="invalid-descricao">
-                                        Campo obrigatório
-                                    </span>
+                                <div class="form-group col-12 cloned-main" id="template1">
+                                    <div class="cloned-div">
+                                        <div class="form-row">
+                                            <div class="form-group col-12">
+                                                <label class="form-control-label">Nome</label>
+                                                <input type="text" name="nome_etapa[]" placeholder="Nome da etapa" class="form-control" value="<?php echo $etapa->nome ?>" required>
+                                                <label class="form-control-label mt-2">Descrição</label>
+                                                <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
+                                                <a name="button" class="btn btn-danger btn-sm remDiv mt-2 text-white">
+                                                    <span class="fa fa-times"></span>
+                                                    Excluir
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         <?php } ?>
@@ -129,9 +136,7 @@
                 <div class="form-group col-12">
                     <label class="form-control-label">Nome</label>
                     <input type="text" name="nome_etapa[]" placeholder="Nome da etapa" class="form-control" required>
-                </div>
-                <div class="form-group col-12">
-                    <label class="form-control-label">Descrição</label>
+                    <label class="form-control-label mt-2">Descrição</label>
                     <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
                     <a name="button" class="btn btn-danger btn-sm remDiv mt-2 text-white">
                         <span class="fa fa-times"></span>
