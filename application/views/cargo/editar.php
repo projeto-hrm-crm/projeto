@@ -47,7 +47,7 @@
 	               <?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
 	             </span>
               </div>   
-
+              <!--
               <div class="form-group col-md-12">
                 <label class=" form-control-label"><red>*</red>Horario de Trabalho</label>
                 <input type="time" id="horario_cargo" name="appt-time" class="form-control <?php echo isset($errors['horario']) ? 'is-invalid' : '' ?>"  min="00:00" max="23:59" required />
@@ -59,7 +59,7 @@
                 <div>
                   <label class=" form-control-label"><red>*</red>Horario de Entrada</label>
                   <input type="time" id="horario_entrada" name="appt-time"
-                          min="00:00" max="23:59" required>
+                          min="00:00" max="23:59" required />
                   <span class="invalid-feedback">
                       <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
                   </span>
@@ -67,12 +67,13 @@
                 <div>
                   <label class=" form-control-label"><red>*</red>Horario de saida</label>
                   <input type="time" id="horario_saida" name="appt-time"
-                          min="00:00" max="23:59" required>
+                          min="00:00" max="23:59" required />
                   <span class="invalid-feedback">
                       <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
                   </span>
                 </div>
               </div>
+            -->
             </div>
           </div>
       </div>

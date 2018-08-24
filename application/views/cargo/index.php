@@ -31,6 +31,7 @@
                 <th>Nome</th>
                 <th>Descrição</th>
                 <th>Salário Mensal</th>
+                <th >Salário por hora</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -41,6 +42,12 @@
                     <td><?= $cargo->nome;?></td>
                     <td><?= $cargo->descricao;?></td>
                     <td><?= $cargo->salario;?></td>
+                    <td>
+                      <?= 
+                        $cargo->salario;
+
+                      ?>
+                     </td>
 
                     <td>
                       <a title="Editar Cargo" href="<?php echo base_url() ?>cargo/editar/<?php echo $cargo->id_cargo?>" class="btn btn-primary">
@@ -82,3 +89,15 @@
       </div>
     </div>
 </div>
+
+<!--
+ <script type="text/javascript">
+        function calculaSalario(){
+            var valor = document.getElementById("valor").value;
+            var horas = document.getElementById("horas").value;
+            var sh = Math.trunc(valor/horas);
+            alert(valor);
+        }
+    </script>
+
+      

@@ -729,18 +729,6 @@ jQuery(document).ready(function($) {
         min:      1
       },
 
-      horario:{
-        required: true,
-      },
-
-      horario_entrada:{
-        required: true,
-      },
-
-      horario_saida:{
-        required: true,
-      },
-
     },
 
     messages: {
@@ -761,18 +749,6 @@ jQuery(document).ready(function($) {
 
      id_setor:{
         required: 'O setor deve ser selecionado'
-      },
-
-       horario:{
-        required: 'um horario deve ser adicionado',
-      },
-
-      horario_entrada:{
-        required:  'um horario deve ser adicionado',
-      },
-
-      horario_saida:{
-        required:  'um horario deve ser adicionado',
       },
 
     },

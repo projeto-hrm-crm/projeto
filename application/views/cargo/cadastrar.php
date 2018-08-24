@@ -56,7 +56,7 @@
                                     <?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
                                 </span>
                             </div>
-
+                            <!--
                             <div class="form-group col-md-12">
                                 <label class=" form-control-label"><red>*</red>Horario de Trabalho</label>
                                 <input type="time" id="horario_cargo" name="appt-time" 
@@ -85,6 +85,7 @@
                             </div>
 
                         </div>
+                        -->
                     </div>
                     <div class="card-footer text-right">
                         <a title="Cancelar Cadastro" href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
