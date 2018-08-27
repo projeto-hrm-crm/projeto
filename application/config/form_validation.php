@@ -623,14 +623,14 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'id_estado',
-            'label' => 'id_estado',
-            'rules' => 'required|numeric'
+            'field' => 'estado',
+            'label' => 'estado',
+            'rules' => 'required'
         ),
         array(
-            'field' => 'id_cidade',
-            'label' => 'id_cidade',
-            'rules' => 'required|numeric'
+            'field' => 'cidade',
+            'label' => 'cidade',
+            'rules' => 'required'
         ),
         array(
             'field' => 'bairro',
@@ -645,7 +645,7 @@ $config = array(
         array(
             'field' => 'numero',
             'label' => 'número',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
     ),
     'funcionario' =>
