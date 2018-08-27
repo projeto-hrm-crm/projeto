@@ -166,4 +166,31 @@ class Funcionario extends PR_Controller
         $postData['id_funcionario'] = $id_funcionario;
         return $postData;
     }
+   
+   /**
+     * @author Mayra Bueno
+     *
+     * Método evaluate refere-se à avaliação do funcionário.
+     *
+     * Se avaliado com sucesso, apresenta mensagem de sucesso.
+     * Se não, mostra mensagem de erro e redireciona para a mesma pagina.
+     *
+     * @param int $id_funcionario
+     */
+    public function evaluate($id_funcionario)
+    {
+      if ($this->input->post()) {
+          $data['funcionario'] = $this->input->post();
+
+          echo "<pre>";
+
+          $this->funcionario->update($id_funcionario, $this->input->post());
+      }
+
+      $data['funcionario']    = $this->funcionario->getById($id_funcionario);
+      $data['title']          = 'Avaliar funcionario';
+      $data['id']             = $id_funcionario;
+
+      loadTemplate('includes/header', 'funcionario/avaliar', 'includes/footer', $data);
+    }
 }
