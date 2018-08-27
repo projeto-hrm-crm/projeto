@@ -12,6 +12,7 @@
 <script src="<?php echo base_url();?>assets/js/mask.js"></script>
 <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.validate.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/validate.js"></script>
+<script src="<?php echo base_url();?>assets/js/notifications.js"></script>
 <!-- <script src="<?php echo base_url();?>assets/js/estado_cidade.js"></script>
  -->
 <?php if (isset($assets['js'])): ?>

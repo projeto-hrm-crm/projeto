@@ -170,6 +170,8 @@ $route['perfil/upload']		   = 'Perfil/fileUpload';
 //Ajax calls
 $route['cliente/chart']        = 'Cliente/getChartData';
 $route['notifications']        = 'Usuario/getNotifications';
+$route['notifications/count']  = 'Usuario/getCount';
+
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';

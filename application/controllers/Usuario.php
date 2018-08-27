@@ -127,5 +127,18 @@ class Usuario extends CI_Controller
       $to_id = $this->session->userdata('user_login');
       echo $this->Notification->getNotifications($to_id);
     }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por contar o total de notificações
+     * 
+     * @return json 
+     */
+    public function getCount()
+    {
+      $to_id = $this->session->userdata('user_login');
+      echo $this->Notification->getCount($to_id);
+    }
 }
 ?>
