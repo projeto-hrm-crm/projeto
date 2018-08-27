@@ -28,9 +28,16 @@ class Notification
         return json_encode($this->notifications);
     }
 
-    public function notify()
+    public function notify($from_id = 0, $to_id, $text)
     {
+        $notification = [
+            'from_id'       => $from_id,
+            'to_id'         => $to_id, 
+            'created_at'    => date('Y-m-d H:i:s'),  
+            'notification'  => $text
+        ];
 
+        $this->db->insert('notification', $notification);
     }
 
     /**
