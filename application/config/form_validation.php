@@ -290,6 +290,34 @@ $config = array(
         )
     ),
 
+    
+    'sugestao' => array(
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'sugestao',
+            'label' => 'sugestao',
+            'rules' => 'required'
+        )
+    ),
+    
+    'setor' => array(
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        )
+    ),
+
+    
     'vaga' => array(
 
         array(
