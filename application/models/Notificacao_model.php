@@ -68,6 +68,19 @@ class Notificacao_model extends CI_Model
     /**
      * @author Pedro Henrique Guimarães
      * 
+     * Gera uma nova notificação
+     * 
+     * @param mixed $notification
+     * @return void 
+     */
+    public function create($notification)
+    {
+        $this->db->insert('notificacao', $notification);
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
      * Método responsável por setar a notificação como visualizada
      * 
      * @param int $notification_id
@@ -78,4 +91,6 @@ class Notificacao_model extends CI_Model
         $this->db->where('id_notificacao', $notification_id);
         $this->db->update('notificacao', ['view' => 1]);
     }
+
+
 }
