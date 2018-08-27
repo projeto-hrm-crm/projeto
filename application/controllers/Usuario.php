@@ -140,5 +140,18 @@ class Usuario extends CI_Controller
       $to_id = $this->session->userdata('user_login');
       echo $this->Notification->getCount($to_id);
     }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por setar a notificação como visualizada
+     * 
+     * @param int $notification_id
+     * @return void 
+     */
+    public function setViewed($notification_id)
+    {
+      $this->Notification->setViewed($notification_id);
+    }
 }
 ?>

@@ -168,10 +168,10 @@ $route['perfil/alterar-senha'] = 'Perfil/changePassword';
 $route['perfil/upload']		   = 'Perfil/fileUpload';
 
 //Ajax calls
-$route['cliente/chart']        = 'Cliente/getChartData';
-$route['notifications']        = 'Usuario/getNotifications';
-$route['notifications/count']  = 'Usuario/getCount';
-
+$route['cliente/chart']               = 'Cliente/getChartData';
+$route['notifications']               = 'Usuario/getNotifications';
+$route['notifications/count']         = 'Usuario/getCount';
+$route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';

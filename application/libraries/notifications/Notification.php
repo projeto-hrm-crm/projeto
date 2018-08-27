@@ -56,17 +56,31 @@ class Notification
         return json_encode($this->count);
     }
 
-    public function notify()
+    public function notify($from_id = null, $to_id, $text, $link)
 
     {
         $notification = [
-            'from_id'       => $from_id,
-            'to_id'         => $to_id, 
-            'created_at'    => date('Y-m-d H:i:s'),  
-            'notification'  => $text
+            'emissor_id'       => $from_id,
+            'destinatario_id'  => $to_id, 
+            'criacao'          => date('Y-m-d H:i:s'),  
+            'notificacao'      => $text,
+            'link'             => $link
         ];
 
-        $this->db->insert('notification', $notification);
+        $this->getInstance->notificacao->create($notification);
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por setar a notificação como visualizada
+     * 
+     * @param int $notification_id
+     * @return void 
+     */
+    public function setViewed($notification_id)
+    {
+        $this->getInstance->notificacao->setViewed($notification_id);
     }
 
     /**

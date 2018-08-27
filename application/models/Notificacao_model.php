@@ -19,7 +19,8 @@ class Notificacao_model extends CI_Model
     {
         $this->db->select('*')
                  ->from('notificacao')
-                 ->where('destinatario_id', $to_id);
+                 ->where('destinatario_id', $to_id)
+                 ->order_by('id_notificacao', 'DESC');
         $sql = $this->db->get();
         
         if ($sql->num_rows() > 0)
@@ -57,9 +58,24 @@ class Notificacao_model extends CI_Model
     {
         $this->db->select('count(*) as count')
                  ->from('notificacao')
+                 ->where('view', 0) 
                  ->where('destinatario_id', $to_id);
         $sql = $this->db->get();   
 
         return $sql->result()[0]->count;
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por setar a notificação como visualizada
+     * 
+     * @param int $notification_id
+     * @return void 
+     */
+    public function setViewed($notification_id)
+    {
+        $this->db->where('id_notificacao', $notification_id);
+        $this->db->update('notificacao', ['view' => 1]);
     }
 }
