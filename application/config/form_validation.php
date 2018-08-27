@@ -395,7 +395,7 @@ $config = array(
         array(
             'field' => 'codigo',
             'label' => 'Codigo',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'descricao',

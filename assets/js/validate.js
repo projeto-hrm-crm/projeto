@@ -48,7 +48,6 @@ jQuery(document).ready(function($) {
       "descricao_etapa[]":"required",
       codigo: {
         required: true,
-        digits:true,
       },
       id_usuario: {
         required: true,
