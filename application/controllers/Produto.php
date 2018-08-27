@@ -161,12 +161,13 @@ class Produto extends CI_Controller
      * Rota: http://localhost/projeto/produto/deletar
      */
     public function delete($id){
-      $produto = $this->produto->getById($id);
-      if($produto){
+      $produto = $this->pedido->checkIfProductIssetInSomeOrder($id);
+
+      if(!$produto){
         $this->produto->delete($id);
         $this->session->set_flashdata('success', 'Produto excluído com sucesso!');
       }else{
-        $this->session->set_flashdata('danger', 'Não foi possível excluir!');
+        $this->session->set_flashdata('danger','Não foi possivel realizar esta operação, existem pedidos dependentes desse produto!');
       }
       redirect('produto');
     }
