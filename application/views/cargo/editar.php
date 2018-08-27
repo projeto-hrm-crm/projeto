@@ -26,8 +26,8 @@
               </div>
                <!--SALÁRIO-->
               <div class="form-group">
-              <label class=" form-control-label"><red>*</red>Salário por hora</label>
-                <input id="salario_cargo" data-thousands="." data-decimal="," type="text" placeholder="Salário por hora" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : $cargo->salario;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
+              <label class=" form-control-label"><red>*</red>Salário Mensal</label>
+                <input id="salario_cargo" data-thousands="." data-decimal="," type="text" placeholder="Salário" value="<?php echo isset($old_data['salario']) ? $old_data['salario'] : $cargo->salario;?>" name="salario" class="form-control <?php echo isset($errors['salario']) ? 'is-invalid' : '' ?>" required>
                 <span class="invalid-feedback">
 	                <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
 	              </span>
@@ -46,7 +46,34 @@
                 <span class="invalid-feedback">
 	               <?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
 	             </span>
+              </div>   
+              <!--
+              <div class="form-group col-md-12">
+                <label class=" form-control-label"><red>*</red>Horario de Trabalho</label>
+                <input type="time" id="horario_cargo" name="appt-time" class="form-control <?php echo isset($errors['horario']) ? 'is-invalid' : '' ?>"  min="00:00" max="23:59" required />
+                <span class="invalid-feedback">
+                    <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
+                </span>
               </div>
+              <div class="form-group col-md-12">
+                <div>
+                  <label class=" form-control-label"><red>*</red>Horario de Entrada</label>
+                  <input type="time" id="horario_entrada" name="appt-time"
+                          min="00:00" max="23:59" required />
+                  <span class="invalid-feedback">
+                      <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
+                  </span>
+                </div>
+                <div>
+                  <label class=" form-control-label"><red>*</red>Horario de saida</label>
+                  <input type="time" id="horario_saida" name="appt-time"
+                          min="00:00" max="23:59" required />
+                  <span class="invalid-feedback">
+                      <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
+                  </span>
+                </div>
+              </div>
+            -->
             </div>
           </div>
       </div>
