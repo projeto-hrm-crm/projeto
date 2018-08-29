@@ -7,9 +7,21 @@ class Avaliacao_model extends PR_Model {
     * @author: Rodrigo Alves
     * Este método inserção de dados
     */
-    public function insert($avaliacao) {
-        $this->db->insert('avaliacao', $avaliacao);
+    public function insert($data) {
+                
+        $this->db->insert('avaliacao', [
+            'pontualidade' => $data['pontualidade'],
+            'comprometimento' => $data['comprometimento'],
+            'produtividade' => $data['produtividade'],
+            'relacao_interpessoal' => $data['relacao_interpessoal'],
+            'proatividade' => $data['proatividade'],
+            'id_funcionario' => $data['id_funcionario'],
+            'id_avaliador' => $data['id_avaliador'],
+            'data_avaliacao' => date("Y-m-d H:i:s")
+        ]);
+                
         $this->setLog("Nova avaliacao");
+        
     }
 
     /**
@@ -20,10 +32,12 @@ class Avaliacao_model extends PR_Model {
     */
     public function get($id_funcionario) {
         return $this->db
-        ->select('sac.*, pessoa.nome')
-        ->join('cliente', 'sac.id_cliente = cliente.id_cliente')
-        ->join('pessoa', 'cliente.id_pessoa = pessoa.id_pessoa')
-        ->get('sac')
+        ->select('avaliacao.*, pessoa.nome')
+        ->join('funcionario', 'avaliacao.id_funcioario = funcionario.id_funcioario')
+        ->join('pessoa', 'pessoa.id_pessoa = funcionario.id_pessoa')
+        ->join('avaliacao', 'avaliacao.id_funcionario = funcionario.id_funcioario')
+        ->where('avaliacao.id_avaliacao', $id_avaliacao)
+        ->get('avaliacao')
         ->result();
     }
 
@@ -35,8 +49,8 @@ class Avaliacao_model extends PR_Model {
     */
     public function find($id_avaliacao) {
         return $this->db
-        ->where('sac.id_sac', $id_avaliacao)
-        ->get('sac')
+        ->where('avaliacao.id_avaliacao', $id_avaliacao)
+        ->get('avaliacao')
         ->result();
     }
 
@@ -45,21 +59,20 @@ class Avaliacao_model extends PR_Model {
     * @author: Rodrigo Alves
     * Este método atualiza as informações de uma avaliação referenciado pelo id
     *
-    * @param: $id_avaliacao mixed
+    * @param: $data mixed
     */
-    public function update($id_avaliacao) {
+    public function update($data) {
 
         $this->db
-        ->set('sac.id_produto', $sac['id_produto'])
-        ->set('sac.titulo', $sac['titulo'])
-        ->set('sac.descricao', $sac['descricao'])
-        ->set('sac.abertura', $sac['abertura'])
-        ->set('sac.fechamento', $sac['fechamento'])
-        ->set('sac.encerrado', $sac['encerrado'])
-        ->where('sac.id_sac', $sac['id_sac'])
-        ->update('sac');
-
-        $this->setLog($sac['titulo'], $sac['id_sac']);
+        ->set('avaliacao.pontualidade', $data['pontualidade'])
+        ->set('avaliacao.comprometimento', $data['comprometimento'])
+        ->set('avaliacao.produtividade', $data['produtividade'])
+        ->set('avaliacao.relacao_interpessoal', $data['relacao_interpessoal'])
+        ->set('avaliacao.proatividade', $data['proatividade'])
+        ->where('avaliacao.id_sac', $data['id_avaliacao'])
+        ->update('avaliacao');
+        
+        $this->setLog("Edição avaliação", $data['id_avaliacao']);
 
     }
 
