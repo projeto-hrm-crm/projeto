@@ -62,12 +62,12 @@ $config = array(
         array(
             'field' => 'lote',
             'label' => 'Lote',
-            'rules' => 'required'
+            'rules' => 'required|numeric'
         ),
         array(
             'field' => 'codigo',
             'label' => 'Codigo',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'valor',

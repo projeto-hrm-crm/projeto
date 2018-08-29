@@ -14,6 +14,8 @@ jQuery(document).ready(function($) {
 
       lote: {
         required: true,
+        digits:true,
+
       },
 
       codigo: {
@@ -29,6 +31,7 @@ jQuery(document).ready(function($) {
       fabricacao: {
         required: true,
         brazilian_date: true,
+        max: new Date(),
       },
 
       validade: {
@@ -37,6 +40,11 @@ jQuery(document).ready(function($) {
         dataMaiorQue: '#fabricacao',
       },
     },
+    messages:{
+       fabricacao:{
+        max: 'Informe uma data anterior ou igual à atual.',
+      },
+    }
   });
     
   $("#form_sugestao").validate({
@@ -880,6 +888,7 @@ jQuery(document).ready(function($) {
       return new Date(dataAtual) > new Date(dataFinal);
 
   }, 'Informe uma data maior que a data anterior');
+
 
   /**
   * @author Tiago Villalobos
