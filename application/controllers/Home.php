@@ -30,7 +30,7 @@ class Home extends CI_Controller
 
 
  
-      $data['fornecedor'] = $this->getFornecedorHomeConfigs();
+      $data['admin'] = $this->getAdminHomeConfigs();
 
       $data['title'] = 'Dashboard';
       $data['assets'] = [
@@ -92,3 +92,37 @@ class Home extends CI_Controller
   }
 
 }
+
+/*
+public function getProdutosFornecedorLogado($user_id){
+ 
+return $this->db
+        ->select('produto.*, produto.nome, pessoa_juridica.razao_social, usuario.id_usuario')
+        ->join('fornecedor', 'fornecedor.id_fornecedor = produto.id_fornecedor')
+        ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+        ->join('usuario', 'usuario.id_usuario = pessoa.id_pessoa')
+        ->where('usuario.id_grupo_acesso', '3' AND $user_id)
+        ->result();
+
+
+
+ /* SELECT produto.nome, pessoa_juridica.razao_social, usuario.senha, usuario.id_usuario FROM produto
+
+JOIN fornecedor
+ON fornecedor.id_fornecedor = produto.id_fornecedor
+
+ JOIN pessoa_juridica     
+     ON pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica
+
+  JOIN pessoa      
+      ON pessoa.id_pessoa = pessoa_juridica.id_pessoa
+
+  JOIN usuario
+      ON usuario.id_usuario = pessoa.id_pessoa
+
+  WHERE usuario.id_grupo_acesso = 3 AND usuario.id_usuario = 18 (usuario_logado);
+
+
+  }
+  */
