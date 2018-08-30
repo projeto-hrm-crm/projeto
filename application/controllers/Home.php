@@ -83,7 +83,7 @@ class Home extends CI_Controller
 
     $data = [];
     //
-    $data['produtos']  = $this->produto->count($user_id);
+    $data['produtos']  = $this->produto->count();
     $data['last_sac']  = $this->sac->getLastSac();
 
     return $data;
