@@ -163,4 +163,19 @@ class Produto_model extends CI_Model
         return $query->result()[0]->produtos;
     }
 
+
+    public function getProdutosFornecedorLogado($user_id){
+ 
+  return $this->db
+    ->select('produto.*, pessoa_juridica.razao_social, usuario.id_usuario')
+    ->join('fornecedor', 'fornecedor.id_fornecedor = produto.id_fornecedor')
+    ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+    ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+    ->join('usuario', 'usuario.id_usuario = pessoa.id_pessoa')
+    ->where('usuario.id_grupo_acesso = 3')
+    ->where('usuario.id_usuario', $user_id)
+    ->get('produto')
+    ->result();
+}
+
 }

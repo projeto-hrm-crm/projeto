@@ -23,14 +23,12 @@ class Home extends CI_Controller
   public function index()
 	{
     $user_id = $this->session->userdata('user_login');
-    echo "$user_id";
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
-    echo "$id_grupo_acesso";
     $grupo_acesso = $this->grupo->find($id_grupo_acesso);
 
 
- 
-      $data['admin'] = $this->getAdminHomeConfigs();
+      // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+      $data['fornecedor'] = $this->getAdminHomeConfigs();
 
       $data['title'] = 'Dashboard';
       $data['assets'] = [
@@ -84,27 +82,32 @@ class Home extends CI_Controller
   {
 
     $data = [];
-    $data['produtos']  = $this->produto->count();
+    //
+    $data['produtos']  = $this->produto->count($user_id);
     $data['last_sac']  = $this->sac->getLastSac();
 
     return $data;
 
   }
 
+
 }
 
-/*
-public function getProdutosFornecedorLogado($user_id){
- 
-return $this->db
-        ->select('produto.*, produto.nome, pessoa_juridica.razao_social, usuario.id_usuario')
-        ->join('fornecedor', 'fornecedor.id_fornecedor = produto.id_fornecedor')
-        ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
-        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
-        ->join('usuario', 'usuario.id_usuario = pessoa.id_pessoa')
-        ->where('usuario.id_grupo_acesso', '3' AND $user_id)
-        ->result();
 
+/*
+ public function getProdutosFornecedorLogado($user_id){
+ 
+  return $this->db
+    ->select('produto.*, pessoa_juridica.razao_social, usuario.id_usuario')
+    ->join('fornecedor', 'fornecedor.id_fornecedor = produto.id_fornecedor')
+    ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+    ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+    ->join('usuario', 'usuario.id_usuario = pessoa.id_pessoa')
+    ->where('usuario.id_grupo_acesso = 3')
+    ->where('usuario.id_usuario', $user_id)
+    ->get('produto')
+    ->result();
+}
 
 
  /* SELECT produto.nome, pessoa_juridica.razao_social, usuario.senha, usuario.id_usuario FROM produto
