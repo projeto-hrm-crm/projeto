@@ -23,27 +23,31 @@ class Home extends CI_Controller
   public function index()
 	{
     $user_id = $this->session->userdata('user_login');
-    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
+    echo "$user_id";
+    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
+    echo "$id_grupo_acesso";
     $grupo_acesso = $this->grupo->find($id_grupo_acesso);
 
-    $data['admin'] = $this->getAdminHomeConfigs();
 
-    $data['title'] = 'Dashboard';
-    $data['assets'] = [
-      'js' => [
-         'chartjs.min.js',
-         'cliente/home-charts.js'
-      ]
-    ];
+ 
+      $data['fornecedor'] = $this->getFornecedorHomeConfigs();
 
-		loadTemplate(
-        'includes/header',
-        'home/home_'.$grupo_acesso[0]->nome,
-        'includes/footer',
-        $data
-      );
-	}
+      $data['title'] = 'Dashboard';
+      $data['assets'] = [
+        'js' => [
+           'chartjs.min.js',
+           'cliente/home-charts.js'
+        ]
+      ];
 
+  		loadTemplate(
+          'includes/header',
+          'home/home_'.$grupo_acesso[0]->nome,
+          'includes/footer',
+          $data
+        );
+  	
+  }
 
   /**
    * @author Pedro Henrique Guimarães
@@ -73,6 +77,18 @@ class Home extends CI_Controller
     }
 
     return $data;
+  }
+
+
+  public function getFornecedorHomeConfigs()
+  {
+
+    $data = [];
+    $data['produtos']  = $this->produto->count();
+    $data['last_sac']  = $this->sac->getLastSac();
+
+    return $data;
+
   }
 
 }
