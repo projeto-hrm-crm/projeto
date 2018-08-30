@@ -33,10 +33,9 @@ class Avaliacao_model extends PR_Model {
     public function get($id_funcionario) {
         return $this->db
         ->select('avaliacao.*, pessoa.nome')
-        ->join('funcionario', 'avaliacao.id_funcioario = funcionario.id_funcioario')
+        ->join('funcionario', 'avaliacao.id_funcionario = funcionario.id_funcionario')
         ->join('pessoa', 'pessoa.id_pessoa = funcionario.id_pessoa')
-        ->join('avaliacao', 'avaliacao.id_funcionario = funcionario.id_funcioario')
-        ->where('avaliacao.id_avaliacao', $id_avaliacao)
+        ->where('avaliacao.id_funcionario', $id_funcionario)
         ->get('avaliacao')
         ->result();
     }
