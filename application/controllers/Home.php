@@ -24,11 +24,13 @@ class Home extends CI_Controller
 	{
     $user_id = $this->session->userdata('user_login');
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
+
+
+switch ($id_grupo_acesso) {
+  case '1':
     $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-
-
       // alterado o data da view home_fornecedor para testar na branch home_fornecedor
-      $data['fornecedor'] = $this->getAdminHomeConfigs();
+      $data['admin'] = $this->getAdminHomeConfigs();
 
       $data['title'] = 'Dashboard';
       $data['assets'] = [
@@ -38,12 +40,40 @@ class Home extends CI_Controller
         ]
       ];
 
-  		loadTemplate(
+      loadTemplate(
           'includes/header',
           'home/home_'.$grupo_acesso[0]->nome,
           'includes/footer',
           $data
         );
+    break;
+
+  case '3':
+    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+      // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+      $data['fornecedor'] = $this->getFornecedorHomeConfigs();
+
+      $data['title'] = 'Dashboard';
+      $data['assets'] = [
+        'js' => [
+           'chartjs.min.js',
+           'cliente/home-charts.js'
+        ]
+      ];
+
+      loadTemplate(
+          'includes/header',
+          'home/home_'.$grupo_acesso[0]->nome,
+          'includes/footer',
+          $data
+        );
+    break;
+  
+  default:
+    # code...
+    break;
+}
+    
   	
   }
 
@@ -78,12 +108,12 @@ class Home extends CI_Controller
   }
 
 
-  public function getFornecedorHomeConfigs()
+  public function getFornecedorHomeConfigs($user_id)
   {
 
     $data = [];
     //
-    $data['produtos']  = $this->produto->count();
+    $data['produtos']  = $this->produto->getProdutosFornecedorLogado($user_id);
     $data['last_sac']  = $this->sac->getLastSac();
 
     return $data;
