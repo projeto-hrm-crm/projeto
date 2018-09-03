@@ -182,5 +182,8 @@ $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
 
+//Rota Landig page
+$route['landing'] = 'Landingpage/index';
+
 
 

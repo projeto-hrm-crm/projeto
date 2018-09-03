@@ -1,18 +1,19 @@
 <?php 
 
-class LandingPage extends CI_Controller
+class Landingpage extends CI_Controller
 {
     /**
-     * @author Pedro Henrique Guimarães
-     * Recebe os dados do formulário, trata e 
-     * usa o model para busca do usuário
+     * @author Carlos Cadilhe
+     * Carrega as partes da landing page
      * 
      * @return void
      */
-    public function index()
-    {    
+    public function index() {    
          
-        $this->load->view('landing_page/index.html');
+        
+        $this->load->view('landing_page/header.php');
+        $this->load->view('landing_page/content.php');
+        $this->load->view('landing_page/footer.php');
        
     }
 

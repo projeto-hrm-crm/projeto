@@ -1,6 +1,6 @@
    <!-- home
    ================================================== -->
-   <section id="home" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000>
+   <section id="home" data-parallax="scroll" data-image-src="<?php echo base_url();?>assets/images/landing_page/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000>
 
         <div class="overlay"></div>
         <div class="home-content">        
@@ -125,12 +125,12 @@
         
         <div class="row sobre-bottom-image">
 
-           <img src="images/app-screens-1200.png" 
-                srcset="images/app-screens-600.png 600w, 
-                        images/app-screens-1200.png 1200w, 
-                        images/app-screens-2800.png 2800w" 
+           <img src="<?php echo base_url();?>assets/images/landing_page/app-screens-1200.png" 
+                srcset="<?php echo base_url();?>assets/images/landing_page/app-screens-600.png 600w, 
+                <?php echo base_url();?>assets/images/landing_page/app-screens-1200.png 1200w, 
+                <?php echo base_url();?>assets/images/landing_page/app-screens-2800.png 2800w" 
                 sizes="(max-width: 2800px) 100vw, 2800px"
-                alt="App Screenshots" data-aos="fade-up">
+                alt="Telas do Lambda RP" data-aos="fade-up">
 
         </div>  <!-- end sobre-bottom-image -->       
         
@@ -161,7 +161,7 @@
 
                             <div class="plan-bottom-part">
                                 <p class="plan-block-features">Acesso ao gerenciamento do perfil do cliente</p>                            
-                                  <a class="button button-primary large" href="http://localhost/projeto" target="_blank">Acessar</a>
+                                  <a class="button button-primary large" href="<?php echo base_url();?>/login" target="_blank">Acessar</a>
                             </div>  
                      
                         </div>
@@ -176,7 +176,7 @@
 
                             <div class="plan-bottom-part">
                                 <p class="plan-block-features">Acesso total às funções dos sistema</p>                                
-                                <a class="button button-primary large" href="http://localhost/projeto" target="_blank">Acessar</a>
+                                <a class="button button-primary large" href="<?php echo base_url();?>/login" target="_blank">Acessar</a>
                             </div>
 
                         </div>
