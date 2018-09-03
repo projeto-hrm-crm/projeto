@@ -54,6 +54,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['agenda'] = 'agenda/index';
 
 //Rota do seed
 $route['make/seed'] = 'seed/index';
@@ -181,6 +182,3 @@ $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
-
-
-
