@@ -45,7 +45,7 @@
                             </select>
                         </div>
                         <div class="col-lg-12 form-group">
-                            <label class="form-control-label">Responsável</label>
+                            <label class="form-control-label"><red>*</red>Responsável</label>
                             <select name="id_usuario" class="form-control" id="usuario">
                                 <option  disabled selected>Selecione um Responsável</option>
                                 <?php var_dump($vagas);?>

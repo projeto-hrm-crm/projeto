@@ -72,7 +72,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-12">
-                                <label class=" form-control-label">Responsável</label>
+                                <label class=" form-control-label"><red>*</red>Responsável</label>
                                 <select class="form-control" name="id_usuario">
                                     <option value="">Selecionar um responsável</option>
                                     <?php foreach ($funcionarios as $funcionario): ?>

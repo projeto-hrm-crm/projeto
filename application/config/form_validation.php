@@ -290,7 +290,7 @@ $config = array(
         )
     ),
 
-    
+
     'sugestao' => array(
         array(
             'field' => 'email',
@@ -308,7 +308,7 @@ $config = array(
             'rules' => 'required'
         )
     ),
-    
+
     'setor' => array(
         array(
             'field' => 'nome',
@@ -317,7 +317,7 @@ $config = array(
         )
     ),
 
-    
+
     'vaga' => array(
 
         array(
@@ -727,6 +727,29 @@ $config = array(
             'field' => 'numero',
             'label' => 'número',
             'rules' => 'required|numeric'
+        ),
+    ),
+    'evento' =>
+    array(
+        array(
+            'field' => 'titulo',
+            'label' => 'Titulo',
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+        array(
+            'field' => 'inicio',
+            'label' => 'Inicio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'fim',
+            'label' => 'Termino',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'cor',
+            'label' => 'Cor',
+            'rules' => 'required',
         ),
     ),
 );
