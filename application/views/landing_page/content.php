@@ -21,7 +21,7 @@
                             <span class="icon-circle-down" aria-hidden="true"></span>
                             Destaques
                         </a>
-                        <a href="http://localhost/projeto" target="_blank" class="button stroke">
+                        <a href="<?php echo base_url();?>login" target="_blank" class="button stroke">
                             <span class="icon-play" aria-hidden="true"></span>
                             Demo
                         </a>
@@ -162,7 +162,7 @@
 
                             <div class="plan-bottom-part">
                                 <p class="plan-block-features">Acesso ao gerenciamento do perfil do cliente</p>                            
-                                  <a class="button button-primary large" href="<?php echo base_url();?>/login" target="_blank">Acessar</a>
+                                  <a class="button button-primary large" href="<?php echo base_url();?>login" target="_blank">Acessar</a>
                             </div>  
                      
                         </div>
@@ -177,7 +177,7 @@
 
                             <div class="plan-bottom-part">
                                 <p class="plan-block-features">Acesso total às funções dos sistema</p>                                
-                                <a class="button button-primary large" href="<?php echo base_url();?>/login" target="_blank">Acessar</a>
+                                <a class="button button-primary large" href="<?php echo base_url();?>login" target="_blank">Acessar</a>
                             </div>
 
                         </div>
