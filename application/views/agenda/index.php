@@ -2,11 +2,12 @@
 <html lang="pt-br">
     <head>
         <meta charset='utf-8' />
+
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
         <link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
-        <link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/style.css">
         <script src="<?php echo base_url();?>assets/js/calendar/moment.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js"></script>
+        <script src="<?php echo base_url();?>assets/js/calendar/bootstrap.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/calendar/fullcalendar.min.js"></script>
         <script src="<?php echo base_url();?>assets/js/calendar/pt-br.js"></script>
 
@@ -19,10 +20,19 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay, listWeek'
                     },
-                    defaultDate: Date(),
+                    defaultDate: '2018-09-03',
                     navLinks: true,
                     editable: true,
                     eventLimit: true,
+                    eventClick: function(event) {
+
+                        $('#visualizar #title').text(event.title);
+                        $('#visualizar #start').text(event.start.format('DD/MM/YYYY HH:mm:ss'));
+                        $('#visualizar #end').text(event.end.format('DD/MM/YYYY HH:mm:ss'));
+
+                        $('#visualizar').modal('show');
+                        return false;
+                    },
                     events:
                     [
                         <?php if(isset($eventos)): ?>
@@ -62,6 +72,39 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
                 <div id='calendar'></div>
+                <div class="modal fade" id="visualizar" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Dados do evento</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label><strong>Titulo: </strong></label>
+                                        <label id="title"></label>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label><strong>Inicio: </strong></label>
+                                        <label id="start"></label>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label><strong>Término: </strong></label>
+                                        <label id="end"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

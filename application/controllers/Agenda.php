@@ -18,7 +18,7 @@ class Agenda extends CI_Controller
             if($this->form_validation->run('evento')){
                 $eventos = array(
                     'titulo'     => $this->input->post('titulo'),
-                    'inicio'     => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('inicio')))),
+                    'inicio'     => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('inicio')))),
                     'fim'        => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('fim')))),
                     'cor'        => $this->input->post('cor'),
                 );
