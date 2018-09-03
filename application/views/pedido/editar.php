@@ -145,8 +145,8 @@
 				    		                            		<td width="20%" class="td-value" data-default="<?php echo floatval($produto->valor) ?>">
 				    		                            			<?php
 				    		                            				echo isset($old_data['id_produto']) ?
-				    		                            				'R$ ' . number_format(floatval($produto->valor) *  $produto->quantidade, 2, ',','') :
-				    		                            				'R$ ' . number_format(floatval($produto->valor) *  $produto->quantidade, 2, ',','');
+				    		                            				'R$ ' . number_format(floatval($produto->valor) *  $produto->quantidade, 2, ',','.') :
+				    		                            				'R$ ' . number_format(floatval($produto->valor) *  $produto->quantidade, 2, ',','.');
 
 				    		                            			?>
 				    		                            		</td>
@@ -172,7 +172,7 @@
 	    		                            	    <th scope="col"></th>
 	    		                            	    <th scope="col"></th>
 	    		                            	    <th scope="col" id="total-qtd"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? $qtd : ''; ?></th>
-	    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? 'R$ ' . number_format($total, 2, ',','') : ''; ?></th>
+	    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? 'R$ ' . number_format($total, 2, ',','.') : ''; ?></th>
 	    		                            	    <th scope="col"></th>
 	    		                            	</tr>
 	    		                            </tfoot>
