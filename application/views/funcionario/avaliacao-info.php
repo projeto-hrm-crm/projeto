@@ -11,15 +11,20 @@
           <div class="card-body card-block">
             <div class="row">
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-4">
                 <label class=" form-control-label"><b>Funcionário</b></label>
                 <p><label class=" form-control-label"><?= htmlspecialchars($funcionario[0]->nome)?></label></p>
               </div> <!-- FIM NOME -->
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-4">
                 <label class=" form-control-label"><b>Avaliador</b></label>
                 <p><label class=" form-control-label"><?=htmlspecialchars($avaliador[0]->nome)?></label></p>
               </div> <!-- FIM AVALIADOR -->
+               
+              <div class="form-group col-12 col-md-4">
+                <label class=" form-control-label"><b>Data Avaliação</b></label>
+                <p><label class=" form-control-label"><?=switchDate(substr($avaliacao[0]->data_avaliacao, 0, 10))." as ".substr($avaliacao[0]->data_avaliacao, 10, 10)?></label></p>
+              </div>
 
               <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label" for="pontualidade"><b>Pontualidade</b></label><br>
