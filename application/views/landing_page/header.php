@@ -18,7 +18,7 @@
    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS inline
+    <!-- CSS inline GAMBIARRA TEMPORÁRIA
    ================================================== -->
         <style>
         .header-logo a {  
@@ -81,7 +81,7 @@
 				<li><a href="https://github.com/projeto-hrm-crm/projeto/tree/master/documentacao" target="_blank" title="documentation">Documentação</a></li>				
 			</ul>
 
-            <a href="<?php echo base_url();?>/login" title="sign-up" class="button button-primary cta">Login</a>
+            <a href="<?php echo base_url();?>/login" target="_blank" title="sign-up" class="button button-primary cta">Login</a>
 		</nav>
 
 		<a class="header-menu-toggle" href="#"><span>Menu</span></a>    	

@@ -30,8 +30,9 @@
                 </div>
 
                 <div class="home-image-right">
-                    <img src="images/iphone-app-470.png" 
-                        srcset="images/iphone-app-470.png 1x, images/iphone-app-940.png 2x"  
+                    <img src="<?php echo base_url();?>assets/images/landing_page/iphone-app-470.png" 
+                        srcset="<?php echo base_url();?>assets/images/landing_page/iphone-app-470.png 1x, 
+                        <?php echo base_url();?>assets/images/landing_page/iphone-app-940.png 2x"  
                         data-aos="fade-up">
                 </div>
             </div>
