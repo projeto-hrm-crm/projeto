@@ -41,9 +41,6 @@
 
 
 </head>
-<body>
-
-
 <!-- Left Panel -->
 
 <aside id="left-panel" class="left-panel">

@@ -80,12 +80,16 @@ jQuery(document).ready(function($) {
 	*/
 	function countNotifications(){
 		var count = $('.count');
+		count.removeClass("bg-danger");
 		$.ajax({
 			url: BASE_URL + "/notifications/count", 
 			data: 'JSON', 
 			success: (value) => {
 				value = JSON.parse(value);
-				count.html(value)
+				if (value > 0) {
+					count.addClass("bg-danger");
+					count.html(value)
+				}
 			},
 			error: (error) => {
 

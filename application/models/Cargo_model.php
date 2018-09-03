@@ -40,6 +40,7 @@ class Cargo_model extends PR_Model
         $this->db
         ->set('cargo.nome',      $cargo['nome'])
         ->set('cargo.descricao', $cargo['descricao'])
+        ->set('carga_horaria_semanal', $cargo['carga_horaria_semanal'])
         ->set('cargo.salario',   $cargo['salario'])
         ->set('cargo.id_setor',  $cargo['id_setor'])
         //->set('cargo.horario',  $cargo['horario'])
