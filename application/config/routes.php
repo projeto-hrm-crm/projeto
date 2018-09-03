@@ -114,6 +114,12 @@ $route['setor/cadastrar']='Setor/create';
 $route['setor/editar/(:num)']='Setor/edit/$1';
 $route['setor/excluir/(:num)']='Setor/delete/$1';
 
+//Rotas Almoxarifado
+$route['almoxarifado']='Almoxarifado';
+$route['almoxarifado/cadastrar']='Almoxarifado/create';
+$route['almoxarifado/editar/(:num)']='Almoxarifado/edit/$1';
+$route['almoxarifado/excluir/(:num)']='Almoxarifado/delete/$1';
+
 //Rotas Cargo
 $route['cargo']='Cargo';
 $route['cargo/cadastrar']='Cargo/create';
