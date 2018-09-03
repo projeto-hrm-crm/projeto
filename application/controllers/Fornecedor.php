@@ -91,7 +91,7 @@ class Fornecedor extends PR_Controller
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
        'confirm.modal.js',
-       //'fornecedor/validate-form.js',
+       'fornecedor/validate-form.js',
        'validate.js',
      ),
    );

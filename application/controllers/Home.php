@@ -28,7 +28,19 @@ class Home extends CI_Controller
 
 
       // alterado o data da view home_fornecedor para testar na branch home_fornecedor
-      $data['fornecedor'] = $this->getAdminHomeConfigs();
+    switch ($id_grupo_acesso) {
+
+      case $id_grupo_acesso == 1:
+       $data['admin'] = $this->getAdminHomeConfigs();
+      
+      case $id_grupo_acesso == 3:
+       $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
+      
+      default:
+        # code...
+        break;
+    }
+      
 
       $data['title'] = 'Dashboard';
       $data['assets'] = [
@@ -78,12 +90,12 @@ class Home extends CI_Controller
   }
 
 
-  public function getFornecedorHomeConfigs()
+  public function getFornecedorHomeConfigs($user_id)
   {
 
     $data = [];
     //
-    $data['produtos']  = $this->produto->count();
+    $data['produtos']  = $this->produto->getProdutosFornecedorLogado($user_id);
     $data['last_sac']  = $this->sac->getLastSac();
 
     return $data;
@@ -92,40 +104,3 @@ class Home extends CI_Controller
 
 
 }
-
-
-/*
- public function getProdutosFornecedorLogado($user_id){
- 
-  return $this->db
-    ->select('produto.*, pessoa_juridica.razao_social, usuario.id_usuario')
-    ->join('fornecedor', 'fornecedor.id_fornecedor = produto.id_fornecedor')
-    ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
-    ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
-    ->join('usuario', 'usuario.id_usuario = pessoa.id_pessoa')
-    ->where('usuario.id_grupo_acesso = 3')
-    ->where('usuario.id_usuario', $user_id)
-    ->get('produto')
-    ->result();
-}
-
-
- /* SELECT produto.nome, pessoa_juridica.razao_social, usuario.senha, usuario.id_usuario FROM produto
-
-JOIN fornecedor
-ON fornecedor.id_fornecedor = produto.id_fornecedor
-
- JOIN pessoa_juridica     
-     ON pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica
-
-  JOIN pessoa      
-      ON pessoa.id_pessoa = pessoa_juridica.id_pessoa
-
-  JOIN usuario
-      ON usuario.id_usuario = pessoa.id_pessoa
-
-  WHERE usuario.id_grupo_acesso = 3 AND usuario.id_usuario = 18 (usuario_logado);
-
-
-  }
-  */
