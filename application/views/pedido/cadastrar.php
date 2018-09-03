@@ -178,7 +178,7 @@
 			    		                            		</td>
 			    		                            		<td width="20%" class="td-value" data-default="<?php echo $produto->valor ?>">
 			    		                            			<?php
-			    		                            				echo 'R$ ' . number_format($produto->valor *  $old_data['qtd_produto'][$key], 2, ',','');
+			    		                            				echo 'R$ ' .$produto->valor  *  $old_data['qtd_produto'][$key];
 
 			    		                            			?>
 			    		                            		</td>
@@ -190,8 +190,8 @@
 			    		                            	</tr>
 
 	    		                            <?php
-	    		                            			$qtd   += $old_data['qtd_produto'][$key];
-	    		                            			$total += $produto->valor *  $old_data['qtd_produto'][$key];
+																					$total += $produto->valor *  $old_data['qtd_produto'][$key];
+																					$total += $produto->valor;
 	    		                            		endforeach;
     		                            		endif;
     		                            	?>
