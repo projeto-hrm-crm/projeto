@@ -68,8 +68,8 @@
    ================================================== -->
    <header id="header" class="row">   
 
-   		<div class="header-logo">
-	        <a href="<?php echo base_url();?>">Lambda RP</a>
+   		<div class="header-sitename">
+	        <a href="<?php echo base_url();?>"><h1>Lambda RP</h1></a>
 	    </div>
 
 	   	<nav id="header-nav-wrap">

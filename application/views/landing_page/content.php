@@ -202,11 +202,15 @@
                     O Lambda RP só precisa de um servidor web com PHP e MySQL. Baixe, descompacte o arquivo no servidor, crie o banco de dados e execute o instalador. Simples assim!
                 </p>
 
+                 <p class="download-badges"> 
+                 <a href="https://github.com/projeto-hrm-crm/projeto" target="_blank" title="Download" data-aos="fade-up">
+                 <img src="<?php echo base_url();?>assets/images/landing_page/download-button-large.png" alt="Download"></a></p>
+
+<!--
                 <ul class="download-badges">                    
                     <li><a href="https://github.com/projeto-hrm-crm/projeto" target="_blank" title="" class="badge-download" data-aos="fade-up">Download</a></li>
                 </ul>
-
-                
+-->
 
             </div>
         </div>

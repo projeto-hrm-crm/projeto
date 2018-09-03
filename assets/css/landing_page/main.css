@@ -1139,6 +1139,20 @@ h1.intro-header::before {
 /* ------------------------------------------------------------------- 
  * header logo - (_site-layout.css) 
  * ------------------------------------------------------------------- */
+ .header-sitename h1 {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  z-index: 501;
+  color:#CCC;
+  font-size: 2.5rem;
+
+}
 
 .header-logo {
   position: absolute;
