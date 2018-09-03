@@ -88,7 +88,7 @@
 	                                    			// in_array($produto->id_produto, $pedido_produtos) !== false ?
 	                                    			'disabled' : ''
 	                                    		?>
-	                                    		data-value="<?php echo $produto->valor; ?>">
+	                                    		data-value="<?php echo floatval($produto->valor); ?>">
 	                                    		<?php echo $produto->nome ?>
 	                                    	</option>
 	                                   	<?php endforeach ?>
@@ -145,8 +145,8 @@
 				    		                            		<td width="20%" class="td-value" data-default="<?php echo floatval($produto->valor) ?>">
 				    		                            			<?php
 				    		                            				echo isset($old_data['id_produto']) ?
-				    		                            				'R$ ' . floatval(str_replace('.','',$produto->valor)) *  $produto->quantidade:
-				    		                            				'R$ ' . number_format(floatval(str_replace('.','',$produto->valor)) *  $produto->quantidade,2,',','.');
+				    		                            				'R$ ' . number_format(floatval($produto->valor) *  $produto->quantidade, 2, ',','') :
+				    		                            				'R$ ' . number_format(floatval($produto->valor) *  $produto->quantidade, 2, ',','');
 
 				    		                            			?>
 				    		                            		</td>
@@ -160,7 +160,7 @@
 
 	    		                            <?php
 		    		                            			$qtd   += $produto->quantidade;
-		    		                            			$total += floatval(str_replace('.','',$produto->valor)) *  $produto->quantidade;
+		    		                            			$total += floatval($produto->valor) * $produto->quantidade;
 
 	    		                            		endforeach;
     		                            		endif;
@@ -172,7 +172,7 @@
 	    		                            	    <th scope="col"></th>
 	    		                            	    <th scope="col"></th>
 	    		                            	    <th scope="col" id="total-qtd"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? $qtd : ''; ?></th>
-	    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? 'R$ ' .number_format(str_replace(',','',$total),2,',','.') : ''; ?></th>
+	    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? 'R$ ' . number_format($total, 2, ',','') : ''; ?></th>
 	    		                            	    <th scope="col"></th>
 	    		                            	</tr>
 	    		                            </tfoot>

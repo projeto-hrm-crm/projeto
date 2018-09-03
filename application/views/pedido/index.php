@@ -116,20 +116,19 @@
                                                                 <div class="col-2 text-right">Total</div>
                                                             </div>
                                                             <?php foreach ($pedido->produtos as $produto): ?>
-
-                                                              <div class="row">
+                                                                <div class="row">
                                                                     <div class="col-1"><?php echo $produto->id_produto ?></div>
                                                                     <div class="col-5"><?php echo $produto->nome ?></div>
-                                                                    <div class="col-2 text-right"><?php echo 'R$ '.$produto->valor; ?></div>
+                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format(floatval($produto->valor), 2, ',',''); ?></div>
                                                                     <div class="col-2 text-right"><?php echo $produto->quantidade ?></div>
-                                                                    <div class="col-2 text-right"> <?php echo 'R$ '.number_format(floatval(str_replace('.','',$produto->valor)) * $produto->quantidade,2,',','.'); ?></div>
+                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format((floatval($produto->valor) * $produto->quantidade), 2, ',',''); ?></div>
                                                                 </div>
                                                             <?php endforeach ?>
                                                             <hr>
                                                             <div class="row">
                                                                 <div class="col-12 text-right">
                                                                     <strong>
-                                                                        <?php echo 'Valor total: R$ '.number_format(str_replace('.','',$pedido->total),2,',','.'); ?>
+                                                                        <?php echo 'R$ '.number_format($pedido->total, 2, ',',''); ?>
                                                                     </strong>
                                                                 </div>
                                                             </div>
@@ -140,12 +139,15 @@
                                             <?php endforeach; ?>
                                         <?php endif; ?>
                                     </tbody>
+
                                 </table>
 
                                 <!-- / PEDIDOS -->
-
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+
 
                                 <!-- COMPRAS -->
                                 <table class="datatable table">
@@ -235,6 +237,7 @@
                                                                 </div>
                                                             <?php endforeach ?>
 
+
                                                         </div>
                                                     </td>
 
@@ -242,12 +245,14 @@
                                             <?php endforeach; ?>
                                         <?php endif; ?>
                                     </tbody>
+
                                 </table>
 
                                 <!-- / COMPRAS -->
 
                             </div>
                         </div>
+
                     </div>
                 </div>
         </div>
