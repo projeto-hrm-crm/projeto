@@ -24,23 +24,13 @@ class Home extends CI_Controller
 	{
     $user_id = $this->session->userdata('user_login');
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
+
+
+switch ($id_grupo_acesso) {
+  case '1':
     $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-
-
       // alterado o data da view home_fornecedor para testar na branch home_fornecedor
-    switch ($id_grupo_acesso) {
-
-      case $id_grupo_acesso == 1:
-       $data['admin'] = $this->getAdminHomeConfigs();
-      
-      case $id_grupo_acesso == 3:
-       $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
-      
-      default:
-        # code...
-        break;
-    }
-      
+      $data['admin'] = $this->getAdminHomeConfigs();
 
       $data['title'] = 'Dashboard';
       $data['assets'] = [
@@ -50,12 +40,41 @@ class Home extends CI_Controller
         ]
       ];
 
-  		loadTemplate(
+      loadTemplate(
           'includes/header',
           'home/home_'.$grupo_acesso[0]->nome,
           'includes/footer',
           $data
         );
+    break;
+
+  case '3':
+    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+      // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+      $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
+
+
+      $data['title'] = 'Dashboard';
+      $data['assets'] = [
+        'js' => [
+           'chartjs.min.js',
+           'cliente/home-charts.js'
+        ]
+      ];
+
+      loadTemplate(
+          'includes/header',
+          'home/home_'.$grupo_acesso[0]->nome,
+          'includes/footer',
+          $data
+        );
+    break;
+  
+  default:
+    # code...
+    break;
+}
+    
   	
   }
 
