@@ -146,7 +146,7 @@
             <div class="col-four acesso-intro">
                 <h1 class="intro-header" data-aos="fade-up">Perfis de Acesso</h1>
 
-                <p data-aos="fade-up">O Perfil de Acesso define quais funcionalidades estarão habilitadas no acesso ao sistema de um grupo de usuários. o Administrador pode conceder acessos diferentes para cada perfil de usuário.
+                <p data-aos="fade-up">O Perfil de Acesso define quais funcionalidades estarão habilitadas no acesso ao sistema de um grupo de usuários. O administrador pode conceder acessos diferentes para cada perfil de usuário.
                 </p>
             </div>
 
