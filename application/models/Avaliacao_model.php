@@ -68,7 +68,8 @@ class Avaliacao_model extends PR_Model {
         ->set('avaliacao.produtividade', $data['produtividade'])
         ->set('avaliacao.relacao_interpessoal', $data['relacao_interpessoal'])
         ->set('avaliacao.proatividade', $data['proatividade'])
-        ->where('avaliacao.id_sac', $data['id_avaliacao'])
+        ->set('avaliacao.id_avaliador', $data['id_avaliador'])
+        ->where('avaliacao.id_avaliacao', $data['id_avaliacao'])
         ->update('avaliacao');
         
         $this->setLog("Edição avaliação", $data['id_avaliacao']);

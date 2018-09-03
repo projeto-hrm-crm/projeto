@@ -228,23 +228,72 @@ class Funcionario extends PR_Controller
         $this->loadView('avaliacoes');
     }
     
-    public function evaluate_info($id_funcionario) {
+    public function evaluate_info($id_avaliacao) {
         
         //Pega o id de usuario da sessão
         $user_id = $this->session->userdata('user_login');
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
+       
+       
+        $data = $this->avaliacao->find($id_avaliacao);
+        $id_funcionario = $data[0]->id_funcionario;
 
-        $this->setTitle('Avaliar Funcionario');
+        $this->setTitle('Informações Avaliação');
         $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
         $this->addData('avaliador', $this->usuario->getUserNameById($user_id));
-        $this->addData('avaliacao', $this->avaliacao->find($user_id));
+        $this->addData('avaliacao', $this->avaliacao->find($id_avaliacao));
         $this->addData('id_funcionario', $id_funcionario);
 
         $this->loadIndexDefaultScripts();
 
         $this->loadView('avaliacao-info');
+
+    }
+   
+   public function evaluate_edit($id_avaliacao) {
+        
+        //Pega o id de usuario da sessão
+        $user_id = $this->session->userdata('user_login');
+      
+        $data = $this->avaliacao->find($id_avaliacao);
+        $id_funcionario = $data[0]->id_funcionario;
+        
+        if ($this->input->post()) {
+            $array = array(
+                'pontualidade' => $this->input->post('pontualidade'),
+                'comprometimento' => $this->input->post('comprometimento'),
+                'produtividade' => $this->input->post('produtividade'),
+                'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
+                'proatividade' => $this->input->post('proatividade'),
+                'id_avaliacao' => $id_avaliacao,
+                'id_avaliador' => $user_id 
+            );
+            
+            $this->avaliacao->update($array);
+            
+            $this->session->set_flashdata('success', 'Avaliação editada');
+            redirect('funcionario/avaliacoes/'.$id_funcionario);
+        }        
+
+        //Pega o tipo de usuario e informações de pessoas
+        $typeUser = $this->usuario->getUserAccessGroup($user_id);
+        $data['avaliador'] = $this->usuario->getUserNameById($user_id);
+       
+       
+        
+
+        $this->setTitle('Informações Avaliação');
+        $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
+        $this->addData('avaliador', $this->usuario->getUserNameById($user_id));
+        $this->addData('avaliacao', $this->avaliacao->find($id_avaliacao));
+        $this->addData('id_funcionario', $id_funcionario);
+        $this->addData('id_avaliacao', $id_avaliacao);
+
+        $this->loadIndexDefaultScripts();
+
+        $this->loadView('avaliacao-editar');
 
     }
 }

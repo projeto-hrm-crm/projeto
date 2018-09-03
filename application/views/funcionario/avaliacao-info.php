@@ -4,10 +4,10 @@
     <div class="col-lg-10">
       <div class="card">
         <div class="card-header">
-          <strong class="card-title">Avaliar Funcionário</strong>
+          <strong class="card-title">Informações da Avaliação</strong>
         </div>
 
-        <form action="<?php site_url('funcionario/avaliar/'.$id_funcionario); ?>" method="POST" id="form_funcionario"  class="form-horizontal">
+       
           <div class="card-body card-block">
             <div class="row">
 
@@ -18,76 +18,93 @@
 
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label"><b>Avaliador</b></label>
-                <p><label class=" form-control-label"><?= htmlspecialchars($avaliador[0]->nome)?></label></p>
+                <p><label class=" form-control-label"><?=htmlspecialchars($avaliador[0]->nome)?></label></p>
               </div> <!-- FIM AVALIADOR -->
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label" for="pontualidade"><b>Pontualidade</b></label><br>
-                <select name="pontualidade" class="form-control" id="pontualiadade">
-                    <option value="0">Péssimo</option>
-                    <option value="1">Ruim</option>
-                    <option value="2">Regular</option>
-                    <option value="3">Bom</option>
-                    <option value="4">Ótimo</option>
-                </select>
+                <p>
+                   <label class=" form-control-label">
+                   <?php 
+                     if($avaliacao[0]->pontualidade==0){echo "Péssimo";} 
+                     if($avaliacao[0]->pontualidade==1){echo "Ruim";} 
+                     if($avaliacao[0]->pontualidade==2){echo "Regular";} 
+                     if($avaliacao[0]->pontualidade==3){echo "Bom";} 
+                     if($avaliacao[0]->pontualidade==4){echo "Ótimo";} 
+                   ?>
+                   </label>
+                 </p>
               </div> <!-- FIM Pontualidade -->
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label" for="comprometimento"><b>Comprometimento</b></label><br>
-                <select name="comprometimento" class="form-control" id="comprometimento">
-                    <option value="0">Péssimo</option>
-                    <option value="1">Ruim</option>
-                    <option value="2">Regular</option>
-                    <option value="3">Bom</option>
-                    <option value="4">Ótimo</option>
-                </select>
+                <p>
+                   <label class=" form-control-label">
+                   <?php 
+                     if($avaliacao[0]->comprometimento==0){echo "Péssimo";} 
+                     if($avaliacao[0]->comprometimento==1){echo "Ruim";} 
+                     if($avaliacao[0]->comprometimento==2){echo "Regular";} 
+                     if($avaliacao[0]->comprometimento==3){echo "Bom";} 
+                     if($avaliacao[0]->comprometimento==4){echo "Ótimo";} 
+                   ?>
+                   </label>
+                 </p>
               </div> <!-- FIM Comprometimento -->
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label" for="produtividade"><b>Produtividade</b></label><br>
-                <select name="produtividade" class="form-control" id="produtividade">
-                    <option value="0">Péssimo</option>
-                    <option value="1">Ruim</option>
-                    <option value="2">Regular</option>
-                    <option value="3">Bom</option>
-                    <option value="4">Ótimo</option>
-                </select>
+                <p>
+                   <label class=" form-control-label">
+                   <?php 
+                     if($avaliacao[0]->produtividade==0){echo "Péssimo";} 
+                     if($avaliacao[0]->produtividade==1){echo "Ruim";} 
+                     if($avaliacao[0]->produtividade==2){echo "Regular";} 
+                     if($avaliacao[0]->produtividade==3){echo "Bom";} 
+                     if($avaliacao[0]->produtividade==4){echo "Ótimo";} 
+                   ?>
+                   </label>
+                 </p>
               </div> <!-- FIM Produtividade -->
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label" for="relacaointerpessoal"><b>Relação interpessoal</b></label><br>
-                <select name="relacao_interpessoal" class="form-control" id="relacao_interpessoal">
-                    <option value="0">Péssimo</option>
-                    <option value="1">Ruim</option>
-                    <option value="2">Regular</option>
-                    <option value="3">Bom</option>
-                    <option value="4">Ótimo</option>
-                </select>
+                <p>
+                   <label class=" form-control-label">
+                   <?php 
+                     if($avaliacao[0]->relacao_interpessoal==0){echo "Péssimo";} 
+                     if($avaliacao[0]->relacao_interpessoal==1){echo "Ruim";} 
+                     if($avaliacao[0]->relacao_interpessoal==2){echo "Regular";} 
+                     if($avaliacao[0]->relacao_interpessoal==3){echo "Bom";} 
+                     if($avaliacao[0]->relacao_interpessoal==4){echo "Ótimo";} 
+                   ?>
+                   </label>
+                 </p>
               </div> <!-- FIM Relação interpessoal -->
 
-              <div class="form-group col-12 col-md-6">
+              <div class="form-group col-12 col-md-3">
                 <label class=" form-control-label" for="proatividade"><b>Proatividade</b></label><br>
-                <select name="proatividade" class="form-control" id="proatividade">
-                    <option value="0">Péssimo</option>
-                    <option value="1">Ruim</option>
-                    <option value="2">Regular</option>
-                    <option value="3">Bom</option>
-                    <option value="4">Ótimo</option>
-                </select>
+                <p>
+                   <label class=" form-control-label">
+                   <?php 
+                     if($avaliacao[0]->proatividade==0){echo "Péssimo";} 
+                     if($avaliacao[0]->proatividade==1){echo "Ruim";} 
+                     if($avaliacao[0]->proatividade==2){echo "Regular";} 
+                     if($avaliacao[0]->proatividade==3){echo "Bom";} 
+                     if($avaliacao[0]->proatividade==4){echo "Ótimo";} 
+                   ?>
+                   </label>
+                 </p>
               </div> <!-- FIM Proatividade -->
 
             </div>
 
           </div>
           <div class="card-footer text-right">
-            <a title="Cancelar Cadastro" href="<?=site_url('funcionario/avaliacoes/'.$id_funcionario)?>" class="btn btn-danger btn-sm">
-              <i class="fa fa-times"></i> Cancelar
+            <a title="Voltar a todas avaliações" href="<?=site_url('funcionario/avaliacoes/'.$id_funcionario)?>" class="btn btn-primary btn-sm">
+              Voltar a Todas as Avaliações
             </a>
-            <button title="Cadastrar Funcionário" type="submit" class="btn btn-primary btn-sm">
-              <i class="fa fa-plus"></i> Cadastrar
-            </button>
           </div>
-        </form>
+        
 
       </div>
     </div>
