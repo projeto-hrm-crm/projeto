@@ -40,7 +40,7 @@
                       <tr>
                         <td class=""><?= $avaliacao->nome; ?></td>
                         <td class="text-center">
-                          <?php echo switchDate(substr($avaliacao->data_avaliacao, 0, 10))." as ".substr($avaliacao->data_avaliacao, 10, 10);?>
+                          <?=switchDate(substr($avaliacao->data_avaliacao, 0, 10))." as ".substr($avaliacao->data_avaliacao, 10, 10);?>
                         </td>
                         <td class="text-center">
                           <a title="Atualizar avaliação" href="<?= site_url('funcionario/avaliacao-editar/'.$avaliacao->id_avaliacao)?>" class="btn btn-primary"><span class="fa fa-edit"></span></a>

@@ -107,8 +107,8 @@ class Funcionario_model extends CI_Model {
             'id_pessoa' => $funcionario[0]->id_pessoa]);
 
         $this->pessoa_fisica->update($funcionario[0]->id_pessoa,[
-            'data_nascimento'   => switchDate($data['funcionario']['data_nascimento']),
-            'sexo'              =>$data['funcionario']['sexo']]);
+            'data_nascimento'   => switchDate($data['data_nascimento']),
+            'sexo'              => $data['sexo']]);
 
         $this->session->set_flashdata('success', 'Funcionario Atualizado Com Sucesso!');
 

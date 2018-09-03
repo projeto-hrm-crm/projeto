@@ -134,21 +134,21 @@ class Funcionario extends PR_Controller
    private function getFromPost()
     {
         return array(
-            'nome'      => $this->input->post('nome'),
-            'email' => $this->input->post('email'),
-            'senha'   => $this->input->post('senha'),
-            'senha2'  => $this->input->post('senha2'),
-            'data_nacimento'      => $this->input->post('data_nacimento'),
-            'sexo' => $this->input->post('sexo'),
-            'cpf'   => $this->input->post('cpf'),
-            'tel'  => $this->input->post('tel'),
-            'cep'  => $this->input->post('cep'),
-            'estado' => $this->input->post('estado'),
-            'cidade' => $this->input->post('cidade'),
-            'bairro' => $this->input->post('bairro'),
-            'logradouro' => $this->input->post('logradouro'),
-            'numero' => $this->input->post('numero'),
-            'complemento' => $this->input->post('complemento'),
+            'nome'            => $this->input->post('nome'),
+            'email'           => $this->input->post('email'),
+            'senha'           => $this->input->post('senha'),
+            'senha2'          => $this->input->post('senha2'),
+            'data_nacimento'  => $this->input->post('data_nacimento'),
+            'sexo'            => $this->input->post('sexo'),
+            'cpf'             => $this->input->post('cpf'),
+            'tel'             => $this->input->post('tel'),
+            'cep'             => $this->input->post('cep'),
+            'estado'          => $this->input->post('estado'),
+            'cidade'          => $this->input->post('cidade'),
+            'bairro'          => $this->input->post('bairro'),
+            'logradouro'      => $this->input->post('logradouro'),
+            'numero'          => $this->input->post('numero'),
+            'complemento'     => $this->input->post('complemento'),
 
         );
     }
