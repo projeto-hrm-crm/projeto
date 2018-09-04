@@ -44,11 +44,12 @@ class Sac extends PR_Controller {
     }
 
     /**
-    * @author: Rodrigo Alves
+    * @author: Pedro Henrique Guimarães
     * Página de cadastro.
     */
-    public function create() {
+    public function ajaxCreate() {
 
+      print_r($this->input->post());exit;
       $user_id = $this->session->userdata('user_login');
 
       //Pega o tipo de usuario e informações de pessoas
@@ -64,6 +65,8 @@ class Sac extends PR_Controller {
       }else {
          $id_cliente = $cliente[0]->id_cliente;
       }
+
+      
        
       $data = $this->input->post();
 
@@ -80,6 +83,8 @@ class Sac extends PR_Controller {
               'descricao' => $this->input->post('descricao'),
             );
 
+            
+
             $this->sac->insert($array);
             $this->session->set_flashdata('success', 'SAC cadastrado com sucesso!');
             redirect('sac');
@@ -89,20 +94,6 @@ class Sac extends PR_Controller {
             redirect('sac');
          }
       }
-
-     $data['title'] = 'Cadastrar SAC';
-     $data['produtos'] = $this->produto->get();
-     $data['clientes'] = $this->cliente->get();
-     $data['tipo'] = $typeUser;
-     $data['assets'] = array(
-            'js' => array(
-            'lib/data-table/datatables.min.js',
-            'lib/data-table/dataTables.bootstrap.min.js',
-            'datatable.js',
-            'confirm.modal.js',
-         ),
-      );
-     loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
     }
 
     public function edit($id) {

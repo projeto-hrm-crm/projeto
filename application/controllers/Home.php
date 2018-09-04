@@ -27,12 +27,14 @@ class Home extends CI_Controller
     $grupo_acesso = $this->grupo->find($id_grupo_acesso);
 
     $data['admin'] = $this->getAdminHomeConfigs();
+    $data['client'] = $this->getClientHomeConfigs();
 
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
          'chartjs.min.js',
-         'cliente/home-charts.js'
+         'cliente/home-charts.js',
+         'cliente/home-sac.js'
       ]
     ];
 
@@ -52,7 +54,7 @@ class Home extends CI_Controller
    * @param void
    * @return mixed
    */
-  public function getAdminHomeConfigs()
+  private function getAdminHomeConfigs()
   {
     $data = [];
 
@@ -74,5 +76,14 @@ class Home extends CI_Controller
 
     return $data;
   }
+
+  private function getClientHomeConfigs()
+  {
+    $data = [];
+    $data['produtos'] = $this->produto->get();
+    return $data;
+  }
+
+
 
 }
