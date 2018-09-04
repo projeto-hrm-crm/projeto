@@ -114,7 +114,7 @@ switch ($id_grupo_acesso) {
 
     $data = [];
     //
-    $data['produtos']  = $this->produto->getProdutosFornecedorLogado($user_id);
+    $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
     $data['last_sac']  = $this->sac->getLastSac();
 
     return $data;
