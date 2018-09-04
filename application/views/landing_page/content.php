@@ -1,6 +1,6 @@
    <!-- home
    ================================================== -->
-   <section id="home" data-parallax="scroll" data-image-src="<?php echo base_url();?>assets/images/landing_page/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000>
+   <section id="home" data-parallax="scroll" data-image-src="<?php echo base_url();?>assets/landing_page/images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000>
 
         <div class="overlay"></div>
         <div class="home-content">        
@@ -30,9 +30,9 @@
                 </div>
 
                 <div class="home-image-right">
-                    <img src="<?php echo base_url();?>assets/images/landing_page/iphone-app-470.png" 
-                        srcset="<?php echo base_url();?>assets/images/landing_page/iphone-app-470.png 1x, 
-                        <?php echo base_url();?>assets/images/landing_page/iphone-app-940.png 2x"  
+                    <img src="<?php echo base_url();?>assets/landing_page/images/iphone-app-470.png" 
+                        srcset="<?php echo base_url();?>assets/landing_page/images/iphone-app-470.png 1x, 
+                        <?php echo base_url();?>assets/landing_page/images/iphone-app-940.png 2x"  
                         data-aos="fade-up">
                 </div>
             </div>
@@ -126,10 +126,10 @@
         
         <div class="row sobre-bottom-image">
 
-           <img src="<?php echo base_url();?>assets/images/landing_page/app-screens-1200.png" 
-                srcset="<?php echo base_url();?>assets/images/landing_page/app-screens-600.png 600w, 
-                <?php echo base_url();?>assets/images/landing_page/app-screens-1200.png 1200w, 
-                <?php echo base_url();?>assets/images/landing_page/app-screens-2800.png 2800w" 
+           <img src="<?php echo base_url();?>assets/landing_page/images/app-screens-1200.png" 
+                srcset="<?php echo base_url();?>assets/landing_page/images/app-screens-600.png 600w, 
+                <?php echo base_url();?>assets/landing_page/images/app-screens-1200.png 1200w, 
+                <?php echo base_url();?>assets/landing_page/images/app-screens-2800.png 2800w" 
                 sizes="(max-width: 2800px) 100vw, 2800px"
                 alt="Telas do Lambda RP" data-aos="fade-up">
 
@@ -204,7 +204,7 @@
 
                  <p class="download-badges"> 
                  <a href="https://github.com/projeto-hrm-crm/projeto" target="_blank" title="Download" data-aos="fade-up">
-                 <img src="<?php echo base_url();?>assets/images/landing_page/download-button-large.png" alt="Download"></a></p>
+                 <img src="<?php echo base_url();?>assets/landing_page/images/download-button-large.png" alt="Download"></a></p>
 
 <!--
                 <ul class="download-badges">                    
