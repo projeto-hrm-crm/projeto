@@ -178,4 +178,5 @@ $autoload['model'] = array(
                     'Sugestao_model'             => 'sugestao',
                     'Notificacao_model'          => 'notificacao',
                     'Almoxarifado_model'         => 'almoxarifado',
+                    'UnidadeMedida_model'        => 'unidadeMedida',
 );
