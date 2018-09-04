@@ -18,8 +18,8 @@ class Agenda extends CI_Controller
             if($this->form_validation->run('evento')){
                 $eventos = array(
                     'titulo'     => $this->input->post('titulo'),
-                    'inicio'     => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('inicio')))),
-                    'fim'        => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('fim')))),
+                    'inicio'     => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('inicio').$this->input->post('horaInicio')))),
+                    'fim'        => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('fim').$this->input->post('horaFim')))),
                     'cor'        => $this->input->post('cor'),
                 );
                 $this->evento->insert($eventos);
@@ -28,7 +28,7 @@ class Agenda extends CI_Controller
             }else{
                 $this->session->set_flashdata('errors', $this->form_validation->error_array());
                 $this->session->set_flashdata('old_data', $this->input->post());
-                redirect('agenda/cadastrar');
+                redirect('agenda');
             }
         } else {
             $dados['title'] = 'Cadastrar evento';

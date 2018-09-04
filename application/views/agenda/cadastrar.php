@@ -1,4 +1,4 @@
-<div class="row justify-content-center align-items-center">
+<!-- <div class="row justify-content-center align-items-center">
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
@@ -44,4 +44,4 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
