@@ -177,4 +177,5 @@ $autoload['model'] = array(
                     'Etapa_model'                => 'etapa',
                     'Sugestao_model'             => 'sugestao',
                     'Notificacao_model'          => 'notificacao',
+                    'Almoxarifado_model'         => 'almoxarifado',
 );
