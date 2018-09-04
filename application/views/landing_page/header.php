@@ -18,42 +18,16 @@
    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSS inline GAMBIARRA TEMPORÁRIA
-   ================================================== -->
-        <style>
-        .header-logo a {  
-        background: url("<?php echo base_url();?>assets/images/landing_page/logo.png") no-repeat center;  
-        }
-
-        .footer-logo {  
-        background: url("<?php echo base_url();?>assets/images/landing_page/logo.png") no-repeat center;  
-        }
-
-
-        #download .download-badges li a.badge-download {
-        background-image: url("<?php echo base_url();?>assets/images/landing_page/download-button-large.png");
-        }
-
-        #download .download-badges li a.badge-appstore {
-        background-image: url("<?php echo base_url();?>assets/images/landing_page/appstore.png");
-        }
-
-        #download .download-badges li a.badge-googleplay {
-        background-image: url("<?php echo base_url();?>assets/images/landing_page/google-play.png");
-        }
-        </style>
-
     <!-- CSS
    ================================================== -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/landing_page/base.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/landing_page/vendor.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/landing_page/main.css">
-    <link type="text/css" rel="stylesheet" href="<?=base_url()?>views/landing_page/style.php"/>
-
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/base.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/vendor.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/main.css">
+    
     <!-- script
    ================================================== -->
-    <script src="<?php echo base_url();?>assets/js/landing_page/modernizr.js"></script>
-    <script src="<?php echo base_url();?>assets/js/landing_page/pace.min.js"></script>
+    <script src="<?php echo base_url();?>assets/landing_page/js/modernizr.js"></script>
+    <script src="<?php echo base_url();?>assets/landing_page/js/pace.min.js"></script>
 
     <!-- favicons
 	================================================== -->

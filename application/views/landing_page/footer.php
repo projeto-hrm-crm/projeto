@@ -104,9 +104,9 @@ Rodrigo Alves Da Silva Teixeira<br>
     <!-- Java Script
     ================================================== -->
    <!-- <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js"></script> -->
-    <script src="<?php echo base_url();?>assets/js/landing_page/jquery-2.1.3.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/landing_page/plugins.js"></script>
-    <script src="<?php echo base_url();?>assets/js/landing_page/main.js"></script>
+    <script src="<?php echo base_url();?>assets/landing_page/js/jquery-2.1.3.min.js"></script>
+    <script src="<?php echo base_url();?>assets/landing_page/js/plugins.js"></script>
+    <script src="<?php echo base_url();?>assets/landing_page/js/main.js"></script>
 
 </body>
 

@@ -54,6 +54,9 @@ $route['default_controller'] = 'landingpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//Rota principal
+$route['dashboard'] = 'home/index';
+
 
 //Rota do seed
 $route['make/seed'] = 'seed/index';
