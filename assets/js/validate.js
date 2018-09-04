@@ -38,7 +38,35 @@ jQuery(document).ready(function($) {
       },
     },
   });
-    
+
+  $("#form_almoxarifado").validate({
+    rules: {
+      nome: "required",
+
+      recebimento: {
+        required: true,
+        brazilian_date: true,
+        max: new Date(),
+      },
+
+      quantidade:{
+        required:true,
+        digits:true,
+      },
+
+      valor:{
+        required:true,
+      },
+
+      id_unidade_medida: {
+        required: true
+      }
+
+
+
+    },
+  });
+
   $("#form_sugestao").validate({
     rules: {
       nome: "required",
