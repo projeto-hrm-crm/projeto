@@ -38,53 +38,36 @@ class Produto extends CI_Controller
         case '1':
           $dados['title'] = 'Produtos';
           $dados['produtos'] = $this->produto->get();
-          $dados['assets'] = array(
-            'js' => array(
-              'lib/data-table/datatables.min.js',
-              'lib/data-table/dataTables.bootstrap.min.js',
-              'datatable.js',
-              'maskMoney.js',
-              'confirm.modal.js',
-            ),
-          );
-
-          $produtos = $dados['produtos'];
-          foreach($produtos as $produto){
-              $produto->fabricacao = switchDate($produto->fabricacao);
-              $produto->validade = switchDate($produto->validade);
-              $produto->recebimento = switchDate($produto->recebimento);
-
-          }
-          loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
           break;
           //login de fornecedor
           case '3':
           $dados['title'] = 'Produtos';
-          $dados['produtos'] = $this->produto->get();//nada alterado por enquanto metodo ->getFornecedorLogado($user_id)
-          $dados['assets'] = array(
-            'js' => array(
-              'lib/data-table/datatables.min.js',
-              'lib/data-table/dataTables.bootstrap.min.js',
-              'datatable.js',
-              'maskMoney.js',
-              'confirm.modal.js',
-            ),
-          );
-
-          $produtos = $dados['produtos'];
-          foreach($produtos as $produto){
-              $produto->fabricacao = switchDate($produto->fabricacao);
-              $produto->validade = switchDate($produto->validade);
-              $produto->recebimento = switchDate($produto->recebimento);
-
-          }
-          loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
+          $dados['produtos'] = $this->produto->getFornecedorLogado($user_id);
+          
           break;
 
           default:
         # code...
           break;
       }
+      $dados['assets'] = array(
+            'js' => array(
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'maskMoney.js',
+              'confirm.modal.js',
+            ),
+          );
+
+          $produtos = $dados['produtos'];
+          foreach($produtos as $produto){
+              $produto->fabricacao = switchDate($produto->fabricacao);
+              $produto->validade = switchDate($produto->validade);
+              $produto->recebimento = switchDate($produto->recebimento);
+
+          }
+          loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
 
     /**

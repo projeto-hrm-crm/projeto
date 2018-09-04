@@ -26,56 +26,38 @@ class Home extends CI_Controller
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
 
 
-switch ($id_grupo_acesso) {
-  case '1':
-    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-      // alterado o data da view home_fornecedor para testar na branch home_fornecedor
-      $data['admin'] = $this->getAdminHomeConfigs();
+      switch ($id_grupo_acesso) {
+        case '1':
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+          break;
 
-      $data['title'] = 'Dashboard';
-      $data['assets'] = [
-        'js' => [
-           'chartjs.min.js',
-           'cliente/home-charts.js'
-        ]
-      ];
+        case '3':
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+            $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
 
-      loadTemplate(
-          'includes/header',
-          'home/home_'.$grupo_acesso[0]->nome,
-          'includes/footer',
-          $data
-        );
-    break;
+          break;
+        
+        default:
+          # code...
+          break;
+      }    
+    $data['title'] = 'Dashboard';
+    $data['assets'] = [
+      'js' => [
+         'chartjs.min.js',
+         'cliente/home-charts.js'
+      ]
+    ];
 
-  case '3':
-    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-      // alterado o data da view home_fornecedor para testar na branch home_fornecedor
-      $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
-
-
-      $data['title'] = 'Dashboard';
-      $data['assets'] = [
-        'js' => [
-           'chartjs.min.js',
-           'cliente/home-charts.js'
-        ]
-      ];
-
-      loadTemplate(
-          'includes/header',
-          'home/home_'.$grupo_acesso[0]->nome,
-          'includes/footer',
-          $data
-        );
-    break;
-  
-  default:
-    # code...
-    break;
-}
-    
-  	
+    loadTemplate(
+        'includes/header',
+        'home/home_'.$grupo_acesso[0]->nome,
+        'includes/footer',
+        $data
+      ); 	
   }
 
   /**
