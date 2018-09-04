@@ -54,8 +54,9 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['agenda'] =           'agenda/index';
+$route['agenda']           = 'agenda/index';
 $route['agenda/cadastrar'] = 'agenda/create';
+$route['agenda/editar']    = 'agenda/edit';
 
 //Rota do seed
 $route['make/seed'] = 'seed/index';

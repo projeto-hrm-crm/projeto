@@ -39,4 +39,30 @@ class Agenda extends CI_Controller
         }
     }
 
+    public function edit()
+    {
+        if($this->input->post()){
+            if($this->form_validation->run('evento')){
+                $eventos = array(
+                    'titulo'     => $this->input->post('titulo'),
+                    'inicio'     => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('inicio').$this->input->post('horaInicio')))),
+                    'fim'        => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('fim').$this->input->post('horaFim')))),
+                    'cor'        => $this->input->post('cor'),
+                );
+                $this->evento->update($eventos);
+                $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
+                redirect('agenda');
+            } else {
+                $this->session->set_flashdata('errors', $this->form_validation->error_array());
+                $this->session->set_flashdata('old_data', $this->input->post());
+                redirect('agenda');
+            }
+        } else {
+            $dados['title'] = 'Editar evento';
+            $dados['errors'] = $this->session->flashdata('errors');
+            $dados['old_data'] = $this->session->flashdata('old_data');
+
+            loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
+        }
+    }
 }
