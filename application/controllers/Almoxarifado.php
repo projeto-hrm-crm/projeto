@@ -65,9 +65,10 @@ class Almoxarifado extends PR_Controller
     else
     {
         $this->setTitle('Cadastrar Almoxarifado');
-        $this->addData('cargos', $this->cargo->get());
+        $this->addData('unidades', $this->unidadeMedida->get());
 
-        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
+        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js','validate.js',
+        'maskMoney.js'));
         $this->loadFormDefaultScripts();
 
         $this->loadView('cadastrar');
