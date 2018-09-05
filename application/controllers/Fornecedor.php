@@ -157,7 +157,7 @@ class Fornecedor extends CI_Controller
       }
     }
     $fornecedor = $this->fornecedor->find($id); //FIXME ARRUMAR
-    $state = $this->cidade->findState($fornecedor[0]->id_cidade);
+    $state = $this->cidade->findState($fornecedor[0]->cidade);
     $data['fornecedor'] = $this->fornecedor->find($id);
     $data['title'] = 'Editar Fornecedor';
     $data['estados'] = $this->estado->get();
