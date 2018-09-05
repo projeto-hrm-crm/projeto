@@ -27,21 +27,32 @@ class Home extends CI_Controller
 
 
       switch ($id_grupo_acesso) {
-        case '1':
+        case '1':// home ADMINISTRADOR
           $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+          
             $data['admin'] = $this->getAdminHomeConfigs(); 
           break;
 
-        case '3':
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            // alterado o data da view home_fornecedor para testar na branch home_fornecedor
+        case '3':// FORNECEDOR
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);          
             $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
 
+        case '4'://CLIENTE
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
           break;
+
+        case '5'://CANDIDATO
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+        
+        case '6'://FUNCIONARIO
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
         
         default:
-          # code...
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
           break;
       }    
     $data['title'] = 'Dashboard';

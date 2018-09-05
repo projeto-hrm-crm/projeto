@@ -80,7 +80,7 @@ class Fornecedor extends PR_Controller
           $this->loadView('cadastrar');
 
       }
-    }
+    
     $data['title'] = 'Cadastrar Fornecedor';
     $data['fornecedor'] = $this->input->post();
     $data['estados'] = $this->estado->get();
