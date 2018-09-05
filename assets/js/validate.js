@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
       recebimento: {
         required: true,
         brazilian_date: true,
-        max: new Date(),
+        // max: new Date(),
       },
 
       quantidade:{
