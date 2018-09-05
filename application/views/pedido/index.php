@@ -45,7 +45,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php if(isset($pedidos)): ?>
+                                        <?php if(isset($pedidos)):
+                                          $total=0;
+                                          ?>
+
                                             <?php foreach($pedidos as $pedido): ?>
                                                 <tr class="col-6">
 
@@ -119,16 +122,18 @@
                                                                 <div class="row">
                                                                     <div class="col-1"><?php echo $produto->id_produto ?></div>
                                                                     <div class="col-5"><?php echo $produto->nome ?></div>
-                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format(floatval($produto->valor), 2, ',','.'); ?></div>
+                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format(intval(str_replace(",","",str_replace(".","",$produto->valor)))/100, 2, ',','.'); ?></div>
                                                                     <div class="col-2 text-right"><?php echo $produto->quantidade ?></div>
-                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format((floatval($produto->valor) * $produto->quantidade), 2, ',','.'); ?></div>
+                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format((intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100, 2, ',','.'); ?></div>
                                                                 </div>
+                                                              <? $total = $total + ((intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100);?>
                                                             <?php endforeach ?>
                                                             <hr>
                                                             <div class="row">
                                                                 <div class="col-12 text-right">
                                                                     <strong>
-                                                                        <?php echo 'R$ '.number_format($pedido->total, 2, ',','.'); ?>
+                                                                        <?php echo 'R$ '.number_format($total, 2, ',','.'); ?>
+                                                                       <?$total = 0;?>
                                                                     </strong>
                                                                 </div>
                                                             </div>
