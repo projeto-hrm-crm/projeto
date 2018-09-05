@@ -34,7 +34,13 @@ class Etapa_model extends CI_Model
 
 
     public function remove($id){
+        $this->db->where('id_etapa', $id);
+        $id_etapa = $this->db->delete('etapa');
 
+        if($id_etapa){
+            $this->relatorio->setLog('delete', 'Deletar','Etapa', $id_etapa, 'Deletou a etapa', $id);
+        }
+        return $id_etapa;
     }
 
     public function find($id){
