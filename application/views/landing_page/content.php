@@ -49,11 +49,11 @@
         <div class="row sobre-intro">
 
             <div class="col-four">
-                <h1 class="intro-header" data-aos="fade-up">Sobre o Lambda RP</h1>
+                <h1 class="intro-header" data-aos="fade-up">Sobre o Lambda ERP</h1>
             </div>
             <div class="col-eight">
                 <p class="lead" data-aos="fade-up">
-                    O Lambda RP é um sistema de planejamento de recursos empresarias com foco nos módulos de CRM e HRM e tem como objetivo auxiliar pequenas empresas no gerenciamento de clientes, produtos e funcionários.
+                    O Lambda ERP é um sistema de planejamento de recursos empresarias com foco nos módulos de CRM e HRM e tem como objetivo auxiliar pequenas empresas no gerenciamento de clientes, produtos e funcionários.
                 </p>
             </div>                       
             
@@ -199,12 +199,12 @@
                 <h1 class="intro-header"  data-aos="fade-up">Download!</h1>
 
                 <p class="lead" data-aos="fade-up">
-                    O Lambda RP só precisa de um servidor web com PHP e MySQL. Baixe, descompacte o arquivo no servidor, crie o banco de dados e execute o instalador. Simples assim!
+                    O Lambda ERP só precisa de um servidor web com PHP e MySQL. Baixe, descompacte o arquivo no servidor, crie o banco de dados e execute o instalador. Simples assim!
                 </p>
 
                  <p class="download-badges"> 
                  <a href="https://github.com/projeto-hrm-crm/projeto" target="_blank" title="Download" data-aos="fade-up">
-                 <img src="<?php echo base_url();?>assets/landing_page/images/download-button-large.png" alt="Download"></a></p>
+                 <img src="<?php echo base_url();?>assets/landing_page/images/download-button-163x45.png" alt="Download"></a></p>
 
 <!--
                 <ul class="download-badges">                    

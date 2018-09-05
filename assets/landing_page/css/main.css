@@ -1084,7 +1084,7 @@ h1.intro-header::before {
   content: "";
   height: 2px;
   width: 70px;
-  background-color: #39b54a;
+  background-color: #f86c6b;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -2168,7 +2168,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 .acesso-table .plan-block.primary {
-  background: #39b54a;
+  background: #f86c6b;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -2491,10 +2491,10 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
  * ------------------------------------------------------------------- */
 
 #download {
-  background: #39b54a;
-  color: #b2fabc;
-  padding-top: 12rem;
-  padding-bottom: 12rem;
+  background: #63c2de;
+  color: #0c0641;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   text-align: center;
 }
 
@@ -2503,7 +2503,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 #download h1::before {
-  background-color: #2a9038;
+  background-color: #f86c6b;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -2533,8 +2533,8 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 #download .download-badges li a {
   display: block;
-  width: 230px;
-  height: 71px;
+  width: 150px;
+  height: 40px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
@@ -2545,7 +2545,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 
 #download .download-badges li a.badge-download {
-  background-image: url("../../../images/download-button-large.png");
+  background-image: url("../images/download-button-163x45.png");
 }
 
 #download .download-badges li a.badge-appstore {

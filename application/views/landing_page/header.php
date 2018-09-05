@@ -10,7 +10,7 @@
     <!--- basic page needs
    ================================================== -->
     <meta charset="utf-8">
-    <title>Lambda RP - Projeto Integrado 2</title>
+    <title>Lambda ERP - Projeto Integrado 2</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -43,7 +43,7 @@
    <header id="header" class="row">   
 
    		<div class="header-sitename">
-	        <a href="<?php echo base_url();?>"><h1>Lambda RP</h1></a>
+	        <a href="<?php echo base_url();?>"><h1>Lambda ERP</h1></a>
 	    </div>
 
 	   	<nav id="header-nav-wrap">
@@ -55,7 +55,7 @@
 				<li><a href="https://github.com/projeto-hrm-crm/projeto/tree/master/documentacao" target="_blank" title="documentation">Documentação</a></li>				
 			</ul>
 
-            <a href="<?php echo base_url();?>/login" target="_blank" title="sign-up" class="button button-primary cta">Login</a>
+            <a href="<?php echo base_url();?>login" target="_blank" title="sign-up" class="button button-primary cta">Login</a>
 		</nav>
 
 		<a class="header-menu-toggle" href="#"><span>Menu</span></a>    	
