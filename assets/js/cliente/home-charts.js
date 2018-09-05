@@ -36,9 +36,9 @@ jQuery(document).ready(($) => {
               datasets: [{
                 backgroundColor: '#63c2de',
                 borderColor: '#63c2de',
-      					label: getCurrentDate(),
+      					label: "Clientes",
       					data: data.data,
-      					fill: true,
+      					fill: false,
       				}]
             }
           });

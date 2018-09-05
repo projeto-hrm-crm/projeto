@@ -288,4 +288,24 @@ class Pedido_model extends PR_Model
 		);
 	}
 
+	/**
+	 * @author Pedro Henrique Guimarães
+	 * 
+	 * Verifica se existe determinado produto inserido em algum pedido
+	 * @param int $product_id
+	 * @return boolean
+	 */
+
+	 public function checkIfProductIssetInSomeOrder($product_id) 
+	 {
+		 $this->db->select('id_produto')
+				   ->from('pedido_produto')
+				   ->where('id_produto', $product_id);
+		$sql = $this->db->get();
+
+		if ($sql->num_rows() > 0)
+			return true; 
+		return false;	
+	 }
+
 }

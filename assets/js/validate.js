@@ -38,6 +38,21 @@ jQuery(document).ready(function($) {
       },
     },
   });
+    
+  $("#form_sugestao").validate({
+    rules: {
+      nome: "required",
+
+      email: {
+        required: true,
+        email:true
+      },
+
+      sugestao: {
+        required: true,
+      }
+    },
+  });
 
   $("#form_processo_seletivo").validate({
     rules: {
@@ -48,7 +63,6 @@ jQuery(document).ready(function($) {
       "descricao_etapa[]":"required",
       codigo: {
         required: true,
-        digits:true,
       },
       id_usuario: {
         required: true,
@@ -139,8 +153,8 @@ jQuery(document).ready(function($) {
       },
 
       telefone: "required",
-      id_estado: "required",
-      id_cidade: "required",
+      estado: "required",
+      cidade: "required",
 
       logradouro: {
         required:true,

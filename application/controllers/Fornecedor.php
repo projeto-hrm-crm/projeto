@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/**
-* author: Nikolas Lencioni
-* Controller de fornecedor
-**/
 
+/**
+* @author: Nikolas Lencioni
+* @author Tiago Villalobos
+* Controller de fornecedor
+* Adequado ao PR_Controller para fins de abstração de código[Tiago Villalobos]
+**/
 class Fornecedor extends PR_Controller
 {
    /**
@@ -80,7 +82,7 @@ class Fornecedor extends PR_Controller
           $this->loadView('cadastrar');
 
       }
-    }
+    
     $data['title'] = 'Cadastrar Fornecedor';
     $data['fornecedor'] = $this->input->post();
     $data['estados'] = $this->estado->get();
@@ -91,7 +93,7 @@ class Fornecedor extends PR_Controller
        'lib/data-table/dataTables.bootstrap.min.js',
        'datatable.js',
        'confirm.modal.js',
-       //'fornecedor/validate-form.js',
+       'fornecedor/validate-form.js',
        'validate.js',
      ),
    );
@@ -190,4 +192,5 @@ class Fornecedor extends PR_Controller
      }
      redirect('fornecedor');
   }
+
 }

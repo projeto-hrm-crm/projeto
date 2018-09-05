@@ -41,57 +41,38 @@
 
             
 
-          <div class="form-group col-12 col-md-6">
-              <label class="form-control-label">Estado</label>
-               <select name="id_estado" class="form-control" id="estado">
-                  <option value="0" disabled selected>Selecione um estado</option>
-                 <?php foreach ($estados as $estado): ?>
-                   <option value="<?php echo $estado->id_estado ?>" <?php if($estado_atual[0]->id_estado == $estado->id_estado){echo "selected";} ?>><?php echo $estado->nome; ?></option>
-                 <?php endforeach; ?>
-               </select>
-          </div>
+          <!-- INÍCIO ENDEREÇO -->
+            <div class="form-group col-12 col-md-6">
+              <label class=" form-control-label"><red>*</red>CEP</label>
+              <input type="cep" id="cep" name="cep" value="<?= htmlspecialchars($endereco[0]->cep)?>"  placeholder="CEP" class="form-control cep" required>
+            </div> <!-- FIM CEP -->
+            <div class="form-group col-12 col-md-6">
 
-           <div class="form-group col-12 col-md-6">
-              <label class="form-control-label">Cidade</label>
-              <select name="id_cidade" class="form-control" id="cidade">
-                 <?php foreach ($cidades as $cidade): ?>
-                   <option value="<?php echo $cidade->id_cidade; ?>" <?php if($endereco[0]->id_cidade == $cidade->id_cidade){echo "selected";} ?>><?php echo $cidade->nome; ?></option>
-                 <?php endforeach; ?>
-               </select>
-          </div>
+              <label for="estado"><red>*</red>Estado</label>
+              <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $endereco[0]->estado; ?>">
+            </div>
+            <div class="form-group col-12 col-md-6">
 
-         <div class="form-group col-12 col-md-3">
-            <label class=" form-control-label">CEP</label>
-            <input type="num" id="cep" name="cep" placeholder="CEP" class="form-control cep"  value="<?= htmlspecialchars($endereco[0]->cep)?>" required>
-         </div>
+              <label for="cidade"><red>*</red>Cidade</label>
+              <input type="text" name="cidade" id="cidade" class="form-control" value="<?php echo $endereco[0]->cidade;?>">
 
-        <div class="form-group col-12 col-md-9">
-            <label class=" form-control-label">Logradouro</label>
-            <input type="text" id="logradouro" name="logradouro" placeholder="Logradour" class="form-control"  value="<?= htmlspecialchars($endereco[0]->logradouro)?>" required>
-         </div>
-
-          <div class="form-group col-12 col-md-3">
-            <label class=" form-control-label">Número</label>
-            <input type="num" id="numero" name="numero" placeholder="" class="form-control"  value="<?= htmlspecialchars($endereco[0]->numero)?>" required>
-         </div>
-
-         <div class="form-group col-12 col-md-5">
-            <label class=" form-control-label">Bairro</label>
-            <input type="text" id="bairro" name="bairro" placeholder="Bairro" class="form-control"  value="<?= htmlspecialchars($endereco[0]->bairro)?>" required>
-         </div>
-
-
-
-
-
-         <div class="form-group col-12 col-md-4">
-            <label class=" form-control-label">Complemento</label>
-            <input type="text" id="complemento" name="complemento" placeholder="complemento" class="form-control"  value="<?= htmlspecialchars($endereco[0]->complemento)?>" required>
-         </div>
-
-
-
-
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <label class=" form-control-label"><red>*</red>Bairro</label>
+              <input type="bairro" id="bairro" name="bairro" value="<?= htmlspecialchars($endereco[0]->bairro)?>"  placeholder="Bairro" class="form-control" required>
+            </div> <!-- FIM BAIRRO -->
+            <div class="form-group col-12 col-md-6">
+              <label class=" form-control-label"><red>*</red>Endereço</label>
+              <input type="logradouro" id="logradouro" name="logradouro"  value="<?= htmlspecialchars($endereco[0]->logradouro)?>"  placeholder="Rua/Av./Praça/Alameda/Travessa" class="form-control"  required>
+            </div> <!-- FIM ENDEREÇO -->
+            <div class="form-group col-12 col-md-6">
+              <label class=" form-control-label"><red>*</red>Número</label>
+              <input type="numero" id="numero" name="numero" value="<?= htmlspecialchars($endereco[0]->numero)?>"  placeholder="Número da casa" class="form-control"  required>
+            </div> <!-- FIM NÚMERO -->
+            <div class="form-group col-12 col-md-12">
+              <label class=" form-control-label">Complemento</label>
+              <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($endereco[0]->complemento)?>" placeholder="Complemento" class="form-control" >
+            </div> <!-- FIM COMPLEMENTO -->
 
 
 

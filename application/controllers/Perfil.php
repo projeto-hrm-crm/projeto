@@ -25,10 +25,7 @@ class Perfil extends CI_Controller {
         $id = $data['pessoa'][0]->id_pessoa;
        
         $data['endereco'] = $this->endereco->findAddress($id);
-       
-        $data['cidade'] = $this->cidade->getById($data['endereco'][0]->id_cidade);
-        $data['estado'] = $this->estado->getById($data['cidade'][0]->id_estado);
-        
+               
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
     }
@@ -63,15 +60,18 @@ class Perfil extends CI_Controller {
                'id_usuario'     => $user_id
              ]);
             
-            $this->endereco->update([
-              'cep'           => $data['cep'],
-              'bairro'        => $data['bairro'],
-              'logradouro'    => $data['logradouro'],
-              'numero'        => $data['numero'],
-              'complemento'   => $data['complemento'],
-              'id_pessoa'     => $id_pessoa,
-              'id_cidade'     => $data['id_cidade']
-          ]);
+            $this->endereco->update(
+              [
+                'cep'         => $this->input->post('cep'),
+                'bairro'      => $this->input->post('bairro'),
+                'logradouro'  => $this->input->post('logradouro'),
+                'numero'      => $this->input->post('numero'), 
+                'complemento' => $this->input->post('complemento'),
+                'id_pessoa'   => $id_pessoa, 
+                'estado'        => $this->input->post('estado'),
+                'cidade'        => $this->input->post('cidade')
+              ]
+            );
             
            $this->session->set_flashdata('success', 'Perfil Atualizado Com Sucesso!');
            redirect('perfil');
@@ -88,11 +88,12 @@ class Perfil extends CI_Controller {
       $id = $data['pessoa'][0]->id_pessoa;
 
       $data['endereco'] = $this->endereco->findAddress($id);
-
-      $data['estado_atual'] = $this->cidade->findState($data['endereco'][0]->id_cidade);
-
-      $data['estados'] =  $this->estado->get();
-      $data['cidades'] = $this->cidade->getByState($data['estado_atual'][0]->id_estado);
+       
+       $data['assets'] = array(
+        'js' => array(
+          'thirdy_party/apicep.js',
+        ),
+    );
 
       loadTemplate('includes/header', 'perfil/editar', 'includes/footer', $data);
         
