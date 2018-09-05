@@ -48,10 +48,11 @@
 
 	   	<nav id="header-nav-wrap">
 			<ul class="header-main-nav">
-				<li class="current"><a class="smoothscroll"  href="#home" title="home">Início</a></li>
-                <li><a class="smoothscroll"  href="#sobre" title="sobre">Conheça o Lambda RP</a></li>
-				<li><a class="smoothscroll"  href="#acesso" title="acesso">Acesso</a></li>				
-				<li><a class="smoothscroll"  href="#download" title="download">Download</a></li>
+				<li class="current"><a class="smoothscroll"  href="#home" title="Home">Início</a></li>
+                <li><a class="smoothscroll"  href="#sobre" title="Sobre">Conheça o Lambda RP</a></li>
+				<li><a class="smoothscroll"  href="#acesso" title="Acesso">Acesso</a></li>				
+                <li><a class="smoothscroll"  href="#download" title="Download">Download</a></li>
+                <li><a class="smoothscroll"  href="#alunos" title="Alunos">Equipe</a></li>
 				<li><a href="https://github.com/projeto-hrm-crm/projeto/tree/master/documentacao" target="_blank" title="documentation">Documentação</a></li>				
 			</ul>
 

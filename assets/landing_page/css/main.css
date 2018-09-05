@@ -17,7 +17,7 @@
  *  10. home
  *  11. sobre
  *  12. acesso 
- *  13. testimonials
+ *  13. alunos
  *  14. download
  *  15. footer styles
  *
@@ -2276,25 +2276,25 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 
 /* ===================================================================
- *  13. testimonials - (_layout.scss)
+ *  13. alunos - (_layout.scss)
  *
  * ------------------------------------------------------------------- */
 
-#testimonials {
+#alunos {
   background: #FFFFFF;
-  padding: 15rem 0 9rem;
+  padding: 10rem 0 9rem;
   text-align: center;
   min-height: 600px;
 }
 
-#testimonials h1::before {
+#alunos h1::before {
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
-#testimonials .owl-wrap {
+#alunos .owl-wrap {
   width: 80%;
   max-width: 900px;
   margin: 4.2rem auto 0;
@@ -2442,7 +2442,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 /* ------------------------------------------------------------------- 
  * responsive:
- * testimonials
+ * alunos
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 1024px) {
@@ -2468,7 +2468,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 @media only screen and (max-width: 600px) {
-  #testimonials .owl-wrap {
+  #alunos .owl-wrap {
     width: 90%;
   }
   #testimonial-slider p {
@@ -2477,7 +2477,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 @media only screen and (max-width: 400px) {
-  #testimonials .owl-wrap {
+  #alunos .owl-wrap {
     width: 100%;
   }
   #testimonial-slider p {
@@ -2875,6 +2875,34 @@ footer ul a:visited {
   .footer-bottom .copyright span::after {
     display: none;
   }
+}
+
+/* ------------------------------------------------------------------- 
+ * Team 
+ * ------------------------------------------------------------------- */
+
+ ..team {
+  text-align: center;
+  margin-top: -30px;
+}
+.role {
+  display: inline-block;
+  margin: 25px;
+}
+h1.role-name {
+  font-size: 24px;
+}
+.person {
+  display: inline-block;
+  width: 200px;
+  margin: 5px;
+  padding: 5px;
+  vertical-align: top;
+}
+.person-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 

@@ -5,48 +5,26 @@
         <div class="footer-main">
             <div class="row">  
 
-                <div class="col-four md-1-3 tab-full footer-info">            
-                    
-
+                <div class="col-four md-1-3 tab-full footer-info">
                     <!-- <div class="footer-logo"></div>-->
-
                     <h4>Lambda RP</h4>
-
-                    <p>
-                    Lambda RP é um sistema desenvolvido pela turma de 2018 da disciplina de Projeto Integrado do curso de Tecnologia em Análise e Desenvolvimento de Sistemas da Instituto Federal de São Paulo, campus Caraguatatuba. 
-                    </p>
-<p><strong>Professores</strong><br>
-Mario Tadashi Shimanuki<br>
-Nelson Alves Pinto<br>  
-</p>   
-                    
-                    
-                    
+                    <p>Lambda ERP é um sistema desenvolvido pela turma de 2018 da disciplina de Projeto Integrado do curso de Tecnologia em Análise e Desenvolvimento de Sistemas da Instituto Federal de São Paulo, campus Caraguatatuba.</p>
                 </div> <!-- end footer-info -->
 
                 <div class="col-four md-1-3 tab-full footer-contact">
-<h4>Alunos</h4>
-<p>Camila Pereira Sales<br>
-Carlos Alberto F Cadilhe<br>
-Gabriel Pinheiro<br>
-Gil Mendes Carelli<br>
-Lucilene Alves Anastacio<br>
-Marcelo Souza Dos Anjos<br>
-Matheus Ladislau Ribeiro<br>
-Mayra Dantas Bueno<br>
-Nikolas Ariel Garcia Lencioni<br>
-Rafael Pigozzi Da Silva<br>
-Pedro Henrique Guimaraes<br>
-Rodrigo Alves Da Silva Teixeira<br>
+<h4>Equipe</h4>
+<a class="smoothscroll" href="#alunos" title="Alunos">Alunos da disciplina de Projeto Integrado 2018</a><br>
+<strong>Orientadores</strong><br>
+Mario Tadashi Shimanuki<br>
+Nelson Alves Pinto<br>  
+</p>
 
                 </div> <!-- end footer-contact -->  
 
                 <div class="col-four md-1-3 tab-full footer-info">            
-                    
-
                        <h4>Instituto Federal de São Paulo</h4>
-					   <p>Campus Caraguatatuba</p>
-					   <p>Av. Bahia, 1739 - Indaiá<br>
+					   <p>Campus Caraguatatuba<br>
+					   Av. Bahia, 1739 - Indaiá<br>
 					   Caraguatatuba - SP, 11665-071<br>
 					   Telefone: (12) 3885-2130</p>    
                         
@@ -65,9 +43,6 @@ Rodrigo Alves Da Silva Teixeira<br>
                             <a href="https://www.youtube.com/user/IFSPCampusCaragua" target="_blank"><i class="fa fa-youtube"></i></a>
                         </li>
                     </ul>	
-    
-                        
-                        
                     </div> <!-- end footer-info -->
     
 
