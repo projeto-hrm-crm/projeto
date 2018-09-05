@@ -69,13 +69,15 @@
                                             <div class="form-group col-12">
                                                 <label class="form-control-label">Nome</label>
                                                 <input type="text" name="nome_etapa[]" placeholder="Nome da etapa" class="form-control" value="<?php echo $etapa->nome ?>" required>
+                                            </div>
+                                            <div class="form-group col-12">
                                                 <label class="form-control-label mt-2">Descrição</label>
                                                 <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
-                                                <a name="button" class="btn btn-danger btn-sm remDiv mt-2 text-white">
-                                                    <span class="fa fa-times"></span>
-                                                    Excluir
-                                                </a>
                                             </div>
+                                            <a name="button" class="btn btn-danger btn-sm remDiv mt-2 mb-3 text-white">
+                                                <span class="fa fa-times"></span>
+                                                Excluir
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
