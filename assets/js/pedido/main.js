@@ -7,14 +7,14 @@ jQuery(document).ready(function($) {
     });
 
     $('body').on('click', '.btn-remove', function(){
-        if($('#produtos-table tbody tr').length == 1) 
+        if($('#produtos-table tbody tr').length == 1)
         {
             $('#id_produto').addClass('is-invalid');
         }
     });
 
     $('#id_produto').change(function(){
-       
+
         var selectedOption = $('#id_produto option:selected');
         var select = $('#id_produto');
 
@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
                 class: 'td-nome'
             }).data('id', selectedOption.val()).text(selectedOption.text());
             tr.append(tdName);
-            
+
             var tdQtd = $('<td>').prop({
                     width: '15%',
                     class: 'td-qtd'
@@ -70,13 +70,13 @@ jQuery(document).ready(function($) {
             if($('#label_pessoa').text() == 'Cliente')
             {
                 var tdValue = $('<td>').prop({
-                        width: '20%', 
+                        width: '20%',
                         class: 'td-value'
                     }).data('default', selectedOption.data('value'))
                     .text('R$ '+ selectedOption.data('value').replace('.', ','));
-                
+
                 tr.append(tdValue);
-                
+
             }
 
             var tdAction = $('<td>').prop({
@@ -85,9 +85,9 @@ jQuery(document).ready(function($) {
             tr.append(tdAction);
 
             table.append(tr);
-            
+
             $('#total').addClass('d-none');
-            
+
             if($('#label_pessoa').text() == 'Cliente')
             {
                 $('#total').removeClass('d-none');
@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
 
             calculateTotal($('.td-value'), total);
             calculateTotal($('.input-qtd'), totalQtd, true);
-            
+
             tableFoot.removeClass('d-none');
 
         }
@@ -117,14 +117,14 @@ jQuery(document).ready(function($) {
 
 
     $('body').on('change', '.input-qtd', function() {
-        
+
         var total    = $('#total');
         var totalQtd = $('#total-qtd');
         var qtd      = $(this);
 
         var tdValue = qtd.parents('tr').children('.td-value');
 
-        var result = 'R$ ' + (parseInt(qtd.val()) * parseFloat(tdValue.data('default'))).toFixed(2).replace('.', ',');
+        var result = 'R$ ' + ((parseInt(qtd.val()) * parseFloat(tdValue.data('default')))*1000).toFixed(2).replace('.', ',');
 
 
         tdValue.text(result);
@@ -160,7 +160,7 @@ jQuery(document).ready(function($) {
     {
         var sum = 0;
         $.each(selector, function(index, element){
-            sum += input ? parseFloat($(element).val()) : parseFloat($(element).text().replace('R$ ', '').replace(',', '.')); 
+            sum += input ? parseFloat($(element).val()) : parseFloat($(element).text().replace('R$ ', '').replace(',', '.'));
         });
 
         receiver.text(input ? sum : 'R$ ' + sum.toFixed(2).replace('.', ','));
@@ -197,8 +197,8 @@ jQuery(document).ready(function($) {
 
                     $.each(resp, function(index, item){
                         select.append(
-                            '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
-                                item.nome + 
+                            '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' +
+                                item.nome +
                             '</option>'
                         );
                     });
@@ -219,7 +219,7 @@ jQuery(document).ready(function($) {
         }
 
         url += value == 'V' ? 'clientes' : 'fornecedores';
-    	
+
 		$.ajax({
 
 			url:       url,
@@ -235,12 +235,12 @@ jQuery(document).ready(function($) {
 
                     select.empty();
                     select.append('<option value="">Selecione</option>');
-                    
+
                     $.each(resp, function(index, item){
                         var name = value == 'C' ? item.razao_social  : item.nome;
                         // var id   = value == 1 ? item.id_fornecedor : item.id_pessoa;
-                      
-                        select.append('<option value="' + item.id_pessoa + '" data-id="' + item.id_fornecedor + '">' 
+
+                        select.append('<option value="' + item.id_pessoa + '" data-id="' + item.id_fornecedor + '">'
                             + name + '</option>');
                     });
 
@@ -271,8 +271,8 @@ jQuery(document).ready(function($) {
 
                                         $.each(resp, function(index, item){
                                             select.append(
-                                                '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
-                                                    item.nome + 
+                                                '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' +
+                                                    item.nome +
                                                 '</option>'
                                             );
                                         });
@@ -284,13 +284,13 @@ jQuery(document).ready(function($) {
                                     }
 
                                 });
-                                    
+
                             }
-                            
+
 
                         });
 
-                         
+
                     }
                     else
                     {
@@ -309,8 +309,8 @@ jQuery(document).ready(function($) {
 
                                 $.each(resp, function(index, item){
                                     select.append(
-                                        '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
-                                            item.nome + 
+                                        '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' +
+                                            item.nome +
                                         '</option>'
                                     );
                                 });
@@ -323,7 +323,7 @@ jQuery(document).ready(function($) {
 
                         });
                     }
-                    
+
 
                     $('#label_pessoa').text(value == 'C' ? 'Fornecedor' : 'Cliente');
 
@@ -341,7 +341,7 @@ jQuery(document).ready(function($) {
 
 
 		});
-    	
+
 
 
     });
@@ -354,7 +354,7 @@ jQuery(document).ready(function($) {
 
             var value = $(this).find('option:selected').data('id');
 
-            
+
                 $('#produtos-table > tbody').empty();
                 $('#produtos-table > tfoot').addClass('d-none');
                 $('#id_produto option').prop('disabled', false);
@@ -373,8 +373,8 @@ jQuery(document).ready(function($) {
 
                         $.each(resp, function(index, item){
                             select.append(
-                                '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' + 
-                                    item.nome + 
+                                '<option value="' + item.id_produto + '" data-value="' + item.valor + '">' +
+                                    item.nome +
                                 '</option>'
                             );
                         });
@@ -386,15 +386,15 @@ jQuery(document).ready(function($) {
                     }
 
                 });
-                    
-            
-            
+
+
+
 
         });
 
     }
 
 
-    
+
 
 });
