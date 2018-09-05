@@ -163,4 +163,33 @@ class Produto_model extends CI_Model
         return $query->result()[0]->produtos;
     }
 
+
+    public function countProdutosFornecedorLogado($user_id){
+
+      $this->db->select('count(*) as produtos')
+            ->from('produto')
+            ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
+            ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')
+            ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+            ->join('usuario', 'usuario.id_pessoa = pessoa.id_pessoa')
+            ->where('usuario.id_grupo_acesso = 3')
+            ->where('usuario.id_usuario', $user_id);
+        $query = $this->db->get();
+
+        return $query->result()[0]->produtos;
+    }
+
+    public function getFornecedorLogado($user_id)
+    {
+      $query = $this->db->select('id_produto, produto.nome, codigo, fabricacao, validade, lote, recebimento, valor, razao_social')
+        ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
+        ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')   
+        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+        ->join('usuario', 'usuario.id_pessoa = pessoa.id_pessoa')
+        //->where('usuario.id_grupo_acesso = 3')
+        ->where('usuario.id_usuario', $user_id)
+        ->get('produto');
+            return $query->result();
+    }  
+
 }
