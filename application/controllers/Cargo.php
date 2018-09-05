@@ -113,10 +113,14 @@ class Cargo extends PR_Controller
     private function getFromPost()
     {
         return array(
-            'nome'      => $this->input->post('nome'),
-            'descricao' => $this->input->post('descricao'),
-            'salario'   => $this->input->post('salario'),
-            'id_setor'  => $this->input->post('id_setor'),
+            'nome'                  => $this->input->post('nome'),
+            'descricao'             => $this->input->post('descricao'),
+            'carga_horaria_semanal' => $this->input->post('carga_horaria'),
+            'salario'               => $this->input->post('salario'),
+            'id_setor'              => $this->input->post('id_setor'),
+           // 'horario'  => $this->input->post('horario'),
+          //  'hora_entrada'  => $this->input->post('hora_entrada'),
+          //  'hora_saida'  => $this->input->post('hora_saida'),
         );
     }
 
@@ -133,4 +137,9 @@ class Cargo extends PR_Controller
         $postData['id_cargo'] = $id_cargo;
         return $postData;
     }
+
+     private function getSalarioPorHora($id_cargo)
+     {
+        
+     }
 }

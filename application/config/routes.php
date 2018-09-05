@@ -50,9 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'landingpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//Rota principal
+$route['dashboard'] = 'home/index';
 
 
 //Rota do seed
@@ -100,6 +103,12 @@ $route['sac/editar/(:num)'] = 'Sac/edit/$1';
 $route['sac/excluir/(:num)'] = 'Sac/delete/$1';
 $route['sac/iteracao/(:num)'] = 'Iteracao/loadMensagem/$1';
 $route['sac/mensagem/(:num)'] = 'Iteracao/create/$1';
+
+//Rotas Sugestões
+$route['sugestao'] = 'Sugestao';
+$route['sugestao/cadastrar'] = 'Sugestao/create';
+$route['sugestao/visualizar/(:num)'] = 'Sugestao/details/$1';
+$route['sugestao/excluir/(:num)'] = 'Sugestao/delete/$1';
 
 //Rotas Setores
 
@@ -168,7 +177,14 @@ $route['perfil/alterar-senha'] = 'Perfil/changePassword';
 $route['perfil/upload']		   = 'Perfil/fileUpload';
 
 //Ajax calls
-$route['cliente/chart']        = 'Cliente/getChartData';
+$route['cliente/chart']               = 'Cliente/getChartData';
+$route['notifications']               = 'Usuario/getNotifications';
+$route['notifications/count']         = 'Usuario/getCount';
+$route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
+
+
+

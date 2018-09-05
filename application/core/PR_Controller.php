@@ -153,15 +153,24 @@ class PR_Controller extends CI_Controller
 	* Redireciona o usuário para uma view do diretório 
 	* Juntamente com as mensagens de erro e dados antigos do formulário
 	* 
-	* @param: $view string
+	* @param $view string
+	* @param $message string
 	*/ 
 	protected function redirectError($view, $message = 'Não foi possível realizar a operação')
 	{
 		$this->session->set_flashdata('danger', $message);
 		$this->session->set_flashdata('errors',   $this->form_validation->error_array());
         $this->session->set_flashdata('old_data', $this->input->post());
+		
+		if($view !== 'index')
+		{
+			redirect($this->viewDirectory.'/'.$view);
+		}
+		else
+		{
+			redirect($this->viewDirectory);
+		}
         
-        redirect($this->viewDirectory.'/'.$view);
 	}
 
 	/**

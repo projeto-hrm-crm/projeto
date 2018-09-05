@@ -206,7 +206,7 @@ $config = array(
         array(
             'field' => 'email',
             'label' => 'E-Mail',
-            'rules' => 'required|valid_email|is_unique[pessoa.email]'
+            'rules' => 'required|valid_email'
         ),
 
         array(
@@ -225,15 +225,15 @@ $config = array(
         ),
 
         array(
-            'field' => 'id_estado',
+            'field' => 'estado',
             'label' => 'Estado',
-            'rules' => 'required|integer'
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
 
         array(
-            'field' => 'id_cidade',
+            'field' => 'cidade',
             'label' => 'Cidade',
-            'rules' => 'required|integer'
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
 
         array(
@@ -290,6 +290,34 @@ $config = array(
         )
     ),
 
+    
+    'sugestao' => array(
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'sugestao',
+            'label' => 'sugestao',
+            'rules' => 'required'
+        )
+    ),
+    
+    'setor' => array(
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        )
+    ),
+
+    
     'vaga' => array(
 
         array(
@@ -395,7 +423,7 @@ $config = array(
         array(
             'field' => 'codigo',
             'label' => 'Codigo',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'descricao',
@@ -437,6 +465,12 @@ $config = array(
             'field' => 'nome',
             'label' => 'Nome',
             'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+
+        array(
+            'field' => 'carga_horaria',
+            'label' => 'Carga horária',
+            'rules' => 'required|numeric'
         ),
 
         array(
@@ -623,14 +657,14 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'id_estado',
-            'label' => 'id_estado',
-            'rules' => 'required|numeric'
+            'field' => 'estado',
+            'label' => 'estado',
+            'rules' => 'required'
         ),
         array(
-            'field' => 'id_cidade',
-            'label' => 'id_cidade',
-            'rules' => 'required|numeric'
+            'field' => 'cidade',
+            'label' => 'cidade',
+            'rules' => 'required'
         ),
         array(
             'field' => 'bairro',
@@ -645,7 +679,7 @@ $config = array(
         array(
             'field' => 'numero',
             'label' => 'número',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
     ),
     'funcionario' =>

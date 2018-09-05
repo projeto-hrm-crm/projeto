@@ -75,7 +75,7 @@ class Fornecedor_model extends CI_Model
     $this->endereco->insert([
         'cep'           => $data['cep'],
         'bairro'        => $data['bairro'],
-        'logradouro'        => $data['logradouro'],
+        'logradouro'    => $data['logradouro'],
         'numero'        => $data['numero'],
         'complemento'   => $data['complemento'],
         'id_pessoa'     => $id_pessoa,
@@ -122,8 +122,8 @@ class Fornecedor_model extends CI_Model
           endereco.numero AS numero, 
           endereco.complemento,
           endereco.cidade,
-          endereco.estado',
-          'usuario.id_usuario')
+          endereco.estado,
+          usuario.id_usuario')
 
         ->from('fornecedor')
         ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
@@ -181,8 +181,9 @@ class Fornecedor_model extends CI_Model
                 'logradouro'    => $data['logradouro'],
                 'numero'        => $data['numero'],
                 'complemento'   => $data['complemento'],
-                'id_pessoa'     => $fornecedor[0]->id_pessoa,
-                'id_cidade'     => $data['id_cidade']
+                'cidade'        => $data['cidade'],
+                'estado'        => $data['estado'],
+                'id_pessoa'     => $fornecedor[0]->id_pessoa
             ]
         );
 

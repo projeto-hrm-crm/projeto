@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/**
-* author: Nikolas Lencioni
-* Controller de fornecedor
-**/
 
+/**
+* @author: Nikolas Lencioni
+* @author Tiago Villalobos
+* Controller de fornecedor
+* Adequado ao PR_Controller para fins de abstração de código[Tiago Villalobos]
+**/
 class Fornecedor extends PR_Controller
 {
    /**
@@ -190,4 +192,5 @@ class Fornecedor extends PR_Controller
      }
      redirect('fornecedor');
   }
+
 }

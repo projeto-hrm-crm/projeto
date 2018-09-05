@@ -58,7 +58,7 @@ class Usuario extends CI_Controller
             //endereco
             $this->endereco->insert(['cep'=> $this->input->post('cep'),'bairro' => $this->input->post('bairro'),
             'logradouro'  => $this->input->post('logradouro'),'numero' => $this->input->post('numero'), 'complemento' => $this->input->post('complemento')
-            ,'id_pessoa'  => $id_pessoa, 'id_cidade' => $this->input->post('cidade')]);
+            ,'id_pessoa'  => $id_pessoa, 'cidade' => $this->input->post('cidade')]);
 
             //documento
             $this->documento->insert(['tipo' => 'cpf','numero' => $this->input->post('cpf'),'id_pessoa' => $id_pessoa]);
@@ -113,6 +113,45 @@ class Usuario extends CI_Controller
     public function unique($id_usuario)
     {
       echo json_encode($this->usuario->uniqueMail($id_usuario,$this->input->get('email')));
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por buscar as notificações do sistema. 
+     * 
+     * @return json 
+     */
+    public function getNotifications()
+    {
+      $to_id = $this->session->userdata('user_login');
+      echo $this->Notification->getNotifications($to_id);
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por contar o total de notificações
+     * 
+     * @return json 
+     */
+    public function getCount()
+    {
+      $to_id = $this->session->userdata('user_login');
+      echo $this->Notification->getCount($to_id);
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * Método responsável por setar a notificação como visualizada
+     * 
+     * @param int $notification_id
+     * @return void 
+     */
+    public function setViewed($notification_id)
+    {
+      $this->Notification->setViewed($notification_id);
     }
 }
 ?>
