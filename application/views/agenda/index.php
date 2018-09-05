@@ -24,8 +24,7 @@
     </div>
 </div>
 
-
-<!-- MODAL DE VISUALIZAR EVENTOS-->
+<!-- MODAL DE VISUALIZAR E EDITAR EVENTOS-->
 
 <div class="modal fade" id="visualizar" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -144,7 +143,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url('agenda/cadastrar'); ?>" method="POST">
+            <form id="form_agenda" action="<?php echo base_url('agenda/cadastrar'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-12">

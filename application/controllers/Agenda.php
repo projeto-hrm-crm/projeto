@@ -10,7 +10,6 @@ class Agenda extends CI_Controller
         $dados['assets'] = array (
             'js' => array (
                 'calendar/agenda.js',
-
             ),
         );
 
@@ -39,7 +38,7 @@ class Agenda extends CI_Controller
             }else{
                 $this->session->set_flashdata('errors', $this->form_validation->error_array());
                 $this->session->set_flashdata('old_data', $this->input->post());
-                redirect('agenda');
+                redirect('agenda/cadastrar');
             }
         } else {
             $dados['title'] = 'Cadastrar evento';
@@ -52,7 +51,6 @@ class Agenda extends CI_Controller
 
     public function edit()
     {
-
         if($this->input->post()){
             if($this->form_validation->run('evento')){
                 $eventos = array(
@@ -63,7 +61,7 @@ class Agenda extends CI_Controller
                     'cor'        => $this->input->post('cor'),
                 );
                 $this->evento->update($eventos);
-                $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
+                $this->session->set_flashdata('success','Evento editado com sucesso!');
                 redirect('agenda');
             } else {
                 $this->session->set_flashdata('errors', $this->form_validation->error_array());

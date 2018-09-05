@@ -737,8 +737,18 @@ $config = array(
             'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
+            'field' => 'cor',
+            'label' => 'Cor',
+            'rules' => 'required',
+        ),
+        array(
             'field' => 'inicio',
             'label' => 'Inicio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'horaInicio',
+            'label' => 'Hora Inicio',
             'rules' => 'required'
         ),
         array(
@@ -747,9 +757,9 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'cor',
-            'label' => 'Cor',
-            'rules' => 'required',
+            'field' => 'horaFim',
+            'label' => 'Hora Fim',
+            'rules' => 'required'
         ),
     ),
 );

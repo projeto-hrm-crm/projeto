@@ -38,7 +38,7 @@ jQuery(document).ready(function($) {
       },
     },
   });
-    
+
   $("#form_sugestao").validate({
     rules: {
       nome: "required",
@@ -80,6 +80,32 @@ jQuery(document).ready(function($) {
     },
   });
 
+  $("#form_agenda").validate({
+    rules: {
+      titulo: "required",
+
+      cor: {
+        required: true,
+      },
+
+      inicio: {
+        required: true,
+        brazilian_date: true,
+      },
+
+      horaInicio: {
+        required: true,
+      },
+
+      fim: {
+        required: true,
+        brazilian_date: true,
+      },
+      horaFim: {
+        required: true,
+      },
+    },
+  });
 
   // @Beto Cadilhe
   $("#form_fornecedor").validate({
@@ -877,9 +903,9 @@ jQuery(document).ready(function($) {
       var data = jQuery(params).val().split('/');
       var dataFinal = data[2] + '-' + data[1] + '-' + data[0];
 
-      return new Date(dataAtual) > new Date(dataFinal);
+      return new Date(dataAtual) >= new Date(dataFinal);
 
-  }, 'Informe uma data maior que a data anterior');
+  }, 'Informe uma data maior ou igual a data anterior');
 
   /**
   * @author Tiago Villalobos
