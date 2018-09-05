@@ -66,8 +66,11 @@
                     <span class="icon"><i class="icon-smile"></i></span>            
                     <div class="service-content">
                         <h3>Clientes</h3>
+                        <!--
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                        </p>                        
+                        </p>
+                        --> 
+                                             
                     </div> 	         	 
                 </div> <!-- /bgrid -->
 
@@ -75,8 +78,7 @@
                         <span class="icon"><i class="icon-shopping-cart"></i></span>                          
                     <div class="service-content">	
                         <h3>Produtos</h3>  
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                        </p>                  
+                                         
                     </div>
                 </div> <!-- /bgrid -->
 
@@ -84,8 +86,7 @@
                     <span class="icon"><i class="icon-truck"></i></span>
                     <div class="service-content">
                         <h3>Fornecedores</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                        </p>                             
+                                                  
                     </div> 
                 </div> <!-- /bgrid -->
 
@@ -93,8 +94,7 @@
                     <span class="icon"><i class="icon-user"></i></span>
                     <div class="service-content">
                         <h3>Funcionários</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                        </p>                         
+                                                
                     </div>   
                 </div> <!-- /bgrid -->
 
@@ -102,8 +102,7 @@
                     <span class="icon"><i class="icon-file"></i></span>
                     <div class="service-content">	
                         <h3>Processos Seletivos</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                        </p>                            
+                                                  
                     </div>	               
 
                 </div> <!-- /bgrid -->
@@ -111,9 +110,8 @@
                 <div class="bgrid feature" data-aos="fade-up">
                     <span class="icon"><i class="icon-calendar"></i></span>	 
                     <div class="service-content">
-                        <h3>Calendário</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                        </p> 
+                        <h3>Agenda</h3>
+                        
                             
                     </div>	               
 

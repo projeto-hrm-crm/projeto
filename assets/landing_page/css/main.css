@@ -1860,6 +1860,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 
 .sobre-features .features-list {
   padding-top: 5.4rem;
+  text-align:center;
 }
 
 .sobre-features .feature {
@@ -2511,7 +2512,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 }
 
 #download .lead {
-  color: #b2fabc;
+  color: #fff;
   margin-top: 4.8rem;
 }
 
