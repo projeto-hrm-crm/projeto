@@ -126,14 +126,14 @@
                                                                     <div class="col-2 text-right"><?php echo $produto->quantidade ?></div>
                                                                     <div class="col-2 text-right"><?php echo 'R$ '.number_format((intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100, 2, ',','.'); ?></div>
                                                                 </div>
-                                                              <? $total = $total + ((intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100);?>
+                        <?php $total = $total + (intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100;?>
                                                             <?php endforeach ?>
                                                             <hr>
                                                             <div class="row">
                                                                 <div class="col-12 text-right">
                                                                     <strong>
                                                                         <?php echo 'R$ '.number_format($total, 2, ',','.'); ?>
-                                                                       <?$total = 0;?>
+                                                                       <?php $total = 0;?>
                                                                     </strong>
                                                                 </div>
                                                             </div>
