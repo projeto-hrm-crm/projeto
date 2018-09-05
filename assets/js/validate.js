@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
 
       recebimento: {
         required: true,
-        brazilian_date: true,
+        validaDataBR: true,
         // max: new Date(),
       },
 
@@ -61,9 +61,6 @@ jQuery(document).ready(function($) {
       id_unidade_medida: {
         required: true
       }
-
-
-
     },
   });
 

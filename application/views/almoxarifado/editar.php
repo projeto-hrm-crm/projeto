@@ -49,7 +49,7 @@
                     </a>
                     <button title="Cadastrar almoxarifado" type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-plus"></i>
-                        Cadastrar
+                        Atualizar
                     </button>
                 </div>
             </form>
