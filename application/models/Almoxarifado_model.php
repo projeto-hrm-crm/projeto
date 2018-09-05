@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Almoxarifado_model extends PR_Model
 {
-    
+
     /**
     * @author: Camila Sales
     * Realiza registro de almoxarifado
     *
-    * @param: mixed 
+    * @param: mixed
     */
     public function insert($almoxarifado)
     {
@@ -45,18 +45,11 @@ class Almoxarifado_model extends PR_Model
     * @param integer $id_almoxarifado refere-se ao id do registro de almoxarifado a ser editado
     * @return boolean: True - caso editado com sucesso, False - não editado
     */
-    public function update($almoxarifado)
+    public function update($id_almoxarifado, $data)
     {
-        $this->db
-        ->set('almoxarifado.nome', $almoxarifado['nome'])
-        ->set('almoxarifado.quantidade', $almoxarifado['quantidade'])
-        ->set('almoxarifado.id_unidade_medida', $almoxarifado['id_unidade_medida'])
-        ->set('almoxarifado.descricao', $almoxarifado['descricao'])
-        ->set('almoxarifado.valor', $almoxarifado['valor'])
-        ->where('almoxarifado.id_almoxarifado', $almoxarifado['id_almoxarifado'])
-        ->update('almoxarifado');
+      $this->db->update('almoxarifado', $data, array('id_almoxarifado' => $id_almoxarifado));
 
-        $this->setLog($almoxarifado['nome'], $almoxarifado['id_almoxarifado']);
+      $this->setLog($data['almoxarifado']['nome'], $id_almoxarifado);
 
     }
 
@@ -76,7 +69,6 @@ class Almoxarifado_model extends PR_Model
 
         $this->setLog($almoxarifado->nome, $almoxarifado->id_almoxarifado);
 
-        
+
     }
 }
-
