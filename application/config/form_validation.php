@@ -468,6 +468,12 @@ $config = array(
         ),
 
         array(
+            'field' => 'carga_horaria',
+            'label' => 'Carga horária',
+            'rules' => 'required|numeric'
+        ),
+
+        array(
             'field' => 'descricao',
             'label' => 'Descrição',
             'rules' => 'required|max_length[200]',
