@@ -1,7 +1,7 @@
 <section id="alunos">
   <div class="row">
     <div class="col-full">
-           <h1 class="intro-header" data-aos="fade-up">Estudantes de Graduação</h1>
+           <h1 class="intro-header" data-aos="fade-up">Equipe de Desenvolvimento</h1>
     </div>
               <div class="col-three">        
                 <figure class="person">
