@@ -14,11 +14,15 @@
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="quantidade" class="control-label mb-1"><red>*</red>Quantidade</label>
-                                <input id="quantidade" value="<?php echo isset($old_data['quantidade']) ? $old_data['quantidade'] : null;?>" placeholder="Código do almoxarifado" name="quantidade" type="number" class="form-control <?php echo isset($errors['quantidade']) ? 'is-invalid' : '' ?>" required>
+                                <input id="quantidade" value="<?php echo isset($old_data['quantidade']) ? $old_data['quantidade'] : null;?>" placeholder="Quantidade" name="quantidade" type="number" class="form-control <?php echo isset($errors['quantidade']) ? 'is-invalid' : '' ?>" required>
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="valor" class="control-label mb-1"><red>*</red>Valor</label>
                                 <input id="valor" data-thousands="." data-decimal="," value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : null;?>" placeholder="Valor unitário do almoxarifado" name="valor" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="descricao" class="control-label mb-1"><red>*</red>Descriçao</label>
+                                <input id="descricao" value="<?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?>" placeholder="Descrição" name="descricao" type="text" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>" required>
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="recebimento" class="control-label mb-1"><red>*</red>Data de Recebimento</label>

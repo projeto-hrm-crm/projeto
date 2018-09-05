@@ -31,8 +31,7 @@
                 <tr>
                   <th class="text-center">Nome</th>
                   <th class="text-center">Quantidade</th>
-                  <th class="text-center">Sexo</th>
-                  <th class="text-center">Data de Nascimento</th>
+                  <th class="text-center">valor</th>
                   <th class="text-center">Ações</th>
                 </tr>
               </thead>
@@ -42,12 +41,12 @@
                       <tr>
                         <td class="text-center"><?= $almoxarifado->nome; ?></td>
                         <td class="text-center"><?= $almoxarifado->quantidade; ?></td>
-                       
-                        <td class="text-center"><?= $almoxarifado->preco; ?></td>
+
+                        <td class="text-center"><?= $almoxarifado->valor; ?></td>
                         <td class="text-center">
                           <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$almoxarifado->id_almoxarifado)?>" class="btn btn-primary">
                           <span class="fa fa-edit"></span></a>
-                          <button data-href="almoxarifado/excluir/<?php echo $almoxarifado->id_almoxarifado?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
+                          <button data-href="almoxarifado/excluir/<?php echo $almoxarifado->id_almoxarifado?>" class="btn btn-danger" title="Excluir entrada" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                           </button>
                          </td>

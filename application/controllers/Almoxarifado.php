@@ -53,17 +53,20 @@ class Almoxarifado extends PR_Controller
 
         if($this->form_validation->run('almoxarifado'))
         {
-            $this->almoxarifado->insert($this->getFromPost());
+            $this->almoxarifado->insert([
+                'nome'               => $this->input->post('nome'),
+                'quantidade'         => $this->input->post('quantidade'),
+                'valor'              => $this->input->post('valor'),
+                'descricao'          => $this->input->post('descricao'),
+                'recebimento'        => switchDate($this->input->post('recebimento')),
+                'id_unidade_medida'  => $this->input->post('id_unidade_medida')]);
 
-            $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
+            $this->redirectSuccess('Entrada Cadastrada Com Sucesso!');
         }
-        else
-        {
+        else{
             $this->redirectError('cadastrar');
         }
-    }
-    else
-    {
+    }else{
         $this->setTitle('Cadastrar Almoxarifado');
         $this->addData('unidades', $this->unidadeMedida->get());
 
@@ -92,17 +95,23 @@ class Almoxarifado extends PR_Controller
   {
     if ($this->input->post()) {
         $data['almoxarifado'] = $this->input->post();
-        $this->almoxarifado->update($id_almoxarifado, $this->input->post());
+        $data['almoxarifado']['id_almoxarifado'] = $id_almoxarifado;
+        $data['almoxarifado']['recebimento'] = switchDate($this->input->post('recebimento'));
+        $this->almoxarifado->update($id_almoxarifado, $data['almoxarifado']);
+        $this->redirectSuccess('Entrada Atualizada Com Sucesso!');
+
     }
+    $data['unidades'] = $this->unidadeMedida->get();
 
     $data['almoxarifado']    = $this->almoxarifado->getById($id_almoxarifado);
-    $data['title']          = 'Editar almoxarifado';
-    $data['id']             = $id_almoxarifado;
+    $data['almoxarifado'][0]->recebimento = switchDate($data['almoxarifado'][0]->recebimento);
+
+    $data['title']           = 'Editar almoxarifado';
+    $data['id']              = $id_almoxarifado;
 
     $data['assets'] = array(
-        'js' => array(
-          'thirdy_party/apicep.js',
-        ),
+        'js' => array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js','validate.js',
+          'maskMoney.js')
     );
 
     loadTemplate('includes/header', 'almoxarifado/editar', 'includes/footer', $data);
