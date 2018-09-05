@@ -208,7 +208,7 @@
     .switch.switch-text.switch-xs .switch-input:checked ~ .switch-handle {
       left: 18px; }
 
-      
+
 red {
   color: red;
 }
@@ -2250,5 +2250,17 @@ header .form-inline {
 label.error {
   color: red !important;
 }
+
+/* Agenda */
+
+.visualizar{
+    display: block;
+}
+
+.form{
+    display: none;
+}
+
+/* fim Agenda */
 
 /*# sourceMappingURL=style.css.map */

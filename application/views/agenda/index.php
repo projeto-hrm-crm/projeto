@@ -1,107 +1,29 @@
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
-<link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
-<script src="<?php echo base_url();?>assets/js/calendar/moment.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js"></script>
-<script src="<?php echo base_url();?>assets/js/calendar/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/calendar/fullcalendar.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/calendar/pt-br.js"></script>
-
-<script>
-    $(document).ready(function() {
-
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay, listWeek'
-            },
-            defaultDate: '2018-09-03',
-            navLinks: true,
-            editable: true,
-            eventLimit: true,
-            eventClick: function(event) {
-
-                $('#visualizar #id').text(event.id);
-                $('#visualizar #title').text(event.title);
-                $('#visualizar #start').text(event.start.format('DD/MM/YYYY'));
-                $('#visualizar #startHour').text(event.start.format('HH:mm:ss'));
-                $('#visualizar #end').text(event.end.format('DD/MM/YYYY'));
-                $('#visualizar #endHour').text(event.end.format('HH:mm:ss'));
-
-                $('#visualizar #id').val(event.id);
-                $('#visualizar #title').val(event.title);
-                $('#visualizar #start').val(event.start.format('DD/MM/YYYY'));
-                $('#visualizar #startHour').val(event.start.format('HH:mm:ss'));
-                $('#visualizar #end').val(event.end.format('DD/MM/YYYY'));
-                $('#visualizar #endHour').val(event.end.format('HH:mm:ss'));
-                $('#visualizar #color').val(event.color);
-
-                $('#visualizar').modal('show');
-                return false;
-            },
-            selectable: true,
-            selectHelper: true, // DESTACA A HORA SELECIONADA.
-            select: function(start, end) {
-                $('#cadastrar #start').val(moment(start).format('DD/MM/YYYY'));
-                $('#cadastrar #startHour').val(moment(start).format('HH:mm:ss'));
-                $('#cadastrar #end').val(moment(end).format('DD/MM/YYYY'));
-                $('#cadastrar #endHour').val(moment(end).format('HH:mm:ss'));
-                $('#cadastrar').modal('show');
-            },
-
-            events:
-            [
-                <?php if(isset($eventos)): ?>
-                    <?php foreach ($eventos as $evento): ?>
-                        {
-                            id:     '<?= $evento->id; ?>',
-                            title:  '<?= $evento->titulo; ?>',
-                            start:  '<?= $evento->inicio; ?>',
-                            end:    '<?= $evento->fim; ?>',
-                            color:  '<?= $evento->cor; ?>',
-                        },
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            ]
-        });
-
-    });
-</script>
-
-<style media="screen">
-    .visualizar{
-        display: block;
-    }
-
-    .form{
-        display: none;
-    }
-</style>
-
-<body style="background-color:white">
-    <?php if($this->session->flashdata('success')): ?>
-        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show mt-2">
-                <?php echo $this->session->flashdata('success'); ?>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php endif; ?>
-    <?php if($this->session->flashdata('danger')): ?>
-        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                <?php echo $this->session->flashdata('danger'); ?>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php endif; ?>
-
-    <div class="row justify-content-center align-items-center">
-        <div class="col-12">
-            <div id='calendar'></div>
+<div class="row justify-content-center align-items-center">
+    <div class="col-12">
+        <?php if($this->session->flashdata('success')): ?>
+            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                    <?php echo $this->session->flashdata('success'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+        <?php if($this->session->flashdata('danger')): ?>
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                    <?php echo $this->session->flashdata('danger'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+        <div class="card">
+            <div class="card-body">
+                <div id='calendar'></div>
+            </div>
         </div>
     </div>
-</body>
+</div>
+
 
 <!-- MODAL DE VISUALIZAR EVENTOS-->
 
@@ -151,7 +73,7 @@
                 </div>
             </div>
             <div class="form">
-                <form action="<?php echo base_url('agenda/editar'); ?>" method="POST">
+                <form action="<?php echo base_url('agenda/editar/'); ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-12">
@@ -278,15 +200,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $('.ocultar-btn').on('click', function(){
-        $('.form').slideToggle();
-        $('.visualizar').slideToggle();
-    });
-
-    $('.edit-btn').on('click', function(){
-        $('.visualizar').slideToggle();
-        $('.form').slideToggle();
-    });
-</script>

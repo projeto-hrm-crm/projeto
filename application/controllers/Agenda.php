@@ -7,9 +7,20 @@ class Agenda extends CI_Controller
     {
         $dados['title'] = 'Agenda';
 
-        $dados['eventos'] = $this->evento->get();
+        $dados['assets'] = array (
+            'js' => array (
+                'calendar/agenda.js',
+
+            ),
+        );
+
 
         loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
+    }
+
+    public function get()
+    {
+       echo json_encode($this->evento->get());
     }
 
     public function create()
@@ -41,9 +52,11 @@ class Agenda extends CI_Controller
 
     public function edit()
     {
+
         if($this->input->post()){
             if($this->form_validation->run('evento')){
                 $eventos = array(
+                    'id'         => $this->input->post('id'),
                     'titulo'     => $this->input->post('titulo'),
                     'inicio'     => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('inicio').$this->input->post('horaInicio')))),
                     'fim'        => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('fim').$this->input->post('horaFim')))),
