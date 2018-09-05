@@ -17,7 +17,7 @@ class Login extends CI_Controller
            if (!$this->usuario->login($data)) {
                 $this->session->set_flashdata('login_error', 'Erro ao logar: Usuário e/ou senha inválidos');
             } else {
-                redirect(base_url());
+                redirect(base_url('dashboard'));
             }          
         }
        
