@@ -25,7 +25,12 @@ class Usuario_model extends CI_Model
     */
     public function insert($data)
     {
-      $this->db->insert('usuario',$data);
+        $this->db
+        ->set('usuario.login', $data['login'])
+        ->set('usuario.senha', hash('sha256', $data['senha']))
+        ->set('usuario.id_grupo_acesso', $data['id_grupo_acesso'])
+        ->set('usuario.id_pessoa', $data['id_pessoa'])
+        ->insert('usuario');
     }
    
    /**
@@ -34,13 +39,13 @@ class Usuario_model extends CI_Model
     *
     */
    public function update($data)
-	{
-		$this->db->where('usuario.id_usuario', $data['id_usuario']);
-		$this->db->set('usuario.login', $data['login']);
-		$this->db->update('usuario', $data);
-
-
-	}
+   {		   
+       $this->db
+        ->set('usuario.login', $data['login'])
+        ->set('usuario.senha', hash('sha256', $data['senha']))
+        ->where('usuario.id_usuario', $data['id_usuario'])
+        ->update('usuario');
+   }
    
    /**
     * @author: Rodrigo Alves
@@ -50,7 +55,7 @@ class Usuario_model extends CI_Model
    public function changePassword($data)
 	{
 		$this->db->where('usuario.id_usuario', $data['id_usuario']);
-		$this->db->set('usuario.senha', $data['senha']);
+		$this->db->set('usuario.senha', hash('sha256', $data['senha']));
 		$this->db->update('usuario', $data);
 
 
@@ -96,7 +101,7 @@ class Usuario_model extends CI_Model
     {
         if (!is_null($data)) {
             $email = $data['email'];
-            $senha = $data['senha'];
+            $senha = hash('sha256', $data['senha']);
 
             $this->db->select('*')
                      ->from('usuario')
