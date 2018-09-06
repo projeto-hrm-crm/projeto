@@ -175,6 +175,7 @@ $autoload['model'] = array(
                     'Avaliacao_model'            => 'avaliacao',
                     'Sugestao_model'             => 'sugestao',
                     'Notificacao_model'          => 'notificacao',
+                    'Agenda_model'               => 'evento',
                     'Almoxarifado_model'         => 'almoxarifado',
                     'UnidadeMedida_model'        => 'unidadeMedida',
 );

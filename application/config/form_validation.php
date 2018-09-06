@@ -767,6 +767,39 @@ $config = array(
             'rules' => 'required|numeric'
         ),
     ),
+    'evento' =>
+    array(
+        array(
+            'field' => 'titulo',
+            'label' => 'Titulo',
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+        array(
+            'field' => 'cor',
+            'label' => 'Cor',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'inicio',
+            'label' => 'Inicio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'horaInicio',
+            'label' => 'Hora Inicio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'fim',
+            'label' => 'Termino',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'horaFim',
+            'label' => 'Hora Fim',
+            'rules' => 'required'
+        ),
+    ),
 );
 
 /**

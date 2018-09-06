@@ -54,9 +54,13 @@ $route['default_controller'] = 'landingpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+$route['agenda']           = 'agenda/index';
+$route['agenda/cadastrar'] = 'agenda/create';
+$route['agenda/editar']    = 'agenda/edit';
+
 //Rota principal
 $route['dashboard'] = 'home/index';
-
 
 //Rota do seed
 $route['make/seed'] = 'seed/index';
@@ -191,10 +195,8 @@ $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
 $route['notifications/count']         = 'Usuario/getCount';
 $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
+$route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
-
-
-
 
