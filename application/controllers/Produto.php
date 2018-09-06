@@ -74,7 +74,7 @@ class Produto extends CI_Controller
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
            'lote'          => $this->input->post('lote'),
-           'valor'         => $this->input->post('valor'),
+           'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
           );
             $this->produto->insert($array);
             $this->session->set_flashdata('success','Produto cadastrado com sucesso!');

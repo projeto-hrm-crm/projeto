@@ -122,11 +122,11 @@
                                                                 <div class="row">
                                                                     <div class="col-1"><?php echo $produto->id_produto ?></div>
                                                                     <div class="col-5"><?php echo $produto->nome ?></div>
-                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format(intval(str_replace(",","",str_replace(".","",$produto->valor)))/100, 2, ',','.'); ?></div>
+                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format(intval($produto->valor)/100, 2, ',','.'); ?></div>
                                                                     <div class="col-2 text-right"><?php echo $produto->quantidade ?></div>
-                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format((intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100, 2, ',','.'); ?></div>
+                                                                    <div class="col-2 text-right"><?php echo 'R$ '.number_format((intval($produto->valor) * $produto->quantidade)/100, 2, ',','.'); ?></div>
                                                                 </div>
-                        <?php $total = $total + (intval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade)/100;?>
+                        <?php $total = $total + (intval($produto->valor) * $produto->quantidade)/100;?>
                                                             <?php endforeach ?>
                                                             <hr>
                                                             <div class="row">
