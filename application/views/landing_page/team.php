@@ -33,7 +33,7 @@
 
                 <div class="col-three">            
                 <figure class="person">
-                <a href="" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/marcelo.jpg"></a>
+                <a href="" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/user.png"></a>
                     <figcaption>Marcelo dos Anjos</figcaption>
                 </figure>    
                 </div> 
