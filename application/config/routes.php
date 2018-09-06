@@ -50,13 +50,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'landingpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
 
 $route['agenda']           = 'agenda/index';
 $route['agenda/cadastrar'] = 'agenda/create';
 $route['agenda/editar']    = 'agenda/edit';
+
+//Rota principal
+$route['dashboard'] = 'home/index';
 
 //Rota do seed
 $route['make/seed'] = 'seed/index';
@@ -91,6 +95,10 @@ $route['funcionario'] = 'Funcionario';
 $route['funcionario/cadastrar'] = 'Funcionario/create';
 $route['funcionario/editar/(:num)'] = 'Funcionario/edit/$1';
 $route['funcionario/excluir/(:num)'] = 'Funcionario/delete/$1';
+$route['funcionario/avaliacoes/(:num)'] = 'Funcionario/assessments/$1';
+$route['funcionario/avaliar/(:num)'] = 'Funcionario/evaluate/$1';
+$route['funcionario/avaliacao-editar/(:num)'] = 'Funcionario/evaluate_edit/$1';
+$route['funcionario/avaliacao-info/(:num)'] = 'Funcionario/evaluate_info/$1';
 
 /** LOGIN */
 $route['login'] = 'Login/index';
@@ -116,6 +124,12 @@ $route['setor']='Setor';
 $route['setor/cadastrar']='Setor/create';
 $route['setor/editar/(:num)']='Setor/edit/$1';
 $route['setor/excluir/(:num)']='Setor/delete/$1';
+
+//Rotas Almoxarifado
+$route['almoxarifado']='Almoxarifado';
+$route['almoxarifado/cadastrar']='Almoxarifado/create';
+$route['almoxarifado/editar/(:num)']='Almoxarifado/edit/$1';
+$route['almoxarifado/excluir/(:num)']='Almoxarifado/delete/$1';
 
 //Rotas Cargo
 $route['cargo']='Cargo';
@@ -185,3 +199,4 @@ $route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+

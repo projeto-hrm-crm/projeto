@@ -105,6 +105,38 @@ $config = array(
         ),
 
     ),
+    'almoxarifado' =>
+    array(
+        array(
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+        array(
+            'field' => 'valor',
+            'label' => 'Valor',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'recebimento',
+            'label' => 'Recebimento',
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
+        ),
+        array(
+            'field' => 'descricao',
+            'label' => 'Descricao',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'id_unidade_medida',
+            'label' => 'Unidade de Medida',
+            'rules' => 'required',
+        ),
+
+    ),
     'pessoa' => array(
 
         array(
@@ -465,6 +497,12 @@ $config = array(
             'field' => 'nome',
             'label' => 'Nome',
             'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+
+        array(
+            'field' => 'carga_horaria',
+            'label' => 'Carga horária',
+            'rules' => 'required|numeric'
         ),
 
         array(

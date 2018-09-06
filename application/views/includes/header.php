@@ -63,14 +63,14 @@
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>"></i> <?php echo $key;?></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
               <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
                 <ul class="sub-menu children dropdown-menu">
                   <?php foreach($m['submenu'] as $s) : ?>
