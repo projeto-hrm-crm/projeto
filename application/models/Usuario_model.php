@@ -43,7 +43,7 @@ class Usuario_model extends CI_Model
        $this->db
         ->set('usuario.login', $data['login'])
         ->set('usuario.senha', hash('sha256', $data['senha']))
-        ->where('usuario.id_usuario', $data['id_usuario']);
+        ->where('usuario.id_usuario', $data['id_usuario'])
         ->update('usuario');
    }
    
