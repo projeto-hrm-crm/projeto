@@ -131,7 +131,7 @@ class Almoxarifado extends PR_Controller
 
     if ($data) {
       $this->almoxarifado->remove($id_almoxarifado);
-      $this->session->set_flashdata('success', 'Funcionário Excluído Com Sucesso!');
+      $this->session->set_flashdata('success', 'Item Excluído Com Sucesso!');
       redirect('almoxarifado');
     }
   }
