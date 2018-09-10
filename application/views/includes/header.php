@@ -69,9 +69,10 @@
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
-            <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
-              <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
+            <li class="">
+              <a href="<?php echo base_url()."".$key;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
+
+              <!-- <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
                 <ul class="sub-menu children dropdown-menu">
                   <?php foreach($m['submenu'] as $s) : ?>
                     <?php if(!is_null($s->id_menu) && $s->status == 1):?>
@@ -79,7 +80,8 @@
                     <?php endif;?>
                   <?php endforeach;?>
                 </ul>
-              <?php endif;?>
+              <?php endif;?> -->
+
             </li>
           <?php endforeach;?>
       <?php endif;?>
