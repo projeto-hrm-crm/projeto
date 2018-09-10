@@ -122,7 +122,7 @@ class Produto extends CI_Controller
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'lote'          => $this->input->post('lote'),
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-           'valor'         => $this->input->post('valor'),
+           'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
          );
           $this->produto->update($array);
           $this->session->set_flashdata('success','Produto atualizado com sucesso!');
