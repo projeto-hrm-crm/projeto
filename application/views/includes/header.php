@@ -37,8 +37,6 @@
   <?php endif; ?>
   <!-- fim da inserção -->
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/current_page.css">
-
 </head>
 <body>
 
