@@ -27,7 +27,7 @@ class Home extends CI_Controller
     $grupo_acesso = $this->grupo->find($id_grupo_acesso);
 
     $data['admin'] = $this->getAdminHomeConfigs();
-    $data['client'] = $this->getClientHomeConfigs();
+    $data['customer'] = $this->getCustomerHomeConfigs();
 
     $data['title'] = 'Dashboard';
     $data['assets'] = [
@@ -77,10 +77,14 @@ class Home extends CI_Controller
     return $data;
   }
 
-  private function getClientHomeConfigs()
+  private function getCustomerHomeConfigs()
   {
+    $customer_id = $this->session->userdata('user_login');
     $data = [];
-    $data['produtos'] = $this->produto->get();
+    $data['produtos']     = $this->produto->get();
+    $data['calls']        = $this->sac->getCustomerCalls($customer_id);
+    $data['orders']       = $this->pedido->getCustomerTotalOrders($customer_id);
+    $data['last_sac']     = $this->sac->getCustomerSac($customer_id);
     return $data;
   }
 
