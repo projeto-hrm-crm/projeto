@@ -910,7 +910,7 @@ aside.left-panel {
         padding: 10px 0;
         position: relative;
         width: 100%; }
-        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon {
+        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon{
           color: #fff !important; }
         .navbar .navbar-nav li > a .menu-icon {
           color: #8b939b;

@@ -29,7 +29,7 @@ class Produto extends CI_Controller
       */
     // Rota: http://localhost/projeto/produto
     public function index()
-    {
+    {  
       $user_id = $this->session->userdata('user_login');
       $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
 
@@ -43,7 +43,7 @@ class Produto extends CI_Controller
           case '3':
           $dados['title'] = 'Produtos';
           $dados['produtos'] = $this->produto->getFornecedorLogado($user_id);
-          
+
           break;
 
           default:
