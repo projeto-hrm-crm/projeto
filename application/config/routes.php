@@ -168,10 +168,10 @@ $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 //Rotas Perfil
-$route['perfil']                = 'Perfil/index';
-$route['perfil/editar']         = 'Perfil/edit';
-$route['perfil/alterar-senha']  = 'Perfil/changePassword';
-$route['perfil/upload/(:num)']  = 'Perfil/fileUpload/$1';
+$route['perfil']                     = 'Perfil/index';
+$route['perfil/editar']              = 'Perfil/edit';
+$route['perfil/alterar-senha']       = 'Perfil/changePassword';
+$route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
 
 //Ajax calls
 $route['cliente/chart']               = 'Cliente/getChartData';

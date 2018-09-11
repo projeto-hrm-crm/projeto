@@ -4,48 +4,40 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo $title;?></title>
-  <meta name="description" content="Projeto de PR1">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="apple-icon.png">
-  <link rel="shortcut icon" href="favicon.ico">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title><?php echo $title;?></title>
+   <meta name="description" content="Projeto de PR1">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="apple-touch-icon" href="apple-icon.png">
+   <link rel="shortcut icon" href="favicon.ico">
 
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/normalize.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
-  <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
-<script type="text/javascript">
-    var BASE_URL = "<?php echo base_url();?>";
-</script>
-  <!-- inserção dinâmica de arquivos CSS -->
-  <?php if (isset($assets['css'])): ?>
-    <?php foreach ($assets['css'] as $css_file): ?>
-      <link
-        rel="stylesheet"
-        href="<?php echo base_url().'assets/css/'.$css_file; ?>"
-      >
-    <?php endforeach; ?>
-  <?php endif; ?>
-  <!-- fim da inserção -->
-
-  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
-  <!-- script jquery para incluir máscaras nos inputs -->
-
-
-
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/normalize.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
+   <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
+   <script type="text/javascript">
+   var BASE_URL = "<?php echo base_url();?>";
+   </script>
+   <!-- inserção dinâmica de arquivos CSS -->
+   <?php if (isset($assets['css'])): ?>
+   <?php foreach ($assets['css'] as $css_file): ?>
+   <link
+   rel="stylesheet"
+   href="<?php echo base_url().'assets/css/'.$css_file; ?>"
+   >
+   <?php endforeach; ?>
+   <?php endif; ?>
+   <!-- fim da inserção -->
+   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+   <!-- script jquery para incluir máscaras nos inputs -->
 </head>
 <body>
-
-
 <!-- Left Panel -->
-
 <aside id="left-panel" class="left-panel">
   <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -107,26 +99,30 @@
             </form> 
           </div> 
 
-<div class="dropdown for-notification">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-bell"></i>
-    <span class="count bg-danger"></span>
-  </button>
-  <div class="dropdown-menu notification-div" aria-labelledby="notification">
-    <!-- LOADED FROM AJAX -->
-  </div>
- </div>
+            <div class="dropdown for-notification">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell"></i>
+                <span class="count bg-danger"></span>
+              </button>
+              <div class="dropdown-menu notification-div" aria-labelledby="notification">
+                <!-- LOADED FROM AJAX -->
+              </div>
+             </div>
         </div>
       </div>
 
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             
             <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/no-user.png" alt="User Avatar">
           </a>
-
+           
+           <?php $cur_name = explode(" ", $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome);?>
+           
+           
           <div class="user-menu dropdown-menu">
-              <div class="mb-2 text-center"><?php echo $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome;?></div>
+            <a class="nav-link" href="#">Olá, <?=$cur_name[0];?></a>
             <a class="nav-link" href="<?php echo base_url();?>perfil"><i class="fa fa-user"></i> Meu Perfil</a>
             <a class="nav-link" href="<?php echo base_url();?>logout"><i class="fa fa-power-off"></i> Logout</a>
           </div>

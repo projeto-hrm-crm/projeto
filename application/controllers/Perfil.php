@@ -29,6 +29,7 @@ class Perfil extends CI_Controller {
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
     }
+   
    /**
     * @author: Rodrigo Alves
     * Editar dados cadastrais usuario
@@ -107,27 +108,37 @@ class Perfil extends CI_Controller {
      * @param void
      * @return void
      */
-    public function fileUpload($id_candidato)
-    {
-            $config['upload_path']          = ';;/../uploads/';
-            $config['allowed_types']        = 'pdf|doc|docx';
-            $config['max_size']             = 100;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+    public function fileUpload() {
+       
+       $data = $this->input->post();
+     
+       if ($data)  {
+         print_r($data);
+         $config['upload_path']          = './uploads/';
+         $config['allowed_types']        = 'pdf|doc|docx';
+         $config['max_size']             = 100;
+         $config['max_width']            = 500;
+         $config['max_height']           = 768;
 
-            $this->load->library('upload', $config);
+         $this->load->library('upload', $config);
 
-            if ( ! $this->upload->do_upload('curriculum')) {
-                            
-                $error = array('error' => $this->upload->display_errors());
-                //print_r($error);
-                $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão pdf, doc ou docx');
-                redirect('perfil');
-            } else{
-                $data = array('upload_data' => $this->upload->data());              
-                $this->session->set_flashdata('success', 'Curriculum cadastrado com sucesso!');
-                redirect('perfil');
-            }
+         if (!$this->upload->do_upload('curriculum')) {     
+             $error = array('error' => $this->upload->display_errors());
+            print_r($error);
+            //$this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão pdf, doc ou docx');
+            //redirect('perfil');
+         } else{
+            echo $data = $this->upload->data('file_name'); 
+            print_r($data);
+            //$this->session->set_flashdata('success', 'Curriculum cadastrado com sucesso!');
+            //redirect('perfil');
+         }
+          
+       }
+       
+       $data['title'] = 'Enviar Curriculum';       
+       loadTemplate('includes/header', 'perfil/enviar-curriculum', 'includes/footer', $data);
+       
     }
    
    /**
