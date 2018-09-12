@@ -83,7 +83,7 @@
                             <label class="form-control-label"><red>*</red>Cidade</label>
                             <input type="text" name="cidade" class="form-control" id="cidade">
                             <span class="invalid-feedback">
-                                <?php echo isset($errors['cidade']) ? $errors['cidade'] : '' ; ?>
+                               <?php echo isset($errors['cidade']) ? $errors['cidade'] : '' ; ?>
                             </span>
                         </div>
 
