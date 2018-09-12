@@ -2944,4 +2944,58 @@ $seeds = array(
       )
     ),
   ),
+  'sugestao' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Sugiro mudar tudo',
+            '2018-08-09',
+            '6'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Para ficar bom tem que começar tudo novamente',
+            '2018-08-09',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Amei, sistema perfeito, nunca ví algo melhor, sugiro vocês cobrarem o uso do sistema',
+            '2018-08-09',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Sistema pouco amigavel, deixem ele mais fofinho',
+            '2018-08-09',
+            '6'
+          ),
+        ),
+      )
+    ),
+  ),
 );
