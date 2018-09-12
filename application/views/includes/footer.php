@@ -2,8 +2,10 @@
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
+<script src="<?php echo base_url();?>assets/js/calendar/moment.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/lib/jquery/jquery.js"></script>
 <script src="<?php echo base_url();?>assets/js/popper.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/calendar/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/dashboard.js"></script>
 <!-- <script src="<?php echo base_url();?>assets/js/widgets.js"></script> -->
 <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
@@ -15,6 +17,9 @@
 <script src="<?php echo base_url();?>assets/js/notifications.js"></script>
 <!-- <script src="<?php echo base_url();?>assets/js/estado_cidade.js"></script>
  -->
+<script src="<?php echo base_url();?>assets/js/calendar/fullcalendar.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/calendar/pt-br.js"></script>
+
 <?php if (isset($assets['js'])): ?>
   <?php foreach ($assets['js'] as $js_file): ?>
     <script

@@ -29,6 +29,13 @@
                                 </span>
                             </div>
                             <div class="form-group col-md-12">
+                                <label class=" form-control-label"><red>*</red>Carga horária (semanal)</label>
+                                <input type="number" id="carga_horaria" name="carga_horaria" value="<?php echo isset($old_data['carga_horaria']) ? $old_data['carga_horaria'] : null;?>" placeholder="40" name="nome" class="form-control <?php echo isset($errors['carga_horaria']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">
+                                    <?php echo isset($errors['carga_horaria']) ? $errors['carga_horaria'] : '' ; ?>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-12">
                                 <label class=" form-control-label"><red>*</red>Descrição</label>
                                 <textarea placeholder="Descrição do cargo" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>" required><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?></textarea>
                                 <span class="invalid-feedback">

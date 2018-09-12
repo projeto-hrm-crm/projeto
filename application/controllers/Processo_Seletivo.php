@@ -93,18 +93,22 @@ class Processo_Seletivo extends CI_Controller
       {
         $data['data_inicio'] = switchDate($data['data_inicio']);
         $data['data_fim'] = switchDate($data['data_fim']);
+
         $etapas = $this->etapa->find($id);
         foreach ($etapas as $key => $etapa_ant) {
-          $etapa[] = array(
-            'id_etapa' => $etapa_ant->id_etapa,
-            'nome' => $data['nome_etapa'][$key],
-            'descricao' => $data['descricao_etapa'][$key]
-          );
+            if(isset($data['nome_etapa'][$key])) {
+                $etapa[] = array(
+                    'id_etapa' => $etapa_ant->id_etapa,
+                    'nome' => $data['nome_etapa'][$key],
+                    'descricao' => $data['descricao_etapa'][$key]
+                );
+                if(isset($etapa))
+                  $this->etapa->update($id, $etapa);
+            } else {
+                $this->etapa->remove($etapa_ant->id_etapa);
+            }
         }
-        if(isset($etapa))
-          $this->etapa->update($id, $etapa);
-        // echo count($data['nome_etapa']);
-        // echo count($etapas);
+
         if(isset($data['nome_etapa'])){
           if (count($data['nome_etapa'])>count($etapas)) {
             foreach ($data['nome_etapa'] as $key => $novaEtapa) {

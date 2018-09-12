@@ -19,10 +19,10 @@
         <?php endif; ?>
         <div class="card">
           <div class="card-header">
-            <strong class="card-title">Funcionarios</strong>
+            <strong class="card-title">Almoxarifados</strong>
           </div>
           <div class="card-body">
-            <a href="<?= site_url('funcionario/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
+            <a href="<?= site_url('almoxarifado/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
               <i class="fa fa-check"></i> Novo Cadastro
             </a><br />
             <br />
@@ -30,32 +30,25 @@
               <thead>
                 <tr>
                   <th class="text-center">Nome</th>
-                  <th class="text-center">E-mail</th>
-                  <th class="text-center">Sexo</th>
-                  <th class="text-center">Data de Nascimento</th>
+                  <th class="text-center">Quantidade</th>
+                  <th class="text-center">valor</th>
                   <th class="text-center">Ações</th>
                 </tr>
               </thead>
               <tbody>
-                <?php if (!is_null($funcionarios)): ?>
-                    <?php foreach ($funcionarios as $funcionario): ?>
+                <?php if (!is_null($almoxarifados)): ?>
+                    <?php foreach ($almoxarifados as $almoxarifado): ?>
                       <tr>
-                        <td class="text-center"><?= $funcionario->nome; ?></td>
-                        <td class="text-center"><?= $funcionario->email; ?></td>
+                        <td class="text-center"><?= $almoxarifado->nome; ?></td>
+                        <td class="text-center"><?= $almoxarifado->quantidade; ?></td>
+
+                        <td class="text-center"><?= $almoxarifado->valor; ?></td>
                         <td class="text-center">
-                          <?php echo ($funcionario->sexo == '0')? "Masculino" : "Feminino"; ?>
-                        </td>
-                        <td class="text-center">
-                          <?=switchDate($funcionario->data_nascimento);?>
-                        </td>
-                        <td class="text-center">
-                          <a title="Atualizar funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
+                          <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$almoxarifado->id_almoxarifado)?>" class="btn btn-primary">
                           <span class="fa fa-edit"></span></a>
-                          <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
+                          <button data-href="almoxarifado/excluir/<?php echo $almoxarifado->id_almoxarifado?>" class="btn btn-danger" title="Excluir entrada" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                           </button>
-                           <a title="Avaliar funcionário" href="<?= site_url('funcionario/avaliacoes/'.$funcionario->id_funcionario)?>" class="btn btn-success">
-                          <i class="fa fa-star"></i></a>
                          </td>
                        </tr>
                      <?php endforeach ?>
@@ -71,13 +64,13 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Excluir Funcionário</h5>
+            <h5 class="modal-title">Excluir Entrada</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Deseja Realmente Excluir Esse Funcionário?
+            Deseja Realmente Excluir Esse Entrada?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">
