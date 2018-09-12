@@ -62,18 +62,18 @@
                                           <label class=" form-control-label">E-mail</label>
                                           <input type="text" id="email" name="email" value="<?php set_value('email');?>"  placeholder="email@provedor.com" class="form-control" >
                                       </div>
-                                      
+
                                       <div class="form-group col-12 col-md-12">
                                           <label class=" form-control-label">Sugestão</label>
                                           <textarea id="sugestao" name="sugestao" placeholder="Informe sua sugestão aqui" class="form-control" rows="4"><?php set_value('sugestao');?></textarea>
-                                      </div> 
+                                      </div>
                                   </div>
                               </div>
                               <div class="card-footer text-right">
-                                  <a href="<?php echo site_url('login')?>" title="Cadastrar" class="btn btn-primary">
+                                  <a href="<?php echo site_url('login')?>" title="Cadastrar" class="btn btn-danger">
                                       Voltar ao Login
                                   </a>
-                                  <button type="submit" title="Cadastrar" class="btn btn-success">
+                                  <button type="submit" title="Cadastrar" class="btn btn-primary">
                                       <i class="fa fa-plus"></i>
                                       Cadastrar
                                   </button>
