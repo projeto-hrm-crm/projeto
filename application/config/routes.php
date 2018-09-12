@@ -58,6 +58,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['agenda']           = 'agenda/index';
 $route['agenda/cadastrar'] = 'agenda/create';
 $route['agenda/editar']    = 'agenda/edit';
+$route['agenda/excluir']   = 'agenda/delete';
 
 //Rota principal
 $route['dashboard'] = 'home/index';
@@ -199,4 +200,3 @@ $route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
-

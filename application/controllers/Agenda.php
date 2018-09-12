@@ -76,4 +76,17 @@ class Agenda extends CI_Controller
             loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
         }
     }
+
+    public function delete()
+    {
+        $evento = $this->input->post('id');
+
+        if($evento){
+            $this->evento->delete($evento);
+            $this->session->set_flashdata('success', 'Evento excluído com sucesso!');
+        } else {
+            $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
+        }
+        redirect('agenda');
+    }
 }

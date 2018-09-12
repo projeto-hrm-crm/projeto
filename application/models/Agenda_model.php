@@ -55,4 +55,16 @@ class Agenda_model extends CI_Model
         return $id_evento;
     }
 
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+
+        $id_evento = $this->db->delete('evento');
+
+        if($id_evento){
+            $this->relatorio->setLog('delete', 'Deletar','Evento', $id_evento, 'Deletou o Evento', $id);
+        }
+        return $id_evento;
+    }
+
 }

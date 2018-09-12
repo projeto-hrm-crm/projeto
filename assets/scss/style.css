@@ -2257,7 +2257,11 @@ label.error {
     display: block;
 }
 
-.form{
+.editar{
+    display: none;
+}
+
+.excluir {
     display: none;
 }
 
