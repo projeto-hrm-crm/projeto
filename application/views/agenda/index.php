@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer bg-white">
                     <div class="row">
                         <div class="col-4">
                             <button type="button" class="btn btn-danger ocultar-btn-delete">
@@ -73,7 +73,7 @@
                             <button type="button" class="btn btn-primary ocultar-btn float-right ml-2">
                                 Editar
                             </button>
-                            <button type="button" class="btn btn-secundary float-right" data-dismiss="modal">
+                            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">
                                 Cancelar
                             </button>
                         </div>
