@@ -27,6 +27,7 @@ class Agenda_model extends CI_Model
     {
         $this->db->insert('evento', $eventos);
 
+        $titulo = $eventos['titulo'];
         $inicio = date("d/m/Y",strtotime($eventos['inicio']));
 
         $id_evento = $this->db->insert_id();
@@ -37,7 +38,7 @@ class Agenda_model extends CI_Model
             $this->relatorio->setLog('insert', 'Inserir', 'Evento', $id_evento, 'Inseriu o evento', $_POST['titulo']);
         }
 
-        $this->Notification->notify(null, $logged_user, "Um novo evento foi criado na data {$inicio}.", base_url()."agenda");
+        $this->Notification->notify(null, $logged_user, "O evento <b>{$titulo}</b> foi criado na data <b>{$inicio}</b>.", base_url()."agenda");
 
         return $id_evento;
     }
@@ -49,6 +50,7 @@ class Agenda_model extends CI_Model
         $this->db->set('fim', $array['fim']);
         $this->db->set('cor', $array['cor']);
 
+        $titulo = $array['titulo'];
         $inicio = date("d/m/Y",strtotime($array['inicio']));
 
         $id_evento = $this->db->update('evento');
@@ -59,7 +61,7 @@ class Agenda_model extends CI_Model
             $this->relatorio->setLog('update', 'Atualizar', 'Evento', $id_evento, 'Atualizou o evento', $array['titulo']);
         }
 
-        $this->Notification->notify(null, $logged_user, "Um evento foi editado para a data {$inicio}.", base_url()."agenda");
+        $this->Notification->notify(null, $logged_user, "O evento <b>{$titulo}</b> foi editado para a data <b>{$inicio}</b>.", base_url()."agenda");
 
         return $id_evento;
     }
@@ -75,7 +77,7 @@ class Agenda_model extends CI_Model
             $this->relatorio->setLog('delete', 'Deletar','Evento', $id_evento, 'Deletou o Evento', $id);
         }
 
-        $this->Notification->notify(null, $logged_user, "O evento {$titulo} foi cancelado.", base_url()."agenda");
+        $this->Notification->notify(null, $logged_user, "O evento <b>{$titulo}</b> foi cancelado.", base_url()."agenda");
 
         return $id_evento;
     }
