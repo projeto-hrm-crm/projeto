@@ -68,6 +68,10 @@ class Agenda_model extends CI_Model
 
     public function delete($id)
     {
+        $getTitle = $this->evento->get();
+
+        $titulo = $getTitle[0]['title'];
+
         $this->db->where('id', $id);
 
         $id_evento = $this->db->delete('evento');
