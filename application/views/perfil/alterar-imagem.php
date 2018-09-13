@@ -1,4 +1,4 @@
-<form action="<?php echo site_url('perfil/enviar-curriculum/'); ?>" method="POST" id="form_perfil" enctype="multipart/form-data">
+<form action="<?php echo site_url('perfil/alterar-imagem/'); ?>" method="POST" id="form_perfil" enctype="multipart/form-data">
    <div class="animated fadeIn">      
       <div class="row justify-content-center align-items-center">
          <div class="col-lg-6">
@@ -17,7 +17,7 @@
             </div>
             <div class="card">
                <div class="card-header">
-                  <strong>Seu Curriculum</strong>
+                  <strong>Alterar Imagem</strong>
                </div>               
                <div class="card-body card-block">
                   <div class="row">

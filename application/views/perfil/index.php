@@ -22,7 +22,7 @@
                <div class="row">
                   <div class="col-lg-3">
                      <a href="<?=site_url('perfil/alterar-imagem/')?>" alt="Alterar Imagem" title="Alterar Imagem">
-                        <img width="100%" src="<?php echo base_url();?>assets/images/theme/no-user.png">
+                        <img width="100%" src="<?=$imagem;?>">
                      </a>
                   </div>
                   <div class="col-lg-9">
@@ -32,8 +32,8 @@
                         <?=$pessoa[0]->email;?>
                      </p> 
                      <br>
-                     <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Alterar Cadastrais</a>
-                     <a href="<?=site_url('perfil/alterar-senha/')?>" class="btn btn-primary btn-sm">Alterar Senha</a>
+                     <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Dados Cadastrais</a>&nbsp;&nbsp;
+                     <a href="<?=site_url('perfil/alterar-senha/')?>" class="btn btn-primary btn-sm">Alterar Senha</a>&nbsp;&nbsp;
                      <a href="<?=site_url('perfil/enviar-curriculum/')?>" class="btn btn-primary btn-sm">Enviar Curriculum</a>
                   </div>
                </div>

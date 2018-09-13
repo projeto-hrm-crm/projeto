@@ -18,13 +18,23 @@ class Perfil extends CI_Controller {
         
         $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
         $user_id = $this->session->userdata('user_login');
-        
+        $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+        $id_pessoa = $data['pessoa'][0]->id_pessoa;
         $data['title'] = 'Meu Perfil';         
         $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
         $id = $data['pessoa'][0]->id_pessoa;
        
         $data['endereco'] = $this->endereco->findAddress($id);
+       
+        
+       
+        $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+        if($image) {
+           $data['imagem'] = base_url()."uploads/profileImage/".$image;
+        }else{
+           $data['imagem'] = base_url()."assets/images/theme/no-user.png";
+        }
                
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
@@ -109,35 +119,122 @@ class Perfil extends CI_Controller {
      * @return void
      */
     public function fileUpload() {
-       
-       $data = $this->input->post();
-     
-       if ($data)  {
-         print_r($data);
-         $config['upload_path']          = './uploads/';
-         $config['allowed_types']        = 'pdf|doc|docx';
-         $config['max_size']             = 100;
-         $config['max_width']            = 500;
-         $config['max_height']           = 768;
+      
+       $user_id = $this->session->userdata('user_login');
 
-         $this->load->library('upload', $config);
+      //Pega o tipo de usuario e informações de pessoas
+      $typeUser = $this->usuario->getUserAccessGroup($user_id);
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-         if (!$this->upload->do_upload('curriculum')) {     
-             $error = array('error' => $this->upload->display_errors());
-            print_r($error);
-            //$this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão pdf, doc ou docx');
-            //redirect('perfil');
-         } else{
-            echo $data = $this->upload->data('file_name'); 
-            print_r($data);
-            //$this->session->set_flashdata('success', 'Curriculum cadastrado com sucesso!');
-            //redirect('perfil');
+      // Pegar informações de cliente
+      $id_pessoa = $data['pessoa'][0]->id_pessoa; 
+      
+       if (isset($_FILES['arquivo']))  {
+         
+         $arquivo    = $_FILES['arquivo'];
+         $configuracao = array(
+            'upload_path'   => './uploads/',
+            'allowed_types' => 'pdf|doc|docs',
+            'file_name'     => $arquivo['name'],
+            'max_size'      => '999999'
+         );      
+          
+         $this->load->library('upload');
+         $this->upload->initialize($configuracao);
+          
+         if ($this->upload->do_upload('arquivo')){
+            
+            $array = array(
+              'arquivo' => $arquivo['name'],
+              'id_pessoa' => $id_pessoa,
+            );
+            
+            $oldFile = $this->candidato->findCurriculum($id_pessoa)[0]->curriculum;
+            
+            
+            if($oldFile) {
+               unlink('./uploads/'.$oldFile);
+            }
+            
+            $this->candidato->fileUpdate($array);
+            
+            $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
+            redirect('perfil');
+         }
+         else{            
+            $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão pdf, doc ou docx');
+            redirect('perfil/enviar-curriculum');
          }
           
        }
        
        $data['title'] = 'Enviar Curriculum';       
        loadTemplate('includes/header', 'perfil/enviar-curriculum', 'includes/footer', $data);
+       
+    }
+   
+   public function profileImage() {
+      
+      $user_id = $this->session->userdata('user_login');
+
+      //Pega o tipo de usuario e informações de pessoas
+      $typeUser = $this->usuario->getUserAccessGroup($user_id);
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+
+      // Pegar informações de cliente
+      $id_pessoa = $data['pessoa'][0]->id_pessoa; 
+      
+       if (isset($_FILES['arquivo']))  {
+         
+         $arquivo    = $_FILES['arquivo'];
+         $config['image_library'] = 'gd2';
+         $config["source_image"] = $arquivo["tmp_name"];
+         $config['allowed_types'] = 'gif|jpg|png';
+         $config['new_image'] = './uploads/profileImage/'.$arquivo['name'];
+         $config['create_thumb'] = false;
+         $config['maintain_ratio'] = FALSE;
+         $config['width'] = 200;
+         $config['height'] = 200;
+         $config['x_axis'] = 0;
+         $config['y_axis'] = 0;
+
+         $this->load->library('image_lib', $config);
+          
+         if ($this->image_lib->crop()){
+            
+            $array = array(
+              'arquivo' => $arquivo['name'],
+              'id_pessoa' => $id_pessoa,
+            );
+            
+            $oldFile = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+            
+            
+            if($oldFile) {
+               unlink('./uploads/profileImage/'.$oldFile);
+            }
+            
+            $this->pessoa->imageUpdate($array);
+            
+            
+
+            
+            
+            $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
+            redirect('perfil');
+         }
+         else{ 
+            echo $this->image_lib->display_errors();
+            exit;
+            //$this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
+            //redirect('perfil/alterar-imagem');
+         }
+          
+       }
+       
+       $data['title'] = 'Enviar Curriculum';    
+      
+       loadTemplate('includes/header', 'perfil/alterar-imagem', 'includes/footer', $data);
        
     }
    

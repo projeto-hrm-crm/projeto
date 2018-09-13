@@ -110,15 +110,28 @@
              </div>
         </div>
       </div>
-
+       <?php 
+           
+            $cur_name = explode(" ", $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome);
+            $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+            $id_pessoa = $data['pessoa'][0]->id_pessoa;
+           
+           $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+           if($image) {
+              $path_profile_image = base_url()."uploads/profileImage/".$image;
+           }else{
+              $path_profile_image = base_url()."assets/images/theme/no-user.png";
+           }
+           
+           ?>
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              
-            <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/no-user.png" alt="User Avatar">
+            <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
           </a>
            
-           <?php $cur_name = explode(" ", $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome);?>
+           
            
            
           <div class="user-menu dropdown-menu">
