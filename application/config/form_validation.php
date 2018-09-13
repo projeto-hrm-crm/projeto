@@ -772,7 +772,7 @@ $config = array(
         array(
             'field' => 'titulo',
             'label' => 'Titulo',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
             'field' => 'cor',

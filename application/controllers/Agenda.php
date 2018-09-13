@@ -38,7 +38,8 @@ class Agenda extends CI_Controller
             }else{
                 $this->session->set_flashdata('errors', $this->form_validation->error_array());
                 $this->session->set_flashdata('old_data', $this->input->post());
-                redirect('agenda/cadastrar');
+                $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
+                redirect('agenda');
             }
         } else {
             $dados['title'] = 'Cadastrar evento';
@@ -66,6 +67,7 @@ class Agenda extends CI_Controller
             } else {
                 $this->session->set_flashdata('errors', $this->form_validation->error_array());
                 $this->session->set_flashdata('old_data', $this->input->post());
+                $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
                 redirect('agenda');
             }
         } else {
