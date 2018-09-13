@@ -10,7 +10,11 @@ jQuery(document).ready(function($) {
 
   $("#form_produto").validate({
     rules: {
-      nome: "required",
+      nome: {
+        required:true,
+        regex: /^[a-zA-Z0-9]+/,
+
+      },
 
       lote: {
         required: true,
@@ -43,6 +47,10 @@ jQuery(document).ready(function($) {
     messages:{
        fabricacao:{
         max: 'Informe uma data anterior ou igual à atual.',
+
+      },
+      nome:{
+        regex: 'O campo nome pode conter apenas letras e números',
       },
     }
   });

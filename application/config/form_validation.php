@@ -57,7 +57,7 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required|regex_match[/^[A-Za-z0-9]*\d+[A-Za-z0-9]*$/]'
         ),
         array(
             'field' => 'lote',
