@@ -61,7 +61,7 @@ class Agenda_model extends CI_Model
             $this->relatorio->setLog('update', 'Atualizar', 'Evento', $id_evento, 'Atualizou o evento', $array['titulo']);
         }
 
-        $this->Notification->notify(null, $logged_user, "O evento <b>{$titulo}</b> foi editado para a data <b>{$inicio}</b>.", base_url()."agenda");
+        $this->Notification->notify(null, $logged_user, "O evento <b>{$titulo}</b> foi alterado para a data <b>{$inicio}</b>.", base_url()."agenda");
 
         return $id_evento;
     }
