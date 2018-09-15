@@ -84,8 +84,8 @@ jQuery(document).ready(function($) {
       nome: "required",
       id_vaga: "required",
       descricao: "required",
-      "nome_etapa[]":"required",
-      "descricao_etapa[]":"required",
+      'nome_etapa[]': "required",
+      'descricao_etapa[]':"required",
       codigo: {
         required: true,
       },

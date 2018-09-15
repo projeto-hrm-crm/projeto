@@ -74,8 +74,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if (file_exists('db_environment.php'))
     require 'db_environment.php';
 
-
-
 $active_group = 'default';
 $query_builder = TRUE;
 
@@ -83,7 +81,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '', 
+	'password' => 'mysql',
 	'database' => 'projeto',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

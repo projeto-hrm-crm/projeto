@@ -112,7 +112,7 @@
             </div>
         </div>
         <!-- Template -->
-        <div class="form-group col-12 cloned-main" id="template1" style="display:none;">
+        <div class="template1 form-group col-12 cloned-main" id="template1" style="display:none;">
             <div class="cloned-div">
                 <div class="form-row">
                     <div class="form-group col-12">
