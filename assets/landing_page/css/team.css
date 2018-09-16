@@ -17,18 +17,19 @@
     display: inline-block;
     width: auto;
     padding: 5px;
-    vertical-align: top;
-  }
+    }
+
   .person-photo {
     width: 100px;
     height: 100px;
     border-radius: 50%;
   }
   
-  .person-photo:hover{
+  .person-photo :hover{
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    background: #000;
   }
   
   .person-name {

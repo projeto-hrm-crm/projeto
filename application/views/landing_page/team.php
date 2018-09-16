@@ -60,10 +60,10 @@
                 </div>  
 
                 <div class="col-three">
-                <figure class="person">
+                
                 <a href="" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/nikolas.jpg"></a>
-                    <figcaption>Nikolas Lencioni</figcaption>
-                </figure>   
+                    <figcaption>Nikolas Lencioni1111</figcaption>
+
                 </div>  
 
                 <div class="col-three">
