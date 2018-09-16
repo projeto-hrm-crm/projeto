@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/base.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/vendor.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/main.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/team.css">
     
     <!-- script
    ================================================== -->
