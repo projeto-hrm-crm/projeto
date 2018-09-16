@@ -57,7 +57,7 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|regex_match[/^[A-Za-z0-9]*\d+[A-Za-z0-9]*$/]'
+            'rules' => 'required'
         ),
         array(
             'field' => 'lote',
@@ -290,7 +290,7 @@ $config = array(
         )
     ),
 
-    
+
     'sugestao' => array(
         array(
             'field' => 'email',
@@ -308,7 +308,7 @@ $config = array(
             'rules' => 'required'
         )
     ),
-    
+
     'setor' => array(
         array(
             'field' => 'nome',
@@ -317,7 +317,7 @@ $config = array(
         )
     ),
 
-    
+
     'vaga' => array(
 
         array(

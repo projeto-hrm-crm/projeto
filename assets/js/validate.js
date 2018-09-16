@@ -28,20 +28,23 @@ jQuery(document).ready(function($) {
 
       recebimento: {
         required: true,
-        brazilian_date: true,
+        validaDataBR:true,
         dataMaiorQue: '#fabricacao',
+    
       },
 
       fabricacao: {
         required: true,
-        brazilian_date: true,
-        max: new Date(),
+        validaDataBR: true,
       },
 
       validade: {
         required: true,
         brazilian_date: true,
         dataMaiorQue: '#fabricacao',
+      },
+      id_fornecedor: {
+        required:true,
       },
     },
     messages:{
@@ -54,7 +57,7 @@ jQuery(document).ready(function($) {
       },
     }
   });
-    
+
   $("#form_sugestao").validate({
     rules: {
       nome: "required",
@@ -949,6 +952,8 @@ jQuery(document).ready(function($) {
 
             return (resultado == digitos.charAt(1));
         }, 'Informe um CNPJ válido');
+
+
 
   /**
   * @author: Camila Sales
