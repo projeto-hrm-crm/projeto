@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/base.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/vendor.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/main.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/landing_page/css/team.css">
     
     <!-- script
    ================================================== -->
@@ -49,10 +50,10 @@
 	   	<nav id="header-nav-wrap">
 			<ul class="header-main-nav">
 				<li class="current"><a class="smoothscroll"  href="#home" title="Home">Início</a></li>
-                <li><a class="smoothscroll"  href="#sobre" title="Sobre">Conheça o Lambda RP</a></li>
+                <li><a class="smoothscroll"  href="#sobre" title="Sobre">Conheça o Lambda</a></li>
 				<li><a class="smoothscroll"  href="#acesso" title="Acesso">Acesso</a></li>				
                 <li><a class="smoothscroll"  href="#download" title="Download">Download</a></li>
-                <li><a class="smoothscroll"  href="#alunos" title="Alunos">Equipe</a></li>
+                <li><a class="smoothscroll"  href="#equipe" title="Alunos">Equipe</a></li>
 				<li><a href="https://github.com/projeto-hrm-crm/projeto/tree/master/documentacao" target="_blank" title="documentation">Documentação</a></li>				
 			</ul>
 

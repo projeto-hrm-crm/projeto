@@ -17,8 +17,7 @@
  *  10. home
  *  11. sobre
  *  12. acesso 
- *  13. alunos
- *  14. download
+ *  13. download
  *  15. footer styles
  *
  * =================================================================== */
@@ -2274,218 +2273,6 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
   }
 }
 
-
-/* ===================================================================
- *  13. alunos - (_layout.scss)
- *
- * ------------------------------------------------------------------- */
-
-#alunos {
-  background: #FFFFFF;
-  padding: 10rem 0 9rem;
-  text-align: center;
-  min-height: 600px;
-}
-
-#alunos h1::before {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-#alunos .owl-wrap {
-  width: 80%;
-  max-width: 900px;
-  margin: 4.2rem auto 0;
-}
-
-#testimonial-slider {
-  margin: 0 0 3rem 0;
-  position: relative;
-}
-
-#testimonial-slider .slides {
-  padding-bottom: 3rem;
-}
-
-#testimonial-slider p {
-  font-family: "muli-regular", sans-serif;
-  font-size: 3.2rem;
-  line-height: 1.5;
-  color: #303030;
-}
-
-#testimonial-slider p::before,
-#testimonial-slider p::after {
-  display: inline-block;
-  font-family: "muli-regular", serif;
-  font-size: 3.6rem;
-  line-height: 1;
-  position: relative;
-  top: .3rem;
-}
-
-#testimonial-slider p::before {
-  content: '\201C';
-}
-
-#testimonial-slider p::after {
-  content: '\201D';
-}
-
-#testimonial-slider .testimonial-author {
-  margin-top: 4.2rem;
-}
-
-#testimonial-slider .testimonial-author img {
-  width: 7.4rem;
-  height: 7.4rem;
-  margin: 0 auto 1.2rem auto;
-  display: block;
-  border-radius: 50%;
-}
-
-#testimonial-slider .testimonial-author .author-info {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  font-family: "montserrat-semibold", sans-serif;
-  font-size: 1.9rem;
-  margin-top: .9rem;
-  margin-bottom: 3rem;
-  color: #151515;
-}
-
-#testimonial-slider .testimonial-author .author-info span {
-  display: block;
-  font-family: "muli-bold", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.313;
-  letter-spacing: 0;
-  text-transform: none;
-  color: rgba(0, 0, 0, 0.5);
-  margin-top: .3rem;
-}
-
-
-/* owl dots */
-
-#testimonial-slider .owl-nav {
-  margin-top: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  -webkit-tap-highlight-color: transparent;
-}
-
-#testimonial-slider .owl-nav [class*='owl-'] {
-  color: #FFFFFF;
-  font-family: "montserrat-regular", sans-serif;
-  font-size: 1.4rem;
-  height: 3rem;
-  line-height: 3rem;
-  margin: .6rem;
-  padding: 0 10px;
-  background: rgba(0, 0, 0, 0.5);
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 3px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-#testimonial-slider .owl-nav [class*='owl-']:hover {
-  background: rgba(0, 0, 0, 0.7);
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-#testimonial-slider .owl-nav .disabled {
-  background: rgba(0, 0, 0, 0.2);
-  cursor: default;
-}
-
-#testimonial-slider .owl-nav.disabled+.owl-dots {
-  margin-top: 1.8rem;
-}
-
-#testimonial-slider .owl-dots {
-  text-align: center;
-  -webkit-tap-highlight-color: transparent;
-}
-
-#testimonial-slider .owl-dots .owl-dot {
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-}
-
-#testimonial-slider .owl-dots .owl-dot span {
-  width: 9px;
-  height: 9px;
-  background-color: #959595;
-  margin: 9px 9px;
-  display: block;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
-  transition: opacity 200ms ease;
-  border-radius: 50%;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-#testimonial-slider .owl-dots .owl-dot.active span,
-#testimonial-slider .owl-dots .owl-dot:hover span {
-  background-color: #39b54a;
-}
-
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * alunos
- * ------------------------------------------------------------------- */
-
-@media only screen and (max-width: 1024px) {
-  #testimonial-slider p {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  #testimonial-slider p {
-    font-size: 2.6rem;
-  }
-  #testimonial-slider .testimonial-author img {
-    width: 6.6rem;
-    height: 6.6rem;
-  }
-  #testimonial-slider .testimonial-author .author-info {
-    font-size: 1.8rem;
-  }
-  #testimonial-slider .testimonial-author .author-info span {
-    font-size: 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  #alunos .owl-wrap {
-    width: 90%;
-  }
-  #testimonial-slider p {
-    font-size: 2.4rem;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  #alunos .owl-wrap {
-    width: 100%;
-  }
-  #testimonial-slider p {
-    font-size: 2rem;
-  }
-}
-
-
 /* ===================================================================
  *  14. download - (_layout.scss)
  *
@@ -2526,6 +2313,10 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
   text-align: center;
 }
 
+#download .download-badges:hover {
+  opacity:0.7;
+}
+
 #download .download-badges li {
   display: inline-block;
   margin: 0 7.5px;
@@ -2548,6 +2339,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 #download .download-badges li a.badge-download {
   background-image: url("../images/download-button-163x45.png");
 }
+
 
 #download .download-badges li a.badge-appstore {
   background-image: url("../images/appstore.png");
@@ -2876,88 +2668,5 @@ footer ul a:visited {
     display: none;
   }
 }
-
-/* ------------------------------------------------------------------- 
- * Team 
- * ------------------------------------------------------------------- */
-
- .team {
-  text-align: center;
-  margin-top: -30px;
-}
-.role {
-  display: inline-block;
-  margin: 25px;
-}
-h1.role-name {
-  font-size: 24px;
-}
-.person {
-  display: inline-block;
-  width: auto;
-  padding: 5px;
-  vertical-align: top;
-}
-.person-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-.person-photo:hover{
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-.person-name {
-  border-radius: 50%;
-  width:100%;
-}
-
-/* ESTE DE HOVER */
-
-.container {
-    position: relative;
-    width: 50%;
-}
-
-.image {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.container:hover .image {
-  opacity: 0.3;
-}
-
-.container:hover .middle {
-  opacity: 1;
-}
-
-.text {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
-
-
-
 
 /*# sourceMappingURL=main.css.map */
