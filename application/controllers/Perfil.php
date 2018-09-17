@@ -14,27 +14,33 @@ class Perfil extends CI_Controller {
     *
     */
     public function index(){
-        
-        
-        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-        $user_id = $this->session->userdata('user_login');
-        $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-        $id_pessoa = $data['pessoa'][0]->id_pessoa;
-        $data['title'] = 'Meu Perfil';         
-        $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-        $id = $data['pessoa'][0]->id_pessoa;
        
-        $data['endereco'] = $this->endereco->findAddress($id);
+       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+       $user_id = $this->session->userdata('user_login');
+       $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+       $id_pessoa = $data['pessoa'][0]->id_pessoa;
        
+       $data['title'] = 'Meu Perfil';         
+       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
         
+       $id = $data['pessoa'][0]->id_pessoa;
        
-        $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
-        if($image) {
-           $data['imagem'] = base_url()."uploads/profileImage/".$image;
-        }else{
+       $data['endereco'] = $this->endereco->findAddress($id);
+       
+       $curriculum = $this->candidato->findCurriculum($id_pessoa)[0]->curriculum;
+       $data['tipoUsuario'] = $typeUser;
+       
+       $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+       
+       if($image) {
+         $data['imagem'] = base_url()."uploads/profileImage/".$image;
+       }else{
            $data['imagem'] = base_url()."assets/images/theme/no-user.png";
         }
+       
+        if($curriculum) {
+         $data['curriculum'] = base_url()."uploads/".$curriculum;
+       }
                
         loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
@@ -187,47 +193,66 @@ class Perfil extends CI_Controller {
        if (isset($_FILES['arquivo']))  {
          
          $arquivo    = $_FILES['arquivo'];
-         $config['image_library'] = 'gd2';
-         $config["source_image"] = $arquivo["tmp_name"];
-         $config['allowed_types'] = 'gif|jpg|png';
-         $config['new_image'] = './uploads/profileImage/'.$arquivo['name'];
-         $config['create_thumb'] = false;
-         $config['maintain_ratio'] = FALSE;
-         $config['width'] = 200;
-         $config['height'] = 200;
-         $config['x_axis'] = 0;
-         $config['y_axis'] = 0;
-
-         $this->load->library('image_lib', $config);
+         $configuracao = array(
+            'upload_path'   => './uploads/profileImage/',
+            'allowed_types' => 'jpef|jpg|png',
+            'file_name'     => $arquivo['name'],
+            'max_size'      => '999999'
+         );      
           
-         if ($this->image_lib->crop()){
+         $this->load->library('upload');
+         $this->upload->initialize($configuracao);
+          
+         if ($this->upload->do_upload('arquivo')){
+          
+            $size = getimagesize('./uploads/profileImage/'.$arquivo["name"]);
+                        
+            $largura = $size[0];
+            $altura = $size[1];
             
-            $array = array(
-              'arquivo' => $arquivo['name'],
-              'id_pessoa' => $id_pessoa,
-            );
             
-            $oldFile = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+            $config['image_library'] = 'gd2';
+            $config["source_image"] = './uploads/profileImage/'.$arquivo["name"];
+            $config['allowed_types'] = 'jpef|jpg|png';
+            $config['new_image'] = './uploads/profileImage/'.$arquivo['name'];
+            $config['create_thumb'] = false;
+            $config['maintain_ratio'] = FALSE;
             
-            
-            if($oldFile) {
-               unlink('./uploads/profileImage/'.$oldFile);
+            if($largura > $altura){
+               $config['width'] = $altura;
+               $config['height'] = $altura;
+            }else {
+               $config['width'] = $largura;
+               $config['height'] = $largura;
             }
             
-            $this->pessoa->imageUpdate($array);
-            
-            
+            $this->load->library('image_lib', $config);
 
-            
-            
-            $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
-            redirect('perfil');
+            if ($this->image_lib->crop()){
+
+               $array = array(
+                 'arquivo' => $arquivo['name'],
+                 'id_pessoa' => $id_pessoa,
+               );
+
+               $oldFile = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+
+
+               if($oldFile) {
+                  unlink('./uploads/profileImage/'.$oldFile);
+               }
+
+               $this->pessoa->imageUpdate($array);
+
+               $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
+               redirect('perfil');
+            }
          }
          else{ 
-            echo $this->image_lib->display_errors();
-            exit;
-            //$this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
-            //redirect('perfil/alterar-imagem');
+            //echo $this->upload->display_errors();
+            //exit;
+            $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
+            redirect('perfil/alterar-imagem');
          }
           
        }
@@ -268,9 +293,9 @@ class Perfil extends CI_Controller {
          }
        }
       
-         $data['title'] = 'Alterar Senha';  
+      $data['title'] = 'Alterar Senha';  
 
-         loadTemplate('includes/header', 'perfil/alterar-senha', 'includes/footer', $data);
+      loadTemplate('includes/header', 'perfil/alterar-senha', 'includes/footer', $data);
         
     }
 

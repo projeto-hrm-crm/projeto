@@ -28,14 +28,38 @@
                   <div class="col-lg-9">
                      <h1><?=$pessoa[0]->nome;?></h1>                      
                      <p>
-                        <?=$endereco[0]->cidade;?> -  <?=$endereco[0]->estado;?>, Brasil<br>
+                        <?=$endereco[0]->cidade;?> -  <?=$endereco[0]->estado;?>, Brasil
+                        <?php
+                           if($curriculum) {
+                        ?> 
+                         &nbsp;&nbsp;- &nbsp;
+                        <a href="<?=$curriculum;?>" download><i class="fa fa-file-o"></i> Meu Curriculum</a>
+                        <?php } ?>
+                        
+                        
+                        <br>
                         <?=$pessoa[0]->email;?>
                      </p> 
                      <br>
                      <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Dados Cadastrais</a>&nbsp;&nbsp;
                      <a href="<?=site_url('perfil/alterar-senha/')?>" class="btn btn-primary btn-sm">Alterar Senha</a>&nbsp;&nbsp;
+                     
+                     <?php
+                        if($tipoUsuario=="5") {
+                     ?>                     
                      <a href="<?=site_url('perfil/enviar-curriculum/')?>" class="btn btn-primary btn-sm">Enviar Curriculum</a>
+                     <?php } ?>
                   </div>
+               </div>
+            </div>
+         </div>
+         <div class="card">
+            <div class="card-body">
+               <div class="row">
+                  <div class="col-lg-12">
+                     <h1>Minhas Habilidades</h1>
+                     <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Adicionar Habilidade</a>
+                  </div>                  
                </div>
             </div>
          </div>
