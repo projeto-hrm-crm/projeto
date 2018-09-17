@@ -9,7 +9,7 @@
                 <div class="person">
                     <a href="https://github.com/Pssales" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/camila.jpg" alt="PERFIL NO GITHUB"></a>
                 </div>
-                <div class="person-name">Camila Salles</div>
+                <div class="person-name">Camila Salles</div>git st
                 </div>  
 
                 <div class="col-three">            
@@ -71,23 +71,20 @@
                 <div class="col-three">
                     <div class="person">
                     <a href="https://github.com/Pigozzi" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/pigozzi.jpg"></a>
-                   
-</div>   
+                </div>   
                 <div class="person-name">Rafael Pigozzi</div>
                </div> 
 
                <div class="col-three">            
                 <div class="person">
                 <a href="https://github.com/pguideveloper" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/pedro.jpg"></a>
-                   
-               </div>
+              </div>
                <div class="person-name">Pedro Henrique</div>
                 </div>  
 
                 <div class="col-three">            
                 <div class="person">
                 <a href="https://github.com/PetersonMunuera" class="teste" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/peterson.jpg"></a>
-                    
                </div>
                <div class="person-name">Peterson Munuera</div>
                 </div>  
@@ -95,16 +92,14 @@
                 <div class="col-three">            
                 <div class="person">
                 <a href="https://github.com/rodrigoalvesdeveloper" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/rodrigo.jpg"></a>
-                   
-               </div>
+              </div>
                <div class="person-name">Rodrigo Alves</div>
                 </div>  
 
                 <div class="col-three">
                 <div class="person">
                     <a href="https://github.com/tiagolimavillalobos" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/tiago.jpg"></a>
-                   
-                </figure>  
+                </div>  
                 <div class="person-name">Tiago Lima</div> 
                </div> 
     </div>
