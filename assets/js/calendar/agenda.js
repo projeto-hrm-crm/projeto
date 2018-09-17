@@ -59,13 +59,24 @@
         });
 
         $('.ocultar-btn').on('click', function(){
-            $('.form').slideToggle();
+            $('.editar').slideToggle();
             $('.visualizar').slideToggle();
         });
 
         $('.edit-btn').on('click', function(){
             $('.visualizar').slideToggle();
-            $('.form').slideToggle();
+            $('.editar').slideToggle();
         });
+
+        $('.ocultar-btn-delete').on('click', function(){
+            $('.excluir').slideToggle();
+            $('.visualizar').slideToggle();
+        });
+
+        $('.delete-btn').on('click', function(){
+            $('.visualizar').slideToggle();
+            $('.excluir').slideToggle();
+        });
+
 
     });

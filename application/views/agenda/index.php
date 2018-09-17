@@ -62,17 +62,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="button" class="btn btn-primary ocultar-btn">
-                        Editar
-                    </button>
+                <div class="card-footer bg-white">
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-danger ocultar-btn-delete">
+                                Excluir
+                            </button>
+                        </div>
+                        <div class="col-8">
+                            <button type="button" class="btn btn-primary ocultar-btn float-right ml-2">
+                                Editar
+                            </button>
+                            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form">
-                <form action="<?php echo base_url('agenda/editar/'); ?>" method="POST">
+            <div class="editar">
+                <form id="form_agenda" action="<?php echo base_url('agenda/editar/'); ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-12">
@@ -126,7 +135,22 @@
                         </button>
                     </div>
                 </form>
-
+            </div>
+            <div class="excluir">
+                <form action="<?php echo base_url('agenda/excluir/'); ?>" method="POST">
+                    <div class="modal-body">
+                        Deseja realmente excluir esse evento?
+                        <input id="id" name="id" type="hidden" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" name="button" class="btn btn-danger delete-btn">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Confirmar
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -143,7 +167,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="form_agenda" action="<?php echo base_url('agenda/cadastrar'); ?>" method="POST">
+            <form action="<?php echo base_url('agenda/cadastrar'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-12">

@@ -145,6 +145,7 @@ jQuery(document).ready(function($) {
       fim: {
         required: true,
         brazilian_date: true,
+        dataMaiorQue: '#start',
       },
       horaFim: {
         required: true,
