@@ -29,29 +29,46 @@ class Produto extends CI_Controller
       */
     // Rota: http://localhost/projeto/produto
     public function index()
-    {
-      $dados['title'] = 'Produtos';
-      $dados['produtos'] = $this->produto->get();
-      $dados['assets'] = array(
-        'js' => array(
-          'lib/data-table/datatables.min.js',
-          'lib/data-table/dataTables.bootstrap.min.js',
-          'datatable.js',
-          'maskMoney.js',
-          'confirm.modal.js',
-        ),
-      );
+    {  
+      $user_id = $this->session->userdata('user_login');
+      $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
 
-      $produtos = $dados['produtos'];
-      foreach($produtos as $produto){
-          $produto->fabricacao = switchDate($produto->fabricacao);
-          $produto->validade = switchDate($produto->validade);
-          $produto->recebimento = switchDate($produto->recebimento);
+      switch ($id_grupo_acesso) {
+        //login de administrador
+        case '1':
+          $dados['title'] = 'Produtos';
+          $dados['produtos'] = $this->produto->get();
+          break;
+          //login de fornecedor
+          case '3':
+          $dados['title'] = 'Produtos';
+          $dados['produtos'] = $this->produto->getFornecedorLogado($user_id);
 
+          break;
+
+          default:
+        # code...
+          break;
       }
-      loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
-    }
+      $dados['assets'] = array(
+            'js' => array(
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'maskMoney.js',
+              'confirm.modal.js',
+            ),
+          );
 
+          $produtos = $dados['produtos'];
+          foreach($produtos as $produto){
+              $produto->fabricacao = switchDate($produto->fabricacao);
+              $produto->validade = switchDate($produto->validade);
+              $produto->recebimento = switchDate($produto->recebimento);
+
+          }
+          loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
+    }
 
     /**
      * @author: Dhiego Balthazar
@@ -74,7 +91,7 @@ class Produto extends CI_Controller
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
            'lote'          => $this->input->post('lote'),
-           'valor'         => $this->input->post('valor'),
+           'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
           );
             $this->produto->insert($array);
             $this->session->set_flashdata('success','Produto cadastrado com sucesso!');
@@ -122,7 +139,7 @@ class Produto extends CI_Controller
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'lote'          => $this->input->post('lote'),
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-           'valor'         => $this->input->post('valor'),
+           'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
          );
           $this->produto->update($array);
           $this->session->set_flashdata('success','Produto atualizado com sucesso!');

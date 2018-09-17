@@ -23,11 +23,38 @@ class Home extends CI_Controller
   public function index()
 	{
     $user_id = $this->session->userdata('user_login');
-    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
-    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
 
-    $data['admin'] = $this->getAdminHomeConfigs();
 
+      switch ($id_grupo_acesso) {
+        case '1':// home ADMINISTRADOR
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+          
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+          break;
+
+        case '3':// FORNECEDOR
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);          
+            $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
+
+        case '4'://CLIENTE
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+          break;
+
+        case '5'://CANDIDATO
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+        
+        case '6'://FUNCIONARIO
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+        
+        default:
+          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+            $data['admin'] = $this->getAdminHomeConfigs(); 
+          break;
+      }    
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
@@ -36,14 +63,13 @@ class Home extends CI_Controller
       ]
     ];
 
-		loadTemplate(
+    loadTemplate(
         'includes/header',
         'home/home_'.$grupo_acesso[0]->nome,
         'includes/footer',
         $data
-      );
-	}
-
+      ); 	
+  }
 
   /**
    * @author Pedro Henrique Guimarães
@@ -74,5 +100,19 @@ class Home extends CI_Controller
 
     return $data;
   }
+
+
+  public function getFornecedorHomeConfigs($user_id)
+  {
+
+    $data = [];
+    //
+    $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
+    $data['last_sac']  = $this->sac->getLastSacFornecedorLogado($user_id);
+
+    return $data;
+
+  }
+
 
 }

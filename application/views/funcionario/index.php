@@ -46,7 +46,7 @@
                           <?php echo ($funcionario->sexo == '0')? "Masculino" : "Feminino"; ?>
                         </td>
                         <td class="text-center">
-                          <?php echo $funcionario->data_nascimento; ?>
+                          <?=switchDate($funcionario->data_nascimento);?>
                         </td>
                         <td class="text-center">
                           <a title="Atualizar funcionário" href="<?= site_url('funcionario/editar/'.$funcionario->id_funcionario)?>" class="btn btn-primary">
@@ -54,6 +54,8 @@
                           <button data-href="funcionario/excluir/<?php echo $funcionario->id_funcionario?>" class="btn btn-danger" title="Excluir funcionário" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                           </button>
+                           <a title="Avaliar funcionário" href="<?= site_url('funcionario/avaliacoes/'.$funcionario->id_funcionario)?>" class="btn btn-success">
+                          <i class="fa fa-star"></i></a>
                          </td>
                        </tr>
                      <?php endforeach ?>

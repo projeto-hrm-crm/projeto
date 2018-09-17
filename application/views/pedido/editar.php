@@ -88,7 +88,7 @@
 	                                    			// in_array($produto->id_produto, $pedido_produtos) !== false ?
 	                                    			'disabled' : ''
 	                                    		?>
-	                                    		data-value="<?php echo $produto->valor; ?>">
+	                                    		data-value="<?php echo floatval($produto->valor); ?>">
 	                                    		<?php echo $produto->nome ?>
 	                                    	</option>
 	                                   	<?php endforeach ?>
@@ -142,11 +142,11 @@
 			    		                            			value="<?php echo $produto->quantidade; ?>" name="qtd_produto[]">
 			    		                            		</td>
 			    		                            		<?php if($pedido->transacao == 'V'): ?>
-				    		                            		<td width="20%" class="td-value" data-default="<?php echo $produto->valor ?>">
+				    		                            		<td width="20%" class="td-value" data-default="<?php echo floatval($produto->valor) ?>">
 				    		                            			<?php
 				    		                            				echo isset($old_data['id_produto']) ?
-				    		                            				'R$ ' . number_format($produto->valor *  $produto->quantidade, 2, ',','') :
-				    		                            				'R$ ' . number_format($produto->valor *  $produto->quantidade, 2, ',','');
+				    		                            				'R$ ' . number_format(intval($produto->valor), 2, ',','.') :
+				    		                            				'R$ ' . number_format((intval($produto->valor) *  $produto->quantidade)/100, 2, ',','.');
 
 				    		                            			?>
 				    		                            		</td>
@@ -160,7 +160,7 @@
 
 	    		                            <?php
 		    		                            			$qtd   += $produto->quantidade;
-		    		                            			$total += $produto->valor * $produto->quantidade;
+		    		                            			$total += floatval($produto->valor) * $produto->quantidade;
 
 	    		                            		endforeach;
     		                            		endif;
@@ -172,7 +172,7 @@
 	    		                            	    <th scope="col"></th>
 	    		                            	    <th scope="col"></th>
 	    		                            	    <th scope="col" id="total-qtd"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? $qtd : ''; ?></th>
-	    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? 'R$ ' . number_format($total, 2, ',','') : ''; ?></th>
+	    		                            	    <th scope="col" id="total"><?php echo isset($old_data['id_produto']) || isset($pedido_produtos) ? 'R$ ' . number_format($total/100, 2,',','.') : ''; ?></th>
 	    		                            	    <th scope="col"></th>
 	    		                            	</tr>
 	    		                            </tfoot>

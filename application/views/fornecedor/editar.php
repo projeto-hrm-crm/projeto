@@ -6,9 +6,9 @@
                 <div class="card-header">
                     <strong>Atualizar Fornecedor</strong>
                 </div>
-                
+
                 <form action="<?php echo base_url('fornecedor/editar/'.$fornecedor[0]->id_fornecedor); ?>" method="POST" id="form_fornecedor" id_usuario ="<?php echo $fornecedor[0]->id_usuario; ?>">
-                    
+
                     <div class="card-body card-block">
 
                         <div class="row">
@@ -109,7 +109,7 @@
 <div class="modal fade" id="modalAtualizar" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        
+
             <div class="modal-header">
                 <h5 class="modal-title">Atualizar Fornecedor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -120,7 +120,7 @@
             <div class="modal-body">
                 Deseja realmente atualizar esse fornecedor?
             </div>
-            
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">
                     Cancelar
