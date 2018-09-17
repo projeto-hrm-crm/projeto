@@ -34,6 +34,15 @@ jQuery(document).ready(function($) {
 	// 	$('.user-menu').parent().toggleClass('open');
 	// });
 
-   
-   
+	$('.nome_menu').on('click', function(event) {
+			var menu = $(this).text().trim();
+			localStorage.setItem('menu', menu);
+	});
+
+	var local_menu = localStorage.getItem('menu');
+
+	$.map($(".nome_menu"), function(item){
+		if ($(item).hasClass(local_menu))
+			$(item).addClass('active');
+	})
 });

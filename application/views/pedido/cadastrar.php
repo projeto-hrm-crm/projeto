@@ -129,7 +129,7 @@
 	                                    			in_array($produto->id_produto, $old_data['id_produto']) ?
 	                                    			'disabled' : ''
 	                                    		?>
-	                                    		data-value="<?php echo $produto->valor; ?>">
+	                                    		data-value="<?php echo floatval($produto->valor); ?>">
 	                                    		<?php echo $produto->nome ?>
 	                                    	</option>
 	                                   	<?php endforeach ?>
@@ -176,9 +176,9 @@
 			    		                            			<input type="number" class="form-control form-control-sm input-qtd" min="1"
 			    		                            			value="<?php echo $old_data['qtd_produto'][$key]; ?>" name="qtd_produto[]">
 			    		                            		</td>
-			    		                            		<td width="20%" class="td-value" data-default="<?php echo $produto->valor ?>">
+			    		                            		<td width="20%" class="td-value" data-default="<?php echo floatval($produto->valor) ?>">
 			    		                            			<?php
-			    		                            				echo 'R$ ' . number_format($produto->valor *  $old_data['qtd_produto'][$key], 2, ',','');
+			    		                            				echo 'R$ ' . number_format(intval(str_replace(",","",str_replace(".","",$produto->valor))) *  $old_data['qtd_produto'][$key], 2, ',','.');
 
 			    		                            			?>
 			    		                            		</td>
@@ -191,7 +191,7 @@
 
 	    		                            <?php
 	    		                            			$qtd   += $old_data['qtd_produto'][$key];
-	    		                            			$total += $produto->valor *  $old_data['qtd_produto'][$key];
+	    		                            			$total += intval(str_replace(",","",str_replace(".","",$produto->valor))) *  $old_data['qtd_produto'][$key];
 	    		                            		endforeach;
     		                            		endif;
     		                            	?>

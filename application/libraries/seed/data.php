@@ -499,7 +499,7 @@ $seeds = array(
           ),
           'values' => array(
             'admin@admin.com',
-            'admin',
+            hash('sha256', 'admin'),
             '1',
             '1'
           ),
@@ -513,7 +513,7 @@ $seeds = array(
           ),
           'values' => array(
             'pedrosilva@teste.com',
-            'pedrosilva',
+            hash('sha256','pedrosilva'),
             '4',
             '2'
           ),
@@ -527,7 +527,7 @@ $seeds = array(
           ),
           'values' => array(
             'matheussantos@teste.com',
-            'matheussantos',
+            hash('sha256','matheussantos'),
             '4',
             '3'
           ),
@@ -541,7 +541,7 @@ $seeds = array(
           ),
           'values' => array(
             'rodrigosantos@teste.com',
-            'rodrigosantos',
+            hash('sha256','rodrigosantos'),
             '4',
             '4'
           ),
@@ -555,7 +555,7 @@ $seeds = array(
           ),
           'values' => array(
             'fernandosantos@teste.com',
-            'fernandosantos',
+            hash('sha256','fernandosantos'),
             '4',
             '5'
           ),
@@ -570,7 +570,7 @@ $seeds = array(
           ),
           'values' => array(
             'camilamota@teste.com',
-            'camilamota',
+            hash('sha256','camilamota'),
             '5',
             '6'
           ),
@@ -584,7 +584,7 @@ $seeds = array(
           ),
           'values' => array(
             'pietrasilva@teste.com',
-            'pietrasilva',
+            hash('sha256','pietrasilva'),
             '5',
             '7'
           ),
@@ -598,7 +598,7 @@ $seeds = array(
           ),
           'values' => array(
             'maitesantos@teste.com',
-            'maitesantos',
+            hash('sha256','maitesantos'),
             '5',
             '8'
           ),
@@ -612,7 +612,7 @@ $seeds = array(
           ),
           'values' => array(
             'yasminsantos@teste.com',
-            'yasminsantos',
+            hash('sha256','yasminsantos'),
             '5',
             '9'
           ),
@@ -626,7 +626,7 @@ $seeds = array(
           ),
           'values' => array(
             'carlasantos@teste.com',
-            'carlasantos',
+            hash('sha256','carlasantos'),
             '5',
             '10'
           ),
@@ -642,7 +642,7 @@ $seeds = array(
           ),
           'values' => array(
             'edersonpia@teste.com',
-            'edersonpia',
+            hash('sha256','edersonpia'),
             '6',
             '11'
           ),
@@ -656,7 +656,7 @@ $seeds = array(
           ),
           'values' => array(
             'luciansantos@teste.com',
-            'luciansantos',
+            hash('sha256','luciansantos'),
             '6',
             '12'
           ),
@@ -670,7 +670,7 @@ $seeds = array(
           ),
           'values' => array(
             'palomacabral@teste.com',
-            'palomacabral',
+            hash('sha256','palomacabral'),
             '6',
             '13'
           ),
@@ -684,7 +684,7 @@ $seeds = array(
           ),
           'values' => array(
             'carolsantos@teste.com',
-            'carolsantos',
+            hash('sha256','carolsantos'),
             '6',
             '14'
           ),
@@ -697,8 +697,8 @@ $seeds = array(
             'id_pessoa'
           ),
           'values' => array(
-            'Amanda Santos',
             'amandasantos@teste.com',
+            hash('sha256', 'amandasantos'),
             '6',
             '15'
           ),
@@ -713,7 +713,7 @@ $seeds = array(
           ),
           'values' => array(
             'joaocarlos@teste.com',
-            'joaocarlos',
+            hash('sha256','joaocarlos'),
             '3',
             '16'
           ),
@@ -727,7 +727,7 @@ $seeds = array(
           ),
           'values' => array(
             'dianacoste@teste.com',
-            'dianacoste',
+            hash('sha256','dianacoste'),
             '3',
             '17'
           ),
@@ -741,7 +741,7 @@ $seeds = array(
           ),
           'values' => array(
             'amandaribeiro@teste.com',
-            'amandaribeiro',
+            hash('sha256','amandaribeiro'),
             '3',
             '18'
           ),
@@ -755,7 +755,7 @@ $seeds = array(
           ),
           'values' => array(
             'joaquincosta@teste.com',
-            'joaquincosta',
+            hash('sha256','joaquincosta'),
             '3',
             '19'
           ),
@@ -769,7 +769,7 @@ $seeds = array(
           ),
           'values' => array(
             'carloslopes@teste.com',
-            'carloslopes',
+            hash('sha256','carloslopes'),
             '3',
             '20'
           ),
@@ -2939,6 +2939,60 @@ $seeds = array(
             '2018-04-12 12:12:12',
             '2018-05-12 12:15:10',
             '1'
+          ),
+        ),
+      )
+    ),
+  ),
+  'sugestao' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Sugiro mudar tudo',
+            '2018-08-09',
+            '6'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Para ficar bom tem que começar tudo novamente',
+            '2018-08-09',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Amei, sistema perfeito, nunca ví algo melhor, sugiro vocês cobrarem o uso do sistema',
+            '2018-08-09',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'sugestao',
+            'criacao',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'Sistema pouco amigavel, deixem ele mais fofinho',
+            '2018-08-09',
+            '6'
           ),
         ),
       )
