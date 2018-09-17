@@ -2313,6 +2313,10 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
   text-align: center;
 }
 
+#download .download-badges:hover {
+  opacity:0.7;
+}
+
 #download .download-badges li {
   display: inline-block;
   margin: 0 7.5px;
@@ -2335,6 +2339,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
 #download .download-badges li a.badge-download {
   background-image: url("../images/download-button-163x45.png");
 }
+
 
 #download .download-badges li a.badge-appstore {
   background-image: url("../images/appstore.png");
