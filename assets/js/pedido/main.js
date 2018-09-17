@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
 
         var tdValue = qtd.parents('tr').children('.td-value');
 
-        var result = 'R$ ' + ((parseInt(qtd.val()) * parseFloat(tdValue.data('default')))*1000).toFixed(2).replace('.', ',');
+        var result = 'R$ ' + ((parseInt(qtd.val()) * parseFloat(tdValue.data('default')))/100).toFixed(2).replace('.', ',');
 
 
         tdValue.text(result);

@@ -44,7 +44,7 @@
                                         <td><?= $produto->nome;?></td>
                                         <td><?= $produto->lote;?></td>
                                         <td><?= $produto->recebimento;?></td>
-                                        <td><?= $produto->valor;?></td>
+                                        <td><?= number_format(floatval($produto->valor)/100,2,',','.');?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
                                             <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Atualizar Produto">

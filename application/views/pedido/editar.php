@@ -145,8 +145,8 @@
 				    		                            		<td width="20%" class="td-value" data-default="<?php echo floatval($produto->valor) ?>">
 				    		                            			<?php
 				    		                            				echo isset($old_data['id_produto']) ?
-				    		                            				'R$ ' . number_format(intval(str_replace(",","",str_replace(".","",$produto->valor))), 2, ',','.') :
-				    		                            				'R$ ' . number_format((intval(str_replace(",","",str_replace(".","",$produto->valor))) *  $produto->quantidade)/100, 2, ',','.');
+				    		                            				'R$ ' . number_format(intval($produto->valor), 2, ',','.') :
+				    		                            				'R$ ' . number_format((intval($produto->valor) *  $produto->quantidade)/100, 2, ',','.');
 
 				    		                            			?>
 				    		                            		</td>
@@ -160,7 +160,7 @@
 
 	    		                            <?php
 		    		                            			$qtd   += $produto->quantidade;
-		    		                            			$total += floatval(str_replace(",","",str_replace(".","",$produto->valor))) * $produto->quantidade;
+		    		                            			$total += floatval($produto->valor) * $produto->quantidade;
 
 	    		                            		endforeach;
     		                            		endif;
