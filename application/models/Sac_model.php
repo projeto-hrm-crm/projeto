@@ -29,10 +29,11 @@ class Sac_model extends PR_Model
     */
     public function insert($sac)
     {
-        $this->db->insert('sac', $sac);
+        $result = $this->db->insert('sac', $sac);
 
         $this->setLog($sac['titulo']);
 
+        return $result;
     }
 
     /**
@@ -154,6 +155,47 @@ class Sac_model extends PR_Model
         return $query->result()[0];
       return null;
   }
+
+  /**
+   * @author Pedro Henrique Guimarães
+   * Busca o total de atendimentos (sac) realizados pelo cliente logado 
+   * 
+   * @param int $customer_id
+   * @return int 
+   */
+  public function getCustomerCalls($customer_id)
+  {
+      $this->db->select('COUNT(*) calls')
+               ->from('sac')
+               ->where('sac.id_cliente', $customer_id);
+      $query = $this->db->get(); 
+
+      return $query->result()[0]->calls;
+  }
+
+  /**
+   * @author Pedro Henrique Guimarães
+   * 
+   * Busca o último SAC aberto pelo cliente
+   * 
+   * @param int $customer_id 
+   * @return mixed | null 
+   */
+  public function getCustomerSac($customer_id)
+  {
+      $this->db->select('*')
+               ->from('sac as s')
+               ->join('cliente as c', 's.id_cliente = c.id_cliente')
+               ->join('pessoa as p', 'c.id_pessoa = p.id_pessoa')
+               ->join('usuario as u', 'u.id_pessoa = p.id_pessoa')
+               ->where('u.id_usuario', $customer_id);
+        $query = $this->db->get(); 
+
+        if ($query->num_rows() > 0) 
+            return $query->result()[0];
+        return null;
+  }
+
   /**
   * @author: Matheus Romeo
   * Busca o último SAC do produto de um fornecedor específico
@@ -194,4 +236,5 @@ class Sac_model extends PR_Model
       ->result();
     }
 */
+
 }

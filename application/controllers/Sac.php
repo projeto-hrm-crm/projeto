@@ -44,10 +44,10 @@ class Sac extends PR_Controller {
     }
 
     /**
-    * @author: Rodrigo Alves
+    * @author: Pedro Henrique Guimarães
     * Página de cadastro.
     */
-    public function create() {
+    public function ajaxCreate() {
 
       $user_id = $this->session->userdata('user_login');
 
@@ -64,45 +64,26 @@ class Sac extends PR_Controller {
       }else {
          $id_cliente = $cliente[0]->id_cliente;
       }
-       
+
+    
       $data = $this->input->post();
 
       if($data){
-
-         if ($this->form_validation->run('sac')) {
             $array = array(
-              'id_produto' => $this->input->post('id_produto'),
+              'id_produto' => $this->input->post('sac_product_id'),
               'id_cliente' => $id_cliente,
               'abertura' => date("Y-m-d H:i:s"),
               'fechamento' => 0,
               'encerrado' => 0,
-              'titulo' => $this->input->post('titulo'),
-              'descricao' => $this->input->post('descricao'),
+              'titulo' => $this->input->post('sac_subject'),
+              'descricao' => $this->input->post('sac_description'),
             );
 
-            $this->sac->insert($array);
-            $this->session->set_flashdata('success', 'SAC cadastrado com sucesso!');
-            redirect('sac');
-
-         }else{
-            $this->session->set_flashdata('danger', 'Não foi possível cadastrar SAC!');
-            redirect('sac');
-         }
+        if ($this->sac->insert($array)) 
+            echo json_encode(array('status' => 'ok'));
+        else
+            echo json_encode(array('status' => 'error'));
       }
-
-     $data['title'] = 'Cadastrar SAC';
-     $data['produtos'] = $this->produto->get();
-     $data['clientes'] = $this->cliente->get();
-     $data['tipo'] = $typeUser;
-     $data['assets'] = array(
-            'js' => array(
-            'lib/data-table/datatables.min.js',
-            'lib/data-table/dataTables.bootstrap.min.js',
-            'datatable.js',
-            'confirm.modal.js',
-         ),
-      );
-     loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
     }
 
     public function edit($id) {

@@ -12,6 +12,7 @@
 --------------------------------------------------------- */
 /* Bootstrap */
 @import url(../css/animate.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .gaugejs-wrap {
   position: relative;
@@ -762,7 +763,7 @@ red {
 body {
   background: #f1f2f7;
   display: table;
-  font-family: Helvetica, sans-serif !important;
+  font-family: sans-serif!important;
   font-size: 16px;
   width: 100%; }
 

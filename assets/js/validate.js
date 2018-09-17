@@ -292,6 +292,14 @@ jQuery(document).ready(function($) {
     },
   });
 
+  $("#cliente_sac_form").validate({
+    rules: {
+      sac_subject: "required",
+      sac_description: "required",
+      id_produto: "required",
+    },
+  });
+
   $("#form-sac").validate({
     rules: {
       titulo: "titulo",
