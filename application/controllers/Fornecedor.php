@@ -54,6 +54,7 @@ class Fornecedor extends PR_Controller
   * Se não, mostra msg de erro e redireciona para a mesma pagina
   *
   **/
+
   public function create()
   {
       if($this->input->post())
@@ -75,17 +76,12 @@ class Fornecedor extends PR_Controller
       {
 
           $this->setTitle('Cadastrar Fornecedor');
-          $this->addData('estados',  $this->estado->get());
-
           $this->loadFormDefaultScripts();
-
           $this->loadView('cadastrar');
-
       }
-    
+
     $data['title'] = 'Cadastrar Fornecedor';
     $data['fornecedor'] = $this->input->post();
-    $data['estados'] = $this->estado->get();
     $data['assets'] = array(
      'js' => array(
        'thirdy_party/apicep.js',
@@ -97,7 +93,6 @@ class Fornecedor extends PR_Controller
        'validate.js',
      ),
    );
-
 
   }
 
@@ -111,14 +106,15 @@ class Fornecedor extends PR_Controller
           'razao_social' => $this->input->post('razao_social'),
           'cnpj'         => $this->input->post('cnpj'),
           'telefone'     => $this->input->post('telefone'),
-          'id_estado'    => $this->input->post('id_estado'),
-          'id_cidade'    => $this->input->post('id_cidade'),
-          'cep'          => $this->input->post('cep'),
-          'logradouro'   => $this->input->post('logradouro'),
-          'numero'       => $this->input->post('numero'),
-          'bairro'       => $this->input->post('bairro'),
-          'complemento'  => $this->input->post('complemento')
+          'cep'         => $this->input->post('cep'),
+          'bairro'      => $this->input->post('bairro'),
+          'logradouro'  => $this->input->post('logradouro'),
+          'numero'      => $this->input->post('numero'),
+          'complemento' => $this->input->post('complemento'),
+          'estado'      => $this->input->post('estado'),
+          'cidade'      => $this->input->post('cidade')
       ];
+
   }
 
   private function getFromPostEdit($id_fornecedor)
@@ -163,9 +159,9 @@ class Fornecedor extends PR_Controller
           $this->loadFormDefaultScripts(array('thirdy_party/apicep.js'));
 
           $this->addData('fornecedor', $this->fornecedor->find($id_fornecedor));
-          $this->addData('estado_atual', $this->cidade->findState($this->data['fornecedor'][0]->id_cidade));
-          $this->addData('estados', $this->estado->get());
-          $this->addData('cidades', $this->cidade->getByState($this->data['estado_atual'][0]->id_estado));
+          //$this->addData('estado_atual', $this->cidade->findState($this->data['fornecedor'][0]->id_cidade));
+        //  $this->addData('estados', $this->estado->get());
+          //$this->addData('cidades', $this->cidade->getByState($this->data['estado_atual'][0]->id_estado));
 
           $this->loadView('editar');
       }
@@ -183,12 +179,12 @@ class Fornecedor extends PR_Controller
   public function delete($id_fornecedor)
   {
     $fornecedor =  $this->db->where('produto.id_fornecedor', $id_fornecedor)->get('produto')->row();
-    
+
      if(!$fornecedor){
         $this->fornecedor->delete($id_fornecedor);
         $this->session->set_flashdata('success','fornecedor removido com sucesso!');
       }else{
-        $this->session->set_flashdata('danger', 'Não foi possível Realizar esta operação, Existem produtos relacionados a este fornecedor!'); 
+        $this->session->set_flashdata('danger', 'Não foi possível Realizar esta operação, Existem produtos relacionados a este fornecedor!');
      }
      redirect('fornecedor');
   }
