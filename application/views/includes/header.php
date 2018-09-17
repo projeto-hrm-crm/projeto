@@ -37,12 +37,6 @@
   <?php endif; ?>
   <!-- fim da inserção -->
 
-  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
-  <!-- script jquery para incluir máscaras nos inputs -->
-
-
-
 </head>
 <body>
 
@@ -61,7 +55,7 @@
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navigation">
         <li class="active">
           <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
         </li>
@@ -69,17 +63,10 @@
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
-            <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
-              <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
-                <ul class="sub-menu children dropdown-menu">
-                  <?php foreach($m['submenu'] as $s) : ?>
-                    <?php if(!is_null($s->id_menu) && $s->status == 1):?>
-                      <li><i class="<?php echo $s->icone;?>"></i> <a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
-                    <?php endif;?>
-                  <?php endforeach;?>
-                </ul>
-              <?php endif;?>
+            <li class="menu_atual nome_menu <?php echo $key ?>">
+
+              <a href="<?php echo base_url()."".$key;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
+
             </li>
           <?php endforeach;?>
       <?php endif;?>
