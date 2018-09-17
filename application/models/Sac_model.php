@@ -159,11 +159,11 @@ class Sac_model extends PR_Model
   * Busca o último SAC do produto de um fornecedor específico
   *
   * @return mixed
-  
+  */
   public function getLastSacFornecedorLogado($user_id)
   {
      $this->db
-      ->select('sac.*')
+      ->select('pcli.nome, pcli.data_criacao, sac.id_sac')
       ->join('cliente', 'sac.id_cliente = cliente.id_cliente')
       ->join('pessoa as pcli', 'cliente.id_pessoa = pcli.id_pessoa')
       ->join('produto', 'sac.id_produto = produto.id_produto')
@@ -175,11 +175,12 @@ class Sac_model extends PR_Model
 
       $query = $this->db->get('sac');
 
-      if ($query->num_rows() > 0)
+      if ($query->num_rows() > 0){
         return $query->result()[0];
-      return null;
-  }
+      }
 
+  }
+  /*
   public function getFornecedorLogado($user_id)
     {
       return $this->db
