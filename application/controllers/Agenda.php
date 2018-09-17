@@ -32,8 +32,13 @@ class Agenda extends CI_Controller
                     'cor'        => $this->input->post('cor'),
                 );
 
-                if($this->input->post('inicio') == $this->input->post('fim')){
-                    if($this->input->post('horaInicio') < $this->input->post('horaFim')){
+                $inicio     = strtotime(str_replace('/','-',$this->input->post('inicio')));
+                $fim        = strtotime(str_replace('/','-',$this->input->post('fim')));
+                $horaInicio = strtotime(str_replace('/','-',$this->input->post('horaInicio')));
+                $horaFim    = strtotime(str_replace('/','-',$this->input->post('horaFim')));
+
+                if($inicio == $fim){
+                    if($horaInicio < $horaFim){
                         $this->evento->insert($eventos);
                         $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
 
@@ -41,7 +46,7 @@ class Agenda extends CI_Controller
                         $this->session->set_flashdata('danger','Hora de início maior ou igual a hora final.');
                     }
 
-                } else if($this->input->post('inicio') < $this->input->post('fim')) {
+                } else if($inicio < $fim) {
                     $this->evento->insert($eventos);
                     $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
 
@@ -72,8 +77,13 @@ class Agenda extends CI_Controller
                     'cor'        => $this->input->post('cor'),
                 );
 
-                if($this->input->post('inicio') == $this->input->post('fim')){
-                    if($this->input->post('horaInicio') < $this->input->post('horaFim')){
+                $inicio     = strtotime(str_replace('/','-',$this->input->post('inicio')));
+                $fim        = strtotime(str_replace('/','-',$this->input->post('fim')));
+                $horaInicio = strtotime(str_replace('/','-',$this->input->post('horaInicio')));
+                $horaFim    = strtotime(str_replace('/','-',$this->input->post('horaFim')));
+
+                if($inicio == $fim){
+                    if($horaInicio < $horaFim){
                         $this->evento->update($eventos);
                         $this->session->set_flashdata('success','Evento editado com sucesso!');
 
@@ -81,7 +91,7 @@ class Agenda extends CI_Controller
                         $this->session->set_flashdata('danger','Hora de início maior ou igual a hora final.');
                     }
 
-                } else if($this->input->post('inicio') < $this->input->post('fim')) {
+                } else if($inicio < $fim) {
                     $this->evento->update($eventos);
                     $this->session->set_flashdata('success','Evento editado com sucesso!');
 
