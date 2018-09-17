@@ -87,6 +87,27 @@ class Pessoa_model extends CI_Model {
 		}
 		return $id;
 	}
+   
+    /**
+    * @author: Rodrigo 
+	* Atualiza o imagem
+	*/
+    public function findImage($id_pessoa)	{
+		$curriculum = $this->db->select("imagem")->from("pessoa")->where('id_pessoa', $id_pessoa)->get();
+		return $curriculum->result();
+	}
+   
+   /**
+	* @author: Rodrigo 
+	* Verifica se já existe um imagem cadastrado
+	*/
+    public function imageUpdate($data)	{
+		$this->db->where('pessoa.id_pessoa', $data['id_pessoa']);
+        $this->db->set('pessoa.imagem', $data['arquivo']);
+		$this->db->update('pessoa');
+
+		return $data['arquivo'];
+	}
 
 
 	/**
