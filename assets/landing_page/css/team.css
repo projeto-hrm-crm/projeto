@@ -2,105 +2,82 @@
  * Team 
  * ------------------------------------------------------------------- */
 
- .team {
-    text-align: center;
-    margin-top: -30px;
-  }
-  .role {
-    display: inline-block;
-    margin: 25px;
-  }
-  h1.role-name {
-    font-size: 24px;
-  }
-  .person {
-    display: inline-block;
-    width: auto;
-    padding: 5px;
-    }
+.team {
+  text-align: center;
+  margin-top: -30px;
+}
+.role {
+  display: inline-block;
+  margin: 25px;
+}
+h1.role-name {
+  font-size: 24px;
+}
+.person {
+  display: inline-block;
+  width: auto;
+  padding: 5px;
+  vertical-align: top;
+}
 
-  .person-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  
-  .person-photo :hover{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: #000;
-  }
-  
-  .person-name {
-    border-radius: 50%;
-    width:100%;
-  }
-  
-  .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  .container:hover .image {
-    opacity: 0.3;
-  }
-  
-  .container:hover .middle {
-    opacity: 1;
-  }
-  
-  .text {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    padding: 16px 32px;
-  }
+.person-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 
-  /* ===================================================================
- *  alunos - (_layout.scss) *
+.person-photo:hover {
+  background-image: url('images/user.png') no-repeat;  
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  opacity:0.4;
+}
+
+.person-name {
+  border-radius: 50%;
+  width:100%;
+}
+
+/* ===================================================================
+*  13. equipe - (_layout.scss)
+*
+* ------------------------------------------------------------------- */
+
+#equipe {
+  background: #FFFFFF;
+  padding: 10rem 0 9rem;
+  text-align: center;
+  min-height: 600px;
+}
+
+#equipe h1::before {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#equipe .owl-wrap {
+  width: 80%;
+  max-width: 900px;
+  margin: 4.2rem auto 0;
+}
+
+
+/* ------------------------------------------------------------------- 
+ * responsive:
+ * equipe
  * ------------------------------------------------------------------- */
 
-#alunos {
-    background: #FFFFFF;
-    padding: 10rem 0 9rem;
-    text-align: center;
-    min-height: 600px;
+@media only screen and (max-width: 600px) {
+  #equipe .owl-wrap {
+    width: 90%;
   }
-  
-  #alunos h1::before {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-  
-  #alunos .owl-wrap {
-    width: 80%;
-    max-width: 900px;
-    margin: 4.2rem auto 0;
-  }
-  
-  
-  /* ------------------------------------------------------------------- 
-   * responsive:
-   * alunos
-   * ------------------------------------------------------------------- */
-  
-  @media only screen and (max-width: 600px) {
-    #alunos .owl-wrap {
-      width: 90%;
-    }
-  }
-  
-  @media only screen and (max-width: 400px) {
-    #alunos .owl-wrap {
-      width: 100%;
-    }   
-  }
+}
+
+@media only screen and (max-width: 400px) {
+  #equipe .owl-wrap {
+    width: 100%;
+  }   
+}

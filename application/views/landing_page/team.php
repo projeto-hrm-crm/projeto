@@ -1,12 +1,15 @@
-<section id="alunos">
-  <div class="row">
-    <div class="col-full">
-           <h1 class="intro-header" data-aos="fade-up">Equipe de Desenvolvimento</h1>
-    </div>
-              <div class="col-three">        
+<section id="equipe">
+
+    <div class="row">
+    
+            <div class="col-full">
+                <h1 class="intro-header" data-aos="fade-up">Equipe de Desenvolvimento</h1>
+            </div>
+
+                <div class="col-three"> 
                 <figure class="person">
-                    <a href="https://github.com/Pssales" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/camila.jpg"></a>
-                    <figcaption>Camila Sales</figcaption>
+                    <a href="https://github.com/Pssales" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/camila.jpg" alt="PERFIL NO GITHUB"></a>
+                    <figcaption>Camila Salles</figcaption>
                 </figure>    
                 </div>  
 
@@ -33,7 +36,7 @@
 
                 <div class="col-three">            
                 <figure class="person">
-                <a href="" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/user.png"></a>
+                <a href="https://github.com/MarceloSAnjos" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/marcelo.jpg"></a>
                     <figcaption>Marcelo dos Anjos</figcaption>
                 </figure>    
                 </div> 
@@ -60,10 +63,10 @@
                 </div>  
 
                 <div class="col-three">
-                
-                <a href="" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/nikolas.jpg"></a>
-                    <figcaption>Nikolas Lencioni1111</figcaption>
-
+                <figure class="person">
+                <a href="https://github.com/nikolasagl" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/nikolas.jpg"></a>
+                    <figcaption>Nikolas Lencioni</figcaption>
+                </figure>    
                 </div>  
 
                 <div class="col-three">
@@ -75,7 +78,7 @@
 
                <div class="col-three">            
                 <figure class="person">
-                <a href="" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/pedro.jpg"></a>
+                <a href="https://github.com/pguideveloper" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/pedro.jpg"></a>
                     <figcaption>Pedro Henrique</figcaption>
                 </figure>    
                 </div>  
@@ -100,10 +103,7 @@
                     <figcaption>Tiago Lima</figcaption>
                 </figure>   
                </div> 
+        
 
-               
-
-        </div>
     </div>
-</div>
 </section>
