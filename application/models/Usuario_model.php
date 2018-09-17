@@ -162,7 +162,7 @@ class Usuario_model extends CI_Model
             return;
         if (!empty($url)) {
             $url = $this->getParsedUrl($url);
-            $access_group = $this->getUserAccessGroup($user_id);
+            $grupo_acesso = $this->getUserAccessGroup($user_id);
             if ($user_id) {
                 $this->db->select('gam.id_grupo_acesso')
                         ->from('menu as m')
@@ -173,7 +173,7 @@ class Usuario_model extends CI_Model
                 
                 $info = false;                
                 foreach ($result->result() as $key => $idGrupo) {
-                     if($result->result()[$key]->id_grupo_acesso == $access_group){
+                     if($result->result()[$key]->id_grupo_acesso == $grupo_acesso){
                          $info = true;
                      }
                   }

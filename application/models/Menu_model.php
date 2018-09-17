@@ -1,6 +1,19 @@
 <?php
 class Menu_model extends CI_Model
 {
+
+
+    public function getMenuByModule($module_id)
+    {
+        $final_menu = [];
+
+        if ($module_id) {
+            $this->db->select('*')
+                     ->from('menu as')
+        }
+    }
+
+
     /**
      * @author Pedro Henrique Guimarães
      * Método responsável por buscar todas as categorias de um determinado grupo de acesso
