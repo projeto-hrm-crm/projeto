@@ -56,7 +56,7 @@ Nelson Alves Pinto<br>
 
       		<div class="col-twelve">
 	      		<div class="copyright">
-		         	<span>© Copyright Lambda RP 2018.</span> 		         	         	
+		         	<span>© Copyright Lambda ERP 2018.</span> 		         	         	
 		         </div>
 
 		         <div id="go-top">
