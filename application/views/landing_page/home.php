@@ -1,5 +1,4 @@
-<!-- home
-   ================================================== -->
+<!-- home -->
    <section id="home" data-parallax="scroll" data-image-src="<?php echo base_url();?>assets/landing_page/images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000>
 
         <div class="overlay"></div>
@@ -37,6 +36,6 @@
                 </div>
             </div>
 
-        </div> <!-- end home-content -->
+        </div>
       
-    </section> <!-- end home -->  
+    </section> 

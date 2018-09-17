@@ -29,10 +29,10 @@
                             </div>
 
                         </div>
-                    </div> <!-- end plan-wrap -->
+                    </div>
 
                 </div>               
-            </div> <!-- end acesso-table -->
+            </div> 
 
-        </div> <!-- end acesso-content -->
+        </div> 
     </section>

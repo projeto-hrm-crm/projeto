@@ -1,5 +1,3 @@
-<!-- sobre
-    ================================================== -->
     <section id="sobre">
 
         <div class="row sobre-intro">
@@ -73,6 +71,6 @@
                 sizes="(max-width: 2800px) 100vw, 2800px"
                 alt="Telas do Lambda RP" data-aos="fade-up">
 
-        </div>  <!-- end sobre-bottom-image -->       
+        </div>  
         
-    </section> <!-- end sobre -->  
+    </section> 

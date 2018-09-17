@@ -8,8 +8,9 @@
                 <div class="col-three"> 
                 <figure class="person">
                     <a href="https://github.com/Pssales" target="_blank"><img class="person-photo" src="<?php echo base_url();?>assets/landing_page/images/team/camila.jpg" alt="PERFIL NO GITHUB"></a>
-                    <figcaption>Camila Salles</figcaption> 
+                    <figcaption>Camila Salles</figcaption>    
                 </figure> 
+                
                 </div>  
 
                 <div class="col-three">            

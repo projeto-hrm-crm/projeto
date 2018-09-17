@@ -1,15 +1,13 @@
-<!-- footer
-    ================================================== -->
     <footer>
 
         <div class="footer-main">
             <div class="row">  
 
                 <div class="col-four md-1-3 tab-full footer-info">
-                    <!-- <div class="footer-logo"></div>-->
+                    
                     <h4>Lambda RP</h4>
                     <p>Lambda ERP é um sistema desenvolvido pela turma de 2018 da disciplina de Projeto Integrado do curso de Tecnologia em Análise e Desenvolvimento de Sistemas da Instituto Federal de São Paulo, campus Caraguatatuba.</p>
-                </div> <!-- end footer-info -->
+                </div>
 
                 <div class="col-four md-1-3 tab-full footer-contact">
 <h4>Equipe</h4>

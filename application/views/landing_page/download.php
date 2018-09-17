@@ -1,10 +1,9 @@
-   <!-- download
-    ================================================== -->
+   <!-- download -->
     <section id="download">
 
         <div class="row">
             <div class="col-full">
-                <h1 class="intro-header"  data-aos="fade-up">Download!</h1>
+                <h1 class="intro-header"  data-aos="fade-up">Download</h1>
 
                 <p class="lead" data-aos="fade-up">
                     O Lambda ERP só precisa de um servidor web com PHP e MySQL. Baixe, descompacte o arquivo no servidor, crie o banco de dados e execute o instalador. Simples assim!
@@ -17,4 +16,4 @@
             </div>
         </div>
 
-    </section> <!-- end download --> 
+    </section> 
