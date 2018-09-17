@@ -13,7 +13,6 @@ class Agenda extends CI_Controller
             ),
         );
 
-
         loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
     }
 
@@ -32,20 +31,31 @@ class Agenda extends CI_Controller
                     'fim'        => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('fim').$this->input->post('horaFim')))),
                     'cor'        => $this->input->post('cor'),
                 );
-                $this->evento->insert($eventos);
-                $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
-                redirect('agenda');
-            }else{
-                $this->session->set_flashdata('errors', $this->form_validation->error_array());
-                $this->session->set_flashdata('old_data', $this->input->post());
-                $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
-                redirect('agenda');
+
+                if($this->input->post('inicio') == $this->input->post('fim')){
+                    if($this->input->post('horaInicio') < $this->input->post('horaFim')){
+                        $this->evento->insert($eventos);
+                        $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
+
+                    } else {
+                        $this->session->set_flashdata('danger','Hora de início maior ou igual a hora final.');
+                    }
+
+                } else if($this->input->post('inicio') < $this->input->post('fim')) {
+                    $this->evento->insert($eventos);
+                    $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
+
+                } else {
+                    $this->session->set_flashdata('danger','Data de início maior que a data final.');
+                }
+
+            } else {
+                $this->session->set_flashdata('danger','Não foi possivel realizar esta operação.');
             }
+            redirect('agenda');
+
         } else {
             $dados['title'] = 'Cadastrar evento';
-            $dados['errors'] = $this->session->flashdata('errors');
-            $dados['old_data'] = $this->session->flashdata('old_data');
-
             loadTemplate('includes/header', 'agenda/cadastrar', 'includes/footer', $dados);
         }
     }
@@ -61,20 +71,31 @@ class Agenda extends CI_Controller
                     'fim'        => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('fim').$this->input->post('horaFim')))),
                     'cor'        => $this->input->post('cor'),
                 );
-                $this->evento->update($eventos);
-                $this->session->set_flashdata('success','Evento editado com sucesso!');
-                redirect('agenda');
+
+                if($this->input->post('inicio') == $this->input->post('fim')){
+                    if($this->input->post('horaInicio') < $this->input->post('horaFim')){
+                        $this->evento->update($eventos);
+                        $this->session->set_flashdata('success','Evento editado com sucesso!');
+
+                    } else {
+                        $this->session->set_flashdata('danger','Hora de início maior ou igual a hora final.');
+                    }
+
+                } else if($this->input->post('inicio') < $this->input->post('fim')) {
+                    $this->evento->update($eventos);
+                    $this->session->set_flashdata('success','Evento editado com sucesso!');
+
+                } else {
+                    $this->session->set_flashdata('danger','Data de início maior que a data final.');
+                }
+
             } else {
-                $this->session->set_flashdata('errors', $this->form_validation->error_array());
-                $this->session->set_flashdata('old_data', $this->input->post());
                 $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
-                redirect('agenda');
             }
+            redirect('agenda');
+
         } else {
             $dados['title'] = 'Editar evento';
-            $dados['errors'] = $this->session->flashdata('errors');
-            $dados['old_data'] = $this->session->flashdata('old_data');
-
             loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
         }
     }
