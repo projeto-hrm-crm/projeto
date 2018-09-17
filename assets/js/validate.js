@@ -10,10 +10,16 @@ jQuery(document).ready(function($) {
 
   $("#form_produto").validate({
     rules: {
-      nome: "required",
+      nome: {
+        required:true,
+        regex: /^[a-zA-Z0-9]+/,
+
+      },
 
       lote: {
         required: true,
+        digits:true,
+
       },
 
       codigo: {
@@ -22,13 +28,14 @@ jQuery(document).ready(function($) {
 
       recebimento: {
         required: true,
-        brazilian_date: true,
+        validaDataBR:true,
         dataMaiorQue: '#fabricacao',
+    
       },
 
       fabricacao: {
         required: true,
-        brazilian_date: true,
+        validaDataBR: true,
       },
 
       validade: {
@@ -36,8 +43,21 @@ jQuery(document).ready(function($) {
         brazilian_date: true,
         dataMaiorQue: '#fabricacao',
       },
+      id_fornecedor: {
+        required:true,
+      },
     },
+    messages:{
+       fabricacao:{
+        max: 'Informe uma data anterior ou igual à atual.',
+
+      },
+      nome:{
+        regex: 'O campo nome pode conter apenas letras e números',
+      },
+    }
   });
+
 
   $("#form_almoxarifado").validate({
     rules: {
@@ -932,6 +952,7 @@ jQuery(document).ready(function($) {
 
   }, 'Informe uma data maior ou igual a data anterior');
 
+
   /**
   * @author Tiago Villalobos
   *
@@ -983,6 +1004,8 @@ jQuery(document).ready(function($) {
 
             return (resultado == digitos.charAt(1));
         }, 'Informe um CNPJ válido');
+
+
 
   /**
   * @author: Camila Sales
