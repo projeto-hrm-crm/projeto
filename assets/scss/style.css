@@ -209,7 +209,7 @@
     .switch.switch-text.switch-xs .switch-input:checked ~ .switch-handle {
       left: 18px; }
 
-      
+
 red {
   color: red;
 }
@@ -911,7 +911,7 @@ aside.left-panel {
         padding: 10px 0;
         position: relative;
         width: 100%; }
-        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon {
+        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon{
           color: #fff !important; }
         .navbar .navbar-nav li > a .menu-icon {
           color: #8b939b;
@@ -2251,5 +2251,21 @@ header .form-inline {
 label.error {
   color: red !important;
 }
+
+/* Agenda */
+
+.visualizar{
+    display: block;
+}
+
+.editar{
+    display: none;
+}
+
+.excluir {
+    display: none;
+}
+
+/* fim Agenda */
 
 /*# sourceMappingURL=style.css.map */

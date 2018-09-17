@@ -16,6 +16,17 @@
 	                <?php echo isset($errors['nome']) ? $errors['nome'] : '' ; ?>
 	              </span>
               </div>
+
+              <!-- CARGAR HORÁRIA -->
+              <div class="form-group">
+                  <label class=" form-control-label"><red>*</red>Carga horária (semanal)</label>
+                  <input type="number" id="carga_horaria" name="carga_horaria" value="<?php echo isset($old_data['carga_horaria']) ? $old_data['carga_horaria'] : $cargo->carga_horaria_semanal;?>" placeholder="40" name="nome" class="form-control <?php echo isset($errors['carga_horaria']) ? 'is-invalid' : '' ?>" required>
+                  <span class="invalid-feedback">
+                      <?php echo isset($errors['carga_horaria']) ? $errors['carga_horaria'] : '' ; ?>
+                  </span>
+              </div>
+
+
                <!--DESCRIÇÃO-->
               <div class="form-group">
               <label class=" form-control-label"><red>*</red>Descrição</label>

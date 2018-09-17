@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
+  <link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
+
 <script type="text/javascript">
     var BASE_URL = "<?php echo base_url();?>";
 </script>
@@ -33,12 +36,6 @@
     <?php endforeach; ?>
   <?php endif; ?>
   <!-- fim da inserção -->
-
-  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
-  <!-- script jquery para incluir máscaras nos inputs -->
-
-
 
 </head>
 <!-- Left Panel -->
@@ -55,25 +52,18 @@
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
-            <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>"></i> <?php echo $key;?></a>
-              <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
-                <ul class="sub-menu children dropdown-menu">
-                  <?php foreach($m['submenu'] as $s) : ?>
-                    <?php if(!is_null($s->id_menu) && $s->status == 1):?>
-                      <li><i class="<?php echo $s->icone;?>"></i> <a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
-                    <?php endif;?>
-                  <?php endforeach;?>
-                </ul>
-              <?php endif;?>
+            <li class="menu_atual nome_menu <?php echo $key ?>">
+
+              <a href="<?php echo base_url()."".$key;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
+
             </li>
           <?php endforeach;?>
       <?php endif;?>
@@ -96,13 +86,13 @@
       <div class="col-sm-7">
         <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
         <div class="header-left">
-          <button class="search-trigger"><i class="fa fa-search"></i></button> 
-          <div class="form-inline"> 
-            <form class="search-form"> 
-              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search"> 
-              <button class="search-close" type="submit"><i class="fa fa-close"></i></button> 
-            </form> 
-          </div> 
+          <button class="search-trigger"><i class="fa fa-search"></i></button>
+          <div class="form-inline">
+            <form class="search-form">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+              <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+            </form>
+          </div>
 
 <div class="dropdown for-notification">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

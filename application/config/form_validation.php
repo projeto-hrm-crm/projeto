@@ -57,17 +57,17 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required'
         ),
         array(
             'field' => 'lote',
             'label' => 'Lote',
-            'rules' => 'required'
+            'rules' => 'required|numeric'
         ),
         array(
             'field' => 'codigo',
             'label' => 'Codigo',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'valor',
@@ -101,6 +101,38 @@ $config = array(
         array(
             'field' => 'id_fornecedor',
             'label' => 'Fornecedor',
+            'rules' => 'required',
+        ),
+
+    ),
+    'almoxarifado' =>
+    array(
+        array(
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+        array(
+            'field' => 'valor',
+            'label' => 'Valor',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'recebimento',
+            'label' => 'Recebimento',
+            'rules'  => 'required|validDate',
+            'errors' => array(
+                'validDate' => 'O campo {field} deve conter uma data válida'
+            ),
+        ),
+        array(
+            'field' => 'descricao',
+            'label' => 'Descricao',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'id_unidade_medida',
+            'label' => 'Unidade de Medida',
             'rules' => 'required',
         ),
 
@@ -468,6 +500,12 @@ $config = array(
         ),
 
         array(
+            'field' => 'carga_horaria',
+            'label' => 'Carga horária',
+            'rules' => 'required|numeric'
+        ),
+
+        array(
             'field' => 'descricao',
             'label' => 'Descrição',
             'rules' => 'required|max_length[200]',
@@ -734,11 +772,21 @@ $config = array(
         array(
             'field' => 'titulo',
             'label' => 'Titulo',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú ]+$/]'
+        ),
+        array(
+            'field' => 'cor',
+            'label' => 'Cor',
+            'rules' => 'required',
         ),
         array(
             'field' => 'inicio',
             'label' => 'Inicio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'horaInicio',
+            'label' => 'Hora Inicio',
             'rules' => 'required'
         ),
         array(
@@ -747,9 +795,9 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'cor',
-            'label' => 'Cor',
-            'rules' => 'required',
+            'field' => 'horaFim',
+            'label' => 'Hora Fim',
+            'rules' => 'required'
         ),
     ),
 );
