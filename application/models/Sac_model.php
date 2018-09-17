@@ -72,6 +72,7 @@ class Sac_model extends PR_Model
     public function getClient($id_cliente)
     {
         return $this->db
+        ->select('sac.*, pessoa.nome')
         ->where('id_cliente', $id_cliente)
         ->get('sac')
         ->result();
@@ -161,17 +162,36 @@ class Sac_model extends PR_Model
   */
   public function getLastSacFornecedorLogado($user_id)
   {
-      $query = $this->db->select('*')
-               ->join('cliente', 'sac.id_cliente = cliente.id_cliente')
-               ->join('pessoa', 'cliente.id_pessoa = pessoa.id_pessoa')
-               ->join('usuario', 'usuario.id_pessoa = pessoa.id_pessoa')
-               ->where('usuario.id_usuario', $user_id);
+     $this->db
+      ->select('pcli.nome, pcli.data_criacao, sac.id_sac')
+      ->join('cliente', 'sac.id_cliente = cliente.id_cliente')
+      ->join('pessoa as pcli', 'cliente.id_pessoa = pcli.id_pessoa')
+      ->join('produto', 'sac.id_produto = produto.id_produto')
+      ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
+      ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')
+      ->join('pessoa as pfor', 'pessoa_juridica.id_pessoa = pfor.id_pessoa')      
+      ->join('usuario', 'usuario.id_pessoa = pfor.id_pessoa')
+      ->where('usuario.id_usuario', $user_id);
 
       $query = $this->db->get('sac');
 
-      if ($query->num_rows() > 0)
+      if ($query->num_rows() > 0){
         return $query->result()[0];
-      return null;
-  }
+      }
 
+  }
+  /*
+  public function getFornecedorLogado($user_id)
+    {
+      return $this->db
+      ->select('sac.*, pessoa.nome')
+      ->join('cliente', 'sac.id_cliente = cliente.id_cliente')
+      ->join('pessoa', 'cliente.id_pessoa = pessoa.id_pessoa')
+      ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+      ->join('usuario', 'usuario.id_pessoa = pessoa.id_pessoa')
+      ->where('usuario.id_usuario', $user_id)
+      ->get('sac')
+      ->result();
+    }
+*/
 }
