@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
     },
   });
 
-  $("#form_agenda").validate({
+  $("#form_agenda_editar").validate({
     rules: {
       titulo: "required",
 
@@ -146,6 +146,34 @@ jQuery(document).ready(function($) {
         required: true,
         brazilian_date: true,
         dataMaiorQue: '#start',
+      },
+      horaFim: {
+        required: true,
+      },
+    },
+  });
+
+  $("#form_agenda_cadastrar").validate({
+    rules: {
+      titulo: "required",
+
+      cor: {
+        required: true,
+      },
+
+      inicio: {
+        required: true,
+        brazilian_date: true,
+      },
+
+      horaInicio: {
+        required: true,
+      },
+
+      fim: {
+        required: true,
+        brazilian_date: true,
+        dataMaiorQue: '#inicio',
       },
       horaFim: {
         required: true,
