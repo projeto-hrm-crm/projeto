@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="editar">
-                <form id="form_agenda" action="<?php echo base_url('agenda/editar/'); ?>" method="POST">
+                <form id="form_agenda_editar" action="<?php echo base_url('agenda/editar/'); ?>" method="POST">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-12">
@@ -167,7 +167,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url('agenda/cadastrar'); ?>" method="POST">
+            <form id="form_agenda_cadastrar" action="<?php echo base_url('agenda/cadastrar'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-12">
@@ -194,19 +194,19 @@
                         <div class="form-group col-12">
                             <label class="col-2 control-label float-left">Inicio</label>
                             <div class="col-6">
-                                <input id="start" name="inicio" type="text" class="form-control data" required>
+                                <input id="inicio" name="inicio" type="text" class="form-control data" required>
                             </div>
                             <div class="col-4">
-                                <input id="startHour" name="horaInicio" type="time" class="form-control" required>
+                                <input id="horaInicio" name="horaInicio" type="time" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group col-12">
                             <label class="col-2 control-label float-left">Fim</label>
                             <div class="col-6">
-                                <input id="end" name="fim" type="text" class="form-control data" required>
+                                <input id="fim" name="fim" type="text" class="form-control data" required>
                             </div>
                             <div class="col-4">
-                                <input id="endHour" name="horaFim" type="time" class="form-control" required>
+                                <input id="horaFim" name="horaFim" type="time" class="form-control" required>
                             </div>
                         </div>
                     </div>
