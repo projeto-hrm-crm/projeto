@@ -19,6 +19,12 @@
    <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
+
+<link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
+    
+    
    <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
    <script type="text/javascript">
    var BASE_URL = "<?php echo base_url();?>";
