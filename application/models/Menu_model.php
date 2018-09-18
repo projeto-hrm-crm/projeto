@@ -3,14 +3,30 @@ class Menu_model extends CI_Model
 {
 
 
-    public function getMenuByModule($module_id)
+    public function getMenuByAccessGroup($access_group)
     {
         $final_menu = [];
 
         if ($module_id) {
             $this->db->select('*')
-                     ->from('menu as')
+                     ->from('menu')
+                     ->join('sub_menu', 'menu.id_sub_menu = sub_menu.id_sub_menu')
+                     ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
+                     ->join('modulo', 'sub_modulo.id_modulo = modulo.id_modulo')
+                     ->join('grupo_acesso_modulo', 'modulo.id_modulo = grupo_acesso_modulo.id_modulo')
+                     ->where('grupo_acesso_modulo.id_grupo_acesso', $access_group);
+            $result = $this->db->get();
+
+            if ($result->num_rows() > 0) {
+                
+            }
+
         }
+    }
+
+    public function hasPermission($menu_id, $module_group_acess)
+    {
+        
     }
 
 
