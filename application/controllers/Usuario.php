@@ -9,6 +9,7 @@ class Usuario extends CI_Controller
   }
 
   public function index(){
+    /*
     $data['cidades'] = $this->cidade->get();
     $data['estados'] = $this->estado->get();
     */
