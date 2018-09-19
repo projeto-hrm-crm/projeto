@@ -2,7 +2,7 @@
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Cadastrar Entrada</strong>
+                <strong class="card-title">Cadastrar Entrada de Itens - Almoxarifado</strong>
             </div>
             <form id="form_almoxarifado" action="<?php echo base_url('almoxarifado/cadastrar'); ?>" method="post" novalidate="novalidate">
                 <div class="card-body">
