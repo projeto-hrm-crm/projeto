@@ -12,6 +12,7 @@
 --------------------------------------------------------- */
 /* Bootstrap */
 @import url(../css/animate.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .gaugejs-wrap {
   position: relative;
@@ -762,7 +763,7 @@ red {
 body {
   background: #f1f2f7;
   display: table;
-  font-family: Helvetica, sans-serif !important;
+  font-family: sans-serif!important;
   font-size: 16px;
   width: 100%; }
 
@@ -910,7 +911,7 @@ aside.left-panel {
         padding: 10px 0;
         position: relative;
         width: 100%; }
-        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon {
+        .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon{
           color: #fff !important; }
         .navbar .navbar-nav li > a .menu-icon {
           color: #8b939b;
@@ -2257,7 +2258,11 @@ label.error {
     display: block;
 }
 
-.form{
+.editar{
+    display: none;
+}
+
+.excluir {
     display: none;
 }
 

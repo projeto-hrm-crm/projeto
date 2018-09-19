@@ -58,6 +58,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['agenda']           = 'agenda/index';
 $route['agenda/cadastrar'] = 'agenda/create';
 $route['agenda/editar']    = 'agenda/edit';
+$route['agenda/excluir']   = 'agenda/delete';
 
 //Rota principal
 $route['dashboard'] = 'home/index';
@@ -155,8 +156,6 @@ $route['vaga/cadastrar']      = 'Vaga/create';
 $route['vaga/editar/(:num)']  = 'Vaga/edit/$1';
 $route['vaga/excluir/(:num)'] = 'Vaga/delete/$1';
 
-
-
 //Rotas CandidatoVaga
 $route['candidato_etapa']                = 'CandidatoEtapa/index';
 $route['candidato_etapa/cadastrar/(:num)']      = 'CandidatoEtapa/create/$1';
@@ -176,7 +175,6 @@ $route['pedido/produtos/fornecedor/(:num)'] = 'Pedido/getProductsByProviderJSON/
 $route['pedido/fornecedor']                 = 'Pedido/indexProvider';
 $route['pedido/fornecedor/editar/(:num)']   = 'Pedido/editProvider/$1';
 
-
 //Rotas Processo Processo_Seletivo
 $route['processo_seletivo'] = 'Processo_Seletivo/index';
 $route['processo_seletivo/cadastrar'] = 'Processo_Seletivo/create';
@@ -185,18 +183,21 @@ $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 //Rotas Perfil
-$route['perfil'] = 'Perfil/index';
-$route['perfil/editar'] = 'Perfil/edit';
-$route['perfil/alterar-senha'] = 'Perfil/changePassword';
-$route['perfil/upload']		   = 'Perfil/fileUpload';
+$route['perfil']                    = 'Perfil/index';
+$route['perfil/editar']             = 'Perfil/edit';
+$route['perfil/alterar-senha']      = 'Perfil/changePassword';
+$route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
+$route['perfil/alterar-imagem']     = 'Perfil/profileImage';
 
 //Ajax calls
 $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
 $route['notifications/count']         = 'Usuario/getCount';
 $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
+
+$route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
+
 $route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
-

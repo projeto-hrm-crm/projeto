@@ -4,51 +4,46 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo $title;?></title>
-  <meta name="description" content="Projeto de PR1">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="apple-touch-icon" href="apple-icon.png">
-  <link rel="shortcut icon" href="favicon.ico">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title><?php echo $title;?></title>
+   <meta name="description" content="Projeto de PR1">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="apple-touch-icon" href="apple-icon.png">
+   <link rel="shortcut icon" href="favicon.ico">
 
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/normalize.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
-  <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
-  <link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/normalize.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
+   <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
 
-<script type="text/javascript">
-    var BASE_URL = "<?php echo base_url();?>";
-</script>
-  <!-- inserção dinâmica de arquivos CSS -->
-  <?php if (isset($assets['css'])): ?>
-    <?php foreach ($assets['css'] as $css_file): ?>
-      <link
-        rel="stylesheet"
-        href="<?php echo base_url().'assets/css/'.$css_file; ?>"
-      >
-    <?php endforeach; ?>
-  <?php endif; ?>
-  <!-- fim da inserção -->
-
-  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
-  <!-- script jquery para incluir máscaras nos inputs -->
-
-
-
+<link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
+    
+    
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
+   <script type="text/javascript">
+   var BASE_URL = "<?php echo base_url();?>";
+   </script>
+   <!-- inserção dinâmica de arquivos CSS -->
+   <?php if (isset($assets['css'])): ?>
+   <?php foreach ($assets['css'] as $css_file): ?>
+   <link
+   rel="stylesheet"
+   href="<?php echo base_url().'assets/css/'.$css_file; ?>"
+   >
+   <?php endforeach; ?>
+   <?php endif; ?>
+   <!-- fim da inserção -->
+   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+   <!-- script jquery para incluir máscaras nos inputs -->
 </head>
 <body>
-
-
 <!-- Left Panel -->
-
 <aside id="left-panel" class="left-panel">
   <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -61,7 +56,7 @@
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navigation">
         <li class="active">
           <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
         </li>
@@ -69,17 +64,10 @@
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
-            <li class="menu-item-has-children dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
-              <?php if (isset($m['submenu']) && !empty($m['submenu'])): ?>
-                <ul class="sub-menu children dropdown-menu">
-                  <?php foreach($m['submenu'] as $s) : ?>
-                    <?php if(!is_null($s->id_menu) && $s->status == 1):?>
-                      <li><i class="<?php echo $s->icone;?>"></i> <a href="<?php echo base_url()."".$s->link;?>"><?php echo $s->nome;?></a></li>
-                    <?php endif;?>
-                  <?php endforeach;?>
-                </ul>
-              <?php endif;?>
+            <li class="menu_atual nome_menu <?php echo $key ?>">
+
+              <a href="<?php echo base_url()."".$key;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
+
             </li>
           <?php endforeach;?>
       <?php endif;?>
@@ -110,26 +98,43 @@
             </form>
           </div>
 
-<div class="dropdown for-notification">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-bell"></i>
-    <span class="count bg-danger"></span>
-  </button>
-  <div class="dropdown-menu notification-div" aria-labelledby="notification">
-    <!-- LOADED FROM AJAX -->
-  </div>
- </div>
+            <div class="dropdown for-notification">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell"></i>
+                <span class="count bg-danger"></span>
+              </button>
+              <div class="dropdown-menu notification-div" aria-labelledby="notification">
+                <!-- LOADED FROM AJAX -->
+              </div>
+             </div>
         </div>
       </div>
-
+       <?php 
+           
+            $cur_name = explode(" ", $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome);
+            $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+            $id_pessoa = $data['pessoa'][0]->id_pessoa;
+           
+           $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+           if($image) {
+              $path_profile_image = base_url()."uploads/profileImage/".$image;
+           }else{
+              $path_profile_image = base_url()."assets/images/theme/no-user.png";
+           }
+           
+           ?>
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="user-avatar rounded-circle" src="<?php echo base_url();?>assets/images/theme/no-user.png" alt="User Avatar">
+             
+            <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
           </a>
-
+           
+           
+           
+           
           <div class="user-menu dropdown-menu">
-              <div class="mb-2 text-center"><?php echo $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome;?></div>
+            <a class="nav-link" href="#">Olá, <?=$cur_name[0];?></a>
             <a class="nav-link" href="<?php echo base_url();?>perfil"><i class="fa fa-user"></i> Meu Perfil</a>
             <a class="nav-link" href="<?php echo base_url();?>logout"><i class="fa fa-power-off"></i> Logout</a>
           </div>

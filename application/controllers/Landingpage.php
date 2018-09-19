@@ -12,8 +12,11 @@ class Landingpage extends CI_Controller
          
         
         $this->load->view('landing_page/header.php');
-        $this->load->view('landing_page/content.php');
-        $this->load->view('landing_page/team.php');
+        $this->load->view('landing_page/home.php');
+        $this->load->view('landing_page/sobre.php');
+        $this->load->view('landing_page/acesso.php');
+        $this->load->view('landing_page/download.php');        
+        $this->load->view('landing_page/equipe.php');
         $this->load->view('landing_page/footer.php');
        
     }

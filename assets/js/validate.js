@@ -10,10 +10,16 @@ jQuery(document).ready(function($) {
 
   $("#form_produto").validate({
     rules: {
-      nome: "required",
+      nome: {
+        required:true,
+        regex: /^[a-zA-Z0-9]+/,
+
+      },
 
       lote: {
         required: true,
+        digits:true,
+
       },
 
       codigo: {
@@ -22,13 +28,14 @@ jQuery(document).ready(function($) {
 
       recebimento: {
         required: true,
-        brazilian_date: true,
+        validaDataBR:true,
         dataMaiorQue: '#fabricacao',
+    
       },
 
       fabricacao: {
         required: true,
-        brazilian_date: true,
+        validaDataBR: true,
       },
 
       validade: {
@@ -36,8 +43,21 @@ jQuery(document).ready(function($) {
         brazilian_date: true,
         dataMaiorQue: '#fabricacao',
       },
+      id_fornecedor: {
+        required:true,
+      },
     },
+    messages:{
+       fabricacao:{
+        max: 'Informe uma data anterior ou igual à atual.',
+
+      },
+      nome:{
+        regex: 'O campo nome pode conter apenas letras e números',
+      },
+    }
   });
+
 
   $("#form_almoxarifado").validate({
     rules: {
@@ -105,7 +125,7 @@ jQuery(document).ready(function($) {
     },
   });
 
-  $("#form_agenda").validate({
+  $("#form_agenda_editar").validate({
     rules: {
       titulo: "required",
 
@@ -125,6 +145,35 @@ jQuery(document).ready(function($) {
       fim: {
         required: true,
         brazilian_date: true,
+        dataMaiorQue: '#start',
+      },
+      horaFim: {
+        required: true,
+      },
+    },
+  });
+
+  $("#form_agenda_cadastrar").validate({
+    rules: {
+      titulo: "required",
+
+      cor: {
+        required: true,
+      },
+
+      inicio: {
+        required: true,
+        brazilian_date: true,
+      },
+
+      horaInicio: {
+        required: true,
+      },
+
+      fim: {
+        required: true,
+        brazilian_date: true,
+        dataMaiorQue: '#inicio',
       },
       horaFim: {
         required: true,
@@ -268,6 +317,14 @@ jQuery(document).ready(function($) {
         required: 'O campo Número é obrigatório',
         digits:   'O campo não está no formato correto',
       },
+    },
+  });
+
+  $("#cliente_sac_form").validate({
+    rules: {
+      sac_subject: "required",
+      sac_description: "required",
+      id_produto: "required",
     },
   });
 
@@ -932,6 +989,7 @@ jQuery(document).ready(function($) {
 
   }, 'Informe uma data maior ou igual a data anterior');
 
+
   /**
   * @author Tiago Villalobos
   *
@@ -983,6 +1041,8 @@ jQuery(document).ready(function($) {
 
             return (resultado == digitos.charAt(1));
         }, 'Informe um CNPJ válido');
+
+
 
   /**
   * @author: Camila Sales

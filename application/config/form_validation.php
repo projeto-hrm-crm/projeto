@@ -57,17 +57,17 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required'
         ),
         array(
             'field' => 'lote',
             'label' => 'Lote',
-            'rules' => 'required'
+            'rules' => 'required|numeric'
         ),
         array(
             'field' => 'codigo',
             'label' => 'Codigo',
-            'rules' => 'required|numeric'
+            'rules' => 'required'
         ),
         array(
             'field' => 'valor',
@@ -772,7 +772,7 @@ $config = array(
         array(
             'field' => 'titulo',
             'label' => 'Titulo',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú ]+$/]'
         ),
         array(
             'field' => 'cor',

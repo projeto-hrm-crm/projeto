@@ -25,23 +25,28 @@ class Usuario_model extends CI_Model
     */
     public function insert($data)
     {
-      $this->db->insert('usuario',$data);
+      $this->db
+        ->set('usuario.login', $data['login'])
+        ->set('usuario.senha', hash('sha256', $data['senha']))
+        ->set('usuario.id_grupo_acesso', $data['id_grupo_acesso'])
+        ->set('usuario.id_pessoa', $data['id_pessoa'])
+        ->insert('usuario');
     }
-   
+
    /**
     * @author: Rodrigo Alves
     * Atualiza usuario
     *
     */
    public function update($data)
-	{
-		$this->db->where('usuario.id_usuario', $data['id_usuario']);
-		$this->db->set('usuario.login', $data['login']);
-		$this->db->update('usuario', $data);
+   {
+       $this->db
+        ->set('usuario.login', $data['login'])
+        ->set('usuario.senha', hash('sha256', $data['senha']))
+        ->where('usuario.id_usuario', $data['id_usuario'])
+        ->update('usuario');
+  }
 
-
-	}
-   
    /**
     * @author: Rodrigo Alves
     * Alterar senha
@@ -50,7 +55,7 @@ class Usuario_model extends CI_Model
    public function changePassword($data)
 	{
 		$this->db->where('usuario.id_usuario', $data['id_usuario']);
-		$this->db->set('usuario.senha', $data['senha']);
+		$this->db->set('usuario.senha', hash('sha256', $data['senha']));
 		$this->db->update('usuario', $data);
 
 
@@ -96,7 +101,7 @@ class Usuario_model extends CI_Model
     {
         if (!is_null($data)) {
             $email = $data['email'];
-            $senha = $data['senha'];
+            $senha = hash('sha256', $data['senha']);
 
             $this->db->select('*')
                      ->from('usuario')
@@ -172,8 +177,8 @@ class Usuario_model extends CI_Model
                         ->join('sub_menu as s', 's.id_menu = m.id_menu')
                         ->where('s.link', $url);
                 $result = $this->db->get();
-                
-                $info = false;                
+
+                $info = false;
                 foreach ($result->result() as $key => $idGrupo) {
                      if($result->result()[$key]->id_grupo_acesso == $grupo_acesso){
                          $info = true;
@@ -183,7 +188,7 @@ class Usuario_model extends CI_Model
                 if ($result->num_rows() == 0 || $info == false) {
                     redirect(base_url('dashboard'));
                 }
-                
+
             } else {
                 redirect(base_url('dashboard'));
             }
@@ -234,6 +239,6 @@ class Usuario_model extends CI_Model
       }
     }
 
-    
+
 
 }

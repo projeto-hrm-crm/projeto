@@ -31,4 +31,7 @@ function loadTemplate($header_path = "", $body_path = "", $footer_path = "", $da
     $ci->load->view($header_path, $data);
     $ci->load->view($body_path, $data);
     $ci->load->view($footer_path, $data);
+    
+    // echo $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    // exit;
 }

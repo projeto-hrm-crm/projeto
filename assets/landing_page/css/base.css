@@ -56,6 +56,16 @@ figure {
   margin: 1em 40px;
 }
 
+/*
+figure:hover {
+    display: inline-block;
+    background-image: url("../images/github.png");    
+    border-radius: 50%;
+    height:100px;
+    width: auto;
+}
+*/
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -395,7 +405,7 @@ textarea {
 
 .row {
   width: 94%;
-  max-width: 1170px;
+  max-width: auto;
   margin: 0 auto;
 }
 

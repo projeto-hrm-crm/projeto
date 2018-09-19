@@ -33,11 +33,11 @@
             },
             selectable: true,
             selectHelper: true, // DESTACA A HORA SELECIONADA.
-            select: function(start, end) {
-                $('#cadastrar #start').val(moment(start).format('DD/MM/YYYY'));
-                $('#cadastrar #startHour').val(moment(start).format('HH:mm:ss'));
-                $('#cadastrar #end').val(moment(end).format('DD/MM/YYYY'));
-                $('#cadastrar #endHour').val(moment(end).format('HH:mm:ss'));
+            select: function(inicio, fim) {
+                $('#cadastrar #inicio').val(moment(inicio).format('DD/MM/YYYY'));
+                $('#cadastrar #horaInicio').val(moment(inicio).format('HH:mm:ss'));
+                $('#cadastrar #fim').val(moment(fim).format('DD/MM/YYYY'));
+                $('#cadastrar #horaFim').val(moment(fim).format('HH:mm:ss'));
                 $('#cadastrar').modal('show');
             },
 
@@ -59,13 +59,24 @@
         });
 
         $('.ocultar-btn').on('click', function(){
-            $('.form').slideToggle();
+            $('.editar').slideToggle();
             $('.visualizar').slideToggle();
         });
 
         $('.edit-btn').on('click', function(){
             $('.visualizar').slideToggle();
-            $('.form').slideToggle();
+            $('.editar').slideToggle();
         });
+
+        $('.ocultar-btn-delete').on('click', function(){
+            $('.excluir').slideToggle();
+            $('.visualizar').slideToggle();
+        });
+
+        $('.delete-btn').on('click', function(){
+            $('.visualizar').slideToggle();
+            $('.excluir').slideToggle();
+        });
+
 
     });

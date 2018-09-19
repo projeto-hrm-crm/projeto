@@ -308,4 +308,22 @@ class Pedido_model extends PR_Model
 		return false;	
 	 }
 
+	 /**
+	  * @author Pedro Henrique Guimarães
+	  *
+	  * Verifica o total de pedidos realizados pelo cliente logado 
+	  *
+	  * @param int $customer_id 
+	  * @return int
+	 */
+	public function getCustomerTotalOrders($customer_id)
+	{
+		$this->db->select('COUNT(*) orders')
+				 ->from('pedido')
+				 ->where('pedido.id_pessoa', $customer_id);
+		$query = $this->db->get();
+
+		return $query->result()[0]->orders;
+	}
+
 }

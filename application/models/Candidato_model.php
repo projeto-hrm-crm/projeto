@@ -122,6 +122,28 @@ class Candidato_model extends CI_Model {
 		}
 		return $id;
 	}
+    
+    /**
+	* @author: Rodrigo 
+	* Atualiza o curriculum
+	*/
+    public function findCurriculum($id_pessoa)	{
+		$curriculum = $this->db->select("curriculum")->from("candidato")->where('id_pessoa', $id_pessoa)->get();
+
+		return $curriculum->result();
+	}
+   
+   /**
+	* @author: Rodrigo 
+	* Verifica se já existe um curriculum cadastrado
+	*/
+    public function fileUpdate($data)	{
+		$this->db->where('candidato.id_pessoa', $data['id_pessoa']);
+        $this->db->set('candidato.curriculum', $data['arquivo']);
+		$this->db->update('candidato');
+
+		return $data['arquivo'];
+	}
 
 	/**
 	* @author: Mayra Bueno

@@ -25,7 +25,6 @@ class Home extends CI_Controller
     $user_id = $this->session->userdata('user_login');
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
 
-
       switch ($id_grupo_acesso) {
         case '1':// home ADMINISTRADOR
           $grupo_acesso = $this->grupo->find($id_grupo_acesso);
@@ -59,7 +58,8 @@ class Home extends CI_Controller
     $data['assets'] = [
       'js' => [
          'chartjs.min.js',
-         'cliente/home-charts.js'
+         'cliente/home-charts.js',
+         'cliente/home-sac.js'
       ]
     ];
 
@@ -78,7 +78,7 @@ class Home extends CI_Controller
    * @param void
    * @return mixed
    */
-  public function getAdminHomeConfigs()
+  private function getAdminHomeConfigs()
   {
     $data = [];
 
@@ -102,17 +102,31 @@ class Home extends CI_Controller
   }
 
 
+  private function getCustomerHomeConfigs()
+  {
+    $customer_id = $this->session->userdata('user_login');
+    $data = [];
+    $data['produtos']     = $this->produto->get();
+    $data['calls']        = $this->sac->getCustomerCalls($customer_id);
+    $data['orders']       = $this->pedido->getCustomerTotalOrders($customer_id);
+    $data['last_sac']     = $this->sac->getCustomerSac($customer_id);
+    return $data;
+  }
+
+
+
   public function getFornecedorHomeConfigs($user_id)
   {
 
     $data = [];
     //
     $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
-    $data['last_sac']  = $this->sac->getLastSac();
+    $data['last_sac']  = $this->sac->getLastSacFornecedorLogado($user_id);  
 
     return $data;
 
   }
+
 
 
 }
