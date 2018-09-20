@@ -19,12 +19,12 @@
    <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
-    
+
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
 
 <link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
-    
-    
+
+
    <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
    <script type="text/javascript">
    var BASE_URL = "<?php echo base_url();?>";
@@ -65,8 +65,8 @@
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu_atual nome_menu <?php echo $key ?>">
-
-              <a href="<?php echo base_url()."".$key;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
+                
+              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
 
             </li>
           <?php endforeach;?>
@@ -109,30 +109,30 @@
              </div>
         </div>
       </div>
-       <?php 
-           
+       <?php
+
             $cur_name = explode(" ", $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome);
             $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
             $id_pessoa = $data['pessoa'][0]->id_pessoa;
-           
+
            $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
            if($image) {
               $path_profile_image = base_url()."uploads/profileImage/".$image;
            }else{
               $path_profile_image = base_url()."assets/images/theme/no-user.png";
            }
-           
+
            ?>
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             
+
             <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
           </a>
-           
-           
-           
-           
+
+
+
+
           <div class="user-menu dropdown-menu">
             <a class="nav-link" href="#">Olá, <?=$cur_name[0];?></a>
             <a class="nav-link" href="<?php echo base_url();?>perfil"><i class="fa fa-user"></i> Meu Perfil</a>
