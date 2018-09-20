@@ -189,6 +189,11 @@ $route['perfil/alterar-senha']      = 'Perfil/changePassword';
 $route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
 $route['perfil/alterar-imagem']     = 'Perfil/profileImage';
 
+//Rotas Habilidade
+$route['habilidade/cadastrar/(:num)']  = 'habilidade/create/$1';
+$route['habilidade/editar/(:num)']     = 'habilidade/edit/$1';
+$route['habilidade/excluir/(:num)']    = 'habilidade/delete/$1';
+
 //Ajax calls
 $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';

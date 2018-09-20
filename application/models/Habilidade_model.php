@@ -7,24 +7,33 @@ class Habilidade_model extends PR_Model
     
     /**
     * @author: Rodrigo Alves
-    * Cadastrar Habiidade
+    * Cadastrar Habilidade
     *
     */
-    public function insert($data) {
-               
-       $this->db->insert('sugestao', [
+    public function insert($data) {               
+       $this->db->insert('habilidade', [
           'id_pessoa' => $data['id_pessoa'],
           'nome' => $data['nome']
-       ]);
-       
+       ]);       
+    }
+   
+   /**
+    * @author: Rodrigo Alves
+    * Autualizar Habilidade
+    *
+    */
+   public function update($data) {                     
+      $this->db
+        ->set('nome', $data['nome'])
+        ->where('id_habilidade', $data['id_habilidade'])
+        ->update('habilidade');
     }
 
     /**
     * @author: Rodrigo Alves
     * Retorna todas as habilidades da pessoa
     *
-    */
-   
+    */   
     public function get($id_pessoa) {        
         return $this->db
             ->where('id_pessoa', $id_pessoa)
@@ -49,11 +58,10 @@ class Habilidade_model extends PR_Model
     * Remove o registro de habilidade pelo id_habilidade referente
     *
     */
-    public function remove($id_habilidade)  {
+    public function remove($id_habilidade) {
         $this->db
            ->where('id_habilidade', $id_habilidade)
-           ->delete('habilidade');        
-               
+           ->delete('habilidade');
     }
 }
 
