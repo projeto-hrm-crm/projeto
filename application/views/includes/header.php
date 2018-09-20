@@ -63,10 +63,9 @@
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
-          <?php foreach($menus as $key => $m): ?>
-            <li class="menu_atual nome_menu <?php echo $key ?>">
-
-              <a href="<?php echo base_url()."".$key;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
+          <?php foreach($menus as $menu): ?>
+            <li class="menu_atual nome_menu <?php echo $menu->sub_modulo ?>">
+              <a href="<?php echo base_url()."".$menu->link;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $menu->icone;?>" title="<?php echo $menu->sub_modulo;?>"></i> <?php echo $menu->sub_modulo;?></a>
 
             </li>
           <?php endforeach;?>

@@ -2,23 +2,36 @@
 class Menu_model extends CI_Model
 {
 
-
     public function getMenuByAccessGroup($access_group)
     {
         $final_menu = [];
 
-        if ($module_id) {
-            $this->db->select('*')
+        if ($access_group) {
+            $this->db->select(
+                '
+                menu.id_menu, 
+                sub_menu.id_sub_menu,
+                sub_modulo.id_sub_modulo,
+                menu.link as link, 
+                menu.icone as icone,
+                modulo.nome as modulo,
+                sub_modulo.nome as sub_modulo,
+                modulo.id_modulo,
+                grupo_acesso_modulo.id_grupo_acesso_modulo,
+                grupo_acesso_modulo.id_grupo_acesso
+                '
+                )
                      ->from('menu')
                      ->join('sub_menu', 'menu.id_sub_menu = sub_menu.id_sub_menu')
                      ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
                      ->join('modulo', 'sub_modulo.id_modulo = modulo.id_modulo')
                      ->join('grupo_acesso_modulo', 'modulo.id_modulo = grupo_acesso_modulo.id_modulo')
+                     ->where('menu.status', '1')
                      ->where('grupo_acesso_modulo.id_grupo_acesso', $access_group);
             $result = $this->db->get();
 
             if ($result->num_rows() > 0) {
-                
+                return $result->result();    
             }
 
         }
