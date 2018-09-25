@@ -4,17 +4,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Habilidade extends CI_Controller {
 
+   
+   function __construct()
+    {
+        parent::__construct('habilidade');
+    }
+   
     /**
     * @author: Rodrigão
     * Realiza o cadastro de um habilidade, dados recebidos da view habilidade/cadastro.php
     */
-    public function create($id_pessoa) {
-        
+   
+    public function create() {    
+         
+       
         $data = $this->input->post();
         
         if($data) {
 
-            if($this->form_validation->run('habilidade')) {
+            if($this->form_validation->run('habilidade')) {               
+               
+               $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+               $id_pessoa = $data['pessoa'][0]->id_pessoa;
                
                $array = array(
                  'id_pessoa' => $id_pessoa,
@@ -22,8 +33,9 @@ class Habilidade extends CI_Controller {
                );
                 
                 $this->habilidade->insert($array);
-                $this->session->set_flashdata('success', 'Sugestão cadastrado com sucesso!');
+                $this->session->set_flashdata('success', 'Habilidade cadastrado com sucesso!');
                 redirect('perfil/');
+               
             }
             else {
                 $this->session->set_flashdata('danger', 'Não foi possivel cadastrar');
@@ -31,9 +43,10 @@ class Habilidade extends CI_Controller {
             }
         }
         else {
+           
+           
             $data['title'] = 'Cadastrar Habilidades';             
-            $this->load->view('habilidade/cadastrar.php', $data);           
-
+            loadTemplate('includes/header', 'habilidade/cadastrar', 'includes/footer', $data);
         }
 
     }
@@ -54,18 +67,19 @@ class Habilidade extends CI_Controller {
                  'nome' => $this->input->post('nome'),
                );
                
-                $this->habilidade->insert($array);
-                $this->session->set_flashdata('success', 'Sugestão cadastrado com sucesso!');
-                redirect('habilidade/cadastrar');
+                $this->habilidade->update($array);
+                $this->session->set_flashdata('success', 'Habilidade editada com sucesso!');
+                redirect('perfil');
             }
             else {
-                $this->session->set_flashdata('danger', 'Não foi possivel cadastrar');
-                redirect('habilidade/cadastrar');
+                $this->session->set_flashdata('danger', 'Não foi possivel editar');
+                redirect('habilidade/editar/'.$id_habilidade);
             }
         }
         else {
-            $data['title'] = 'Sugestões';             
-            $this->load->view('habilidade/cadastrar.php', $data);
+            $data['title'] = 'Sugestões';   
+            $data['habilidade'] = $this->habilidade->find($id_habilidade);
+            loadTemplate('includes/header', 'habilidade/editar', 'includes/footer', $data);
         }
     }
 
@@ -77,9 +91,9 @@ class Habilidade extends CI_Controller {
     */
     public function delete($id_habilidade) {      
         $this->habilidade->remove($id_habilidade);
-        $this->session->set_flashdata('success','habilidade removido com sucesso!');
+        $this->session->set_flashdata('success','Habilidade removido com sucesso!');
 
-        redirect('habilidade');
+        redirect('perfil');
     }
 
 }

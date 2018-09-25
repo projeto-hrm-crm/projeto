@@ -21,11 +21,11 @@ class Perfil extends CI_Controller {
       $id_pessoa = $data['pessoa'][0]->id_pessoa;
 
       $data['title'] = 'Meu Perfil';         
-      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
-      $id = $data['pessoa'][0]->id_pessoa;
 
-      $data['endereco'] = $this->endereco->findAddress($id);
+      $data['endereco'] = $this->endereco->findAddress($id_pessoa);
+       
+      $data['habilidades'] = $this->habilidade->get($id_pessoa);
        
       $data['curriculum'] = ""; 
        
@@ -44,8 +44,16 @@ class Perfil extends CI_Controller {
       }else{
          $data['imagem'] = base_url()."assets/images/theme/no-user.png";
       }
-
-
+       
+      
+      $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
       loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
     }

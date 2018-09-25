@@ -98,6 +98,12 @@ jQuery(document).ready(function($) {
       }
     },
   });
+   
+   $("#form_habilidade").validate({
+    rules: {
+      nome: "required",
+    }
+  });
 
   $("#form_processo_seletivo").validate({
     rules: {

@@ -46,7 +46,7 @@ class Habilidade_model extends PR_Model
     * Retorna registro de habilidade cadastrado no banco com id_sugestao de referencia
     *
     */
-    public function getById($id_habilidade) {
+    public function find($id_habilidade) {
         return $this->db           
             ->where('id_habilidade', $id_habilidade)
             ->get('habilidade')
