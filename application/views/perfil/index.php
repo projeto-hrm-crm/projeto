@@ -67,11 +67,11 @@
                         <tr>
                            <td><?=$habilidade->nome;?></td>
                            <td width="20%" class="text-center">
-                              <a href="habilidade/editar/<?=$habilidade->id_habilidade;?>" class="btn btn-primary" title="Atualizar Habilidade">
+                              <a href="<?=base_url();?>habilidade/editar/<?=$habilidade->id_habilidade;?>" class="btn btn-primary" title="Atualizar Habilidade">
                                  <span class="fa fa-edit"></span>
                              </a>
                               
-                             <button data-href="habilidade/excluir/<?=$habilidade->id_habilidade;?>" class="btn btn-danger" title="Excluir Habilidade" data-toggle="modal" data-target="#modalRemover">
+                             <button data-href="<?=base_url();?>habilidade/excluir/<?=$habilidade->id_habilidade;?>" class="btn btn-danger" title="Excluir Habilidade" data-toggle="modal" data-target="#modalRemover">
                                  <span class="fa fa-times"></span>
                              </button></td>
                         </tr>             
