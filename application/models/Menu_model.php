@@ -13,7 +13,7 @@ class Menu_model extends CI_Model
                 sub_menu.id_sub_menu,
                 sub_modulo.id_sub_modulo,
                 menu.link as link, 
-                menu.icone as icone,
+                sub_modulo.icone as icone,
                 modulo.nome as modulo,
                 sub_modulo.nome as sub_modulo,
                 modulo.id_modulo,
@@ -29,6 +29,7 @@ class Menu_model extends CI_Model
                      ->where('menu.status', '1')
                      ->where('grupo_acesso_modulo.id_grupo_acesso', $access_group);
             $result = $this->db->get();
+
 
             if ($result->num_rows() > 0) {
                 return $result->result();    

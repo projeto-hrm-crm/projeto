@@ -152,17 +152,19 @@ class Usuario_model extends CI_Model
         return false;
     }
 
+
     /**
      * @author Pedro Henrique Guimarães
      * Verifica se o usuário tem permissão para acessar determinada página
      * baseado no seu grupo de permissão
      *
-     * @param $user_id
+     * @param int $id_grupo_acesso
+     * @param string $url
      * @return void|false
      */
-    public function hasPermission($user_id, $url)
+    public function hasPermission($id_grupo_acesso, $url)
     {
-        if (empty($user_id))
+        if (empty($id_grupo_acesso))
             redirect(base_url('login'));
 
         if ($url == '/dashboard')
