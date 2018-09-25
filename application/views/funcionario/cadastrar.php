@@ -7,7 +7,6 @@
           <strong class="card-title">Cadastrar Funcionário</strong>
         </div>
         <form action="<?php echo site_url('funcionario/cadastrar'); ?>" method="POST" id="form_funcionario" novalidate="novalidate">
-
           <?php print_r($this->session->flashdata('errors')); ?>
           <div class="card-body">
               <?php if(sizeof($cargos) <= 0): ?>
@@ -106,6 +105,17 @@
 
 
 
+            <div class="form-group col-md-6 col-sm-12">
+              <label for="id_cargo" class="control-label mb-1"><red>*</red>Cargo</label>
+              <select name="id_cargo" id="id_cargo" class="form-control">
+                  <option value="">Selecione Cargo</option>
+                  <?php foreach ($cargos as $cargo): ?>
+                    <option value="<?php echo $cargo->id_cargo ?>" <?php echo isset($old_data['id_cargo']) && ($cargo->id_cargo == $old_data['id_cargo']) ? 'selected' : '' ?>>
+                      <?php echo $cargo->nome ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
+          </div>
             </div>
 
           </div>

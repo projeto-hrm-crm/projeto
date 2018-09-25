@@ -78,7 +78,19 @@
                 <label class=" form-control-label">Complemento</label>
                 <input type="complemento" id="complemento" name="complemento" value="<?= htmlspecialchars($funcionario[0]->complemento)?>" placeholder="Complemento" class="form-control" >
               </div> <!-- FIM COMPLEMENTO -->
-</div>
+              <div class="form-group col-lg-6 col-sm-12">
+                <label for="id_cargo" class="control-label mb-1"><red>*</red>cargo</label>
+                <select id="id_cargo" name="id_cargo" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>" required>
+                  <option value="">Selecione</option>
+                  <?php foreach ($cargoes as $cargo): ?>
+                      <option value="<?php echo $cargo->id_cargo;?>"
+                        <?php echo (isset($old_data['id_cargo']) && ($cargo->id_cargo == $old_data['id_cargo'])) || !isset($errors['id_cargo']) && ($funcionario->id_cargo == $cargo->id_cargo) ? 'selected' : '' ?>>
+                      <?php echo $cargo->nome;?>
+                      </option>
+                    <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
 
 
             <div class="card-footer text-right">
