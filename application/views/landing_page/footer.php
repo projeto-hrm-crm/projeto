@@ -1,4 +1,4 @@
-    <footer>
+    <footer>ggit
 
         <div class="footer-main">
             <div class="row">  
