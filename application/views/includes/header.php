@@ -51,14 +51,14 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url();?>">Lambda</a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>">Lambda</a>
       <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
+          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i>Principal</a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
