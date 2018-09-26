@@ -12,37 +12,49 @@ class Perfil extends CI_Controller {
     * @author: Rodrigo Alves
     * Página perfil do usuario
     *
-    */
+    **/
     public function index(){
        
-       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-       $user_id = $this->session->userdata('user_login');
-       $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-       $id_pessoa = $data['pessoa'][0]->id_pessoa;
+      $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+      $user_id = $this->session->userdata('user_login');
+      $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;
+
+      $data['title'] = 'Meu Perfil';         
+
+
+      $data['endereco'] = $this->endereco->findAddress($id_pessoa);
        
-       $data['title'] = 'Meu Perfil';         
-       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-       $id = $data['pessoa'][0]->id_pessoa;
+      $data['habilidades'] = $this->habilidade->get($id_pessoa);
        
-       $data['endereco'] = $this->endereco->findAddress($id);
+      $data['curriculum'] = ""; 
        
-       $curriculum = $this->candidato->findCurriculum($id_pessoa)[0]->curriculum;
-       $data['tipoUsuario'] = $typeUser;
-       
-       $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
-       
-       if($image) {
+      if($typeUser==5) {
+         $curriculum = $this->candidato->findCurriculum($id_pessoa)[0]->curriculum;       
+         if($curriculum) {
+            $data['curriculum'] = base_url()."uploads/".$curriculum;
+         }
+      }
+      $data['tipoUsuario'] = $typeUser;
+
+      $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
+
+      if($image) {
          $data['imagem'] = base_url()."uploads/profileImage/".$image;
-       }else{
-           $data['imagem'] = base_url()."assets/images/theme/no-user.png";
-        }
+      }else{
+         $data['imagem'] = base_url()."assets/images/theme/no-user.png";
+      }
        
-        if($curriculum) {
-         $data['curriculum'] = base_url()."uploads/".$curriculum;
-       }
-               
-        loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
+      
+      $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
+      loadTemplate('includes/header', 'perfil/index', 'includes/footer', $data);
         
     }
    

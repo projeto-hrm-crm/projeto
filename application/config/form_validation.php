@@ -349,6 +349,14 @@ $config = array(
         )
     ),
 
+    'habilidade' => array(
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        )
+    ),
+
 
     'vaga' => array(
 
