@@ -162,38 +162,28 @@ class Usuario_model extends CI_Model
      * @param string $url
      * @return void|false
      */
-    public function hasPermission($id_grupo_acesso, $url)
+    public function hasPermission($access_group, $url)
     {
-        if (empty($id_grupo_acesso))
-            redirect(base_url('login'));
-
         if ($url == '/dashboard')
             return;
         if (!empty($url)) {
             $url = $this->getParsedUrl($url);
-            $grupo_acesso = $this->getUserAccessGroup($user_id);
-            if ($user_id) {
-                $this->db->select('gam.id_grupo_acesso')
-                        ->from('menu as m')
-                        ->join('grupo_acesso_menu as gam', 'm.id_menu = gam.id_menu')
-                        ->join('sub_menu as s', 's.id_menu = m.id_menu')
-                        ->where('s.link', $url);
-                $result = $this->db->get();
-
-                $info = false;
-                foreach ($result->result() as $key => $idGrupo) {
-                     if($result->result()[$key]->id_grupo_acesso == $grupo_acesso){
-                         $info = true;
-                     }
-                  }
-
-                if ($result->num_rows() == 0 || $info == false) {
-                    redirect(base_url('dashboard'));
-                }
-
-            } else {
+         
+            $this->db->select('*')
+                    ->from('grupo_acesso')
+                    ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
+                    ->join('permissao', 'permissao.id_grupo_acesso_modulo = grupo_acesso_modulo.id_grupo_acesso_modulo')
+                    ->join('menu', 'permissao.id_menu = menu.id_menu')
+                    ->where('menu.link', $url)
+                    ->where('grupo_acesso.id_grupo_acesso', $access_group);
+            $result = $this->db->get();
+            
+            if ($result->num_rows() == 0) {
                 redirect(base_url('dashboard'));
             }
+
+        } else {
+            redirect(base_url('dashboard'));
         }
     }
 
