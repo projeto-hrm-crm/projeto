@@ -43,7 +43,7 @@ class Home extends CI_Controller
 
         case '5'://CANDIDATO
           $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs(); 
+            $data['admin'] = $this->getCandidatoHomeConfigs(); 
         
         case '6'://FUNCIONARIO
           $grupo_acesso = $this->grupo->find($id_grupo_acesso);
@@ -127,6 +127,13 @@ class Home extends CI_Controller
 
   }
 
+  public function getCandidatoHomeConfigs()
+  {
+    $customer_id = $this->session->userdata('user_login');
+    $data = [];
+    
+    return $data;
 
+  }
 
 }
