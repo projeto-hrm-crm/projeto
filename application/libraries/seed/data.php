@@ -3044,4 +3044,50 @@ $seeds = array(
       )
     ),
   ),
+  'habilidade' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'RTA',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'JS',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'HTML',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'CSS',
+            '8'
+          ),
+        ),
+      )
+    ),
+  ),
 );
