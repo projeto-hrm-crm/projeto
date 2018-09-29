@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Cadastrar Fornecedor</strong>
             </div>
-            
+
             <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
 
                 <div class="card-body card-block">
@@ -70,10 +70,10 @@
                                 <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
                             </span>
                         </div>
-                        
+
                         <div class="form-group col-12 col-md-4">
                             <label class="form-control-label"><red>*</red>Estado</label>
-                            <input type="text" name="estado" class="form-control" id="estado">
+                            <input type="text" name="estado" class="form-control" id="estado" placeholder="Estado">
                             <span class="invalid-feedback">
                                 <?php echo isset($errors['estado']) ? $errors['estado'] : '' ; ?>
                             </span>
@@ -81,7 +81,7 @@
 
                         <div class="form-group col-12 col-md-5">
                             <label class="form-control-label"><red>*</red>Cidade</label>
-                            <input type="text" name="cidade" class="form-control" id="cidade">
+                            <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade">
                             <span class="invalid-feedback">
                                <?php echo isset($errors['cidade']) ? $errors['cidade'] : '' ; ?>
                             </span>
@@ -121,7 +121,7 @@
 
 
                 </div>
-                
+
                 <div class="card-footer text-right">
                     <a title="Cancelar Cadastro" href="<?=site_url('fornecedor')?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i> Cancelar
@@ -130,7 +130,7 @@
                         <i class="fa fa-plus"></i> Cadastrar
                     </button>
                 </div>
-                
+
             </form>
 
         </div>
