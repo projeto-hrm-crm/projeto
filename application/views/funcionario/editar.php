@@ -82,9 +82,9 @@
                 <label for="id_cargo" class="control-label mb-1"><red>*</red>cargo</label>
                 <select id="id_cargo" name="id_cargo" class="form-control <?php echo isset($errors['id_cargo']) ? 'is-invalid' : '' ?>" required>
                   <option value="">Selecione</option>
-                  <?php foreach ($cargoes as $cargo): ?>
+                  <?php foreach ($cargos as $cargo): ?>
                       <option value="<?php echo $cargo->id_cargo;?>"
-                        <?php echo (isset($old_data['id_cargo']) && ($cargo->id_cargo == $old_data['id_cargo'])) || !isset($errors['id_cargo']) && ($funcionario->id_cargo == $cargo->id_cargo) ? 'selected' : '' ?>>
+                        <?php echo (isset($old_data['id_cargo']) && ($cargo->id_cargo == $old_data['id_cargo'])) || !isset($errors['id_cargo']) && ($funcionario[0]->id_cargo == $cargo->id_cargo) ? 'selected' : '' ?>>
                       <?php echo $cargo->nome;?>
                       </option>
                     <?php endforeach; ?>
