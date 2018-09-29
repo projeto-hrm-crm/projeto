@@ -64,6 +64,7 @@ $autoload['libraries'] = array(
     'session',
     'seed/Seeds' => 'Seed',
     'notifications/Notification' => 'Notification',
+    'interface/Button' => 'Button',
 );
 
 /*

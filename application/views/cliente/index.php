@@ -49,12 +49,30 @@
                     <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Atualizar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
-                      <span class="fa fa-pencil-square-o"></span></a>
-                       <button title="Excluir Cliente" data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-times"></span>
-                        </button>
-                      </td>
+                    <?php 
+                      $type = "a";
+                      $label = "<span class='fa fa-pencil-square-o'></span>";
+                      $classes = ['btn', 'btn-primary'];
+                      $attr = [
+                        'id' => 'id',
+                        'href' => site_url('cliente/editar/'.$cliente->id_cliente),
+                      ];
+                      $this->Button->build($type, $label, $classes, $attr);
+                    ?>
+
+                    <?php 
+                      $type = "button";
+                      $label = "<span class='fa fa-times'></span>";
+                      $classes = ['btn', 'btn-danger'];
+                      $attr = [
+                        'id' => 'id',
+                        'data-href' => "cliente/excluir/".$cliente->id_cliente,
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modalRemover'
+                      ];
+                      $this->Button->build($type, $label, $classes, $attr);
+                    ?>
+                    </td>
                     </tr>
                   <?php endforeach ?>
                 </tbody>
