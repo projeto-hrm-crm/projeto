@@ -90,8 +90,7 @@ class PedidoAlmoxarifado extends PR_Controller
    *
    * @param int $id_pedido_almoxarifado
    */
-  public function edit($id_pedido_almoxarifado)
-  {
+  public function edit($id_pedido_almoxarifado) {
     if ($this->input->post()) {
       if($this->form_validation->run('pedido_almoxarifado')) {
          
