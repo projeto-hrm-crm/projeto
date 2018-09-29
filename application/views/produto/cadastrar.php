@@ -68,6 +68,15 @@
 	                              	</select>
                                 <span class="invalid-feedback">Fornecedor inválido.</span>
                             </div>
+                            <!--imagem do produto -->
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="imagemProduto" class="control-label mb-1">Imagem do Produto:</label>
+                                <input type="file" name="arquivo">
+                            </div>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>

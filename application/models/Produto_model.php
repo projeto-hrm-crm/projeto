@@ -190,6 +190,29 @@ class Produto_model extends CI_Model
         ->where('usuario.id_usuario', $user_id)
         ->get('produto');
             return $query->result();
-    }  
+    }
+    
+    
+    /**
+    * @author: Rodrigo 
+	* Atualiza o imagem
+	*/
+    public function findImage($id_pessoa)	{
+		$curriculum = $this->db->select("imagem")->from("produto")->where('id_produto', $id_produto)->get();
+		return $curriculum->result();
+	}
+   
+   /**
+	* @author: Rodrigo 
+	* Verifica se já existe um imagem cadastrado
+	*/
+    public function imageUpdate($data)	{
+		$this->db->where('produto.id_produto', $data['id_produto']);
+        $this->db->set('produto.imagem', $data['arquivo']);
+		$this->db->update('produto');
+
+		return $data['arquivo'];
+	}
+
 
 }
