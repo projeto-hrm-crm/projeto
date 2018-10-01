@@ -175,7 +175,7 @@ class Perfil extends CI_Controller {
 
             $this->candidato->fileUpdate($array);
 
-            $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
+            $this->session->set_flashdata('success', 'Curriculum enviado com sucesso!');
             redirect('perfil');
          }
          else{
@@ -207,7 +207,7 @@ class Perfil extends CI_Controller {
       if($oldFile) {
          unlink('./uploads/profileImage/'.$oldFile);
       }
-      
+
        if (isset($_FILES['arquivo']))  {
 
          $arquivo    = $_FILES['arquivo'];
@@ -258,7 +258,7 @@ class Perfil extends CI_Controller {
 
                $this->pessoa->imageUpdate($array);
 
-               $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
+               $this->session->set_flashdata('success', 'Foto atualizada com sucesso!');
                redirect('perfil');
             }
          }
