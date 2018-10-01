@@ -850,13 +850,6 @@ jQuery(document).ready(function($) {
       salario:{
         required: true,
       },
-
-      id_setor:{
-        required: true,
-        digits:   true,
-        min:      1
-      },
-
     },
 
     messages: {
