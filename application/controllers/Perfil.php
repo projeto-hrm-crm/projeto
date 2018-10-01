@@ -258,7 +258,7 @@ class Perfil extends CI_Controller {
 
                $this->pessoa->imageUpdate($array);
 
-               $this->session->set_flashdata('success', 'Foto atualizada com sucesso!');
+               $this->session->set_flashdata('success', 'Imagem de perfil atualizada com sucesso!');
                redirect('perfil');
             }
          }
