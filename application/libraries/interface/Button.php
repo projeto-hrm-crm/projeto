@@ -13,32 +13,40 @@ class Button
      * @author Pedro Henrique Guimarães
      * Esse método é responsável por construir um botão
      *
-     * @param String $type - <a> <button> <input> 
-     * @param String $label - Nome do botão
-     * @param Array $classes - Todas as classes necessárias para o botão 
-     * @param Array $attr - Atributos em geral
+     * @param string $type - <a> <button> <input> 
+     * @param string $label - Nome do botão
+     * @param array $classes - Todas as classes necessárias para o botão 
+     * @param array $attr - Atributos em geral
      * 
-     * @return String
+     * @return string
      */
-    public function build($type, $label, $classes, $attr)
+    public function build($type, $label, $classes, $attr, $sub_modulo, $action)
     {
-        $button_open = "<$type ";
+        if (empty($sub_modulo))
+            die("Insira um submodulo para gerar o botão");
 
-        $button_open .= $this->addClass($classes);
-        $button_open .= $this->addAttr($attr);
-        
-        $button_open .= ">"; 
-        $button_label = !empty($label) ? $label : "Please insert a label"; 
-        $button_close = "</$type>";
+        if (empty($action))
+            die("Insira uma ação para gerar o botão");
 
-        echo $button_open . $button_label . $button_close;
+        if ($this->renderButtonIfHasPermission($sub_modulo, $action)) {
+            $button_open = "<$type ";
+
+            $button_open .= $this->addClass($classes);
+            $button_open .= $this->addAttr($attr);
+            
+            $button_open .= ">"; 
+            $button_label = !empty($label) ? $label : "Please insert a label"; 
+            $button_close = "</$type>";
+
+            echo $button_open . $button_label . $button_close;
+        }
     }
 
     /**
      * @author Pedro Henrique Guimarães
      * 
-     * @param Array 
-     * @return String
+     * @param array 
+     * @return string
      */
     private function addClass($classes)
     {
@@ -57,8 +65,8 @@ class Button
     /**
      * @author Pedro Henrique
      * 
-     * @param Array $attributes
-     * @return String
+     * @param array $attributes
+     * @return string
      */
     private function addAttr($attributes)
     {
@@ -73,8 +81,32 @@ class Button
             }
         }
         
-
         return $attr;
+    }
+
+    /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * renderiza o botão se o usuário tiver a permissão.
+     * @return bool
+     */
+    private function renderButtonIfHasPermission($sub_modulo, $action)
+    {
+        $this->ci->db->select('sub_menu.nome')
+                     ->from('grupo_acesso')
+                     ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
+                     ->join('permissao', 'permissao.id_grupo_acesso_modulo = grupo_acesso_modulo.id_grupo_acesso_modulo')
+                     ->join('menu', 'permissao.id_menu = menu.id_menu')
+                     ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
+                     ->join('sub_menu', 'menu.id_sub_menu = sub_menu.id_sub_menu')
+                     ->where('grupo_acesso.id_grupo_acesso', $this->ci->session->userdata('user_id_grupo_acesso'))
+                     ->where('sub_modulo.nome', ucfirst($sub_modulo))
+                     ->where('sub_menu.nome', ucfirst($action));
+        $result = $this->ci->db->get();
+
+        if ($result->num_rows() > 0)
+            return true; 
+        return false;
     }
         
 }

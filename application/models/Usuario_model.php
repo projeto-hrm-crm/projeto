@@ -188,10 +188,6 @@ class Usuario_model extends CI_Model
     }
 
     /**
-     * Gera os botões de 
-     */
-
-    /**
     * @author Pedro Henrique Guimarães
     * Retorna a url atual do usuário, formatada.
     *
@@ -234,7 +230,5 @@ class Usuario_model extends CI_Model
         return true;
       }
     }
-
-
 
 }

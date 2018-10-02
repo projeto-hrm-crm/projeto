@@ -21,9 +21,18 @@
           <strong class="card-title">Clientes</strong>
         </div>
         <div class="card-body">
-          <a title="Cadastrar Cliente" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-check"></i> Novo Cadastro
-          </a><br />
+        <?php 
+          $type = "a";
+          $label = "<i class='fa fa-check'></i> Novo Cadastro";
+          $classes = ['btn', 'btn-primary', 'btn-sm'];
+          $attr = [
+            'id' => 'id',
+            'href' => "cliente/cadastrar",
+            'title' => 'Cadastrar Cliente'
+          ];
+          $this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Cadastrar');
+        ?>
+        <br />
           <br />
           <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
 
@@ -57,7 +66,7 @@
                         'id' => 'id',
                         'href' => site_url('cliente/editar/'.$cliente->id_cliente),
                       ];
-                      $this->Button->build($type, $label, $classes, $attr);
+                      $this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Editar');
                     ?>
 
                     <?php 
@@ -70,7 +79,7 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#modalRemover'
                       ];
-                      $this->Button->build($type, $label, $classes, $attr);
+                      $this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Excluir');
                     ?>
                     </td>
                     </tr>

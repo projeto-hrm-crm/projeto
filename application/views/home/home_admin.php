@@ -32,7 +32,7 @@
 									'id' => 'id',
 									'aria-hidden' => 'asdasdasd'
 								];
-								$this->Button->build($type, $label, $classes, $attr);
+								$this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Cadastrar');
 							?>
 			                	
 			                </a>
