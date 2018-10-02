@@ -868,10 +868,6 @@ jQuery(document).ready(function($) {
         required: 'O campo salário é obrigatório',
       },
 
-     id_setor:{
-        required: 'O setor deve ser selecionado'
-      },
-
     },
 
   });

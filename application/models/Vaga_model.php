@@ -12,11 +12,9 @@ class Vaga_model extends CI_Model
     public function get(){
       $vaga =  $this->db->select(
             'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade,
-             cargo.nome AS cargo,
-             setor.nome AS setor'
+             cargo.nome AS cargo'
         )->from('vaga')
         ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
-        ->join('setor', 'cargo.id_setor = setor.id_setor')
         ->get();
 
         if ($vaga) {
@@ -89,11 +87,10 @@ class Vaga_model extends CI_Model
 
       $vaga = $this->db->select(
            'vaga.id_vaga, vaga.data_oferta AS data_oferta, vaga.quantidade AS quantidade, vaga.requisitos, vaga.id_cargo,
-            cargo.nome AS cargo,
-            setor.nome AS setor'
+            cargo.nome AS cargo'
        )->from('vaga')
        ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
-       ->join('setor', 'cargo.id_setor = setor.id_setor')->where('vaga.id_vaga',$id)
+       ->where('vaga.id_vaga',$id)
        ->get();
 
        if ($vaga) {
