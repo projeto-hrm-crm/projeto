@@ -283,29 +283,28 @@ class Perfil extends CI_Controller {
     *
     */
    public function changePassword(){
+      $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
+      $user_id = $this->session->userdata('user_login');
 
+      $data = $this->input->post();
 
-        $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-        $user_id = $this->session->userdata('user_login');
-
-        $data = $this->input->post();
-
-         if ($data)  {
+      if ($data) {
+         
          if (($data['senha']==$data['senha-confirme']) and $data['senha'] and $data['senha-confirme']) {
-
-
-            $this->usuario->changePassword([
+            echo $this->usuario->changePassword([
                'senha' => $data['senha'],
                'id_usuario'     => $user_id
-             ]);
+            ]);
 
            $this->session->set_flashdata('success', 'Senha atualizada com sucesso!');
            redirect('perfil');
+            
          }else{
            $this->session->set_flashdata('danger', 'As senhas não conhecidem!');
            redirect('perfil/alterar-senha/');
          }
-       }
+         
+      }
 
       $data['title'] = 'Alterar Senha';
 
