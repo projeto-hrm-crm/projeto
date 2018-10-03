@@ -209,6 +209,19 @@
                                 <input id="horaFim" name="horaFim" type="time" class="form-control" required>
                             </div>
                         </div>
+                        <div class="form-group col-12">
+                            <label class="col-3 control-label float-left">Compartilhar</label>
+                            <div class="col-9">
+                                <select name="id_usuario" class=" form-control" required>
+                                  <option value="">Selecione os usuários</option>
+                                  <?php foreach ($usuarios as $usuario): ?>
+                                    <option value="<?php echo $usuario->id_usuario; ?>" <?php echo isset($old_data['id_usuario']) && ($usuario->id_usuario == $old_data['id_usuario']) ? 'selected' : '' ?>>
+                                      <?php echo $usuario->nome; ?>
+                                    </option>
+                                  <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

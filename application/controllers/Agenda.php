@@ -6,6 +6,7 @@ class Agenda extends CI_Controller
     public function index()
     {
         $dados['title'] = 'Agenda';
+        $dados['usuarios'] = $this->usuario->getByName();
 
         $dados['assets'] = array (
             'js' => array (
