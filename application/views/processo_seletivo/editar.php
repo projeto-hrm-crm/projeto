@@ -74,6 +74,10 @@
                                                 <label class="form-control-label mt-2">Descrição</label>
                                                 <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
                                             </div>
+                                            <a name="button" class="btn btn-success btn-sm remDiv mt-2 mb-3 mr-2 text-white">
+                                                <span class="fa fa-arrow-right"></span>
+                                                Avançar Status
+                                            </a>
                                             <a name="button" class="btn btn-danger btn-sm remDiv mt-2 mb-3 text-white">
                                                 <span class="fa fa-times"></span>
                                                 Excluir

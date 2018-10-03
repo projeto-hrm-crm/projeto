@@ -48,4 +48,23 @@ class Etapa_model extends CI_Model
       return $this->db->get('etapa')->result();
     }
 
+    public function getProcessoSeletivoEtapa()
+  {
+    try {
+      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas')
+      ->from('processo_seletivo')
+      ->join('etapa', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+      ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
+      ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
+      ->where('status = 2')
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    } catch (\Exception $e) {}
+  }
+
 }
