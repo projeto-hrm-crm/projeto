@@ -129,8 +129,9 @@ class Home extends CI_Controller
 
   public function getCandidatoHomeConfigs()
   {
-    $customer_id = $this->session->userdata('user_login');
+    
     $data = [];
+    $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa();
     
     return $data;
 
