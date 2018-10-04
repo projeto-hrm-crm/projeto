@@ -25,7 +25,11 @@ class PedidoAlmoxarifado_model extends PR_Model
     */
     public function get()
     {
-        return $this->db->get('pedido_almoxarifado')->result();
+        return $this->db
+           ->select('pedido_almoxarifado.*, almoxarifado.nome')
+           ->join('almoxarifado', 'almoxarifado.id_almoxarifado = pedido_almoxarifado.id_almoxarifado')
+           ->get('pedido_almoxarifado')
+           ->result();
     }
 
     /**

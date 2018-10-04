@@ -19,11 +19,11 @@
         <?php endif; ?>
         <div class="card">
           <div class="card-header">
-            <strong class="card-title">Almoxarifados</strong>
+            <strong class="card-title">Solicitações Almoxarifado</strong>
           </div>
           <div class="card-body">
-            <a href="<?= site_url('almoxarifado/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
-              <i class="fa fa-check"></i> Novo Cadastro
+            <a href="<?= site_url('pedido_almoxarifado/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
+              <i class="fa fa-check"></i> Novo Pedido
             </a><br />
             <br />
             <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
@@ -31,22 +31,20 @@
                 <tr>
                   <th class="text-center">Nome</th>
                   <th class="text-center">Quantidade</th>
-                  <th class="text-center">valor</th>
                   <th class="text-center">Ações</th>
                 </tr>
               </thead>
               <tbody>
-                <?php if (!is_null($almoxarifados)): ?>
-                    <?php foreach ($almoxarifados as $almoxarifado): ?>
+                <?php if (!is_null($pedidos_almoxarifado)): ?>
+                    <?php foreach ($pedidos_almoxarifado as $pedido_almoxarifado): ?>
                       <tr>
-                        <td class="text-center"><?= $almoxarifado->nome; ?></td>
-                        <td class="text-center"><?= $almoxarifado->quantidade; ?></td>
+                        <td class="text-center"><?= $pedido_almoxarifado->nome; ?></td>
+                        <td class="text-center"><?= $pedido_almoxarifado->quantidade; ?></td>
 
-                        <td class="text-center"><?= $almoxarifado->valor; ?></td>
                         <td class="text-center">
-                          <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$almoxarifado->id_almoxarifado)?>" class="btn btn-primary">
+                          <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$pedido_almoxarifado->id_pedido_almoxarifado)?>" class="btn btn-primary">
                           <span class="fa fa-edit"></span></a>
-                          <button data-href="almoxarifado/excluir/<?php echo $almoxarifado->id_almoxarifado?>" class="btn btn-danger" title="Excluir entrada" data-toggle="modal" data-target="#modalRemover">
+                          <button data-href="almoxarifado/excluir/<?php echo $pedido_almoxarifado->id_pedido_almoxarifado?>" class="btn btn-danger" title="Excluir entrada" data-toggle="modal" data-target="#modalRemover">
                             <span class="fa fa-times"></span>
                           </button>
                          </td>

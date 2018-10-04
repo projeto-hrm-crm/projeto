@@ -5,16 +5,14 @@
 * Controller de pedido_almoxarifado
 **/
 
-class PedidoAlmoxarifado extends PR_Controller
-{
+class PedidoAlmoxarifado extends PR_Controller {
   /**
    * @author Rodrigo
    *
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
    * onde todos devem seguir essa mesma estrutura mínima no consrutor.
    */
-  public function __construct()
-  {
+  public function __construct() {
     parent::__construct('pedido_almoxarifado');
   }
 
@@ -23,11 +21,11 @@ class PedidoAlmoxarifado extends PR_Controller
    *
    * Metodo index que chama a view inicial de pedido_almoxarifado
   */
-  public function index()
-  {
-    $this->setTitle('pedido_almoxarifados');
+  public function index() {
+     
+    $this->setTitle('Solicitações Almoxarifado');
 
-    $this->addData('pedido_almoxarifados',$this->pedido_almoxarifado->get());
+    $this->addData('pedidos_almoxarifado', $this->pedido_almoxarifado->get());
 
     $this->loadIndexDefaultScripts();
 
@@ -128,14 +126,11 @@ class PedidoAlmoxarifado extends PR_Controller
    *
    * @param int $id_pedido_almoxarifado
    */
-  public function delete($id_pedido_almoxarifado)
-  {
-    $data['pedido_almoxarifado'] = $this->pedido_almoxarifado->getById($id_pedido_almoxarifado);
-
-    if ($data) {
+  public function delete($id_pedido_almoxarifado) {
+    
       $this->pedido_almoxarifado->remove($id_pedido_almoxarifado);
       $this->session->set_flashdata('success', 'Item Excluído Com Sucesso!');
       redirect('pedido_almoxarifado');
-    }
+    
   }
 }
