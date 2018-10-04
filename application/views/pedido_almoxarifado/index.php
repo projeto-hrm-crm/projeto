@@ -40,7 +40,6 @@
                       <tr>
                         <td class="text-center"><?= $pedido_almoxarifado->nome; ?></td>
                         <td class="text-center"><?= $pedido_almoxarifado->quantidade; ?></td>
-
                         <td class="text-center">
                           <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$pedido_almoxarifado->id_pedido_almoxarifado)?>" class="btn btn-primary">
                           <span class="fa fa-edit"></span></a>
