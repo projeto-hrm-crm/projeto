@@ -39,8 +39,6 @@ class Agenda extends CI_Controller
                 $horaInicio = strtotime(str_replace('/','-',$this->input->post('horaInicio')));
                 $horaFim    = strtotime(str_replace('/','-',$this->input->post('horaFim')));
 
-                $id_evento = 0;
-
                 if($inicio == $fim){
                     if($horaInicio < $horaFim){
                         $id_evento = $this->evento->insert($eventos);
