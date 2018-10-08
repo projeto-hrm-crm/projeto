@@ -8,6 +8,13 @@
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
+
+<div class="col-lg-3">
+                     <a href="<?=site_url('produto/alterar-imagem/')?>" alt="Alterar Imagem" title="Alterar Imagem">
+                        <img width="100%" src="<?=$imagem;?>">
+                     </a>
+                  </div>
+
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="nome" class="control-label mb-1"><red>*</red>Nome do Produto</label>
                                 <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>

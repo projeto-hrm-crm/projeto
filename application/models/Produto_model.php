@@ -197,7 +197,7 @@ class Produto_model extends CI_Model
     * @author: Rodrigo 
 	* Atualiza o imagem
 	*/
-    public function findImage($id_pessoa)	{
+    public function findImage($id_produto)	{
 		$curriculum = $this->db->select("imagem")->from("produto")->where('id_produto', $id_produto)->get();
 		return $curriculum->result();
 	}

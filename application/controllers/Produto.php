@@ -83,6 +83,15 @@ class Produto extends CI_Controller
     {
       if($this->input->post()){
         if($this->form_validation->run('produto')){
+
+          $image = $this->produto->findImage($id_produto)[0]->imagem;
+
+          if($image) {
+             $data['imagem'] = base_url()."uploads/profileImage/".$image;
+          }else{
+             $data['imagem'] = base_url()."assets/images/theme/no-user.png";
+          }
+
           $array = array(
            'id_fornecedor' => $this->input->post('id_fornecedor'),
            'nome'          => $this->input->post('nome'),
@@ -93,6 +102,7 @@ class Produto extends CI_Controller
            'lote'          => $this->input->post('lote'),
            'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
           );
+
             $this->produto->insert($array);
             $this->session->set_flashdata('success','Produto cadastrado com sucesso!');
             redirect('produto');
