@@ -50,13 +50,13 @@
 
                             <div class="form-group col-12 col-md-4">
                                 <label class="form-control-label"><red>*</red>Estado</label>
-                                <input type="text" name="estado" class="form-control" id="estado" value="<?php echo $fornecedor[0]->estado;?>">
+                                <input type="text" name="estado" class="form-control" id="estado" placeholder="Estado" value="<?php echo $fornecedor[0]->estado;?>">
                                 <span class="invalid-feedback"></span>
                             </div>
 
                             <div class="form-group col-12 col-md-5">
                                 <label class="form-control-label"><red>*</red>Cidade</label>
-                                <input type="text" name="cidade" class="form-control" id="cidade" value="<?php echo $fornecedor[0]->cidade;?>">
+                                <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade" value="<?php echo $fornecedor[0]->cidade;?>">
                                 <span class="invalid-feedback"></span>
                             </div>
 
@@ -68,7 +68,7 @@
 
                             <div class="form-group col-12 col-md-3">
                                 <label class=" form-control-label"><red>*</red>Número</label>
-                                <input type="num" id="numero" name="numero" placeholder="" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->numero)?>" required>
+                                <input type="num" id="numero" name="numero" placeholder="Número" class="form-control"  value="<?= htmlspecialchars($fornecedor[0]->numero)?>" required>
                                 <span class="invalid-feedback"></span>
                             </div>
 

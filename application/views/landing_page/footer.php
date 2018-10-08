@@ -1,4 +1,4 @@
-    <footer>
+    <footer>ggit
 
         <div class="footer-main">
             <div class="row">  
@@ -11,7 +11,7 @@
 
                 <div class="col-four md-1-3 tab-full footer-contact">
 <h4>Equipe</h4>
-<a class="smoothscroll" href="#alunos" title="Alunos">Alunos da disciplina de Projeto Integrado 2018</a><br>
+<a class="smoothscroll" href="#equipe" title="Alunos">Alunos da disciplina de Projeto Integrado 2018</a><br>
 <strong>Orientadores</strong><br>
 Mario Tadashi Shimanuki<br>
 Nelson Alves Pinto<br>  

@@ -349,6 +349,14 @@ $config = array(
         )
     ),
 
+    'habilidade' => array(
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        )
+    ),
+
 
     'vaga' => array(
 
@@ -515,11 +523,6 @@ $config = array(
             'field' => 'salario',
             'label' => 'Salário',
             'rules' => 'required'
-        ),
-        array(
-            'field' => 'id_setor',
-            'label' => 'Setor',
-            'rules' => 'required|numeric'
         ),
     ),
 

@@ -31,9 +31,7 @@
           <div class="form-group col-12 col-md-6">
             <h4>Cargo</h4><span><?php echo($vaga->cargo); ?></span>
           </div>
-          <div class="form-group col-12 col-md-6">
-            <h4>Setor</h4><span><?php echo($vaga->setor); ?></span>
-          </div>
+         
           <div class="form-group col-12 col-md-6">
             <h4>Quantidade de Vagas</h4><span><?php echo($vaga->quantidade); ?></span>
           </div>
