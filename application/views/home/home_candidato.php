@@ -16,15 +16,15 @@
 			</thead>
 
 			<tbody>
-				<?php if(isset($processo_seletivo)): ?>
-					<?php foreach($processo_seletivo as $ps): ?>
+				<?php if(isset($processo_seletivo['processo_seletivo'])): ?>
+					<?php foreach($processo_seletivo): ?>
 						<tr>
-							<td><?php echo $ps->codigo; ?></td>
-							<td><?php echo $ps->nome; ?></td>
-                			<td><?php echo $ps->nome_cargo; ?></td>
-                			<td><?php echo $ps->descricao; ?></td>
-                			<td><?php echo $ps->data_inicio; ?></td>
-                			<td><?php echo $ps->data_fim; ?></td>
+							<td><?php echo $processo_seletivo['processo_seletivo']->codigo; ?></td>
+							<td><?php echo $processo_seletivo['processo_seletivo']->nome; ?></td>
+                			<td><?php echo $processo_seletivo['processo_seletivo']->nome_cargo; ?></td>
+                			<td><?php echo $processo_seletivo['processo_seletivo']->descricao; ?></td>
+                			<td><?php echo $processo_seletivo['processo_seletivo']->data_inicio; ?></td>
+                			<td><?php echo $processo_seletivo['processo_seletivo']->data_fim; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
