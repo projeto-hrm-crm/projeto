@@ -63,11 +63,13 @@ class Agenda extends CI_Controller
             }
 
             if ($this->input->post('id_usuario')) {
-                $evento_compartilhado = array(
-                    'evento_id'  => $id_evento,
-                    'id_usuario' => $this->input->post('id_usuario'),
-                );
-                $this->evento->insereUsuario($evento_compartilhado);
+                for ($i = 0; $i < count($this->input->post('id_usuario')); $i++) {
+                    $evento[$i] = array(
+                        'evento_id'  => $id_evento,
+                        'id_usuario' => $this->input->post('id_usuario')[$i],
+                    );
+                    $this->evento->insereUsuario($evento[$i]);
+                }
             }
 
             redirect('agenda');

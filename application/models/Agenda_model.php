@@ -96,7 +96,7 @@ class Agenda_model extends CI_Model
     {
         $usuario = $this->usuario->getByName($evento_usuario['id_usuario']);
 
-        $this->db->insert('evento_has_usuario', $evento_usuario);
+        $this->db->insert('evento_usuario', $evento_usuario);
 
     }
 
