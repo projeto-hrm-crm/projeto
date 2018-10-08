@@ -620,6 +620,9 @@ jQuery(document).ready(function($) {
         required:true,
         letras:true,
       },
+      id_cargo:{
+        required:true,
+      },
       email: {
         maxlength: 150,
         required:true,

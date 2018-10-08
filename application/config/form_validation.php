@@ -725,6 +725,11 @@ $config = array(
             'rules' => 'required'
         ),
         array(
+            'field' => 'id_cargo',
+            'label' => 'cargo',
+            'rules' => 'required'
+        ),
+        array(
             'field' => 'email',
             'label' => 'email',
             'rules' => 'required'
