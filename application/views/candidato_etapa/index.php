@@ -31,7 +31,7 @@
                 <th>Descrição</th>
 								<th>Data de Início</th>
 								<th>Data de Término</th>
-
+                <th>Candidatar</th>
 							</tr>
 						</thead>
 
