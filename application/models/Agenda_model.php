@@ -9,18 +9,24 @@ class Agenda_model extends CI_Model
 
     public function get()
     {
-       $events = array();
-       $results = $this->db->get('evento')->result();
+        $events = array();
 
-       foreach ($results as $key => $result) {
-         $events[$key]['id'] = $result->id;
-         $events[$key]['title'] = $result->titulo;
-         $events[$key]['start'] = $result->inicio;
-         $events[$key]['end']   = $result->fim;
-         $events[$key]['color'] = $result->cor;
-       }
+        $results = $this->db->distinct()->select('id, criado_por, titulo, inicio, fim, cor')
+            ->join('evento_usuario', 'evento_usuario.evento_id = evento.id')
+            ->where('criado_por', $this->session->userdata('user_login'))
+            ->or_where('id_usuario', $this->session->userdata('user_login'))
+            ->get('evento')
+            ->result();
 
-       return $events;
+        foreach ($results as $key => $result) {
+            $events[$key]['id']         = $result->id;
+            $events[$key]['title']      = $result->titulo;
+            $events[$key]['start']      = $result->inicio;
+            $events[$key]['end']        = $result->fim;
+            $events[$key]['color']      = $result->cor;
+        }
+
+        return $events;
     }
 
     public function insert($eventos)
