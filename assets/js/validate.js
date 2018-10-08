@@ -850,13 +850,6 @@ jQuery(document).ready(function($) {
       salario:{
         required: true,
       },
-
-      id_setor:{
-        required: true,
-        digits:   true,
-        min:      1
-      },
-
     },
 
     messages: {
@@ -873,10 +866,6 @@ jQuery(document).ready(function($) {
 
       salario:{
         required: 'O campo salário é obrigatório',
-      },
-
-     id_setor:{
-        required: 'O setor deve ser selecionado'
       },
 
     },

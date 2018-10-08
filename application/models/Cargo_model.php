@@ -8,7 +8,7 @@ class Cargo_model extends PR_Model
     * @author: Matheus Ladislau
     * Realiza registro de cargo
     *
-    * @param array: Dados(nome, descricao, salario, id_setor) a serem registrados
+    * @param array: Dados(nome, descricao, salario) a serem registrados
     */
     public function insert($cargo)
     {
@@ -42,7 +42,6 @@ class Cargo_model extends PR_Model
         ->set('cargo.descricao', $cargo['descricao'])
         ->set('carga_horaria_semanal', $cargo['carga_horaria_semanal'])
         ->set('cargo.salario',   $cargo['salario'])
-        ->set('cargo.id_setor',  $cargo['id_setor'])
         //->set('cargo.horario',  $cargo['horario'])
         //->set('cargo.hora_entrada',  $cargo['hora_entrada'])
         //->set('cargo.hora_saida',  $cargo['hora_saida'])

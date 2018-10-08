@@ -524,11 +524,6 @@ $config = array(
             'label' => 'Salário',
             'rules' => 'required'
         ),
-        array(
-            'field' => 'id_setor',
-            'label' => 'Setor',
-            'rules' => 'required|numeric'
-        ),
     ),
 
     'pedido_fornecedor' => array(
