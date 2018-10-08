@@ -74,12 +74,12 @@
                                                 <label class="form-control-label mt-2">Descrição</label>
                                                 <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
                                             </div>
-                                            <!-- valor do status 
+                                            
                                             <div class="form-group col-12">
                                                 <label class="form-control-label">Status</label>
                                                 <input type="text" name="status_etapa[]" placeholder="status da etapa" class="form-control" value="<?php echo $etapa->status ?>" required>
-                                            </div> -->
-                                            <!--
+                                            </div> 
+                                            <!--  valor do status  via botão
                                             <a title="avançar Status" name="status_etapa[]" class="btn btn-success btn-sm mt-2 mb-3 mr-2 text-white" href="javascript:statusUp()">
                                                 <i class="fa fa-arrow-right"></i>Avançar Status</a>
                                             -->
