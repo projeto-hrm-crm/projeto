@@ -209,11 +209,10 @@
                                 <input id="horaFim" name="horaFim" type="time" class="form-control" required>
                             </div>
                         </div>
-                        <div class="form-group col-12">
-                            <label class="col-3 control-label float-left">Compartilhar</label>
-                            <div class="col-9">
+                        <div id="compartilhar" class="form-group col-12" hidden>
+                            <label class="col-12 control-label float-left">Compartilhar com</label>
+                            <div class="col-12">
                                 <select name="id_usuario[]" class=" form-control" multiple>
-                                  <option value="">Selecione os usuários</option>
                                   <?php foreach ($usuarios as $usuario): ?>
                                     <option value="<?php echo $usuario->id_usuario; ?>" <?php echo isset($old_data['id_usuario']) && ($usuario->id_usuario == $old_data['id_usuario']) ? 'selected' : '' ?>>
                                       <?php echo $usuario->nome; ?>
@@ -224,13 +223,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                        Cadastrar
-                    </button>
+                <div class="card-footer bg-white">
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-warning compartilhar">
+                                Compartilhar
+                            </button>
+                        </div>
+                        <div class="col-8 text-right">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                Cadastrar
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
