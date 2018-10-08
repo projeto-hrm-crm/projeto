@@ -86,4 +86,18 @@ class Agenda_model extends CI_Model
         return $id_evento;
     }
 
+    /**
+    * @author: Rafael Pigozzi
+    * Insere dados na tabela relacional entre evento e usuario: evento_usuario
+    *
+    * @param: $evento_usuario mixed
+    */
+    public function insereUsuario($evento_usuario)
+    {
+        $usuario = $this->usuario->getByName($evento_usuario['id_usuario']);
+
+        $this->db->insert('evento_has_usuario', $evento_usuario);
+
+    }
+
 }

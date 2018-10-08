@@ -27,6 +27,7 @@ class Agenda extends CI_Controller
         if($this->input->post()){
             if($this->form_validation->run('evento')){
                 $eventos = array(
+                    'criado_por' => $this->session->userdata('user_login'),
                     'titulo'     => $this->input->post('titulo'),
                     'inicio'     => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('inicio').$this->input->post('horaInicio')))),
                     'fim'        => date('Y-m-d H:i:s', strtotime(str_replace('/','-',$this->input->post('fim').$this->input->post('horaFim')))),
@@ -38,9 +39,11 @@ class Agenda extends CI_Controller
                 $horaInicio = strtotime(str_replace('/','-',$this->input->post('horaInicio')));
                 $horaFim    = strtotime(str_replace('/','-',$this->input->post('horaFim')));
 
+                $id_evento = 0;
+
                 if($inicio == $fim){
                     if($horaInicio < $horaFim){
-                        $this->evento->insert($eventos);
+                        $id_evento = $this->evento->insert($eventos);
                         $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
 
                     } else {
@@ -48,7 +51,7 @@ class Agenda extends CI_Controller
                     }
 
                 } else if($inicio < $fim) {
-                    $this->evento->insert($eventos);
+                    $id_evento = $this->evento->insert($eventos);
                     $this->session->set_flashdata('success','Evento cadastrado com sucesso!');
 
                 } else {
@@ -58,6 +61,15 @@ class Agenda extends CI_Controller
             } else {
                 $this->session->set_flashdata('danger','Não foi possivel realizar esta operação.');
             }
+
+            if ($this->input->post('id_usuario')) {
+                $evento_compartilhado = array(
+                    'evento_id'  => $id_evento,
+                    'id_usuario' => $this->input->post('id_usuario'),
+                );
+                $this->evento->insereUsuario($evento_compartilhado);
+            }
+
             redirect('agenda');
 
         } else {
