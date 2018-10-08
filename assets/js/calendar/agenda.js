@@ -78,5 +78,8 @@
             $('.excluir').slideToggle();
         });
 
+        $('.compartilhar').on('click', function(){
+            $('#compartilhar').removeAttr('hidden');
+        });
 
     });

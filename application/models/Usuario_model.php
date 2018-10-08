@@ -18,6 +18,13 @@ class Usuario_model extends CI_Model
         return $query->result();
     }
 
+    public function getByName() {
+      $query = $this->db->select('id_usuario, nome')
+      ->join('pessoa', 'pessoa.id_pessoa = usuario.id_pessoa')
+      ->get('usuario');
+      return $query->result();
+    }
+
     /**
     * @author: Matheus Ladislau
     * Realiza registro de usuario
