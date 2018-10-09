@@ -84,13 +84,68 @@ class Produto extends CI_Controller
       if($this->input->post()){
         if($this->form_validation->run('produto')){
 
-          $image = $this->produto->findImage($id_produto)[0]->imagem;
+          if (isset($_FILES['arquivo']))  {
 
-          if($image) {
-             $data['imagem'] = base_url()."uploads/profileImage/".$image;
-          }else{
-             $data['imagem'] = base_url()."assets/images/theme/no-user.png";
-          }
+            $arquivo    = $_FILES['arquivo'];
+            $configuracao = array(
+               'upload_path'   => './uploads/produtoImage/',
+               'allowed_types' => 'jpef|jpg|png',
+               'file_name'     => $arquivo['name'],
+               'max_size'      => '999999'
+            );
+   
+            $this->load->library('upload');
+            $this->upload->initialize($configuracao);
+   
+            if ($this->upload->do_upload('arquivo')){
+   
+               $size = getimagesize('./uploads/produtoImage/'.$arquivo["name"]);
+   
+               $largura = $size[0];
+               $altura = $size[1];
+   
+   
+               $config['image_library'] = 'gd2';
+               $config["source_image"] = './uploads/produtoImage/'.$arquivo["name"];
+               $config['allowed_types'] = 'jpef|jpg|png';
+               $config['new_image'] = './uploads/produtoImage/'.$arquivo['name'];
+               $config['create_thumb'] = false;
+               $config['maintain_ratio'] = FALSE;
+   
+               if($largura > $altura){
+                  $config['width'] = $altura;
+                  $config['height'] = $altura;
+               }else {
+                  $config['width'] = $largura;
+                  $config['height'] = $largura;
+               }
+   
+               $this->load->library('image_lib', $config);
+   
+   
+               if ($this->image_lib->crop()){
+   
+                  $array = array(
+                    'arquivo' => $arquivo['name'],
+                    'id_produto' => $id_produto,
+                  );
+   
+   
+                  $this->produto->imageUpdate($array);
+   
+                  $this->session->set_flashdata('success', 'Imagem atualizada com Sucesso!');
+                  redirect('produto');
+               }
+            }
+            else{
+               //echo $this->upload->display_errors();
+               //exit;
+               $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
+               redirect('produto');
+            }
+          }   
+
+         
 
           $array = array(
            'id_fornecedor' => $this->input->post('id_fornecedor'),
