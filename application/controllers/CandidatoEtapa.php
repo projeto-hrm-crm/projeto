@@ -20,7 +20,8 @@ class CandidatoEtapa extends CI_Controller
   public function index()
   {
     $data['title'] = 'Candidatar-se à Vaga';
-    $data['processo_seletivo']=$this->candidato_etapa->getProcessoSeletivo();
+    //$data['processo_seletivo']=$this->candidato_etapa->getProcessoSeletivo();
+    $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa();
     loadTemplate(
       'includes/header',
       'candidato_etapa/index',

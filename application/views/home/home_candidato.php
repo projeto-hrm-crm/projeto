@@ -16,6 +16,18 @@
 			</thead>
 
 			<tbody>
+				<?php if(isset($candidato['processo_seletivo'])): ?>
+					<?php foreach($candidato['processo_seletivo'] as $ps): ?>
+						<tr>
+							<td><?php echo $ps->codigo; ?></td>
+							<td><?php echo $ps->nome; ?></td>
+	                    	<td><?php echo $ps->nome_cargo; ?></td>
+	                    	<td><?php echo $ps->descricao; ?></td>
+	                    	<td><?php echo $ps->data_inicio; ?></td>
+	                    	<td><?php echo $ps->data_fim; ?></td>
+						</tr>
+					<?php endforeach; ?>
+				<?php endif; ?>
 				
 			</tbody>
 		</table>
