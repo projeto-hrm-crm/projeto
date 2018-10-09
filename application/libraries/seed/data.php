@@ -2986,4 +2986,96 @@ $seeds = array(
       )
     ),
   ),
+   'unidade_medida' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'caixa'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'unidade'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'quilo'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'grama'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'metro'
+          ),
+        ),
+      )
+    ),
+  ),
+  'habilidade' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'RTA',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'JS',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'HTML',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'CSS',
+            '8'
+          ),
+        ),
+      )
+    ),
+  ),
 );
