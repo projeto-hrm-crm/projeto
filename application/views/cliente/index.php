@@ -66,7 +66,7 @@
                         'id' => 'id',
                         'href' => site_url('cliente/editar/'.$cliente->id_cliente),
                       ];
-                      $this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Editar');
+                      $this->Button->render('Cliente', 'Editar')->build($type, $label, $classes, $attr);
                     ?>
 
                     <?php 
@@ -79,7 +79,7 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#modalRemover'
                       ];
-                      $this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Excluir');
+                      $this->Button->verify('Cliente', 'Excluir')->build($type, $label, $classes, $attr);
                     ?>
                     </td>
                     </tr>

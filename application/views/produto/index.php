@@ -47,9 +47,20 @@
                                         <td><?= number_format(floatval($produto->valor)/100,2,',','.');?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Atualizar Produto">
-                                                <span class="fa fa-edit"></span>
-                                            </a>
+                             
+                             
+                                            <?php 
+                                                $type = "a";
+                                                $label = " <span class='fa fa-edit'></span>";
+                                                $classes = ['btn', 'btn-primary'];
+                                                $attr = [
+                                                    'href' => 'produto/editar/'. $produto->id_produto,
+                                                    'title' => 'Atualizar Produto'
+                                                ];
+                                                $this->Button->build($type, $label, $classes, $attr, 'Produto', 'Editar');
+                                            ?>
+                                       
+                                    
                                             <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir Produto" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>

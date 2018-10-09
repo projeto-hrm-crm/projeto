@@ -20,7 +20,7 @@ class Button
      * 
      * @return string
      */
-    public function build($type, $label, $classes, $attr, $sub_modulo, $action)
+    public function build($type, $label, $classes, $attr)
     {
         if (empty($sub_modulo))
             die("Insira um submodulo para gerar o botão");
@@ -28,7 +28,6 @@ class Button
         if (empty($action))
             die("Insira uma ação para gerar o botão");
 
-        if ($this->renderButtonIfHasPermission($sub_modulo, $action)) {
             $button_open = "<$type ";
 
             $button_open .= $this->addClass($classes);
@@ -39,7 +38,31 @@ class Button
             $button_close = "</$type>";
 
             echo $button_open . $button_label . $button_close;
-        }
+    }
+
+     /**
+     * @author Pedro Henrique Guimarães
+     * 
+     * renderiza o botão se o usuário tiver a permissão.
+     * @return bool
+     */
+    public function verify($sub_modulo, $action)
+    {
+        $this->ci->db->select('sub_menu.nome')
+                     ->from('grupo_acesso')
+                     ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
+                     ->join('permissao', 'permissao.id_grupo_acesso_modulo = grupo_acesso_modulo.id_grupo_acesso_modulo')
+                     ->join('menu', 'permissao.id_menu = menu.id_menu')
+                     ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
+                     ->join('sub_menu', 'menu.id_sub_menu = sub_menu.id_sub_menu')
+                     ->where('grupo_acesso.id_grupo_acesso', $this->ci->session->userdata('user_id_grupo_acesso'))
+                     ->where('sub_modulo.nome', ucfirst($sub_modulo))
+                     ->where('sub_menu.nome', ucfirst($action));
+        $result = $this->ci->db->get();
+
+        if ($result->num_rows() > 0)
+            return $this; 
+        return null;
     }
 
     /**
@@ -82,31 +105,6 @@ class Button
         }
         
         return $attr;
-    }
-
-    /**
-     * @author Pedro Henrique Guimarães
-     * 
-     * renderiza o botão se o usuário tiver a permissão.
-     * @return bool
-     */
-    private function renderButtonIfHasPermission($sub_modulo, $action)
-    {
-        $this->ci->db->select('sub_menu.nome')
-                     ->from('grupo_acesso')
-                     ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
-                     ->join('permissao', 'permissao.id_grupo_acesso_modulo = grupo_acesso_modulo.id_grupo_acesso_modulo')
-                     ->join('menu', 'permissao.id_menu = menu.id_menu')
-                     ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
-                     ->join('sub_menu', 'menu.id_sub_menu = sub_menu.id_sub_menu')
-                     ->where('grupo_acesso.id_grupo_acesso', $this->ci->session->userdata('user_id_grupo_acesso'))
-                     ->where('sub_modulo.nome', ucfirst($sub_modulo))
-                     ->where('sub_menu.nome', ucfirst($action));
-        $result = $this->ci->db->get();
-
-        if ($result->num_rows() > 0)
-            return true; 
-        return false;
     }
         
 }
