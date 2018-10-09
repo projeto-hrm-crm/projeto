@@ -100,6 +100,7 @@ class Produto extends CI_Controller
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
            'lote'          => $this->input->post('lote'),
+           'imagem'        => $this->input->post('imagem'),
            'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
           );
 
@@ -148,6 +149,7 @@ class Produto extends CI_Controller
            'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'lote'          => $this->input->post('lote'),
+           'imagem'        => $this->input->post('imagem'),
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
            'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
          );

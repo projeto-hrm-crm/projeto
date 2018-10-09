@@ -8,8 +8,7 @@
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
-
-<div class="col-lg-3">
+                    <div class="col-lg-3">
                      <a href="<?=site_url('produto/alterar-imagem/')?>" alt="Alterar Imagem" title="Alterar Imagem">
                         <img width="100%" src="<?=$imagem;?>">
                      </a>
