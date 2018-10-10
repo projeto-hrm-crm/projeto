@@ -21,6 +21,14 @@
             <div class="form-group col-8">
               <label class="control-label"><red>*</red>Nome do Setor</label>
               <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($setor[0]->nome)?>" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" required>
+
+              <label class="control-label"><red>*</red>Sigla do Setor</label>
+              <input type="text" id="sigla" name="nome" class="form-control" value="<?= htmlspecialchars($setor[0]->sigla)?>" value = "<?php echo isset($old_data['sigla']) ? $old_data['sigla'] : null;?>" required>
+
+              <label class="control-label"><red>*</red>Descrição do Setor</label>
+              <input type="text" id="descricao" name="nome" class="form-control" value="<?= htmlspecialchars($setor[0]->descricao)?>" value = "<?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?>" required>
+
+
             </div>
           </div>
         </div>

@@ -121,7 +121,9 @@ class Setor extends PR_Controller
     private function getFromPost()
     {
         return array(
-            'nome' => $this->input->post('nome')
+            'nome' => $this->input->post('nome'),
+            'sigla' => $this->input->post('sigla'),
+            'descricao' => $this->input->post('descricao')
         );
     }
 

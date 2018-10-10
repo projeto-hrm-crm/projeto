@@ -23,6 +23,14 @@
             <div class="form-group col-8">
                 <label class=" form-control-label"><red>*</red>Nome do setor</label>
                 <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do setor" class="form-control" required>
+
+                <label class=" form-control-label"><red>*</red>Sigla do setor</label>
+                <input type="text" id="sigla" name="sigla" value = "<?php echo isset($old_data['sigla']) ? $old_data['sigla'] : null;?>" placeholder="Sigla do setor" class="form-control" required>
+
+                <label class=" form-control-label"><red>*</red>Descrição do setor</label>
+                <input type="text" id="descricao" name="descricao" value = "<?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?>" placeholder="Descrição do setor" class="form-control" required>
+
+
             </div>
           </div>
         </div>
