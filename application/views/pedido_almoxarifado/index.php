@@ -29,7 +29,8 @@
             <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
               <thead>
                 <tr>
-                  <th class="text-center">Nome</th>
+                  <th>Nome</th>
+                  <th class="text-center">Setor</th>
                   <th class="text-center">Quantidade</th>
                   <th class="text-center">Ações</th>
                 </tr>
@@ -38,14 +39,16 @@
                 <?php if (!is_null($pedidos_almoxarifado)): ?>
                     <?php foreach ($pedidos_almoxarifado as $pedido_almoxarifado): ?>
                       <tr>
-                        <td class="text-center"><?= $pedido_almoxarifado->nome; ?></td>
-                        <td class="text-center"><?= $pedido_almoxarifado->quantidade; ?></td>
+                        <td >
+                           <?=$pedido_almoxarifado->item; ?><br>
+                           <small>Requerente: <?=$pedido_almoxarifado->nome; ?></small>
+                         
+                         </td>
+                        <td class="text-center"><?=$pedido_almoxarifado->setor; ?></td>
+                        <td class="text-center"><?=$pedido_almoxarifado->quantidade; ?> <?=$pedido_almoxarifado->medida; ?></td>
                         <td class="text-center">
-                          <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$pedido_almoxarifado->id_pedido_almoxarifado)?>" class="btn btn-primary">
-                          <span class="fa fa-edit"></span></a>
-                          <button data-href="almoxarifado/excluir/<?php echo $pedido_almoxarifado->id_pedido_almoxarifado?>" class="btn btn-danger" title="Excluir entrada" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-times"></span>
-                          </button>
+                          <a title="Solicitação Atendida" href="<?= site_url('almoxarifado/editar/'.$pedido_almoxarifado->id_pedido_almoxarifado)?>" class="btn btn-success">
+                          <span class="fa fa-thumbs-up"></span></a>
                          </td>
                        </tr>
                      <?php endforeach ?>

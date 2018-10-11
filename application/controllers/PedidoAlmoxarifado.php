@@ -51,15 +51,19 @@ class PedidoAlmoxarifado extends PR_Controller {
 
         if($this->form_validation->run('pedido_almoxarifado'))
         {
+           
+            $user_id = $this->session->userdata('user_login');
+            $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+            // Pegar informações de cliente
+            $id_pessoa = $data['pessoa'][0]->id_pessoa;
+           
             $this->pedido_almoxarifado->insert([
-                'id_almoxarifado'  => $this->input->post('id_almoxarifado'),
-                'quantidade'       => $this->input->post('quantidade'),
-                'id_setor'         => $this->input->post('id_setor'),
-                'id_pessoa'        => $this->input->post('id_pessoa'),
-                'data_solicitacao' => switchDate($this->input->post('data_solicitacao')),
-                'data_entrega'     => $this->input->post('data_entrega'),
-                'status'           => $this->input->post('status')]);
-
+                'id_almoxarifado'   => $this->input->post('id_almoxarifado'),
+                'quantidade'        => $this->input->post('quantidade'),
+                'id_setor'          => $this->input->post('id_setor'),
+                'id_unidade_medida' => $this->input->post('id_unidade_medida'),
+                'id_requerente'     => $id_pessoa,
+                'status'            => 0]);
             $this->redirectSuccess('Solicitação Cadastrada Com Sucesso!');
            
         }
@@ -68,7 +72,9 @@ class PedidoAlmoxarifado extends PR_Controller {
         }
     }else{
         $this->setTitle('Cadastrar Solicitação Almoxarifado');
-
+        $this->addData('unidades', $this->unidadeMedida->get());
+        $this->addData('setores', $this->setor->get());
+        $this->addData('almoxarifados', $this->almoxarifado->get());
         $this->loadFormDefaultScripts();
 
         $this->loadView('cadastrar');
@@ -102,16 +108,14 @@ class PedidoAlmoxarifado extends PR_Controller {
             'status'           => $this->input->post('status')
          ]);
          
-         $this->redirectSuccess('Solicitação Cadastrada Com Sucesso!');         
+         $this->redirectSuccess('Solicitação Cadastrada Com Sucesso!');
+         
       }
     }
      
-    $data['unidades'] = $this->unidadeMedida->get();
+    $this->addData('unidades', $this->unidadeMedida->get());
 
-    $data['pedido_almoxarifado']    = $this->pedido_almoxarifado->getById($id_pedido_almoxarifado);
-    $data['pedido_almoxarifado'][0]->recebimento = switchDate($data['pedido_almoxarifado'][0]->recebimento);
-
-    $data['title']           = 'Editar pedido_almoxarifado';
+    $data['title']           = 'Editar Pedido Almoxarifado';
     $data['id']              = $id_pedido_almoxarifado;
 
 

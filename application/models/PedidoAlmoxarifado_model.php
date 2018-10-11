@@ -26,7 +26,10 @@ class PedidoAlmoxarifado_model extends PR_Model
     public function get()
     {
         return $this->db
-           ->select('pedido_almoxarifado.*, almoxarifado.nome')
+           ->select('pedido_almoxarifado.*, almoxarifado.nome as item, unidade_medida.medida, pessoa.nome as nome, setor.nome as setor')
+           ->join('unidade_medida', 'unidade_medida.id_unidade_medida = pedido_almoxarifado.id_unidade_medida')
+           ->join('pessoa', 'pessoa.id_pessoa = pedido_almoxarifado.id_requerente')
+           ->join('setor', 'setor.id_setor = pedido_almoxarifado.id_setor')
            ->join('almoxarifado', 'almoxarifado.id_almoxarifado = pedido_almoxarifado.id_almoxarifado')
            ->get('pedido_almoxarifado')
            ->result();
