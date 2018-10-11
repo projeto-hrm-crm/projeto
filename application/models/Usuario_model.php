@@ -30,6 +30,7 @@ class Usuario_model extends CI_Model
         ->set('usuario.senha', hash('sha256', $data['senha']))
         ->set('usuario.id_grupo_acesso', $data['id_grupo_acesso'])
         ->set('usuario.id_pessoa', $data['id_pessoa'])
+        ->set('usuario.empresa_id_empresa', $data['empresa_id_empresa'])
         ->insert('usuario');
     }
 

@@ -30,7 +30,7 @@
             'href' => "cliente/cadastrar",
             'title' => 'Cadastrar Cliente'
           ];
-          $this->Button->build($type, $label, $classes, $attr, 'Cliente', 'Cadastrar');
+          $this->Button->verify('Cliente', 'Cadastrar')->build($type, $label, $classes, $attr);
         ?>
         <br />
           <br />
@@ -66,7 +66,9 @@
                         'id' => 'id',
                         'href' => site_url('cliente/editar/'.$cliente->id_cliente),
                       ];
-                      $this->Button->render('Cliente', 'Editar')->build($type, $label, $classes, $attr);
+
+                      if(!is_null($edit_button))
+                      $edit_button->build($type, $label, $classes, $attr);
                     ?>
 
                     <?php 
@@ -79,7 +81,9 @@
                         'data-toggle' => 'modal',
                         'data-target' => '#modalRemover'
                       ];
-                      $this->Button->verify('Cliente', 'Excluir')->build($type, $label, $classes, $attr);
+
+                      if (!is_null($delete_button))
+                        $delete_button->build($type, $label, $classes, $attr);
                     ?>
                     </td>
                     </tr>

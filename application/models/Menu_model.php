@@ -29,7 +29,8 @@ class Menu_model extends CI_Model
                         ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
                         ->join('modulo', 'sub_modulo.id_modulo = modulo.id_modulo')
                         ->where('menu.status', '1')
-                        ->where('grupo_acesso.id_grupo_acesso', $access_group);
+                        ->where('grupo_acesso.id_grupo_acesso', $access_group)
+                        ->order_by('sub_modulo.nome', 'ASC');
         
             $result = $this->db->get();
 

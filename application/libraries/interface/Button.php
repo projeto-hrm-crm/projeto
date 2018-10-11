@@ -22,12 +22,6 @@ class Button
      */
     public function build($type, $label, $classes, $attr)
     {
-        if (empty($sub_modulo))
-            die("Insira um submodulo para gerar o botão");
-
-        if (empty($action))
-            die("Insira uma ação para gerar o botão");
-
             $button_open = "<$type ";
 
             $button_open .= $this->addClass($classes);
@@ -48,6 +42,13 @@ class Button
      */
     public function verify($sub_modulo, $action)
     {
+
+        if (empty($sub_modulo))
+            die("Insira um submodulo para gerar o botão");
+
+        if (empty($action))
+            die("Insira uma ação para gerar o botão");
+        
         $this->ci->db->select('sub_menu.nome')
                      ->from('grupo_acesso')
                      ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
