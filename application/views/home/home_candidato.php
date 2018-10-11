@@ -44,13 +44,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Excluir Processo Seletivo</h5>
+                <h5 class="modal-title">Informações do Processo Seletivo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <strong>Info do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
+                <table class="datatable table table-striped table-bordered">
+
+			<thead>
+				<tr>
+					<th class="text-center">Data de Início</th>
+					<th class="text-center">Data de Término</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<?php if(isset($candidato['processo_seletivo'])): ?>
+					<?php foreach($candidato['processo_seletivo'] as $ps): ?>
+						<tr>
+	                    	<td><?php echo $ps->data_inicio; ?></td>
+	                    	<td><?php echo $ps->data_fim; ?></td>
+						</tr>
+					<?php endforeach; ?>
+				<?php endif; ?>
+				
+			</tbody>
+		</table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">

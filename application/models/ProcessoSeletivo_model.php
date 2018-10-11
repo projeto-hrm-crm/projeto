@@ -115,6 +115,7 @@ class ProcessoSeletivo_model extends CI_Model
     }
 
   }
+
   public function delete($id)
   {
     try {
@@ -131,4 +132,22 @@ class ProcessoSeletivo_model extends CI_Model
 
     } catch (\Exception $e) {}
   }
+/*
+   public function getEtapasProcesso()
+  {
+    try {
+      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, etapa.descricao, vaga.quantidade as vagas')
+      ->from('processo_seletivo')
+      ->join('etapa', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+      ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    } catch (\Exception $e) {}
+  }
+  */
 }
