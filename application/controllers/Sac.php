@@ -13,8 +13,8 @@ class Sac extends PR_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
       // Pegar informações de cliente
-      $id_pessoa = $data['pessoa'][0]->id_pessoa;  
-      
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;
+
       if($typeUser=="1"){
          $data['sac'] = $this->sac->get();
       }else{
@@ -22,10 +22,10 @@ class Sac extends PR_Controller {
           $id_cliente = $cliente[0]->id_cliente;
           $data['sac'] = $this->sac->getClient($id_cliente);
       }
-       
+
       $data['title'] = 'Solicitações SAC';
       $data['tipo'] = $typeUser;
-       
+
       $data['assets'] = array(
         'js' => array(
           'lib/data-table/datatables.min.js',
@@ -43,6 +43,32 @@ class Sac extends PR_Controller {
       loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
     }
 
+
+    public function create()
+    {
+        if($this->input->post())
+        {
+            if($this->form_validation->run('sac'))
+            {
+                $this->setor->insert($this->getFromPost());
+
+                $this->redirectSuccess('SAC cadastrado com sucesso!');
+            }
+            else
+            {
+                $this->redirectError('cadastrar');
+            }
+        }
+        else
+        {
+            $this->setTitle('Cadastrar SAC');
+
+            $this->loadFormDefaultScripts();
+
+            $this->loadView('cadastrar');
+        }
+    }
+
     /**
     * @author: Pedro Henrique Guimarães
     * Página de cadastro.
@@ -56,8 +82,8 @@ class Sac extends PR_Controller {
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
 
       // Pegar informações de cliente
-      $id_pessoa = $data['pessoa'][0]->id_pessoa; 
-      $cliente = $this->cliente->getIdCliente($id_pessoa);      
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;
+      $cliente = $this->cliente->getIdCliente($id_pessoa);
 
       if($typeUser=="1"){
          $id_cliente = $this->input->post('id_cliente');
@@ -65,7 +91,7 @@ class Sac extends PR_Controller {
          $id_cliente = $cliente[0]->id_cliente;
       }
 
-    
+
       $data = $this->input->post();
 
       if($data){
@@ -79,7 +105,7 @@ class Sac extends PR_Controller {
               'descricao' => $this->input->post('sac_description'),
             );
 
-        if ($this->sac->insert($array)) 
+        if ($this->sac->insert($array))
             echo json_encode(array('status' => 'ok'));
         else
             echo json_encode(array('status' => 'error'));
@@ -92,19 +118,19 @@ class Sac extends PR_Controller {
 
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-       
-      $cliente = $this->cliente->getIdCliente($data['pessoa'][0]->id_pessoa);   
+
+      $cliente = $this->cliente->getIdCliente($data['pessoa'][0]->id_pessoa);
 
       $id_pessoa = $data['pessoa'][0]->id_pessoa;
       $cliente = $this->cliente->getIdCliente($id_pessoa);
-       
-       
+
+
        if($typeUser=="1"){
          $id_cliente = $this->input->post('id_cliente');
       }else {
          $id_cliente = $cliente[0]->id_cliente;
       }
-      
+
        $data = $this->input->post();
 
          if($data){
@@ -140,7 +166,7 @@ class Sac extends PR_Controller {
             $data['id']=$id;
             $data['sac']=$this->sac->find($id);
             $data['produtos']=$this->produto->get();
-           
+
             loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
         }
 
@@ -149,10 +175,10 @@ class Sac extends PR_Controller {
     /**
     *analizando o desenvolvimento do projeto, esta função de delete se tornou inviavel para uso
     *
-    
+
     public function delete($id_sac)
     {
-        $this->sac->remove($id_sac);        
+        $this->sac->remove($id_sac);
 
         $this->redirectSuccess('SAC removido com sucesso');
     }

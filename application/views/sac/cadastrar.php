@@ -7,7 +7,7 @@
             </div>
             <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac">
                <div class="card-body">
-                   <?php if(sizeof($clientes) <= 0): ?>
+                   <?php if($clientes != null): ?>
                        <div class="row justify-content-center align-items-center">
                            <div class="col-12">
                                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">

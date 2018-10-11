@@ -53,7 +53,7 @@
                                             <button data-href="<?=site_url('sac/excluir/'.$item->id_sac);?>" class="btn btn-danger" title="Excluir SAC" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
-                                        -->    
+                                        -->
                                             <a  href="<?=site_url('sac/iteracao/'.$item->id_sac);?>" class="btn btn-success" title="Iterações SAC">
                                                 <span class="fa fa-comment-o"></span>
                                             </a>
