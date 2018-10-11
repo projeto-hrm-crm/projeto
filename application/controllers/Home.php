@@ -130,8 +130,9 @@ class Home extends CI_Controller
   public function getCandidatoHomeConfigs($user_id)
   {
     $data = [];
+    //$id = // metodo para identificar um processo seletivo
     $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
-    
+    // data com as informações do processo que ia para o modal //$data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($id);
     return $data;
 
   }

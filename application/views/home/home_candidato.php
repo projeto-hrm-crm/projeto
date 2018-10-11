@@ -54,17 +54,17 @@
 
 			<thead>
 				<tr>
-					<th class="text-center">Data de Início</th>
-					<th class="text-center">Data de Término</th>
+					<th class="text-center">Descrição da etapa</th>
+					
 				</tr>
 			</thead>
 
 			<tbody>
+				<!-- mudar esse get para ser o get referente ao processo selecionado -->
 				<?php if(isset($candidato['processo_seletivo'])): ?>
 					<?php foreach($candidato['processo_seletivo'] as $ps): ?>
 						<tr>
 	                    	<td><?php echo $ps->data_inicio; ?></td>
-	                    	<td><?php echo $ps->data_fim; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
