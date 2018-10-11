@@ -206,3 +206,7 @@ $route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
+//Rotas Remanejamento
+
+$route['remanejamento'] = 'Remanejamento/index';
