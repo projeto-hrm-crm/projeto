@@ -46,28 +46,36 @@ class Sac extends PR_Controller {
 
     public function create()
     {
-        if($this->input->post())
-        {
-            if($this->form_validation->run('sac'))
-            {
-                $this->setor->insert($this->getFromPost());
+      $user_id = $this->session->userdata('user_login');
+      if($this->input->post())
+      {
 
-                $this->redirectSuccess('SAC cadastrado com sucesso!');
-            }
-            else
-            {
-                $this->redirectError('cadastrar');
-            }
-        }
-        else
-        {
-            $this->setTitle('Cadastrar SAC');
+          if($this->form_validation->run('sac'))
+          {
+              $this->sac->insert($this->getFromPost());
 
-            $this->loadFormDefaultScripts();
+              $this->redirectSuccess('SAC cadastrado com sucesso!');
+          }
+          else
+          {
+              $this->redirectError('cadastrar');
+          }
+      }
+      else
+      {
+        $this->setTitle('Cadastrar SAC');
+        $this->addData('produtos',  $this->produto->get());
+        $this->addData('clientes',  $this->cliente->get());
+        $this->addData('fornecedores', $this->fornecedor->get());
+        $this->addData('tipo',$this->usuario->getUserAccessGroup($user_id));
 
-            $this->loadView('cadastrar');
-        }
+        $this->loadFormDefaultScripts();
+        $this->loadFormDefaultScripts();
+        $this->loadView('cadastrar');
+       }
     }
+
+
 
     /**
     * @author: Pedro Henrique Guimarães

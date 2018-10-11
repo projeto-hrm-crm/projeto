@@ -1,13 +1,14 @@
 <div class="animated fadeIn">
+
    <div class="row justify-content-center align-items-center">
       <div class="col-lg-10">
          <div class="card">
             <div class="card-header">
                <strong class="card-title">Cadastrar SAC</strong>
             </div>
-            <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac">
+            <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac" novalidate="novalidate">
                <div class="card-body">
-                   <?php if($clientes != null): ?>
+                   <?php if(sizeof($clientes) <= 0): ?>
                        <div class="row justify-content-center align-items-center">
                            <div class="col-12">
                                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
