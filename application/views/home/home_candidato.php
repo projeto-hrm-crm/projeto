@@ -6,12 +6,13 @@
 
 			<thead>
 				<tr>
-					<th>Código</th>
-					<th>Nome do processo</th>
-					<th>Cargo</th>
-					<th>Descrição</th>
-					<th>Data de Início</th>
-					<th>Data de Término</th>
+					<th class="text-center">Código</th>
+					<th class="text-center">Nome do processo</th>
+					<th class="text-center">Cargo</th>
+					<th class="text-center">Descrição</th>
+					<th class="text-center">Data de Início</th>
+					<th class="text-center">Data de Término</th>
+					<th class="text-center">Ações</th>
 				</tr>
 			</thead>
 
@@ -25,6 +26,11 @@
 	                    	<td><?php echo $ps->descricao; ?></td>
 	                    	<td><?php echo $ps->data_inicio; ?></td>
 	                    	<td><?php echo $ps->data_fim; ?></td>
+	                    	<td class="text-center">
+	                    		<a title="Informação" class="btn btn-warning" data-toggle="modal" data-target="#modalinfo">
+                                	<span class="fa fa-clipboard"></span>
+                                </a>
+	                    	</td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
@@ -32,3 +38,25 @@
 			</tbody>
 		</table>
 	</div>
+
+
+	<div class="modal fade" id="modalinfo" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir Processo Seletivo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <strong>Info do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Sair
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -43,7 +43,7 @@ class Home extends CI_Controller
 
         case '5'://CANDIDATO
           $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['candidato'] = $this->getCandidatoHomeConfigs(); 
+            $data['candidato'] = $this->getCandidatoHomeConfigs($user_id); 
         
         case '6'://FUNCIONARIO
           $grupo_acesso = $this->grupo->find($id_grupo_acesso);
@@ -127,10 +127,10 @@ class Home extends CI_Controller
 
   }
 
-  public function getCandidatoHomeConfigs()
+  public function getCandidatoHomeConfigs($user_id)
   {
     $data = [];
-    $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa();
+    $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
     
     return $data;
 
