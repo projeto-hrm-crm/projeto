@@ -14,8 +14,8 @@ class Remanejamento extends CI_Controller
    */
   public function __construct()
   {
-      parent::__construct();
-      $user_id = $this->session->userdata('');
+    parent::__construct();
+      $user_id = $this->session->userdata('user_login');
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
       $this->usuario->hasPermission($user_id, $currentUrl);
   }
@@ -27,18 +27,50 @@ class Remanejamento extends CI_Controller
   {
     $data['title'] = 'Funcionarios Setores';
     $data['func_cargos'] = $this->cargo_funcionario->get();
-    $data['assets'] = array(
+    $dados['assets'] = array(
       'js' => array(
         'lib/data-table/datatables.min.js',
         'lib/data-table/dataTables.bootstrap.min.js',
         'datatable.js',
+        'maskMoney.js',
         'confirm.modal.js',
       ),
     );
 
-    loadTemplate('includes/header', 'funCargo/index', 'includes/footer', $data);
+    loadTemplate('includes/header', 'remanejamento/index', 'includes/footer', $data);
   }
+    /**
+    * @author: Camila Sales
+    * Realiza o cadastro de um sugestao, dados recebidos da view remanejamento/cadastro.php
+    */
+    public function create() {
+        
+      $data = $this->input->post();
+      
+      if($data) {
 
+          if($this->form_validation->run('remanejamento')) {
+              
+              $this->cargo_funcionario->insert($data);
+              $this->session->set_flashdata('success', 'Remanejamento cadastrado com sucesso!');
+              redirect('remanejamento');
+          }
+          else {
+              $this->session->set_flashdata('danger', 'Não foi possivel cadastrar');
+              redirect('remanejamento/cadastrar');
+          }
+
+      }
+      else {
+          $data['title'] = 'Remanejamento';             
+          $data['cargos'] = $this->cargo->get();             
+          $data['setores'] = $this->setor->get();             
+          $data['funcionarios'] = $this->funcionario->get();             
+          loadTemplate('includes/header', 'remanejamento/cadastrar', 'includes/footer', $data);
+
+      }
+
+  }
 
   
   /**
@@ -53,32 +85,21 @@ class Remanejamento extends CI_Controller
   **/
   public function edit($id_func_cargo)
   {
-    if ($this->input->post())
-    {
-        $this->func_cargo->update(
-            [
-            'id_func_cargo' => $func_cargo[0]->id_func_cargo, 
-            'nome'      => $data['func_cargo']['nome'],
-            'email'     =>$data['func_cargo']['email']
-            ]
-        );
-
+    if ($this->input->post()){
+      $this->cargo_funcionario->update($id_func_cargo,$this->input->post());
         
-        $this->session->set_flashdata('success', 'func_cargo atualizado com sucesso!');
+      $this->session->set_flashdata('success', 'Remanejamento atualizado com sucesso!');
 
-        redirect('func_cargo');
+      redirect('remanejamento');
     }
-
-    $data['func_cargo'] = $this->func_cargo->getById($id_func_cargo);
-    $data['title']   = 'Editar func_cargo';
+    $data['cargos'] = $this->cargo->get();             
+    $data['setores'] = $this->setor->get();             
+    $data['funcionarios'] = $this->funcionario->get();  
+    $data['remanejamento'] = $this->cargo_funcionario->getById($id_func_cargo);
+    $data['title']   = 'Editar Remanejamento';
     $data['id']      = $id_func_cargo;
-	$data['assets'] = array(
-        'js' => array(
-          'thirdy_party/apicep.js',
-        ),
-    );
-
-    loadTemplate('includes/header', 'func_cargo/editar', 'includes/footer', $data);
+	  
+    loadTemplate('includes/header', 'remanejamento/editar', 'includes/footer', $data);
   }
 
   /**

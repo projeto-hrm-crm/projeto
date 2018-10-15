@@ -30,26 +30,53 @@ class CargoFuncionario_model extends CI_Model
 
     }
 
+    public function getById($id){
+        
+        $cargo_funcionario =  $this->db->select(
+           'cargo_funcionario.id_cargo_funcionario,
+            funcionario.id_funcionario,
+            pessoa.nome AS pessoa,
+            setor.nome AS setor, setor.id_setor,
+            cargo.id_cargo, cargo.nome'
+        )->from('cargo_funcionario')
+        ->join('funcionario', 'cargo_funcionario.id_funcionario = funcionario.id_funcionario')
+        ->join('pessoa', 'funcionario.id_pessoa = pessoa.id_pessoa')
+        ->join('cargo', 'cargo_funcionario.id_cargo = cargo.id_cargo')
+        ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
+        ->where('cargo_funcionario.id_cargo_funcionario',$id)
+        ->get();
+    
+        if ($cargo_funcionario) {
+            return $cargo_funcionario->result();
+        }
+        return null;
+
+    }
 
     public function insert($data) {
+        $this->db->insert('cargo_funcionario', $data);
+		$id_cargo_funcionario = $this->db->insert_id();
 
-      foreach ($nomes as $i => $nome) {
-        $etapas[] = array(
-          'id_processo_seletivo' => $id_processo,
-          'nome' => $nomes[$i],
-          'descricao' => $descs[$i],
-          'status' => 1
-        );
-      }
+		if($id_cargo_funcionario)
+		{
+			$this->relatorio->setLog('insert', 'Inserir', 'cargo_funcionario', $id_cargo_funcionario, 'Inseriu o cargo_funcionario', $id_cargo_funcionario);
+		}
 
-      $this->db->insert_batch('etapa', $etapas);
     }
 
-    public function update($id, $data){
-        return $this->db->update_batch('etapa', $data, 'id_etapa');
+    /**
+    * @author: Camila Sales
+    * Edita o registro de cargo_funcionario pelo id_cargo_funcionario referente
+    *
+    * @param integer $id_cargo_funcionario refere-se ao id do registro de cargo_funcionario a ser editado
+    * @return boolean: True - caso editado com sucesso, False - não editado
+    */
+    public function update($id_cargo_funcionario, $data)
+    {
+      $this->db->update('cargo_funcionario', $data, array('id_cargo_funcionario' => $id_cargo_funcionario));
     }
 
-
+  
     public function remove($id){
         $this->db->where('id_etapa', $id);
         $id_etapa = $this->db->delete('etapa');

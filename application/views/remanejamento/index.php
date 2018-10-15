@@ -18,7 +18,7 @@
             <?php endif; ?>
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Produtos</strong>
+                    <strong class="card-title">Remanejamentos</strong>
                 </div>
                 <div class="card-body">
                     <a href="<?= site_url('remanejamento/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
@@ -36,15 +36,15 @@
                             <?php if(isset($func_cargos)): ?>
                                 <?php foreach($func_cargos as $func_cargo): ?>
                                     <tr>
-                                        <td><?= $func_cargo->codigo;?></td>
+                                        <td><?= $func_cargo->pessoa;?></td>
                                         <td><?= $func_cargo->nome;?></td>
-                                        <td><?= $func_cargo->lote;?></td>
+                                        <td><?= $func_cargo->setor;?></td>
                                        
                                         <td>
-                                            <a href="func_cargo/editar/<?php echo $func_cargo->id_func_cargo?>" class="btn btn-primary" title="Atualizar func_cargo">
+                                            <a href="remanejamento/editar/<?php echo $func_cargo->id_cargo_funcionario?>" class="btn btn-primary" title="Atualizar Remanejamento">
                                                 <span class="fa fa-edit"></span>
                                             </a>
-                                            <button data-href="func_cargo/excluir/<?php echo $func_cargo->id_func_cargo?>" class="btn btn-danger" title="Excluir func_cargo" data-toggle="modal" data-target="#modalRemover">
+                                            <button data-href="remanejamento/excluir/<?php echo $func_cargo->id_cargo_funcionario?>" class="btn btn-danger" title="Excluir Remanejamento" data-toggle="modal" data-target="#modalRemover">
                                                 <span class="fa fa-times"></span>
                                             </button>
                                         </td>

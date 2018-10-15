@@ -58,6 +58,24 @@ jQuery(document).ready(function($) {
     }
   });
 
+  $("#form_remanejamento").validate({
+    rules: {
+      
+      id_cargo: {
+        required: true,  
+      },
+
+      id_funcionario: {
+        required: true,
+      },
+
+      id_setor: {
+        required:true,
+      },
+    },
+   });
+
+
 
   $("#form_almoxarifado").validate({
     rules: {
