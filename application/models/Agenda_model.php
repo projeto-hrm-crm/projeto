@@ -11,8 +11,9 @@ class Agenda_model extends CI_Model
     {
         $events = array();
 
-        $results = $this->db->distinct()->select('id, criado_por, titulo, inicio, fim, cor')
-            ->join('evento_usuario', 'evento_usuario.evento_id = evento.id')
+        $results = $this->db->distinct()
+            ->select('id, criado_por, titulo, inicio, fim, cor')
+            ->join('evento_usuario', 'evento_usuario.evento_id = evento_id')
             ->where('criado_por', $this->session->userdata('user_login'))
             ->or_where('id_usuario', $this->session->userdata('user_login'))
             ->get('evento')
