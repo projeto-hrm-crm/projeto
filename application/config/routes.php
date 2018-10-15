@@ -134,8 +134,8 @@ $route['almoxarifado/excluir/(:num)']='Almoxarifado/delete/$1';
 //Rotas Pedido Almoxarifado
 $route['pedido_almoxarifado'] = "PedidoAlmoxarifado";
 $route['pedido_almoxarifado/cadastrar'] = "PedidoAlmoxarifado/create";
-$route['pedido_almoxarifado/editar/(:num)'] = "PedidoAlmoxarifado/edit/$1";
-$route['pedido_almoxarifado/excluir/(:num)'] = "PedidoAlmoxarifado/delete/$1";
+$route['pedido_almoxarifado/alterar_status/(:any)/(:any)'] = "PedidoAlmoxarifado/changeStatus/$1/$2";
+$route['pedido_almoxarifado/informacao/(:num)'] = "PedidoAlmoxarifado/information/$1";
 
 //Rotas Cargo
 $route['cargo']='Cargo';

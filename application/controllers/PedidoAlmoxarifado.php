@@ -48,7 +48,6 @@ class PedidoAlmoxarifado extends PR_Controller {
   {
     if($this->input->post())
     {
-
         if($this->form_validation->run('pedido_almoxarifado'))
         {
            
@@ -81,60 +80,41 @@ class PedidoAlmoxarifado extends PR_Controller {
     }
 
   }
-
-
-  /**
-   * @author Rodrigo
-   *
-   * Metodo edit, apresenta o formulario de edição, com os dados do pedido_almoxarifado a ser editado,
-   * recebe os dados e envia para função update de pedido_almoxarifado_model
-   *
-   * Se cadastrar com sucesso, redireciona para pagina index de pedido_almoxarifado
-   * Se não, mostra msg de erro e redireciona para a mesma pagina
-   *
-   * @param int $id_pedido_almoxarifado
-   */
-  public function edit($id_pedido_almoxarifado) {
-    if ($this->input->post()) {       
-      if($this->form_validation->run('pedido_almoxarifado')) {
-         
-         $this->pedido_almoxarifado->insert([
-            'id_almoxarifado'  => $this->input->post('id_almoxarifado'),
-            'quantidade'       => $this->input->post('quantidade'),
-            'id_setor'         => $this->input->post('id_setor'),
-            'id_pessoa'        => $this->input->post('id_pessoa'),
-            'data_solicitacao' => switchDate($this->input->post('data_solicitacao')),
-            'data_entrega'     => $this->input->post('data_entrega'),
-            'status'           => $this->input->post('status')
-         ]);
-         
-         $this->redirectSuccess('Solicitação Cadastrada Com Sucesso!');
-         
+   
+   public function changeStatus($id, $status) {
+      $user_id = $this->session->userdata('user_login');
+      $data['pessoa'] = $this->usuario->getUserNameById($user_id);
+      // Pegar informações de cliente
+      $id_pessoa = $data['pessoa'][0]->id_pessoa;
+      $this->pedido_almoxarifado->updateStatus($id, $status, $id_pessoa);
+      if($status==2) {
+         $this->session->set_flashdata('success', 'Pedido aceito com sucesso!');
+         redirect('pedido_almoxarifado');
       }
-    }
+      else {
+         $this->session->set_flashdata('danger', 'Pedido rejeitado!');
+         redirect('pedido_almoxarifado');
+      }
+   }
+   
+   public function information ($id) {
      
-    $this->addData('unidades', $this->unidadeMedida->get());
+    $this->setTitle('Informação da Solicitação');
 
-    $data['title']           = 'Editar Pedido Almoxarifado';
-    $data['id']              = $id_pedido_almoxarifado;
+    $pedido = $this->pedido_almoxarifado->find($id);   
+      
+    $this->addData('pedido', $pedido);
+    $pessoa1 = $this->pessoa->getById($pedido[0]->id_requerente);
+    $this->addData('requerente', $pessoa1);
+      
+    $pessoa2 = $this->pessoa->getById($pedido[0]->id_requerido);
+      
+    $this->addData('requerido', $pessoa2);
 
+    $this->loadIndexDefaultScripts();
 
-    loadTemplate('includes/header', 'pedido_almoxarifado/editar', 'includes/footer', $data);
+    $this->loadView('informacao');
+
   }
 
-  /**
-   * @author Rodrigo
-   *
-   * Metodo delete, chama a funçao delete de pedido_almoxarifado_model, passando o id do pedido_almoxarifado
-   * Redireciona para a pagina index de pedido_almoxarifado
-   *
-   * @param int $id_pedido_almoxarifado
-   */
-  public function delete($id_pedido_almoxarifado) {
-    
-      $this->pedido_almoxarifado->remove($id_pedido_almoxarifado);
-      $this->session->set_flashdata('success', 'Item Excluído Com Sucesso!');
-      redirect('pedido_almoxarifado');
-    
-  }
 }

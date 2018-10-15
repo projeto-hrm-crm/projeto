@@ -47,8 +47,18 @@
                         <td class="text-center"><?=$pedido_almoxarifado->setor; ?></td>
                         <td class="text-center"><?=$pedido_almoxarifado->quantidade; ?> <?=$pedido_almoxarifado->medida; ?></td>
                         <td class="text-center">
-                          <a title="Solicitação Atendida" href="<?= site_url('almoxarifado/editar/'.$pedido_almoxarifado->id_pedido_almoxarifado)?>" class="btn btn-success">
-                          <span class="fa fa-thumbs-up"></span></a>
+                           <a title="Informações" href="<?= site_url('pedido_almoxarifado/informacao/'.$pedido_almoxarifado->id_pedido_almoxarifado)?>" class="btn btn-primary">
+                             <span class="fa fa-info"></span>
+                           </a>
+                          <?php if($pedido_almoxarifado->status == 0){  ?>
+                                                     
+                           <button data-href="<?=site_url('pedido_almoxarifado/alterar_status/'.$pedido_almoxarifado->id_pedido_almoxarifado).'/1';?>" class="btn btn-danger" title="Solicitação Pedido Negado" data-toggle="modal" data-target="#modalNegado">
+                              <span class="fa fa-thumbs-down"></span>
+                          </button>
+                           <button data-href="<?=site_url('pedido_almoxarifado/alterar_status/'.$pedido_almoxarifado->id_pedido_almoxarifado).'/2';?>" class="btn btn-success" title="Solicitação Pedido Aceito" data-toggle="modal" data-target="#modalAceitar">
+                              <span class="fa fa-thumbs-up"></span>
+                          </button>
+                          <?php }  ?>
                          </td>
                        </tr>
                      <?php endforeach ?>
@@ -60,17 +70,17 @@
         </div>
 </div>
 
-    <div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modalAceitar" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Excluir Entrada</h5>
+            <h5 class="modal-title">Requerimento</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Deseja Realmente Excluir Esse Entrada?
+            Deseja realmente aceitar este pedido?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -83,3 +93,28 @@
         </div>
       </div>
     </div>
+
+<div class="modal fade" id="modalNegado" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Requerimento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Deseja realmente rejeitar este pedido?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              Cancelar
+            </button>
+            <a href="#" class="btn btn-primary btn-remove-ok">
+              Confirmar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+

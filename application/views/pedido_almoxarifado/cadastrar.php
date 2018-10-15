@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a title="Cancelar Cadastro" href="<?php echo site_url('almoxarifado')?>" class="btn btn-danger btn-sm">
+                    <a title="Cancelar Cadastro" href="<?php echo site_url('pedido_almoxarifado')?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
