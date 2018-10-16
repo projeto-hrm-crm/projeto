@@ -21,6 +21,7 @@ class CargoFuncionario_model extends CI_Model
         ->join('pessoa', 'funcionario.id_pessoa = pessoa.id_pessoa')
         ->join('cargo', 'cargo_funcionario.id_cargo = cargo.id_cargo')
         ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
+        ->where('cargo_funcionario.deletado is NULL')
         ->get();
     
         if ($cargo_funcionario) {
