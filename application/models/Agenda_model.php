@@ -13,18 +13,21 @@ class Agenda_model extends CI_Model
 
         $results = $this->db->distinct()
             ->select('id, criado_por, titulo, inicio, fim, cor')
-            ->join('evento_usuario', 'evento_usuario.evento_id = evento_id')
+            ->from('evento')
+            ->join('evento_usuario', 'evento_usuario.evento_id = evento.id', 'left')
             ->where('criado_por', $this->session->userdata('user_login'))
             ->or_where('id_usuario', $this->session->userdata('user_login'))
-            ->get('evento')
+            ->get()
             ->result();
 
         foreach ($results as $key => $result) {
-            $events[$key]['id']         = $result->id;
-            $events[$key]['title']      = $result->titulo;
-            $events[$key]['start']      = $result->inicio;
-            $events[$key]['end']        = $result->fim;
-            $events[$key]['color']      = $result->cor;
+            $events[$key]['id']             = $result->id;
+            $events[$key]['criado_por']     = $result->criado_por;
+            $events[$key]['usuario_logado'] = $this->session->userdata('user_login');
+            $events[$key]['title']          = $result->titulo;
+            $events[$key]['start']          = $result->inicio;
+            $events[$key]['end']            = $result->fim;
+            $events[$key]['color']          = $result->cor;
         }
 
         return $events;

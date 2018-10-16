@@ -13,6 +13,9 @@
             eventLimit: true,
             eventClick: function(event) {
 
+                $('.ocultar-btn').show();
+                $('.ocultar-btn-delete').show();
+
                 $('#visualizar #id').text(event.id);
                 $('#visualizar #title').text(event.title);
                 $('#visualizar #start').text(event.start.format('DD/MM/YYYY'));
@@ -27,6 +30,11 @@
                 $('#visualizar #end').val(event.end.format('DD/MM/YYYY'));
                 $('#visualizar #endHour').val(event.end.format('HH:mm:ss'));
                 $('#visualizar #color').val(event.color);
+
+                if (event.criado_por != event.usuario_logado) {
+                    $('.ocultar-btn').hide();
+                    $('.ocultar-btn-delete').hide();
+                }
 
                 $('#visualizar').modal('show');
                 return false;
@@ -47,7 +55,7 @@
         }
 
         $.ajax({
-            url: BASE_URL + "/events",
+            url: BASE_URL + "events",
             data: 'JSON',
             success: (value) => {
                 var value = JSON.parse(value);
@@ -81,5 +89,9 @@
         $('.compartilhar').on('click', function(){
             $('#compartilhar').removeAttr('hidden');
         });
+
+        $('#calendar_users').selectize({
+
+		});
 
     });

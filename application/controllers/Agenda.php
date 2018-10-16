@@ -7,10 +7,14 @@ class Agenda extends CI_Controller
     {
         $dados['title'] = 'Agenda';
         $dados['usuarios'] = $this->usuario->getByName();
-
         $dados['assets'] = array (
+            'css' => array(
+                'calendar/selectize.css'
+            ),
+
             'js' => array (
                 'calendar/agenda.js',
+                'calendar/selectize.js'
             ),
         );
 
