@@ -51,14 +51,26 @@
                      <?php if($tipo=="1"){ ?>
                      <div class="form-group col-md-12 col-sm-12">
                         <label for="id_cliente" class="form-control-label">Cliente</label>
-                        <select name="id_cliente" class="form-control" id="produto">
+                        <select name="id_cliente" class="form-control" id="cliente">
                            <option value="0" disabled selected>Selecione cliente</option>
                            <?php foreach ($clientes as $cliente): ?>
                               <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
                            <?php endforeach; ?>
                         </select>
                      </div>
-                     <?php } ?>
+                   <?php } else ?>
+
+                   <div class="form-group col-md-12 col-sm-12" style="display: none">
+
+                      <?php foreach ($clientes as $cliente): ?>
+                        <?php if($this->session->userdata('user_login')==$cliente->id_cliente){ ?>
+                          <select name="id_cliente" class="form-control" id="cliente">
+                            <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
+                        <?php } ?>
+                      <?php endforeach; ?>
+                          </select>
+                 </div>
+                   <?php ?>
                      <div class="col-md-12 form-group">
                         <label class=" form-control-label">Descrição</label>
                         <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Relate aqui seu problema" required></textarea>
