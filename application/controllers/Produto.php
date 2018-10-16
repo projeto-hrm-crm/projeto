@@ -82,10 +82,13 @@ class Produto extends CI_Controller
     public function create()
     {
       if($this->input->post()){
+
+        
+
         if($this->form_validation->run('produto')){
-
+          
           if (isset($_FILES['arquivo']))  {
-
+            
             $arquivo    = $_FILES['arquivo'];
             $configuracao = array(
                'upload_path'   => './uploads/produtoImage/',
@@ -125,43 +128,31 @@ class Produto extends CI_Controller
    
                if ($this->image_lib->crop()){
    
-                  $array = array(
-                    'arquivo' => $arquivo['name'],
-                    'id_produto' => $id_produto,
-                  );
-   
-   
-                  $this->produto->imageUpdate($array);
-   
-                  $this->session->set_flashdata('success', 'Imagem atualizada com Sucesso!');
-                  redirect('produto');
+                
                }
+              
             }
-            else{
-               //echo $this->upload->display_errors();
-               //exit;
-               $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
+
+            $array = array(
+              'id_fornecedor' => $this->input->post('id_fornecedor'),
+              'nome'          => $this->input->post('nome'),
+              'codigo'        => $this->input->post('codigo'),
+              'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
+              'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
+              'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
+              'lote'          => $this->input->post('lote'),
+              'imagem'        => $arquivo['name'],
+              'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
+             );
+   
+               $this->produto->insert($array);
+               $this->session->set_flashdata('success','Produto cadastrado com sucesso!');
                redirect('produto');
-            }
           }   
 
          
 
-          $array = array(
-           'id_fornecedor' => $this->input->post('id_fornecedor'),
-           'nome'          => $this->input->post('nome'),
-           'codigo'        => $this->input->post('codigo'),
-           'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
-           'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
-           'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
-           'lote'          => $this->input->post('lote'),
-           'imagem'        => $this->input->post('imagem'),
-           'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
-          );
-
-            $this->produto->insert($array);
-            $this->session->set_flashdata('success','Produto cadastrado com sucesso!');
-            redirect('produto');
+          
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             $this->session->set_flashdata('old_data', $this->input->post());
@@ -195,7 +186,16 @@ class Produto extends CI_Controller
     public function edit($id)
     {
       if($this->input->post()){
+        
         if($this->form_validation->run('produto')){
+          
+          /* INSERIR AQUI METOOD dE IMAGEM */
+          
+
+
+           /* INSERIR AQUI METOOD dE IMAGEM */
+          
+          
           $array = array(
            'id_produto'    => $id,
            'id_fornecedor' => $this->input->post('id_fornecedor'),
@@ -204,7 +204,7 @@ class Produto extends CI_Controller
            'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
            'lote'          => $this->input->post('lote'),
-           'imagem'        => $this->input->post('imagem'),
+           'imagem'        => $arquivo['name'],
            'recebimento'   => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('recebimento')))),
            'valor'         => str_replace(',','',(str_replace('.','',$this->input->post('valor')))),
          );

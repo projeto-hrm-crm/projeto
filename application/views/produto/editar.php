@@ -4,14 +4,14 @@
             <div class="card-header">
                 <strong class="card-title">Atualizar Produto</strong>
             </div>
-            <form id="form_produto" action="<?php echo base_url('produto/editar/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('produto/editar/'.$produto->id_produto);?>" method="post" novalidate="novalidate" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="card-body">
                         <div class="row">
                     <div class="col-lg-3">
-                     <a href="<?=site_url('produto/alterar-imagem/')?>" alt="Alterar Imagem" title="Alterar Imagem">
-                        <img width="100%" src="<?=$imagem;?>">
-                     </a>
+                    
+                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">
+                    
                   </div>
 
                             <div class="form-group col-lg-6 col-sm-12">
@@ -61,6 +61,14 @@
                                     <?php endforeach; ?>
 	                            </select>
                             </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="imagemProduto" class="control-label mb-1">Imagem do Produto:</label>
+                                <input type="file" name="arquivo">
+                            </div>
+                            
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

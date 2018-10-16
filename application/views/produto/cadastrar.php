@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Cadastrar Produto</strong>
             </div>
-            <form id="form_produto" action="<?php echo base_url('produto/cadastrar'); ?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('produto/cadastrar'); ?>" method="post" novalidate="novalidate" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="card-body">
                         <?php if(sizeof($fornecedores) <= 0): ?>
@@ -68,12 +68,12 @@
 	                              	</select>
                                 <span class="invalid-feedback">Fornecedor inválido.</span>
                             </div>
-                            <!--imagem 
+                            
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="imagemProduto" class="control-label mb-1">Imagem do Produto:</label>
                                 <input type="file" name="arquivo">
                             </div>
-                            -->
+                            
                             </div>
 
 

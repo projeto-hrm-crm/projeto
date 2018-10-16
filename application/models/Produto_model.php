@@ -111,7 +111,7 @@ class Produto_model extends CI_Model
      * @return: object Produto
      */
     public function getByName($nome){
-      $this->db->select('id_produto, id_fornecedor, nome, codigo, fabricacao, validade, lote, recebimento, valor');
+      $this->db->select('id_produto, id_fornecedor, nome, codigo, fabricacao, validade, lote, recebimento, imagem, valor');
       $this->db->where('nome', $nome);
       return $this->db->get('produto')->row();
     }
@@ -182,7 +182,7 @@ class Produto_model extends CI_Model
 
     public function getFornecedorLogado($user_id)
     {
-      $query = $this->db->select('id_produto, produto.nome, codigo, fabricacao, validade, lote, recebimento, valor, razao_social')
+      $query = $this->db->select('id_produto, produto.nome, codigo, fabricacao, validade, lote, recebimento, valor, imagem, razao_social')
         ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
         ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')   
         ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')

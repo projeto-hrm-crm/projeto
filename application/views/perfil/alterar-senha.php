@@ -1,4 +1,4 @@
-<form action="<?php echo site_url('perfil/alterar-senha/'); ?>" method="POST" id="form_perfil">
+<form action="<?php echo site_url('perfil/alterar-senha/'); ?>" method="POST" enctype="multipart/form-data" id="form_perfil">
 
    <div class="animated fadeIn">
       <div class="row justify-content-center align-items-center">
