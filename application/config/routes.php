@@ -78,7 +78,6 @@ $route['produto/excluir/(:num)'] = 'Produto/delete/$1';
 //Rotas Log
 $route['log'] = 'Log/index';
 
-
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
@@ -143,6 +142,8 @@ $route['cliente']                   = 'Cliente';
 $route['cliente/cadastrar']         = 'Cliente/create';
 $route['cliente/editar/(:num)']     = 'Cliente/edit/$1';
 $route['cliente/excluir/(:num)']    = 'Cliente/delete/$1';
+
+$route['cliente/novo']       = 'Cliente/new';
 
 //Rotas candidato
 $route['candidato'] = 'Candidato';
