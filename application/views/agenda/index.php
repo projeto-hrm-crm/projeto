@@ -122,7 +122,7 @@
                                 <div class="col-4">
                                     <input id="endHour" name="horaFim" type="time" class="form-control" required>
                                 </div>
-                            </div>
+                            </div>                            
                             <input id="id" name="id" type="hidden" class="form-control" required>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">
-                                Salver alterações
+                            Salver alterações
                         </button>
                     </div>
                 </form>
@@ -212,7 +212,7 @@
                         <div id="compartilhar" class="form-group col-12" hidden>
                             <label class="col-12 control-label float-left">Compartilhar com</label>
                             <div class="col-12">
-                                <select id="calendar_users" name="id_usuario[]" class="form-control" multiple>
+                                <select id="calendar_users" name="id_usuario[]" multiple>
                                   <?php foreach ($usuarios as $usuario): ?>
                                     <option value="<?php echo $usuario->id_usuario; ?>" <?php echo isset($old_data['id_usuario']) && ($usuario->id_usuario == $old_data['id_usuario']) ? 'selected' : '' ?>>
                                       <?php echo $usuario->nome; ?>
