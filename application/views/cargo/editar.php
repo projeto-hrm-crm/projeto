@@ -43,21 +43,6 @@
 	                <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
 	              </span>
               </div>
-               <!--SETOR-->
-              <div class="form-group">
-              <label class=" form-control-label"><red>*</red>Setor</label>
-              <select name="id_setor" id="id_setor" class="form-control <?php echo isset($errors['id_setor']) ? 'is-invalid' : '' ?>">
-                  <option value="">Selecionar</option>
-                    <?php foreach ($setores as $setor): ?>
-                    <option value="<?php echo $setor->id_setor ?>" <?php echo isset($old_data['id_setor']) && ($setor->id_setor == $old_data['id_setor']) || $cargo->id_setor == $setor->id_setor ? 'selected' : '' ?>>
-		                  <?php echo $setor->nome ?>
-		                </option>
-                  <?php endforeach; ?>
-                </select>
-                <span class="invalid-feedback">
-	               <?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
-	             </span>
-              </div>   
               <!--
               <div class="form-group col-md-12">
                 <label class=" form-control-label"><red>*</red>Horario de Trabalho</label>

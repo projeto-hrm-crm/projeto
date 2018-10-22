@@ -12,7 +12,7 @@ class CandidatoEtapa_model extends CI_Model
   * @author: Matheus Ladislau
   * Realiza registro de candidato_etapa
   *
-  *@param array: Dados (id_setor,nome) a serem registrados
+  *@param array: Dados (,nome) a serem registrados
   */
   public function insert($data)
   {

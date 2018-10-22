@@ -189,6 +189,11 @@ $route['perfil/alterar-senha']      = 'Perfil/changePassword';
 $route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
 $route['perfil/alterar-imagem']     = 'Perfil/profileImage';
 
+//Rotas Habilidade
+$route['habilidade/cadastrar']        = 'Habilidade/create/';
+$route['habilidade/editar/(:num)']     = 'Habilidade/edit/$1';
+$route['habilidade/excluir/(:num)']    = 'Habilidade/delete/$1';
+
 //Ajax calls
 $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
@@ -201,3 +206,10 @@ $route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
+//Rotas Remanejamento
+
+$route['remanejamento'] = 'Remanejamento/index';
+$route['remanejamento/cadastrar'] = 'Remanejamento/create';
+$route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
+$route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';

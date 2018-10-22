@@ -164,16 +164,18 @@ class Funcionario_model extends CI_Model {
             endereco.cidade,
             documento.numero AS numero_documento,
             telefone.numero AS telefone,
-						'usuario.id_usuario',
+            'usuario.id_usuario',
+            cargo_funcionario.id_cargo as id_cargo,
             ")
             ->from("pessoa")
             ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
             ->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
             ->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
-						->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
             ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
             ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
-            ->where('funcionario.id_funcionario', $id_funcionario)->get();
+            ->join('cargo_funcionario', 'funcionario.id_funcionario = cargo_funcionario.id_funcionario')
+            ->where('funcionario.id_funcionario', $id_funcionario)->where('cargo_funcionario.status', 1)->get();
 
             if ($funcionario) {
                 return $funcionario->result();

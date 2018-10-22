@@ -25,6 +25,8 @@
           <thead>
             <tr>
               <th>Nome</th>
+              <th>Sigla</th>
+              <th>Descrição</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -32,6 +34,8 @@
             <?php foreach ($setores as $setor): ?>
             <tr>
               <td><?= $setor->nome; ?></td>
+              <td><?= $setor->sigla; ?></td>
+              <td><?= $setor->descricao; ?></td>
               <td>
                 <a title="Atualizar Setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
                   <span class="fa fa-edit btn-sm"></span>

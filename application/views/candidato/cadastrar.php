@@ -40,11 +40,11 @@
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label for="estado"><red>*</red>Estado</label>
-                                <input type="text" name="estado" id="estado" class="form-control">
+                                <input type="text" name="estado" id="estado" placeholder="Estado" class="form-control">
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label for="cidade"><red>*</red>Cidade</label>
-                                <input type="text" name="cidade" id="cidade" class="form-control">
+                                <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="form-control">
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class=" form-control-label"><red>*</red>Bairro</label>

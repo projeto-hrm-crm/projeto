@@ -23,37 +23,32 @@ class Home extends CI_Controller
   public function index()
 	{
     $user_id = $this->session->userdata('user_login');
-    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id); 
-
-      switch ($id_grupo_acesso) {
-        case '1':// home ADMINISTRADOR
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-          
-            $data['admin'] = $this->getAdminHomeConfigs(); 
+    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
+    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+    
+    switch ($id_grupo_acesso) {
+        case '1':// home ADMINISTRADOR      
+          $data['admin'] = $this->getAdminHomeConfigs();
           break;
 
         case '3':// FORNECEDOR
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);          
             $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
 
         case '4'://CLIENTE
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs(); 
+            $data['cliente'] = $this->getCustomerHomeConfigs($user_id);
           break;
 
         case '5'://CANDIDATO
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['candidato'] = $this->getCandidatoHomeConfigs($user_id); 
-        
+          $data['candidato'] = $this->getCandidatoHomeConfigs($user_id); 
+          break;
+
         case '6'://FUNCIONARIO
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs(); 
+          $data['admin'] = $this->getAdminHomeConfigs();
+          break;
         
         default:
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs(); 
           break;
-      }    
+      }
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
@@ -68,7 +63,7 @@ class Home extends CI_Controller
         'home/home_'.$grupo_acesso[0]->nome,
         'includes/footer',
         $data
-      ); 	
+      );
   }
 
   /**
@@ -102,14 +97,14 @@ class Home extends CI_Controller
   }
 
 
-  private function getCustomerHomeConfigs()
+  private function getCustomerHomeConfigs($user_id)
   {
-    $customer_id = $this->session->userdata('user_login');
+
     $data = [];
     $data['produtos']     = $this->produto->get();
-    $data['calls']        = $this->sac->getCustomerCalls($customer_id);
-    $data['orders']       = $this->pedido->getCustomerTotalOrders($customer_id);
-    $data['last_sac']     = $this->sac->getCustomerSac($customer_id);
+    $data['calls']        = $this->sac->getCustomerCalls($user_id);
+    $data['orders']       = $this->pedido->getCustomerTotalOrders($user_id);
+    $data['last_sac']     = $this->sac->getCustomerSac($user_id);
     return $data;
   }
 
@@ -121,7 +116,7 @@ class Home extends CI_Controller
     $data = [];
     //
     $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
-    $data['last_sac']  = $this->sac->getLastSacFornecedorLogado($user_id);  
+    $data['last_sac']  = $this->sac->getLastSacFornecedorLogado($user_id);
 
     return $data;
 
