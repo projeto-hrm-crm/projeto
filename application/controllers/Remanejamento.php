@@ -27,7 +27,7 @@ class Remanejamento extends CI_Controller
   {
     $data['title'] = 'Funcionarios Setores';
     $data['func_cargos'] = $this->cargo_funcionario->get();
-    $dados['assets'] = array(
+    $data['assets'] = array(
       'js' => array(
         'lib/data-table/datatables.min.js',
         'lib/data-table/dataTables.bootstrap.min.js',
@@ -114,7 +114,7 @@ class Remanejamento extends CI_Controller
   * @param $id_func_cargo int
   **/
   public function delete($id_func_cargo) {
-    $func_cargo = $this->func_cargo->getById($id_func_cargo);
+    $func_cargo = $this->cargo_funcionario->getById($id_func_cargo);
     if ($func_cargo){
       $data['atualizado'] = date("Y-m-d H:i:s");
       $data['deletado'] = date("Y-m-d H:i:s");
@@ -125,7 +125,7 @@ class Remanejamento extends CI_Controller
     }else {
       $this->session->set_flashdata('danger', 'Não foi possível excluir!');
     }
-    redirect('func_cargo');
+    redirect('remanejamento');
   }
   
 }
