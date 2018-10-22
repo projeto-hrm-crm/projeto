@@ -34,7 +34,6 @@
             </div>
             </div>
           </div>
-        </div>
         <div class="card-footer text-right">
 
           <a title="Cancelar Cadastro" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">

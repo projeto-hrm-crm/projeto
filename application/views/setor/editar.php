@@ -33,7 +33,7 @@
 
             </div>
           </div>
-        </div>
+        
         <div class="card-footer text-right">
           <a title="Cancelar Edição" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i>
