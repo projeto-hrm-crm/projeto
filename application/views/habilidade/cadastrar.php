@@ -7,14 +7,14 @@
                 </div>
                 <form action="<?php echo base_url() ?>habilidade/cadastrar" method="post" id="form_habilidade" novalidate="novalidate">
                     <div class="card-body card-block">
-                        
+
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class=" form-control-label"><red>*</red>Nome</label>
-                                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Habilidade" name="nome" class="form-control" required>
+                                <label class=" form-control-label"><red>*</red>Habilidade</label>
+                                <input type="text" id="nome" name="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Descrição da habilidade" name="nome" class="form-control" required>
                             </div>
                         </div>
-                       
+
                    </div>
                    <div class="card-footer text-right">
                         <a title="Cancelar Cadastro" href="<?=site_url('perfil')?>" class="btn btn-danger btn-sm">

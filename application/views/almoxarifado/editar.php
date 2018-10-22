@@ -2,7 +2,7 @@
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Edição de Entrada</strong>
+                <strong class="card-title">Edição de Itens de Almoxarifado</strong>
             </div>
             <form id="form_almoxarifado" action="<?php echo base_url('almoxarifado/editar/'.$almoxarifado[0]->id_almoxarifado); ?>" method="post" novalidate="novalidate">
                 <div class="card-body">

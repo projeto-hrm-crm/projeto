@@ -14,6 +14,32 @@ jQuery(document).ready(function($) {
 	$('#menuToggle').on('click', function(event) {
 		$('body').toggleClass('open');
 	});
+   
+   $('#user-dropdown').on('click', function(event) {
+		var status = $(this).attr('data-status')
+      //alert(status)
+      if(status=="false"){
+         $(this).attr("data-status","true")
+         $('.user-menu').fadeIn();
+      }
+      if(status=="true"){
+         $(this).attr("data-status","false")
+         $('.user-menu').fadeOut();
+      }
+	});
+   
+   $('#notification').on('click', function(event) {
+		var status = $(this).attr('data-status')
+      //alert(status)
+      if(status=="false"){
+         $(this).attr("data-status","true")
+         $('.notification-div').fadeIn();
+      }
+      if(status=="true"){
+         $(this).attr("data-status","false")
+         $('.notification-div').fadeOut();
+      }
+	});
 
 	$('.search-trigger').on('click', function(event) {
 		event.preventDefault();

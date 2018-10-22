@@ -346,6 +346,23 @@ $config = array(
         )
     ),
 
+    'remanejamento' => array(
+        array(
+            'field' => 'id_cargo',
+            'label' => 'Cargo',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_funcionario',
+            'label' => 'Funcionario',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_setor',
+            'label' => 'Setor',
+            'rules' => 'required'
+        )
+    ),
 
     'sugestao' => array(
         array(
@@ -548,11 +565,6 @@ $config = array(
             'label' => 'Salário',
             'rules' => 'required'
         ),
-        array(
-            'field' => 'id_setor',
-            'label' => 'Setor',
-            'rules' => 'required|numeric'
-        ),
     ),
 
     'pedido_fornecedor' => array(
@@ -751,6 +763,11 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'nome completo',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_cargo',
+            'label' => 'cargo',
             'rules' => 'required'
         ),
         array(

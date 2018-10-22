@@ -43,7 +43,6 @@ class Cargo extends PR_Controller
         else
         {
             $this->setTitle('Cadastrar Cargo');
-            $this->addData('setores', $this->setor->get());
 
             $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js','maskMoney.js'));
             $this->loadFormDefaultScripts();
@@ -81,7 +80,6 @@ class Cargo extends PR_Controller
             $this->setTitle('Editar Cargo');
 
             $this->addData('cargo',   $this->cargo->getById($id_cargo));
-            $this->addData('setores', $this->setor->get());
 
             $this->loadFormDefaultScripts();
             $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js','maskMoney.js'));
@@ -117,7 +115,6 @@ class Cargo extends PR_Controller
             'descricao'             => $this->input->post('descricao'),
             'carga_horaria_semanal' => $this->input->post('carga_horaria'),
             'salario'               => $this->input->post('salario'),
-            'id_setor'              => $this->input->post('id_setor'),
            // 'horario'  => $this->input->post('horario'),
           //  'hora_entrada'  => $this->input->post('hora_entrada'),
           //  'hora_saida'  => $this->input->post('hora_saida'),
