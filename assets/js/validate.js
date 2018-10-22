@@ -357,9 +357,39 @@ jQuery(document).ready(function($) {
     rules: {
       nome: {
         required:true,
-        letras:true,
+        regex: /^[a-zA-Z0-9]+/,
+        maxlength:45,
       },
-    }
+
+      sigla: {
+        required:true,
+        letras:true,
+        maxlength:10,
+      },
+
+      descricao: {
+        required:true,
+        maxlength:1000,
+      },
+
+    },
+
+    messages: {
+
+      nome:{
+        required: 'O campo é obrigatório',
+        regex:    'Por favor, insira apenas letras e números.',
+      },
+
+      sigla:{
+        required: 'O campo é obrigatório',
+        regex:    'Por favor, insira apenas letras.',
+      },
+
+      descricao:{
+        required: 'O campo é obrigatório',
+      },
+    },
   });
 
   $('#form-vaga').validate({

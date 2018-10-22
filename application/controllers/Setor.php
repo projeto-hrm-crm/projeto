@@ -100,7 +100,6 @@ class Setor extends PR_Controller
     */
     public function delete($id_setor)
 {
-  $setor =  $this->db->where('cargo.id_setor', $id_setor)->get('cargo')->row();
 
   if(!$setor){
      $this->setor->remove($id_setor);
@@ -121,7 +120,9 @@ class Setor extends PR_Controller
     private function getFromPost()
     {
         return array(
-            'nome' => $this->input->post('nome')
+            'nome' => $this->input->post('nome'),
+            'sigla' => $this->input->post('sigla'),
+            'descricao' => $this->input->post('descricao')
         );
     }
 
