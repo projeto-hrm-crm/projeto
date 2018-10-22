@@ -86,7 +86,7 @@ class Produto extends CI_Controller
         if($this->form_validation->run('produto')){
           
           # upload de imagem
-
+          
           if (isset($_FILES['arquivo']))  {
             
             $arquivo    = $_FILES['arquivo'];
@@ -106,7 +106,6 @@ class Produto extends CI_Controller
    
                $largura = $size[0];
                $altura = $size[1];
-   
    
                $config['image_library'] = 'gd2';
                $config["source_image"] = './uploads/produtoImage/'.$arquivo["name"];
@@ -132,6 +131,7 @@ class Produto extends CI_Controller
                }
               
             }
+            # image upooad
 
             $array = array(
               'id_fornecedor' => $this->input->post('id_fornecedor'),
@@ -181,11 +181,10 @@ class Produto extends CI_Controller
      *
      * Rota: http://localhost/projeto/produto/editar
      */
-    public function edit($id)
-    {
-      if($this->input->post()){
+    public function edit($id) {
+      if($this->input->post()) {
         
-        if($this->form_validation->run('produto')){
+        if($this->form_validation->run('produto')) {
           
           /* upload e replace imagem
           if (isset($_FILES['arquivo']))  {
@@ -228,13 +227,12 @@ class Produto extends CI_Controller
    
    
                if ($this->image_lib->crop()){
-   
+  
                 
                }
               
             }
-
-      fim de upload imagem */
+          fim de upload imagem */
           
           
           $array = array(
@@ -276,7 +274,9 @@ class Produto extends CI_Controller
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
       }
     }
-  }
+  
+
+
   
     /**
      * @author: Dhiego Balthazar
@@ -373,7 +373,6 @@ class Produto extends CI_Controller
             $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
             redirect('produto');
          }
-
        }
 }
-
+}
