@@ -52,6 +52,8 @@ class Remanejamento extends CI_Controller
       if($this->form_validation->run('remanejamento')) {
         $data['criado'] = date("Y-m-d H:i:s");
         $data['atualizado'] = date("Y-m-d H:i:s");
+        $data['status'] = 1;
+
         $this->cargo_funcionario->insert($data);
         $this->session->set_flashdata('success', 'Remanejamento cadastrado com sucesso!');
         redirect('remanejamento');
@@ -116,6 +118,7 @@ class Remanejamento extends CI_Controller
     if ($func_cargo){
       $data['atualizado'] = date("Y-m-d H:i:s");
       $data['deletado'] = date("Y-m-d H:i:s");
+      $data['status'] = 0;
 
       $this->cargo_funcionario->update($id_func_cargo,$data);
       $this->session->set_flashdata('success', 'Remanejamneto desativado com sucesso!');
