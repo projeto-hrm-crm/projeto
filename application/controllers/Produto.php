@@ -83,7 +83,6 @@ class Produto extends CI_Controller
     {
       if($this->input->post()){
 
-        
         if($this->form_validation->run('produto')){
           
           # upload de imagem
@@ -188,7 +187,7 @@ class Produto extends CI_Controller
         
         if($this->form_validation->run('produto')){
           
-          /* upload e replace imagem 
+          /* upload e replace imagem
           if (isset($_FILES['arquivo']))  {
             
             $arquivo    = $_FILES['arquivo'];
@@ -235,7 +234,7 @@ class Produto extends CI_Controller
               
             }
 
-           fim de upload imagem */
+      fim de upload imagem */
           
           
           $array = array(
@@ -278,7 +277,7 @@ class Produto extends CI_Controller
       }
     }
   }
-
+  
     /**
      * @author: Dhiego Balthazar
      * Esse método tem a finalidade de deletar
@@ -377,4 +376,4 @@ class Produto extends CI_Controller
 
        }
 }
-}
+
