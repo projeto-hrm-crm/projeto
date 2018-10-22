@@ -24,34 +24,29 @@ class Home extends CI_Controller
 	{
     $user_id = $this->session->userdata('user_login');
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
-
-      switch ($id_grupo_acesso) {
-        case '1':// home ADMINISTRADOR
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-
-            $data['admin'] = $this->getAdminHomeConfigs();
+    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+    
+    switch ($id_grupo_acesso) {
+        case '1':// home ADMINISTRADOR      
+          $data['admin'] = $this->getAdminHomeConfigs();
           break;
 
         case '3':// FORNECEDOR
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
             $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
 
         case '4'://CLIENTE
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
             $data['cliente'] = $this->getCustomerHomeConfigs($user_id);
           break;
 
         case '5'://CANDIDATO
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs();
+          $data['candidato'] = $this->getCandidatoHomeConfigs($user_id); 
+          break;
 
         case '6'://FUNCIONARIO
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs();
-
+          $data['admin'] = $this->getAdminHomeConfigs();
+          break;
+        
         default:
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs();
           break;
       }
     $data['title'] = 'Dashboard';
@@ -127,6 +122,14 @@ class Home extends CI_Controller
 
   }
 
+  public function getCandidatoHomeConfigs($user_id)
+  {
+    $data = [];
+    //$id = // metodo para identificar um processo seletivo
+    $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
+    // data com as informações do processo que ia para o modal //$data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($id);
+    return $data;
 
+  }
 
 }
