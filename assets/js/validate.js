@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
         required: true,
         validaDataBR:true,
         dataMaiorQue: '#fabricacao',
-    
+
       },
 
       fabricacao: {
@@ -98,7 +98,7 @@ jQuery(document).ready(function($) {
       }
     },
   });
-   
+
    $("#form_habilidade").validate({
     rules: {
       nome: "required",
