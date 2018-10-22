@@ -322,6 +322,23 @@ $config = array(
         )
     ),
 
+    'remanejamento' => array(
+        array(
+            'field' => 'id_cargo',
+            'label' => 'Cargo',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_funcionario',
+            'label' => 'Funcionario',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_setor',
+            'label' => 'Setor',
+            'rules' => 'required'
+        )
+    ),
 
     'sugestao' => array(
         array(
