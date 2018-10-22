@@ -84,9 +84,10 @@ class Produto extends CI_Controller
       if($this->input->post()){
 
         
-
         if($this->form_validation->run('produto')){
           
+          # upload de imagem
+
           if (isset($_FILES['arquivo']))  {
             
             $arquivo    = $_FILES['arquivo'];
@@ -150,8 +151,6 @@ class Produto extends CI_Controller
                redirect('produto');
           }   
 
-         
-
           
         }else{
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
@@ -189,11 +188,54 @@ class Produto extends CI_Controller
         
         if($this->form_validation->run('produto')){
           
-          /* INSERIR AQUI METOOD dE IMAGEM */
-          
+          /* upload e replace imagem 
+          if (isset($_FILES['arquivo']))  {
+            
+            $arquivo    = $_FILES['arquivo'];
+            $configuracao = array(
+               'upload_path'   => './uploads/produtoImage/',
+               'allowed_types' => 'jpef|jpg|png',
+               'file_name'     => $arquivo['name'],
+               'max_size'      => '999999'
+            );
+   
+            $this->load->library('upload');
+            $this->upload->initialize($configuracao);
+   
+            if ($this->upload->do_upload('arquivo')){
+   
+               $size = getimagesize('./uploads/produtoImage/'.$arquivo["name"]);
+   
+               $largura = $size[0];
+               $altura = $size[1];
+   
+   
+               $config['image_library'] = 'gd2';
+               $config["source_image"] = './uploads/produtoImage/'.$arquivo["name"];
+               $config['allowed_types'] = 'jpef|jpg|png';
+               $config['new_image'] = './uploads/produtoImage/'.$arquivo['name'];
+               $config['create_thumb'] = false;
+               $config['maintain_ratio'] = FALSE;
+   
+               if($largura > $altura){
+                  $config['width'] = $altura;
+                  $config['height'] = $altura;
+               }else {
+                  $config['width'] = $largura;
+                  $config['height'] = $largura;
+               }
+   
+               $this->load->library('image_lib', $config);
+   
+   
+               if ($this->image_lib->crop()){
+   
+                
+               }
+              
+            }
 
-
-           /* INSERIR AQUI METOOD dE IMAGEM */
+           fim de upload imagem */
           
           
           $array = array(
@@ -235,6 +277,7 @@ class Produto extends CI_Controller
         loadTemplate('includes/header', 'produto/editar', 'includes/footer', $data);
       }
     }
+  }
 
     /**
      * @author: Dhiego Balthazar
@@ -244,6 +287,7 @@ class Produto extends CI_Controller
      * @param: $id
      * Rota: http://localhost/projeto/produto/deletar
      */
+
     public function delete($id)
     {
       $produto = $this->pedido->checkIfProductIssetInSomeOrder($id);
