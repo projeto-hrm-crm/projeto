@@ -2269,84 +2269,72 @@ $seeds = array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Contador',
             'Realiza a contabilidade da empresa',
-            '417.98',
-            '2'
+            '417.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Auxiliar Financeiro',
             'Auxilia nas tarefas financeiras da empresa',
-            '417.98',
-            '1'
+            '417.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Recrutador',
             'Realiza o rerutamento da empresa',
-            '317.98',
-            '3'
+            '317.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Agente Administrativo',
             'Realiza a prestação de contas da empresa',
-            '417.98',
-            '4'
+            '417.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Auxiliar de RH',
             'Realiza o controle do RH da empresa',
-            '287.98',
-            '3'
+            '287.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Gerente Financeiro',
             'Realiza o controle financeiro da empresa',
-            '617.98',
-            '1'
+            '617.98'
           ),
         ),
       )
@@ -2993,6 +2981,98 @@ $seeds = array(
             'Sistema pouco amigavel, deixem ele mais fofinho',
             '2018-08-09',
             '6'
+          ),
+        ),
+      )
+    ),
+  ),
+   'unidade_medida' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'caixa'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'unidade'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'quilo'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'grama'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'metro'
+          ),
+        ),
+      )
+    ),
+  ),
+  'habilidade' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'RTA',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'JS',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'HTML',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'CSS',
+            '8'
           ),
         ),
       )

@@ -15,12 +15,22 @@
         </div>
         <?php endif;?>
       </div>
-      <form action="<?php site_url('setor/editar'.$id_setor); ?>" method="POST" class="form-horizontal" id="form_setor">
+      <form action="<?php site_url('setor/editar'.$id_setor); ?>" method="POST" class="form-horizontal" id="form_setor" novalidate="novalidate">
         <div class="card-body">
           <div class="row justify-content-center">
             <div class="form-group col-8">
               <label class="control-label"><red>*</red>Nome do Setor</label>
               <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($setor[0]->nome)?>" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" required>
+            </div>
+            <div class="form-group col-8">
+              <label class="control-label"><red>*</red>Sigla do Setor</label>
+              <input type="text" id="sigla" name="sigla" class="form-control" value="<?= htmlspecialchars($setor[0]->sigla)?>" value = "<?php echo isset($old_data['sigla']) ? $old_data['sigla'] : null;?>" required>
+            </div>
+            <div class="form-group col-8">
+              <label class="control-label"><red>*</red>Descrição do Setor</label>
+              <input type="text" id="descricao" name="descricao" class="form-control" value="<?= htmlspecialchars($setor[0]->descricao)?>" value = "<?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?>" required>
+            </div>
+
             </div>
           </div>
         </div>

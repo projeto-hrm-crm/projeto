@@ -7,19 +7,6 @@
                 </div>
                 <form action="<?php echo base_url() ?>cargo/cadastrar" method="post" id="form_cargo" novalidate="novalidate">
                     <div class="card-body card-block">
-                        <?php if(sizeof($setores) <= 0): ?>
-                            <div class="row justify-content-center align-items-center">
-                                <div class="col-12">
-                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
-                                        Não existe nenhum setor cadastrado no sistema, favor cadastre um setor!
-                                    </div>
-                                    <a title="Novo setor" href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm float-right">
-                                        <i class="fa fa-check"></i>
-                                        Novo setor
-                                    </a>
-                                </div>
-                            </div>
-                        <?php else: ?>
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class=" form-control-label"><red>*</red>Nome</label>
@@ -49,24 +36,11 @@
                                     <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
                                 </span>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label class=" form-control-label"><red>*</red>Setor</label>
-                                <select name="id_setor" id="id_setor" class="form-control <?php echo isset($errors['id_setor']) ? 'is-invalid' : '' ?>">
-                                    <option value="">Selecionar setor</option>
-                                    <?php foreach ($setores as $setor): ?>
-                                        <option value="<?php echo $setor->id_setor ?>" <?php echo isset($old_data['id_setor']) && ($setor->id_setor == $old_data['id_setor']) ? 'selected' : '' ?>>
-                                            <?php echo $setor->nome ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <span class="invalid-feedback">
-                                    <?php echo isset($errors['id_setor']) ? $errors['id_setor'] : '' ; ?>
-                                </span>
-                            </div>
+
                             <!--
                             <div class="form-group col-md-12">
                                 <label class=" form-control-label"><red>*</red>Horario de Trabalho</label>
-                                <input type="time" id="horario_cargo" name="appt-time" 
+                                <input type="time" id="horario_cargo" name="appt-time"
                                         min="00:00" max="23:59" class="form-control <?php echo isset($errors['horario']) ? 'is-invalid' : '' ?>" required />
                                 <span class="invalid-feedback">
                                     <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
@@ -94,6 +68,7 @@
                         </div>
                         -->
                     </div>
+                  </div>
                     <div class="card-footer text-right">
                         <a title="Cancelar Cadastro" href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i>
@@ -104,7 +79,6 @@
                             Cadastrar
                         </button>
                     </div>
-                <?php endif;?>
                 </form>
             </div>
         </div>

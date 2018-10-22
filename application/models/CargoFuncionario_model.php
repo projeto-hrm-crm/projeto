@@ -92,5 +92,4 @@ class CargoFuncionario_model extends CI_Model
       $this->db->where('etapa.id_processo_seletivo', $id);
       return $this->db->get('etapa')->result();
     }
-
 }
