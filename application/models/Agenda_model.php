@@ -112,9 +112,8 @@ class Agenda_model extends CI_Model
 
     /**
     * @author: Rafael Pigozzi
-    * Insere dados na tabela relacional entre evento e usuario: evento_usuario
     *
-    * @param: $evento_usuario mixed
+    * @param: 
     */
     public function getEventUsers($event_id)
     {
