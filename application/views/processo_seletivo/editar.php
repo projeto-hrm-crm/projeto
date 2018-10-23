@@ -150,8 +150,13 @@
                 </div>
                 <div class="form-group col-12">
                     <label class="form-control-label mt-2">Descrição</label>
-                    <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
+                    <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required>
+                    </textarea>
                 </div>
+                <div class="form-group col-12">
+                    <label class="form-control-label">Status</label>
+                    <input type="text" name="status_etapa[]" auto-resize placeholder="status da etapa" class="form-control" required>
+                </div> 
                 <a name="button" class="btn btn-danger btn-sm remDiv mt-2 text-white">
                     <span class="fa fa-times"></span>
                     Excluir
