@@ -58,6 +58,7 @@ class Produto_model extends CI_Model
         $this->db->set('validade', $array['validade']);
 
         $this->db->set('lote', $array['lote']);
+        $this->db->set('imagem', $array['imagem']);
         $this->db->set('valor', $array['valor']);
         $this->db->set('recebimento', $array['recebimento']);
         $id_produto = $this->db->update('produto');
@@ -110,7 +111,7 @@ class Produto_model extends CI_Model
      * @return: object Produto
      */
     public function getByName($nome){
-      $this->db->select('id_produto, id_fornecedor, nome, codigo, fabricacao, validade, lote, recebimento, valor');
+      $this->db->select('id_produto, id_fornecedor, nome, codigo, fabricacao, validade, lote, recebimento, imagem, valor');
       $this->db->where('nome', $nome);
       return $this->db->get('produto')->row();
     }
@@ -181,7 +182,7 @@ class Produto_model extends CI_Model
 
     public function getFornecedorLogado($user_id)
     {
-      $query = $this->db->select('id_produto, produto.nome, codigo, fabricacao, validade, lote, recebimento, valor, razao_social')
+      $query = $this->db->select('id_produto, produto.nome, codigo, fabricacao, validade, lote, recebimento, valor, imagem, razao_social')
         ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
         ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')   
         ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
@@ -190,6 +191,29 @@ class Produto_model extends CI_Model
         ->where('usuario.id_usuario', $user_id)
         ->get('produto');
             return $query->result();
-    }  
+    }
+    
+    
+    /**
+    * @author: Rodrigo 
+	* Atualiza o imagem
+	*/
+    public function findImage($id_produto)	{
+		$curriculum = $this->db->select("imagem")->from("produto")->where('id_produto', $id_produto)->get();
+		return $curriculum->result();
+	}
+   
+   /**
+	* @author: Rodrigo 
+	* Verifica se já existe um imagem cadastrado
+	*/
+    public function imageUpdate($data)	{
+		$this->db->where('produto.id_produto', $data['id_produto']);
+        $this->db->set('produto.imagem', $data['arquivo']);
+		$this->db->update('produto');
+
+		return $data['arquivo'];
+	}
+
 
 }

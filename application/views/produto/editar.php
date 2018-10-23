@@ -4,15 +4,28 @@
             <div class="card-header">
                 <strong class="card-title">Atualizar Produto</strong>
             </div>
-            <form id="form_produto" action="<?php echo base_url('produto/editar/'.$produto->id_produto);?>" method="post" novalidate="novalidate">
+            <form id="form_produto" action="<?php echo base_url('produto/editar/'.$produto->id_produto);?>" method="post" novalidate="novalidate" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="card-body">
-                        <div class="row">
+
+                    <div class="row">
+                        <div class="col-lg-6">                    
+                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">                    
+                        </div>
+
                             <div class="form-group col-lg-6 col-sm-12">
-                                <label for="nome" class="control-label mb-1"><red>*</red>Nome</label>
-                                <input name="nome" placeholder="Nome do produto" id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
-                            </div>
+                              <label for="nome" class="control-label mb-1"><red>*</red>Nome do Produto</label>
+                            <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
+                            <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
+                         
+                            
+                            <!--imagem-->
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
+                            <input type="file" name="arquivo">
+                        </div>
+                        <!-- imagem-->
+
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="lote" class="control-label mb-1"><red>*</red>Lote</label>
                                 <input name="lote" id="lote"  placeholder="Número do Lote"  value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : $produto->lote;?>" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
@@ -55,6 +68,16 @@
                                     <?php endforeach; ?>
 	                            </select>
                             </div>
+                            <!--imagem
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
+                                <input type="file" name="arquivo">
+                            </div>
+                            imagem-->
+                            
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

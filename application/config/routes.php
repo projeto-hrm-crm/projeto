@@ -74,6 +74,8 @@ $route['produto'] = 'produto/index';
 $route['produto/cadastrar'] = 'produto/create';
 $route['produto/editar/(:num)'] = 'produto/edit/$1';
 $route['produto/excluir/(:num)'] = 'Produto/delete/$1';
+$route['produto/enviar-curriculum']  = 'Produto/fileUpload';
+$route['produto/alterar-imagem']     = 'Produto/produtoImage';
 
 //Rotas Log
 $route['log'] = 'Log/index';
