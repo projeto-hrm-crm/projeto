@@ -186,7 +186,8 @@ class Produto extends CI_Controller
         
         if($this->form_validation->run('produto')) {
           
-          /* upload e replace imagem
+          # upload de imagem
+          
           if (isset($_FILES['arquivo']))  {
             
             $arquivo    = $_FILES['arquivo'];
@@ -207,7 +208,6 @@ class Produto extends CI_Controller
                $largura = $size[0];
                $altura = $size[1];
    
-   
                $config['image_library'] = 'gd2';
                $config["source_image"] = './uploads/produtoImage/'.$arquivo["name"];
                $config['allowed_types'] = 'jpef|jpg|png';
@@ -227,12 +227,14 @@ class Produto extends CI_Controller
    
    
                if ($this->image_lib->crop()){
-  
+   
                 
                }
               
-            }
-          fim de upload imagem */
+             }
+          }
+            # image upooad
+
           
           
           $array = array(
