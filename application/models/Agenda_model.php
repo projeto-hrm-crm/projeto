@@ -110,4 +110,30 @@ class Agenda_model extends CI_Model
 
     }
 
+    /**
+    * @author: Rafael Pigozzi
+    * Insere dados na tabela relacional entre evento e usuario: evento_usuario
+    *
+    * @param: $evento_usuario mixed
+    */
+    public function getEventUsers($event_id)
+    {
+        $users = [];
+
+        $this->db->select('evento_usuario.id_usuario, pessoa.nome')
+                 ->from('evento')
+                 ->join('evento_usuario', 'evento.id = evento_usuario.evento_id')
+                 ->join('usuario', 'evento_usuario.id_usuario = usuario.id_usuario')
+                 ->join('pessoa', 'usuario.id_pessoa = pessoa.id_pessoa')
+                 ->where('evento_usuario.evento_id', $event_id);
+        $result = $this->db->get();
+
+        if ($result->num_rows() > 0) {
+            $users = $result->result();
+        }
+
+        return json_encode($users);
+
+    }
+
 }

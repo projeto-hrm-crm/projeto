@@ -122,8 +122,20 @@
                                 <div class="col-4">
                                     <input id="endHour" name="horaFim" type="time" class="form-control" required>
                                 </div>
-                            </div>                            
+                            </div>
                             <input id="id" name="id" type="hidden" class="form-control" required>
+                            <div class="form-group col-12">
+                                <label class="col-12 control-label float-left">Compartilhar com</label>
+                                <div class="col-12">
+                                    <select id="usuarios" class="calendar_users" name="id_usuario[]" multiple>
+                                      <?php foreach ($usuarios as $usuario): ?>
+                                        <option value="<?php echo $usuario->id_usuario; ?>" <?php echo isset($old_data['id_usuario']) && ($usuario->id_usuario == $old_data['id_usuario']) ? 'selected' : '' ?>>
+                                          <?php echo $usuario->nome; ?>
+                                        </option>
+                                      <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -212,7 +224,7 @@
                         <div id="compartilhar" class="form-group col-12" hidden>
                             <label class="col-12 control-label float-left">Compartilhar com</label>
                             <div class="col-12">
-                                <select id="calendar_users" name="id_usuario[]" multiple>
+                                <select class="calendar_users" name="id_usuario[]" multiple>
                                   <?php foreach ($usuarios as $usuario): ?>
                                     <option value="<?php echo $usuario->id_usuario; ?>" <?php echo isset($old_data['id_usuario']) && ($usuario->id_usuario == $old_data['id_usuario']) ? 'selected' : '' ?>>
                                       <?php echo $usuario->nome; ?>

@@ -37,6 +37,7 @@
                 }
 
                 $('#visualizar').modal('show');
+                getUsers(event.id);
                 return false;
             },
             selectable: true,
@@ -90,8 +91,22 @@
             $('#compartilhar').removeAttr('hidden');
         });
 
-        $('#calendar_users').selectize({
+        let $select = $('.calendar_users').selectize({})
+        let selectize = $select[0].selectize;
 
-		});
+        let getUsers = (id) => {
+            $.ajax({
+                url: BASE_URL + "events/getUsers/" + id,
+                data: 'JSON',
+                success: (value) => {
+                    var users = JSON.parse(value)
+                    users = Object.keys(users).map((key) => { return users[key].id_usuario})
+                    selectize.setValue(users)
+                },
+                error: (error) => {
+
+                }
+            });
+        }
 
     });

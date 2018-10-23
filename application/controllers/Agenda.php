@@ -21,6 +21,12 @@ class Agenda extends CI_Controller
         loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
     }
 
+    public function getEventUsers($event_id)
+    {
+        $users = $this->evento->getEventUsers($event_id);
+        echo $users;
+    }
+
     public function get()
     {
        echo json_encode($this->evento->get());
