@@ -1,0 +1,22 @@
+body {
+   background: linear-gradient(to right, #8A2BE2, #00CED1);
+   padding: 15% 0px;
+}
+
+.bg-light {
+    background-color: #f1f1f1!important;
+}
+
+.input-field {
+   margin-top: 10px;
+}
+
+.margin30 { 
+   margin-bottom: 30px;
+}
+.margin20 { 
+   margin-bottom: 20px;
+}
+.margin15 { 
+   margin-bottom: 15px;
+}
