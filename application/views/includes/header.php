@@ -99,7 +99,7 @@
           </div>
 
             <div class="dropdown for-notification">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false">
                 <i class="fa fa-bell"></i>
                 <span class="count bg-danger"></span>
               </button>
@@ -125,8 +125,7 @@
            ?>
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+          <a href="#" class="dropdown-toggle" id="user-dropdown" data-toggle="dropdown" data-status="false">
             <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
           </a>
 

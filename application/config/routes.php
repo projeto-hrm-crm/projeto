@@ -122,7 +122,6 @@ $route['sugestao/visualizar/(:num)'] = 'Sugestao/details/$1';
 $route['sugestao/excluir/(:num)'] = 'Sugestao/delete/$1';
 
 //Rotas Setores
-
 $route['setor']='Setor';
 $route['setor/cadastrar']='Setor/create';
 $route['setor/editar/(:num)']='Setor/edit/$1';
@@ -133,6 +132,12 @@ $route['almoxarifado']='Almoxarifado';
 $route['almoxarifado/cadastrar']='Almoxarifado/create';
 $route['almoxarifado/editar/(:num)']='Almoxarifado/edit/$1';
 $route['almoxarifado/excluir/(:num)']='Almoxarifado/delete/$1';
+
+//Rotas Pedido Almoxarifado
+$route['pedido_almoxarifado'] = "PedidoAlmoxarifado";
+$route['pedido_almoxarifado/cadastrar'] = "PedidoAlmoxarifado/create";
+$route['pedido_almoxarifado/alterar_status/(:any)/(:any)'] = "PedidoAlmoxarifado/changeStatus/$1/$2";
+$route['pedido_almoxarifado/informacao/(:num)'] = "PedidoAlmoxarifado/information/$1";
 
 //Rotas Cargo
 $route['cargo']='Cargo';
@@ -208,3 +213,10 @@ $route['events']					  = 'agenda/get';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
+//Rotas Remanejamento
+
+$route['remanejamento'] = 'Remanejamento/index';
+$route['remanejamento/cadastrar'] = 'Remanejamento/create';
+$route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
+$route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';

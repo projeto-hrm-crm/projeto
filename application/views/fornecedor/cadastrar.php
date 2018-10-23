@@ -4,7 +4,7 @@
             <div class="card-header">
                 <strong class="card-title">Cadastrar Fornecedor</strong>
             </div>
-            
+
             <form action="<?php echo site_url('fornecedor/cadastrar'); ?>" method="POST" id="form_fornecedor" novalidate="novalidate">
 
                 <div class="card-body card-block">
@@ -64,52 +64,39 @@
                         </div>
 
                         <div class="form-group col-12 col-md-3">
-                            <label class=" form-control-label"><red>*</red>CEP</label>
-                            <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>" class="form-control cep <?php echo isset($errors['cep']) ? 'is-invalid' : '' ?>" required>
-                            <span class="invalid-feedback">
-                                <?php echo isset($errors['cep']) ? $errors['cep'] : '' ; ?>
-                            </span>
+                          <label class=" form-control-label"><red>*</red>CEP</label>
+                          <input type="cep" id="cep" name="cep" value="<?php echo isset($old_data['cep']) ? $old_data['cep'] : null;?>"  placeholder="00000-000" class="form-control cep" required>
                         </div>
-                        
+
                         <div class="form-group col-12 col-md-4">
                             <label class="form-control-label"><red>*</red>Estado</label>
-                            <input type="text" name="estado" class="form-control" id="estado">
-                            <span class="invalid-feedback">
-                                <?php echo isset($errors['estado']) ? $errors['estado'] : '' ; ?>
-                            </span>
+                            <input type="text" id="estado" name="estado" class="form-control" placeholder="Estado">
+
                         </div>
 
                         <div class="form-group col-12 col-md-5">
                             <label class="form-control-label"><red>*</red>Cidade</label>
-                            <input type="text" name="cidade" class="form-control" id="cidade">
-                            <span class="invalid-feedback">
-                               <?php echo isset($errors['cidade']) ? $errors['cidade'] : '' ; ?>
-                            </span>
+                            <input type="text" id="cidade" name="cidade" class="form-control"  placeholder="Cidade">
+
                         </div>
 
                         <div class="form-group col-12 col-md-9">
                             <label class=" form-control-label"><red>*</red>Logradouro</label>
                             <input type="text" id="logradouro" name="logradouro" placeholder="Nome da rua/av./praça/alameda" value="<?php echo isset($old_data['logradouro']) ? $old_data['logradouro'] : null;?>" class="form-control <?php echo isset($errors['logradouro']) ? 'is-invalid' : '' ?>" required>
-                            <span class="invalid-feedback">
-                                <?php echo isset($errors['logradouro']) ? $errors['logradouro'] : '' ; ?>
-                            </span>
+
                         </div>
 
 
                         <div class="form-group col-12 col-md-3">
                             <label class=" form-control-label"><red>*</red>Número</label>
                             <input type="text" id="numero" name="numero" placeholder="Número da residência" value="<?php echo isset($old_data['numero']) ? $old_data['numero'] : null;?>" class="form-control <?php echo isset($errors['numero']) ? 'is-invalid' : '' ?>" required>
-                            <span class="invalid-feedback">
-                                <?php echo isset($errors['numero']) ? $errors['numero'] : '' ; ?>
-                            </span>
+
                         </div>
 
                         <div class="form-group col-12 col-md-5">
                             <label class=" form-control-label"><red>*</red>Bairro</label>
                             <input type="text" id="bairro" name="bairro" placeholder="Bairro" value="<?php echo isset($old_data['bairro']) ? $old_data['bairro'] : null;?>" class="form-control <?php echo isset($errors['bairro']) ? 'is-invalid' : '' ?>" required>
-                            <span class="invalid-feedback">
-                                <?php echo isset($errors['bairro']) ? $errors['bairro'] : '' ; ?>
-                            </span>
+
                         </div>
 
                         <div class="form-group col-12 col-md-4">
@@ -121,7 +108,7 @@
 
 
                 </div>
-                
+
                 <div class="card-footer text-right">
                     <a title="Cancelar Cadastro" href="<?=site_url('fornecedor')?>" class="btn btn-danger btn-sm">
                         <i class="fa fa-times"></i> Cancelar
@@ -130,7 +117,7 @@
                         <i class="fa fa-plus"></i> Cadastrar
                     </button>
                 </div>
-                
+
             </form>
 
         </div>

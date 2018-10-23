@@ -10,15 +10,15 @@
           <div class="row">
             <div class="form-group col-12 col-md-6">
               <label class=" form-control-label"><red>*</red>Nome</label>
-              <input type="text" id="nome" name="nome" class="form-control"  value="<?= htmlspecialchars($cliente[0]->nome)?>" required>
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome Completo" value="<?= htmlspecialchars($cliente[0]->nome)?>" required>
             </div> <!-- FIM NOME -->
             <div class="form-group col-12 col-md-6">
               <label for="email-input" class=" form-control-label"><red>*</red>Email</label>
-              <input type="text" id="email" name="email" value="<?= htmlspecialchars($cliente[0]->email)?>" class="form-control" required>
+              <input type="text" id="email" name="email" placeholder="nome@provedor" value="<?= htmlspecialchars($cliente[0]->email)?>" class="form-control" required>
             </div> <!-- FIM EMAIL -->
             <div class="form-group col-12 col-md-6">
               <label class=" form-control-label"><red>*</red>Data de Nascimento</label>
-              <input type="text" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars(switchDate($cliente[0]->data_nascimento))?>" class="form-control data" required>
+              <input type="text" id="data_nascimento" name="data_nascimento" placeholder="00/00/0000"value="<?= htmlspecialchars(switchDate($cliente[0]->data_nascimento))?>" class="form-control data" required>
             </div> <!-- DATA DE NASCIMENTO -->
             <div class="form-group col-12 col-md-6">
               <label class=" form-control-label"><red>*</red>Sexo</label><br>
@@ -27,11 +27,11 @@
             </div> <!-- FIM SEXO -->
             <div class="form-group col-12 col-md-6">
               <label class=" form-control-label"><red>*</red>CPF</label>
-              <input type="text" id="cpf" name="cpf" value="<?= htmlspecialchars($cliente[0]->numero_documento)?>" class="form-control cpf"  >
+              <input type="text" id="cpf" name="cpf" placeholder="C.P.F."value="<?= htmlspecialchars($cliente[0]->numero_documento)?>" class="form-control cpf"  >
             </div> <!-- FIM CPF -->
             <div class="form-group col-12 col-md-6">
               <label class=" form-control-label"><red>*</red>Telefone</label>
-              <input type="text" id="telefone" name="tel" value="<?= htmlspecialchars($cliente[0]->telefone)?>" class="form-control alter_mask" >
+              <input type="text" id="telefone" name="tel" placeholder="Telefone" value="<?= htmlspecialchars($cliente[0]->telefone)?>" class="form-control alter_mask" >
             </div> <!-- FIM TELEFONE -->
 
             <!-- INÍCIO ENDEREÇO -->
@@ -42,12 +42,12 @@
             <div class="form-group col-12 col-md-6">
 
               <label for="estado"><red>*</red>Estado</label>
-              <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $cliente[0]->estado; ?>">
+              <input type="text" name="estado" id="estado" class="form-control" placeholder="Estado" value="<?php echo $cliente[0]->estado; ?>">
             </div>
             <div class="form-group col-12 col-md-6">
 
               <label for="cidade"><red>*</red>Cidade</label>
-              <input type="text" name="cidade" id="cidade" class="form-control" value="<?php echo $cliente[0]->cidade;?>">
+              <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Cidade" value="<?php echo $cliente[0]->cidade;?>">
 
             </div>
             <div class="form-group col-12 col-md-6">
