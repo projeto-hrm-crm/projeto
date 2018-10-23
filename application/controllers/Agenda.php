@@ -125,6 +125,20 @@ class Agenda extends CI_Controller
             } else {
                 $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
             }
+
+            if ($this->input->post('id_usuario')) {
+                $this->evento->deleteEventUser($this->input->post('id'));
+
+                for ($i = 0; $i < count($this->input->post('id_usuario')); $i++) {
+                    $evento[$i] = array(
+                        'evento_id'  => $this->input->post('id'),
+                        'id_usuario' => $this->input->post('id_usuario')[$i],
+                    );
+                    $this->evento->insereUsuario($evento[$i]);
+                }
+
+            }
+
             redirect('agenda');
 
         } else {

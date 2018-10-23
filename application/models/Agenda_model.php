@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Agenda_model extends CI_Model
 {
+
     public function __construct(){
         parent::__construct();
     }
@@ -102,10 +103,21 @@ class Agenda_model extends CI_Model
     *
     * @param: $evento_usuario mixed
     */
+    public function deleteEventUser($event_id)
+    {
+        $this->db->where('evento_id', $event_id);
+        $this->db->delete('evento_usuario');
+    }
+
+    /**
+    * @author: Rafael Pigozzi
+    * Insere dados na tabela relacional entre evento e usuario: evento_usuario
+    *
+    * @param: $evento_usuario mixed
+    */
     public function insereUsuario($evento_usuario)
     {
         $usuario = $this->usuario->getByName($evento_usuario['id_usuario']);
-
         $this->db->insert('evento_usuario', $evento_usuario);
 
     }
@@ -113,7 +125,7 @@ class Agenda_model extends CI_Model
     /**
     * @author: Rafael Pigozzi
     *
-    * @param: 
+    * @param:
     */
     public function getEventUsers($event_id)
     {
