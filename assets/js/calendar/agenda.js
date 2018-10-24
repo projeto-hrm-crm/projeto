@@ -38,7 +38,7 @@
 
                 $('#visualizar').modal('show');
                 getUsers(event.id);
-                return false;
+
             },
             selectable: true,
             selectHelper: true, // DESTACA A HORA SELECIONADA.
@@ -95,18 +95,30 @@
         let selectize = $select[0].selectize;
 
         let getUsers = (id) => {
+
+            $('.compartilhado_com').html("");
+
             $.ajax({
                 url: BASE_URL + "events/getUsers/" + id,
                 data: 'JSON',
                 success: (value) => {
                     var users = JSON.parse(value)
-                    users = Object.keys(users).map((key) => { return users[key].id_usuario})
+                    var shared_with = Object.assign({}, users);
+                    users = Object.keys(users).map((key) => { return users[key].id_usuario })
                     selectize.setValue(users)
+
+                    for(user in shared_with) {
+                        $('.compartilhado_com').append(
+                            `<div class="">${shared_with[user].nome}</div>`
+                        );
+                    }
+
                 },
                 error: (error) => {
 
                 }
             });
+
         }
 
     });

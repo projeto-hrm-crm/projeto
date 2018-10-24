@@ -60,6 +60,10 @@
                             <label class="ml-2 mr-2"><strong>às:</strong></label>
                             <label id="endHour"></label>
                         </div>
+                        <div class="form-group col-12">
+                            <label class="col-12"><strong>Compartilhado com</strong></label>
+                            <div class="col-12 compartilhado_com"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer bg-white">
@@ -139,7 +143,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="button" class="btn btn-danger edit-btn">
+                        <button type="button" name="button" class="btn btn-danger edit-btn"  onclick="$('#visualizar').modal('close');">
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">
