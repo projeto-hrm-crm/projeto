@@ -800,6 +800,97 @@ $config = array(
             'rules' => 'required'
         ),
     ),
+    'config' => array(
+        array(
+            'field' => 'nome_empresa',
+            'label' => 'Nome da empresa',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'nome_fantasia',
+            'label' => 'Nome fantasia',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'dominio',
+            'label' => 'Domínio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'cnpj',
+            'label' => 'cnpj',
+            'rules' => 'required|validCNPJ',
+            'errors' => array(
+                'validCNPJ' => 'O campo {field} deve conter um número válido',
+            ),
+        ),
+        array(
+            'field' => 'moeda',
+            'label' => 'Moeda',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'idioma',
+            'label' => 'Idioma',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'fuso_horario',
+            'label' => 'Fuso horário',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'sigla',
+            'label' => 'Sigla',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'numero_funcionarios',
+            'label' => 'Número aproximado de funcionários',
+            'rules' => 'required|numeric',
+        ),
+        array(
+            'field' => 'classificacao',
+            'label' => 'Classificação',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'cep',
+            'label' => 'CEP',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'logradouro',
+            'label' => 'logradouro',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'numero',
+            'label' => 'numero',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'bairro',
+            'label' => 'bairro',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'cidade',
+            'label' => 'cidade',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'estado',
+            'label' => 'bairro',
+            'rules' => 'required',
+        ),
+        array(
+            'field' => 'país',
+            'label' => 'bairro',
+            'rules' => 'required',
+        ),
+
+    )
 );
 
 /**
