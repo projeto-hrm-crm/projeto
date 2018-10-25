@@ -113,6 +113,17 @@
                         );
                     }
 
+
+                    if (!$.isEmptyObject(shared_with)){
+                        $(".label_compartilhado").show();
+                        if (Object.keys(shared_with).length > 10)
+                            $(".compartilhado_com").addClass("has_shared_users").css("height", 150);
+                        else
+                            $(".compartilhado_com").css("height",(Object.keys(shared_with).length * 25));
+                    }else{
+                        $(".label_compartilhado").hide();
+                        $(".compartilhado_com").removeClass("has_shared_users").css("height", 0);
+                    }
                 },
                 error: (error) => {
 

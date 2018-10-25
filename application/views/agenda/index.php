@@ -61,7 +61,7 @@
                             <label id="endHour"></label>
                         </div>
                         <div class="form-group col-12">
-                            <label class="col-12"><strong>Compartilhado com</strong></label>
+                            <label class="col-12 label_compartilhado"><strong>Compartilhado com</strong></label>
                             <div class="col-12 compartilhado_com"></div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <input id="id" name="id" type="hidden" class="form-control" required>
-                            <div class="form-group col-12">
+                            <div class="form-group col-12 compartilhar">
                                 <label class="col-12 control-label float-left">Compartilhar com</label>
                                 <div class="col-12">
                                     <select id="usuarios" class="calendar_users" name="id_usuario[]" multiple>
@@ -143,6 +143,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-warning compartilhar">
+                                Compartilhar
+                            </button>
+                        </div>
                         <button type="button" name="button" class="btn btn-danger edit-btn"  onclick="$('#visualizar').modal('close');">
                             Cancelar
                         </button>

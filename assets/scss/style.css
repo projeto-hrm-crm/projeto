@@ -2266,6 +2266,10 @@ label.error {
     display: none;
 }
 
+.has_shared_users{
+    overflow-y: scroll;
+}
+
 /* fim Agenda */
 
 /*# sourceMappingURL=style.css.map */
