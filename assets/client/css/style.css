@@ -28,3 +28,8 @@ body {
 p {
    line-height: 100%;
 }
+
+.nav-link {
+   text-transform: uppercase;
+   color: #222
+}
