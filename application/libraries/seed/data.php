@@ -5,34 +5,50 @@ $seeds = array(
       array(
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Financeiro'
+            'Financeiro',
+            'FIN',
+            'Cuida do dindim'
           ),
         ),
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Contabilidade'
+            'Contabilidade',
+            'CONT',
+            'Não setor que não gosta de balanço'
           ),
         ),
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Regursos Humanos'
+            'Regursos Humanos',
+            'RH',
+            'Cuida das pessoinhas da empresa<3'
           ),
         ),
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Prestação de contas'
+            'Prestação de contas',
+            'PDC',
+            'Responsavel pela prestação de contas'
           ),
         )
       )
@@ -3073,6 +3089,84 @@ $seeds = array(
           'values' => array(
             'CSS',
             '8'
+          ),
+        ),
+      )
+    ),
+  ),
+  'almoxarifado' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Cadeira',
+            'cadeira estofada reclinável',
+            '100,00',
+            '123',
+            '2018-04-21',
+            '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Pena caligrafica',
+            'Pena de pavão azul originario da asia',
+            '200,00',
+            '1',
+            '2018-08-21',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Tinta para pena',
+            'Tinta feita da seiva de uma árvore rara, que nasce apenas no coração da floresta amazonica',
+            '500,00',
+            '34',
+            '2018-08-21',
+            '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Fita de seda',
+            'Fita da seda tecida pelos bichinhos de seda mais fofinhos da china',
+            '1.500,00',
+            '11',
+            '2018-08-21',
+            '5'
           ),
         ),
       )
