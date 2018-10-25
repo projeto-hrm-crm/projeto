@@ -19,6 +19,16 @@ class Cliente extends CI_Controller
     $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
     $this->usuario->hasPermission($access_group, $currentUrl);
   }
+   
+   /**
+  * @author Rodrigo
+  * tela novo cliente
+  **/
+  public function new()
+  {
+    $data['title'] = 'Novo Cliente';
+     loadTemplate('cadastro_cliente/header', 'cadastro_cliente/index', 'cadastro_cliente/footer', $data);
+  }
 
   /**
   * @author Camila Sales
