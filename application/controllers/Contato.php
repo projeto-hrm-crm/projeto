@@ -19,9 +19,7 @@ class Contato extends CI_Controller
     $data['title'] = 'Contatos';
     $data['assets'] = [
       'js' => [
-         'chartjs.min.js',
-         'cliente/home-charts.js',
-         'cliente/home-sac.js'
+         'list.min.js',
       ]
     ];
     loadTemplate(
