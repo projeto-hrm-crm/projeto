@@ -12,7 +12,6 @@
             editable: true,
             eventLimit: true,
             eventClick: function(event) {
-
                 $('.ocultar-btn').show();
                 $('.ocultar-btn-delete').show();
 
@@ -91,6 +90,10 @@
             $('#compartilhar').removeAttr('hidden');
         });
 
+        $('.shared_edit').on('click', function(){
+            $('#shared_edit').removeAttr('hidden');
+        });
+
         let $select = $('.calendar_users').selectize({})
         let selectize = $select[0].selectize;
 
@@ -113,14 +116,16 @@
                         );
                     }
 
-
                     if (!$.isEmptyObject(shared_with)){
                         $(".label_compartilhado").show();
+                        $('#shared_edit').removeAttr('hidden');
+
                         if (Object.keys(shared_with).length > 10)
                             $(".compartilhado_com").addClass("has_shared_users").css("height", 150);
                         else
                             $(".compartilhado_com").css("height",(Object.keys(shared_with).length * 25));
-                    }else{
+
+                    }else {
                         $(".label_compartilhado").hide();
                         $(".compartilhado_com").removeClass("has_shared_users").css("height", 0);
                     }

@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <input id="id" name="id" type="hidden" class="form-control" required>
-                            <div class="form-group col-12 compartilhar">
+                            <div id="shared_edit" class="form-group col-12 shared_edit" hidden>
                                 <label class="col-12 control-label float-left">Compartilhar com</label>
                                 <div class="col-12">
                                     <select id="usuarios" class="calendar_users" name="id_usuario[]" multiple>
@@ -142,18 +142,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-warning compartilhar">
-                                Compartilhar
-                            </button>
+                    <div class="card-footer bg-white">
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="button" class="btn btn-warning shared_edit">
+                                    Compartilhar
+                                </button>
+                            </div>
+                            <div class="col-8 text-right">
+                                <button type="button" name="button" class="btn btn-danger edit-btn">
+                                    Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Salver alterações
+                                </button>
+                            </div>
                         </div>
-                        <button type="button" name="button" class="btn btn-danger edit-btn"  onclick="$('#visualizar').modal('close');">
-                            Cancelar
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            Salver alterações
-                        </button>
                     </div>
                 </form>
             </div>
