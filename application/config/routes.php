@@ -216,4 +216,3 @@ $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
 
 //Rota Contato
 $route['contato'] = 'Contato';
-$route['contato'] = 'Contato/index';

@@ -5,23 +5,22 @@ class Contato extends CI_Controller
 {
   public function __construct()
   {
-      parent::__construct('contato');
+    parent::__construct('contato');
+
   }
 
   public function index()
 	{
     $user_id = $this->session->userdata('user_login');
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
-    $data['fornecedor'] = $this->getFornecedorData($user_id);
-    $data['cliente'] = $this->getCustomerData($user_id);
-    //$data['candidato'] = $this->getCandidatoData($user_id);
-
+  
     $data['title'] = 'Contatos';
     $data['assets'] = [
       'js' => [
          'list.min.js',
       ]
     ];
+
     loadTemplate(
         'includes/header',
         'contato/index',
@@ -29,7 +28,7 @@ class Contato extends CI_Controller
         $data
       );
   }
-  private function getCustomerData($user_id)
+  private function getCandidato()
   {
     $data = [];
     $data['produtos']     = $this->produto->get();
@@ -39,25 +38,15 @@ class Contato extends CI_Controller
     return $data;
   }
 
-
-
-  public function getFornecedorData($user_id)
+  public function getProviderData($user_id)
   {
     $data = [];
     //
+    $data['nome'] = $this->fornecedor->
     $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
     $data['last_sac']  = $this->sac->getLastSacFornecedorLogado($user_id);
 
     return $data;
   }
 
-  /*public function getCandidatoData($user_id)
-  {
-    $data = [];
-    //
-    $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
-    $data['etapa']  = $this->sac->getLastSacFornecedorLogado($user_id);
-
-    return $data;
-  }*/
 }
