@@ -32,6 +32,11 @@ class Config_model extends CI_model
 
     public function create($data)
     {
+        $data = json_decode($data); 
+        
+        if (is_null($data))
+            return "Nenhuma informação inserida"; 
+        
         
     }
 }
