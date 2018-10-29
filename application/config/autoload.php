@@ -179,4 +179,5 @@ $autoload['model'] = array(
                     'Agenda_model'               => 'evento',
                     'Almoxarifado_model'         => 'almoxarifado',
                     'UnidadeMedida_model'        => 'unidadeMedida',
+                    'Config_model'               => 'configuration'
 );
