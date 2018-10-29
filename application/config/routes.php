@@ -143,8 +143,6 @@ $route['cliente/cadastrar']         = 'Cliente/create';
 $route['cliente/editar/(:num)']     = 'Cliente/edit/$1';
 $route['cliente/excluir/(:num)']    = 'Cliente/delete/$1';
 
-$route['cliente/novo']       = 'Cliente/new';
-
 //Rotas candidato
 $route['candidato'] = 'Candidato';
 $route['candidato/cadastrar'] = 'Candidato/create';
@@ -189,6 +187,9 @@ $route['perfil/editar']             = 'Perfil/edit';
 $route['perfil/alterar-senha']      = 'Perfil/changePassword';
 $route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
 $route['perfil/alterar-imagem']     = 'Perfil/profileImage';
+
+//Rota de Configuração Novo Cliente
+$route['configuracao/novo']       = 'Config/new';
 
 //Ajax calls
 $route['cliente/chart']               = 'Cliente/getChartData';

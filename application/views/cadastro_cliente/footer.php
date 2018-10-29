@@ -4,4 +4,8 @@
    <script src="<?php echo base_url();?>assets/client/js/bootstrap.bundle.min.js"></script>
    <script src="<?php echo base_url();?>assets/client/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+        
+    </script>
+
 </html>
