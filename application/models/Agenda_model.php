@@ -15,7 +15,7 @@ class Agenda_model extends CI_Model
         $results = $this->db->distinct()
             ->select('id, criado_por, titulo, inicio, fim, cor')
             ->from('evento')
-            ->join('evento_usuario', 'evento_usuario.evento_id = evento.id', 'left')
+            ->join('evento_usuario', 'evento_usuario.id_evento = evento.id', 'left')
             ->where('criado_por', $this->session->userdata('user_login'))
             ->or_where('id_usuario', $this->session->userdata('user_login'))
             ->get()
@@ -105,7 +105,7 @@ class Agenda_model extends CI_Model
     */
     public function deleteEventUser($event_id)
     {
-        $this->db->where('evento_id', $event_id);
+        $this->db->where('id_evento', $event_id);
         $this->db->delete('evento_usuario');
     }
 
@@ -133,10 +133,10 @@ class Agenda_model extends CI_Model
 
         $this->db->select('evento_usuario.id_usuario, pessoa.nome')
                  ->from('evento')
-                 ->join('evento_usuario', 'evento.id = evento_usuario.evento_id')
+                 ->join('evento_usuario', 'evento.id = evento_usuario.id_evento')
                  ->join('usuario', 'evento_usuario.id_usuario = usuario.id_usuario')
                  ->join('pessoa', 'usuario.id_pessoa = pessoa.id_pessoa')
-                 ->where('evento_usuario.evento_id', $event_id);
+                 ->where('evento_usuario.id_evento', $event_id);
         $result = $this->db->get();
 
         if ($result->num_rows() > 0) {
