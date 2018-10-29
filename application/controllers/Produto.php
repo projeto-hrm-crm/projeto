@@ -136,6 +136,7 @@ class Produto extends CI_Controller
             $array = array(
               'id_fornecedor' => $this->input->post('id_fornecedor'),
               'nome'          => $this->input->post('nome'),
+              'descricao' => $this->input->post('descricao'),
               'codigo'        => $this->input->post('codigo'),
               'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
               'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
@@ -241,6 +242,7 @@ class Produto extends CI_Controller
            'id_produto'    => $id,
            'id_fornecedor' => $this->input->post('id_fornecedor'),
            'nome'          => $this->input->post('nome'),
+           'descricao' => $this->input->post('descricao'),
            'codigo'        => $this->input->post('codigo'),
            'fabricacao'    => date('Y-m-d',strtotime(str_replace('/','-',$this->input->post('fabricacao')))),
            'validade'      => date('Y-m-d', strtotime(str_replace('/','-',$this->input->post('validade')))),
