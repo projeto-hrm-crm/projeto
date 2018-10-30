@@ -3172,4 +3172,113 @@ $seeds = array(
       )
     ),
   ),
+
+  'cargo_funcionario' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '1',
+            '5',
+            '1',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '2',
+            '4',
+            '2',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '3',
+            '3',
+            '2',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '4',
+            '2',
+            '3',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '5',
+            '1',
+            '4',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+      )
+    ),
+  ),
+
+
 );
