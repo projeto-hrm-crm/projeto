@@ -68,54 +68,28 @@
                   </div>
                  <div class="tab-pane fade" id="pills-modulo" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <p class="margin30 text-center">Vamos Começar a Configuração do Lambda! Aqui Você Escolher os Módulos que Irão Compor o Sistema!</p>
-                    <div class="row">
-                        <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                           <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                       <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                          <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                       <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                          <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                      <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                          <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                       <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                           <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                       <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                          <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                       <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                          <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                      <div class="col-lg-3 text-center margin20">
-                           <i class="far fa-id-card fa-3x margin10"></i>
-                          <p><b>CLIENTES</b> <br>  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo et justo fringilla mollis nec a elit. Morbi rhoncus augue elit</small> </p>
-                          
-                       </div>
-                  </div>
+                    <div class="row" id="modulos">
+                                               
+                    </div>
                    <div class="text-right">
                      <button class="btn btn-primary">Próximo Passo</button>
                     </div>
                   </div>
                  <div class="tab-pane fade" id="pills-empresa" role="tabpanel" aria-labelledby="pills-contact-tab">
                      <p class="text-center">Suba uma Imagem, preenchas os dados regionais e finalidade de uso do sistema.
+
+                        <div class="input-field">
+                            <label>Moeda</label>
+                            <select name="moeda" class="form-control">
+                                <option>Selecione uma moeda</option>
+                            </select>
+                        </div>
+                     
+                       <div class="input-field">
+                            <label for="exampleFormControlFile1">Example file input</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>                    
+                         
                      <div class="text-right">
                         <button class="btn btn-primary">Próximo Passo</button>
                     </div>

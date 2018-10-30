@@ -5,7 +5,19 @@
    <script src="<?php echo base_url();?>assets/client/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-        
+        $.ajax({
+            method: "GET",
+            url: "../config",
+            success : function(data){                
+                data = jQuery.parseJSON(data)               
+                var itens = ""
+                var n = data['sub_modulos'].length
+                for (var i = 0; i < n; i++){
+                    itens += "<div class='col-lg-3 text-center margin20'> <i class='"+data['sub_modulos'][i]['icone']+" fa-3x margin10'></i> <p><b>"+data['sub_modulos'][i]['nome']+"</b> <br> <small>"+data['sub_modulos'][i]['descricao']+"</small> </p> <div class='form-group form-check'><input type='checkbox' name='sub_modulos[]' value='"+data['sub_modulos'][i]['id_sub_modulo']+"' id='sub_modulos"+data['sub_modulos'][i]['id_sub_modulo']+"' class='form-check-input'> <label for='sub_modulos"+data['sub_modulos'][i]['id_sub_modulo']+"'  class='form-check-label'>QUERO ESTE</label></div> </div>"
+                }                
+                $("#modulos").html(itens)                
+            }
+        })
     </script>
 
 </html>
