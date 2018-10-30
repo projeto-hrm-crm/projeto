@@ -181,6 +181,7 @@ $route['processo_seletivo/cadastrar'] = 'Processo_Seletivo/create';
 $route['processo_seletivo/info/(:num)'] = 'Processo_Seletivo/info/$1';
 $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
+$route['Home/getEtapasProcesso/(:num)'] = 'Home/getEtapasProcesso/$1';
 
 //Rotas Perfil
 $route['perfil']                    = 'Perfil/index';
@@ -213,3 +214,5 @@ $route['remanejamento'] = 'Remanejamento/index';
 $route['remanejamento/cadastrar'] = 'Remanejamento/create';
 $route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
 $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
+
+

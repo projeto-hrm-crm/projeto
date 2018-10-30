@@ -27,7 +27,8 @@
 	                    	<td><?php echo $ps->data_inicio; ?></td>
 	                    	<td><?php echo $ps->data_fim; ?></td>
 	                    	<td class="text-center">
-	                    		<a title="Informação" class="btn btn-warning" data-toggle="modal" data-target="#modalinfo">
+	                    		<a title="Informação"
+	                    				class="btn btn-warning procuraEtapa" data-toggle="modal" data-target="#modalinfo" onclick="getEtapas(<?php echo $ps->id_processo_seletivo;?>)">
                                 	<span class="fa fa-clipboard"></span>
                                 </a>
 	                    	</td>
@@ -41,7 +42,7 @@
 
 
 	<div class="modal fade" id="modalinfo" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Informações do Processo Seletivo</h5>
@@ -54,17 +55,20 @@
 
 			<thead>
 				<tr>
-					<th class="text-center">Descrição da etapa</th>
-					
+					<th class="text-center">Etapa</th>
+					<th class="text-center">código do processo</th>
+					<th class="text-center">Descrição da etapa</th>					
 				</tr>
 			</thead>
 
 			<tbody>
 				<!-- mudar esse get para ser o get referente ao processo selecionado -->
-				<?php if(isset($candidato['processo_seletivo'])): ?>
-					<?php foreach($candidato['processo_seletivo'] as $ps): ?>
+				<?php if(isset($candidato['etapas'])): ?>
+					<?php foreach($candidato['etapas'] as $ps): ?>
 						<tr>
-	                    	<td><?php echo $ps->data_inicio; ?></td>
+							<td><?php echo $ps->etapa_nome; ?></td>
+							<td><?php echo $ps->codigo; ?></td>
+							<td><?php echo $ps->descricao_etapa; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>

@@ -54,7 +54,9 @@ class Home extends CI_Controller
       'js' => [
          'chartjs.min.js',
          'cliente/home-charts.js',
-         'cliente/home-sac.js'
+         'cliente/home-sac.js',
+         'processo_seletivo/etapa.js'
+
       ]
     ];
 
@@ -125,11 +127,17 @@ class Home extends CI_Controller
   public function getCandidatoHomeConfigs($user_id)
   {
     $data = [];
-    //$id = // metodo para identificar um processo seletivo
+
     $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
-    // data com as informações do processo que ia para o modal //$data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($id);
+   // $data['etapas']=$this->etapa->getEtapasProcesso();
     return $data;
 
+  }
+
+
+  public function getEtapasProcesso($id_processo){
+    $data = [];
+    echo json_encode($this->etapa->getEtapasProcesso($id_processo));
   }
 
 }
