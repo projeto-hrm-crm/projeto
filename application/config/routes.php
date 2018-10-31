@@ -206,6 +206,7 @@ $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
 $route['notifications/count']         = 'Usuario/getCount';
 $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
+$route['events/getUsers/(:num)']      = 'Agenda/getEventUsers/$1';
 
 $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 

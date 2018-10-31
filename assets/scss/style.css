@@ -2254,6 +2254,10 @@ label.error {
 
 /* Agenda */
 
+#shared_edit {
+  display: none;
+}
+
 .visualizar{
     display: block;
 }
@@ -2264,6 +2268,10 @@ label.error {
 
 .excluir {
     display: none;
+}
+
+.has_shared_users{
+    overflow-y: scroll;
 }
 
 /* fim Agenda */
