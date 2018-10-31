@@ -19,10 +19,10 @@
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title"><?=$sac[0]->titulo;?></strong><br>
-                    
+
                 </div>
                 <div class="card-body">
-                  
+
                     <?=$sac[0]->descricao;?><br>
                     <br>
                     <table  class="table table-striped table-bordered datatable">
@@ -37,7 +37,7 @@
                                     <tr>
 
                                         <td>
-                                            
+
                                             <?php echo $item->mensagem;?>
                                             <br>
                                             <br>
@@ -47,16 +47,20 @@
                                             <br>
                                             <small>Respondido: <?php echo switchDate(substr($item->data, 0, 10))." as ".substr($item->data, 10, 10);?></small>
                                         </td>
-                                        
+
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </tbody>
                     </table>
+                    <a title="Cancelar" href="<?=site_url('sac')?>" class="btn btn-danger btn-sm">
+                      <i class="fa fa-times"></i>
+                        Cancelar
+                    </a>
                     <a title="Cadastrar SAC" href="<?= site_url('sac/mensagem/'.$sac[0]->id_sac)?>" class="btn btn-primary btn-sm">
                         <i class="fa fa-check"></i> Responder
                     </a>
-                  
+
                 </div>
         </div>
     </div>
