@@ -25,10 +25,13 @@
                             
                            
 
-                            <div class="form-group col-12">
+                           <div class="form-group col-md-12">
               <label class=" form-control-label"><red>*</red>Descrição</label>
-              <textarea auto-resize placeholder="Descrição do produto" id="descricao" name="descricao" class="form-control" required></textarea>
-            </div>
+                <textarea placeholder="Descrição do produto" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : $produto->descricao;?></textarea>
+                <span class="invalid-feedback">
+	                <?php echo isset($errors['descricao']) ? $errors['descricao'] : '' ; ?>
+	              </span>
+              </div>
                             
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="codigo" class="control-label mb-1"><red>*</red>Código</label>
