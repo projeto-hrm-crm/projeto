@@ -71,7 +71,7 @@ class Etapa_model extends CI_Model
   public function getProcessoSeletivoEtapa($user_id)
   {
     try {
-      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas, vaga.requisitos ')
+      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas, vaga.requisitos, ')
       ->from('etapa')
       ->join('processo_seletivo', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
       ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
@@ -89,5 +89,23 @@ class Etapa_model extends CI_Model
       }
     } catch (\Exception $e) {}
   }
-
+  
+  
+  public function getEtapasProcesso($id_processo)
+  {
+    try {
+      $query = $this->db->select('processo_seletivo.codigo, etapa.nome as etapa_nome, etapa.descricao as descricao_etapa')
+      ->from('etapa')
+      ->join('processo_seletivo', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+      ->where('etapa.id_processo_seletivo', $id_processo)
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    }
+    catch (\Exception $e) {}
+  }
 }

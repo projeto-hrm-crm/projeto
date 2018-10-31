@@ -189,6 +189,7 @@ $route['processo_seletivo/info/(:num)'] = 'Processo_Seletivo/info/$1';
 $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
+
 //Rotas Perfil
 $route['perfil']                    = 'Perfil/index';
 $route['perfil/editar']             = 'Perfil/edit';
@@ -206,11 +207,13 @@ $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
 $route['notifications/count']         = 'Usuario/getCount';
 $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
+
 $route['events/getUsers/(:num)']      = 'Agenda/getEventUsers/$1';
 
-$route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 
+$route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 $route['events']					  = 'agenda/get';
+$route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
@@ -221,3 +224,5 @@ $route['remanejamento'] = 'Remanejamento/index';
 $route['remanejamento/cadastrar'] = 'Remanejamento/create';
 $route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
 $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
+
+
