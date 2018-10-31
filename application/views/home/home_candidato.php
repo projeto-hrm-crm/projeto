@@ -61,17 +61,7 @@
 				</tr>
 			</thead>
 
-			<tbody>
-				<!-- mudar esse get para ser o get referente ao processo selecionado -->
-				<?php if(isset($candidato['etapas'])): ?>
-					<?php foreach($candidato['etapas'] as $ps): ?>
-						<tr>
-							<td><?php echo $ps->etapa_nome; ?></td>
-							<td><?php echo $ps->codigo; ?></td>
-							<td><?php echo $ps->descricao_etapa; ?></td>
-						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
+			<tbody class="listarEtapas">
 				
 			</tbody>
 		</table>

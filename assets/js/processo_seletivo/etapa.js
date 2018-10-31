@@ -2,16 +2,27 @@ jQuery().ready(function($){
 
 
 	getEtapas = function(id_etapa) {
-
-		if (!id_etapa)
-			return;
-			 
+		
+		 
 		$.ajax({
-	            url: BASE_URL + "/Home/getEtapasProcesso/" + id_etapa,
+	            url: BASE_URL + "/etapas/visualizar/" + id_etapa,
 	            data: 'JSON',
 	            success: (value) => {
-	                var value = JSON.parse(value);
-	                loadCalendar(value);
+	                var etapas = JSON.parse(value);
+	                
+	                $(".listarEtapas").html("");
+	                
+	                for(var etapa in etapas) {
+	                	$('.listarEtapas').append(
+	                		`
+	                		<tr>
+		                		<td> ${etapas[etapa].codigo} </td>
+		                		<td> ${etapas[etapa].etapa_nome} </td>
+		                		<td> ${etapas[etapa].descricao_etapa} </td>
+	                		</tr>
+	                		`
+	                	)
+	                }
 	            },
 	            error: (error) => {
 

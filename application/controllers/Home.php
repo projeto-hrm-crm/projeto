@@ -129,7 +129,6 @@ class Home extends CI_Controller
     $data = [];
 
     $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
-   // $data['etapas']=$this->etapa->getEtapasProcesso();
     return $data;
 
   }
