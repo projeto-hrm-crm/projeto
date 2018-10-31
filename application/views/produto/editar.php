@@ -8,39 +8,40 @@
                 <div class="card-body">
                     <div class="card-body">
 
-                    <div class="row">
-                        <div class="col-lg-6">                    
-                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">                    
-                        </div>
+                        <div class="row">                        
 
                             <div class="form-group col-lg-6 col-sm-12">
-                              <label for="nome" class="control-label mb-1"><red>*</red>Nome do Produto</label>
+                            <label for="nome" class="control-label mb-1"><red>*</red>Nome do Produto</label>
                             <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                             <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
-                         
-                            
-                            <!--imagem-->
-                        <div class="form-group col-md-6 col-sm-12">
-                            <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
-                            <input type="file" name="arquivo">
-                        </div>
-                        <!-- imagem-->
+                            </div>
 
-                            <div class="form-group col-lg-6 col-sm-12">
-                                <label for="lote" class="control-label mb-1"><red>*</red>Lote</label>
-                                <input name="lote" id="lote"  placeholder="Número do Lote"  value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : $produto->lote;?>" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Lote inválido.</span>
-                            </div>
-                            <div class="form-group col-lg-6 col-sm-12">
-                                <label for="codigo" class="control-label mb-1"><red>*</red>Código</label>
-                                <input name="codigo" placeholder="Código do produto" id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : $produto->codigo;?>" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
-                            </div>
+
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="valor_produto" class="control-label mb-1"><red>*</red>Valor</label>
                                 <input id="valor_produto" placeholder="Valor unitário do produto" name="valor" data-thousands="." data-decimal="," value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : $produto->valor;?>" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Valor inválido.</span>
                             </div>
+                            
+                           
+
+                            <div class="form-group col-12">
+              <label class=" form-control-label"><red>*</red>Descrição</label>
+              <textarea auto-resize placeholder="Descrição do produto" id="descricao" name="descricao" class="form-control" required></textarea>
+            </div>
+                            
+                            <div class="form-group col-lg-6 col-sm-12">
+                                <label for="codigo" class="control-label mb-1"><red>*</red>Código</label>
+                                <input name="codigo" placeholder="Código do produto" id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : $produto->codigo;?>" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
+                            </div>
+                            
+                            <div class="form-group col-lg-6 col-sm-12">
+                                <label for="lote" class="control-label mb-1"><red>*</red>Lote</label>
+                                <input name="lote" id="lote"  placeholder="Número do Lote"  value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : $produto->lote;?>" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Lote inválido.</span>
+                            </div>
+
                             <div class="form-group col-lg-6 col-sm-12">
                                 <label for="fabricacao" class="control-label mb-1"><red>*</red>Data de Fabricação</label>
                                 <input name="fabricacao" placeholder="00/00/0000" id="fabricacao" value="<?php echo isset($old_data['fabricacao']) ? $old_data['fabricacao'] : $produto->fabricacao;?>" type="text" class="form-control data <?php echo isset($errors['fabricacao']) ? 'is-invalid' : '' ?>" required>
@@ -74,8 +75,19 @@
                                 <input type="file" name="arquivo">
                             </div>
                             imagem-->
-                            
-                            </div>
+
+                        <!--imagem-->
+                        <div class="form-group col-md-12 col-sm-12">
+                        <div class="col-lg-6">                    
+                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">                    
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-12">
+                            <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
+                            <input type="file" name="arquivo">
+                        </div>
+                        </div>
+                        <!-- imagem-->
 
 
                         </div>

@@ -15,7 +15,7 @@ class Produto_model extends CI_Model
     */
     public function get(){
         try{
-            $query = $this->db->select('id_produto, nome, codigo, fabricacao, validade, lote, recebimento, valor, razao_social')
+            $query = $this->db->select('id_produto, nome, descricao, codigo, fabricacao, validade, lote, recebimento, valor, razao_social')
             ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
             ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')
             ->get('produto');
@@ -53,10 +53,10 @@ class Produto_model extends CI_Model
         $this->db->where('id_produto', $array['id_produto']);
         $this->db->set('id_fornecedor', $array['id_fornecedor']);
         $this->db->set('nome', $array['nome']);
+        $this->db->set('descricao', $array['descricao']);
         $this->db->set('codigo', $array['codigo']);
         $this->db->set('fabricacao', $array['fabricacao']);
         $this->db->set('validade', $array['validade']);
-
         $this->db->set('lote', $array['lote']);
         $this->db->set('imagem', $array['imagem']);
         $this->db->set('valor', $array['valor']);
@@ -182,7 +182,7 @@ class Produto_model extends CI_Model
 
     public function getFornecedorLogado($user_id)
     {
-      $query = $this->db->select('id_produto, produto.nome, codigo, fabricacao, validade, lote, recebimento, valor, imagem, razao_social')
+      $query = $this->db->select('id_produto, produto.nome, descricao, codigo, fabricacao, validade, lote, recebimento, valor, imagem, razao_social')
         ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
         ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')   
         ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')

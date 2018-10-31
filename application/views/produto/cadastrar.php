@@ -26,21 +26,32 @@
                                 <input id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do produto" name="nome" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
                             </div>
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label for="lote" class="control-label mb-1"><red>*</red>Lote</label>
-                                <input id="lote" value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : null;?>"  placeholder="Número do Lote" name="lote" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Lote inválido.</span>
-                            </div>
-                            <div class="form-group col-md-6 col-sm-12">
-                                <label for="codigo" class="control-label mb-1"><red>*</red>Código</label>
-                                <input id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : null;?>" placeholder="Código do produto" name="codigo" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
-                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
-                            </div>
+
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="valor_produto" class="control-label mb-1"><red>*</red>Valor</label>
                                 <input id="valor_produto" data-thousands="." data-decimal="," value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : null;?>" placeholder="Valor unitário do produto" name="valor" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Valor inválido.</span>
                             </div>
+
+                            
+
+<div class="form-group col-12">
+              <label class=" form-control-label"><red>*</red>Descrição</label>
+              <textarea auto-resize placeholder="Descrição do produto" id="descricao" name="descricao" class="form-control" required></textarea>
+            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="codigo" class="control-label mb-1"><red>*</red>Código</label>
+                                <input id="codigo" value="<?php echo isset($old_data['codigo']) ? $old_data['codigo'] : null;?>" placeholder="Código do produto" name="codigo" type="text" class="form-control <?php echo isset($errors['codigo']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Código inválido, digite somente números.</span>
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="lote" class="control-label mb-1"><red>*</red>Lote</label>
+                                <input id="lote" value="<?php echo isset($old_data['lote']) ? $old_data['lote'] : null;?>"  placeholder="Número do Lote" name="lote" type="text" class="form-control <?php echo isset($errors['lote']) ? 'is-invalid' : '' ?>" required>
+                                <span class="invalid-feedback">Lote inválido.</span>
+                            </div>
+                            
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="fabricacao" class="control-label mb-1"><red>*</red>Data de Fabricação</label>
                                 <input id="fabricacao" value="<?php echo isset($old_data['fabricacao']) ?  $old_data['fabricacao'] : null;?>" placeholder="00/00/0000" name="fabricacao" type="text" class="form-control data <?php echo isset($errors['fabricacao']) ? 'is-invalid' : '' ?>" required>
