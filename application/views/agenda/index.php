@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <input id="id" name="id" type="hidden" class="form-control" required>
-                            <div id="shared_edit" class="form-group col-12 shared_edit" hidden>
+                            <div id="shared_edit" class="form-group col-12 shared_edit">
                                 <label class="col-12 control-label float-left">Compartilhar com</label>
                                 <div class="col-12">
                                     <select id="usuarios" class="calendar_users" name="id_usuario[]" multiple>

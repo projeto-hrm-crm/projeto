@@ -2254,6 +2254,10 @@ label.error {
 
 /* Agenda */
 
+#shared_edit {
+  display: none;
+}
+
 .visualizar{
     display: block;
 }

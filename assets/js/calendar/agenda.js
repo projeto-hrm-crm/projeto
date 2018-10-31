@@ -35,6 +35,7 @@
                     $('.ocultar-btn-delete').hide();
                 }
 
+            
                 $('#visualizar').modal('show');
                 getUsers(event.id);
 
@@ -91,8 +92,15 @@
         });
 
         $('.shared_edit').on('click', function(){
-            $('#shared_edit').removeAttr('hidden');
+            $('#shared_edit').show();
         });
+
+        $('#visualizar').on('hidden.bs.modal', function () {
+            $(".visualizar").show();
+            $(".editar").hide();
+            $(".excluir").hide();
+            $('#shared_edit').hide();
+        })
 
         let $select = $('.calendar_users').selectize({})
         let selectize = $select[0].selectize;
@@ -118,7 +126,7 @@
 
                     if (!$.isEmptyObject(shared_with)){
                         $(".label_compartilhado").show();
-                        $('#shared_edit').removeAttr('hidden');
+                        $('#shared_edit').show();
 
                         if (Object.keys(shared_with).length > 10)
                             $(".compartilhado_com").addClass("has_shared_users").css("height", 150);
@@ -128,6 +136,7 @@
                     }else {
                         $(".label_compartilhado").hide();
                         $(".compartilhado_com").removeClass("has_shared_users").css("height", 0);
+                        $("#shared_edit").hide();
                     }
                 },
                 error: (error) => {
