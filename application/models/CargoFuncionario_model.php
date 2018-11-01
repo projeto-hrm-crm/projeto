@@ -31,6 +31,36 @@ class CargoFuncionario_model extends CI_Model
 
     }
 
+    /**
+    * @author: Camila Sales
+    * Retorna  os de registro de cargo_funcionario referente ao id_funcionario passado por parametro
+    *
+    * @param integer $id_cargo_funcionario refere-se ao id do registro de cargo_funcionario a ser editado
+    * @return boolean: True - caso editado com sucesso, False - não editado
+    */
+    public function getAll($id_funcionario){
+        
+        $cargo_funcionario =  $this->db->select(
+           'cargo_funcionario.id_cargo_funcionario,
+            funcionario.id_funcionario,
+            pessoa.nome AS pessoa,
+            setor.nome AS setor, setor.id_setor,
+            cargo.id_cargo, cargo.nome'
+        )->from('cargo_funcionario')
+        ->join('funcionario', 'cargo_funcionario.id_funcionario = funcionario.id_funcionario')
+        ->join('pessoa', 'funcionario.id_pessoa = pessoa.id_pessoa')
+        ->join('cargo', 'cargo_funcionario.id_cargo = cargo.id_cargo')
+        ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
+        ->where('cargo_funcionario.id_funcionario',$id_funcionario)
+        ->get();
+    
+        if ($cargo_funcionario) {
+            return $cargo_funcionario->result();
+        }
+        return null;
+
+    }
+
     public function getById($id){
         
         $cargo_funcionario =  $this->db->select(
