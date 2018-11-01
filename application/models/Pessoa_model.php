@@ -31,18 +31,16 @@ class Pessoa_model extends CI_Model {
 
 		$this->db->select(
 			'pessoa.id_pessoa, pessoa.nome, pessoa.email,
-			endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco, endereco.complemento,
-			cidade.id_cidade, cidade.nome AS cidade,
+			endereco.cep, endereco.bairro, endereco.logradouro, endereco.numero AS numero_endereco, endereco.complemento, endereco.cidade,
 			documento.tipo AS tipo_documento, documento.numero AS numero_documento,
 			telefone.numero AS telefone,
-			estado.id_estado, estado.nome AS estado'
+			endereco.estado'
 		);
 
 		$this->db->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa');
-		$this->db->join('cidade',    'endereco.id_cidade = cidade.id_cidade');
 		$this->db->join('documento', 'pessoa.id_pessoa = documento.id_pessoa');
 		$this->db->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa');
-		$this->db->join('estado',    'cidade.id_estado = estado.id_estado');
+
 
 		return $this->db->get('pessoa')->result();
 	}
@@ -87,18 +85,18 @@ class Pessoa_model extends CI_Model {
 		}
 		return $id;
 	}
-   
+
     /**
-    * @author: Rodrigo 
+    * @author: Rodrigo
 	* Atualiza o imagem
 	*/
     public function findImage($id_pessoa)	{
 		$curriculum = $this->db->select("imagem")->from("pessoa")->where('id_pessoa', $id_pessoa)->get();
 		return $curriculum->result();
 	}
-   
+
    /**
-	* @author: Rodrigo 
+	* @author: Rodrigo
 	* Verifica se já existe um imagem cadastrado
 	*/
     public function imageUpdate($data)	{

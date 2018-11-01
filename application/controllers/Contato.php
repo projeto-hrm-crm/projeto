@@ -6,18 +6,16 @@ class Contato extends CI_Controller
   public function __construct()
   {
     parent::__construct('contato');
-
   }
 
   public function index()
 	{
-    $user_id = $this->session->userdata('user_login');
-    $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
-  
+    $data = $this->getDadosGerais();
     $data['title'] = 'Contatos';
     $data['assets'] = [
       'js' => [
          'list.min.js',
+         'contato/contato.js',
       ]
     ];
 
@@ -28,25 +26,23 @@ class Contato extends CI_Controller
         $data
       );
   }
-  private function getCandidato()
-  {
+
+  public function getDadosGerais(){
+
     $data = [];
-    $data['produtos']     = $this->produto->get();
-    $data['calls']        = $this->sac->getCustomerCalls($user_id);
-    $data['orders']       = $this->pedido->getCustomerTotalOrders($user_id);
-    $data['last_sac']     = $this->sac->getCustomerSac($user_id);
+    $data['telefones'] = $this->telefone->get();
+    $data['pessoas'] = $this->pessoa->get();
+    $data['clientes'] = $this->cliente->get();
+    $data['fornecedores'] = $this->fornecedor->get();
+    $data['funcionarios'] = $this->funcionario->get();
+    $data['candidatos'] = $this->candidato->get();
+    $data['telefone'] = $this->telefone->get();
     return $data;
   }
 
-  public function getProviderData($user_id)
-  {
+  public function getDataCustomer(){
     $data = [];
-    //
-    $data['nome'] = $this->fornecedor->
-    $data['produtos']  = $this->produto->countProdutosFornecedorLogado($user_id);
-    $data['last_sac']  = $this->sac->getLastSacFornecedorLogado($user_id);
 
     return $data;
   }
-
 }
