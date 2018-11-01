@@ -105,6 +105,13 @@ class Remanejamento extends CI_Controller
     
     loadTemplate('includes/header', 'remanejamento/editar', 'includes/footer', $data);
   }
+
+
+  public static function getAll($id_funcionario){
+    $data['funcionario_cargos'] = $this->cargo_funcionario->getAll($id_funcionario);
+    loadTemplate('includes/header', 'remanejamento/info', 'includes/footer', $data);
+
+  }
   
   /**
   * @author Camila Sales
