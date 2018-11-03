@@ -5,7 +5,7 @@
 * Controller de pedido_almoxarifado
 **/
 
-class PedidoAlmoxarifado extends PR_Controller {
+class PedidoAlmoxarifado extends CI_Controller {
   /**
    * @author Rodrigo
    *
@@ -22,14 +22,19 @@ class PedidoAlmoxarifado extends PR_Controller {
    * Metodo index que chama a view inicial de pedido_almoxarifado
   */
   public function index() {
-     
-    $this->setTitle('Solicitações Almoxarifado');
 
-    $this->addData('pedidos_almoxarifado', $this->pedido_almoxarifado->get());
+    // $this->setTitle('Solicitações Almoxarifado');
+    //
+    // $this->addData('pedidos_almoxarifado', $this->pedido_almoxarifado->get());
+    //
+    // $this->loadIndexDefaultScripts();
+    //
+    // $this->loadView('index');
 
-    $this->loadIndexDefaultScripts();
+    $dados['title'] = 'Pedido Almoxarifado';
+    $dados['pedidos_almoxarifado'] = $this->pedido_almoxarifado->get();
 
-    $this->loadView('index');
+    loadTemplate('includes/header', 'pedido_almoxarifado/index', 'includes/footer', $dados);
 
   }
 
@@ -50,12 +55,12 @@ class PedidoAlmoxarifado extends PR_Controller {
     {
         if($this->form_validation->run('pedido_almoxarifado'))
         {
-           
+
             $user_id = $this->session->userdata('user_login');
             $data['pessoa'] = $this->usuario->getUserNameById($user_id);
             // Pegar informações de cliente
             $id_pessoa = $data['pessoa'][0]->id_pessoa;
-           
+
             $this->pedido_almoxarifado->insert([
                 'id_almoxarifado'   => $this->input->post('id_almoxarifado'),
                 'quantidade'        => $this->input->post('quantidade'),
@@ -64,23 +69,22 @@ class PedidoAlmoxarifado extends PR_Controller {
                 'id_requerente'     => $id_pessoa,
                 'status'            => 0]);
             $this->redirectSuccess('Solicitação Cadastrada Com Sucesso!');
-           
+
         }
         else{
             $this->redirectError('cadastrar');
         }
     }else{
-        $this->setTitle('Cadastrar Solicitação Almoxarifado');
-        $this->addData('unidades', $this->unidadeMedida->get());
-        $this->addData('setores', $this->setor->get());
-        $this->addData('almoxarifados', $this->almoxarifado->get());
-        $this->loadFormDefaultScripts();
+      $dados['title'] = 'Cadastrar Solicitação Almoxarifado';
+      $dados['unidades'] = $this->unidadeMedida->get();
+      $dados['setores'] = $this->setor->get();
+      $dados['almoxarifados'] = $this->almoxarifado->get();
 
-        $this->loadView('cadastrar');
+      loadTemplate('includes/header', 'pedido_almoxarifado/cadastrar', 'includes/footer', $dados);
     }
 
   }
-   
+
    public function changeStatus($id, $status) {
       $user_id = $this->session->userdata('user_login');
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
@@ -96,19 +100,19 @@ class PedidoAlmoxarifado extends PR_Controller {
          redirect('pedido_almoxarifado');
       }
    }
-   
+
    public function information ($id) {
-     
+
     $this->setTitle('Informação da Solicitação');
 
-    $pedido = $this->pedido_almoxarifado->find($id);   
-      
+    $pedido = $this->pedido_almoxarifado->find($id);
+
     $this->addData('pedido', $pedido);
     $pessoa1 = $this->pessoa->getById($pedido[0]->id_requerente);
     $this->addData('requerente', $pessoa1);
-      
+
     $pessoa2 = $this->pessoa->getById($pedido[0]->id_requerido);
-      
+
     $this->addData('requerido', $pessoa2);
 
     $this->loadIndexDefaultScripts();
