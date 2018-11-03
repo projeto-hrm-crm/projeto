@@ -1,14 +1,14 @@
 jQuery(document).ready(function($) {
 
   var options = {
-    valueNames: [ 'fornecedores', 'funcionarios', 'clientes', 'candidatos', 'todos']
+    valueNames: [ 'name', 'description', 'category' ]
   };
 
-  var featureList = new List('contatos-lambda', options);
+  var featureList = new List('contatos', options);
 
-  $('#filtro-todos').click(function() {
+  $('#filter-cliente').click(function() {
     featureList.filter(function(item) {
-      if (item.values().category == "Todos") {
+      if (item.values().category == "Cliente") {
         return true;
       } else {
         return false;
@@ -17,9 +17,9 @@ jQuery(document).ready(function($) {
     return false;
   });
 
-  $('#filtro-clientes').click(function() {
+  $('#filter-fornecedor').click(function() {
     featureList.filter(function(item) {
-      if (item.values().category == "Clientes") {
+      if (item.values().category == "Fornecedor") {
         return true;
       } else {
         return false;
@@ -27,9 +27,9 @@ jQuery(document).ready(function($) {
     });
     return false;
   });
-  $('#filtro-funcionarios').click(function() {
+  $('#filter-candidato').click(function() {
     featureList.filter(function(item) {
-      if (item.values().category == "Funcionarios") {
+      if (item.values().category == "Candidato") {
         return true;
       } else {
         return false;
@@ -37,9 +37,9 @@ jQuery(document).ready(function($) {
     });
     return false;
   });
-  $('#filtro-candidatos').click(function() {
+  $('#filter-funcionario').click(function() {
     featureList.filter(function(item) {
-      if (item.values().category == "Candidatos") {
+      if (item.values().category == "Funcionario") {
         return true;
       } else {
         return false;
@@ -47,16 +47,7 @@ jQuery(document).ready(function($) {
     });
     return false;
   });
-  $('#filtro-fornecedoress').click(function() {
-    featureList.filter(function(item) {
-      if (item.values().category == "Fornecedores") {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    return false;
-  });
+
   $('#filter-none').click(function() {
     featureList.filter();
     return false;

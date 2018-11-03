@@ -9,40 +9,33 @@ class Contato extends CI_Controller
   }
 
   public function index()
-	{
+  {
     $data = $this->getDadosGerais();
     $data['title'] = 'Contatos';
     $data['assets'] = [
       'js' => [
-         'list.min.js',
-         'contato/contato.js',
+        'list.min.js',
+        'contato/contato.js',
       ]
     ];
 
     loadTemplate(
-        'includes/header',
-        'contato/index',
-        'includes/footer',
-        $data
-      );
+      'includes/header',
+      'contato/index',
+      'includes/footer',
+      $data
+    );
   }
 
-  public function getDadosGerais(){
-
+  public function getDadosGerais()
+  {
     $data = [];
-    $data['telefones'] = $this->telefone->get();
     $data['pessoas'] = $this->pessoa->get();
-    $data['clientes'] = $this->cliente->get();
-    $data['fornecedores'] = $this->fornecedor->get();
-    $data['funcionarios'] = $this->funcionario->get();
-    $data['candidatos'] = $this->candidato->get();
-    $data['telefone'] = $this->telefone->get();
+    $data['clientes'] = $this->cliente->getDadosCliente();
+    $data['fornecedores'] = $this->fornecedor->getDadosFornecedor();
+    $data['funcionarios'] = $this->funcionario->getDadosFuncionario();
+    $data['candidatos'] = $this->candidato->getDadosCandidato();
     return $data;
   }
 
-  public function getDataCustomer(){
-    $data = [];
-
-    return $data;
-  }
 }
