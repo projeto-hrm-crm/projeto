@@ -20,10 +20,12 @@
 
     <div id="contatos">
       <div class="card text-center">
-        <h2>Contatos</h2>
+        <div class="card-title justify-content-center">
+          <h5>Contatos</h5>
+        </div>
         <ul class="sort-by">
-          <li class="sort btn" data-sort="name">Organizar por Nome</li>
-          <li class="sort btn" data-sort="category">Organizar por Categoria</li>
+          <button type="button" class="sort btn-outline-dark rounded" data-sort="name">Organizar por Nome</button>
+          <button type="button" class="sort btn-outline-dark rounded" data-sort="category">Organizar por Categoria</button>
         </ul>
         <ul class="filter">
           <button type="button" class="btn-outline-dark rounded" id="filter-none">Todos</button>
@@ -33,19 +35,18 @@
           <button type="button" class="btn-outline-dark rounded" id="filter-funcionario">Funcionario</button>
         </ul>
       </div>
-      <ul class="list">
+
+      <div class="list row justify-content-center align-items-center">
         <?php foreach ($funcionarios as $funcionario) : ?>
-          <div class="description">
-            <div class="col-3">
-              <div class="card border-light mb-3">
-                <div class="card-title justify-content-center">
-                  <div class="col-lg-12 text-align">
-                    <img class="card-img-top" src="<?= base_url()."uploads/profileImage/".$funcionario->imagem;?> " alt="<?= $funcionario->nome; ?>" title="<?= $funcionario->nome; ?>">
-                  </div>
+          <div class="card rounded col-lg-5 mx-1 description">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-5">
+                  <img class="card-img rounded" src="<?= base_url()."uploads/profileImage/".$funcionario->imagem;?> ">
+                </div>
+                <div class="col-7">
                   <h5 class="text-center name"><?= $funcionario->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $funcionario->email; ?></p>
-                </div>
-                <div class="card-body">
                   <p class="card-subtitle mb-2 text-muted text-center small">Idade: <? $date = new DateTime($funcionario->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
@@ -56,21 +57,19 @@
               </div>
             </div>
           </div>
-
         <?php endforeach; ?>
 
         <?php foreach ($clientes as $cliente) : ?>
-          <div class="description">
-            <div class="col-3">
-              <div class="card border-light mb-3">
-                <div class="card-title justify-content-center ">
-                  <div class="col-lg-12 text-align">
-                    <img class="card-img-top" src="<?= base_url()."uploads/profileImage/".$cliente->imagem;?> " alt="<?= $cliente->nome; ?>" title="<?= $cliente->nome; ?>">
-                  </div>
+
+          <div class="card rounded col-lg-5 mx-1 description">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-5">
+                  <img class="card-img rounded" src="<?= base_url()."uploads/profileImage/".$cliente->imagem;?> ">
+                </div>
+                <div class="col-lg-7">
                   <h5 class="text-center name"><?= $cliente->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $cliente->email; ?></p>
-                </div>
-                <div class="card-body">
                   <p class="card-subtitle mb-2 text-muted text-center small">Idade: <? $date = new DateTime($cliente->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
@@ -85,17 +84,15 @@
         <?php endforeach; ?>
 
         <?php foreach ($candidatos as $candidato) : ?>
-          <div class="description">
-            <div class="col-3">
-              <div class="card border-light mb-3">
-                <div class="card-title justify-content-center ">
-                  <div class="col-lg-12 text-align">
-                    <img class="card-img-top" src="<?= base_url()."uploads/profileImage/".$candidato->imagem;?> " alt="<?= $candidato->nome; ?>" title="<?= $candidato->nome; ?>">
-                  </div>
+          <div class="card rounded col-lg-5 mx-1 description">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-5">
+                  <img class="card-img rounded" src="<?= base_url()."uploads/profileImage/".$candidato->imagem;?> ">
+                </div>
+                <div class="col-lg-7">
                   <h5 class="text-center name"><?= $candidato->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $candidato->email; ?></p>
-                </div>
-                <div class="card-body">
                   <p class="card-subtitle mb-2 text-muted text-center small">Idade: <? $date = new DateTime($candidato->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
@@ -106,29 +103,25 @@
               </div>
             </div>
           </div>
-
         <?php endforeach; ?>
 
         <?php foreach ($fornecedores as $fornecedor) : ?>
-          <div class="description">
-            <h4><span </span></h4>
-              <div class="col-3">
-                <div class="card border-light mb-3">
-                  <div class="col-12">
-                    <h4 class="card-title text-center"><?= $fornecedor->razao_social; ?></h4>
-                    <p class="card-subtitle mb-2 text-muted text-center small name">Responsável: <?= $fornecedor->nome; ?></p>
-                    <p class="card-subtitle mb-2 text-muted text-center small"><?= $fornecedor->email; ?></p>
-                    <p class="card-subtitle mb-2 text-muted text-center small"><?= $fornecedor->cidade; ?>-<?= $fornecedor->estado; ?></p>
-                    <p class="card-subtitle mb-2 text-muted text-center small"><?= $fornecedor->telefone; ?></p>
-                    <p class="card-subtitle mb-2 text-muted text-center small category">Fornecedor</p>
-                  </div>
+          <div class="card rounded col-lg-4 mx-3 description">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h4 class="card-title text-center name"><?= $fornecedor->razao_social; ?></h4>
+                  <p class="card-subtitle mb-2 text-muted text-center small">Responsável: <?= $fornecedor->nome; ?></p>
+                  <p class="card-subtitle mb-2 text-muted text-center small"><?= $fornecedor->email; ?></p>
+                  <p class="card-subtitle mb-2 text-muted text-center small"><?= $fornecedor->cidade; ?>-<?= $fornecedor->estado; ?></p>
+                  <p class="card-subtitle mb-2 text-muted text-center small"><?= $fornecedor->telefone; ?></p>
+                  <p class="card-subtitle mb-2 text-muted text-center small category">Fornecedor</p>
                 </div>
               </div>
             </div>
-          <?php endforeach; ?>
-
-        </div>
+          </div>
+        <?php endforeach; ?>
       </div>
     </div>
-
-  </div> <!-- end of #container -->
+  </div>
+</div>
