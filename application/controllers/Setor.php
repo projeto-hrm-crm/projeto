@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Setor extends PR_Controller
+class Setor extends CI_Controller
 {
 
     function __construct()
@@ -16,12 +16,10 @@ class Setor extends PR_Controller
     */
     public function index()
     {
-        $this->setTitle('Setores');
-        $this->addData('setores', $this->setor->get());
+        $data['title'] = 'Setores';
+        $data['setores'] = $this->setor->get();
 
-        $this->loadIndexDefaultScripts();
-
-        $this->loadView('index');
+        loadTemplate('includes/header', 'setor/index', 'includes/footer', $data);
     }
 
     /**
@@ -37,20 +35,21 @@ class Setor extends PR_Controller
             {
                 $this->setor->insert($this->getFromPost());
 
-                $this->redirectSuccess('Setor cadastrado com sucesso!');
+                $this->session->set_flashdata('success','Setor cadastrado com sucesso!');
+                redirect('setor');
             }
             else
             {
-                $this->redirectError('cadastrar');
+              $this->session->set_flashdata('errors', $this->form_validation->error_array());
+              $this->session->set_flashdata('old_data', $this->input->post());
+              redirect('setor/cadastrar');
             }
         }
         else
         {
-            $this->setTitle('Cadastrar Setor');
+            $data['title'] = 'Cadastrar Setor';
 
-            $this->loadFormDefaultScripts();
-
-            $this->loadView('cadastrar');
+            loadTemplate('includes/header', 'setor/cadastrar', 'includes/footer', $data);
 
         }
 
@@ -70,24 +69,25 @@ class Setor extends PR_Controller
             if($this->form_validation->run('setor'))
             {
                 $this->setor->update($this->getFromPostEdit($id_setor));
-                $this->redirectSuccess('Setor atualizado com sucesso!');
+                $this->session->set_flashdata('success','Setor atualizado com sucesso!');
+                redirect('setor');
             }
             else
             {
-                $this->redirectError('editar/'.$id_setor);
+              $this->session->set_flashdata('errors', $this->form_validation->error_array());
+              $this->session->set_flashdata('old_data', $this->input->post());
+              redirect('setor/editar/'.$id);
             }
 
         }
         else
         {
-            $this->setTitle('Editar Setor');
+            $data['title'] = 'Editar Setor';
 
-            $this->addData('setor',    $this->setor->getById($id_setor));
-            $this->addData('id_setor', $id_setor);
+            $data['setor'] = $this->setor->getById($id_setor);
+            $data['id_setor'] = $id_setor;
 
-            $this->loadFormDefaultScripts();
-
-            $this->loadView('editar');
+            loadTemplate('includes/header', 'setor/editar', 'includes/footer', $data);
         }
 
     }
@@ -99,16 +99,23 @@ class Setor extends PR_Controller
     *@param integer: referen-se ao id do setor a ser alterado
     */
     public function delete($id_setor)
-{
-
-  if(!$setor){
-     $this->setor->remove($id_setor);
-     $this->session->set_flashdata('success','Setor removido com sucesso!');
-  }else{
-    $this->session->set_flashdata('danger','Não foi possivel Realizar esta operação, Existem cargos cadastrados no Setor!');
-  }
-  redirect('setor');
-}
+    {
+      /*
+      $setor = $this->setor->getById($id_setor);
+      if(!$setor){
+         $this->setor->remove($id_setor);
+         $this->session->set_flashdata('success','Setor removido com sucesso!');
+      }else{
+        $this->session->set_flashdata('danger','Não foi possivel realizar esta operação, existem cargos cadastrados no Setor!');
+      }
+      redirect('setor');
+      */
+      $this->andamento->remove($id_pedido);
+      $this->pedido->removeProducts($id_pedido);
+      $this->pedido->remove($id_pedido);
+      $this->session->set_flashdata('success','Setor excluído com sucesso!');
+      redirect('setor');
+    }
 
 
     /**
