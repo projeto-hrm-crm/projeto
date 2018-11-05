@@ -36,7 +36,7 @@ class Remanejamento extends CI_Controller
         'confirm.modal.js',
       ),
     );
-    
+
     loadTemplate('includes/header', 'remanejamento/index', 'includes/footer', $data);
   }
   /**
@@ -44,11 +44,11 @@ class Remanejamento extends CI_Controller
   * Realiza o cadastro de um sugestao, dados recebidos da view remanejamento/cadastro.php
   */
   public function create() {
-    
+
     $data = $this->input->post();
-    
+
     if($data) {
-      
+
       if($this->form_validation->run('remanejamento')) {
         $data['criado'] = date("Y-m-d H:i:s");
         $data['atualizado'] = date("Y-m-d H:i:s");
@@ -61,19 +61,19 @@ class Remanejamento extends CI_Controller
         $this->session->set_flashdata('danger', 'Não foi possivel cadastrar');
         redirect('remanejamento/cadastrar');
       }
-      
+
     }else {
-      $data['title'] = 'Remanejamento';             
-      $data['cargos'] = $this->cargo->get();             
-      $data['setores'] = $this->setor->get();             
-      $data['funcionarios'] = $this->funcionario->get();             
+      $data['title'] = 'Remanejamento';
+      $data['cargos'] = $this->cargo->get();
+      $data['setores'] = $this->setor->get();
+      $data['funcionarios'] = $this->funcionario->get();
       loadTemplate('includes/header', 'remanejamento/cadastrar', 'includes/footer', $data);
-      
+
     }
-    
+
   }
-  
-  
+
+
   /**
   * @author Camila Sales
   * Metodo edit, apresenta o formulario de edição, com os dados do func_cargo a ser editado,
@@ -91,18 +91,18 @@ class Remanejamento extends CI_Controller
       $data['atualizado'] = date("Y-m-d H:i:s");
 
       $this->cargo_funcionario->update($id_func_cargo,$data);
-      
+
       $this->session->set_flashdata('success', 'Remanejamento atualizado com sucesso!');
-      
+
       redirect('remanejamento');
     }
-    $data['cargos']         = $this->cargo->get();             
-    $data['setores']        = $this->setor->get();             
-    $data['funcionarios']   = $this->funcionario->get();  
+    $data['cargos']         = $this->cargo->get();
+    $data['setores']        = $this->setor->get();
+    $data['funcionarios']   = $this->funcionario->get();
     $data['remanejamento']  = $this->cargo_funcionario->getById($id_func_cargo);
     $data['title']          = 'Editar Remanejamento';
     $data['id']             = $id_func_cargo;
-    
+
     loadTemplate('includes/header', 'remanejamento/editar', 'includes/footer', $data);
   }
 
@@ -112,7 +112,7 @@ class Remanejamento extends CI_Controller
     loadTemplate('includes/header', 'remanejamento/info', 'includes/footer', $data);
 
   }
-  
+
   /**
   * @author Camila Sales
   * Metodo delete, chama a funçao delete de func_cargo_model, passando o id do func_cargo
@@ -128,11 +128,16 @@ class Remanejamento extends CI_Controller
       $data['status'] = 0;
 
       $this->cargo_funcionario->update($id_func_cargo,$data);
-      $this->session->set_flashdata('success', 'Remanejamneto desativado com sucesso!');
+      $this->session->set_flashdata('success', 'Remanejamento desativado com sucesso!');
     }else {
       $this->session->set_flashdata('danger', 'Não foi possível excluir!');
     }
+
+    $referred_from = $this->session->userdata('referred_from');
+    if(isset($referred_from))
+      redirect($referred_from, 'refresh');
+    
     redirect('remanejamento');
   }
-  
+
 }

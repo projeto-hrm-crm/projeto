@@ -102,6 +102,7 @@ $route['funcionario/avaliacoes/(:num)'] = 'Funcionario/assessments/$1';
 $route['funcionario/avaliar/(:num)'] = 'Funcionario/evaluate/$1';
 $route['funcionario/avaliacao-editar/(:num)'] = 'Funcionario/evaluate_edit/$1';
 $route['funcionario/avaliacao-info/(:num)'] = 'Funcionario/evaluate_info/$1';
+$route['funcionario/cargos/(:num)'] = 'Funcionario/cargos/$1';
 
 /** LOGIN */
 $route['login'] = 'Login/index';
@@ -224,5 +225,3 @@ $route['remanejamento'] = 'Remanejamento/index';
 $route['remanejamento/cadastrar'] = 'Remanejamento/create';
 $route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
 $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
-
-

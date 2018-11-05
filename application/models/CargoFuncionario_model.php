@@ -9,7 +9,7 @@ class CargoFuncionario_model extends CI_Model
     }
 
     public function get(){
-        
+
         $cargo_funcionario =  $this->db->select(
            'cargo_funcionario.id_cargo_funcionario,
             funcionario.id_funcionario,
@@ -23,7 +23,7 @@ class CargoFuncionario_model extends CI_Model
         ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
         ->where('cargo_funcionario.deletado is NULL')
         ->get();
-    
+
         if ($cargo_funcionario) {
             return $cargo_funcionario->result();
         }
@@ -39,7 +39,7 @@ class CargoFuncionario_model extends CI_Model
     * @return boolean: True - caso editado com sucesso, False - não editado
     */
     public function getAll($id_funcionario){
-        
+
         $cargo_funcionario =  $this->db->select(
            'cargo_funcionario.id_cargo_funcionario,
             funcionario.id_funcionario,
@@ -53,7 +53,7 @@ class CargoFuncionario_model extends CI_Model
         ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
         ->where('cargo_funcionario.id_funcionario',$id_funcionario)
         ->get();
-    
+
         if ($cargo_funcionario) {
             return $cargo_funcionario->result();
         }
@@ -62,7 +62,7 @@ class CargoFuncionario_model extends CI_Model
     }
 
     public function getById($id){
-        
+
         $cargo_funcionario =  $this->db->select(
            'cargo_funcionario.id_cargo_funcionario,
             funcionario.id_funcionario,
@@ -76,7 +76,7 @@ class CargoFuncionario_model extends CI_Model
         ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
         ->where('cargo_funcionario.id_cargo_funcionario',$id)
         ->get();
-    
+
         if ($cargo_funcionario) {
             return $cargo_funcionario->result();
         }
@@ -100,22 +100,10 @@ class CargoFuncionario_model extends CI_Model
     * Edita o registro de cargo_funcionario pelo id_cargo_funcionario referente
     *
     * @param integer $id_cargo_funcionario refere-se ao id do registro de cargo_funcionario a ser editado
-    * @return boolean: True - caso editado com sucesso, False - não editado
     */
     public function update($id_cargo_funcionario, $data)
     {
       $this->db->update('cargo_funcionario', $data, array('id_cargo_funcionario' => $id_cargo_funcionario));
-    }
-
-  
-    public function remove($id){
-        $this->db->where('id_etapa', $id);
-        $id_etapa = $this->db->delete('etapa');
-
-        if($id_etapa){
-            $this->relatorio->setLog('delete', 'Deletar','Etapa', $id_etapa, 'Deletou a etapa', $id);
-        }
-        return $id_etapa;
     }
 
     public function find($id){
