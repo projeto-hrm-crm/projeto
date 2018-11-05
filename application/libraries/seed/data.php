@@ -5,34 +5,50 @@ $seeds = array(
       array(
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Financeiro'
+            'Financeiro',
+            'FIN',
+            'Cuida do dindim'
           ),
         ),
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Contabilidade'
+            'Contabilidade',
+            'CONT',
+            'Não setor que não gosta de balanço'
           ),
         ),
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Regursos Humanos'
+            'Regursos Humanos',
+            'RH',
+            'Cuida das pessoinhas da empresa<3'
           ),
         ),
         array(
           'fields' => array(
-            'nome'
+            'nome',
+            'sigla',
+            'descricao'
           ),
           'values' => array(
-            'Prestação de contas'
+            'Prestação de contas',
+            'PDC',
+            'Responsavel pela prestação de contas'
           ),
         )
       )
@@ -2135,7 +2151,8 @@ $seeds = array(
             'lote',
             'recebimento',
             'id_fornecedor',
-            'valor'
+            'valor',
+            'descricao'
           ),
           'values' => array(
             '741',
@@ -2145,7 +2162,8 @@ $seeds = array(
             '15987x',
             '2018-01-03',
             '1',
-            '1,417.98'
+            '1,417.98',
+            'Prestação de serviço de imposto de renda'
           ),
         ),
         array(
@@ -2157,7 +2175,8 @@ $seeds = array(
             'lote',
             'recebimento',
             'id_fornecedor',
-            'valor'
+            'valor',
+            'descricao'
           ),
           'values' => array(
             '369',
@@ -2167,7 +2186,8 @@ $seeds = array(
             '15987x',
             '2018-01-01',
             '4',
-            '1.98'
+            '1.98',
+            'lapis de madeira'
           ),
         ),
         array(
@@ -2179,7 +2199,8 @@ $seeds = array(
             'lote',
             'recebimento',
             'id_fornecedor',
-            'valor'
+            'valor',
+            'descricao'
           ),
           'values' => array(
             '23494',
@@ -2189,7 +2210,8 @@ $seeds = array(
             '15987x',
             '2018-01-03',
             '4',
-            '117.98'
+            '117.98',
+            'lapiz de borracha'
           ),
         ),
         array(
@@ -2201,7 +2223,8 @@ $seeds = array(
             'lote',
             'recebimento',
             'id_fornecedor',
-            'valor'
+            'valor',
+            'descricao'
           ),
           'values' => array(
             '2336494',
@@ -2211,7 +2234,8 @@ $seeds = array(
             '152547x',
             '2018-01-03',
             '5',
-            '117.98'
+            '117.98',
+            'caderno brochura'
           ),
         ),
         array(
@@ -2223,7 +2247,8 @@ $seeds = array(
             'lote',
             'recebimento',
             'id_fornecedor',
-            'valor'
+            'valor',
+            'descricao'
           ),
           'values' => array(
             '2336494',
@@ -2233,7 +2258,8 @@ $seeds = array(
             '152547x',
             '2018-01-03',
             '3',
-            '15.98'
+            '15.98',
+            '500 folhas'
           ),
         ),
         array(
@@ -2245,7 +2271,8 @@ $seeds = array(
             'lote',
             'recebimento',
             'id_fornecedor',
-            'valor'
+            'valor',
+            'descricao'
           ),
           'values' => array(
             '233464364',
@@ -2255,7 +2282,8 @@ $seeds = array(
             '152547x',
             '2018-01-03',
             '3',
-            '15.98'
+            '15.98',
+            'colorido'
           ),
         ),
       )
@@ -2269,84 +2297,72 @@ $seeds = array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Contador',
             'Realiza a contabilidade da empresa',
-            '417.98',
-            '2'
+            '417.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Auxiliar Financeiro',
             'Auxilia nas tarefas financeiras da empresa',
-            '417.98',
-            '1'
+            '417.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Recrutador',
             'Realiza o rerutamento da empresa',
-            '317.98',
-            '3'
+            '317.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Agente Administrativo',
             'Realiza a prestação de contas da empresa',
-            '417.98',
-            '4'
+            '417.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Auxiliar de RH',
             'Realiza o controle do RH da empresa',
-            '287.98',
-            '3'
+            '287.98'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario',
-            'id_setor'
+            'salario'
           ),
           'values' => array(
             'Gerente Financeiro',
             'Realiza o controle financeiro da empresa',
-            '617.98',
-            '1'
+            '617.98'
           ),
         ),
       )
@@ -2998,4 +3014,573 @@ $seeds = array(
       )
     ),
   ),
+   'unidade_medida' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'caixa'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'unidade'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'quilo'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'grama'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'medida'
+          ),
+          'values' => array(
+            'metro'
+          ),
+        ),
+      )
+    ),
+  ),
+  'habilidade' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'RTA',
+            '8'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'JS',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'HTML',
+            '9'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'id_pessoa'
+          ),
+          'values' => array(
+            'CSS',
+            '8'
+          ),
+        ),
+      )
+    ),
+  ),
+  'almoxarifado' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Cadeira',
+            'cadeira estofada reclinável',
+            '100,00',
+            '123',
+            '2018-04-21',
+            '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Pena caligrafica',
+            'Pena de pavão azul originario da asia',
+            '200,00',
+            '1',
+            '2018-08-21',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Tinta para pena',
+            'Tinta feita da seiva de uma árvore rara, que nasce apenas no coração da floresta amazonica',
+            '500,00',
+            '34',
+            '2018-08-21',
+            '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'nome',
+            'descricao',
+            'valor',
+            'quantidade',
+            'recebimento',
+            'id_unidade_medida'
+          ),
+          'values' => array(
+            'Fita de seda',
+            'Fita da seda tecida pelos bichinhos de seda mais fofinhos da china',
+            '1.500,00',
+            '11',
+            '2018-08-21',
+            '5'
+          ),
+        ),
+      )
+    ),
+  ),
+
+  'cargo_funcionario' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '1',
+            '5',
+            '1',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '2',
+            '4',
+            '2',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '3',
+            '3',
+            '2',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '4',
+            '2',
+            '3',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_cargo',
+            'id_funcionario',
+            'id_setor',
+            'status',
+            'criado',
+            'atualizado',
+            'deletado'
+          ),
+          'values' => array(
+            '5',
+            '1',
+            '4',
+            '1',
+            '2018-10-16 10:08:31',
+            '2018-10-16 10:08:31',
+            null
+          ),
+        ),
+      )
+    ),
+  ),
+
+  'evento' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+            'titulo',
+            'inicio',
+            'fim',
+            'cor',
+            'criado_por'
+          ),
+          'values' => array(
+            'Abertura da empresa',
+            '2018-11-16 10:08:31',
+            '2018-11-16 20:08:31',
+            '#FFD700',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'titulo',
+            'inicio',
+            'fim',
+            'cor',
+            'criado_por'
+          ),
+          'values' => array(
+            'Comemoração do aniversario de um dia da empresa',
+            '2018-11-17 10:08:31',
+            '2018-11-17 20:08:31',
+            '#FF4500',
+            '4'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'titulo',
+            'inicio',
+            'fim',
+            'cor',
+            'criado_por'
+          ),
+          'values' => array(
+            'Dia das pessoinhas felizes serem felizes',
+            '2018-11-16 10:08:31',
+            '2018-11-18 20:08:31',
+            '#FFD700',
+            '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'titulo',
+            'inicio',
+            'fim',
+            'cor',
+            'criado_por'
+          ),
+          'values' => array(
+            'Dia das pessoinhas tristes serem tristes',
+            '2018-11-20 10:08:31',
+            '2018-11-20 20:08:31',
+            '#8B4513',
+            '5'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'titulo',
+            'inicio',
+            'fim',
+            'cor',
+            'criado_por'
+          ),
+          'values' => array(
+            'Dia das pessoinhas indecisas serem indecisas',
+            '2018-11-20 10:08:31',
+            '2018-11-20 20:08:31',
+            '#40E0D0',
+            '2'
+          ),
+        ),
+      )
+    ),
+  ),
+
+  'pedido_almoxarifado' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+           'id_almoxarifado',
+           'quantidade',
+           'id_setor',
+           'id_requerente',
+           'id_requerido',
+           'id_unidade_medida',
+           'data_solicitacao',
+           'data_entrega',
+           'status'
+          ),
+          'values' => array(
+            '1',
+            '12',
+            '1',
+            '1',
+            '1',
+            '1',
+            '2018-11-16 10:08:31',
+            '2018-11-16 20:08:31',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'id_almoxarifado',
+           'quantidade',
+           'id_setor',
+           'id_requerente',
+           'id_requerido',
+           'id_unidade_medida',
+           'data_solicitacao',
+           'data_entrega',
+           'status'
+          ),
+          'values' => array(
+            '2',
+            '11',
+            '2',
+            '2',
+            '2',
+            '1',
+            '2018-11-16 10:08:31',
+            '2018-11-16 20:08:31',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'id_almoxarifado',
+           'quantidade',
+           'id_setor',
+           'id_requerente',
+           'id_requerido',
+           'id_unidade_medida',
+           'data_solicitacao',
+           'data_entrega',
+           'status'
+          ),
+          'values' => array(
+            '3',
+            '12',
+            '3',
+            '3',
+            '3',
+            '3',
+            '2018-11-16 10:08:31',
+            '2018-11-16 20:08:31',
+            '3'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'id_almoxarifado',
+           'quantidade',
+           'id_setor',
+           'id_requerente',
+           'id_requerido',
+           'id_unidade_medida',
+           'data_solicitacao',
+           'data_entrega',
+           'status'
+          ),
+          'values' => array(
+            '4',
+            '12',
+            '4',
+            '4',
+            '1',
+            '1',
+            '2018-11-16 10:08:31',
+            '2018-11-16 20:08:31',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'id_almoxarifado',
+           'quantidade',
+           'id_setor',
+           'id_requerente',
+           'id_requerido',
+           'id_unidade_medida',
+           'data_solicitacao',
+           'data_entrega',
+           'status'
+          ),
+          'values' => array(
+            '2',
+            '12',
+            '4',
+            '2',
+            '1',
+            '1',
+            '2018-11-16 10:08:31',
+            '2018-11-16 20:08:31',
+            '1'
+          ),
+        ),
+      )
+    ),
+  ),
+
+  'etapa' => array(
+    'dataset' => array(
+      array(
+        array(
+          'fields' => array(
+           'nome',
+           'descricao',
+           'status',
+           'id_processo_seletivo'
+          ),
+          'values' => array(
+            'candidatura',
+            'Abertura de candidatura',
+            '1',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'nome',
+           'descricao',
+           'status',
+           'id_processo_seletivo'
+          ),
+          'values' => array(
+            'seleção',
+            'Seleção dos candidatos aptos',
+            '1',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'nome',
+           'descricao',
+           'status',
+           'id_processo_seletivo'
+          ),
+          'values' => array(
+            'convocação dos candidatos',
+            'Contratação dos candidatos',
+            '1',
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'nome',
+           'descricao',
+           'status',
+           'id_processo_seletivo'
+          ),
+          'values' => array(
+            'candidatura',
+            'Abertura de candidatura',
+            '1',
+            '2'
+          ),
+        ),
+        array(
+          'fields' => array(
+           'nome',
+           'descricao',
+           'status',
+           'id_processo_seletivo'
+          ),
+          'values' => array(
+            'seleção',
+            'Seleção dos candidatos aptos',
+            '1',
+            '2'
+          ),
+        ),
+      )
+    ),
+  ),
+
 );

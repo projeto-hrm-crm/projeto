@@ -74,6 +74,15 @@
                                                 <label class="form-control-label mt-2">Descrição</label>
                                                 <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
                                             </div>
+                                            
+                                            <div class="form-group col-12">
+                                                <label class="form-control-label">Status</label>
+                                                <input type="text" name="status_etapa[]" placeholder="status da etapa" class="form-control" value="<?php echo $etapa->status ?>" required>
+                                            </div> 
+                                            <!--  valor do status  via botão
+                                            <a title="avançar Status" name="status_etapa[]" class="btn btn-success btn-sm mt-2 mb-3 mr-2 text-white" href="javascript:statusUp()">
+                                                <i class="fa fa-arrow-right"></i>Avançar Status</a>
+                                            -->
                                             <a name="button" class="btn btn-danger btn-sm remDiv mt-2 mb-3 text-white">
                                                 <span class="fa fa-times"></span>
                                                 Excluir
@@ -90,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv" href="javascript:add_etapa()">
+                    <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv"  href="javascript:add_etapa()">
                         <i class="fa fa-check"></i> Adicionar Etapa </a>
                     </div>
                     <div class="card-footer text-right">
@@ -141,8 +150,13 @@
                 </div>
                 <div class="form-group col-12">
                     <label class="form-control-label mt-2">Descrição</label>
-                    <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
+                    <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required>
+                    </textarea>
                 </div>
+                <div class="form-group col-12">
+                    <label class="form-control-label">Status</label>
+                    <input type="text" name="status_etapa[]" auto-resize placeholder="status da etapa" class="form-control" required>
+                </div> 
                 <a name="button" class="btn btn-danger btn-sm remDiv mt-2 text-white">
                     <span class="fa fa-times"></span>
                     Excluir

@@ -51,14 +51,14 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url();?>">Lambda</a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>">Lambda</a>
       <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
+          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i>Principal</a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
@@ -99,7 +99,7 @@
           </div>
 
             <div class="dropdown for-notification">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false">
                 <i class="fa fa-bell"></i>
                 <span class="count bg-danger"></span>
               </button>
@@ -125,8 +125,7 @@
            ?>
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+          <a href="#" class="dropdown-toggle" id="user-dropdown" data-toggle="dropdown" data-status="false">
             <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
           </a>
 
@@ -166,7 +165,7 @@
   </header><!-- /header -->
   <!-- Header-->
 
-  <! -- CONTENT -->
+  <!-- CONTENT -->
   <!-- <div class="breadcrumbs">
     <div class="col-sm-4">
       <div class="page-header float-left">

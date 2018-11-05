@@ -4,18 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Setor_model extends PR_Model
 {
-    
+
     /**
     * @author: Matheus Ladislau
     * Realiza registro de setor
     *
-    * @param: mixed 
+    * @param: mixed
     */
     public function insert($setor)
     {
         $this->db->insert('setor', $setor);
 
-        $this->setLog($setor['nome']);
+        $this->setLog($setor['nome'],$setor['sigla'],$setor['descricao']);
     }
 
     /**
@@ -49,10 +49,12 @@ class Setor_model extends PR_Model
     {
         $this->db
         ->set('setor.nome', $setor['nome'])
+        ->set('setor.sigla', $setor['sigla'])
+        ->set('setor.descricao', $setor['descricao'])
         ->where('setor.id_setor', $setor['id_setor'])
         ->update('setor');
 
-        $this->setLog($setor['nome'], $setor['id_setor']);
+        $this->setLog($setor['nome'], $setor['sigla'], $setor['descricao'], $setor['id_setor']);
 
     }
 
@@ -66,13 +68,10 @@ class Setor_model extends PR_Model
     {
         $setor = $this->db->where('id_setor', $id_setor)->get('setor')->row();
 
-        $this->db
-        ->where('id_setor', $id_setor)
-        ->delete('setor');
+        $this->db->where('id_setor', $id_setor);
+        $id_produto = $this->db->delete('setor');
 
-        $this->setLog($setor->nome, $setor->id_setor);
+        $this->setLog($setor->nome, $setor->sigla, $setor->descricao, $setor->id_setor);
 
-        
     }
 }
-

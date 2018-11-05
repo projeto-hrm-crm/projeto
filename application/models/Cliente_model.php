@@ -13,8 +13,7 @@ class Cliente_model extends CI_Model {
  	try {
  		$this->db->insert('cliente', $data);
 		$id_cliente = $this->db->insert_id();
-		$logged_user = $this->session->userdata('user_login');
-
+		$logged_user = !is_null($this->session->userdata('user_login')) ? $this->session->userdata('user_login') : 1;
 
 		if($id_cliente)
 		{
@@ -23,6 +22,9 @@ class Cliente_model extends CI_Model {
 
 
 		//Gera notificação 
+
+
+
 		$this->Notification->notify(null, $logged_user, "Um novo usuário foi inserido", base_url()."cliente/editar/{$id_cliente}");
 
 
@@ -164,9 +166,12 @@ class Cliente_model extends CI_Model {
 			$this->db->select('count(*) as c')
 						   ->from('cliente as c ')
 							 ->join('pessoa as p', ' c.id_pessoa = p.id_pessoa')
-							 ->where('MONTH(p.data_criacao)', $i);
+							 ->where('MONTH(p.data_criacao)', $i)
+                             ->where('YEAR(p.data_criacao)', date('Y'));
 			$chart[] = $this->db->get()->result()[0]->c;
+
 		}
+
 
 		$data = [
 			'data' => $chart,

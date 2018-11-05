@@ -8,18 +8,18 @@
             </div>
 
                <div class="card-body">
-                  <div class="row">                     
+                  <div class="row">
 
                      <div class="col-md-12 form-group">
                         <label class=" form-control-label">Descrição</label>
                         <textarea id="descricao" name="mensagem" class="form-control descricao" placeholder="Escreva aqui sua mensagem" required></textarea>
                      </div>
-                      
+
                   </div>
                </div>
 
                <div class="card-footer text-right">
-                  <a title="Cancelar Atualização" href="<?=site_url('sac/iteracao/'.$id)?>" class="btn btn-danger btn-sm">
+                  <a title="Cancelar Atualização" href="<?=site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
                   <button title="Enviar Resposta" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#enviar">
