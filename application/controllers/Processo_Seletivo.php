@@ -183,4 +183,11 @@ class Processo_Seletivo extends CI_Controller
     }
     redirect('processo_seletivo');
   }
+
+   public function avancar($id){
+    $data = [];
+    echo json_encode($this->etapa->find($id));
+
+  }
+
 }

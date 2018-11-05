@@ -215,6 +215,8 @@ $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 $route['events']					  = 'agenda/get';
 $route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
 
+$route['status/avancar/(:num)'] 	  = 'Processo_Seletivo/avancar/$1';
+
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
 

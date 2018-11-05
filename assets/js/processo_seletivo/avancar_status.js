@@ -1,12 +1,22 @@
-function statusUp()
-{
-	var status
+jQuery().ready(function($){
 
-	$.ajax({
-        url: 'database/editar.php',
-        method: 'POST',
-        data: {'status': status,'id': id},
-        dataType: 'json'
-    });
-}
 
+	getStatus = function(status) {
+		 
+		$.ajax({
+	            url: BASE_URL + "status/avancar/" + status,
+	            data: 'JSON',
+	            success: (value) => {
+	                var status = JSON.parse(value);
+	                alert("Eu sou um alert!");
+	                $(".procuraStatus").html("");
+	
+	               
+	            },
+	            error: (error) => {
+
+	            }
+	    });
+	}
+
+});
