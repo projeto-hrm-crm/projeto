@@ -27,7 +27,8 @@ class Perfil extends CI_Controller {
        
        $data['endereco'] = $this->endereco->findAddress($id);
        
-       $curriculum = $this->candidato->findCurriculum($id_pessoa)[0]->curriculum;
+       $curriculum = $this->candidato->findCurriculum($id_pessoa);
+       $curriculum = !empty($curriculum) ? $curriculum[0]->curriculum : "";
        $data['tipoUsuario'] = $typeUser;
        
        $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
@@ -136,12 +137,13 @@ class Perfil extends CI_Controller {
       $id_pessoa = $data['pessoa'][0]->id_pessoa; 
       
        if (isset($_FILES['arquivo']))  {
-         
+        
          $arquivo    = $_FILES['arquivo'];
+         $image_name = generateImageName($arquivo['name']);
          $configuracao = array(
             'upload_path'   => './uploads/',
             'allowed_types' => 'pdf|doc|docs',
-            'file_name'     => $arquivo['name'],
+            'file_name'     => $image_name,
             'max_size'      => '999999'
          );      
           
@@ -151,7 +153,7 @@ class Perfil extends CI_Controller {
          if ($this->upload->do_upload('arquivo')){
             
             $array = array(
-              'arquivo' => $arquivo['name'],
+              'arquivo' => $image_name,
               'id_pessoa' => $id_pessoa,
             );
             
@@ -193,10 +195,11 @@ class Perfil extends CI_Controller {
        if (isset($_FILES['arquivo']))  {
          
          $arquivo    = $_FILES['arquivo'];
+         $image_name = generateImageName($arquivo['name']);
          $configuracao = array(
             'upload_path'   => './uploads/profileImage/',
-            'allowed_types' => 'jpef|jpg|png',
-            'file_name'     => $arquivo['name'],
+            'allowed_types' => 'jpeg|jpg|png',
+            'file_name'     => $image_name,
             'max_size'      => '999999'
          );      
           
@@ -205,16 +208,16 @@ class Perfil extends CI_Controller {
           
          if ($this->upload->do_upload('arquivo')){
           
-            $size = getimagesize('./uploads/profileImage/'.$arquivo["name"]);
+            $size = getimagesize('./uploads/profileImage/'.$image_name);
                         
             $largura = $size[0];
             $altura = $size[1];
             
             
             $config['image_library'] = 'gd2';
-            $config["source_image"] = './uploads/profileImage/'.$arquivo["name"];
-            $config['allowed_types'] = 'jpef|jpg|png';
-            $config['new_image'] = './uploads/profileImage/'.$arquivo['name'];
+            $config["source_image"] = './uploads/profileImage/'.$image_name;
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['new_image'] = './uploads/profileImage/'.$image_name;
             $config['create_thumb'] = false;
             $config['maintain_ratio'] = FALSE;
             
@@ -231,7 +234,7 @@ class Perfil extends CI_Controller {
             if ($this->image_lib->crop()){
 
                $array = array(
-                 'arquivo' => $arquivo['name'],
+                 'arquivo' => $image_name,
                  'id_pessoa' => $id_pessoa,
                );
 
@@ -244,14 +247,14 @@ class Perfil extends CI_Controller {
 
                $this->pessoa->imageUpdate($array);
 
-               $this->session->set_flashdata('success', 'Curriculum Enviado com Sucesso!');
+               $this->session->set_flashdata('success', 'Imagem enviada com Sucesso!');
                redirect('perfil');
             }
          }
          else{ 
             //echo $this->upload->display_errors();
             //exit;
-            $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
+            $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho e possuir a extensão jpg, jpeg ou png');
             redirect('perfil/alterar-imagem');
          }
           
