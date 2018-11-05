@@ -54,6 +54,12 @@ class Iteracao extends CI_Controller {
             $this->sac->changeStatus(0, $id);
              
             $this->iteracao->insert($array);
+
+            //Gera notificação 
+
+$this->Notification->notify(null, $user_id, "Ocorreu uma nova iteracao no SAC", base_url()."sac/iteracao/{$id}");
+
+
             $this->session->set_flashdata('success', 'Sua resposta foi cadastrada com sucesso!');
             redirect('sac/iteracao/'.$id);
 
