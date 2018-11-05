@@ -21,4 +21,15 @@ class Config extends CI_Controller
 			echo json_encode($this->config->create($this->input->post()));
 		
 	}
+    
+      
+    /**
+    * @author Rodrigo
+    * tela novo usuario
+    **/
+    public function new()
+    {
+        $data['title'] = 'Novo Cliente';
+        loadTemplate('cadastro_cliente/header', 'cadastro_cliente/index', 'cadastro_cliente/footer', $data);
+    }
 }
