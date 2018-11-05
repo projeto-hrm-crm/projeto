@@ -53,7 +53,7 @@ class Funcionario extends PR_Controller
 
         if($this->form_validation->run('funcionario')){
             $id_funcionario = $this->funcionario->insert($this->getFromPost());
-            $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
+            $this->cargo_funcionario->insert(['id_funcionario' => $id_funcionario, 'id_cargo' => $this->input->post('id_cargo'), 'id_setor' => $this->input->post('id_setor'), 'status' => 1]);
 
             $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
         }else{
@@ -62,6 +62,7 @@ class Funcionario extends PR_Controller
     }else{
         $this->setTitle('Cadastrar Funcionario');
         $this->addData('cargos', $this->cargo->get());
+        $this->addData('setores', $this->setor->get());
 
         $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
         $this->loadFormDefaultScripts();

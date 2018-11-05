@@ -103,20 +103,31 @@
                 <span class="invalid-feedback"></span>
               </div> <!-- FIM COMPLEMENTO -->
 
-
+            <div class="form-group col-md-6 col-sm-12">
+              <label for="id_setor" class="control-label mb-1"><red>*</red>Setor</label>
+              <select name="id_setor" id="id_setor" class="form-control">
+                <option value="">Selecione Setor</option>
+                  <?php foreach ($setores as $setor): ?>
+                    <option value="<?php echo $setor->id_setor ?>" <?php echo isset($old_data['id_setor']) && ($setor->id_setor == $old_data['id_setor']) ? 'selected' : '' ?>>
+                      <?php echo $setor->nome ?>
+                    </option>
+                  <?php endforeach; ?>
+              </select>
+            </div>
 
             <div class="form-group col-md-6 col-sm-12">
               <label for="id_cargo" class="control-label mb-1"><red>*</red>Cargo</label>
               <select name="id_cargo" id="id_cargo" class="form-control">
-                  <option value="">Selecione Cargo</option>
+                <option value="">Selecione Cargo</option>
                   <?php foreach ($cargos as $cargo): ?>
                     <option value="<?php echo $cargo->id_cargo ?>" <?php echo isset($old_data['id_cargo']) && ($cargo->id_cargo == $old_data['id_cargo']) ? 'selected' : '' ?>>
                       <?php echo $cargo->nome ?>
                     </option>
                   <?php endforeach; ?>
-                </select>
-          </div>
+              </select>
             </div>
+
+          </div>
 
           </div>
           <div class="card-footer text-right">
