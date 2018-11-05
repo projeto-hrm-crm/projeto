@@ -47,7 +47,8 @@
                 <div class="col-7">
                   <h5 class="text-center name"><?= $funcionario->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $funcionario->email; ?></p>
-                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: <? $date = new DateTime($funcionario->data_nascimento);
+                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: 
+                  <?php $date = new DateTime($funcionario->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $funcionario->cidade; ?>-<?= $funcionario->estado; ?></p>
@@ -70,7 +71,7 @@
                 <div class="col-lg-7">
                   <h5 class="text-center name"><?= $cliente->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $cliente->email; ?></p>
-                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: <? $date = new DateTime($cliente->data_nascimento);
+                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: <?php $date = new DateTime($cliente->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $cliente->cidade; ?>-<?= $cliente->estado; ?></p>
@@ -93,7 +94,7 @@
                 <div class="col-lg-7">
                   <h5 class="text-center name"><?= $candidato->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $candidato->email; ?></p>
-                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: <? $date = new DateTime($candidato->data_nascimento);
+                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: <?php $date = new DateTime($candidato->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $candidato->cidade; ?>-<?= $candidato->estado; ?></p>
