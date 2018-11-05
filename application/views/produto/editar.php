@@ -8,7 +8,17 @@
                 <div class="card-body">
                     <div class="card-body">
 
-                        <div class="row">                        
+                        <div class="row">  
+
+                        <!--imagem-->
+                        <div class="form-group col-md-12 col-sm-12">
+                        <div class="col-lg-6">                    
+                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">                  
+                            <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
+                            <input type="file" name="arquivo">
+                        </div>
+                        </div>
+                        <!-- imagem-->                      
 
                             <div class="form-group col-lg-6 col-sm-12">
                             <label for="nome" class="control-label mb-1"><red>*</red>Nome do Produto</label>
@@ -79,18 +89,7 @@
                             </div>
                             imagem-->
 
-                        <!--imagem-->
-                        <div class="form-group col-md-12 col-sm-12">
-                        <div class="col-lg-6">                    
-                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">                    
-                        </div>
-
-                        <div class="form-group col-md-6 col-sm-12">
-                            <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
-                            <input type="file" name="arquivo">
-                        </div>
-                        </div>
-                        <!-- imagem-->
+                        
 
 
                         </div>
