@@ -41,10 +41,6 @@
                                 </span>
                             </div>
 
-                            <div class="form-group col-12">
-                                <label class=" form-control-label"><red>*</red>Descrição</label>
-                                <textarea auto-resize placeholder="Descrição do produto" id="descricao" name="descricao" class="form-control" required></textarea>
-                            </div>
 
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="codigo" class="control-label mb-1"><red>*</red>Código</label>
