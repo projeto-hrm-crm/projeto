@@ -37,9 +37,12 @@ class Iteracao extends CI_Controller {
       $typeUser = $this->usuario->getUserAccessGroup($user_id);
       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
       $id_pessoa = $data['pessoa'][0]->id_pessoa; 
-      
+      $id_cliente = $this->sac->getById($id)[0]->id_cliente;
+      $id_pessoa_logada = $this->pessoa->getIdPessoaByIdUsuario($user_id);
+      $id_pessoas_envolvidas = $this->sac->getPessoasEnvolvidas($id);
        
       $data = $this->input->post();
+
 
       if($data){
 
@@ -57,7 +60,11 @@ class Iteracao extends CI_Controller {
 
             //Gera notificação 
 
-$this->Notification->notify(null, $user_id, "Ocorreu uma nova iteracao no SAC", base_url()."sac/iteracao/{$id}");
+            foreach ($id_pessoas_envolvidas as $pessoa) {
+              if ($pessoa->id_pessoa != $id_pessoa_logada->id_pessoa) {
+                 $this->Notification->notify(null, $pessoa->id_pessoa, "O SAC que voce abriu recebeu uma resposta", base_url()."sac/iteracao/{$id}");
+              }
+            }
 
 
             $this->session->set_flashdata('success', 'Sua resposta foi cadastrada com sucesso!');
