@@ -54,6 +54,25 @@ class Remanejamento extends CI_Controller
         $data['atualizado'] = date("Y-m-d H:i:s");
         $data['status'] = 1;
 
+        $antigo = $this->cargo_funcionario->getAtual($data['id_funcionario']);
+
+        if (isset($antigo[0])) {
+            $antigo[0]->atualizado = date("Y-m-d H:i:s");
+            $antigo[0]->deletado = date("Y-m-d H:i:s");
+            $antigo[0]->status = 0;
+            $this->cargo_funcionario->update($antigo[0]->id_cargo_funcionario, $antigo[0]);
+        }
+        
+        $novo = $this->cargo_funcionario->getFunCar($this->input->post('id_funcionario'),$this->input->post('id_cargo'));
+        if(isset($novo[0])){
+            $novo[0]->status = 1;
+            $novo[0]->atualizado = date("Y-m-d H:i:s");
+
+            $this->cargo_funcionario->update($novo[0]->id_cargo_funcionario, $novo[0]);
+        }else{
+            $this->cargo_funcionario->insert(['id_funcionario'=>$this->input->post('id_funcionario'), 'id_cargo'=>$this->input->post('id_cargo'), 'id_setor'=>$this->input->post('id_setor'),'criado' => date("Y-m-d H:i:s"),'status'=>1]);
+        }
+
         $this->cargo_funcionario->insert($data);
         $this->session->set_flashdata('success', 'Remanejamento cadastrado com sucesso!');
         redirect('remanejamento');
@@ -68,7 +87,6 @@ class Remanejamento extends CI_Controller
       $data['setores'] = $this->setor->get();
       $data['funcionarios'] = $this->funcionario->get();
       loadTemplate('includes/header', 'remanejamento/cadastrar', 'includes/footer', $data);
-
     }
 
   }
@@ -90,12 +108,41 @@ class Remanejamento extends CI_Controller
       $data = $this->input->post();
       $data['atualizado'] = date("Y-m-d H:i:s");
 
-      $this->cargo_funcionario->update($id_func_cargo,$data);
+      $antigo = $this->cargo_funcionario->getAtual($data['id_funcionario']);
+
+      if (isset($antigo[0]) && $antigo[0]->id_cargo_funcionario == $id_func_cargo) {
+        $this->cargo_funcionario->update($id_func_cargo,$data);        
+      }elseif(isset($antigo[0])){
+        $antigo[0]->atualizado = date("Y-m-d H:i:s");
+        $antigo[0]->deletado = date("Y-m-d H:i:s");
+        $antigo[0]->status = 0;
+        $this->cargo_funcionario->update($antigo[0]->id_cargo_funcionario, $antigo[0]);
+        $novo = $this->cargo_funcionario->getFunCar($this->input->post('id_funcionario'),$this->input->post('id_cargo'));
+        if(isset($novo[0])){
+            $novo[0]->status = 1;
+            $novo[0]->atualizado = date("Y-m-d H:i:s");
+
+            $this->cargo_funcionario->update($novo[0]->id_cargo_funcionario, $novo[0]);
+        }else{
+            $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'id_setor'=>$this->input->post('id_setor'),'criado' => date("Y-m-d H:i:s"),'status'=>1]);
+        }
+      }else{
+        $novo = $this->cargo_funcionario->getFunCar($this->input->post('id_funcionario'),$this->input->post('id_cargo'));
+        if(isset($novo[0])){
+            $novo[0]->status = 1;
+            $novo[0]->atualizado = date("Y-m-d H:i:s");
+            $this->cargo_funcionario->update($novo[0]->id_cargo_funcionario, $novo[0]);
+        }else{
+            $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario,'id_setor'=>$this->input->post('id_setor'), 'id_cargo'=>$this->input->post('id_cargo'),'criado' => date("Y-m-d H:i:s"),'status'=>1]);
+        }
+      }
+
 
       $this->session->set_flashdata('success', 'Remanejamento atualizado com sucesso!');
 
       redirect('remanejamento');
     }
+
     $data['cargos']         = $this->cargo->get();
     $data['setores']        = $this->setor->get();
     $data['funcionarios']   = $this->funcionario->get();

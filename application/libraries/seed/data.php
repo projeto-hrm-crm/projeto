@@ -34,7 +34,7 @@ $seeds = array(
             'descricao'
           ),
           'values' => array(
-            'Regursos Humanos',
+            'Recursos Humanos',
             'RH',
             'Cuida das pessoinhas da empresa<3'
           ),
@@ -3195,8 +3195,7 @@ $seeds = array(
             'id_setor',
             'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '1',
@@ -3204,8 +3203,7 @@ $seeds = array(
             '1',
             '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3215,8 +3213,7 @@ $seeds = array(
             'id_setor',
             'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '2',
@@ -3224,8 +3221,7 @@ $seeds = array(
             '2',
             '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3235,8 +3231,7 @@ $seeds = array(
             'id_setor',
             'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '3',
@@ -3244,8 +3239,7 @@ $seeds = array(
             '2',
             '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3255,8 +3249,7 @@ $seeds = array(
             'id_setor',
             'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '4',
@@ -3264,8 +3257,7 @@ $seeds = array(
             '3',
             '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3275,8 +3267,7 @@ $seeds = array(
             'id_setor',
             'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '5',
@@ -3284,8 +3275,7 @@ $seeds = array(
             '4',
             '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
       )
