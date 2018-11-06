@@ -185,14 +185,7 @@ class Processo_Seletivo extends CI_Controller
     redirect('processo_seletivo');
   }
 
-   public function avancar($id)
-   {
-    $data = [];
-    echo json_encode($this->etapa->find($id));
-
-  }
-
-     public function getStatusAvancar($id, $status)
+     public function avancar($id, $status)
    {
     $data = [];
     echo json_encode($this->etapa->update($id, $status));

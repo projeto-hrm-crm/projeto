@@ -10,7 +10,7 @@ class Etapa_model extends CI_Model
 
     public function get(){
         $this->db->select('etapa.id_etapa, etapa.nome, etapa.descricao, etapa.status, etapa.id_processo_seletivo');
-        
+
         return $this->db->get('etapa')->result();
     }
 
@@ -109,4 +109,8 @@ class Etapa_model extends CI_Model
     }
     catch (\Exception $e) {}
   }
+
+  public function updateStatus($id, $status){
+        return $this->db->update_batch('etapa', $data, 'id_etapa');
+    }
 }
