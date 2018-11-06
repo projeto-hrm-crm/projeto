@@ -1,22 +1,26 @@
 jQuery().ready(function($){
 
+	getStatus = function(id, status) {
+		console.log(id);
+		console.log(status);
+  		if(status >= 4){
+		   	alert("etapa finalizada");
 
-	getStatus = function(status) {
-		 
-		$.ajax({
-	            url: BASE_URL + "status/avancar/" + status,
-	            data: 'JSON',
-	            success: (value) => {
-	                var status = JSON.parse(value);
-	                alert("Eu sou um alert!");
-	                $(".procuraStatus").html("");
-	
+	    }else{
+			alert("passou ufa!");
+
+			$.ajax({
+		            url: BASE_URL + "status/avancar/" + id + "/" + status,
+		            data: 'JSON',
+		            success: (value) => {
+		                var status = JSON.parse(value);
 	               
-	            },
-	            error: (error) => {
+		            },
+		            error: (error) => {
 
-	            }
-	    });
+		            }
+		    });
+	    }
 	}
 
 });

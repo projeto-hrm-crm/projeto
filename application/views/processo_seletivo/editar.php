@@ -75,7 +75,7 @@
                                                 <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required><?php print_r($etapa->descricao); ?></textarea>
                                             </div>
                                             
-                                            <a title="avançarStatus" class="btn btn-success btn-sm mt-2 mb-3 mr-2 text-white procuraStatus" onclick="getStatus(<?php echo $etapa->status ?>)">
+                                            <a title="avançarStatus" class="btn btn-success btn-sm mt-2 mb-3 mr-2 text-white procuraStatus" onclick="getStatus(<?php echo $etapa->id_etapa; ?> , <?php echo $etapa->status; ?>)">
                                                 <i class="fa fa-arrow-right"></i>Avançar Status
                                             </a>
                                             

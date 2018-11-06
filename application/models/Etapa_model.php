@@ -9,7 +9,8 @@ class Etapa_model extends CI_Model
     }
 
     public function get(){
-        $this->db->select('etapa.id_etapa, etapa.descricao');
+        $this->db->select('etapa.id_etapa, etapa.nome, etapa.descricao, etapa.status, etapa.id_processo_seletivo');
+        
         return $this->db->get('etapa')->result();
     }
 
