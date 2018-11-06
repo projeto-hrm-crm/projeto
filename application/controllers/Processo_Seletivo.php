@@ -187,8 +187,7 @@ class Processo_Seletivo extends CI_Controller
 
      public function avancar($id, $status)
    {
-    $data = [];
-    echo json_encode($this->etapa->update($id, $status));
+    echo json_encode($this->etapa->updateStatus($id, $status));
 
   }
 }

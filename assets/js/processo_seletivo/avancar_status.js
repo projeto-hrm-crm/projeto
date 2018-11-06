@@ -6,18 +6,18 @@ jQuery().ready(function($){
 		   	alert("etapa finalizada");
 
 	    }else{
-			alert("teste");
-
+	    	status++;
+		    
 			$.ajax({
+
 		            url: BASE_URL + "status/avancar/" + id + "/" + status,
-		            //não preciso de retorno só precisa que o update funcione e o valor do status seja alterado
 		            data: 'JSON',
 		            success: (value) => {
-		                var status = JSON.parse(value);
-	               
+
+	               		alert(status);
 		            },
 		            error: (error) => {
-
+		            	alert("não atualizado");
 		            }
 		    });
 	    }

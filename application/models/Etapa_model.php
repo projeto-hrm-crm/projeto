@@ -111,6 +111,10 @@ class Etapa_model extends CI_Model
   }
 
   public function updateStatus($id, $status){
-        return $this->db->update_batch('etapa', $data, 'id_etapa');
+
+        $this->db->where('id_etapa', $id);
+        $this->db->set('status', $status);
+        $this->db->update('etapa');
+
     }
 }
