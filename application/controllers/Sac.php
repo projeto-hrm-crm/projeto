@@ -79,7 +79,7 @@ class Sac extends CI_Controller
               'id_produto' => $this->input->post('sac_product_id'),
               'id_cliente' => $id_cliente,
               'abertura' => date("Y-m-d H:i:s"),
-              'fechamento' => 0,
+              'fechamento' => NULL,
               'encerrado' => 0,
               'titulo' => $this->input->post('sac_subject'),
               'descricao' => $this->input->post('sac_description'),
@@ -90,6 +90,37 @@ class Sac extends CI_Controller
         else
             echo json_encode(array('status' => 'error'));
       }
+    }
+
+    public function create() {
+        if($this->input->post()){
+            if ($this->form_validation->run('sac')) {
+                $array = array(
+                    'id_produto'    => $this->input->post('id_produto'),
+                    'id_cliente'    => $this->input->post('id_cliente'),
+                    'abertura'      => date("Y-m-d H:i:s"),
+                    'fechamento'    => NULL,
+                    'titulo'        => $this->input->post('titulo'),
+                    'descricao'     => $this->input->post('descricao'),
+                    'encerrado'     => 0,
+                );
+                $this->sac->insert($array);
+                $this->session->set_flashdata('success', 'SAC criado com sucesso!');
+
+                redirect('sac');
+            } else {
+                $this->session->set_flashdata('danger', 'SAC não pode ser atualizado!');
+                redirect('sac');
+            }
+        }
+        else {
+            $data['title']      = 'Criar Sac';
+            $data['clientes']   = $this->cliente->get();
+            $data['produtos']   = $this->produto->get();
+           
+            loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
+        }
+
     }
 
     public function edit($id) {
@@ -117,7 +148,7 @@ class Sac extends CI_Controller
                 if($this->input->post('encerrado')){
                     $fec = date("Y-m-d H:i:s");
                 } else {
-                    $fec = 0;
+                    $fec = NULL;
                 }
 
                 $array = array(
@@ -174,7 +205,7 @@ class Sac extends CI_Controller
             'id_produto' => $this->input->post('id_produto'),
             'id_cliente' => $this->input->post('id_cliente'),
             'abertura'   => date("Y-m-d H:i:s"),
-            'fechamento' => 0,
+            'fechamento' => NULL,
             'encerrado'  => 0,
             'titulo'     => $this->input->post('titulo'),
             'descricao'  => $this->input->post('descricao'),
@@ -192,7 +223,7 @@ class Sac extends CI_Controller
         $postData = $this->getFromPost();
 
         $postData['id_sac']     = $id_sac;
-        $postData['fechamento'] = $this->input->post('encerrado') ? date('Y-m-d H:i:s') : 0;
+        $postData['fechamento'] = $this->input->post('encerrado') ? date('Y-m-d H:i:s') : NULL;
         $postData['encerrado']  = $this->input->post('encerrado');
 
         return $postData;
