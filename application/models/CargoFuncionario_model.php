@@ -36,7 +36,7 @@ class CargoFuncionario_model extends CI_Model
         $cargo_funcionario =  $this->db->select(
            '*'
         )->from('cargo_funcionario')
-        ->where('cargo_funcionario.id_funcionario',$id_cargo)
+        ->where('cargo_funcionario.id_funcionario',$id_funcionario)
         ->where('cargo_funcionario.id_cargo',$id_cargo)
         ->get();
 
