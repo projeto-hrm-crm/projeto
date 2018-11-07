@@ -14,29 +14,6 @@ class Perfil extends CI_Controller {
     *
     **/
     public function index(){
-<<<<<<< HEAD
-       
-       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
-       $user_id = $this->session->userdata('user_login');
-       $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
-       $id_pessoa = $data['pessoa'][0]->id_pessoa;
-       
-       $data['title'] = 'Meu Perfil';         
-       $data['pessoa'] = $this->usuario->getUserNameById($user_id);
-        
-       $id = $data['pessoa'][0]->id_pessoa;
-       
-       $data['endereco'] = $this->endereco->findAddress($id);
-       
-       $curriculum = $this->candidato->findCurriculum($id_pessoa);
-       $curriculum = !empty($curriculum) ? $curriculum[0]->curriculum : "";
-       $data['tipoUsuario'] = $typeUser;
-       
-       $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
-       
-       if($image) {
-=======
-
       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
       $user_id = $this->session->userdata('user_login');
       $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
@@ -62,7 +39,6 @@ class Perfil extends CI_Controller {
       $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
 
       if($image) {
->>>>>>> 71f2829ce9939f6ea8cc94b0a793a6d0b9e40f8e
          $data['imagem'] = base_url()."uploads/profileImage/".$image;
       }else{
          $data['imagem'] = base_url()."assets/images/theme/no-user.png";
@@ -177,11 +153,6 @@ class Perfil extends CI_Controller {
       }
 
        if (isset($_FILES['arquivo']))  {
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 71f2829ce9939f6ea8cc94b0a793a6d0b9e40f8e
          $arquivo    = $_FILES['arquivo'];
          $image_name = generateImageName($arquivo['name']);
          $configuracao = array(
@@ -251,15 +222,7 @@ class Perfil extends CI_Controller {
          $this->upload->initialize($configuracao);
 
          if ($this->upload->do_upload('arquivo')){
-<<<<<<< HEAD
-          
             $size = getimagesize('./uploads/profileImage/'.$image_name);
-                        
-=======
-
-            $size = getimagesize('./uploads/profileImage/'.$arquivo["name"]);
-
->>>>>>> 71f2829ce9939f6ea8cc94b0a793a6d0b9e40f8e
             $largura = $size[0];
             $altura = $size[1];
 
@@ -292,12 +255,7 @@ class Perfil extends CI_Controller {
 
 
                $this->pessoa->imageUpdate($array);
-
-<<<<<<< HEAD
-               $this->session->set_flashdata('success', 'Imagem enviada com Sucesso!');
-=======
                $this->session->set_flashdata('success', 'Imagem de perfil atualizada com sucesso!');
->>>>>>> 71f2829ce9939f6ea8cc94b0a793a6d0b9e40f8e
                redirect('perfil');
             }
          }
@@ -328,7 +286,7 @@ class Perfil extends CI_Controller {
       $data = $this->input->post();
 
       if ($data) {
-         
+
          if (($data['senha']==$data['senha-confirme']) and $data['senha'] and $data['senha-confirme']) {
             echo $this->usuario->changePassword([
                'senha' => $data['senha'],
@@ -337,12 +295,12 @@ class Perfil extends CI_Controller {
 
            $this->session->set_flashdata('success', 'Senha atualizada com sucesso!');
            redirect('perfil');
-            
+
          }else{
            $this->session->set_flashdata('danger', 'As senhas não conhecidem!');
            redirect('perfil/alterar-senha/');
          }
-         
+
       }
 
       $data['title'] = 'Alterar Senha';
