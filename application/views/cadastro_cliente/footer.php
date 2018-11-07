@@ -7,7 +7,7 @@
     <script type="text/javascript">
         $.ajax({
             method: "GET",
-            url: "../config",
+            url: BASE_URL+"config",
             success : function(data){                
                 data = jQuery.parseJSON(data)               
                 var itens = ""
@@ -17,7 +17,35 @@
                 }                
                 $("#modulos").html(itens)                
             }
-        })
+        });
+       
+       $(".nextStage").click(function(e){
+          e.preventDefault()
+          var next = $(this).data("next");
+          
+          $(".tab-pane").removeClass("show active");
+          $(".nav-link").removeClass("show active");
+          
+          $("#"+next).addClass("show active");
+          $("#"+next+"-tab").addClass("show active");
+          
+       });
+       
+       $("#finalizar").click(function(){
+          
+          $.ajax({
+             method: "POST",
+             url: BASE_URL+"config/create",
+             data: jQuery("#formulario").serialize(),
+             success : function(data){ 
+                
+             }
+          })
+          
+          
+       })
+       
+       
     </script>
 
 </html>
