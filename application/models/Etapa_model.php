@@ -110,11 +110,12 @@ class Etapa_model extends CI_Model
     catch (\Exception $e) {}
   }
 
-  public function updateStatus($id, $status){
+  public function updateStatus($id, $status)
+  {
+    $this->db
+        ->set('status', $status)
+        ->where('id_etapa', $id)
+        ->update('etapa');
 
-        $this->db->where('id_etapa', $id);
-        $this->db->set('status', $status);
-        $this->db->update('etapa');
-
-    }
+  }
 }
