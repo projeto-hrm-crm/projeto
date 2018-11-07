@@ -136,16 +136,18 @@ class Agenda extends CI_Controller
             }
 
             if ($this->input->post('id_usuario')) {
+                
                 $this->evento->deleteEventUser($this->input->post('id'));
-
-                for ($i = 0; $i < count($this->input->post('id_usuario')); $i++) {
-                    $evento[$i] = array(
+                
+                foreach ($this->input->post('id_usuario') as $key => $evento) {
+                    $this->evento->insereUsuario([
                         'id_evento'  => $this->input->post('id'),
-                        'id_usuario' => $this->input->post('id_usuario')[$i],
-                    );
-                    $this->evento->insereUsuario($evento[$i]);
+                        'id_usuario' => $this->input->post('id_usuario')[$key],
+                    ]);
                 }
-
+                
+            } else {
+                $this->evento->deleteEventUser($this->input->post('id'));
             }
 
             redirect('agenda');
