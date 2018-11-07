@@ -95,7 +95,7 @@ class Cargo extends CI_Controller
   public function delete($id_cargo)
   {
     $this->cargo->remove($id_cargo);
-    $this->session->set_flashdata('success', 'Cliente cadastrado com sucesso!');
+    $this->session->set_flashdata('success', 'Cargo excluído com sucesso!');
     redirect('cargo');
   }
 
