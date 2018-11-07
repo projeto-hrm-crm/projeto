@@ -60,9 +60,9 @@ jQuery(document).ready(function($) {
 
   $("#form_remanejamento").validate({
     rules: {
-      
+
       id_cargo: {
-        required: true,  
+        required: true,
       },
 
       id_funcionario: {
@@ -395,17 +395,56 @@ jQuery(document).ready(function($) {
     messages: {
 
       nome:{
-        required: 'O campo é obrigatório',
+        required: 'Insira o nome do setor',
         regex:    'Por favor, insira apenas letras e números.',
       },
 
       sigla:{
-        required: 'O campo é obrigatório',
+        required: 'Adicione uma sigla',
         regex:    'Por favor, insira apenas letras.',
       },
 
       descricao:{
-        required: 'O campo é obrigatório',
+        required: 'Adicione uma descrição',
+      },
+    },
+  });
+
+  $("#form_setor").validate({
+    rules: {
+      nome: {
+        required:true,
+        regex: /^[a-zA-Z0-9]+/,
+        maxlength:45,
+      },
+
+      sigla: {
+        required:true,
+        letras:true,
+        maxlength:10,
+      },
+
+      descricao: {
+        required:true,
+        maxlength:1000,
+      },
+
+    },
+
+    messages: {
+
+      nome:{
+        required: 'Insira o nome do setor',
+        regex:    'Por favor, insira apenas letras e números.',
+      },
+
+      sigla:{
+        required: 'Adicione uma sigla',
+        regex:    'Por favor, insira apenas letras.',
+      },
+
+      descricao:{
+        required: 'Adicione uma descrição',
       },
     },
   });
