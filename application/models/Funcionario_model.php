@@ -131,7 +131,7 @@ class Funcionario_model extends CI_Model {
                  ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
                  ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
 	    $result = $this->db->get();
-        
+
 	    if ($result->num_rows() > 0)
 	        return $result->result();
 
@@ -223,5 +223,29 @@ class Funcionario_model extends CI_Model {
                  ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
         $result = $this->db->get();
         return $result->result()[0]->funcionarios;
+    }
+
+
+		public function getCargos($id_funcionario){
+
+        $cargo_funcionario =  $this->db->select(
+           'cargo_funcionario.id_cargo_funcionario,cargo_funcionario.deletado,
+            funcionario.id_funcionario,
+            pessoa.nome AS pessoa,
+            setor.nome AS setor, setor.id_setor,
+            cargo.id_cargo, cargo.nome'
+        )->from('cargo_funcionario')
+        ->join('funcionario', 'cargo_funcionario.id_funcionario = funcionario.id_funcionario')
+        ->join('pessoa', 'funcionario.id_pessoa = pessoa.id_pessoa')
+        ->join('cargo', 'cargo_funcionario.id_cargo = cargo.id_cargo')
+        ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
+        ->where('cargo_funcionario.id_funcionario = '.$id_funcionario)
+        ->get();
+
+        if ($cargo_funcionario) {
+            return $cargo_funcionario->result();
+        }
+        return null;
+
     }
 }

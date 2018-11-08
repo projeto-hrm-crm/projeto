@@ -34,7 +34,7 @@ $seeds = array(
             'descricao'
           ),
           'values' => array(
-            'Regursos Humanos',
+            'Recursos Humanos',
             'RH',
             'Cuida das pessoinhas da empresa<3'
           ),
@@ -3193,19 +3193,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '1',
             '5',
             '1',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3213,19 +3209,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '2',
             '4',
             '2',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3233,19 +3225,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '3',
             '3',
             '2',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3253,19 +3241,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '4',
             '2',
             '3',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3273,19 +3257,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '5',
             '1',
             '4',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
       )
