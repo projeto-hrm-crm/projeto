@@ -22,17 +22,13 @@ class PedidoAlmoxarifado extends CI_Controller {
    * Metodo index que chama a view inicial de pedido_almoxarifado
   */
   public function index() {
-
-    // $this->setTitle('Solicitações Almoxarifado');
-    //
-    // $this->addData('pedidos_almoxarifado', $this->pedido_almoxarifado->get());
-    //
-    // $this->loadIndexDefaultScripts();
-    //
-    // $this->loadView('index');
-
     $dados['title'] = 'Pedido Almoxarifado';
     $dados['pedidos_almoxarifado'] = $this->pedido_almoxarifado->get();
+    $dados['assets'] = array(
+     'js' => array(
+       'confirm.modal.js'
+     ),
+   );
 
     loadTemplate('includes/header', 'pedido_almoxarifado/index', 'includes/footer', $dados);
 
@@ -68,7 +64,8 @@ class PedidoAlmoxarifado extends CI_Controller {
                 'id_unidade_medida' => $this->input->post('id_unidade_medida'),
                 'id_requerente'     => $id_pessoa,
                 'status'            => 0]);
-            $this->redirectSuccess('Solicitação Cadastrada Com Sucesso!');
+                $this->session->set_flashdata('success','Pedido almoxarifado cadastrado com sucesso!');
+                redirect('pedido_almoxarifado');
 
         }
         else{
@@ -93,31 +90,28 @@ class PedidoAlmoxarifado extends CI_Controller {
       $this->pedido_almoxarifado->updateStatus($id, $status, $id_pessoa);
       if($status==2) {
          $this->session->set_flashdata('success', 'Pedido aceito com sucesso!');
-         redirect('pedido_almoxarifado');
       }
       else {
          $this->session->set_flashdata('danger', 'Pedido rejeitado!');
-         redirect('pedido_almoxarifado');
       }
+      redirect('pedido_almoxarifado');
    }
 
    public function information ($id) {
 
-    $this->setTitle('Informação da Solicitação');
+    $dados['title'] = 'Informação da Solicitação';
 
     $pedido = $this->pedido_almoxarifado->find($id);
 
-    $this->addData('pedido', $pedido);
+    $dados['pedido'] = $pedido;
     $pessoa1 = $this->pessoa->getById($pedido[0]->id_requerente);
-    $this->addData('requerente', $pessoa1);
+    $dados['requerente'] = $pessoa1;
 
     $pessoa2 = $this->pessoa->getById($pedido[0]->id_requerido);
 
-    $this->addData('requerido', $pessoa2);
+    $dados['requerido'] = $pessoa2;
 
-    $this->loadIndexDefaultScripts();
-
-    $this->loadView('informacao');
+    loadTemplate('includes/header', 'pedido_almoxarifado/info', 'includes/footer', $dados);
 
   }
 
