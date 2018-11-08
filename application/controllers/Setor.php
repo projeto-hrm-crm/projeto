@@ -18,6 +18,11 @@ class Setor extends CI_Controller
     {
         $data['title'] = 'Setores';
         $data['setores'] = $this->setor->get();
+        $data['assets'] = array(
+         'js' => array(
+           'confirm.modal.js'
+         ),
+       );
 
         loadTemplate('includes/header', 'setor/index', 'includes/footer', $data);
     }
@@ -100,20 +105,13 @@ class Setor extends CI_Controller
     */
     public function delete($id_setor)
     {
-      /*
       $setor = $this->setor->getById($id_setor);
-      if(!$setor){
+      if($setor){
          $this->setor->remove($id_setor);
          $this->session->set_flashdata('success','Setor removido com sucesso!');
       }else{
         $this->session->set_flashdata('danger','Não foi possivel realizar esta operação, existem cargos cadastrados no Setor!');
       }
-      redirect('setor');
-      */
-      $this->andamento->remove($id_pedido);
-      $this->pedido->removeProducts($id_pedido);
-      $this->pedido->remove($id_pedido);
-      $this->session->set_flashdata('success','Setor excluído com sucesso!');
       redirect('setor');
     }
 
