@@ -131,7 +131,7 @@ class Funcionario_model extends CI_Model {
                  ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
                  ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
 	    $result = $this->db->get();
-        
+
 	    if ($result->num_rows() > 0)
 	        return $result->result();
 
@@ -171,7 +171,7 @@ class Funcionario_model extends CI_Model {
             ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
             ->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
             ->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
-			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+						->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
             ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
             ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
             ->join('cargo_funcionario', 'funcionario.id_funcionario = cargo_funcionario.id_funcionario')
