@@ -11,23 +11,25 @@
                         <div class="row">  
 
                         <!--imagem-->
-                        <div class="form-group col-md-12 col-sm-12">
-                        <div class="col-lg-6">                    
-                        <img width="100%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">                  
-                            <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
-                            <input type="file" name="arquivo">
-                        </div>
+                        <div class="form-group text-center">
+                        <img style="margin: 0px 15px 15px 0px;" width="50%" src="<?php echo base_url('uploads/produtoImage/'.$produto->imagem);?>">  
+                        </div> 
+                        <div class="form-group">
+                            <div>                               
+                                <label for="imagemProduto" class="control-label mb-1">Alterar imagem:</label>
+                                <input type="file" name="arquivo">
+                            </div>
                         </div>
                         <!-- imagem-->                      
 
-                            <div class="form-group col-lg-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                             <label for="nome" class="control-label mb-1"><red>*</red>Nome do Produto</label>
                             <input name="nome"  id="nome" value="<?php echo isset($old_data['nome']) ? $old_data['nome'] : $produto->nome;?>" type="text" class="form-control <?php echo isset($errors['nome']) ? 'is-invalid' : '' ?>" required>
                             <span class="invalid-feedback">Nome inválido, digite somente letras.</span>
                             </div>
 
 
-                            <div class="form-group col-lg-6 col-sm-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                 <label for="valor_produto" class="control-label mb-1"><red>*</red>Valor</label>
                                 <input id="valor_produto" placeholder="Valor unitário do produto" name="valor" data-thousands="." data-decimal="," value="<?php echo isset($old_data['valor']) ? $old_data['valor'] : $produto->valor;?>" type="text" class="form-control <?php echo isset($errors['valor']) ? 'is-invalid' : '' ?>" required>
                                 <span class="invalid-feedback">Valor inválido.</span>
@@ -35,7 +37,7 @@
                             
                            
 
-                           <div class="form-group col-md-12">
+                           <div class="form-group col-lg-6 col-md-12">
               <label class=" form-control-label"><red>*</red>Descrição</label>
                 <textarea placeholder="Descrição do produto" name="descricao" class="form-control <?php echo isset($errors['descricao']) ? 'is-invalid' : '' ?>"><?php echo isset($old_data['descricao']) ? $old_data['descricao'] : $produto->descricao;?></textarea>
                 <span class="invalid-feedback">
