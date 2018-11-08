@@ -16,7 +16,7 @@
                 </ul>
               </div>
             </nav>
-            <form action="#" method="post" id="formulario">
+            <form action="#" method="post" id="formulario" enctype="multipart/form-data">
            <div class="card-body">               
                <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
                  <li class="nav-item">
@@ -109,9 +109,9 @@
                             <label>Fuso Horário</label>
                             <select name="fuso-horario" class="form-control" id="fuso-horario">
                                 <option>Selecione um fuso horário</option>
-                                <option>Selecione um fuso horário</option>
-                                <option>Selecione um fuso horário</option>
-                                <option>Selecione um fuso horário</option>
+                                <option value="GMT+3">GMT+3</option>
+                                <option value="GMT+2">GMT+2</option>
+                                <option value="GMT+13">GMT+13</option>
                             </select>
                         </div>
                          
@@ -155,58 +155,50 @@
                            <label>Inscrição Estadual</label>
                            <input class="form-control" type="text" placeholder="" name="inscricao-estadual" id="inscricao-estadual">
                        </div>
-                     </div>
-                       
+                     </div>                       
                        <div class="col-xs-12 col-lg-4" >
                           <div class="input-field">
                               <label>Classificação</label>
                               <input class="form-control" type="text" placeholder="" name="classificacao" id="classificacao">
                           </div>
-                       </div>
-                       
+                       </div>                       
                        <div class="col-xs-12 col-lg-4" >
                           <div class="input-field">
                               <label>Número Aproximado de Funcionários</label>
                               <input class="form-control" type="text" placeholder="" name="numero-funcionario" id="numero-funcionario">
                           </div>
-                       </div>
-                       
+                       </div>                       
                        <div class="col-xs-12 col-lg-12" >
                           <div class="input-field">
                               <label>Domínio Site</label>
                               <input class="form-control" type="text" placeholder="" name="dominio" id="dominio">
                           </div>
-                       </div>
-                       
+                       </div>                       
                        <div class="col-xs-12 col-lg-12" >
                            <div class="input-field">
                                <label for="logo">Envie sua logo (Dimensão recomendada 400x400px)</label>
                                <input type="file" class="form-control-file" id="logo" name="logo">
                            </div>
-                       </div>                 
-                       
+                       </div>
                     </div>
                     <div class="text-right">
                         <button class="btn btn-primary nextStage" type="button" data-next="pills-endereco">Próximo Passo</button>
                      </div>
                   </div>
                   <div class="tab-pane fade" id="pills-endereco" role="tabpanel" aria-labelledby="pills-contact-tab">
-                     <div class="row">
-                        
+                     <div class="row">                        
                         <div class="col-xs-12 col-lg-3">
                            <div class="input-field">
                               <label>CEP</label>
                               <input class="form-control" type="text" placeholder="" name="cep" id="cep">
                            </div>
-                        </div>
-                        
+                        </div>                        
                         <div class="col-xs-12 col-lg-7">
                            <div class="input-field">
                               <label>Endereço</label>
                               <input class="form-control" type="text" placeholder="" name="logradouro" id="logradouro">
                            </div>
-                        </div>
-                           
+                        </div>                           
                         <div class="col-xs-12 col-lg-2">
                            <div class="input-field">
                               <label>Número</label>
@@ -236,8 +228,7 @@
                               <label>País</label>
                               <input class="form-control" type="text" placeholder="" name="pais" id="pais">
                           </div>
-                        </div>
-                        
+                        </div>                        
                      </div>
                      <div class="text-right">
                         <button class="btn btn-primary" type="button" id="finalizar">Finalizar</button>
