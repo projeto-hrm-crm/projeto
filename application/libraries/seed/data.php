@@ -2297,72 +2297,84 @@ $seeds = array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Contador',
             'Realiza a contabilidade da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Auxiliar Financeiro',
             'Auxilia nas tarefas financeiras da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Recrutador',
             'Realiza o rerutamento da empresa',
-            '317.98'
+            '317.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Agente Administrativo',
             'Realiza a prestação de contas da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Auxiliar de RH',
             'Realiza o controle do RH da empresa',
-            '287.98'
+            '287.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Gerente Financeiro',
             'Realiza o controle financeiro da empresa',
-            '617.98'
+            '617.98',
+            '48'
           ),
         ),
       )
