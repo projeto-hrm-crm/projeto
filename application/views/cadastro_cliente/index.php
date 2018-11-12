@@ -3,7 +3,7 @@
       <div class="col col-lg-10">
          <div class="card">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#"><b>Lambda</b></a>
+              <a class="navbar-brand" href="#"><b>Lambda ERP</b></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -70,7 +70,7 @@
                          </select>
                      </div>
                     <div class="text-right">
-                     <button class="btn btn-primary nextStage" data-next="pills-modulo">Próximo Passo</button>
+                     <button class="btn btn-success nextStage" data-next="pills-modulo">Próximo Passo</button>
                     </div>
                   </div>
                  <div class="tab-pane fade" id="pills-modulo" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -79,7 +79,7 @@
                                                
                     </div>
                    <div class="text-right">
-                     <button class="btn btn-primary nextStage" type="button" data-next="pills-empresa">Próximo Passo</button>
+                     <button class="btn btn-success nextStage" type="button" data-next="pills-empresa">Próximo Passo</button>
                     </div>
                   </div>
                  <div class="tab-pane fade" id="pills-empresa" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -116,7 +116,7 @@
                         </div>
                          
                         <div class="text-right">
-                           <button class="btn btn-primary nextStage" type="button" data-next="pills-informacao">Próximo Passo</button>
+                           <button class="btn btn-success nextStage" type="button" data-next="pills-informacao">Próximo Passo</button>
                         </div>
                   </div>
                  <div class="tab-pane fade" id="pills-informacao" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -182,7 +182,7 @@
                        </div>
                     </div>
                     <div class="text-right">
-                        <button class="btn btn-primary nextStage" type="button" data-next="pills-endereco">Próximo Passo</button>
+                        <button class="btn btn-success nextStage" type="button" data-next="pills-endereco">Próximo Passo</button>
                      </div>
                   </div>
                   <div class="tab-pane fade" id="pills-endereco" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -231,7 +231,7 @@
                         </div>                        
                      </div>
                      <div class="text-right">
-                        <button class="btn btn-primary" type="button" id="finalizar">Finalizar</button>
+                        <button class="btn btn-success" type="button" id="finalizar">Finalizar</button>
                      </div>
                   </div>
             </div>
