@@ -10,6 +10,25 @@
             defaultDate: Date(),
             navLinks: true,
             editable: true,
+            eventDrop: function(event, delta, revertFunc) {
+
+                var x = confirm("Gostaria de alterar a data do evento para " + event.start.format('DD/MM/YYYY') + "?");
+
+                if(x) {
+                    $.ajax({
+                        url: BASE_URL + "events/updateDate/" + event.id,
+                        type: 'post',
+                        data: {'date_start': event.start.format('YYYY-MM-DD HH:mm:ss'), 'date_end': event.end.format('YYYY-MM-DD HH:mm:ss')},
+                        success: (value) => {
+                            var value = JSON.parse(value);
+                        },
+                        error: (error) => {
+
+                        }
+                    });
+                }
+
+            },
             eventLimit: true,
             eventClick: function(event) {
                 $('.ocultar-btn').show();
@@ -35,7 +54,7 @@
                     $('.ocultar-btn-delete').hide();
                 }
 
-            
+
                 $('#visualizar').modal('show');
                 getUsers(event.id);
 

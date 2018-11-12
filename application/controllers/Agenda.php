@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Agenda extends CI_Controller
 {
 
-    public function __construct() 
+    public function __construct()
     {
         parent::__construct();
         $user_id = $this->session->userdata('user_login');
@@ -136,16 +136,16 @@ class Agenda extends CI_Controller
             }
 
             if ($this->input->post('id_usuario')) {
-                
+
                 $this->evento->deleteEventUser($this->input->post('id'));
-                
+
                 foreach ($this->input->post('id_usuario') as $key => $evento) {
                     $this->evento->insereUsuario([
                         'id_evento'  => $this->input->post('id'),
                         'id_usuario' => $this->input->post('id_usuario')[$key],
                     ]);
                 }
-                
+
             } else {
                 $this->evento->deleteEventUser($this->input->post('id'));
             }
@@ -158,13 +158,33 @@ class Agenda extends CI_Controller
         }
     }
 
+    public function updateDate($id_evento)
+    {
+        $date = [
+            'date_start' => $this->input->post('date_start'),
+            'date_end'   => $this->input->post('date_end')
+        ];
+
+        if (!is_null($date)) {
+            echo json_encode([
+                'status' => $this->evento->updateDate($id_evento, $date),
+                'message'=> 'Data alterada com sucesso!'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Nenhuma data encontrada'
+            ]);
+        }
+    }
+
     public function delete()
     {
         $evento = $this->input->post('id');
 
         if($evento){
             $this->evento->deleteEventUser($evento);
-            $this->evento->delete($evento);            
+            $this->evento->delete($evento);
             $this->session->set_flashdata('success', 'Evento excluído com sucesso!');
         } else {
             $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
