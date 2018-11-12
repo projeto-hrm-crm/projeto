@@ -62,6 +62,7 @@
 			</thead>
 
 			<tbody class="listarEtapas">
+				<!-- classe encontrada para listar a tabela pelo metodo getEtapa.js -->
 				
 			</tbody>
 		</table>
