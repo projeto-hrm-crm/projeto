@@ -52,6 +52,7 @@ class Home extends CI_Controller
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
+         'home/resetLocalStorage.js',
          'chartjs.min.js',
          'cliente/home-charts.js',
          'cliente/home-sac.js',

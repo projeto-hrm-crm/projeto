@@ -237,4 +237,26 @@ class Sac_model extends PR_Model
     }
 */
 
+/**
+    * @author: Beto Cadilhe
+    * Retorna um array com dados pegos por post adicionado a eles o id_sac
+    *
+    * @param: $id_sac integer
+    */
+    public function getPessoasEnvolvidas($id_iteracao)
+    {
+        $this->db->distinct()
+                 ->select('id_pessoa')
+                 ->from('iteracao')
+                 ->where('id_sac', $id_iteracao);
+
+        $sql = $this->db->get();
+
+        if ($sql->num_rows() > 0) {
+            return $sql->result();
+        }
+
+        return [];
+    }
+
 }

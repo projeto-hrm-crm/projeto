@@ -15,6 +15,8 @@ class Iteracao_model extends CI_Model {
     {
       $this->relatorio->setLog('insert', 'Inserir', 'Iteracao', $id_iteracao, 'Inseriu a iteracao', $id_iteracao);
     }
+
+
     return $id_iteracao;
   }
 

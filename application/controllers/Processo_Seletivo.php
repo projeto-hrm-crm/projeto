@@ -143,6 +143,7 @@ class Processo_Seletivo extends CI_Controller
 
     $data['assets'] = array(
       'js' => array(
+         'processo_seletivo/avancar_status.js',
         'processo_seletivo/cadastro_etapas.js',
         'processo_seletivo/textarea_auto_expand.js',
       ),
@@ -182,5 +183,11 @@ class Processo_Seletivo extends CI_Controller
       $this->session->set_flashdata('danger', 'Não foi possível excluir!');
     }
     redirect('processo_seletivo');
+  }
+
+     public function avancar($id, $status)
+   {
+    echo json_encode($this->etapa->updateStatus($id, $status));
+
   }
 }

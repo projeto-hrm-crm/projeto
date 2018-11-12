@@ -51,23 +51,22 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>">Lambda</a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>"><span title="λ">Lambda</span></a>
       <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i>Principal</a>
+          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal">Principal </span></a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu_atual nome_menu <?php echo $key ?>">
-                
-              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
-
+              
+              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
             </li>
           <?php endforeach;?>
       <?php endif;?>
@@ -107,6 +106,14 @@
                 <!-- LOADED FROM AJAX -->
               </div>
              </div>
+
+             <div class="dropdown for-contacts">
+               <button class="btn btn-secondary dropdown-toggle" type="button" id="contacts" data-status="false">
+                 <a href="<?=site_url('contato')?>"/>
+                 <span class="fa fa-phone"></span>
+               </button>
+
+              </div>
         </div>
       </div>
        <?php

@@ -53,8 +53,7 @@ class Funcionario extends PR_Controller
 
         if($this->form_validation->run('funcionario')){
             $id_funcionario = $this->funcionario->insert($this->getFromPost());
-            $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
-
+            $this->cargo_funcionario->insert(['id_funcionario' => $id_funcionario, 'id_cargo' => $this->input->post('id_cargo'), 'id_setor' => $this->input->post('id_setor')]);
             $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
         }else{
             $this->redirectError('cadastrar');
@@ -62,6 +61,7 @@ class Funcionario extends PR_Controller
     }else{
         $this->setTitle('Cadastrar Funcionario');
         $this->addData('cargos', $this->cargo->get());
+        $this->addData('setores', $this->setor->get());
 
         $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
         $this->loadFormDefaultScripts();
@@ -89,17 +89,16 @@ class Funcionario extends PR_Controller
     if ($this->input->post()) {
         $funcionario = $this->funcionario->getById($id_funcionario);
 
-        if($this->input->post('id_cargo')!=$funcionario[0]->id_cargo){
+        if($this->input->post('id_cargo') != $funcionario[0]->id_cargo){
             $antigo = $this->cargo_funcionario->get($id_funcionario,$funcionario[0]->id_cargo);
-            $antigo[0]->status = 0;
+            $antigo[0]->deletado = date("Y-m-d H:i:s");
             $this->cargo_funcionario->atualizar($antigo[0]->id_cargo_funcionario, $antigo[0]);
-
             $novo = $this->cargo_funcionario->get($id_funcionario,$this->input->post('id_cargo'));
             if(isset($novo[0])){
                 $novo[0]->status = 1;
                 $this->cargo_funcionario->atualizar($novo[0]->id_cargo_funcionario, $novo[0]);
             }else{
-                $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
+                $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo')]);
             }
         }
         $this->funcionario->update($id_funcionario, $this->input->post());
@@ -177,7 +176,7 @@ class Funcionario extends PR_Controller
         $postData['id_funcionario'] = $id_funcionario;
         return $postData;
     }
-   
+
    /**
      * @author Mayra Bueno
      *
@@ -189,10 +188,10 @@ class Funcionario extends PR_Controller
      * @param int $id_funcionario
      */
     public function evaluate($id_funcionario) {
-        
+
         //Pega o id de usuario da sessão
         $user_id = $this->session->userdata('user_login');
-        
+
         if ($this->input->post()) {
             $array = array(
                 'pontualidade' => $this->input->post('pontualidade'),
@@ -201,16 +200,16 @@ class Funcionario extends PR_Controller
                 'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
                 'proatividade' => $this->input->post('proatividade'),
                 'id_funcionario' => $id_funcionario,
-                'id_avaliador' => $user_id 
+                'id_avaliador' => $user_id
             );
-            
+
             $this->avaliacao->insert($array);
-            
+
             $this->session->set_flashdata('success', 'Avaliação cadastrada');
             redirect('funcionario/avaliacoes/'.$id_funcionario);
         }
 
-        
+
 
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
@@ -226,7 +225,7 @@ class Funcionario extends PR_Controller
         $this->loadView('avaliar');
 
     }
-    
+
     public function assessments($id_funcionario) {
         $this->setTitle('Avaliação de Funcionarios');
 
@@ -238,16 +237,16 @@ class Funcionario extends PR_Controller
 
         $this->loadView('avaliacoes');
     }
-    
+
     public function evaluate_info($id_avaliacao) {
-        
+
         //Pega o id de usuario da sessão
         $user_id = $this->session->userdata('user_login');
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
-       
-       
+
+
         $data = $this->avaliacao->find($id_avaliacao);
         $id_funcionario = $data[0]->id_funcionario;
 
@@ -262,15 +261,15 @@ class Funcionario extends PR_Controller
         $this->loadView('avaliacao-info');
 
     }
-   
+
    public function evaluate_edit($id_avaliacao) {
-        
+
         //Pega o id de usuario da sessão
         $user_id = $this->session->userdata('user_login');
-      
+
         $data = $this->avaliacao->find($id_avaliacao);
         $id_funcionario = $data[0]->id_funcionario;
-        
+
         if ($this->input->post()) {
             $array = array(
                 'pontualidade' => $this->input->post('pontualidade'),
@@ -279,21 +278,21 @@ class Funcionario extends PR_Controller
                 'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
                 'proatividade' => $this->input->post('proatividade'),
                 'id_avaliacao' => $id_avaliacao,
-                'id_avaliador' => $user_id 
+                'id_avaliador' => $user_id
             );
-            
+
             $this->avaliacao->update($array);
-            
+
             $this->session->set_flashdata('success', 'Avaliação editada');
             redirect('funcionario/avaliacoes/'.$id_funcionario);
-        }        
+        }
 
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
-       
-       
-        
+
+
+
 
         $this->setTitle('Informações Avaliação');
         $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
@@ -305,6 +304,23 @@ class Funcionario extends PR_Controller
         $this->loadIndexDefaultScripts();
 
         $this->loadView('avaliacao-editar');
+
+    }
+
+    /**
+     * @author Camila Sales
+     *
+     * Responsavel por redirecionar para a view de visualização de todos os cargos do funcionario
+    */
+    public function cargos($id_funcionario)
+    {
+      $this->setTitle('Histórico dos Cargos');
+
+      $this->addData('cargos',$this->funcionario->getCargos($id_funcionario));
+
+      $this->loadIndexDefaultScripts();
+
+      $this->loadView('historico');
 
     }
 }
