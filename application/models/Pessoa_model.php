@@ -136,4 +136,28 @@ class Pessoa_model extends CI_Model {
 		return $this->db->get('pessoa')->row();
 	}
 
+	/**
+	* @author Beto Cadilhe
+	* Retorna o id da pessoa logada
+	*
+	*
+	* @param  integer id identificação do usuário
+	* @return mixed objeto
+
+	*/
+	public function getIdPessoaByIdUsuario($id_user)
+	{
+		$this->db->select('id_pessoa')
+				 ->from('usuario')
+				 ->where('usuario.id_usuario', $id_user);
+
+		$sql = $this->db->get();
+
+		if ($sql->num_rows() > 0) {
+			return $sql->result()[0];
+		}
+
+		return [];
+	}
+
 }
