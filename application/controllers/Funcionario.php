@@ -53,8 +53,7 @@ class Funcionario extends PR_Controller
 
         if($this->form_validation->run('funcionario')){
             $id_funcionario = $this->funcionario->insert($this->getFromPost());
-            $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
-
+            $this->cargo_funcionario->insert(['id_funcionario' => $id_funcionario, 'id_cargo' => $this->input->post('id_cargo'), 'id_setor' => $this->input->post('id_setor')]);
             $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
         }else{
             $this->redirectError('cadastrar');
@@ -62,6 +61,7 @@ class Funcionario extends PR_Controller
     }else{
         $this->setTitle('Cadastrar Funcionario');
         $this->addData('cargos', $this->cargo->get());
+        $this->addData('setores', $this->setor->get());
 
         $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
         $this->loadFormDefaultScripts();
@@ -91,17 +91,14 @@ class Funcionario extends PR_Controller
 
         if($this->input->post('id_cargo') != $funcionario[0]->id_cargo){
             $antigo = $this->cargo_funcionario->get($id_funcionario,$funcionario[0]->id_cargo);
-            $antigo[0]->status = 0;
             $antigo[0]->deletado = date("Y-m-d H:i:s");
             $this->cargo_funcionario->atualizar($antigo[0]->id_cargo_funcionario, $antigo[0]);
-
             $novo = $this->cargo_funcionario->get($id_funcionario,$this->input->post('id_cargo'));
             if(isset($novo[0])){
                 $novo[0]->status = 1;
-
                 $this->cargo_funcionario->atualizar($novo[0]->id_cargo_funcionario, $novo[0]);
             }else{
-                $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
+                $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo')]);
             }
         }
         $this->funcionario->update($id_funcionario, $this->input->post());
