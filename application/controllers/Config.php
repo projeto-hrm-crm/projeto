@@ -15,6 +15,8 @@ class Config extends CI_Controller
 
 	public function create() 
 	{
+
+		
 		if(!$this->form_validation->run('candidato')) 
 			echo json_encode($this->form_validation->error_array());
 		else 
