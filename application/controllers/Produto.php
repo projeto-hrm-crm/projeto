@@ -90,10 +90,11 @@ class Produto extends CI_Controller
           if (isset($_FILES['arquivo']))  {
             
             $arquivo    = $_FILES['arquivo'];
+            $image_name = generateImageName($arquivo['name']);
             $configuracao = array(
                'upload_path'   => './uploads/produtoImage/',
                'allowed_types' => 'jpef|jpg|png',
-               'file_name'     => $arquivo['name'],
+               'file_name'     => $image_name,
                'max_size'      => '999999'
             );
    
@@ -102,15 +103,15 @@ class Produto extends CI_Controller
    
             if ($this->upload->do_upload('arquivo')){
    
-               $size = getimagesize('./uploads/produtoImage/'.$arquivo["name"]);
+               $size = getimagesize('./uploads/produtoImage/'.$image_name);
    
                $largura = $size[0];
                $altura = $size[1];
    
                $config['image_library'] = 'gd2';
-               $config["source_image"] = './uploads/produtoImage/'.$arquivo["name"];
+               $config["source_image"] = './uploads/produtoImage/'.$image_name;
                $config['allowed_types'] = 'jpef|jpg|png';
-               $config['new_image'] = './uploads/produtoImage/'.$arquivo['name'];
+               $config['new_image'] = './uploads/produtoImage/'.$image_name;
                $config['create_thumb'] = false;
                $config['maintain_ratio'] = FALSE;
    

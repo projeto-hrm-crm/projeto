@@ -2,49 +2,58 @@
   <div class="col-lg-10">
     <div class="card">
       <div class="card-header">
-        <strong>Info do Processo Seletivo <?php echo($info[0]->codigo) ?></strong>
+        <strong>Historico dos cargos </strong>
       </div>
       <div class="card-body card-block">
-
+        <strong>Funcionário</strong>
+        <hr>
         <div class="row">
           <div class="form-group col-12 col-md-6">
-            <h4>Nome</h4><span><?php echo($cargos[0]->nome); ?></span>
+            <h4>Nome</h4><span><?php echo($funcionario[0]->nome); ?></span>
           </div>
           <div class="form-group col-12 col-md-6">
-            <h4>Email</h4><span><?php echo($cargos[0]->email); ?></span>
+            <h4>Email</h4><span><?php echo($funcionario[0]->email); ?></span>
           </div>
           <div class="form-group col-12 col-md-6">
-            <h4>Data de Criação</h4><span><?php echo($cargos[0]->criacao); ?></span>
+            <h4>Documento</h4><span><?php echo($funcionario[0]->numero_documento); ?></span>
           </div>
-          
+          <div class="form-group col-12 col-md-6">
+            <h4>Telefone</h4><span><?php echo($funcionario[0]->telefone); ?></span>
+          </div>
         </div>
         <hr>
-        <strong>Cargos</strong>
+          <strong>Cargos</strong>
         <hr>
 
-          <?php foreach ($cargos as $cargo): ?>
+          <?php foreach ($cargos as $cargo):
+            $criado = date_create($cargo->criado);
+            $atualizado = date_create($cargo->atualizado);
+            ?>
             <div class="row">
-            <div class="form-group col-12 col-md-6">
-              <h4>Nome</h4><span><?php echo($cargo->nome); ?></span>
+            <div class="form-group col-md-6">
+              <h4>Nome</h4><span><?php echo($cargo->cargo); ?></span>
             </div>
-            <div class="form-group col-12 col-md-6">
-              <h4>Inscritos</h4><span><?php echo(count($cargo->candidatos)); ?></span>
+            <div class="form-group col-md-6">
+              <h4>Setor</h4><span><?php echo($cargo->setor); ?></span>
             </div>
-            <div class="form-group col-12 col-md-12">
-              <h4>Descrição</h4><span><?php echo($cargo->descricao); ?></span>
+            <div class="form-group col-md-6">
+              <h4>cadastro</h4><span><?php echo(date_format($criado,"d/m/Y")); ?></span>
             </div>
+            <div class="form-group col-md-6">
+              <h4>Última atualização</h4><span><?php echo(date_format($atualizado,"d/m/Y")); ?></span>
+            </div>
+            <?php if ($cargo->deletado): ?>
+              <div class="form-group col-md-6">
+                <?php $deletado =   date_create($cargo->deletado);?>
+                <h4>Desativado</h4><span><?php echo(date_format($deletado,"d/m/Y")); ?></span>
+              </div>
+            <?php endif; ?>
           </div>
             <hr>
 
           <?php endforeach; ?>
 
-		<a>
-          <a title="Voltar a todos os processos seletivos"  href="<?=site_url('processo_seletivo')?>" class="btn btn-primary btn-sm">
-            VOLTAR PARA VISUALIZAÇÃO DE TODOS OS PROCESSOS SELETIVOS
-          </a>
-		</a>
-		  
-      </div>
+	      </div>
 
     </div>
   </div>

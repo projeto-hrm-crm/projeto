@@ -30,10 +30,9 @@
               <label class=" form-control-label"><red>*</red>Descrição do Setor</label>
               <textarea auto-resize placeholder="Descrição do Processo Setor" id="descricao" name="descricao" class="form-control" required><?php echo($setor[0]->descricao); ?></textarea>
             </div>
-
             </div>
           </div>
-         
+
         <div class="card-footer text-right">
           <a title="Cancelar Edição" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i>

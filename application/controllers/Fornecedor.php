@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * Controller de fornecedor
 * Adequado ao PR_Controller para fins de abstração de código[Tiago Villalobos]
 **/
-class Fornecedor extends PR_Controller
+class Fornecedor extends CI_Controller
 {
    /**
    * @author Pedro Henrique Guimarães
@@ -16,7 +16,12 @@ class Fornecedor extends PR_Controller
    */
    public function __construct()
    {
+
       parent::__construct('fornecedor');
+      $user_id = $this->session->userdata('user_login');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($user_id, $currentUrl);
+      $this->load->model('Fornecedor_model');
    }
 
   /**
@@ -39,8 +44,7 @@ class Fornecedor extends PR_Controller
        'confirm.modal.js',
      ),
    );
-    // print_r($data);
-    // exit();
+
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
 
@@ -64,37 +68,34 @@ class Fornecedor extends PR_Controller
               $fornecedor = $this->getFromPost();
 
               $this->fornecedor->insert($fornecedor);
-              $this->redirectSuccess('Fornecedor cadastrado com sucesso');
+              $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso!');
+              redirect('fornecedor');
 
           }
           else
           {
-              $this->redirectError('cadastrar');
+              $this->session->set_flashdata('danger', 'Não foi possível cadastrar Processo Seletivo!');
+              redirect('fornecedor');
           }
       }
       else
       {
+        $data['title'] = 'Cadastrar Fornecedor';
+        $data['fornecedor'] = $this->input->post();
+        $data['assets'] = array(
+         'js' => array(
+           'validate.js',
+           'thirdy_party/apicep.js',
+           'lib/data-table/datatables.min.js',
+           'lib/data-table/dataTables.bootstrap.min.js',
+           'datatable.js',
+           'confirm.modal.js',
+           'fornecedor/validate-form.js',
 
-          $this->setTitle('Cadastrar Fornecedor');
-          $this->loadFormDefaultScripts();
+           ),
+        );
+        loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
       }
-
-    $data['title'] = 'Cadastrar Fornecedor';
-    $data['fornecedor'] = $this->input->post();
-    $data['assets'] = array(
-     'js' => array(
-       'validate.js',
-       'thirdy_party/apicep.js',
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-       'fornecedor/validate-form.js',
-
-     ),
-   );
-   loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
-
   }
 
   private function getFromPost()
