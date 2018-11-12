@@ -161,11 +161,13 @@ class Remanejamento extends CI_Controller
   }
 
 
-  public function historico($id_funcionario){
-    $data['funcionario'] = $this->funcionario->getById($id_funcionario);
-    $data['cargos'] =  $this->cargo_funcionario->getAll($id_funcionario);
+  public function relatorio($id_funcionario){
+    $data['title']          = 'Relatório';
 
-    loadTemplate('includes/header', 'funcionario/historico', 'includes/footer', $data);
+    $data['funcionario']    = $this->funcionario->getById($id_funcionario);
+    $data['cargos']         =  $this->cargo_funcionario->getAll($id_funcionario);
+
+    loadTemplate('includes/header', 'funcionario/relatorio', 'includes/footer', $data);
 
   }
 

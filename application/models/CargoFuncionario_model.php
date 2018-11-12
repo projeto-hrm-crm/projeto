@@ -57,7 +57,10 @@ class CargoFuncionario_model extends CI_Model
     public function getAll($id_funcionario){
 
         $cargo_funcionario =  $this->db->select(
-           '*'
+           'cargo_funcionario.*,
+            funcionario.id_funcionario,
+            setor.nome AS setor, setor.id_setor,
+            cargo.id_cargo, cargo.nome as cargo'
         )->from('cargo_funcionario')
         ->join('funcionario', 'cargo_funcionario.id_funcionario = funcionario.id_funcionario')
         ->join('pessoa', 'funcionario.id_pessoa = pessoa.id_pessoa')
