@@ -58,7 +58,10 @@ class Produto_model extends CI_Model
         $this->db->set('fabricacao', $array['fabricacao']);
         $this->db->set('validade', $array['validade']);
         $this->db->set('lote', $array['lote']);
-        $this->db->set('imagem', $array['imagem']);
+        if($array['imagem']){
+            $this->db->set('imagem', $array['imagem']);
+        }
+       
         $this->db->set('valor', $array['valor']);
         $this->db->set('recebimento', $array['recebimento']);
         $id_produto = $this->db->update('produto');
