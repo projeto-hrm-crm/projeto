@@ -29,9 +29,9 @@
                 </div>
                 <div class="card-footer text-right">
                   <a title="Cancelar Atualização" href="<?= site_url('sugestao')?>" class="btn btn-primary btn-sm">
-                     Voltar a Todas Sugestões
+                     Voltar às Sugestões
                   </a>
-                  
+
                </div>
         </div>
     </div>

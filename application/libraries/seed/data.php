@@ -34,7 +34,7 @@ $seeds = array(
             'descricao'
           ),
           'values' => array(
-            'Regursos Humanos',
+            'Recursos Humanos',
             'RH',
             'Cuida das pessoinhas da empresa<3'
           ),
@@ -2297,72 +2297,84 @@ $seeds = array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Contador',
             'Realiza a contabilidade da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Auxiliar Financeiro',
             'Auxilia nas tarefas financeiras da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Recrutador',
             'Realiza o rerutamento da empresa',
-            '317.98'
+            '317.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Agente Administrativo',
             'Realiza a prestação de contas da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Auxiliar de RH',
             'Realiza o controle do RH da empresa',
-            '287.98'
+            '287.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Gerente Financeiro',
             'Realiza o controle financeiro da empresa',
-            '617.98'
+            '617.98',
+            '48'
           ),
         ),
       )
@@ -3193,19 +3205,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '1',
             '5',
             '1',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3213,19 +3221,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '2',
             '4',
             '2',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3233,19 +3237,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '3',
             '3',
             '2',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3253,19 +3253,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '4',
             '2',
             '3',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3273,19 +3269,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '5',
             '1',
             '4',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
       )
