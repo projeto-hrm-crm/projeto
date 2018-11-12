@@ -175,7 +175,7 @@ class Funcionario_model extends CI_Model {
             ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
             ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
             ->join('cargo_funcionario', 'funcionario.id_funcionario = cargo_funcionario.id_funcionario')
-            ->where('funcionario.id_funcionario', $id_funcionario)->where('cargo_funcionario.status', 1)->get();
+            ->where('funcionario.id_funcionario', $id_funcionario)->where('cargo_funcionario.deletado is null')->get();
 
             if ($funcionario) {
                 return $funcionario->result();

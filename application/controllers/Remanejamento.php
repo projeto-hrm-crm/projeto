@@ -60,9 +60,9 @@ class Remanejamento extends CI_Controller
           $antigo[0]->deletado = date("Y-m-d H:i:s");
           $this->cargo_funcionario->update($antigo[0]->id_cargo_funcionario, $antigo[0]);
         }
-        
+
         $novo = $this->cargo_funcionario->getFunCar($this->input->post('id_funcionario'),$this->input->post('id_cargo'));
-        
+
         if(isset($novo[0])){
             $novo[0]->atualizado = date("Y-m-d H:i:s");
             $novo[0]->deletado = null;
@@ -113,14 +113,14 @@ class Remanejamento extends CI_Controller
       $antigo = $this->cargo_funcionario->getAtual($data['id_funcionario']);
 
       if (isset($antigo[0]) && $antigo[0]->id_cargo == $this->input->post('id_cargo')&& $antigo[0]->id_funcionario == $this->input->post('id_funcionario')) {
-        $this->cargo_funcionario->update($id_func_cargo,$data);        
+        $this->cargo_funcionario->update($id_func_cargo,$data);
       }elseif(isset($antigo[0])){
         $antigo[0]->atualizado = date("Y-m-d H:i:s");
         $antigo[0]->deletado = date("Y-m-d H:i:s");
-        
+
         $this->cargo_funcionario->update($antigo[0]->id_cargo_funcionario, $antigo[0]);
         $novo = $this->cargo_funcionario->getFunCar($this->input->post('id_funcionario'),$this->input->post('id_cargo'));
-        
+
         if(isset($novo[0])){
             $novo[0]->atualizado = date("Y-m-d H:i:s");
             $novo[0]->deletado = null;
@@ -145,7 +145,7 @@ class Remanejamento extends CI_Controller
 
       $referred_from = $this->session->userdata('referred_from');
       if(isset($referred_from))
-        redirect($referred_from, 'refresh'); 
+        redirect($referred_from, 'refresh');
 
       redirect('remanejamento');
     }
@@ -161,9 +161,11 @@ class Remanejamento extends CI_Controller
   }
 
 
-  public static function getAll($id_funcionario){
-    $data['funcionario_cargos'] = $this->cargo_funcionario->getAll($id_funcionario);
-    loadTemplate('includes/header', 'remanejamento/info', 'includes/footer', $data);
+  public function historico($id_funcionario){
+    $data['funcionario'] = $this->funcionario->getById($id_funcionario);
+    $data['cargos'] =  $this->cargo_funcionario->getAll($id_funcionario);
+
+    loadTemplate('includes/header', 'funcionario/historico', 'includes/footer', $data);
 
   }
 
@@ -189,7 +191,7 @@ class Remanejamento extends CI_Controller
     $referred_from = $this->session->userdata('referred_from');
     if(isset($referred_from))
       redirect($referred_from, 'refresh');
-    
+
     redirect('remanejamento');
   }
 
