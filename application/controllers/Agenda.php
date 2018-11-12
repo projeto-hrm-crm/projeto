@@ -7,14 +7,24 @@ class Agenda extends CI_Controller
     {
         $dados['title'] = 'Agenda';
         $dados['usuarios'] = $this->usuario->getByName();
-
         $dados['assets'] = array (
+            'css' => array(
+                'calendar/selectize.css'
+            ),
+
             'js' => array (
                 'calendar/agenda.js',
+                'calendar/selectize.js'
             ),
         );
 
         loadTemplate('includes/header', 'agenda/index', 'includes/footer', $dados);
+    }
+
+    public function getEventUsers($event_id)
+    {
+        $users = $this->evento->getEventUsers($event_id);
+        echo $users;
     }
 
     public function get()
@@ -63,7 +73,7 @@ class Agenda extends CI_Controller
             if ($this->input->post('id_usuario')) {
                 for ($i = 0; $i < count($this->input->post('id_usuario')); $i++) {
                     $evento[$i] = array(
-                        'evento_id'  => $id_evento,
+                        'id_evento'  => $id_evento,
                         'id_usuario' => $this->input->post('id_usuario')[$i],
                     );
                     $this->evento->insereUsuario($evento[$i]);
@@ -115,6 +125,20 @@ class Agenda extends CI_Controller
             } else {
                 $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
             }
+
+            if ($this->input->post('id_usuario')) {
+                $this->evento->deleteEventUser($this->input->post('id'));
+
+                for ($i = 0; $i < count($this->input->post('id_usuario')); $i++) {
+                    $evento[$i] = array(
+                        'id_evento'  => $this->input->post('id'),
+                        'id_usuario' => $this->input->post('id_usuario')[$i],
+                    );
+                    $this->evento->insereUsuario($evento[$i]);
+                }
+
+            }
+
             redirect('agenda');
 
         } else {

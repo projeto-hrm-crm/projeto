@@ -137,6 +137,30 @@ $config = array(
         ),
 
     ),
+    'pedido_almoxarifado' =>
+    array(
+        array(
+            'field' => 'id_almoxarifado',
+            'label' => 'Item',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'quantidade',
+            'label' => 'Quantidade',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_setor',
+            'label' => 'Setor',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'id_unidade_medida',
+            'label' => 'Unidade de Medida',
+            'rules' => 'required'
+        ),
+
+    ),
     'pessoa' => array(
 
         array(

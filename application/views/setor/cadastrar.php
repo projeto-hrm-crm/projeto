@@ -20,21 +20,20 @@
       <form action="<?php echo site_url('setor/cadastrar'); ?>" method="POST" class="form-horizontal" id="form_setor" onsubmit="return checkForm(this);" novalidate="novalidate">
         <div class="card-body">
           <div class="row justify-content-center">
-            <div class="form-group col-8">
+            <div class="form-group col-6">
               <label class=" form-control-label"><red>*</red>Nome do setor</label>
               <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do setor" class="form-control" required>
             </div>
-            <div class="form-group col-8">
+            <div class="form-group col-6">
               <label class=" form-control-label"><red>*</red>Sigla do setor</label>
               <input type="text" id="sigla" name="sigla" value = "<?php echo isset($old_data['sigla']) ? $old_data['sigla'] : null;?>" placeholder="Sigla do setor" class="form-control" required>
             </div>
-            <div class="form-group col-8">
-              <label class=" form-control-label"><red>*</red>Descrição do setor</label>
-              <input type="text" id="descricao" name="descricao" value = "<?php echo isset($old_data['descricao']) ? $old_data['descricao'] : null;?>" placeholder="Descrição do setor" class="form-control" required>
+            <div class="form-group col-12">
+              <label class=" form-control-label"><red>*</red>Descrição</label>
+              <textarea auto-resize placeholder="Descrição do setor" id="descricao" name="descricao" class="form-control" required></textarea>
             </div>
             </div>
           </div>
-        </div>
         <div class="card-footer text-right">
 
           <a title="Cancelar Cadastro" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
