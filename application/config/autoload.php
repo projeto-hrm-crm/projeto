@@ -181,6 +181,7 @@ $autoload['model'] = array(
                     'UnidadeMedida_model'        => 'unidadeMedida',
                     'CargoFuncionario_model'     => 'cargo_funcionario',
                     'Habilidade_model'           => 'habilidade',
+                    'CargoFuncionario_model'     => 'cargo_funcionario'
                     'PedidoAlmoxarifado_model'   => 'pedido_almoxarifado',
                     'CargoFuncionario_model'     => 'cargo_funcionario',
 );

@@ -225,3 +225,7 @@ $route['remanejamento'] = 'Remanejamento/index';
 $route['remanejamento/cadastrar'] = 'Remanejamento/create';
 $route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
 $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
+
+//Rota Contato
+$route['contato'] = 'Contato';
+

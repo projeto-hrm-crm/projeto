@@ -65,7 +65,7 @@
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu_atual nome_menu <?php echo $key ?>">
-                
+
               <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i> <?php echo $key;?></a>
 
             </li>
@@ -107,6 +107,14 @@
                 <!-- LOADED FROM AJAX -->
               </div>
              </div>
+
+             <div class="dropdown for-contacts">
+               <button class="btn btn-secondary dropdown-toggle" type="button" id="contacts" data-status="false">
+                 <a href="<?=site_url('contato')?>"/>
+                 <span class="fa fa-phone"></span>
+               </button>
+
+              </div>
         </div>
       </div>
        <?php
