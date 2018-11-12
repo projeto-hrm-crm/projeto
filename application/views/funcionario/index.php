@@ -55,7 +55,11 @@
                             <span class="fa fa-times"></span>
                           </button>
                            <a title="Avaliar funcionário" href="<?= site_url('funcionario/avaliacoes/'.$funcionario->id_funcionario)?>" class="btn btn-success">
-                          <i class="fa fa-star"></i></a>
+                          <i class="fa fa-star"></i>
+                          </a>
+                          <a title="Cargos" href="<?=site_url('funcionario/cargos/'.$funcionario->id_funcionario);?>" class="btn btn-warning">
+                                <span class="fa fa-exchange"></span>
+                          </a>
                          </td>
                        </tr>
                      <?php endforeach ?>
