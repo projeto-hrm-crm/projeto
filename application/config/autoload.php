@@ -100,7 +100,8 @@ $autoload['helper'] = array(
     'loadTemplate',
     'switchDate',
     'dataprep_fornecedor',
-    'translate'
+    'translate',
+    'generateImageName',
 );
 
 /*
