@@ -11,13 +11,7 @@ class Landingpage extends CI_Controller
     public function index() {    
          
         
-        $this->load->view('landing_page/header.php');
-        $this->load->view('landing_page/home.php');
-        $this->load->view('landing_page/sobre.php');
-        $this->load->view('landing_page/acesso.php');
-        $this->load->view('landing_page/download.php');        
-        $this->load->view('landing_page/equipe.php');
-        $this->load->view('landing_page/footer.php');
+        $this->load->view('new_landing/index.php');
        
     }
 
