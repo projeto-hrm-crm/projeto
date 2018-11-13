@@ -7,6 +7,10 @@ body {
     background-color: #f1f1f1!important;
 }
 
+.hidden {
+   display: none;
+}
+
 .input-field {
    margin-top: 10px;
 }
