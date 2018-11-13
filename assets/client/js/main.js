@@ -70,21 +70,7 @@ jQuery(document).ready(function($) {
             });
         }
     });
-<<<<<<< HEAD
-   
-   
-   
-   $(".nextStage").click(function(e){
-    e.preventDefault()
-    var next = $(this).data("next");
-    
-    $(".tab-pane").removeClass("show active");
-    $(".nav-link").removeClass("show active");
-    
-    $("#"+next).addClass("show active");
-    $("#"+next+"-tab").addClass("show active");
-    
-=======
+
 
 
 
@@ -114,7 +100,7 @@ jQuery(document).ready(function($) {
                 }
             }
         })    
->>>>>>> 2aec43b559ff143f0d8c0381a2affc7baeb827b4
+
     });
 
     let showLoader = function(loader, content) {
