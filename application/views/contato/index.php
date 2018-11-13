@@ -23,6 +23,8 @@
         <div class="card-title justify-content-center">
           <h5>Contatos</h5>
         </div>
+        <input type="text" class="search form-control align-self-center mx-1 col-lg-4"/>
+      </br>
         <ul class="sort-by">
           <button type="button" class="sort btn-outline-dark rounded" data-sort="name">Organizar por Nome</button>
           <button type="button" class="sort btn-outline-dark rounded" data-sort="category">Organizar por Categoria</button>
@@ -47,7 +49,7 @@
                 <div class="col-7">
                   <h5 class="text-center name"><?= $funcionario->nome; ?></h5>
                   <p class="card-subtitle mb-2 text-muted text-center small"><?= $funcionario->email; ?></p>
-                  <p class="card-subtitle mb-2 text-muted text-center small">Idade: 
+                  <p class="card-subtitle mb-2 text-muted text-center small">Idade:
                   <?php $date = new DateTime($funcionario->data_nascimento);
                   $idade = $date->diff( new DateTime(date('H:i:s')));
                   echo $idade->format( '%Y anos' ); ?></p>
@@ -122,6 +124,11 @@
             </div>
           </div>
         <?php endforeach; ?>
+      </div>
+      <div class="card rounded col-lg-1 mx-1">
+        <div class="card-body col-1">
+          <ul class="pagination"></ul>
+        </div>
       </div>
     </div>
   </div>
