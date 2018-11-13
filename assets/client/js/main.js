@@ -70,6 +70,7 @@ jQuery(document).ready(function($) {
             });
         }
     });
+<<<<<<< HEAD
    
    
    
@@ -83,18 +84,51 @@ jQuery(document).ready(function($) {
     $("#"+next).addClass("show active");
     $("#"+next+"-tab").addClass("show active");
     
+=======
+
+
+
+    $(".nextStage").click(function(e){
+        e.preventDefault()
+        var next = $(this).data("next");
+        
+        $(".tab-pane").removeClass("show active");
+        $(".nav-link").removeClass("show active"); 
+
+        showLoader($('.client_loader_gif'), $('.client-tab'));
+        $(this).attr('disabled', 'disabled');
+
+        $.ajax({
+            method: "POST",
+            url: BASE_URL+"config/create",
+            data: jQuery("#formulario").serialize(),
+            success : function(data){ 
+                var res = JSON.parse(data);
+                if (res.status == 200) {
+                    $("#"+next).addClass("show active");
+                    $("#"+next+"-tab").addClass("show active");
+                    hideLoader($('.client_loader_gif'), $('.client-tab'));
+                    $(this).removeAttr('disabled');
+                } else {
+                    res.errors
+                }
+            }
+        })    
+>>>>>>> 2aec43b559ff143f0d8c0381a2affc7baeb827b4
     });
+
+    let showLoader = function(loader, content) {
+        $(loader).show();
+        $(content).hide();
+    }
+
+    let hideLoader = function(loader, content) {
+        $(loader).hide();
+        $(content).show();
+    }
 
     $("#finalizar").click(function(){
     
-    $.ajax({
-        method: "POST",
-        url: BASE_URL+"config/create",
-        data: jQuery("#formulario").serialize(),
-        success : function(data){ 
-            
-        }
-    })
     
     })
 });

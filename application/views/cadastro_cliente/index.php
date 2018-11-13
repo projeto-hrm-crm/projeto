@@ -37,8 +37,19 @@
                  </li>
                </ul>
                <div class="tab-content" id="pills-tabContent">
+<<<<<<< HEAD
                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <p>Comece a Utilizar o Lambda, preencha o formulario abaixo para iniciar as configurações!</p>
+=======
+
+                 <div class="tab-pane fade show active client-tab" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="client_loader_gif" style="display: none;">
+                        <center>
+                            <img src="<?php echo base_url();?>assets/client/loader/loader.gif">
+                        </center>
+                    </div>
+                    <p class="text-center">Comece a Utilizar o Lambda, preencha o formulario abaixo para iniciar as configurações!</p>
+>>>>>>> 2aec43b559ff143f0d8c0381a2affc7baeb827b4
                     <div class="input-field">
                         <label>Nome Completo</label>
                         <input class="form-control" type="text" placeholder="" name="nome" id="nome">
