@@ -152,7 +152,8 @@ class Agenda extends CI_Controller
         $evento = $this->input->post('id');
 
         if($evento){
-            $this->evento->delete($evento);
+            $this->evento->deleteEventUser($evento);
+            $this->evento->delete($evento);            
             $this->session->set_flashdata('success', 'Evento excluído com sucesso!');
         } else {
             $this->session->set_flashdata('danger','Não foi possivel realizar esta operação');
