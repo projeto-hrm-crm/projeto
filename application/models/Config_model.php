@@ -44,8 +44,8 @@ class Config_model extends CI_model
 
         $this->db->insert('usuario', array(
             'login' => $data['email'],
-            'senha' =>
-        ))
+            'senha' => ""
+        ));
         
         
     }
