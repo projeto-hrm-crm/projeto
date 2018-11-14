@@ -50,36 +50,36 @@ class Sac extends CI_Controller
     }
 
 
-    public function create()
-    {
-      $user_id = $this->session->userdata('user_login');
-      if($this->input->post())
-      {
-
-          if($this->form_validation->run('sac'))
-          {
-              $this->sac->insert($this->getFromPost());
-
-              $this->redirectSuccess('SAC cadastrado com sucesso!');
-          }
-          else
-          {
-              $this->redirectError('cadastrar');
-          }
-      }
-      else
-      {
-        $this->setTitle('Cadastrar SAC');
-        $this->addData('produtos',  $this->produto->get());
-        $this->addData('clientes',  $this->cliente->get());
-        $this->addData('fornecedores', $this->fornecedor->get());
-        $this->addData('tipo',$this->usuario->getUserAccessGroup($user_id));
-
-        $this->loadFormDefaultScripts();
-        $this->loadFormDefaultScripts();
-        $this->loadView('cadastrar');
-       }
-    }
+    // public function create()
+    // {
+    //   $user_id = $this->session->userdata('user_login');
+    //   if($this->input->post())
+    //   {
+    //
+    //       if($this->form_validation->run('sac'))
+    //       {
+    //           $this->sac->insert($this->getFromPost());
+    //
+    //           $this->redirectSuccess('SAC cadastrado com sucesso!');
+    //       }
+    //       else
+    //       {
+    //           $this->redirectError('cadastrar');
+    //       }
+    //   }
+    //   else
+    //   {
+    //     $this->setTitle('Cadastrar SAC');
+    //     $this->addData('produtos',  $this->produto->get());
+    //     $this->addData('clientes',  $this->cliente->get());
+    //     $this->addData('fornecedores', $this->fornecedor->get());
+    //     $this->addData('tipo',$this->usuario->getUserAccessGroup($user_id));
+    //
+    //     $this->loadFormDefaultScripts();
+    //     $this->loadFormDefaultScripts();
+    //     $this->loadView('cadastrar');
+    //    }
+    // }
 
 
 
