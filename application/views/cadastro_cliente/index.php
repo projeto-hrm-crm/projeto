@@ -172,16 +172,22 @@
                        </div>                       
                        <div class="col-xs-12 col-lg-4" >
                           <div class="input-field">
-                              <label>Número Aproximado de Funcionários</label>
+                              <label>Número de Funcionários</label>
                               <input class="form-control" type="text" placeholder="" name="numero-funcionario" id="numero-funcionario">
                           </div>
                        </div>                       
-                       <div class="col-xs-12 col-lg-12" >
+                       <div class="col-xs-12 col-lg-6" >
                           <div class="input-field">
                               <label>Domínio Site</label>
                               <input class="form-control" type="text" placeholder="" name="dominio" id="dominio">
                           </div>
-                       </div>                       
+                       </div> 
+                       <div class="col-xs-12 col-lg-6" >
+                          <div class="input-field">
+                              <label>Cor de Preferência</label>
+                              <input class="form-control" type="text" placeholder="" name="cor" id="cor">
+                          </div>
+                       </div> 
                        <div class="col-xs-12 col-lg-12" >
                            <div class="input-field">
                                <label for="logo">Envie sua logo (Dimensão recomendada 400x400px)</label>

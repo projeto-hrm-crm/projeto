@@ -1,4 +1,7 @@
 jQuery(document).ready(function($) {
+   $('#cor').colorpicker();
+   
+   
     $.ajax({
         method: "GET",
         url: BASE_URL+"config",
@@ -23,39 +26,39 @@ jQuery(document).ready(function($) {
            $("#modulos").append(sub_modulos)  
            
            $(".submodulos").click(function(){  
-                   var modulo = $(this).val();
-                   alert(modulo);
-              
-                   if(modulo==1) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos4').attr('checked', true);                          
-                      }else{
-                         
-                      }
-                  }
-                   if(modulo==8) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos2').attr('checked', true);                          
-                      }else{
-                         
-                      }
-                  }
-                   if(modulo==12) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos4').attr('checked', true);                          
-                        $('#sub_modulos2').attr('checked', true);
-                      }else{
-                         
-                      }
-                  }
-                   if(modulo==16) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos7').attr('checked', true);                          
-                        $('#sub_modulos5').attr('checked', true);
-                      }else{
-                         
-                      }
-                  }
+                var modulo = $(this).val();
+                //alert(modulo);
+
+                if(modulo==1) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos4').attr('checked', true);                          
+                   }else{
+
+                   }
+                }
+                if(modulo==8) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos2').attr('checked', true);                          
+                   }else{
+
+                   }
+                }
+                if(modulo==12) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos4').attr('checked', true);                          
+                     $('#sub_modulos2').attr('checked', true);
+                   }else{
+
+                   }
+                }
+                if(modulo==16) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos7').attr('checked', true);                          
+                     $('#sub_modulos5').attr('checked', true);
+                   }else{
+
+                   }
+               }
                    
                    
             });
