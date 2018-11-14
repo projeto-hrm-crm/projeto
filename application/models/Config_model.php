@@ -30,12 +30,22 @@ class Config_model extends CI_model
         return $data;        
     }
 
-    public function create($data)
+    public function createProfile($data)
     {
         $data = json_decode($data); 
         
-        if (is_null($data))
-            return "Nenhuma informação inserida"; 
+        $this->db->insert('pessoa', array(
+            'nome' => $data['nome'],
+            'email' => $data['email'],
+            'data_criacao' => date('Y-m-d')
+        ));
+
+        $id_pessoa = $this->db->lastInsertId();
+
+        $this->db->insert('usuario', array(
+            'login' => $data['email'],
+            'senha' =>
+        ))
         
         
     }
