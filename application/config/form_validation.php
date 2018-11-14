@@ -823,6 +823,45 @@ $config = array(
         ),
 
     ),
+    
+    'config_company' => array(
+        array(
+            'field' => 'nome_fantasia',
+            'label' => 'Nome fantasia',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'sigla',
+            'label' => 'Sigla',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'cnpj',
+            'label' => 'CNPJ',
+            'rules' => 'required|validCNPJ'
+        ),
+        array(
+            'field' => 'inscricao_estadual',
+            'label' => 'Inscrição estadual',
+            'rules' => 'required|numeric'
+        ),
+        array(
+            'field' => 'numero_funcionarios',
+            'label' => 'Número de funcionários',
+            'rules' => 'required|numeric'
+        ),
+        array(
+            'field' => 'dominio',
+            'label' => 'Domínio',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'finalidade',
+            'label' => 'Finalidade',
+            'rules' => 'required'
+        ),
+
+    ),
 
     'config' => array (
         array(

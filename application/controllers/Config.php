@@ -13,6 +13,14 @@ class Config extends CI_Controller
 		echo json_encode($this->configuration->getModulesAndSubModules());
 	}
 
+	public function createCompany()
+	{
+		if(!$this->form_validation->run('config_company')) 
+			echo json_encode($this->form_validation->error_array());
+		else
+			echo json_encode($this->config->createProfile($this->input->post()));
+	}
+
 	public function createProfile() 
 	{
 		if(!$this->form_validation->run('config_profile')) 

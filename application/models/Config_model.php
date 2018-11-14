@@ -29,6 +29,24 @@ class Config_model extends CI_model
         
         return $data;        
     }
+    
+    public function createCompany($data)
+    {
+        $result = array();
+        $data = json_decode($data);
+
+        $created = $this->db->insert('empresa', array(
+            'nome' => $data['nome'],
+
+        ));
+
+        if ($created) {
+            $result['id_empresa'] = $this->db->lastInsertId();
+            $result['status'] = 200;
+        }
+        
+        return $result;
+    }
 
     public function createProfile($data)
     {
@@ -43,9 +61,11 @@ class Config_model extends CI_model
         $id_pessoa = $this->db->lastInsertId();
 
         $this->db->insert('usuario', array(
-            'login' => $data['email'],
-            'senha' =>
-        ))
+            'login'                 => $data['email'],
+            'senha'                 => $data['pessoa'],
+            'id_pessoa'             => $id_pessoa, 
+            'empresa_id_empresa'    => $data['id_empresa']
+        ));
         
         
     }

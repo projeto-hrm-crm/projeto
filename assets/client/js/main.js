@@ -104,6 +104,39 @@ jQuery(document).ready(function($) {
 
     });
 
+    $(".add_company").click((e) => {
+        e.preventDefault();
+        
+        showLoader();
+
+        
+        let data = {
+            nome:       $("#nome").val(),
+            email:      $("#email").val(),
+            senha:      $("#senha").val(),
+            finalidade: $("#finalidade").val()
+        }
+        
+
+        $.ajax({
+            method: "POST",
+            url: BASE_URL + "config/createProfile",
+            data: data,
+            success : (data) => { 
+               data = JSON.parse(data);
+               if (data.status == 200)
+                hideLoader();
+            }, 
+
+            error: (error) => {
+
+            }
+        }) 
+
+
+
+    });
+
     $(".add_user").click((e) => {
         e.preventDefault();
         
@@ -135,7 +168,7 @@ jQuery(document).ready(function($) {
 
 
 
-    })
+    });
 
     let showLoader = function() {
         $("#formulario :input").prop("disabled", true);
