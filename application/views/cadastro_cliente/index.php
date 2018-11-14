@@ -23,28 +23,23 @@
                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Dados Usuário</a>
                  </li>
                  <li class="nav-item">
-                   <a class="nav-link" id="pills-modulo-tab" data-toggle="pill" href="#pills-modulo" role="tab" aria-controls="pills-profile" aria-selected="false">Módulos</a>
+                   <a class="nav-link disabled" id="pills-modulo-tab" data-toggle="pill" href="#pills-modulo" role="tab" aria-controls="pills-profile" aria-selected="false">Módulos</a>
                  </li>
                  <li class="nav-item">
-                   <a class="nav-link" id="pills-empresa-tab" data-toggle="pill" href="#pills-empresa" role="tab" aria-controls="pills-contact" aria-selected="false">Regionalização</a>
+                   <a class="nav-link disabled" id="pills-empresa-tab" data-toggle="pill" href="#pills-empresa" role="tab" aria-controls="pills-contact" aria-selected="false">Regionalização</a>
                  </li>
                   <li class="nav-item">
-                   <a class="nav-link" id="pills-informacao-tab" data-toggle="pill" href="#pills-informacao" role="tab" aria-controls="pills-contact" aria-selected="false">Dados da Empresa</a>
+                   <a class="nav-link disabled" id="pills-informacao-tab" data-toggle="pill" href="#pills-informacao" role="tab" aria-controls="pills-contact" aria-selected="false">Dados da Empresa</a>
                  </li>
                   
                   <li class="nav-item">
-                   <a class="nav-link" id="pills-endereco-tab" data-toggle="pill" href="#pills-endereco" role="tab" aria-controls="pills-contact" aria-selected="false">Endereço</a>
+                   <a class="nav-link disabled" id="pills-endereco-tab" data-toggle="pill" href="#pills-endereco" role="tab" aria-controls="pills-contact" aria-selected="false">Endereço</a>
                  </li>
                </ul>
                <div class="tab-content" id="pills-tabContent">
 
 
                  <div class="tab-pane fade show active client-tab" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="client_loader_gif" style="display: none;">
-                        <center>
-                            <img src="<?php echo base_url();?>assets/client/loader/loader.gif">
-                        </center>
-                    </div>
                     <p class="text-center">Comece a Utilizar o Lambda, preencha o formulario abaixo para iniciar as configurações!</p>
 
                     <div class="input-field">
@@ -65,7 +60,7 @@
                        <div class="col-xs-12 col-lg-6">
                           <div class="input-field">
                               <label>Confirme a Senha</label>
-                              <input class="form-control" type="password" placeholder="" name="confirma-senha" id="confirma-senha">
+                              <input class="form-control" type="password" placeholder="" name="confirma_senha" id="confirma-senha">
                           </div>
                        </div>
                     </div>                    
@@ -78,7 +73,10 @@
                          </select>
                      </div>
                     <div class="text-right">
-                     <button class="btn btn-success nextStage" data-next="pills-modulo">Próximo Passo</button>
+                     <button class="btn btn-success add_user" data-next="pills-modulo">
+                     Cadastrar 
+                     <i class="fas spin"></i>
+                     </button>
                     </div>
                   </div>
                  <div class="tab-pane fade" id="pills-modulo" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -87,7 +85,7 @@
                                                
                     </div>
                    <div class="text-right">
-                     <button class="btn btn-success nextStage" type="button" data-next="pills-empresa">Próximo Passo</button>
+                     <button class="btn btn-success" type="button" data-next="pills-empresa">Próximo Passo</button>
                     </div>
                   </div>
                  <div class="tab-pane fade" id="pills-empresa" role="tabpanel" aria-labelledby="pills-contact-tab">

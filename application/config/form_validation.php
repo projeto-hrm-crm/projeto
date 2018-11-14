@@ -800,7 +800,31 @@ $config = array(
             'rules' => 'required'
         ),
     ),
-    'config' => array(
+    'config_profile' => array(
+        array(
+            'field' => 'nome',
+            'label' => 'Nome',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'senha',
+            'label' => 'Senha',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'finalidade',
+            'label' => 'Finalidade de uso',
+            'rules' => 'required'
+        ),
+
+    ),
+
+    'config' => array (
         array(
             'field' => 'nome_empresa',
             'label' => 'Nome da empresa',
@@ -889,7 +913,6 @@ $config = array(
             'label' => 'bairro',
             'rules' => 'required',
         ),
-
     )
 );
 

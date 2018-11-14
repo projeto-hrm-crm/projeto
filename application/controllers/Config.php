@@ -13,13 +13,12 @@ class Config extends CI_Controller
 		echo json_encode($this->configuration->getModulesAndSubModules());
 	}
 
-	public function create() 
+	public function createProfile() 
 	{
-		echo json_encode(['status' => 200]);exit;
-		if(!$this->form_validation->run('candidato')) 
+		if(!$this->form_validation->run('config_profile')) 
 			echo json_encode($this->form_validation->error_array());
 		else
-			echo json_encode($this->config->create($this->input->post()));
+			echo json_encode($this->config->createProfile($this->input->post()));
 	}
     
       

@@ -99,21 +99,55 @@ jQuery(document).ready(function($) {
                     hideLoader($('.client_loader_gif'), $('.client-tab'));
                     $(this).removeAttr('disabled');
                 } else {
-                    res.errors
+                    $(this).addClass("show active");
+                    $(this).addClass("show active");
                 }
             }
         })    
 
     });
 
-    let showLoader = function(loader, content) {
-        $(loader).show();
-        $(content).hide();
+    $(".add_user").click((e) => {
+        e.preventDefault();
+        
+        showLoader();
+
+        
+        let data = {
+            nome:       $("#nome").val(),
+            email:      $("#email").val(),
+            senha:      $("#senha").val(),
+            finalidade: $("#finalidade").val()
+        }
+        
+
+        $.ajax({
+            method: "POST",
+            url: BASE_URL + "config/createProfile",
+            data: data,
+            success : (data) => { 
+               data = JSON.parse(data);
+               if (data.status == 200)
+                hideLoader();
+            }, 
+
+            error: (error) => {
+
+            }
+        }) 
+
+
+
+    })
+
+    let showLoader = function() {
+        $("#formulario :input").prop("disabled", true);
+        $(".spin").addClass("fa-spinner fa-pulse");
     }
 
-    let hideLoader = function(loader, content) {
-        $(loader).hide();
-        $(content).show();
+    let hideLoader = function() {
+        $("#formulario :input").prop("disabled", false);  
+        $(".spin").removeClass("fa-spinner fa-pulse");
     }
 
     $("#finalizar").click(function(){
