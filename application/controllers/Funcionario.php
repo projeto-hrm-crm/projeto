@@ -64,11 +64,13 @@ class Funcionario extends CI_Controller
             $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
             $this->session->set_flashdata('success', 'Funcionário cadastrado com sucesso!');
             redirect('funcionario');
+
         }else{
           $this->session->set_flashdata('danger', 'Não foi possível realizar o cadastro!');
           redirect('cadastrar');
         }
     }else{
+
       $data['title'] = 'Cadastrar funcionarios';
       $data['cargos'] = $this->cargo->get();
       $data['funcionarios'] = $this->funcionario->get();
@@ -81,8 +83,6 @@ class Funcionario extends CI_Controller
       );
 
       loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
-
-
     }
 
   }
@@ -105,17 +105,16 @@ class Funcionario extends CI_Controller
     if ($this->input->post()) {
         $funcionario = $this->funcionario->getById($id_funcionario);
 
-        if($this->input->post('id_cargo')!=$funcionario[0]->id_cargo){
+        if($this->input->post('id_cargo') != $funcionario[0]->id_cargo){
             $antigo = $this->cargo_funcionario->get($id_funcionario,$funcionario[0]->id_cargo);
-            $antigo[0]->status = 0;
+            $antigo[0]->deletado = date("Y-m-d H:i:s");
             $this->cargo_funcionario->atualizar($antigo[0]->id_cargo_funcionario, $antigo[0]);
-
             $novo = $this->cargo_funcionario->get($id_funcionario,$this->input->post('id_cargo'));
             if(isset($novo[0])){
                 $novo[0]->status = 1;
                 $this->cargo_funcionario->atualizar($novo[0]->id_cargo_funcionario, $novo[0]);
             }else{
-                $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
+                $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo')]);
             }
         }
         $this->funcionario->update($id_funcionario, $this->input->post());
@@ -225,7 +224,6 @@ class Funcionario extends CI_Controller
             $this->session->set_flashdata('success', 'Avaliação cadastrada');
             redirect('funcionario/avaliacoes/'.$id_funcionario);
         }
-
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
 
@@ -272,8 +270,6 @@ class Funcionario extends CI_Controller
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
-
-
         $data = $this->avaliacao->find($id_avaliacao);
         $id_funcionario = $data[0]->id_funcionario;
 
@@ -321,7 +317,6 @@ class Funcionario extends CI_Controller
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
-
         $data['title'] = 'Informações Avaliação';
         $data['funcionario'] = $this->funcionario->getById($id_funcionario);
         $data['avaliacao'] = $this->avaliacao->find($id_avaliacao);
@@ -337,6 +332,23 @@ class Funcionario extends CI_Controller
             ),
         );
         loadTemplate('includes/header', 'funcionario/avaliacao-info', 'includes/footer', $data);
+
+    }
+
+    /**
+     * @author Camila Sales
+     *
+     * Responsavel por redirecionar para a view de visualização de todos os cargos do funcionario
+    */
+    public function cargos($id_funcionario)
+    {
+      $this->setTitle('Histórico dos Cargos');
+
+      $this->addData('cargos',$this->funcionario->getCargos($id_funcionario));
+
+      $this->loadIndexDefaultScripts();
+
+      $this->loadView('historico');
 
     }
 }

@@ -1,7 +1,7 @@
     <section id="acesso">
         <div class="row acesso-content">
 
-            <div class="col-six acesso-intro">
+            <div class="col-five acesso-intro">
                 <h1 class="intro-header" data-aos="fade-up">Perfis de Acesso</h1>
 
                 <p data-aos="fade-up">O Perfil de Acesso define quais funcionalidades estarão habilitadas no acesso ao sistema de um grupo de usuários. 
@@ -14,7 +14,7 @@
                 </p>
             </div>
 
-            <div class="col-six acesso-table">
+            <div class="col-seven acesso-table">
                 <div class="row">
 
 <!-- Acesso -->

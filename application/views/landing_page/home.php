@@ -1,5 +1,5 @@
 <!-- home -->
-   <section id="home" data-parallax="scroll" data-image-src="<?php echo base_url();?>assets/landing_page/images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000>
+   <section id="home" data-parallax="scroll" data-image-src="<?php echo base_url();?>assets/landing_page/images/background-new.jpg" data-natural-width=3000 data-natural-height=2000>
 
         <div class="overlay"></div>
         <div class="home-content">        

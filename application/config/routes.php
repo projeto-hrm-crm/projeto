@@ -102,6 +102,7 @@ $route['funcionario/avaliacoes/(:num)'] = 'Funcionario/assessments/$1';
 $route['funcionario/avaliar/(:num)'] = 'Funcionario/evaluate/$1';
 $route['funcionario/avaliacao-editar/(:num)'] = 'Funcionario/evaluate_edit/$1';
 $route['funcionario/avaliacao-info/(:num)'] = 'Funcionario/evaluate_info/$1';
+$route['funcionario/cargos/(:num)'] = 'Funcionario/cargos/$1';
 
 /** LOGIN */
 $route['login'] = 'Login/index';
@@ -213,7 +214,10 @@ $route['events/getUsers/(:num)']      = 'Agenda/getEventUsers/$1';
 
 $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 $route['events']					  = 'agenda/get';
+
 $route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
+
+$route['status/avancar/(:num)/(:num)'] = 'Processo_Seletivo/avancar/$1/$2';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
@@ -224,5 +228,7 @@ $route['remanejamento'] = 'Remanejamento/index';
 $route['remanejamento/cadastrar'] = 'Remanejamento/create';
 $route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
 $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
+$route['remanejamento/relatorio/(:num)']  = 'Remanejamento/relatorio/$1';
 
-
+//Rota Contato
+$route['contato'] = 'Contato';
