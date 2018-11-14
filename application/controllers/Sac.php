@@ -201,12 +201,12 @@ class Sac extends CI_Controller
     *analizando o desenvolvimento do projeto, esta função de delete se tornou inviavel para uso
     *
 
-    public function delete($id_sac)
-    {
-        $this->sac->remove($id_sac);
+    *public function delete($id_sac)
+    *{
+    *    $this->sac->remove($id_sac);
 
-        $this->redirectSuccess('SAC removido com sucesso');
-    }
+    *    $this->redirectSuccess('SAC removido com sucesso');
+    *}
 
     */
 
