@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
   var options = {
     valueNames: [ 'name', 'description', 'category' ],
-    page: 10,
+    page: 8,
     innerWindow: 3,
     pagination: true
   };
