@@ -38,8 +38,10 @@
                </ul>
                <div class="tab-content" id="pills-tabContent">
 
+
                  <div class="tab-pane fade show active client-tab" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <p class="text-center">Comece a Utilizar o Lambda, preencha o formulario abaixo para iniciar as configurações!</p>
+
                     <div class="input-field">
                         <label>Nome Completo</label>
                         <input class="form-control" type="text" placeholder="" name="nome" id="nome">
