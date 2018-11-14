@@ -16,11 +16,14 @@ class CandidatoEtapa extends CI_Controller
   /**
   * author: Matheus Ladislau
   * Metodo index que chama a view inicial de candidato-etapa
+  * author: Matheus Romeo
+  * Metodo index agora carrega os processos seletivos de acordo com as regras de 
+  * negócio de etapa->getProcessoSeletivo
   **/
   public function index()
   {
     $data['title'] = 'Candidatar-se à Vaga';
-    $data['processo_seletivo']=$this->candidato_etapa->getProcessoSeletivo();
+    $data['processo_seletivo']=$this->etapa->getProcessoSeletivo();
     loadTemplate(
       'includes/header',
       'candidato_etapa/index',

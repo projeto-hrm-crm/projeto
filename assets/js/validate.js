@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
         required: true,
         validaDataBR:true,
         dataMaiorQue: '#fabricacao',
-    
+
       },
 
       fabricacao: {
@@ -57,6 +57,24 @@ jQuery(document).ready(function($) {
       },
     }
   });
+
+  $("#form_remanejamento").validate({
+    rules: {
+
+      id_cargo: {
+        required: true,
+      },
+
+      id_funcionario: {
+        required: true,
+      },
+
+      id_setor: {
+        required:true,
+      },
+    },
+   });
+
 
 
   $("#form_almoxarifado").validate({
@@ -98,7 +116,7 @@ jQuery(document).ready(function($) {
       }
     },
   });
-   
+
    $("#form_habilidade").validate({
     rules: {
       nome: "required",
@@ -357,9 +375,39 @@ jQuery(document).ready(function($) {
     rules: {
       nome: {
         required:true,
-        letras:true,
+        regex: /^[a-zA-Z0-9]+/,
+        maxlength:45,
       },
-    }
+
+      sigla: {
+        required:true,
+        letras:true,
+        maxlength:10,
+      },
+
+      descricao: {
+        required:true,
+        maxlength:1000,
+      },
+
+    },
+
+    messages: {
+
+      nome:{
+        required: 'Insira o nome do setor',
+        regex:    'Por favor, insira apenas letras e números.',
+      },
+
+      sigla:{
+        required: 'Adicione uma sigla',
+        regex:    'Por favor, insira apenas letras.',
+      },
+
+      descricao:{
+        required: 'Adicione uma descrição',
+      },
+    },
   });
 
   $('#form-vaga').validate({

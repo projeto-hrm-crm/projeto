@@ -24,42 +24,40 @@ class Home extends CI_Controller
 	{
     $user_id = $this->session->userdata('user_login');
     $id_grupo_acesso = $this->usuario->getUserAccessGroup($user_id);
-
-      switch ($id_grupo_acesso) {
-        case '1':// home ADMINISTRADOR
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-
-            $data['admin'] = $this->getAdminHomeConfigs();
+    $grupo_acesso = $this->grupo->find($id_grupo_acesso);
+    
+    switch ($id_grupo_acesso) {
+        case '1':// home ADMINISTRADOR      
+          $data['admin'] = $this->getAdminHomeConfigs();
           break;
 
         case '3':// FORNECEDOR
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
             $data['fornecedor'] = $this->getFornecedorHomeConfigs($user_id);
 
         case '4'://CLIENTE
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
             $data['cliente'] = $this->getCustomerHomeConfigs($user_id);
           break;
 
         case '5'://CANDIDATO
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs();
+          $data['candidato'] = $this->getCandidatoHomeConfigs($user_id); 
+          break;
 
         case '6'://FUNCIONARIO
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs();
-
+          $data['admin'] = $this->getAdminHomeConfigs();
+          break;
+        
         default:
-          $grupo_acesso = $this->grupo->find($id_grupo_acesso);
-            $data['admin'] = $this->getAdminHomeConfigs();
           break;
       }
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
+         'home/resetLocalStorage.js',
          'chartjs.min.js',
          'cliente/home-charts.js',
-         'cliente/home-sac.js'
+         'cliente/home-sac.js',
+         'processo_seletivo/etapa.js'
+
       ]
     ];
 
@@ -127,6 +125,19 @@ class Home extends CI_Controller
 
   }
 
+  public function getCandidatoHomeConfigs($user_id)
+  {
+    $data = [];
 
+    $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
+    return $data;
+
+  }
+
+
+  public function getEtapasProcesso($id_processo){
+    $data = [];
+    echo json_encode($this->etapa->getEtapasProcesso($id_processo));
+  }
 
 }

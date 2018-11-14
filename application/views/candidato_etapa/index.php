@@ -31,7 +31,7 @@
                 <th>Descrição</th>
 								<th>Data de Início</th>
 								<th>Data de Término</th>
-								<th>Candidatar</th>
+                <th>Candidatar</th>
 							</tr>
 						</thead>
 
@@ -45,27 +45,23 @@
                     <td><?php echo $ps->descricao; ?></td>
                     <td><?php echo $ps->data_inicio; ?></td>
                     <td><?php echo $ps->data_fim; ?></td>
-										<td>
-                      <?php
-                        $data['id_candidato']=$this->candidato_etapa->selectCandidatoByIdUsuario($this->session->userdata('user_login'))[0]->id_candidato;
-                        $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$this->candidato_etapa->getIdEtapaByProcessoID($ps->id_processo_seletivo)->id_etapa);
-                        if($cadastrado!=null)
-                        {
-                          echo "<p>Concorrendo</p>";
-                        }
-                        else
-                        {
-                          echo
-                            "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
-                              <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
-                            </a>";
-                        }
-                        ?>
+                    <td>
+                          <?php 
+                            $data['id_candidato']=$this->candidato_etapa->selectCandidatoByIdUsuario($this->session->userdata('user_login'))[0]->id_candidato;
+                              $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$this->candidato_etapa->getIdEtapaByProcessoID($ps->id_processo_seletivo)->id_etapa);
+                            if($cadastrado!=null)
+                            {
+                                echo "<p>Concorrendo</p>";
+                            }
+                            else
+                            {
+                                echo "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
+                                    <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
+                                  </a>";
+                            }
+                          ?>    
+                        </td>
 
-
-
-
-										</td>
 									</tr>
 								<?php endforeach; ?>
 							<?php endif; ?>

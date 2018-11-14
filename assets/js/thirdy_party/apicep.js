@@ -1,11 +1,11 @@
 jQuery(document).ready(($) => {
     /**
      * @author Pedro Henrique Guimarães
-     * 
-     * @description Método responsável por fazer consulta de ceps na base dados do IBGE pela api do VIACEP 
+     *
+     * @description Método responsável por fazer consulta de ceps na base dados do IBGE pela api do VIACEP
      * @link https://viacep.com.br/
-     * @param {*} cep 
-     * @return json 
+     * @param {*} cep
+     * @return json
      */
     let getCep = cep => {
         return $.ajax({
@@ -16,7 +16,7 @@ jQuery(document).ready(($) => {
 
     $("#cep").change(function() {
         var cep = $(this).val();
-        cep_result = getCep(cep); 
+        cep_result = getCep(cep);
         cep_result.done(result => {
           $("#estado").val(result.uf);
           $("#bairro").val(result.bairro);

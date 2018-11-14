@@ -30,7 +30,7 @@
                      <p>
                         <?=$endereco[0]->cidade;?> -  <?=$endereco[0]->estado;?>, Brasil
                         <?php
-                           if($curriculum) {
+                           if(!empty($curriculum)) {
                         ?> 
                          &nbsp;&nbsp;- &nbsp;
                         <a href="<?=$curriculum;?>" download><i class="fa fa-file-o"></i> Meu Curriculum</a>

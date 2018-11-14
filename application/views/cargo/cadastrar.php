@@ -36,11 +36,11 @@
                                     <?php echo isset($errors['salario']) ? $errors['salario'] : '' ; ?>
                                 </span>
                             </div>
-                            
+
                             <!--
                             <div class="form-group col-md-12">
                                 <label class=" form-control-label"><red>*</red>Horario de Trabalho</label>
-                                <input type="time" id="horario_cargo" name="appt-time" 
+                                <input type="time" id="horario_cargo" name="appt-time"
                                         min="00:00" max="23:59" class="form-control <?php echo isset($errors['horario']) ? 'is-invalid' : '' ?>" required />
                                 <span class="invalid-feedback">
                                     <?php echo isset($errors['horario']) ? $errors['horario'] : '' ; ?>
@@ -68,6 +68,7 @@
                         </div>
                         -->
                     </div>
+                  </div>
                     <div class="card-footer text-right">
                         <a title="Cancelar Cadastro" href="<?=site_url('cargo')?>" class="btn btn-danger btn-sm">
                             <i class="fa fa-times"></i>
