@@ -101,13 +101,12 @@ class Fornecedor extends CI_Controller
   private function getFromPost()
   {
       return [
-          'nome'         => $this->input->post('nome'),
-          'email'        => $this->input->post('email'),
-          'senha'        => $this->input->post('senha'),
-          'senha2'       => $this->input->post('senha2'),
-          'razao_social' => $this->input->post('razao_social'),
-          'cnpj'         => $this->input->post('cnpj'),
-          'telefone'     => $this->input->post('telefone'),
+          'nome'        => $this->input->post('nome'),
+          'email'       => $this->input->post('email'),         
+          'senha'       => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
+          'razao_social'=> $this->input->post('razao_social'),
+          'cnpj'        => $this->input->post('cnpj'),
+          'telefone'    => $this->input->post('telefone'),
           'cep'         => $this->input->post('cep'),
           'bairro'      => $this->input->post('bairro'),
           'logradouro'  => $this->input->post('logradouro'),
