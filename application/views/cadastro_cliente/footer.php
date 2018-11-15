@@ -5,7 +5,11 @@
    <script src="<?php echo base_url();?>assets/client/js/bootstrap.min.js"></script>
 
    <script src="<?php echo base_url();?>assets/js/thirdy_party/apicep.js"></script>
+   
 
    <script src="<?php echo base_url();?>assets/client/js/main.js"></script>
+
+   <script src="<?php echo base_url();?>assets/client/js/bootstrap-colorpicker-2.5.2/dist/js/bootstrap-colorpicker.js"></script>
+ 
 
 </html>

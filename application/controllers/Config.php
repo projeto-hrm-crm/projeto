@@ -18,7 +18,7 @@ class Config extends CI_Controller
 		if(!$this->form_validation->run('config_company')) 
 			echo json_encode($this->form_validation->error_array());
 		else
-			echo json_encode($this->config->createProfile($this->input->post()));
+			echo json_encode($this->configuration->createCompany($this->input->post()));
 	}
 
 	public function createProfile() 
@@ -26,7 +26,7 @@ class Config extends CI_Controller
 		if(!$this->form_validation->run('config_profile')) 
 			echo json_encode($this->form_validation->error_array());
 		else
-			echo json_encode($this->config->createProfile($this->input->post()));
+			echo json_encode($this->configuration->createProfile($this->input->post()));
 	}
     
       

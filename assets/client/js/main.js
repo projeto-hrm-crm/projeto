@@ -1,4 +1,7 @@
 jQuery(document).ready(function($) {
+   $('#cor').colorpicker();
+   
+   
     $.ajax({
         method: "GET",
         url: BASE_URL+"config",
@@ -23,39 +26,39 @@ jQuery(document).ready(function($) {
            $("#modulos").append(sub_modulos)  
            
            $(".submodulos").click(function(){  
-                   var modulo = $(this).val();
-                   alert(modulo);
-              
-                   if(modulo==1) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos4').attr('checked', true);                          
-                      }else{
-                         
-                      }
-                  }
-                   if(modulo==8) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos2').attr('checked', true);                          
-                      }else{
-                         
-                      }
-                  }
-                   if(modulo==12) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos4').attr('checked', true);                          
-                        $('#sub_modulos2').attr('checked', true);
-                      }else{
-                         
-                      }
-                  }
-                   if(modulo==16) {
-                      if($('#sub_modulos'+modulo).is(':checked')){                         
-                        $('#sub_modulos7').attr('checked', true);                          
-                        $('#sub_modulos5').attr('checked', true);
-                      }else{
-                         
-                      }
-                  }
+                var modulo = $(this).val();
+                //alert(modulo);
+
+                if(modulo==1) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos4').attr('checked', true);                          
+                   }else{
+
+                   }
+                }
+                if(modulo==8) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos2').attr('checked', true);                          
+                   }else{
+
+                   }
+                }
+                if(modulo==12) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos4').attr('checked', true);                          
+                     $('#sub_modulos2').attr('checked', true);
+                   }else{
+
+                   }
+                }
+                if(modulo==16) {
+                   if($('#sub_modulos'+modulo).is(':checked')){                         
+                     $('#sub_modulos7').attr('checked', true);                          
+                     $('#sub_modulos5').attr('checked', true);
+                   }else{
+
+                   }
+               }
                    
                    
             });
@@ -111,16 +114,22 @@ jQuery(document).ready(function($) {
 
         
         let data = {
-            nome:       $("#nome").val(),
-            email:      $("#email").val(),
-            senha:      $("#senha").val(),
-            finalidade: $("#finalidade").val()
+            nome_fantasia:          $("#nome-fantasia").val(),
+            sigla:                  $("#sigla").val(),
+            razao_social:           $("#razao-social").val(),
+            cnpj:                   $("#cnpj").val(),
+            inscricao_estadual:     $("#inscricao-estadual").val(),
+            classificacao:          $("#classificacao").val(),
+            numero_funcionarios:    $("#numero-funcionario").val(), 
+            dominio:                $("#dominio").val(),
+            cor:                    $("#cor").val(), 
+            finalidade:             $("#finalidade").val(), 
         }
         
 
         $.ajax({
             method: "POST",
-            url: BASE_URL + "config/createProfile",
+            url: BASE_URL + "config/createCompany",
             data: data,
             success : (data) => { 
                data = JSON.parse(data);

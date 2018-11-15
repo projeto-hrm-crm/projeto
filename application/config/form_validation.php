@@ -823,7 +823,7 @@ $config = array(
         ),
 
     ),
-    
+
     'config_company' => array(
         array(
             'field' => 'nome_fantasia',
@@ -838,7 +838,10 @@ $config = array(
         array(
             'field' => 'cnpj',
             'label' => 'CNPJ',
-            'rules' => 'required|validCNPJ'
+            'rules' => 'required|validCNPJ',
+            'errors' => array(
+                'validCNPJ' => 'O campo {field} deve conter um número válido',
+            ),
         ),
         array(
             'field' => 'inscricao_estadual',
