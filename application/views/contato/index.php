@@ -38,6 +38,12 @@
       </ul>
     </div>
 
+    <div>
+      <div class="list-group" id="list-tab" role="tablist">
+        <ul class="pagination justify-content-center"></ul>
+      </div>
+    </div>
+
     <div class="list row justify-content-center align-items-center">
       <?php foreach ($funcionarios as $funcionario) : ?>
         <div class="card rounded col-lg-5 mx-1 description">
@@ -46,7 +52,7 @@
               <div class="col-lg-5">
                 <img class="card-img rounded" src="<?= base_url()."uploads/profileImage/".$funcionario->imagem;?> ">
               </div>
-              <div class="col-7">
+              <div class="col-lg-7">
                 <h5 class="text-center name"><?= $funcionario->nome; ?></h5>
                 <p class="card-subtitle mb-2 text-muted text-center small"><?= $funcionario->email; ?></p>
                 <p class="card-subtitle mb-2 text-muted text-center small">Idade:
@@ -124,11 +130,6 @@
             </div>
           </div>
         <?php endforeach; ?>
-      </div>
-      <div class="content">
-        <div class="list-group" id="list-tab" role="tablist">
-          <ul class="pagination justify-content-center"></ul>
-        </div>
       </div>
     </div>
   </div>
