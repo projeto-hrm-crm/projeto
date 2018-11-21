@@ -56,6 +56,10 @@
                                        <span class="fa fa-clipboard"></span>
                                  </a>
 
+                                 <a title="candidatos" href="<?=site_url('processo_seletivo/candidatos/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-secondary">
+                                       <span class="fa fa-address-card"></span>
+                                  </a>
+
                                  <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger" data-toggle="modal" data-target="#modalRemover">
                                    <span class="fa fa-times"></span>
                                  </button>

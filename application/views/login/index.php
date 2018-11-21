@@ -30,7 +30,7 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
-      <div class="login-content margin30">
+      <div class="login-content margin30 float-right">
 
         <?php if ($this->session->flashdata('success')): ?>
          <div class="alert alert-success mt-4">
@@ -64,13 +64,15 @@
                 </div>
             </div>
           </form>
+          <center>
+            <a href="<?php echo site_url('sugestao/cadastrar')?>">Deixe sua sugestão aqui!</a>
+          </center>
           
-          
-          
-      </div>
-    <center>
-        <a href="<?php echo site_url('sugestao/cadastrar')?>">Deixe sua sugestão aqui!</a>
-    </center>
+        </div>
+        <div class="margin30 float-left">
+          <a href=""> só um texto para mostrar o que eu preciso ver na caixa </a>
+
+        </div>
     </div>
   </div>
   <script src="<?php echo base_url();?>assets/js/vendor/jquery-2.1.4.min.js"></script>
