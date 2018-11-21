@@ -29,12 +29,12 @@
                      </thead>
 
                      <tbody>
-                        <!-- candidatos as candidato<?php foreach ($processos_seletivos as $processo_seletivo): ?> -->
+                        <!-- <?php foreach ($candidatos as $candidato): ?> -->
                            <tr>
-                              <td class="text-center"></td>
-                              <td class="text-center"></td>
-                              <td class="text-center"></td>
-                              <td class="text-center"></td>
+                              <td <?php echo $candidato->nome; ?>></td>
+                              <td <?php echo $candidato->nome; ?>></td>
+                              <td <?php echo $candidato->nome; ?>></td>
+                              <td <?php echo $candidato->nome; ?>></td>
 
                               <td class="text-center">
 
