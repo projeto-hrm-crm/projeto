@@ -181,6 +181,35 @@
     </div>
 </div>
 
+
+<!-- ALTERAR EVENTO AO SOLTAR -->
+<div class="modal fade" id="drop" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Alterar Evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="get">
+                <div class="modal-body">
+                    Deseja realmente alterar esse evento?
+                    <input id="id" name="id" type="hidden" class="form-control" required>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelar" type="button" name="button" class="btn btn-danger" data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button id="confirmar" type="submit" class="btn btn-primary">
+                        Confirmar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- MODAL DE CADASTRAR EVENTOS -->
 
 <div class="modal fade" id="cadastrar" role="dialog" aria-hidden="true">

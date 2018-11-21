@@ -170,6 +170,9 @@ class Agenda extends CI_Controller
                 'status' => $this->evento->updateDate($id_evento, $date),
                 'message'=> 'Data alterada com sucesso!'
             ]);
+
+            $this->session->set_flashdata('success','Evento editado com sucesso!');
+            
         } else {
             echo json_encode([
                 'status' => false,
