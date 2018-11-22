@@ -21,29 +21,25 @@
                      <thead>
                         <tr>
                            <th class="text-center">Candidato</th>
+                           <th class="text-center">Nome</th>
                            <th class="text-center">e-mail</th>
-                           <th class="text-center">telefone</th>
-                           <th class="text-center">qlqr coisa relevante</th>
+                           <th class="text-center">Curriculum</th>
                            <th class="text-center">Ações</th>
                         </tr>
                      </thead>
 
                      <tbody>
-                        <!-- <?php foreach ($candidatos as $candidato): ?> -->
+                         <?php foreach ($candidatos as $candidato): ?> 
                            <tr>
-                              <td <?php echo $candidato->nome; ?>></td>
-                              <td <?php echo $candidato->nome; ?>></td>
-                              <td <?php echo $candidato->nome; ?>></td>
-                              <td <?php echo $candidato->nome; ?>></td>
+                              <td><img src="<?=base_url();?>uploads/profileImage/<?=$candidato->imagem;?>"></td>
+                              <td><?php echo $candidato->nome; ?></td>
+                              <td><?php echo $candidato->email; ?></td>
+                              <td><?php echo $candidato->curriculum; ?></td>
 
                               <td class="text-center">
 
-                                 <a title="Curriculo" href="" class="btn btn-secondary">
-                                       <span class="fa fa-pencil-square-o"></span>
-                                   </a>
-
                                  <a title="Aprovar" href="" class="btn btn-success">
-                                       <span class="fa fa-clipboard"></span>
+                                       <span class="fa fa-check"></span>
                                  </a>
 
                                  <button title="Reprovar" data-href="" class="btn btn-danger" data-toggle="modal" data-target="#modalRemover">

@@ -211,6 +211,30 @@ class Candidato_model extends CI_Model {
 			exit;
 		}
 	}
+	public function findCandidatoByProcesso($id_processo){
+		try {
+      $query = $this->db
+      ->select('candidato.id_candidato, candidato.curriculum, pessoa.id_pessoa, pessoa.nome, pessoa.email, pessoa.imagem')
+      ->from('candidato')
 
+      ->join('processo_seletivo_candidato', 'candidato.id_candidato = 	processo_seletivo_candidato.id_candidato')
+
+      ->join('etapa', 'processo_seletivo_candidato.id_etapa = etapa.id_etapa')
+      ->join('processo_seletivo', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+
+      ->join('usuario', 'candidato.id_pessoa = usuario.id_pessoa')
+      ->join('pessoa', 'pessoa.id_pessoa = usuario.id_pessoa')
+      ->where('processo_seletivo.id_processo_seletivo', $id_processo)
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    }
+    catch (\Exception $e) {}
+
+	}
 
 }
