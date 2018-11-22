@@ -74,4 +74,20 @@ class Setor_model extends PR_Model
         $this->setLog($setor->nome, $setor->sigla, $setor->descricao, $setor->id_setor);
 
     }
+
+    public function getAtual($id_setor){
+
+        $setor =  $this->db->select(
+           '*'
+        )->from('setor')
+        ->where('setor.id_setor',$id_setor)
+        ->where('setor.deletado is null')
+        ->get();
+
+        if ($setor) {
+            return $setor->result();
+        }
+        return null;
+    }
+
 }
