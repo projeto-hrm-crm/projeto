@@ -216,7 +216,9 @@ class Funcionario extends CI_Controller
                 'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
                 'proatividade' => $this->input->post('proatividade'),
                 'id_funcionario' => $id_funcionario,
-                'id_avaliador' => $user_id
+                'id_avaliador' => $user_id,
+                'observacao' => $this->input->post('observacao')
+
             );
 
             $this->avaliacao->insert($array);
@@ -269,13 +271,14 @@ class Funcionario extends CI_Controller
         $user_id = $this->session->userdata('user_login');
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
-        $data['avaliador'] = $this->usuario->getUserNameById($user_id);
         $data = $this->avaliacao->find($id_avaliacao);
+        $data['avaliador'] = $this->usuario->getUserNameById($user_id);
         $id_funcionario = $data[0]->id_funcionario;
 
         $data['title'] = 'Informações Avaliação';
         $data['funcionario'] = $this->funcionario->getById($id_funcionario);
         $data['avaliacao'] = $this->avaliacao->find($id_avaliacao);
+
         $data['id_funcionario'] = $id_funcionario;
         $data['assets'] = array(
             'js' => array(
@@ -305,7 +308,8 @@ class Funcionario extends CI_Controller
                 'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
                 'proatividade' => $this->input->post('proatividade'),
                 'id_avaliacao' => $id_avaliacao,
-                'id_avaliador' => $user_id
+                'id_avaliador' => $user_id,
+                'observacao' => $this->input->post('observacao')
             );
 
             $this->avaliacao->update($array);
@@ -331,7 +335,7 @@ class Funcionario extends CI_Controller
               'confirm.modal.js',
             ),
         );
-        loadTemplate('includes/header', 'funcionario/avaliacao-info', 'includes/footer', $data);
+        loadTemplate('includes/header', 'funcionario/avaliacao-editar', 'includes/footer', $data);
 
     }
 
