@@ -199,6 +199,7 @@ $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
 $route['config']                      = 'Config/index';
 $route['config/createProfile']        = 'Config/createProfile';
 $route['config/createCompany']        = 'Config/createCompany';
+$route['config/insertModules']        = 'Config/insertModules';
 
 $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 

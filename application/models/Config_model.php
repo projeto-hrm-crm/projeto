@@ -56,6 +56,27 @@ class Config_model extends CI_model
         return $result;
     }
 
+    public function insertModules($data)
+    {
+        if (empty($data))
+            return ['status' => '204', 'error' => 'Nenhum módulo foi selecionado'];
+        
+        foreach ($data as $module) {
+            if (strpos($module, '.') !== false) {
+                $submodules[] = $module;
+            }else {
+                $modules[] = $module;
+            }
+        }
+
+        return [
+            'modules' => $modules, 
+            'submodules' => $submodules
+        ];exit;
+        
+        return $data;
+    }
+
     public function createProfile($data)
     {
         

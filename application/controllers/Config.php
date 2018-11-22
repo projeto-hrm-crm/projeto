@@ -21,6 +21,11 @@ class Config extends CI_Controller
 			echo json_encode($this->configuration->createCompany($this->input->post()));
 	}
 
+	public function insertModules()
+	{
+		echo json_encode($this->configuration->insertModules($this->input->post('modules')));
+	}
+
 	public function createProfile() 
 	{
 		if(!$this->form_validation->run('config_profile')) 

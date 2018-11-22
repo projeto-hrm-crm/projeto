@@ -131,7 +131,7 @@
                                                
                     </div>
                    <div class="text-right">
-                     <button class="btn btn-success" type="button" data-next="pills-usuario">Cadastrar empresa <i class="fas spin"></i></button>
+                     <button class="btn btn-success choose_modules" type="button" data-next="pills-usuario">Escolher <i class="fas spin"></i></button>
                     </div>
                   </div> 
 
