@@ -174,8 +174,6 @@ class Config_model extends CI_model
             ]
         ]);
 
-        $id_grupo_acesso = $this->db->insert_id();
-        
         //Insere os módulos 
         $this->db->insert("modulo", [
             [
