@@ -134,6 +134,7 @@ jQuery(document).ready(function($) {
                data = JSON.parse(data);
                if (data.status == 200) {
                localStorage.setItem('id_empresa', data.id_empresa);
+               localStorage.setItem('id_grupo_acesso', data.id_grupo_acesso);
                 hideLoader();
             }
             }, 
