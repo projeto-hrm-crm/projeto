@@ -110,7 +110,7 @@ $config = array(
         array(
             'field' => 'nome',
             'label' => 'Nome',
-            'rules' => 'required|regex_match[/^[a-zA-ZÀ-Úà-ú ]+$/]'
+            'rules' => 'required|regex_match[/^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/]'
         ),
         array(
             'field' => 'valor',
