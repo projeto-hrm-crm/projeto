@@ -8,10 +8,14 @@ class Login extends CI_Controller
      * usa o model para busca do usuário
      *
      * @return void
-     */
+     */  
     public function index()
     {
+
+        $data['processos_seletivos'] = $this->processo_seletivo->get();
+
         $data = $this->input->post();
+
 
         if ($this->form_validation->run('login')) {
            if (!$this->usuario->login($data)) {
@@ -23,7 +27,7 @@ class Login extends CI_Controller
             }
         }
 
-        $this->load->view('login/index.php');
+        $this->load->view('login/index.php', $data);
 
     }
 

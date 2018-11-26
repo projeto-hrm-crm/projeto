@@ -30,7 +30,7 @@
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
-      <div class="login-content margin30">
+      <div class="login-content margin30 float-right">
 
         <?php if ($this->session->flashdata('success')): ?>
          <div class="alert alert-success mt-4">
@@ -64,13 +64,55 @@
                 </div>
             </div>
           </form>
+          <center>
+            <a href="<?php echo site_url('sugestao/cadastrar')?>">Deixe sua sugestão aqui!</a>
+          </center>
           
-          
-          
-      </div>
-    <center>
-        <a href="<?php echo site_url('sugestao/cadastrar')?>">Deixe sua sugestão aqui!</a>
-    </center>
+        </div>
+        <div class="margin30 float-left">
+          <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
+                     <thead>
+                        <tr>
+                           <th class="text-center">Código</th>
+                           <th class="text-center">Nome</th>
+                           <th class="text-center">Cargo</th>
+                           <th class="text-center">Número de Vagas</th>
+                           <th class="text-center">Ações</th>
+                        </tr>
+                     </thead>
+
+                     <tbody>
+                        <?php foreach ($processos_seletivos as $processo_seletivo): ?>
+                           <tr>
+                              <td class="text-center"><?php echo $processo_seletivo->codigo; ?></td>
+                              <td class="text-center"><?php echo $processo_seletivo->nome; ?></td>
+                              <td class="text-center"><?php echo $processo_seletivo->nome_cargo; ?></td>
+                              <td class="text-center"><?php echo $processo_seletivo->vagas; ?></td>
+
+                              <td class="text-center">
+
+                                 <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary">
+                                       <span class="fa fa-pencil-square-o"></span>
+                                   </a>
+
+                                 <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
+                                       <span class="fa fa-clipboard"></span>
+                                 </a>
+
+                                 <a title="candidatos" href="<?=site_url('processo_seletivo/candidatos/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-secondary">
+                                       <span class="fa fa-address-card"></span>
+                                  </a>
+
+                                 <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger" data-toggle="modal" data-target="#modalRemover">
+                                   <span class="fa fa-times"></span>
+                                 </button>
+                              </td>
+                           </tr>
+                       <?php endforeach ?>
+                     </tbody>
+                   </table>
+
+        </div>
     </div>
   </div>
   <script src="<?php echo base_url();?>assets/js/vendor/jquery-2.1.4.min.js"></script>

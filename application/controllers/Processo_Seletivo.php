@@ -190,4 +190,22 @@ class Processo_Seletivo extends CI_Controller
     echo json_encode($this->etapa->updateStatus($id, $status));
 
   }
+
+  public function candidato_processo($id_processo)
+  {
+    $data['title'] = 'Candidatos do Processo Seletivo';
+    $data['candidatos'] = $this->candidato->findCandidatoByProcesso($id_processo);
+    $data['processo_seletivo'] = $this->processo_seletivo->find($id_processo);
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
+    loadTemplate('includes/header', 'processo_seletivo/candidatos', 'includes/footer', $data);
+  }
+
+
 }
