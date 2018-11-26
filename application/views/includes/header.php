@@ -51,20 +51,20 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>"><span title="λ">Lambda</span></a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>"><span title="λ" role="banner">Lambda</span></a>
       <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
     </div>
 
-    <div id="main-menu" class="main-menu collapse navbar-collapse">
+    <div id="main-menu" class="main-menu collapse navbar-collapse" role="landmark">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal">Principal </span></a>
+          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal" role="heading">Principal </span></a>
         </li>
         <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
-            <li class="menu_atual nome_menu <?php echo $key ?>">
+            <li class="menu_atual nome_menu <?php echo $key ?>" role="menuitem">
 
               <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
 
@@ -83,23 +83,23 @@
 <div id="right-panel" class="right-panel">
 
   <!-- Header-->
-  <header id="header" class="header">
+  <header id="header" class="header" role="landmark">
 
     <div class="header-menu">
 
       <div class="col-sm-7">
         <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
         <div class="header-left">
-          <button class="search-trigger"><i class="fa fa-search"></i></button>
+          <button class="search-trigger" title="busca" role="search"><i class="fa fa-search"></i></button>
           <div class="form-inline">
             <form class="search-form">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="search">
               <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
             </form>
           </div>
 
             <div class="dropdown for-notification">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false" title="notificações" role="">
                 <i class="fa fa-bell"></i>
                 <span class="count bg-danger"></span>
               </button>

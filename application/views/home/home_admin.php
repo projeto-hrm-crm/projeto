@@ -1,7 +1,7 @@
 <?php if ($this->session->flashdata('permissions_ok') != ""): ?>
     <div class="alert alert-success"><?php echo $this->session->flashdata('permissions_ok');?></div>
 <?php endif;?>
-<div class="default-tab">
+<div class="default-tab" role="content">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link  active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Gestão empresarial</a>
@@ -34,7 +34,7 @@
 			    </div>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4" role="structure">
 			    <div class="card">
 			        <div class="card-body">
 			            <div class="clearfix">
@@ -46,7 +46,7 @@
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
 			            	<a href="<?php echo base_url();?>fornecedor/cadastrar">
-			            		<button class="btn btn-sm bg-flat-color-5 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
+			            		<button class="btn btn-sm bg-flat-color-5 text-light" role=""> <i class="fa fa-plus"></i> Cadastrar</button>
 			            	</a>
 
 			                <a href="<?php echo base_url();?>fornecedor">
@@ -57,7 +57,7 @@
 			    </div>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4" role="structure">
 			    <div class="card">
 			        <div class="card-body">
 			            <div class="clearfix">
@@ -80,7 +80,7 @@
 			    </div>
 			</div>
 
-			<div class="card-block">
+			<div class="card-block" role="structure">
 				<div class="col-lg-8">
 				      <div class="card">
 				          <div class="card-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
@@ -91,7 +91,7 @@
 				      </div>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4" role="structure">
 				      <div class="card">
 						  <div class="card-header">
 						    SAC
@@ -150,7 +150,7 @@
 			    </div>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4" role="structure">
 			    <div class="card">
 			        <div class="card-body">
 			            <div class="clearfix">
@@ -168,7 +168,7 @@
 			    </div>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4" role="structure">
 			    <div class="card">
 			        <div class="card-body">
 			            <div class="clearfix">
@@ -222,7 +222,7 @@
 				</div>
 			</div> -->
 
-			<div class="card-block">
+			<div class="card-block" role="structure">
 				<div class="col-lg-6">
 				      <div class="card">
 						  <div class="card-header">
@@ -253,8 +253,8 @@
                   <?php endif; ?>
                 <?php endfor;?>
 						  </div>
-						  <div class="card-footer text-center">
-						    <a href="<?php echo base_url('processo_seletivo'); ?>" class="btn bg-flat-color-2 text-light btn-sm">
+						  <div class="card-footer text-center" >
+						    <a href="<?php echo base_url('processo_seletivo'); ?>" class="btn bg-flat-color-2 text-light btn-sm" role="link">
 						      <i class="fa fa-eye"></i> Analisar processos
 						    </a>
 						  </div>
