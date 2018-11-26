@@ -195,6 +195,7 @@ class Processo_Seletivo extends CI_Controller
   {
     $data['title'] = 'Candidatos do Processo Seletivo';
     $data['candidatos'] = $this->candidato->findCandidatoByProcesso($id_processo);
+    $data['processo_seletivo'] = $this->processo_seletivo->find($id_processo);
     $data['assets'] = array(
         'js' => array(
           'lib/data-table/datatables.min.js',
