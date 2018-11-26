@@ -83,7 +83,7 @@ class Funcionario_model extends CI_Model {
             ]
         )) {
             $this->session->set_flashdata('success', 'Funcionario Atualizado Com Sucesso!');
-            redirect(base_url('cliente/editar'));
+            redirect(base_url('funcionario/editar'));
             return;
         }
 
