@@ -148,4 +148,10 @@ class CargoFuncionario_model extends CI_Model
       $this->db->where('etapa.id_processo_seletivo', $id);
       return $this->db->get('etapa')->result();
     }
+
+
+    public function deleteByFuncionario ($id){
+        $this->db->where('id_funcionario', $id);
+		return $this->db->delete('cargo_funcionario');
+      }
 }

@@ -76,5 +76,11 @@ class Avaliacao_model extends PR_Model {
 
     }
 
+    public function deleteByFuncionario($id)
+	{
+		$this->db->where('id_funcionario', $id);
+		return $this->db->delete('avaliacao');
+	}
+
 
 }

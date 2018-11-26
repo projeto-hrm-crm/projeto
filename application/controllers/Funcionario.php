@@ -131,6 +131,10 @@ class Funcionario extends PR_Controller
     $data['funcionario'] = $this->funcionario->getById($id_funcionario);
 
     if ($data) {
+
+      $this->cargo_funcionario->deleteByFuncionario($id_funcionario);
+      $this->avaliacao->deleteByFuncionario($id_funcionario);
+
       $this->funcionario->remove($id_funcionario);
       $this->session->set_flashdata('success', 'Funcionário Excluído Com Sucesso!');
       redirect('funcionario');
