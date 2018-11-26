@@ -155,7 +155,11 @@ class Vaga extends CI_Controller
      */
     public function delete($id){
       $vaga = $this->vaga->getById($id);
-      if($vaga){
+      $vaga_processo = $this->vaga->getVaga_Processo($id);
+      if($vaga_processo){
+        $this->session->set_flashdata('danger', 'Há processos seletivos ofertando essa vaga.');
+
+      }elseif($vaga){
         $this->vaga->remove($id);
         $this->session->set_flashdata('success', 'Vaga excluída com sucesso!');
       }else{
