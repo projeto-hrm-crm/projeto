@@ -79,7 +79,10 @@ jQuery(document).ready(function($) {
 
   $("#form_almoxarifado").validate({
     rules: {
-      nome: "required",
+      nome:{
+        required: true,
+        regex: /^[0-9-a-zA-ZÀ-Úà-ú\s\p{P} ]+$/,
+      },
 
       recebimento: {
         required: true,
@@ -99,6 +102,13 @@ jQuery(document).ready(function($) {
       id_unidade_medida: {
         required: true
       }
+    },
+
+    messages: {
+      nome:{
+        required: 'Por favor, insira o nome do produto.',
+        regex:    'Por favor, insira apenas letras e números.',
+      },
     },
   });
 

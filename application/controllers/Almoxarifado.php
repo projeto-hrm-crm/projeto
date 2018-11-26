@@ -74,10 +74,10 @@ class Almoxarifado extends CI_Controller
             redirect('almoxarifado');
         }
         else{
-            $this->session->set_flashdata('success', 'Não foi possível realizar o cadastro!');
+            $this->session->set_flashdata('danger', 'Não foi possível realizar o cadastro!');
             redirect('cadastrar');
         }
-    }else{  
+    }else{
       $data['title'] = 'Cadastrar Almoxarifado';
       $data['unidades'] = $this->unidadeMedida->get();
       $data['assets'] = array(
@@ -125,7 +125,7 @@ class Almoxarifado extends CI_Controller
     $data['id']              = $id_almoxarifado;
 
     $data['assets'] = array(
-        'js' => array('lib/jquery/jquery.maskMoney.min.js', 
+        'js' => array('lib/jquery/jquery.maskMoney.min.js',
         'thirdy_party/apicep.js','validate.js',
         'maskMoney.js')
     );
