@@ -97,6 +97,25 @@ class Agenda_model extends CI_Model
         return $id_evento;
     }
 
+
+    /**
+    * @author: Rafael Pigozzi
+    * Atualiza a data do evento
+    *
+    * @param int $event_id
+    * @param string $date
+    * @return boolean
+    */
+    public function updateDate($event_id, $date)
+    {
+        $this->db->where('id', $event_id);
+        return $this->db->update('evento', [
+            'inicio' => $date['date_start'],
+            'fim'    => $date['date_end']
+        ]);
+
+    }
+
     /**
     * @author: Rafael Pigozzi
     * Deleta dados na tabela relacional entre evento e usuario: evento_usuario

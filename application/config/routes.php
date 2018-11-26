@@ -214,6 +214,7 @@ $route['events/getUsers/(:num)']      = 'Agenda/getEventUsers/$1';
 
 $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 $route['events']					  = 'agenda/get';
+$route['events/updateDate/(:num)']	  = 'agenda/updateDate/$1';
 
 $route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
 
