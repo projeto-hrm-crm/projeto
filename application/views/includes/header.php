@@ -45,10 +45,9 @@
 <body>
 <!-- Left Panel -->
 <aside id="left-panel" class="left-panel">
-  <nav class="navbar navbar-expand-sm navbar-default">
-
+  <nav class="navbar navbar-expand-sm navbar-default" aria-label="Barra de navegação">
     <div class="navbar-header">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" role="landmark" aria-label="Clique para expandir o menu">
         <i class="fa fa-bars"></i>
       </button>
       <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>" aria-label="Bem vindo ao Lambda, você está num sistema que se divide em HRM e CRM"><span alt="CRM e HRM Lambda" title="Lambda" role="banner">Lambda</span></a>
@@ -80,26 +79,26 @@
 
 <!-- Right Panel -->
 
-<div id="right-panel" class="right-panel">
+<div id="right-panel" class="right-panel" aria-label="Aqui você acessa as informações relevantes para você.">
 
   <!-- Header-->
-  <header id="header" class="header" role="landmark">
+  <header id="header" class="header" role="landmark" aria-label="Aqui você pode navegar entre opções de busca, visitar o seu perfil e ver suas notificações.">
 
     <div class="header-menu">
 
       <div class="col-sm-7">
         <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
         <div class="header-left">
-          <button class="search-trigger" title="Busca" role="search"><i class="fa fa-search"></i></button>
+          <button class="search-trigger" title="Botão de busca" role="search" aria-label="Aqui você pode fazer pesquisas no sistema."><i class="fa fa-search"></i></button>
           <div class="form-inline">
             <form class="search-form">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="search">
-              <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+              <input class="form-control mr-sm-2" type="text" aria-label="Digite a informação que busca no sistema." placeholder="O que você procura?">
+              <button class="search-close" type="submit" aria-label="Clique para pesquisar."><i class="fa fa-close"></i></button>
             </form>
           </div>
 
             <div class="dropdown for-notification">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false" title="Notificações" role="">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false" title="Notificações" aria-label="Clicando aqui você verá as notificações do sistema" role="">
                 <i class="fa fa-bell"></i>
                 <span class="count bg-danger"></span>
               </button>
@@ -126,7 +125,7 @@
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" id="user-dropdown" data-toggle="dropdown" data-status="false">
-            <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" title="Imagem do Usuário" alt="Imagem do Usuário">
+            <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" title="Essa é a sua foto de perfil <?=$this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome; ?>" alt="Essa é a sua foto de perfil <?=$this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome; ?>">
           </a>
 
 
