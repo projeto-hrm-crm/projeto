@@ -99,4 +99,13 @@ class CandidatoEtapa_model extends CI_Model
     $query=$this->db->get();
     return $query->result();
   }
+
+    public function updateAvaliacao($id_candidato, $avaliacao)
+  {
+    $this->db
+        ->set('avaliacao', $avaliacao)
+        ->where('id_candidato', $id_candidato)
+        ->update('processo_seletivo_candidato');
+
+  }
 }
