@@ -12,10 +12,10 @@ class Login extends CI_Controller
     public function index()
     {
 
-        $data['processos_seletivos'] = $this->processo_seletivo->get();
-
+        
         $data = $this->input->post();
 
+        $data['processos_seletivos'] = $this->processo_seletivo->get();
 
         if ($this->form_validation->run('login')) {
            if (!$this->usuario->login($data)) {
