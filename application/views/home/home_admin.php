@@ -23,10 +23,10 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <a href="<?php echo base_url();?>cliente/cadastrar">
+			                <a href="<?php echo base_url();?>cliente/cadastrar" aria-label="Clique para cadastrar um Cliente">
 			                	<button class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
 			                </a>
-			                <a href="<?php echo base_url();?>cliente">
+			                <a href="<?php echo base_url();?>cliente" aria-label="Visualizar Clientes Cadastrados">
 			                	<button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
 			                </a>
 			            </div>
@@ -45,11 +45,11 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			            	<a href="<?php echo base_url();?>fornecedor/cadastrar">
+			            	<a href="<?php echo base_url();?>fornecedor/cadastrar" aria-label="Clique para cadastrar um Fornecedor">
 			            		<button class="btn btn-sm bg-flat-color-5 text-light" role=""> <i class="fa fa-plus"></i> Cadastrar</button>
 			            	</a>
 
-			                <a href="<?php echo base_url();?>fornecedor">
+			                <a href="<?php echo base_url();?>fornecedor" aria-label="Visualizar Fornecedores">
 			                	<button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
 			                </a>
 			            </div>
@@ -68,11 +68,11 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			            	<a href="<?php echo base_url();?>produto/cadastrar">
+			            	<a href="<?php echo base_url();?>produto/cadastrar" aria-label="Clique para cadastrar um Produto">
 			            		<button class="btn btn-sm bg-flat-color-4 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
 			            	</a>
 
-			                <a href="<?php echo base_url();?>produto">
+			                <a href="<?php echo base_url();?>produto" aria-label="Visualizar Produtos Cadastrados">
 			                	<button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
 			                </a>
 			            </div>
@@ -84,8 +84,8 @@
 				<div class="col-lg-8">
 				      <div class="card">
 				          <div class="card-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-				              <h4 class="mb-3">Clientes Cadastrados</h4>
-				              <h1 class="no-data"></h1>
+				              <h1 class="mb-3 display-6 text-center">Clientes Cadastrados</h1>
+				              <h2 class="no-data"></h2>
 				              <canvas id="client-chart" height="266" width="532" style="display: block; width: 532px; height: 266px;"></canvas>
 				          </div>
 				      </div>
@@ -119,7 +119,7 @@
 						  </div>
 						  <div class="card-footer text-center">
 						    <?php if ($admin['last_sac']): ?>
-                              <a href="<?php echo base_url('sac/iteracao/'.$admin['last_sac']->id_sac); ?>" class="btn bg-flat-color-1 text-light btn-sm">
+                              <a href="<?php echo base_url('sac/iteracao/'.$admin['last_sac']->id_sac); ?>" class="btn bg-flat-color-1 text-light btn-sm" aria-label="Clique para responder um Serviço de atendimento ao consumidor">
                                   <i class="fa fa-dot-circle-o"></i> Responder
                               </a>
                             <?php endif;?>
@@ -143,8 +143,8 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <a href="<?php echo base_url('funcionario/cadastrar') ?>" class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
-			                <a href="<?php echo base_url('funcionario') ?>" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
+			                <a href="<?php echo base_url('funcionario/cadastrar') ?>" aria-label="Clique para cadastrar um Funcionário" class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
+			                <a href="<?php echo base_url('funcionario') ?>" aria-label="Visualizar Funcionários no Quadro" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
 			            </div>
 			        </div>
 			    </div>
@@ -161,8 +161,8 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <a href="<?php echo base_url('cargo/cadastrar') ?>" class="btn btn-sm bg-flat-color-5 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
-			                <a href="<?php echo base_url('cargo') ?>" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
+			                <a href="<?php echo base_url('cargo/cadastrar') ?>" aria-label="Clique para criar um novo Cargo" class="btn btn-sm bg-flat-color-5 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
+			                <a href="<?php echo base_url('cargo') ?>" aria-label="Visualizar Cargos Disponíveis" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
 			            </div>
 			        </div>
 			    </div>
@@ -179,8 +179,8 @@
 			            <div class="b-b-1 pt-3"></div>
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
-			                <a href="<?php echo base_url('vaga/cadastrar') ?>" class="btn btn-sm bg-flat-color-4 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
-			                <a href="<?php echo base_url('vaga') ?>" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
+			                <a href="<?php echo base_url('vaga/cadastrar') ?>" aria-label="Clique para criar uma nova vaga" class="btn btn-sm bg-flat-color-4 text-light"> <i class="fa fa-plus"></i> Cadastrar</a>
+			                <a href="<?php echo base_url('vaga') ?>" aria-label="Visualizar Vagas Ofertadas" class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</a>
 			            </div>
 			        </div>
 			    </div>
@@ -254,7 +254,7 @@
                 <?php endfor;?>
 						  </div>
 						  <div class="card-footer text-center" >
-						    <a href="<?php echo base_url('processo_seletivo'); ?>" class="btn bg-flat-color-2 text-light btn-sm" role="link">
+						    <a href="<?php echo base_url('processo_seletivo'); ?>" aria-label="Clique para analisar processos seletivos" class="btn bg-flat-color-2 text-light btn-sm" role="link">
 						      <i class="fa fa-eye"></i> Analisar processos
 						    </a>
 						  </div>

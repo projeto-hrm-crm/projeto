@@ -51,22 +51,22 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>"><span alt="CRM e HRM Lambda" title="Lambda" role="banner">Lambda</span></a>
-      <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>" aria-label="Bem vindo ao Lambda, você está num sistema que se divide em HRM e CRM"><span alt="CRM e HRM Lambda" title="Lambda" role="banner">Lambda</span></a>
+      <a class="navbar-brand hidden" href="<?php echo base_url();?>" aria-label="Bem vindo ao Lambda, você está num sistema que se divide em HRM e CRM">L</a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse" role="landmark">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal" role="heading">Principal </span></a>
+          <a href="<?php echo base_url().'dashboard';?>" aria-label="Aqui você tem acesso as informações que precisa."> <i class="menu-icon fa fa-dashboard"></i><span title="Principal" role="heading">Principal </span></a>
         </li>
-        <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
+        <h1 class="menu-title">Menu geral</h1><!-- /.menu-title -->
 
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $m): ?>
             <li class="menu_atual nome_menu <?php echo $key ?>" role="menuitem">
 
-              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
+              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false" aria-label="Acesse informações sobre <?php echo $key;?>"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
 
             </li>
           <?php endforeach;?>
