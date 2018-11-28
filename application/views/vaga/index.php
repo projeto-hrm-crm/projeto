@@ -29,7 +29,6 @@
 						<thead>
 							<tr>
 								<th>Cargo</th>
-								<th>Setor</th>
 								<th>Quantidade</th>
 								<th>Data de Oferta</th>
 								<th>Ações</th>
@@ -40,7 +39,6 @@
 								<?php foreach($vagas as $vaga): ?>
 									<tr>
 										<td><?php echo $vaga->cargo; ?></td>
-										<td><?php echo $vaga->setor; ?></td>
 										<td><?php echo $vaga->quantidade; ?></td>
 										<td><?php echo switchDate($vaga->data_oferta); ?></td>
 										<td >

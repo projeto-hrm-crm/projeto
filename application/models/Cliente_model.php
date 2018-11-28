@@ -13,8 +13,7 @@ class Cliente_model extends CI_Model {
  	try {
  		$this->db->insert('cliente', $data);
 		$id_cliente = $this->db->insert_id();
-		$logged_user = $this->session->userdata('user_login');
-
+		$logged_user = !is_null($this->session->userdata('user_login')) ? $this->session->userdata('user_login') : 1;
 
 		if($id_cliente)
 		{
@@ -22,7 +21,10 @@ class Cliente_model extends CI_Model {
 		}
 
 
-		//Gera notificação 
+		//Gera notificação
+
+
+
 		$this->Notification->notify(null, $logged_user, "Um novo usuário foi inserido", base_url()."cliente/editar/{$id_cliente}");
 
 
@@ -85,14 +87,14 @@ class Cliente_model extends CI_Model {
 	{
 		try {
 			$cliente = $this->db->select("
-			pessoa.id_pessoa, 
-			pessoa.nome, 
+			pessoa.id_pessoa,
+			pessoa.nome,
 			pessoa.email,
 			pessoa_fisica.sexo,
 			pessoa_fisica.data_nascimento,
-			endereco.cep, 
-			endereco.bairro, 
-			endereco.logradouro, 
+			endereco.cep,
+			endereco.bairro,
+			endereco.logradouro,
 			endereco.numero AS numero_endereco,
 			endereco.complemento,
 			endereco.cidade,
@@ -164,9 +166,12 @@ class Cliente_model extends CI_Model {
 			$this->db->select('count(*) as c')
 						   ->from('cliente as c ')
 							 ->join('pessoa as p', ' c.id_pessoa = p.id_pessoa')
-							 ->where('MONTH(p.data_criacao)', $i);
+							 ->where('MONTH(p.data_criacao)', $i)
+                             ->where('YEAR(p.data_criacao)', date('Y'));
 			$chart[] = $this->db->get()->result()[0]->c;
+
 		}
+
 
 		$data = [
 			'data' => $chart,
@@ -194,4 +199,41 @@ class Cliente_model extends CI_Model {
 		return $query->result()[0]->clientes;
 	}
 
+
+	public function getDadosCliente()
+	{
+		try {
+			$query = $this->db->select("
+			pessoa.id_pessoa,
+			pessoa.nome,
+			pessoa.imagem,
+			pessoa.email,
+			pessoa_fisica.sexo,
+			pessoa_fisica.data_nascimento,
+			endereco.cep,
+			endereco.bairro,
+			endereco.logradouro,
+			endereco.numero AS numero_endereco,
+			endereco.complemento,
+			endereco.cidade,
+			endereco.estado,
+			documento.numero AS numero_documento,
+			telefone.numero AS telefone,
+			usuario.id_usuario")
+			->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+			->join('cliente', 'pessoa_fisica.id_pessoa = cliente.id_pessoa')
+			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+			->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
+			->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa');
+		} catch (\Exception $e) {}
+
+		if ($query){
+			return $query->get()->result();
+		}else{
+			echo 'Não existem dados';
+			exit;
+		}
+	}
 }

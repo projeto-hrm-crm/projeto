@@ -19,12 +19,12 @@
    <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/flag-icon.min.css"> -->
    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/cs-skin-elastic.css">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
-    
+
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/calendar/fullcalendar.min.css">
 
 <link rel="stylesheet" media='print' href="<?php echo base_url();?>assets/css/calendar/fullcalendar.print.min.css">
-    
-    
+
+
    <link rel="stylesheet" href="<?php echo base_url();?>assets/scss/style.css">
    <script type="text/javascript">
    var BASE_URL = "<?php echo base_url();?>";
@@ -51,14 +51,14 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url();?>">Lambda</a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>"><span title="λ">Lambda</span></a>
       <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
     </div>
 
     <div id="main-menu" class="main-menu collapse navbar-collapse">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url();?>"> <i class="menu-icon fa fa-dashboard"></i>Principal </a>
+          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal">Principal </span></a>
         </li>
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
           <?php foreach($menus as $key => $menu): ?>
@@ -70,6 +70,7 @@
               </li>
             <?php endforeach;?>
           <?php endforeach; ?>
+
       <?php endif;?>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -99,7 +100,7 @@
           </div>
 
             <div class="dropdown for-notification">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false">
                 <i class="fa fa-bell"></i>
                 <span class="count bg-danger"></span>
               </button>
@@ -107,32 +108,39 @@
                 <!-- LOADED FROM AJAX -->
               </div>
              </div>
+
+             <div class="dropdown for-contacts">
+               <button class="btn btn-secondary dropdown-toggle" type="button" id="contacts" data-status="false">
+                 <a href="<?=site_url('contato')?>"/>
+                 <span class="fa fa-phone"></span>
+               </button>
+
+              </div>
         </div>
       </div>
-       <?php 
-           
+       <?php
+
             $cur_name = explode(" ", $this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome);
             $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
             $id_pessoa = $data['pessoa'][0]->id_pessoa;
-           
+
            $image = $this->pessoa->findImage($id_pessoa)[0]->imagem;
            if($image) {
               $path_profile_image = base_url()."uploads/profileImage/".$image;
            }else{
               $path_profile_image = base_url()."assets/images/theme/no-user.png";
            }
-           
+
            ?>
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             
+          <a href="#" class="dropdown-toggle" id="user-dropdown" data-toggle="dropdown" data-status="false">
             <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
           </a>
-           
-           
-           
-           
+
+
+
+
           <div class="user-menu dropdown-menu">
             <a class="nav-link" href="#">Olá, <?=$cur_name[0];?></a>
             <a class="nav-link" href="<?php echo base_url();?>perfil"><i class="fa fa-user"></i> Meu Perfil</a>
@@ -166,7 +174,7 @@
   </header><!-- /header -->
   <!-- Header-->
 
-  <! -- CONTENT -->
+  <!-- CONTENT -->
   <!-- <div class="breadcrumbs">
     <div class="col-sm-4">
       <div class="page-header float-left">

@@ -3,24 +3,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Agenda_model extends CI_Model
 {
+
     public function __construct(){
         parent::__construct();
     }
 
     public function get()
     {
-       $events = array();
-       $results = $this->db->get('evento')->result();
+        $events = array();
 
-       foreach ($results as $key => $result) {
-         $events[$key]['id'] = $result->id;
-         $events[$key]['title'] = $result->titulo;
-         $events[$key]['start'] = $result->inicio;
-         $events[$key]['end']   = $result->fim;
-         $events[$key]['color'] = $result->cor;
-       }
+        $results = $this->db->distinct()
+            ->select('id, criado_por, titulo, inicio, fim, cor')
+            ->from('evento')
+            ->join('evento_usuario', 'evento_usuario.id_evento = evento.id', 'left')
+            ->where('criado_por', $this->session->userdata('user_login'))
+            ->or_where('id_usuario', $this->session->userdata('user_login'))
+            ->get()
+            ->result();
 
-       return $events;
+        foreach ($results as $key => $result) {
+            $events[$key]['id']             = $result->id;
+            $events[$key]['criado_por']     = $result->criado_por;
+            $events[$key]['usuario_logado'] = $this->session->userdata('user_login');
+            $events[$key]['title']          = $result->titulo;
+            $events[$key]['start']          = $result->inicio;
+            $events[$key]['end']            = $result->fim;
+            $events[$key]['color']          = $result->cor;
+        }
+
+        return $events;
     }
 
     public function insert($eventos)
@@ -84,6 +95,75 @@ class Agenda_model extends CI_Model
         $this->Notification->notify(null, $logged_user, "O evento <b>{$titulo}</b> foi cancelado.", base_url()."agenda");
 
         return $id_evento;
+    }
+
+
+    /**
+    * @author: Rafael Pigozzi
+    * Atualiza a data do evento
+    *
+    * @param int $event_id
+    * @param string $date
+    * @return boolean
+    */
+    public function updateDate($event_id, $date)
+    {
+        $this->db->where('id', $event_id);
+        return $this->db->update('evento', [
+            'inicio' => $date['date_start'],
+            'fim'    => $date['date_end']
+        ]);
+
+    }
+
+    /**
+    * @author: Rafael Pigozzi
+    * Deleta dados na tabela relacional entre evento e usuario: evento_usuario
+    *
+    * @param: $evento_usuario mixed
+    */
+    public function deleteEventUser($event_id)
+    {
+        $this->db->where('id_evento', $event_id);
+        $this->db->delete('evento_usuario');
+    }
+
+    /**
+    * @author: Rafael Pigozzi
+    * Insere dados na tabela relacional entre evento e usuario: evento_usuario
+    *
+    * @param: $evento_usuario mixed
+    */
+    public function insereUsuario($evento_usuario)
+    {
+        $usuario = $this->usuario->getByName($evento_usuario['id_usuario']);
+        $this->db->insert('evento_usuario', $evento_usuario);
+
+    }
+
+    /**
+    * @author: Rafael Pigozzi
+    *
+    * @param:
+    */
+    public function getEventUsers($event_id)
+    {
+        $users = [];
+
+        $this->db->select('evento_usuario.id_usuario, pessoa.nome')
+                 ->from('evento')
+                 ->join('evento_usuario', 'evento.id = evento_usuario.id_evento')
+                 ->join('usuario', 'evento_usuario.id_usuario = usuario.id_usuario')
+                 ->join('pessoa', 'usuario.id_pessoa = pessoa.id_pessoa')
+                 ->where('evento_usuario.id_evento', $event_id);
+        $result = $this->db->get();
+
+        if ($result->num_rows() > 0) {
+            $users = $result->result();
+        }
+
+        return json_encode($users);
+
     }
 
 }

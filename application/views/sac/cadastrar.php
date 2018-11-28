@@ -1,11 +1,12 @@
 <div class="animated fadeIn">
+
    <div class="row justify-content-center align-items-center">
       <div class="col-lg-10">
          <div class="card">
             <div class="card-header">
                <strong class="card-title">Cadastrar SAC</strong>
             </div>
-            <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac">
+            <form action="<?php echo site_url('sac/cadastrar'); ?>" method="POST" id="form-sac" novalidate="novalidate">
                <div class="card-body">
                    <?php if(sizeof($clientes) <= 0): ?>
                        <div class="row justify-content-center align-items-center">
@@ -47,17 +48,29 @@
                            <?php endforeach; ?>
                         </select>
                      </div>
-                     <?php if($tipo=="1"){ ?>
-                     <div class="form-group col-md-12 col-sm-12">
-                        <label for="id_cliente" class="form-control-label">Cliente</label>
-                        <select name="id_cliente" class="form-control" id="produto">
-                           <option value="0" disabled selected>Selecione cliente</option>
-                           <?php foreach ($clientes as $cliente): ?>
-                              <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
-                           <?php endforeach; ?>
-                        </select>
-                     </div>
-                     <?php } ?>
+
+                     <?php if($tipo == "1"){ ?>
+                         <div class="form-group col-md-12 col-sm-12">
+                            <label for="id_cliente" class="form-control-label">Cliente</label>
+                            <select name="id_cliente" class="form-control" id="cliente">
+                               <option value="0" disabled selected>Selecione cliente</option>
+                               <?php foreach ($clientes as $cliente): ?>
+                                  <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
+                               <?php endforeach; ?>
+                            </select>
+                         </div>
+                    <?php } else { ?>
+                        <div class="form-group col-md-12 col-sm-12" style="display: none">
+                            <?php foreach ($clientes as $cliente): ?>
+                                <?php if($this->session->userdata('user_login') == $cliente->id_cliente): ?>
+                                    <select name="id_cliente" class="form-control" id="cliente">
+                                        <option value="<?php echo $cliente->id_cliente ?>"><?php echo $cliente->nome; ?></option>
+                                    </select>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php } ?>
+
                      <div class="col-md-12 form-group">
                         <label class=" form-control-label">Descrição</label>
                         <textarea id="descricao" name="descricao" class="form-control descricao" placeholder="Relate aqui seu problema" required></textarea>

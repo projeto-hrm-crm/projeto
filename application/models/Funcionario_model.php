@@ -131,7 +131,7 @@ class Funcionario_model extends CI_Model {
                  ->join('pessoa_fisica as pf', 'p.id_pessoa = pf.id_pessoa')
                  ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
 	    $result = $this->db->get();
-        
+
 	    if ($result->num_rows() > 0)
 	        return $result->result();
 
@@ -164,7 +164,8 @@ class Funcionario_model extends CI_Model {
             endereco.cidade,
             documento.numero AS numero_documento,
             telefone.numero AS telefone,
-						'usuario.id_usuario',
+            'usuario.id_usuario',
+            cargo_funcionario.id_cargo as id_cargo,
             ")
             ->from("pessoa")
             ->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
@@ -173,7 +174,8 @@ class Funcionario_model extends CI_Model {
 						->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
             ->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
             ->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa')
-            ->where('funcionario.id_funcionario', $id_funcionario)->get();
+            ->join('cargo_funcionario', 'funcionario.id_funcionario = cargo_funcionario.id_funcionario')
+            ->where('funcionario.id_funcionario', $id_funcionario)->where('cargo_funcionario.deletado is null')->get();
 
             if ($funcionario) {
                 return $funcionario->result();
@@ -221,5 +223,64 @@ class Funcionario_model extends CI_Model {
                  ->join('funcionario as f', 'pf.id_pessoa = f.id_pessoa');
         $result = $this->db->get();
         return $result->result()[0]->funcionarios;
+    }
+
+		public function getDadosFuncionario()
+		{
+			try {
+				$query = $this->db->select("
+				pessoa.id_pessoa,
+				pessoa.nome,
+				pessoa.imagem,
+				pessoa.email,
+				pessoa_fisica.sexo,
+				pessoa_fisica.data_nascimento,
+				endereco.cep,
+				endereco.bairro,
+				endereco.logradouro,
+				endereco.numero AS numero_endereco,
+				endereco.complemento,
+				endereco.cidade,
+				endereco.estado,
+				documento.numero AS numero_documento,
+				telefone.numero AS telefone,
+				usuario.id_usuario")
+				->from("pessoa")
+				->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+				->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+				->join('funcionario', 'pessoa_fisica.id_pessoa = funcionario.id_pessoa')
+				->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+				->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
+				->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa');
+			} catch (\Exception $e) {}
+
+			if ($query){
+				return $query->get()->result();
+			}else{
+				echo 'Não existem dados';
+				exit;
+			}
+		}
+
+		public function getCargos($id_funcionario){
+
+        $cargo_funcionario =  $this->db->select(
+           'cargo_funcionario.id_cargo_funcionario,cargo_funcionario.deletado,
+            funcionario.id_funcionario,
+            pessoa.nome AS pessoa,
+            setor.nome AS setor, setor.id_setor,
+            cargo.id_cargo, cargo.nome'
+        )->from('cargo_funcionario')
+        ->join('funcionario', 'cargo_funcionario.id_funcionario = funcionario.id_funcionario')
+        ->join('pessoa', 'funcionario.id_pessoa = pessoa.id_pessoa')
+        ->join('cargo', 'cargo_funcionario.id_cargo = cargo.id_cargo')
+        ->join('setor', 'cargo_funcionario.id_setor = setor.id_setor')
+        ->where('cargo_funcionario.id_funcionario = '.$id_funcionario)
+        ->get();
+
+        if ($cargo_funcionario) {
+            return $cargo_funcionario->result();
+        }
+        return null;
     }
 }

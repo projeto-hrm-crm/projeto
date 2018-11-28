@@ -7,7 +7,6 @@
           <strong class="card-title">Cadastrar Funcionário</strong>
         </div>
         <form action="<?php echo site_url('funcionario/cadastrar'); ?>" method="POST" id="form_funcionario" novalidate="novalidate">
-
           <?php print_r($this->session->flashdata('errors')); ?>
           <div class="card-body">
               <?php if(sizeof($cargos) <= 0): ?>
@@ -36,7 +35,7 @@
                 <input type="text" id="email" name="email" value="<?php echo isset($old_data['email']) ? $old_data['email'] : null;?>"  placeholder="email@provedor.com" class="form-control" >
                 <span class="invalid-feedback"></span>
               </div> <!-- FIM EMAIL -->
-              
+
               <div class="form-group col-12 col-md-6">
                 <label class=" form-control-label"><red>*</red>Data de Nascimento</label>
                 <input type="text" id="data_nacimento" name="data_nacimento" value="<?php echo isset($old_data['data_nascimento']) ? $old_data['data_nascimento'] : null;?>"  placeholder="00/00/0000" class="form-control data">
@@ -70,13 +69,13 @@
 
               <div class="form-group col-12 col-md-6">
                 <label for="estado"><red>*</red>Estado</label>
-                <input type="text" name="estado" id="estado" class="form-control">
+                <input type="text" placeholder="Estado" name="estado" id="estado" class="form-control">
                 <span class="invalid-feedback"></span>
               </div>
 
               <div class="form-group col-12 col-md-6">
                 <label for="cidade"><red>*</red>Cidade</label>
-                <input type="text" name="cidade" id="cidade" class="form-control">
+                <input type="text" placeholder="Cidade" name="cidade" id="cidade" class="form-control">
                 <span class="invalid-feedback"></span>
               </div>
 
@@ -104,9 +103,31 @@
                 <span class="invalid-feedback"></span>
               </div> <!-- FIM COMPLEMENTO -->
 
-
-
+            <div class="form-group col-md-6 col-sm-12">
+              <label for="id_setor" class="control-label mb-1"><red>*</red>Setor</label>
+              <select name="id_setor" id="id_setor" class="form-control">
+                <option value="">Selecione Setor</option>
+                  <?php foreach ($setores as $setor): ?>
+                    <option value="<?php echo $setor->id_setor ?>" <?php echo isset($old_data['id_setor']) && ($setor->id_setor == $old_data['id_setor']) ? 'selected' : '' ?>>
+                      <?php echo $setor->nome ?>
+                    </option>
+                  <?php endforeach; ?>
+              </select>
             </div>
+
+            <div class="form-group col-md-6 col-sm-12">
+              <label for="id_cargo" class="control-label mb-1"><red>*</red>Cargo</label>
+              <select name="id_cargo" id="id_cargo" class="form-control">
+                <option value="">Selecione Cargo</option>
+                  <?php foreach ($cargos as $cargo): ?>
+                    <option value="<?php echo $cargo->id_cargo ?>" <?php echo isset($old_data['id_cargo']) && ($cargo->id_cargo == $old_data['id_cargo']) ? 'selected' : '' ?>>
+                      <?php echo $cargo->nome ?>
+                    </option>
+                  <?php endforeach; ?>
+              </select>
+            </div>
+
+          </div>
 
           </div>
           <div class="card-footer text-right">

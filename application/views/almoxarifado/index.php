@@ -19,7 +19,7 @@
         <?php endif; ?>
         <div class="card">
           <div class="card-header">
-            <strong class="card-title">Almoxarifados</strong>
+            <strong class="card-title">Itens de almoxarifado</strong>
           </div>
           <div class="card-body">
             <a href="<?= site_url('almoxarifado/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">

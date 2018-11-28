@@ -11,11 +11,10 @@ class ProcessoSeletivo_model extends CI_Model
       ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')
       ->get();
       if ($query)
-      {
         return $query->result();
-      }else{
+      else
         return 0;
-      }
+      
     } catch (\Exception $e) {}
   }
 
@@ -28,11 +27,10 @@ class ProcessoSeletivo_model extends CI_Model
       ->join('cargo', 'cargo.id_cargo = vaga.id_cargo')->order_by('id_processo_seletivo','desc')
       ->get();
       if ($query)
-      {
         return $query->result();
-      }else{
+      else
         return 0;
-      }
+      
     } catch (\Exception $e) {}
   }
 
@@ -42,9 +40,8 @@ class ProcessoSeletivo_model extends CI_Model
     return $this->db->insert_id();
 
     if($id_processo_seletivo)
-    {
       $this->relatorio->setLog('insert', 'Inserir', 'Processo_Seletivo', $id_processo_seletivo, 'Inseriu o processo seletivo', $id);
-    }
+    
     return $id_processo_seletivo;
   }
 
@@ -85,9 +82,8 @@ class ProcessoSeletivo_model extends CI_Model
 		return $this->db->update('processo_seletivo', $data);
 
         if($id_processo_seletivo)
-    		{
     			$this->relatorio->setLog('update', 'Atualizar', 'Processo_Seletivo', $id_processo_seletivo, 'Atualizou o processo seletivo', $id);
-    		}
+    		
         return $id_processo_seletivo;
 
 		} catch (\Exception $e) {}
@@ -115,6 +111,7 @@ class ProcessoSeletivo_model extends CI_Model
     }
 
   }
+
   public function delete($id)
   {
     try {
@@ -131,4 +128,9 @@ class ProcessoSeletivo_model extends CI_Model
 
     } catch (\Exception $e) {}
   }
+
+
+  public function getEtapasProcesso($id){
+  }
+       
 }

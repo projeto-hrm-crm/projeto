@@ -143,6 +143,7 @@ class Processo_Seletivo extends CI_Controller
 
     $data['assets'] = array(
       'js' => array(
+         'processo_seletivo/avancar_status.js',
         'processo_seletivo/cadastro_etapas.js',
         'processo_seletivo/textarea_auto_expand.js',
       ),
@@ -183,4 +184,28 @@ class Processo_Seletivo extends CI_Controller
     }
     redirect('processo_seletivo');
   }
+
+     public function avancar($id, $status)
+   {
+    echo json_encode($this->etapa->updateStatus($id, $status));
+
+  }
+
+  public function candidato_processo($id_processo)
+  {
+    $data['title'] = 'Candidatos do Processo Seletivo';
+    $data['candidatos'] = $this->candidato->findCandidatoByProcesso($id_processo);
+    $data['processo_seletivo'] = $this->processo_seletivo->find($id_processo);
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
+    loadTemplate('includes/header', 'processo_seletivo/candidatos', 'includes/footer', $data);
+  }
+
+
 }

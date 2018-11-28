@@ -62,16 +62,16 @@ class Candidato_model extends CI_Model {
 	{
 		try {
 			$candidato = $this->db->select("
-			pessoa.id_pessoa, 
-			pessoa.nome, 
+			pessoa.id_pessoa,
+			pessoa.nome,
 			pessoa.email,
 			pessoa_fisica.sexo,
 			pessoa_fisica.data_nascimento,
 			endereco.cep,
-			endereco.bairro, 
-			endereco.logradouro, 
+			endereco.bairro,
+			endereco.logradouro,
 			endereco.numero AS numero_endereco,
-			endereco.complemento, 
+			endereco.complemento,
 			endereco.estado,
 			endereco.cidade,
 			documento.numero AS numero_documento,
@@ -122,9 +122,9 @@ class Candidato_model extends CI_Model {
 		}
 		return $id;
 	}
-    
+
     /**
-	* @author: Rodrigo 
+	* @author: Rodrigo
 	* Atualiza o curriculum
 	*/
     public function findCurriculum($id_pessoa)	{
@@ -132,9 +132,9 @@ class Candidato_model extends CI_Model {
 
 		return $curriculum->result();
 	}
-   
+
    /**
-	* @author: Rodrigo 
+	* @author: Rodrigo
 	* Verifica se já existe um curriculum cadastrado
 	*/
     public function fileUpdate($data)	{
@@ -173,6 +173,68 @@ class Candidato_model extends CI_Model {
 		->join('usuario',  'usuario.id_pessoa = candidato.id_pessoa')
 		->get();
 		return $query->result();
+	}
+
+	public function getDadosCandidato()
+	{
+		try {
+			$query = $this->db->select("
+			pessoa.id_pessoa,
+			pessoa.nome,
+			pessoa.imagem,
+			pessoa.email,
+			pessoa_fisica.sexo,
+			pessoa_fisica.data_nascimento,
+			endereco.cep,
+			endereco.bairro,
+			endereco.logradouro,
+			endereco.numero AS numero_endereco,
+			endereco.complemento,
+			endereco.cidade,
+			endereco.estado,
+			documento.numero AS numero_documento,
+			telefone.numero AS telefone,
+			usuario.id_usuario")
+			->from("pessoa")
+			->join('pessoa_fisica', 'pessoa.id_pessoa = pessoa_fisica.id_pessoa')
+			->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+			->join('candidato', 'pessoa_fisica.id_pessoa = candidato.id_pessoa')
+			->join('endereco',  'pessoa.id_pessoa = endereco.id_pessoa')
+			->join('documento', 'pessoa.id_pessoa = documento.id_pessoa')
+			->join('telefone',  'pessoa.id_pessoa = telefone.id_pessoa');
+		} catch (\Exception $e) {}
+
+		if ($query){
+			return $query->get()->result();
+		}else{
+			echo 'Não existem dados';
+			exit;
+		}
+	}
+	public function findCandidatoByProcesso($id_processo){
+		try {
+      $query = $this->db
+      ->select('candidato.id_candidato, candidato.curriculum, pessoa.id_pessoa, pessoa.nome, pessoa.email, pessoa.imagem')
+      ->from('candidato')
+
+      ->join('processo_seletivo_candidato', 'candidato.id_candidato = 	processo_seletivo_candidato.id_candidato')
+
+      ->join('etapa', 'processo_seletivo_candidato.id_etapa = etapa.id_etapa')
+      ->join('processo_seletivo', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
+
+      ->join('usuario', 'candidato.id_pessoa = usuario.id_pessoa')
+      ->join('pessoa', 'pessoa.id_pessoa = usuario.id_pessoa')
+      ->where('processo_seletivo.id_processo_seletivo', $id_processo)
+      ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    }
+    catch (\Exception $e) {}
+
 	}
 
 }

@@ -75,6 +75,7 @@ class Menu_model extends CI_Model
                foreach ($menus->result() as $menu) {
                     $final_menu[$menu->nome]['submenu'] = $this->submenu->getAllSubmenusByMenuId($menu->id_menu);
                     $final_menu[$menu->nome]['icon']    = $menu->icone;
+                    $final_menu[$menu->nome]['link']    = $menu->link;
                }
             }
             return $final_menu;

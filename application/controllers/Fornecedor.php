@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * Controller de fornecedor
 * Adequado ao PR_Controller para fins de abstração de código[Tiago Villalobos]
 **/
-class Fornecedor extends PR_Controller
+class Fornecedor extends CI_Controller
 {
    /**
    * @author Pedro Henrique Guimarães
@@ -16,7 +16,12 @@ class Fornecedor extends PR_Controller
    */
    public function __construct()
    {
+
       parent::__construct('fornecedor');
+      $user_id = $this->session->userdata('user_login');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($user_id, $currentUrl);
+      $this->load->model('Fornecedor_model');
    }
 
   /**
@@ -39,8 +44,7 @@ class Fornecedor extends PR_Controller
        'confirm.modal.js',
      ),
    );
-    // print_r($data);
-    // exit();
+
     loadTemplate('includes/header', 'fornecedor/index', 'includes/footer', $data);
   }
 
@@ -64,48 +68,45 @@ class Fornecedor extends PR_Controller
               $fornecedor = $this->getFromPost();
 
               $this->fornecedor->insert($fornecedor);
-              $this->redirectSuccess('Fornecedor cadastrado com sucesso');
+              $this->session->set_flashdata('success', 'Fornecedor cadastrado com sucesso!');
+              redirect('fornecedor');
 
           }
           else
           {
-              $this->redirectError('cadastrar');
+              $this->session->set_flashdata('danger', 'Não foi possível cadastrar Processo Seletivo!');
+              redirect('fornecedor');
           }
       }
       else
       {
+        $data['title'] = 'Cadastrar Fornecedor';
+        $data['fornecedor'] = $this->input->post();
+        $data['assets'] = array(
+         'js' => array(
+           'validate.js',
+           'thirdy_party/apicep.js',
+           'lib/data-table/datatables.min.js',
+           'lib/data-table/dataTables.bootstrap.min.js',
+           'datatable.js',
+           'confirm.modal.js',
+           'fornecedor/validate-form.js',
 
-          $this->setTitle('Cadastrar Fornecedor');
-          $this->loadFormDefaultScripts();
-          $this->loadView('cadastrar');
+           ),
+        );
+        loadTemplate('includes/header', 'fornecedor/cadastrar', 'includes/footer', $data);
       }
-
-    $data['title'] = 'Cadastrar Fornecedor';
-    $data['fornecedor'] = $this->input->post();
-    $data['assets'] = array(
-     'js' => array(
-       'thirdy_party/apicep.js',
-       'lib/data-table/datatables.min.js',
-       'lib/data-table/dataTables.bootstrap.min.js',
-       'datatable.js',
-       'confirm.modal.js',
-       'fornecedor/validate-form.js',
-       'validate.js',
-     ),
-   );
-
   }
 
   private function getFromPost()
   {
       return [
-          'nome'         => $this->input->post('nome'),
-          'email'        => $this->input->post('email'),
-          'senha'        => $this->input->post('senha'),
-          'senha2'       => $this->input->post('senha2'),
-          'razao_social' => $this->input->post('razao_social'),
-          'cnpj'         => $this->input->post('cnpj'),
-          'telefone'     => $this->input->post('telefone'),
+          'nome'        => $this->input->post('nome'),
+          'email'       => $this->input->post('email'),         
+          'senha'       => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
+          'razao_social'=> $this->input->post('razao_social'),
+          'cnpj'        => $this->input->post('cnpj'),
+          'telefone'    => $this->input->post('telefone'),
           'cep'         => $this->input->post('cep'),
           'bairro'      => $this->input->post('bairro'),
           'logradouro'  => $this->input->post('logradouro'),
@@ -138,33 +139,70 @@ class Fornecedor extends PR_Controller
   **/
   public function edit($id_fornecedor)
   {
-      if($this->input->post())
-      {
-          if($this->form_validation->run('fornecedor'))
-          {
-              $this->fornecedor->update($this->getFromPostEdit($id_fornecedor));
+    if ($this->input->post())
+    {
+        $data['fornecedor'] = $this->input->post();
+        $fornecedor = $this->fornecedor->find($id_fornecedor);
 
-              $this->redirectSuccess('Fornecedor atualizado com sucesso!');
-          }
-          else
-          {
-              $this->redirectError('editar/'.$id_fornecedor);
-          }
-      }
-      else
-      {
-          $this->setTitle('Atualizar Fornecedor');
+        $this->pessoa->update(
+              [
+                'id_pessoa' => $fornecedor[0]->id_pessoa,
+                'nome'      => $data['fornecedor']['nome'],
+                'email'     =>$data['fornecedor']['email']
+              ]
+            );
+
+        $this->endereco->update(
+          [
+            'cep'         => $this->input->post('cep'),
+            'bairro'      => $this->input->post('bairro'),
+            'logradouro'  => $this->input->post('logradouro'),
+            'numero'      => $this->input->post('numero'),
+            'complemento' => $this->input->post('complemento'),
+            'id_pessoa'   => $fornecedor[0]->id_pessoa,
+            'estado'        => $this->input->post('estado'),
+            'cidade'        => $this->input->post('cidade')
+          ]
+        );
 
 
-          $this->loadFormDefaultScripts(array('thirdy_party/apicep.js'));
+        $this->documento->update(
+          [
+            'tipo'      => 'cnpj',
+            'numero'    => $this->input->post('cnpj') ,
+            'id_pessoa' => $fornecedor[0]->id_pessoa
+          ]
+        );
 
-          $this->addData('fornecedor', $this->fornecedor->find($id_fornecedor));
-          //$this->addData('estado_atual', $this->cidade->findState($this->data['fornecedor'][0]->id_cidade));
-        //  $this->addData('estados', $this->estado->get());
-          //$this->addData('cidades', $this->cidade->getByState($this->data['estado_atual'][0]->id_estado));
+        $this->telefone->update(
+          [
+            'numero'  => $this->input->post('telefone'),
+            'id_pessoa' =>  $fornecedor[0]->id_pessoa
+          ]
+        );
 
-          $this->loadView('editar');
-      }
+        $this->pessoa_fisica->update($fornecedor[0]->id_pessoa,
+          [
+            'data_nascimento' =>  switchDate($data['fornecedor']['data_nascimento']),
+            'sexo'            =>  $data['fornecedor']['sexo']
+          ]
+        );
+
+        $this->session->set_flashdata('success', 'fornecedor atualizado com sucesso!');
+
+        redirect('fornecedor');
+    }
+
+    $data['fornecedor'] = $this->fornecedor->find($id_fornecedor);
+    $data['title']   = 'Atualizar fornecedor';
+    $data['id']      = $id_fornecedor;
+  $data['assets'] = array(
+        'js' => array(
+          'thirdy_party/apicep.js',
+        ),
+    );
+
+    loadTemplate('includes/header', 'fornecedor/editar', 'includes/footer', $data);
   }
 
   /**

@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv" href="javascript:add_etapa()">
+                        <a title="Adicionar Nova Etapa" id="addnew" class="btn btn-primary text-white btn-sm addDiv">
                             <i class="fa fa-plus"></i> Adicionar Etapa </a>
                         </div>
                         <div class="card-footer text-right">
@@ -109,25 +109,6 @@
                         </div>
                     <?php endif; ?>
                 </form>
-            </div>
-        </div>
-        <!-- Template -->
-        <div class="form-group col-12 cloned-main" id="template1" style="display:none;">
-            <div class="cloned-div">
-                <div class="form-row">
-                    <div class="form-group col-12">
-                        <label class="form-control-label">Nome</label>
-                        <input type="text" name="nome_etapa[]" placeholder="Nome da etapa" class="form-control" required>
-                    </div>
-                    <div class="form-group col-12">
-                        <label class="form-control-label mt-2">Descrição</label>
-                        <textarea auto-resize placeholder="Descrição da etapa"  name="descricao_etapa[]" class="form-control" required></textarea>
-                    </div>
-                    <a name="button" class="btn btn-danger btn-sm remDiv mt-2 mb-3 text-white">
-                        <span class="fa fa-times"></span>
-                        Excluir
-                    </a>
-                </div>
             </div>
         </div>
     </div>

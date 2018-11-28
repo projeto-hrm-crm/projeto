@@ -5,7 +5,7 @@
 * Controller de almoxarifado
 **/
 
-class Almoxarifado extends PR_Controller
+class Almoxarifado extends CI_Controller
 {
   /**
    * @author Pedro Henrique Guimarães
@@ -13,9 +13,13 @@ class Almoxarifado extends PR_Controller
    * Com a configuração do menu esse controller serve como base para todos os outros controllers
    * onde todos devem seguir essa mesma estrutura mínima no consrutor.
    */
-  public function __construct()
+
+     public function __construct()
   {
-    parent::__construct('almoxarifado');
+    parent::__construct();
+      $user_id = $this->session->userdata('user_login');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($user_id, $currentUrl);
   }
 
   /**
@@ -25,15 +29,21 @@ class Almoxarifado extends PR_Controller
   */
   public function index()
   {
-    $this->setTitle('Almoxarifados');
+    $data['title'] = 'Almoxarifado';
+    $data['almoxarifados'] = $this->almoxarifado->get();
+    $data['assets'] = array(
+        'js' => array(
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
 
-    $this->addData('almoxarifados',$this->almoxarifado->get());
-
-    $this->loadIndexDefaultScripts();
-
-    $this->loadView('index');
-
+    loadTemplate('includes/header', 'almoxarifado/index', 'includes/footer', $data);
   }
+
+
 
 
   /**
@@ -50,7 +60,6 @@ class Almoxarifado extends PR_Controller
   {
     if($this->input->post())
     {
-
         if($this->form_validation->run('almoxarifado'))
         {
             $this->almoxarifado->insert([
@@ -61,23 +70,28 @@ class Almoxarifado extends PR_Controller
                 'recebimento'        => switchDate($this->input->post('recebimento')),
                 'id_unidade_medida'  => $this->input->post('id_unidade_medida')]);
 
-            $this->redirectSuccess('Entrada Cadastrada Com Sucesso!');
+            $this->session->set_flashdata('success', 'Almoxarifado cadastrado com sucesso!');
+            redirect('almoxarifado');
         }
         else{
-            $this->redirectError('cadastrar');
+            $this->session->set_flashdata('danger', 'Não foi possível realizar o cadastro!');
+            redirect('cadastrar');
         }
     }else{
-        $this->setTitle('Cadastrar Almoxarifado');
-        $this->addData('unidades', $this->unidadeMedida->get());
-
-        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js','validate.js',
-        'maskMoney.js'));
-        $this->loadFormDefaultScripts();
-
-        $this->loadView('cadastrar');
-    }
-
+      $data['title'] = 'Cadastrar Almoxarifado';
+      $data['unidades'] = $this->unidadeMedida->get();
+      $data['assets'] = array(
+        'js' => array(
+          'lib/jquery/jquery.maskMoney.min.js',
+          'thirdy_party/apicep.js',
+          'validate.js',
+          'confirm.modal.js',
+          'maskMoney.js'
+        ),
+    );
+    loadTemplate('includes/header', 'almoxarifado/cadastrar', 'includes/footer', $data);
   }
+}
 
 
   /**
@@ -98,7 +112,8 @@ class Almoxarifado extends PR_Controller
         $data['almoxarifado']['id_almoxarifado'] = $id_almoxarifado;
         $data['almoxarifado']['recebimento'] = switchDate($this->input->post('recebimento'));
         $this->almoxarifado->update($id_almoxarifado, $data['almoxarifado']);
-        $this->redirectSuccess('Entrada Atualizada Com Sucesso!');
+        $this->session->set_flashdata('success', 'Informação alterada com sucesso!');
+        redirect('almoxarifado');
 
     }
     $data['unidades'] = $this->unidadeMedida->get();
@@ -110,8 +125,9 @@ class Almoxarifado extends PR_Controller
     $data['id']              = $id_almoxarifado;
 
     $data['assets'] = array(
-        'js' => array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js','validate.js',
-          'maskMoney.js')
+        'js' => array('lib/jquery/jquery.maskMoney.min.js',
+        'thirdy_party/apicep.js','validate.js',
+        'maskMoney.js')
     );
 
     loadTemplate('includes/header', 'almoxarifado/editar', 'includes/footer', $data);

@@ -73,7 +73,7 @@ class Sac_model extends PR_Model
     public function getClient($id_cliente)
     {
         return $this->db
-        ->select('sac.*, pessoa.nome')
+        ->select('sac.*')
         ->where('id_cliente', $id_cliente)
         ->get('sac')
         ->result();
@@ -124,7 +124,7 @@ class Sac_model extends PR_Model
      /**
     *analizando o desenvolvimento do projeto, esta função de remoção se tornou inviavel para uso
     *
-    
+
     public function remove($id_sac)
     {
         $sac = $this->db->where('sac.id_sac', $id_sac)->get('sac')->row();
@@ -158,28 +158,28 @@ class Sac_model extends PR_Model
 
   /**
    * @author Pedro Henrique Guimarães
-   * Busca o total de atendimentos (sac) realizados pelo cliente logado 
-   * 
+   * Busca o total de atendimentos (sac) realizados pelo cliente logado
+   *
    * @param int $customer_id
-   * @return int 
+   * @return int
    */
   public function getCustomerCalls($customer_id)
   {
       $this->db->select('COUNT(*) calls')
                ->from('sac')
                ->where('sac.id_cliente', $customer_id);
-      $query = $this->db->get(); 
+      $query = $this->db->get();
 
       return $query->result()[0]->calls;
   }
 
   /**
    * @author Pedro Henrique Guimarães
-   * 
+   *
    * Busca o último SAC aberto pelo cliente
-   * 
-   * @param int $customer_id 
-   * @return mixed | null 
+   *
+   * @param int $customer_id
+   * @return mixed | null
    */
   public function getCustomerSac($customer_id)
   {
@@ -189,9 +189,9 @@ class Sac_model extends PR_Model
                ->join('pessoa as p', 'c.id_pessoa = p.id_pessoa')
                ->join('usuario as u', 'u.id_pessoa = p.id_pessoa')
                ->where('u.id_usuario', $customer_id);
-        $query = $this->db->get(); 
+        $query = $this->db->get();
 
-        if ($query->num_rows() > 0) 
+        if ($query->num_rows() > 0)
             return $query->result()[0];
         return null;
   }
@@ -211,7 +211,7 @@ class Sac_model extends PR_Model
       ->join('produto', 'sac.id_produto = produto.id_produto')
       ->join('fornecedor', 'produto.id_fornecedor = fornecedor.id_fornecedor')
       ->join('pessoa_juridica', 'fornecedor.id_pessoa_juridica = pessoa_juridica.id_pessoa_juridica')
-      ->join('pessoa as pfor', 'pessoa_juridica.id_pessoa = pfor.id_pessoa')      
+      ->join('pessoa as pfor', 'pessoa_juridica.id_pessoa = pfor.id_pessoa')
       ->join('usuario', 'usuario.id_pessoa = pfor.id_pessoa')
       ->where('usuario.id_usuario', $user_id);
 
@@ -236,5 +236,27 @@ class Sac_model extends PR_Model
       ->result();
     }
 */
+
+/**
+    * @author: Beto Cadilhe
+    * Retorna um array com dados pegos por post adicionado a eles o id_sac
+    *
+    * @param: $id_sac integer
+    */
+    public function getPessoasEnvolvidas($id_iteracao)
+    {
+        $this->db->distinct()
+                 ->select('id_pessoa')
+                 ->from('iteracao')
+                 ->where('id_sac', $id_iteracao);
+
+        $sql = $this->db->get();
+
+        if ($sql->num_rows() > 0) {
+            return $sql->result();
+        }
+
+        return [];
+    }
 
 }

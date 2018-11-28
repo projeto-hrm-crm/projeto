@@ -139,7 +139,7 @@ class Cliente extends CI_Controller
 
         $this->pessoa->update(
               [
-                'id_pessoa' => $cliente[0]->id_pessoa, 
+                'id_pessoa' => $cliente[0]->id_pessoa,
                 'nome'      => $data['cliente']['nome'],
                 'email'     =>$data['cliente']['email']
               ]
@@ -150,9 +150,9 @@ class Cliente extends CI_Controller
             'cep'         => $this->input->post('cep'),
             'bairro'      => $this->input->post('bairro'),
             'logradouro'  => $this->input->post('logradouro'),
-            'numero'      => $this->input->post('numero'), 
+            'numero'      => $this->input->post('numero'),
             'complemento' => $this->input->post('complemento'),
-            'id_pessoa'   => $cliente[0]->id_pessoa, 
+            'id_pessoa'   => $cliente[0]->id_pessoa,
             'estado'        => $this->input->post('estado'),
             'cidade'        => $this->input->post('cidade')
           ]
@@ -162,14 +162,14 @@ class Cliente extends CI_Controller
         $this->documento->update(
           [
             'tipo'      => 'cpf',
-            'numero'    => $this->input->post('cpf') , 
+            'numero'    => $this->input->post('cpf') ,
             'id_pessoa' => $cliente[0]->id_pessoa
           ]
         );
 
         $this->telefone->update(
           [
-            'numero'    =>  $this->input->post('tel'),  
+            'numero'    =>  $this->input->post('tel'),
             'id_pessoa' =>  $cliente[0]->id_pessoa
           ]
         );

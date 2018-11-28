@@ -12,17 +12,17 @@ class Fornecedor_model extends CI_Model
   public function get()
   {
       $this->db->select(
-          'fornecedor.id_fornecedor, 
-          pessoa_juridica.id_pessoa_juridica, 
-          pessoa_juridica.razao_social, 
-          pessoa.id_pessoa, pessoa.nome, 
-          pessoa.email, 
-          telefone.numero AS telefone, 
-          documento.numero AS cnpj, 
-          endereco.cep, 
-          endereco.bairro, 
-          endereco.logradouro, 
-          endereco.numero AS numero, 
+          'fornecedor.id_fornecedor,
+          pessoa_juridica.id_pessoa_juridica,
+          pessoa_juridica.razao_social,
+          pessoa.id_pessoa, pessoa.nome,
+          pessoa.email,
+          telefone.numero AS telefone,
+          documento.numero AS cnpj,
+          endereco.cep,
+          endereco.bairro,
+          endereco.logradouro,
+          endereco.numero AS numero,
 
           endereco.complemento',
           'usuario.id_usuario')
@@ -62,7 +62,7 @@ class Fornecedor_model extends CI_Model
 
     $this->usuario->insert([
        'login'          => $data['email'],
-       'senha'          => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
+       'senha'          => $data['senha'],
        'id_grupo_acesso'=> 3,
        'id_pessoa'      => $id_pessoa
     ]);
@@ -116,10 +116,10 @@ class Fornecedor_model extends CI_Model
           pessoa.email,
           telefone.numero AS telefone,
           documento.numero AS cnpj,
-          endereco.cep, 
-          endereco.bairro, 
-          endereco.logradouro, 
-          endereco.numero AS numero, 
+          endereco.cep,
+          endereco.bairro,
+          endereco.logradouro,
+          endereco.numero AS numero,
           endereco.complemento,
           endereco.cidade,
           endereco.estado,
@@ -224,4 +224,41 @@ class Fornecedor_model extends CI_Model
 
      return $query->result()[0]->fornecedores;
   }
+  public function getDadosFornecedor()
+  {
+    try {
+      $query = $this->db->select(
+         'fornecedor.id_fornecedor,
+          pessoa_juridica.id_pessoa_juridica,
+          pessoa_juridica.razao_social,
+          pessoa.id_pessoa, pessoa.nome,
+          pessoa.email,
+          telefone.numero AS telefone,
+          documento.numero AS cnpj,
+          endereco.cep,
+          endereco.bairro,
+          endereco.logradouro,
+          endereco.numero AS numero,
+          endereco.complemento,
+          endereco.cidade,
+          endereco.estado,
+          usuario.id_usuario')
+
+        ->from('fornecedor')
+        ->join('pessoa_juridica', 'pessoa_juridica.id_pessoa_juridica = fornecedor.id_pessoa_juridica')
+        ->join('pessoa', 'pessoa.id_pessoa = pessoa_juridica.id_pessoa')
+        ->join('usuario', 'pessoa.id_pessoa = usuario.id_pessoa')
+        ->join('telefone', 'telefone.id_pessoa = pessoa.id_pessoa')
+        ->join('documento', 'documento.id_pessoa = pessoa.id_pessoa')
+        ->join('endereco', 'endereco.id_pessoa = pessoa.id_pessoa');
+    } catch (\Exception $e) {}
+
+    if ($query){
+      return $query->get()->result();
+    }else{
+      echo 'Não existem dados';
+      exit;
+    }
+  }
+
 }

@@ -10,8 +10,46 @@
             defaultDate: Date(),
             navLinks: true,
             editable: true,
+            eventDrop: function(event, delta, revertFunc) {
+
+                $('#drop').modal('show');
+
+                var modalConfirm = function(callback){
+
+                    $("#confirmar").on("click", function(){
+                        callback(true);
+                        $("#drop").modal('hide');
+                    });
+
+                    $("#cancelar").on("click", function(){
+                        callback(false);
+                        $("#drop").modal('hide');
+                    });
+                }
+
+                modalConfirm(function(confirm){
+                    if(confirm){
+                        $.ajax({
+                            url: BASE_URL + "events/updateDate/" + event.id,
+                            type: 'post',
+                            data: {'date_start': event.start.format('YYYY-MM-DD HH:mm:ss'), 'date_end': event.end.format('YYYY-MM-DD HH:mm:ss')},
+                            success: (value) => {
+                                var value = JSON.parse(value);
+                            },
+                            error: (error) => {
+
+                            }
+                        });
+                    } else {
+                        window.location.href = "";
+                    }
+
+                });
+            },
             eventLimit: true,
             eventClick: function(event) {
+                $('.ocultar-btn').show();
+                $('.ocultar-btn-delete').show();
 
                 $('#visualizar #id').text(event.id);
                 $('#visualizar #title').text(event.title);
@@ -28,8 +66,15 @@
                 $('#visualizar #endHour').val(event.end.format('HH:mm:ss'));
                 $('#visualizar #color').val(event.color);
 
+                if (event.criado_por != event.usuario_logado) {
+                    $('.ocultar-btn').hide();
+                    $('.ocultar-btn-delete').hide();
+                }
+
+
                 $('#visualizar').modal('show');
-                return false;
+                getUsers(event.id);
+
             },
             selectable: true,
             selectHelper: true, // DESTACA A HORA SELECIONADA.
@@ -47,7 +92,7 @@
         }
 
         $.ajax({
-            url: BASE_URL + "/events",
+            url: BASE_URL + "events",
             data: 'JSON',
             success: (value) => {
                 var value = JSON.parse(value);
@@ -78,5 +123,63 @@
             $('.excluir').slideToggle();
         });
 
+        $('.compartilhar').on('click', function(){
+            $('#compartilhar').removeAttr('hidden');
+        });
+
+        $('.shared_edit').on('click', function(){
+            $('#shared_edit').show();
+        });
+
+        $('#visualizar').on('hidden.bs.modal', function () {
+            $(".visualizar").show();
+            $(".editar").hide();
+            $(".excluir").hide();
+            $('#shared_edit').hide();
+        })
+
+        let $select = $('.calendar_users').selectize({})
+        let selectize = $select[0].selectize;
+
+        let getUsers = (id) => {
+
+            $('.compartilhado_com').html("");
+
+            $.ajax({
+                url: BASE_URL + "events/getUsers/" + id,
+                data: 'JSON',
+                success: (value) => {
+                    var users = JSON.parse(value)
+                    var shared_with = Object.assign({}, users);
+                    users = Object.keys(users).map((key) => { return users[key].id_usuario })
+                    selectize.setValue(users)
+
+                    for(user in shared_with) {
+                        $('.compartilhado_com').append(
+                            `<div class="">${shared_with[user].nome}</div>`
+                        );
+                    }
+
+                    if (!$.isEmptyObject(shared_with)){
+                        $(".label_compartilhado").show();
+                        $('#shared_edit').show();
+
+                        if (Object.keys(shared_with).length > 10)
+                            $(".compartilhado_com").addClass("has_shared_users").css("height", 150);
+                        else
+                            $(".compartilhado_com").css("height",(Object.keys(shared_with).length * 25));
+
+                    }else {
+                        $(".label_compartilhado").hide();
+                        $(".compartilhado_com").removeClass("has_shared_users").css("height", 0);
+                        $("#shared_edit").hide();
+                    }
+                },
+                error: (error) => {
+
+                }
+            });
+
+        }
 
     });

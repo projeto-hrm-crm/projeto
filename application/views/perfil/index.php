@@ -30,7 +30,7 @@
                      <p>
                         <?=$endereco[0]->cidade;?> -  <?=$endereco[0]->estado;?>, Brasil
                         <?php
-                           if($curriculum) {
+                           if(!empty($curriculum)) {
                         ?> 
                          &nbsp;&nbsp;- &nbsp;
                         <a href="<?=$curriculum;?>" download><i class="fa fa-file-o"></i> Meu Curriculum</a>
@@ -57,12 +57,56 @@
             <div class="card-body">
                <div class="row">
                   <div class="col-lg-12">
-                     <h1>Minhas Habilidades</h1>
-                     <a href="<?=site_url('perfil/editar/')?>" class="btn btn-primary btn-sm">Adicionar Habilidade</a>
+                     <h3>Minhas Habilidades</h3>
+                     <br>
+                     <table class="table table-striped">
+                     <?php 
+                        if(isset($habilidades)){
+                           foreach($habilidades as $habilidade){ 
+                     ?>
+                        <tr>
+                           <td><?=$habilidade->nome;?></td>
+                           <td width="20%" class="text-center">
+                              <a href="<?=base_url();?>habilidade/editar/<?=$habilidade->id_habilidade;?>" class="btn btn-primary" title="Atualizar Habilidade">
+                                 <span class="fa fa-edit"></span>
+                             </a>
+                              
+                             <button data-href="<?=base_url();?>habilidade/excluir/<?=$habilidade->id_habilidade;?>" class="btn btn-danger" title="Excluir Habilidade" data-toggle="modal" data-target="#modalRemover">
+                                 <span class="fa fa-times"></span>
+                             </button></td>
+                        </tr>             
+                     <?php }} ?>
+                     </table>                     
                   </div>                  
                </div>
             </div>
+            <div class="card-footer text-right">
+               <a href="<?=site_url('habilidade/cadastrar/')?>" class="btn btn-primary btn-sm">Adicionar Habilidade</a>
+           </div>
          </div>
       </div>
    </div>
+</div>
+<div class="modal fade" id="modalRemover" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Excluir habilidade</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir esse habilidade?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <a href="#" class="btn btn-primary btn-remove-ok">
+                    Confirmar
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

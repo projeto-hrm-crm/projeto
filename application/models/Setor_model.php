@@ -2,29 +2,47 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Setor_model extends PR_Model
+class Setor_model extends CI_Model
 {
-    
-    /**
-    * @author: Matheus Ladislau
-    * Realiza registro de setor
-    *
-    * @param: mixed 
-    */
-    public function insert($setor)
+  public function __construct(){
+    parent::__construct();
+  }
+
+  /**
+  * @author: Matheus Ladislau
+  * Realiza registro de setor
+  *
+  * @param: mixed
+  */
+  public function insert($data)
+  {
+    $this->db->insert('setor', $data);
+    $id_setor = $this->db->insert_id();
+
+    if($id_setor)
     {
-        $this->db->insert('setor', $setor);
-
-        $this->setLog($setor['nome']);
+      $this->relatorio->setLog('insert', 'Inserir', 'cargo_funcionario', $id_setor, 'Inseriu o setor', $id_setor);
     }
+  }
 
-    /**
-    * @author: Matheus Ladislau
-    * Retorna todos registro de setor cadastrados no banco
-    * @return array: todos registro de setor cadastrados
-    */
-    public function get(){
-        return $this->db->get('setor')->result();
+  /**
+  * @author: Matheus Ladislau
+  * Retorna todos registro de setor cadastrados no banco
+  * @return array: todos registro de setor cadastrados
+  */
+  public function get(){
+    $setor = $this->db->select(
+      '*'
+      )
+      ->from('setor')
+      ->where('setor.deletado is NULL')
+      ->get();
+
+      if ($setor) {
+        return $setor->result();
+      }
+      return null;
+
     }
 
     /**
@@ -35,7 +53,7 @@ class Setor_model extends PR_Model
     */
     public function getById($id_setor)
     {
-        return $this->db->where('id_setor', $id_setor)->get('setor')->result();
+      return $this->db->where('id_setor', $id_setor)->get('setor')->result();
     }
 
     /**
@@ -45,15 +63,9 @@ class Setor_model extends PR_Model
     * @param integer $id_setor refere-se ao id do registro de setor a ser editado
     * @return boolean: True - caso editado com sucesso, False - não editado
     */
-    public function update($setor)
+    public function update($id_setor, $data)
     {
-        $this->db
-        ->set('setor.nome', $setor['nome'])
-        ->where('setor.id_setor', $setor['id_setor'])
-        ->update('setor');
-
-        $this->setLog($setor['nome'], $setor['id_setor']);
-
+      $this->db->update('setor', $data, array('id_setor' => $id_setor));
     }
 
     /**
@@ -64,15 +76,28 @@ class Setor_model extends PR_Model
     */
     public function remove($id_setor)
     {
-        $setor = $this->db->where('id_setor', $id_setor)->get('setor')->row();
+      $setor = $this->db->where('id_setor', $id_setor)->get('setor')->row();
 
-        $this->db
-        ->where('id_setor', $id_setor)
-        ->delete('setor');
+      $this->db->where('id_setor', $id_setor);
+      $id_produto = $this->db->delete('setor');
 
-        $this->setLog($setor->nome, $setor->id_setor);
+      $this->setLog($setor->nome, $setor->sigla, $setor->descricao, $setor->id_setor);
 
-        
     }
-}
 
+    public function getAtual($id_setor){
+
+      $setor =  $this->db->select(
+        '*'
+        )->from('setor')
+        ->where('setor.id_setor',$id_setor)
+        ->where('setor.deletado is NULL')
+        ->get();
+
+        if ($setor) {
+          return $setor->result();
+        }
+        return null;
+      }
+
+    }
