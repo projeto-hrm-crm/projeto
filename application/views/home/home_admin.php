@@ -12,11 +12,11 @@
     <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
       <!-- CRM -->
-      <div class="col-md-4">
-        <div class="card" role="structure" aria-label="Informações sobre os clientes cadastrados.">
+      <div class="col-md-4" role="presentation">
+        <div class="card" role="content info" aria-label="Informações sobre os clientes cadastrados.">
           <div class="card-body">
             <div class="clearfix">
-              <i class="fa fa-users bg-flat-color-2 p-3 font-2xl mr-3 float-left text-light"></i>
+              <i class="fa fa-users bg-flat-color-2 p-3 font-2xl mr-3 float-left text-light" role="img"></i>
               <div class="h5 text-secondary mb-0 mt-1"><?php echo $admin['clientes']; ?></div>
               <div class="text-muted text-uppercase font-weight-bold font-xs small">Clientes</div>
             </div>
@@ -24,7 +24,7 @@
             <hr>
             <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
               <a href="<?php echo base_url();?>cliente/cadastrar" aria-label="Clique para cadastrar um Cliente">
-                <button class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
+                <button class="btn btn-sm bg-flat-color-1 text-light" role="button"> <i class="fa fa-plus"></i> Cadastrar</button>
               </a>
               <a href="<?php echo base_url();?>cliente" aria-label="Visualizar Clientes Cadastrados">
                 <button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
@@ -34,11 +34,11 @@
         </div>
       </div>
 
-      <div class="col-md-4" role="structure">
-        <div class="card" role="structure" aria-label="Informações sobre fornecedores cadastrados.">
+      <div class="col-md-4" role="presentation">
+        <div class="card" role="content info" aria-label="Informações sobre fornecedores cadastrados.">
           <div class="card-body">
             <div class="clearfix">
-              <i class="fa fa-truck bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
+              <i class="fa fa-truck bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light" role="img"></i>
               <div class="h5 text-secondary mb-0 mt-1"><?php echo $admin['fornecedores']; ?></div>
               <div class="text-muted text-uppercase font-weight-bold font-xs small">Fornecedores</div>
             </div>
@@ -57,11 +57,11 @@
         </div>
       </div>
 
-      <div class="col-md-4" role="structure">
-        <div class="card" role="structure" aria-label="Informações sobre produtos cadastrados.">
+      <div class="col-md-4" role="presentation">
+        <div class="card" role="content info" aria-label="Informações sobre produtos cadastrados.">
           <div class="card-body">
             <div class="clearfix">
-              <i class="fa fa-product-hunt bg-flat-color-4 p-3 font-2xl mr-3 float-left text-light"></i>
+              <i class="fa fa-product-hunt bg-flat-color-4 p-3 font-2xl mr-3 float-left text-light" role="img"></i>
               <div class="h5 text-secondary mb-0 mt-1"><?php echo $admin['produtos']; ?></div>
               <div class="text-muted text-uppercase font-weight-bold font-xs small">Produtos</div>
             </div>
@@ -80,9 +80,9 @@
         </div>
       </div>
 
-      <div class="card-block" role="structure">
+      <div class="card-block" role="presentation">
         <div class="col-lg-8">
-          <div class="card" role="structure" aria-label="Informações sobre nossos clientes.">
+          <div class="card" role="content info" aria-label="Informações sobre nossos clientes.">
             <div class="card-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
               <h1 class="mb-3 display-6 text-center">Clientes Cadastrados</h1>
               <h2 class="no-data"></h2>
@@ -91,8 +91,8 @@
           </div>
         </div>
 
-        <div class="col-lg-4" role="structure">
-          <div class="card" role="structure" aria-label="Informações sobre os serviçoes de atendimento ao consumidor.">
+        <div class="col-lg-4" role="presentation">
+          <div class="card" role="content info" aria-label="Informações sobre os serviçoes de atendimento ao consumidor.">
             <div class="card-header">
               SAC
             </div>
@@ -132,11 +132,11 @@
 
     <!-- HRM -->
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <div class="col-md-4">
-        <div class="card" role="structure" aria-label="Informações sobre o quadro de funcionários.">
+      <div class="col-md-4" role="presentation">
+        <div class="card" role="content info" aria-label="Informações sobre o quadro de funcionários.">
           <div class="card-body">
             <div class="clearfix">
-              <i class="fa fa-address-card bg-flat-color-2 p-3 font-2xl mr-3 float-left text-light"></i>
+              <i class="fa fa-address-card bg-flat-color-2 p-3 font-2xl mr-3 float-left text-light" role="img"></i>
               <div class="h5 text-secondary mb-0 mt-1"><?php echo $admin['funcionarios'];?></div>
               <div class="text-muted text-uppercase font-weight-bold font-xs small">Funcionários</div>
             </div>
@@ -150,11 +150,11 @@
         </div>
       </div>
 
-      <div class="col-md-4" role="structure">
-        <div class="card" role="structure" aria-label="Informações sobre os cargos da empresa.">
+      <div class="col-md-4" role="presentation">
+        <div class="card" role="content info" aria-label="Informações sobre os cargos da empresa.">
           <div class="card-body">
             <div class="clearfix">
-              <i class="fa fa-briefcase bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
+              <i class="fa fa-briefcase bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light" role="img"></i>
               <div class="h5 text-secondary mb-0 mt-1"><?php echo $admin['cargos'];?></div>
               <div class="text-muted text-uppercase font-weight-bold font-xs small">Cargos</div>
             </div>
@@ -168,11 +168,11 @@
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="card" role="structure" aria-label="Informações sobre vagas ofertadas.">
+      <div class="col-md-4" role="presentation">
+        <div class="card" role="content info" aria-label="Informações sobre vagas ofertadas.">
           <div class="card-body">
             <div class="clearfix">
-              <i class="fa fa-newspaper-o bg-flat-color-4 p-3 font-2xl mr-3 float-left text-light"></i>
+              <i class="fa fa-newspaper-o bg-flat-color-4 p-3 font-2xl mr-3 float-left text-light" role="img"></i>
               <div class="h5 text-secondary mb-0 mt-1"><?php echo $admin['vagas'];?></div>
               <div class="text-muted text-uppercase font-weight-bold font-xs small">Vagas abertas</div>
             </div>
@@ -188,7 +188,7 @@
 
       <!-- <div class="card-block">
       <div class="col-lg-6">
-      <div class="card" role="structure" aria-label="">
+      <div class="card" role="content info" aria-label="">
       <div class="card-header">
       Vagas
     </div>
@@ -222,9 +222,9 @@
 </div>
 </div> -->
 
-<div class="card-block" role="structure">
+<div class="card-block" role="presentation">
   <div class="col-lg-6">
-    <div class="card" role="structure" aria-label="Informações sobre os processos seletivos.">
+    <div class="card" role="content info" aria-label="Informações sobre os processos seletivos.">
       <div class="card-header">
         Processos seletivos
       </div>
