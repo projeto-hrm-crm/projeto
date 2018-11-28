@@ -76,6 +76,11 @@
                 </select>
               </div> <!-- FIM Proatividade -->
 
+              <div class="form-group col-md-12">
+                  <label class=" form-control-label">Observação</label>
+                  <textarea placeholder="Observação" name="observacao" class="form-control" ></textarea>
+              </div> <!-- FIM Observação -->
+              
             </div>
 
           </div>

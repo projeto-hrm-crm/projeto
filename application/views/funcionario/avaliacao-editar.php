@@ -79,6 +79,13 @@
                 </select>
               </div> <!-- FIM Proatividade -->
 
+              <div class="form-group col-md-12">
+              <label class="form-control-label"><red>*</red>Observação</label>
+                <textarea placeholder="Observação" name="observacao" class="form-control"><?php if (isset($avaliacao[0]->observacao)) {
+                 echo $avaliacao[0]->observacao;
+                }?></textarea>
+              </div>
+
             </div>
 
           </div>

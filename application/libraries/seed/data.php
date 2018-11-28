@@ -1206,6 +1206,14 @@ $seeds = array(
             'id_pessoa'
           ),
           'values' => array(
+            '1'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa'
+          ),
+          'values' => array(
             '13'
           ),
         ),
