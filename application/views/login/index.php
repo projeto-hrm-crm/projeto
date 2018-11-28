@@ -29,9 +29,9 @@
 </head>
 <body class="bg-dark">
   <div class="sufee-login d-flex align-content-center flex-wrap">
-    <div class="container">
-      <div class="login-content margin30 float-right">
-
+    <div class="container-fluid">                
+      <div class="col-sm-12 col-md-6 float-right">
+        <div class="login-content ">
         <?php if ($this->session->flashdata('success')): ?>
          <div class="alert alert-success mt-4">
            <?php echo $this->session->flashdata('success'); ?>
@@ -69,27 +69,26 @@
           </center>
           
         </div>
-        <div class="margin30 mt-30 float-left">
-          <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
-                     <thead>
-                        <tr>
-                           <th class="text-center">Nome</th>
-                           <th class="text-center">Descrição</th>
-                        </tr>
-                     </thead>
+      </div>
+      <div class="col-sm-12 col-md-6 float-left">
+        <div class="card login-content">
+          <div class="card-body">
+            <?php foreach ($processos_seletivos as $processo_seletivo): ?>
+              <div class="row">
+                <div class="col-md-12 text-center"><?php echo $processo_seletivo->nome; ?></div>
+                <div class="col-md-12 text-center"> <?php echo $processo_seletivo->descricao; ?></div>
 
-                     <tbody>
-                        <?php foreach ($processos_seletivos as $processo_seletivo): ?>
-                           <tr>
-                              <td class="text-center"><?php echo $processo_seletivo->nome; ?></td>
-                              <td class="text-center"><?php echo $processo_seletivo->descricao; ?></td>
-                           </tr>
-                       <?php endforeach ?>
-                     </tbody>
-                   </table>
+              </div>
+              <hr>
+            <?php endforeach ?>
 
+            <p class="text-dark"> Se estiver interessado em algumas de nossas vagas, crie um cadastro como Candidato  <a class="text-primary" href="<?php echo base_url();?>cadastro">aqui</a>, acesse seu perfil de candidato e nos envie seu curriculo</p>
+          </div>
         </div>
+      </div>
+
     </div>
+
   </div>
   <script src="<?php echo base_url();?>assets/js/vendor/jquery-2.1.4.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/popper.min.js"></script>
