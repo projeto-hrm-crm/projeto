@@ -19,11 +19,11 @@
               <?php endif; ?>
               <div class="card">
                   <div class="card-header">
-                  <!--
-                  <strong class="card-title">Atualizar remanejamento de <?php echo $funcionarios[0]->nome;?></strong>
-                  -->
+                 
+                  <strong class="card-title">Atualizar remanejamento de <?php echo $cargos[0]->pessoa;?></strong>
+                 
 
-                      <strong class="card-title">Remanejamento de </strong>
+                      
                   </div>
                   <div class="card-body">
                       <div class="col-sm-6">
