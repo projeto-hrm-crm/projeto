@@ -64,6 +64,7 @@ $autoload['libraries'] = array(
     'session',
     'seed/Seeds' => 'Seed',
     'notifications/Notification' => 'Notification',
+    'interface/Button' => 'Button',
 );
 
 /*
@@ -179,6 +180,7 @@ $autoload['model'] = array(
                     'Agenda_model'               => 'evento',
                     'Almoxarifado_model'         => 'almoxarifado',
                     'UnidadeMedida_model'        => 'unidadeMedida',
+                    'Config_model'               => 'configuration',
                     'CargoFuncionario_model'     => 'cargo_funcionario',
                     'Habilidade_model'           => 'habilidade',
                     'CargoFuncionario_model'     => 'cargo_funcionario',

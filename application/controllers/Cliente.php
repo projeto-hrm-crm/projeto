@@ -15,10 +15,11 @@ class Cliente extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
+ 
 
   /**
   * @author Camila Sales
@@ -40,6 +41,9 @@ class Cliente extends CI_Controller
     foreach ($data['clientes'] as $key => $cliente) {
       $data['clientes'][$key]->data_nascimento = switchDate($data['clientes'][$key]->data_nascimento);
     }
+
+    $data['edit_button']    = $this->Button->verify('Cliente', 'Editar');
+    $data['delete_button']  = $this->Button->verify('Cliente', 'excluir');
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
@@ -70,7 +74,8 @@ class Cliente extends CI_Controller
             'login'             => $data['email'],
             'senha'             => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
             'id_grupo_acesso'   => 4,
-            'id_pessoa'         => $id_pessoa
+            'id_pessoa'         => $id_pessoa,
+            'empresa_id_empresa'=> $this->session->userdata('user_id_empresa')
         ]);
 
         $this->endereco->insert([

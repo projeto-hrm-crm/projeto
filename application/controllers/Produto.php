@@ -16,9 +16,9 @@ class Produto extends CI_Controller
     public function __construct()
     {
       parent::__construct();
-      $user_id = $this->session->userdata('user_login');
+      $access_group = $this->session->userdata('user_id_grupo_acesso');
       $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+      $this->usuario->hasPermission($access_group, $currentUrl);
     }
     /**
       *@author: Dhiego Balthazar

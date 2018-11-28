@@ -21,9 +21,18 @@
           <strong class="card-title">Clientes</strong>
         </div>
         <div class="card-body">
-          <a title="Cadastrar Cliente" href="<?= site_url('cliente/cadastrar')?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-check"></i> Novo Cadastro
-          </a><br />
+        <?php 
+          $type = "a";
+          $label = "<i class='fa fa-check'></i> Novo Cadastro";
+          $classes = ['btn', 'btn-primary', 'btn-sm'];
+          $attr = [
+            'id' => 'id',
+            'href' => "cliente/cadastrar",
+            'title' => 'Cadastrar Cliente'
+          ];
+          $this->Button->verify('Cliente', 'Cadastrar')->build($type, $label, $classes, $attr);
+        ?>
+        <br />
           <br />
           <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
 
@@ -49,12 +58,34 @@
                     <?php echo $cliente->data_nascimento; ?>
                   </td>
                   <td class="text-center">
-                    <a title="Atualizar Cliente" href="<?= site_url('cliente/editar/'.$cliente->id_cliente)?>" class="btn btn-primary">
-                      <span class="fa fa-pencil-square-o"></span></a>
-                       <button title="Excluir Cliente" data-href="cliente/excluir/<?php echo $cliente->id_cliente?>" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-times"></span>
-                        </button>
-                      </td>
+                    <?php 
+                      $type = "a";
+                      $label = "<span class='fa fa-pencil-square-o'></span>";
+                      $classes = ['btn', 'btn-primary'];
+                      $attr = [
+                        'id' => 'id',
+                        'href' => site_url('cliente/editar/'.$cliente->id_cliente),
+                      ];
+
+                      if(!is_null($edit_button))
+                      $edit_button->build($type, $label, $classes, $attr);
+                    ?>
+
+                    <?php 
+                      $type = "button";
+                      $label = "<span class='fa fa-times'></span>";
+                      $classes = ['btn', 'btn-danger'];
+                      $attr = [
+                        'id' => 'id',
+                        'data-href' => "cliente/excluir/".$cliente->id_cliente,
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modalRemover'
+                      ];
+
+                      if (!is_null($delete_button))
+                        $delete_button->build($type, $label, $classes, $attr);
+                    ?>
+                    </td>
                     </tr>
                   <?php endforeach ?>
                 </tbody>
