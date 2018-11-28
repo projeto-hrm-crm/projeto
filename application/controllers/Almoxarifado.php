@@ -143,10 +143,12 @@ class Almoxarifado extends CI_Controller
    */
   public function delete($id_almoxarifado)
   {
-    $data['almoxarifado'] = $this->almoxarifado->getById($id_almoxarifado);
+    $almoxarifado = $this->almoxarifado->getById($id_almoxarifado);
 
-    if ($data) {
-      $this->almoxarifado->remove($id_almoxarifado);
+    if ($almoxarifado) {
+      $data['deletado'] = date("Y-m-d H:i:s");
+
+      $this->almoxarifado->update($id_almoxarifado, $data);
       $this->session->set_flashdata('success', 'Item Excluído Com Sucesso!');
       redirect('almoxarifado');
     }
