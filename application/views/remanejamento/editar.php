@@ -4,11 +4,13 @@
       <div class="col-lg-10">
          <div class="card">
             <div class="card-header">
-               <strong class="card-title">Atualizar remanejamento</strong>
+                              <strong class="card-title">Atualizar remanejamento de <?php echo $funcionarios[0]->nome;?></strong>
             </div>
                <div class="card-body">
                   <div class="row">
                     
+                    
+                    <!--
                      <div class="col-lg-12 form-group">
                         <label class="form-control-label">funcionarios</label>
                         <select name="id_funcionario" class="form-control" id="funcionario">
@@ -18,6 +20,9 @@
                            <?php endforeach; ?>
                         </select>
                      </div>
+                     -->
+                     
+                     
                      <div class="col-lg-12 form-group">
                         <label class="form-control-label">cargos</label>
                         <select name="id_cargo" class="form-control" id="cargo">
