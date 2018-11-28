@@ -55,9 +55,10 @@
 
 			<thead>
 				<tr>
-					<th class="text-center">Etapa</th>
 					<th class="text-center">código do processo</th>
-					<th class="text-center">Descrição da etapa</th>					
+					<th class="text-center">Etapa</th>
+					<th class="text-center">Descrição da etapa</th>	
+
 				</tr>
 			</thead>
 
