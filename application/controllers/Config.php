@@ -42,7 +42,7 @@ class Config extends CI_Controller
     public function new()
     {
 		//Preenche as tabelas necessárias para criar o primeiro usuário 
-		$this->configuration->basicConfigs();
+		//$this->configuration->basicConfigs();
 
         $data['title'] = 'Novo Cliente';
         loadTemplate('cadastro_cliente/header', 'cadastro_cliente/index', 'cadastro_cliente/footer', $data);
