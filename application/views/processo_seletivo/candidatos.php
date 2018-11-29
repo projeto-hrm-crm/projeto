@@ -40,7 +40,7 @@
                                 ?> 
                                 &nbsp;&nbsp;- &nbsp;
                                 <a href="<?=$candidato->curriculum;?>" download><i class="fa fa-file-o"></i> Meu Curriculum</a>
-                                <?php } ?></td>
+                                </td>
 
                               <td class="text-center">
 
@@ -51,7 +51,16 @@
                                  <button title="Reprovar" data-href="" class="btn btn-danger" onclick="reprovar(<?php echo $candidato->id_candidato;?>)">
                                    <span class="fa fa-times"></span>
                                  </button>
-                              </td><!-- Fim dos botões -->
+                              </td>
+                            <?php }else{ ?>
+                              </td>
+                              <td class="text-center">
+
+                                 <a title="Pedido de Curriculo" href="" class="btn btn-warning" onclick="aprovar(<?php echo $candidato->id_candidato;?>)">
+                                       <span class="fa fa-file-pdf-o"></span>
+                                 </a>
+                              </td>
+                             <?php } ?>
                            </tr>
                        <?php endforeach ?>
                      </tbody>
