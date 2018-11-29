@@ -74,74 +74,38 @@ class Config_model extends CI_model
         }
 
         //Seta a grupo de acesso modulo para o admin
+        $ids_grupo_acesso_modulo = [];
+
         foreach (array_keys($modules) as $key) {
             $this->db->insert('grupo_acesso_modulo', [
                 'id_grupo_acesso' => 1,
                 'id_modulo'       => $key
             ]);
+            $ids_grupo_acesso_modulo[$key] = $this->db->insert_id(); 
         }
 
-        //  
-        $sql = "INSERT INTO `permissao` (`id_permissao`, `id_grupo_acesso_modulo`, `id_menu`) VALUES
-        (1, 1, 1),
-        (2, 1, 2),
-        (3, 1, 3),
-        (4, 1, 5),
-        (5, 1, 7),
-        (6, 1, 9),
-        (7, 1, 11),
-        (8, 1, 13),
-        (9, 1, 15),
-        (10, 1, 25),
-        (11, 1, 37),
-        (12, 1, 39),
-        (13, 1, 52),
-        (14, 1, 54),
-        (15, 1, 17),
-        (16, 1, 18),
-        (17, 1, 19),
-        (18, 1, 20),
-        (19, 1, 21),
-        (20, 1, 22),
-        (21, 1, 23),
-        (22, 1, 24),
-        (23, 1, 27),
-        (24, 1, 47),
-        (25, 1, 48),
-        (26, 1, 49),
-        (27, 1, 56),
-        (28, 1, 28),
-        (29, 1, 29),
-        (30, 1, 30),
-        (31, 1, 31),
-        (32, 1, 32),
-        (33, 1, 33),
-        (34, 1, 34),
-        (35, 1, 35),
-        (36, 1, 36),
-        (37, 1, 43),
-        (38, 1, 44),
-        (39, 1, 45),
-        (40, 1, 57),
-        (41, 2, 3),
-        (42, 2, 4),
-        (43, 2, 6),
-        (44, 2, 8),
-        (45, 2, 10),
-        (46, 2, 12),
-        (47, 2, 14),
-        (48, 2, 16),
-        (49, 2, 26),
-        (50, 2, 40),
-        (51, 2, 41),
-        (52, 2, 42),
-        (53, 2, 50),
-        (54, 2, 51),
-        (55, 2, 53),
-        (56, 2, 55),
-        (57, 2, 46)";
+        //Seta as permissões baseadas nos módulos escolhidos 
+        $menus = [];
+        foreach ($modules as $key => $module) {
+            foreach ($module as $submodule) {
+                $this->db->select('id_menu')
+                         ->from('menu')
+                         ->where('id_sub_modulo', $submodule);
+                $menus[$key][] = $this->db->get()->result();
+            }
+        }
 
-        $this->db->query($sql);
+        foreach ($menus as $key => $menu) {  
+            $id_grupo_acesso_modulo = $ids_grupo_acesso_modulo[$key];
+            foreach ($menu as $m) {
+                foreach ($m as $k => $s) {
+                    $this->db->insert("permissao", [
+                        'id_grupo_acesso_modulo' => $id_grupo_acesso_modulo,
+                        'id_menu' => $s->id_menu
+                    ]);
+                }
+            }
+        }
     }
 
     public function createProfile($data)
@@ -166,13 +130,11 @@ class Config_model extends CI_model
 
     public function basicConfigs()
     {
-
         //Cria o grupo de acesso admin
-        $this->db->insert("grupo_acesso", [
-            [
-               'nome' => 'admin' 
-            ]
-        ]);
+        $sql = "INSERT INTO `grupo_acesso` (`id_grupo_acesso`, `nome`) VALUES
+        (1, 'admin')";
+        $this->db->query($sql);
+
 
         //Insere os módulos 
         $this->db->insert("modulo", [
@@ -364,7 +326,5 @@ class Config_model extends CI_model
                     (57, 4, 16, 'almoxarifado/excluir', NULL, 0)";
 
         $this->db->query($sql);
-
-
     }
 }
