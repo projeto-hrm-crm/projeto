@@ -30,7 +30,10 @@
             'href' => "cliente/cadastrar",
             'title' => 'Cadastrar Cliente'
           ];
-          $this->Button->verify('Cliente', 'Cadastrar')->build($type, $label, $classes, $attr);
+          $button = $this->Button->verify('Cliente', 'Cadastrar');
+          
+          if (!is_null($button))
+            $button->build($type, $label, $classes, $attr);
         ?>
         <br />
           <br />
