@@ -174,7 +174,7 @@ class Usuario_model extends CI_Model
             return;
         if (!empty($url)) {
             $url = $this->getParsedUrl($url);
-         
+
             $this->db->select('*')
                     ->from('grupo_acesso')
                     ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
@@ -183,7 +183,7 @@ class Usuario_model extends CI_Model
                     ->where('menu.link', $url)
                     ->where('grupo_acesso.id_grupo_acesso', $access_group);
             $result = $this->db->get();
-            
+
             if ($result->num_rows() == 0) {
                 redirect(base_url('dashboard'));
             }
