@@ -60,10 +60,11 @@ class Button
                      ->where('sub_modulo.nome', ucfirst($sub_modulo))
                      ->where('sub_menu.nome', ucfirst($action));
         $result = $this->ci->db->get();
-
+        
         if ($result->num_rows() > 0)
             return $this; 
-        return null;
+        
+        return;
     }
 
     /**
