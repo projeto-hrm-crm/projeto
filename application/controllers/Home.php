@@ -130,7 +130,7 @@ class Home extends CI_Controller
     $data = [];
 
     $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
-    $data['candidatos'] = $this->candidato->getById($id_usuario);
+    $data['candidato'] = $this->candidato->getById($user_id);
     return $data;
 
   }
