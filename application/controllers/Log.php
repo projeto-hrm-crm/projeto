@@ -6,10 +6,10 @@
 
         public function __construct()
         {
-             parent::__construct();
-            $user_id = $this->session->userdata('user_login');
-            $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-            $this->usuario->hasPermission($user_id, $currentUrl);
+          parent::__construct();
+          $access_group = $this->session->userdata('user_id_grupo_acesso');
+          $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+          $this->usuario->hasPermission($access_group, $currentUrl);
         }
 
         public function index()

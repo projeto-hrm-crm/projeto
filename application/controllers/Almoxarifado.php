@@ -17,9 +17,9 @@ class Almoxarifado extends CI_Controller
      public function __construct()
   {
     parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
 
   /**
@@ -74,10 +74,10 @@ class Almoxarifado extends CI_Controller
             redirect('almoxarifado');
         }
         else{
-            $this->session->set_flashdata('success', 'Não foi possível realizar o cadastro!');
+            $this->session->set_flashdata('danger', 'Não foi possível realizar o cadastro!');
             redirect('cadastrar');
         }
-    }else{  
+    }else{
       $data['title'] = 'Cadastrar Almoxarifado';
       $data['unidades'] = $this->unidadeMedida->get();
       $data['assets'] = array(
@@ -125,7 +125,7 @@ class Almoxarifado extends CI_Controller
     $data['id']              = $id_almoxarifado;
 
     $data['assets'] = array(
-        'js' => array('lib/jquery/jquery.maskMoney.min.js', 
+        'js' => array('lib/jquery/jquery.maskMoney.min.js',
         'thirdy_party/apicep.js','validate.js',
         'maskMoney.js')
     );

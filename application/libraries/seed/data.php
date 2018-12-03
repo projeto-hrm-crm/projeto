@@ -551,11 +551,13 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'admin@admin.com',
             hash('sha256', 'admin'),
+            '1',
             '1',
             '1'
           ),
@@ -565,13 +567,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'pedrosilva@teste.com',
             hash('sha256','pedrosilva'),
             '4',
-            '2'
+            '2',
+            '1'
           ),
         ),
         array(
@@ -579,13 +583,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'matheussantos@teste.com',
             hash('sha256','matheussantos'),
             '4',
-            '3'
+            '3',
+            '1'
           ),
         ),
         array(
@@ -593,13 +599,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'rodrigosantos@teste.com',
             hash('sha256','rodrigosantos'),
             '4',
-            '4'
+            '4',
+            '1'
           ),
         ),
         array(
@@ -607,13 +615,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'fernandosantos@teste.com',
             hash('sha256','fernandosantos'),
             '4',
-            '5'
+            '5',
+            '1'
           ),
         ),
         // --------------------------Candidato--------------------------------
@@ -622,13 +632,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'camilamota@teste.com',
             hash('sha256','camilamota'),
             '5',
-            '6'
+            '6',
+            '1'
           ),
         ),
         array(
@@ -636,13 +648,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'pietrasilva@teste.com',
             hash('sha256','pietrasilva'),
             '5',
-            '7'
+            '7',
+            '1'
           ),
         ),
         array(
@@ -650,13 +664,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'maitesantos@teste.com',
             hash('sha256','maitesantos'),
             '5',
-            '8'
+            '8',
+            '1'
           ),
         ),
         array(
@@ -664,13 +680,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'yasminsantos@teste.com',
             hash('sha256','yasminsantos'),
             '5',
-            '9'
+            '9',
+            '1'
           ),
         ),
         array(
@@ -678,13 +696,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'carlasantos@teste.com',
             hash('sha256','carlasantos'),
             '5',
-            '10'
+            '10',
+            '1'
           ),
         ),
 
@@ -694,13 +714,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'edersonpia@teste.com',
             hash('sha256','edersonpia'),
             '6',
-            '11'
+            '11',
+            '1'
           ),
         ),
         array(
@@ -708,13 +730,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'luciansantos@teste.com',
             hash('sha256','luciansantos'),
             '6',
-            '12'
+            '12',
+            '1'
           ),
         ),
         array(
@@ -722,13 +746,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'palomacabral@teste.com',
             hash('sha256','palomacabral'),
             '6',
-            '13'
+            '13',
+            '1'
           ),
         ),
         array(
@@ -736,13 +762,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'carolsantos@teste.com',
             hash('sha256','carolsantos'),
             '6',
-            '14'
+            '14',
+            '1'
           ),
         ),
         array(
@@ -750,13 +778,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'amandasantos@teste.com',
             hash('sha256', 'amandasantos'),
             '6',
-            '15'
+            '15',
+            '1'
           ),
         ),
         // --------------------------Fornecedor--------------------------------
@@ -765,13 +795,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'joaocarlos@teste.com',
             hash('sha256','joaocarlos'),
             '3',
-            '16'
+            '16',
+            '1'
           ),
         ),
         array(
@@ -779,13 +811,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'dianacoste@teste.com',
             hash('sha256','dianacoste'),
             '3',
-            '17'
+            '17',
+            '1'
           ),
         ),
         array(
@@ -793,13 +827,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'amandaribeiro@teste.com',
             hash('sha256','amandaribeiro'),
             '3',
-            '18'
+            '18',
+            '1'
           ),
         ),
         array(
@@ -807,13 +843,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'joaquincosta@teste.com',
             hash('sha256','joaquincosta'),
             '3',
-            '19'
+            '19',
+            '1'
           ),
         ),
         array(
@@ -821,13 +859,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'carloslopes@teste.com',
             hash('sha256','carloslopes'),
             '3',
-            '20'
+            '20',
+            '1'
           ),
         ),
       )
@@ -1199,6 +1239,14 @@ $seeds = array(
           ),
           'values' => array(
             '12'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa'
+          ),
+          'values' => array(
+            '1'
           ),
         ),
         array(

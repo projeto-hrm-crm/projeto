@@ -1,7 +1,10 @@
 jQuery(document).ready(function($) {
 
   var options = {
-    valueNames: [ 'name', 'description', 'category' ]
+    valueNames: [ 'name', 'description', 'category' ],
+    page: 8,
+    innerWindow: 3,
+    pagination: true
   };
 
   var featureList = new List('contatos', options);

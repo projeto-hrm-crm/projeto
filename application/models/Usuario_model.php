@@ -37,6 +37,7 @@ class Usuario_model extends CI_Model
         ->set('usuario.senha', hash('sha256', $data['senha']))
         ->set('usuario.id_grupo_acesso', $data['id_grupo_acesso'])
         ->set('usuario.id_pessoa', $data['id_pessoa'])
+        ->set('usuario.empresa_id_empresa', $data['empresa_id_empresa'])
         ->insert('usuario');
     }
 
@@ -121,6 +122,8 @@ class Usuario_model extends CI_Model
             if ($sql->num_rows() > 0) {
                 $this->session->set_userdata('user_login', $sql->result()[0]->id_usuario);
                 $this->session->set_userdata('user_id_pessoa', $sql->result()[0]->id_pessoa);
+                $this->session->set_userdata('user_id_empresa', $sql->result()[0]->empresa_id_empresa);
+                $this->session->set_userdata('user_id_grupo_acesso', $sql->result()[0]->id_grupo_acesso);
                 return true;
             }
             return false;
@@ -155,46 +158,38 @@ class Usuario_model extends CI_Model
         return false;
     }
 
+
     /**
      * @author Pedro Henrique Guimarães
      * Verifica se o usuário tem permissão para acessar determinada página
      * baseado no seu grupo de permissão
      *
-     * @param $user_id
+     * @param int $id_grupo_acesso
+     * @param string $url
      * @return void|false
      */
-    public function hasPermission($user_id, $url)
+    public function hasPermission($access_group, $url)
     {
-        if (empty($user_id))
-            redirect(base_url('login'));
-
         if ($url == '/dashboard')
             return;
         if (!empty($url)) {
             $url = $this->getParsedUrl($url);
-            $access_group = $this->getUserAccessGroup($user_id);
-            if ($user_id) {
-                $this->db->select('gam.id_grupo_acesso')
-                        ->from('menu as m')
-                        ->join('grupo_acesso_menu as gam', 'm.id_menu = gam.id_menu')
-                        ->join('sub_menu as s', 's.id_menu = m.id_menu')
-                        ->where('s.link', $url);
-                $result = $this->db->get();
-
-                $info = false;
-                foreach ($result->result() as $key => $idGrupo) {
-                     if($result->result()[$key]->id_grupo_acesso == $access_group){
-                         $info = true;
-                     }
-                  }
-
-                if ($result->num_rows() == 0 || $info == false) {
-                    redirect(base_url('dashboard'));
-                }
-
-            } else {
+         
+            $this->db->select('*')
+                    ->from('grupo_acesso')
+                    ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
+                    ->join('permissao', 'permissao.id_grupo_acesso_modulo = grupo_acesso_modulo.id_grupo_acesso_modulo')
+                    ->join('menu', 'permissao.id_menu = menu.id_menu')
+                    ->where('menu.link', $url)
+                    ->where('grupo_acesso.id_grupo_acesso', $access_group);
+            $result = $this->db->get();
+            
+            if ($result->num_rows() == 0) {
                 redirect(base_url('dashboard'));
             }
+
+        } else {
+            redirect(base_url('dashboard'));
         }
     }
 
@@ -241,7 +236,5 @@ class Usuario_model extends CI_Model
         return true;
       }
     }
-
-
 
 }

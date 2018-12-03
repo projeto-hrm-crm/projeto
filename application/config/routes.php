@@ -80,7 +80,6 @@ $route['produto/alterar-imagem']     = 'Produto/produtoImage';
 //Rotas Log
 $route['log'] = 'Log/index';
 
-
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
@@ -202,6 +201,8 @@ $route['perfil/alterar-senha']      = 'Perfil/changePassword';
 $route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
 $route['perfil/alterar-imagem']     = 'Perfil/profileImage';
 
+//Rota de Configuração Novo Cliente
+$route['configuracao/novo']       = 'Config/new';
 //Rotas Habilidade
 $route['habilidade/cadastrar']        = 'Habilidade/create/';
 $route['habilidade/editar/(:num)']     = 'Habilidade/edit/$1';
@@ -212,12 +213,17 @@ $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
 $route['notifications/count']         = 'Usuario/getCount';
 $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
+$route['config']                      = 'Config/index';
+$route['config/createProfile']        = 'Config/createProfile';
+$route['config/createCompany']        = 'Config/createCompany';
+$route['config/insertModules']        = 'Config/insertModules';
 
 $route['events/getUsers/(:num)']      = 'Agenda/getEventUsers/$1';
 
 
 $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 $route['events']					  = 'agenda/get';
+$route['events/updateDate/(:num)']	  = 'agenda/updateDate/$1';
 
 $route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
 
@@ -225,6 +231,7 @@ $route['status/avancar/(:num)/(:num)'] = 'Processo_Seletivo/avancar/$1/$2';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
 
 //Rotas Remanejamento
 

@@ -11,6 +11,58 @@
             </div>
         </div>
 
+        <div class="col-twelve acesso-table m-t-5">
+            <div class="row">
+<!-- Acesso -->
+                <div class="col-six plan-wrapr">
+                    <div class="plan-block no-rounded apply-border" style="box-shadow: -1px 5px 40px 7px rgba(199,199,199,1);" data-aos="fade-up">
+                        <h2>CRM</h2>
+                        <hr>
+                        <div class="m-t-1">
+                            <ul>
+                                <li>Agenda</li>
+                                <li>Agenda</li>
+                                <li>Agenda</li>
+                                <li>Agenda</li>
+                                <li>Agenda</li>
+                                <li>Agenda</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+<!-- sugestão-->
+
+        <div class="col-six plan-wrapr">
+                    <div class="plan-block no-rounded apply-border" style="box-shadow: -1px 5px 40px 7px rgba(199,199,199,1)" data-aos="fade-up">   
+                    <h2 >HRM</h2>
+                        <hr>
+                        <div class="m-t-1">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Contatos</td>
+                                        <td>Contatos</td>
+                                        <td>Contatos</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div> <!-- end plan-wrap -->
+
+
+            </div>               
+        </div> 
+
         <div class="row sobre-features">
             <div class="features-list block-1-3 block-m-1-2 block-mob-full group">
 

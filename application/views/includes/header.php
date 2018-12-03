@@ -60,15 +60,17 @@
         <li class="active">
           <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal">Principal </span></a>
         </li>
-        <h3 class="menu-title">Menu geral</h3><!-- /.menu-title -->
-
         <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
-          <?php foreach($menus as $key => $m): ?>
-            <li class="menu_atual nome_menu <?php echo $key ?>">
-              
-              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
-            </li>
-          <?php endforeach;?>
+          <?php foreach($menus as $key => $menu): ?>
+          <h3 class="menu-title"><?php echo $key;?> </h3><!-- /.menu-title -->
+            <?php foreach($menu as $m): ?>
+              <li class="menu_atual nome_menu <?php echo $m->sub_modulo ?>">
+                <a href="<?php echo base_url()."".$m->link;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m->icone;?>" title="<?php echo $m->sub_modulo;?>"></i> <?php echo $m->sub_modulo;?></a>
+
+              </li>
+            <?php endforeach;?>
+          <?php endforeach; ?>
+
       <?php endif;?>
       </ul>
     </div><!-- /.navbar-collapse -->

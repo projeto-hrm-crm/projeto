@@ -12,9 +12,9 @@ class Vaga extends CI_Controller
     public function __construct()
     {
       parent::__construct();
-        $user_id = $this->session->userdata('user_login');
-        $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-        $this->usuario->hasPermission($user_id, $currentUrl);
+      $access_group = $this->session->userdata('user_id_grupo_acesso');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($access_group, $currentUrl);
     }
     /**
       *@author: Camila Sales
@@ -155,7 +155,11 @@ class Vaga extends CI_Controller
      */
     public function delete($id){
       $vaga = $this->vaga->getById($id);
-      if($vaga){
+      $vaga_processo = $this->vaga->getVaga_Processo($id);
+      if($vaga_processo){
+        $this->session->set_flashdata('danger', 'Há processos seletivos ofertando essa vaga.');
+
+      }elseif($vaga){
         $this->vaga->remove($id);
         $this->session->set_flashdata('success', 'Vaga excluída com sucesso!');
       }else{

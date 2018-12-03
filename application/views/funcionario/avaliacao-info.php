@@ -100,7 +100,16 @@
                    </label>
                  </p>
               </div> <!-- FIM Proatividade -->
-
+                  <div class="form-group col-12 col-md-12">
+                    <label class=" form-control-label" for="proatividade"><b>Observação:</b></label><br>
+                    <p>
+                      <label class=" form-control-label">
+                      <?php
+                        echo $avaliacao[0]->observacao;
+                      ?>
+                      </label>
+                    </p>
+                  </div> <!-- FIM Proatividade -->
             </div>
 
           </div>

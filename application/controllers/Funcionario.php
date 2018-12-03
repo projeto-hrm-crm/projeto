@@ -5,7 +5,7 @@
 * Controller de funcionario
 **/
 
-class Funcionario extends PR_Controller
+class Funcionario extends CI_Controller
 {
   /**
    * @author Pedro Henrique Guimarães
@@ -15,7 +15,10 @@ class Funcionario extends PR_Controller
    */
   public function __construct()
   {
-    parent::__construct('funcionario');
+    parent::__construct();
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
 
   /**
@@ -25,13 +28,19 @@ class Funcionario extends PR_Controller
   */
   public function index()
   {
-    $this->setTitle('Funcionarios');
+    $data['title'] = 'Funcionarios';
+    $data['funcionarios'] = $this->funcionario->get();
+    $data['assets'] = array(
+        'js' => array(
+          'validate.js',
+          'lib/data-table/datatables.min.js',
+          'lib/data-table/dataTables.bootstrap.min.js',
+          'datatable.js',
+          'confirm.modal.js',
+        ),
+    );
 
-    $this->addData('funcionarios',$this->funcionario->get());
-
-    $this->loadIndexDefaultScripts();
-
-    $this->loadView('index');
+    loadTemplate('includes/header', 'funcionario/index', 'includes/footer', $data);
 
   }
 
@@ -50,23 +59,30 @@ class Funcionario extends PR_Controller
   {
     if($this->input->post())
     {
-
         if($this->form_validation->run('funcionario')){
             $id_funcionario = $this->funcionario->insert($this->getFromPost());
-            $this->cargo_funcionario->insert(['id_funcionario' => $id_funcionario, 'id_cargo' => $this->input->post('id_cargo'), 'id_setor' => $this->input->post('id_setor')]);
-            $this->redirectSuccess('Funcionário Cadastrado Com Sucesso!');
+            $this->cargo_funcionario->insert(['id_funcionario'=>$id_funcionario, 'id_cargo'=>$this->input->post('id_cargo'),'status'=>1]);
+            $this->session->set_flashdata('success', 'Funcionário cadastrado com sucesso!');
+            redirect('funcionario');
+
         }else{
-            $this->redirectError('cadastrar');
+          $this->session->set_flashdata('danger', 'Não foi possível realizar o cadastro!');
+          redirect('cadastrar');
         }
     }else{
-        $this->setTitle('Cadastrar Funcionario');
-        $this->addData('cargos', $this->cargo->get());
-        $this->addData('setores', $this->setor->get());
 
-        $this->addScripts(array('lib/jquery/jquery.maskMoney.min.js', 'thirdy_party/apicep.js'));
-        $this->loadFormDefaultScripts();
+      $data['title'] = 'Cadastrar funcionarios';
+      $data['cargos'] = $this->cargo->get();
+      $data['funcionarios'] = $this->funcionario->get();
+      $data['assets'] = array(
+          'js' => array(
+            'validate.js',
+            'confirm.modal.js',
+            'thirdy_party/apicep.js',
+          ),
+      );
 
-        $this->loadView('cadastrar');
+      loadTemplate('includes/header', 'funcionario/cadastrar', 'includes/footer', $data);
     }
 
   }
@@ -104,9 +120,9 @@ class Funcionario extends PR_Controller
         $this->funcionario->update($id_funcionario, $this->input->post());
 
     }
-
-    $data['funcionario']    = $this->funcionario->getById($id_funcionario);
     $data['title']          = 'Editar funcionario';
+    $data['funcionarios']   = $this->funcionario->get();
+    $data['funcionario']    = $this->funcionario->getById($id_funcionario);
     $data['cargos']         = $this->cargo->get();
     $data['id']             = $id_funcionario;
 
@@ -200,7 +216,9 @@ class Funcionario extends PR_Controller
                 'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
                 'proatividade' => $this->input->post('proatividade'),
                 'id_funcionario' => $id_funcionario,
-                'id_avaliador' => $user_id
+                'id_avaliador' => $user_id,
+                'observacao' => $this->input->post('observacao')
+
             );
 
             $this->avaliacao->insert($array);
@@ -208,34 +226,43 @@ class Funcionario extends PR_Controller
             $this->session->set_flashdata('success', 'Avaliação cadastrada');
             redirect('funcionario/avaliacoes/'.$id_funcionario);
         }
-
-
-
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
+
+        $data['title'] = 'Avaliar funcionário';
+        $data['funcionario'] = $this->funcionario->getById($id_funcionario);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
+        $data['funcionario'] = $this->funcionario->getById($id_funcionario);
+        $data['id_funcionario'] = $id_funcionario;
+        $data['assets'] = array(
+            'js' => array(
+              'validate.js',
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'confirm.modal.js',
+            ),
+        );
 
-        $this->setTitle('Avaliar Funcionario');
-        $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
-        $this->addData('avaliador', $this->usuario->getUserNameById($user_id));
-        $this->addData('id_funcionario', $id_funcionario);
-
-        $this->loadIndexDefaultScripts();
-
-        $this->loadView('avaliar');
-
+        loadTemplate('includes/header', 'funcionario/avaliar', 'includes/footer', $data);
     }
 
     public function assessments($id_funcionario) {
-        $this->setTitle('Avaliação de Funcionarios');
+        $data['title'] = 'Avaliação de Funcionários';
+        $data['avaliacoes'] = $this->avaliacao->get($id_funcionario);
+        $data['funcionario'] = $this->funcionario->getById($id_funcionario);
+        $data['id_funcionario'] = $id_funcionario;
+        $data['assets'] = array(
+            'js' => array(
+              'validate.js',
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'confirm.modal.js',
+            ),
+        );
 
-        $this->addData('avaliacoes', $this->avaliacao->get($id_funcionario));
-        $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
-        $this->addData('id_funcionario', $id_funcionario);
-
-        $this->loadIndexDefaultScripts();
-
-        $this->loadView('avaliacoes');
+        loadTemplate('includes/header', 'funcionario/avaliacoes', 'includes/footer', $data);
     }
 
     public function evaluate_info($id_avaliacao) {
@@ -244,22 +271,25 @@ class Funcionario extends PR_Controller
         $user_id = $this->session->userdata('user_login');
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
-        $data['avaliador'] = $this->usuario->getUserNameById($user_id);
-
-
         $data = $this->avaliacao->find($id_avaliacao);
+        $data['avaliador'] = $this->usuario->getUserNameById($user_id);
         $id_funcionario = $data[0]->id_funcionario;
 
-        $this->setTitle('Informações Avaliação');
-        $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
-        $this->addData('avaliador', $this->usuario->getUserNameById($user_id));
-        $this->addData('avaliacao', $this->avaliacao->find($id_avaliacao));
-        $this->addData('id_funcionario', $id_funcionario);
+        $data['title'] = 'Informações Avaliação';
+        $data['funcionario'] = $this->funcionario->getById($id_funcionario);
+        $data['avaliacao'] = $this->avaliacao->find($id_avaliacao);
 
-        $this->loadIndexDefaultScripts();
-
-        $this->loadView('avaliacao-info');
-
+        $data['id_funcionario'] = $id_funcionario;
+        $data['assets'] = array(
+            'js' => array(
+              'validate.js',
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'confirm.modal.js',
+            ),
+        );
+        loadTemplate('includes/header', 'funcionario/avaliacao-info', 'includes/footer', $data);
     }
 
    public function evaluate_edit($id_avaliacao) {
@@ -278,7 +308,8 @@ class Funcionario extends PR_Controller
                 'relacao_interpessoal' => $this->input->post('relacao_interpessoal'),
                 'proatividade' => $this->input->post('proatividade'),
                 'id_avaliacao' => $id_avaliacao,
-                'id_avaliador' => $user_id
+                'id_avaliador' => $user_id,
+                'observacao' => $this->input->post('observacao')
             );
 
             $this->avaliacao->update($array);
@@ -290,20 +321,21 @@ class Funcionario extends PR_Controller
         //Pega o tipo de usuario e informações de pessoas
         $typeUser = $this->usuario->getUserAccessGroup($user_id);
         $data['avaliador'] = $this->usuario->getUserNameById($user_id);
-
-
-
-
-        $this->setTitle('Informações Avaliação');
-        $this->addData('funcionario', $this->funcionario->getById($id_funcionario));
-        $this->addData('avaliador', $this->usuario->getUserNameById($user_id));
-        $this->addData('avaliacao', $this->avaliacao->find($id_avaliacao));
-        $this->addData('id_funcionario', $id_funcionario);
-        $this->addData('id_avaliacao', $id_avaliacao);
-
-        $this->loadIndexDefaultScripts();
-
-        $this->loadView('avaliacao-editar');
+        $data['title'] = 'Informações Avaliação';
+        $data['funcionario'] = $this->funcionario->getById($id_funcionario);
+        $data['avaliacao'] = $this->avaliacao->find($id_avaliacao);
+        $data['id_funcionario'] = $id_funcionario;
+        $data['id_avaliacao'] = $id_avaliacao;
+        $data['assets'] = array(
+            'js' => array(
+              'validate.js',
+              'lib/data-table/datatables.min.js',
+              'lib/data-table/dataTables.bootstrap.min.js',
+              'datatable.js',
+              'confirm.modal.js',
+            ),
+        );
+        loadTemplate('includes/header', 'funcionario/avaliacao-editar', 'includes/footer', $data);
 
     }
 

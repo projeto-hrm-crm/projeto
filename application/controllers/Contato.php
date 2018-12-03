@@ -5,7 +5,10 @@ class Contato extends CI_Controller
 {
   public function __construct()
   {
-    parent::__construct('contato');
+    parent::__construct();
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
 
   public function index()

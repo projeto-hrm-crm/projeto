@@ -24,7 +24,17 @@
 			            <hr>
 			            <div class="more-info pt-2 text-center" style="margin-bottom:10px;">
 			                <a href="<?php echo base_url();?>cliente/cadastrar">
-			                	<button class="btn btn-sm bg-flat-color-1 text-light"> <i class="fa fa-plus"></i> Cadastrar</button>
+							<?php 
+								$type = "button";
+								$label = "Cadastrar";
+								$classes = ['btn', 'btn-sm', 'bg-flat-color-1', 'text-light'];
+								$attr = [
+									'id' => 'id',
+									'aria-hidden' => 'asdasdasd'
+								];
+								$this->Button->verify('Cliente', 'Cadastrar')->build($type, $label, $classes, $attr);
+							?>
+			                	
 			                </a>
 			                <a href="<?php echo base_url();?>cliente">
 			                	<button class="btn btn-sm bg-flat-color-2 ml-3 text-light"><i class="fa fa-list"></i> Ver</button>
