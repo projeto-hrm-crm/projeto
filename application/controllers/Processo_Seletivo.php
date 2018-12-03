@@ -208,9 +208,11 @@ class Processo_Seletivo extends CI_Controller
     loadTemplate('includes/header', 'processo_seletivo/candidatos', 'includes/footer', $data);
   }
 
-     public function avaliar($id_candidato, $avaliacao)
+    public function avaliar($id_candidato, $avaliacao)
    {
-    echo json_encode($this->candidato_etapa->updateAvaliacao($id_candidato, $avaliacao));
-
+    echo('asdjoajdá');
+    exit;
+    $this->CandidatoEtapa->updateAvaliacao($id_candidato, $avaliacao);
+    redirect('candidato_processo');
   }
 }

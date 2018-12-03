@@ -44,19 +44,19 @@
 
                               <td class="text-center">
 
-                                 <a title="Aprovar" href="" class="btn btn-success" onclick="aprovar(<?php echo $candidato->id_candidato;?>)">
+                                 <a title="Aprovar" href="<?=base_url();?>Processo_Seletivo/avaliar/<?php echo $candidato->id_candidato;?>/aprovado" class="btn btn-success" >
                                        <span class="fa fa-check"></span>
                                  </a>
 
-                                 <button title="Reprovar" data-href="" class="btn btn-danger" onclick="reprovar(<?php echo $candidato->id_candidato;?>)">
+                                 <a title="Reprovar" href="<?=base_url();?>candidato/avaliacao/<?php echo $candidato->id_candidato;?>/reprovado" class="btn btn-danger" >
                                    <span class="fa fa-times"></span>
-                                 </button>
+                                 </a>
                               </td>
                             <?php }else{ ?>
                               </td>
                               <td class="text-center">
 
-                                 <a title="Pedido de Curriculo" href="" class="btn btn-warning" onclick="aprovar(<?php echo $candidato->id_candidato;?>)">
+                                 <a title="Pedido de Curriculo" href="" class="btn btn-warning" >
                                        <span class="fa fa-file-pdf-o"></span>
                                  </a>
                               </td>

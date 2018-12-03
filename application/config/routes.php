@@ -169,6 +169,9 @@ $route['candidato_etapa']                = 'CandidatoEtapa/index';
 $route['candidato_etapa/cadastrar/(:num)']      = 'CandidatoEtapa/create/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
+$route['candidato/avaliar/(:num)/(:any)'] = 'Processo_Seletivo/avaliar/$1/$2';
+
+
 //Rotas Pedido
 $route['pedido']                            = 'Pedido/index';
 $route['pedido/cadastrar']                  = 'Pedido/create';
@@ -219,9 +222,6 @@ $route['events']					  = 'agenda/get';
 $route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
 
 $route['status/avancar/(:num)/(:num)'] = 'Processo_Seletivo/avancar/$1/$2';
-
-$route['candidato/aprovar/(:num)/(:num)'] = 'Processo_Seletivo/avaliar/$1/$2';
-$route['candidato/reprovar/(:num)/(:num)'] = 'Processo_Seletivo/avaliar/$1/$2';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';

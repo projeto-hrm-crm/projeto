@@ -95,7 +95,8 @@ class CandidatoEtapa_model extends CI_Model
 
   public function get($id){
     $this->db->select('*');
-    $this->db->from('processo_seletivo_candidato')->where('id_etapa',$id);
+    $this->db->from('processo_seletivo_candidato')
+    ->where('id_etapa',$id);
     $query=$this->db->get();
     return $query->result();
   }
