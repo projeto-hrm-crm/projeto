@@ -75,7 +75,8 @@ class Candidato extends CI_Controller
               'login'             => $data['candidato']['email'],
               'senha'             => md5($data['candidato']['email']), /*essa é a forma correta para qualquer usuário. Gerar uma senha default baseada no e-mail e depois ele muda. */
               'id_grupo_acesso'   => 5,
-              'id_pessoa'         => $id_pessoa
+              'id_pessoa'         => $id_pessoa,
+              'empresa_id_empresa'=> $this->session->userdata('user_id_empresa')
           ]);
 
         $this->endereco->insert([
@@ -139,14 +140,14 @@ class Candidato extends CI_Controller
             'cep'         => $this->input->post('cep'),
             'bairro'      => $this->input->post('bairro'),
             'logradouro'  => $this->input->post('logradouro'),
-            'numero'      => $this->input->post('numero'), 
+            'numero'      => $this->input->post('numero'),
             'complemento' => $this->input->post('complemento'),
-            'id_pessoa'   => $candidato[0]->id_pessoa, 
+            'id_pessoa'   => $candidato[0]->id_pessoa,
             'estado'      => $this->input->post('estado'),
             'cidade'      => $this->input->post('cidade')
           ]
         );
-        
+
       $this->documento->update(['tipo' => 'cpf','numero' => $this->input->post('cpf') , 'id_pessoa' => $candidato[0]->id_pessoa]);
 
       $this->telefone->update(['numero'=>$this->input->post('tel'),'id_pessoa' => $candidato[0]->id_pessoa]);
