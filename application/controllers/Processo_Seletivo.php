@@ -210,9 +210,7 @@ class Processo_Seletivo extends CI_Controller
 
     public function avaliar($id_candidato, $avaliacao)
    {
-    echo('asdjoajdá');
-    exit;
-    $this->CandidatoEtapa->updateAvaliacao($id_candidato, $avaliacao);
-    redirect('candidato_processo');
+    $this->candidato_etapa->updateAvaliacao($id_candidato, $avaliacao);
+    
   }
 }

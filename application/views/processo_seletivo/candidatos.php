@@ -44,11 +44,11 @@
 
                               <td class="text-center">
 
-                                 <a title="Aprovar" href="<?=base_url();?>Processo_Seletivo/avaliar/<?php echo $candidato->id_candidato;?>/aprovado" class="btn btn-success" >
+                                 <a title="Aprovar" href="<?=base_url();?>candidato/avaliar/<?php echo $candidato->id_candidato;?>/aprovado" class="btn btn-success" >
                                        <span class="fa fa-check"></span>
                                  </a>
 
-                                 <a title="Reprovar" href="<?=base_url();?>candidato/avaliacao/<?php echo $candidato->id_candidato;?>/reprovado" class="btn btn-danger" >
+                                 <a title="Reprovar" href="<?=base_url();?>candidato/avaliar/<?php echo $candidato->id_candidato;?>/reprovado" class="btn btn-danger" >
                                    <span class="fa fa-times"></span>
                                  </a>
                               </td>

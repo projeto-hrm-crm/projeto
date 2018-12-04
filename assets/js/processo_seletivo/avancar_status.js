@@ -14,7 +14,7 @@ jQuery().ready(function($){
 		            data: 'JSON',
 		            success: (value) => {
 
-	               		alert(status);
+	               		alert(value);
 		            },
 		            error: (error) => {
 		            	alert("não atualizado");
