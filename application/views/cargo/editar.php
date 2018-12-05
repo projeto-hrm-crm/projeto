@@ -79,10 +79,21 @@
                         <i class="fa fa-times"></i>
                         Cancelar
                     </a>
-                    <button title="Atualizar Cargo" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAtualizar">
-                        <span class="fa fa-check"></span>
-                        Atualizar
-                    </button>
+
+                    <?php
+                     $type           = "button";
+                     $label          = "<span class='fa fa-check'></span> Atualizar Cargo";
+                     $classes        = ['btn', 'btn-primary', 'btn-sm'];
+                     $attr           = [
+                       'title'       => 'Cadastrar Cargo',
+                       'type'        => 'submit',
+                       'title'       => 'Cadastrar Cargo',
+                       'data-toggle' => 'modal',
+                       'data-target' => 'modalAtualizar'
+                     ];
+                      if (!is_null($edit_button))
+                       $edit_button->build($type, $label, $classes, $attr);
+                   ?>
                 </div>
                 <div class="modal fade" id="modalAtualizar" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
