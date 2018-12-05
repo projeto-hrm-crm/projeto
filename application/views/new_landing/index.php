@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <title>Lambda ERP</title>
     <!-- Required meta tags -->
@@ -75,7 +75,7 @@
                                 <span class="ti-user gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">CRM</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">É hora de jogar as planilhas fora! Registre automaticamente suas ações, nunca esqueça de fazer follow-up e centralize tudo em um só lugar.</p>
                                     <hr>
 
                                     <table>
@@ -88,19 +88,31 @@
                                         <tbody>
                                             <tr style="padding-bottom: 2em;">
                                                 <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                <td>Agenda</td>
-                                            </tr>
-                                            <tr style="padding-bottom: 2em;">
-                                                <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Produto</td>
+                                               <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
                                                 <td>Cliente</td>
                                             </tr>
                                             <tr style="padding-bottom: 2em;">
                                                 <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Fornecedor</td>
+                                               <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
                                                 <td>SAC</td>
                                             </tr>
                                             <tr style="padding-bottom: 2em;">
                                                 <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
                                                 <td>Pedido</td>
+                                               <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Sugestão</td>
+                                            </tr>
+                                           <tr style="padding-bottom: 2em;">
+                                                <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Agenda</td>
+                                              <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Almoxarifado</td>
+                                            </tr>
+                                           <tr style="padding-bottom: 2em;">
+                                                <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Pedido Almoxarifado</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -118,7 +130,7 @@
                                 <span class="ti-book gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">HRM</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">Otimize seus processos, gerencie seus funcionaria de uma maneira fácil e ágil</p>
                                     <hr>
 
                                     <table>
@@ -131,20 +143,30 @@
                                             <tbody>
                                                 <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>Agenda</td>
+                                                    <td>Candidato</td>
+                                                   <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                    <td>Funcionario</td>
                                                 </tr>
+                                                
                                                 <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>Cliente</td>
+                                                    <td>Cargo</td>
+                                                   <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                    <td>Setor</td>
                                                 </tr>
-                                                <tr style="padding-bottom: 2em;">
+                                               
+                                               <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>SAC</td>
+                                                    <td>Vaga</td>
+                                                   <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                    <td>Processo Seletivo</td>
                                                 </tr>
-                                                <tr style="padding-bottom: 2em;">
+                                               
+                                               <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>Pedido</td>
+                                                    <td>Remanejamento</td>
                                                 </tr>
+                                               
                                             </tbody>
                                         </table>
 
