@@ -41,10 +41,9 @@
 
           <?php
           $type           = "button";
-          $label          = "<span class='fa fa-check'></span> Cadastrar Setor";
+          $label          = "<span class='fa fa-plus'></span> Cadastrar Setor";
           $classes        = ['btn', 'btn-primary', 'text-white', 'btn-sm'];
           $attr           = [
-            'id'          => 'id',
             'data-toggle' => 'modal',
             'data-target' => '#editarSetor',
             'title'       => 'Cadastrar Setor',

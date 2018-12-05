@@ -186,7 +186,7 @@ public function edit($id_setor)
   $data['setor'] = $this->setor->getById($id_setor);
   $data['id_setor'] = $id_setor;
 
-  $data['delete_button']    = $this->Button->verify('Setor', 'Editar');
+  $data['edit_button']    = $this->Button->verify('Setor', 'Editar');
 
   loadTemplate('includes/header', 'setor/editar', 'includes/footer', $data);
 

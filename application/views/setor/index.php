@@ -18,7 +18,7 @@
       <div class="card-body">
         <?php
           $type     = "a";
-          $label    = "<span class='fa fa-check'></span> Novo Cadastro";
+          $label    = "<span class='fa fa-plus'></span> Novo Cadastro";
           $classes  = ['btn', 'btn-primary', 'btn-sm'];
           $attr     = [
             'id'    => 'id',

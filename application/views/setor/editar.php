@@ -38,20 +38,20 @@
           <a title="Cancelar Edição" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          
+
           <?php
           $type           = "button";
-          $label          = "<span class='fa fa-check'></span>";
+          $label          = "<span class='fa fa-check'></span> Atualizar Setor";
           $classes        = ['btn', 'btn-primary', 'text-white', 'btn-sm'];
           $attr           = [
-            'id'          => 'id',
             'data-toggle' => 'modal',
+            'type'        => 'button',
             'data-target' => '#editarSetor',
             'title'       => 'Atualizar Setor'
           ];
 
-          if (!is_null($delete_button))
-          $delete_button->build($type, $label, $classes, $attr);
+          if (!is_null($edit_button))
+          $edit_button->build($type, $label, $classes, $attr);
           ?>
 
 
