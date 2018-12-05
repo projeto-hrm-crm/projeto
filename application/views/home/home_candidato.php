@@ -28,13 +28,17 @@
 	                    	<td><?php echo $ps->data_inicio; ?></td>
 	                    	<td><?php echo $ps->data_fim; ?></td>
 
-	                    	<?php if($ps->avaliacao == "aprovado"){ ?>	
+	                    	<?php if($ps->avaliacao == "Aprovado"){ ?>	
 		                    	<td class="text-center">
 		                    		<a title="Informação"
 		                    				class="btn btn-warning procuraEtapa" data-toggle="modal" data-target="#modalinfo" onclick="getEtapas(<?php echo $ps->id_processo_seletivo;?>)">
 	                                	<span class="fa fa-clipboard"></span>
 	                                </a>
 
+		                    	</td>
+		                    	<?php }elseif($ps->avaliacao == "Aguardando"){ ?>
+		                    	<td class="text-center">
+		                    		<p class="text-primary">Aguardando Resultado</p>
 		                    	</td>
 		                    <?php }else{ ?>	
 		                    	<td class="text-center">
