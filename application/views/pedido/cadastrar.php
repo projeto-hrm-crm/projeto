@@ -8,13 +8,13 @@
 				<form id="form-pedido" action="<?php echo base_url('pedido/cadastrar'); ?>" method="POST">
 					<div class="card-body">
 						<div class="card-body">
-							<?php if(isset($fornecedores) && isset($clientes)): ?>
+							<?php if(sizeof($fornecedores) <= 0 && sizeof($clientes) <= 0): ?>
 								<div class="row justify-content-center align-items-center">
 									<div class="col-12">
 										<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show mt-2">
 											Não existe nenhum fornecedor ou cliente cadastrado no sistema, favor cadastre um fornecedor ou cliente!
 										</div>
-										<div class="card-footer text-right">
+										<div class="text-right">
 											<a title="Cadastrar fornecedor" href="<?= site_url('fornecedor/cadastrar')?>" class="btn btn-primary btn-sm">
 												<i class="fa fa-check"></i>
 												Novo fornecedor
@@ -112,6 +112,8 @@
 												<option value="">Selecione um produto</option>
 												<?php
 												$old_produtos = array();
+
+
 												foreach($produtos as $produto):
 													if(isset($old_data['id_produto'])):
 														$key = array_search($produto->id_produto, $old_data['id_produto']);
@@ -146,21 +148,14 @@
 														</tr>
 													</thead>
 													<tbody>
-														<?php
-
-														if(isset($old_data['id_produto'])):
-
+														<?php if(isset($old_data['id_produto'])):
 															$qtd   = 0;
 															$total = 0;
 
-															foreach($old_produtos as $produto):
-
-																?>
+															foreach($old_produtos as $produto): ?>
 																<tr>
 																	<td width="5%" class="td-id">
-																		<input class="form-control form-control-sm" name="id_produto[]" readonly
-																		style="background-color: transparent; border: 0px; font-size: 1em;"
-																		value="<?php echo $produto->id_produto; ?>">
+																		<input class="form-control form-control-sm" name="id_produto[]" readonlystyle="background-color: transparent; border: 0px; font-size: 1em;" value="<?php echo $produto->id_produto; ?>">
 																	</td>
 																	<td width="50%" class="td-nome" data-id="<?php echo $produto->id_produto; ?>">
 																		<?php echo $produto->nome; ?>
@@ -171,7 +166,7 @@
 																	</td>
 																	<td width="20%" class="td-value" data-default="<?php echo floatval($produto->valor) ?>">
 																		<?php
-																		echo 'R$ ' . number_format(intval(str_replace(",","",str_replace(".","",$produto->valor))) *  $old_data['qtd_produto'][$key], 2, ',','.');
+																		echo 'R$ ' . number_format(floatval(str_replace(",","",str_replace(".","",$produto->valor))) *  $old_data['qtd_produto'][$key], 2, ',','.');
 
 																		?>
 																	</td>
