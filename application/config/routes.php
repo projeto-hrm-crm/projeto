@@ -239,4 +239,10 @@ $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
 $route['remanejamento/relatorio/(:num)']  = 'Remanejamento/relatorio/$1';
 
 //Rota Contato
-$route['contato'] = 'Contato';
+$route['contato'] = 'Contato/index';
+
+//Rota Grupo
+$route['grupo']                 = 'Grupo/index';
+$route['grupo/cadastrar']       = 'grupo/create';
+$route['grupo/editar/(:num)']   = 'grupo/edit/$1';
+$route['grupo/excluir/(:num)']  = 'grupo/delete/$1';
