@@ -48,7 +48,7 @@ class Pedido extends CI_Controller
 	public function indexProvider()
 	{
 		$data['title'] = 'Pedidos';
-		$data['pedidos'] = $this->pedido->getFromClients($this->session->userdata('user_login'));
+		$data['pedidos'] = $this->pedido->getFromProviders($this->session->userdata('user_login'));
 
 		foreach($this->data['pedidos'] as $pedido)
 		{
@@ -94,7 +94,7 @@ class Pedido extends CI_Controller
 
 			$data['assets'] = array (
 				'js' => array (
-						'pedido/main.js'
+					'pedido/main.js'
 				),
 			);
 
