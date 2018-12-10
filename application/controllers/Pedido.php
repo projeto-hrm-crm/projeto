@@ -380,54 +380,57 @@ class Pedido extends CI_Controller
 		echo json_encode($this->produto->getByProvider($id_fornecedor));
 	}
 
-	// /**
-	// * @author: Tiago Villalobos
-	// * Gera PDF para Cliente
-	// *
-	// * @param: $id_pedido integer
-	// */
-	// public function pdfClient($id_pedido)
-	// {
-	// 	$this->pdf($id_pedido, 'C');
-	// }
-	//
-	// /**
-	// 	* @author: Tiago Villalobos
-	// 	* Gera PDF para Fornecedor
-	// 	*
-	// 	* @param: $id_pedido integer
-	// */
-	// public function pdfProvider($id_pedido)
-	// {
-	// 	$this->pdf($id_pedido, 'F');
-	// }
-	//
-	// /**
-	// * @author: Tiago Villalobos
-	// * Método geral para geração de pdf de pedidos
-	// * Por meio do parâmetro type define-se qual tipo de pdf a ser gerado
-	// * sendo 'C' para Cliente e 'F' para Fornecedor
-	// *
-	// * @param: $id_pedido integer
-	// * @param: $type string
-	// */
-	// private function pdf($id_pedido, $type)
+	/**
+	* @author: Tiago Villalobos
+	* Gera PDF para Cliente
+	*
+	* @param: $id_pedido integer
+	*/
+	public function pdfClient($id_pedido)
+	{
+		$this->pdf($id_pedido, 'C');
+	}
+
+	/**
+		* @author: Tiago Villalobos
+		* Gera PDF para Fornecedor
+		*
+		* @param: $id_pedido integer
+	*/
+	public function pdfProvider($id_pedido)
+	{
+		$this->pdf($id_pedido, 'F');
+	}
+
+	/**
+		* @author: Tiago Villalobos
+		* Método geral para geração de pdf de pedidos
+		* Por meio do parâmetro type define-se qual tipo de pdf a ser gerado
+		* sendo 'C' para Cliente e 'F' para Fornecedor
+		*
+		* @param: $id_pedido integer
+		* @param: $type string
+	*/
+	// private function pdf($id_pedido, $type, $data)
 	// {
 	// 	switch ($type) {
 	// 		case 'C':
-	// 			$this->addData('pedido', $this->pedido->getByIdCompleteDataClient($id_pedido));
+	// 			$data['pedido'] = $this->pedido->getByIdCompleteDataClient($id_pedido);
 	// 			$view = 'pdf_cliente';
 	// 			break;
 	// 		case 'F':
-	// 			$this->addData('pedido', $this->pedido->getByIdCompleteDataProvider($id_pedido));
+	// 			$data['pedido'] = $this->pedido->getByIdCompleteDataProvider($id_pedido);
 	// 			$view = 'pdf_fornecedor';
 	// 	}
 	//
-	//   	$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
+	//   	$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
 	//
 	// 	$mpdf = new \Mpdf\Mpdf();
 	//
-	// 	$html = $this->load->view($this->viewDirectory.'/'.$view, $this->data, TRUE);
+	// 	$html = $this->load->view('pedido/'.$view, $data, TRUE);
+	//
+	// 	$data['title'] = 'Pedido Nº '.$id_pedido;
+	// 	$data['footer'] = '{PAGENO}';
 	//
 	// 	$mpdf->SetTitle('Pedido Nº '.$id_pedido);
 	//
