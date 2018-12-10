@@ -36,6 +36,12 @@ class Pedido extends CI_Controller
 			$compra->produtos = $this->produto->getByOrder($compra->id);
 		}
 
+		$data['assets'] = array(
+         'js' => array(
+           	'confirm.modal.js',
+         ),
+      );
+
 		loadTemplate('includes/header', 'pedido/index', 'includes/footer', $data);
 
 	}
@@ -54,6 +60,12 @@ class Pedido extends CI_Controller
 		{
 			$pedido->produtos = $this->produto->getByOrder($pedido->id);
 		}
+
+		$dados['assets'] = array(
+			'js' => array(
+				'confirm.modal.js'
+			),
+		);
 
 		loadTemplate('includes/header', 'pedido/index_fornecedor', 'includes/footer', $data);
 
@@ -216,6 +228,8 @@ class Pedido extends CI_Controller
 		$this->pedido->remove($id_pedido);
 
 		$this->session->set_flashdata('success', 'Pedido removido com sucesso!');
+
+		redirect('pedido');
 	}
 
 	/**
@@ -411,34 +425,31 @@ class Pedido extends CI_Controller
 		* @param: $id_pedido integer
 		* @param: $type string
 	*/
-	// private function pdf($id_pedido, $type, $data)
-	// {
-	// 	switch ($type) {
-	// 		case 'C':
-	// 			$data['pedido'] = $this->pedido->getByIdCompleteDataClient($id_pedido);
-	// 			$view = 'pdf_cliente';
-	// 			break;
-	// 		case 'F':
-	// 			$data['pedido'] = $this->pedido->getByIdCompleteDataProvider($id_pedido);
-	// 			$view = 'pdf_fornecedor';
-	// 	}
-	//
-	//   	$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
-	//
-	// 	$mpdf = new \Mpdf\Mpdf();
-	//
-	// 	$html = $this->load->view('pedido/'.$view, $data, TRUE);
-	//
-	// 	$data['title'] = 'Pedido Nº '.$id_pedido;
-	// 	$data['footer'] = '{PAGENO}';
-	//
-	// 	$mpdf->SetTitle('Pedido Nº '.$id_pedido);
-	//
-	// 	$mpdf->SetFooter('{PAGENO}');
-	//
-	// 	$mpdf->writeHTML($html);
-	//
-	// 	$mpdf->Output('pedido-'.$id_pedido.'.pdf', 'I');
-	// }
+	private function pdf($id_pedido, $type)
+	{
+		switch ($type) {
+			case 'C':
+				$data['pedido'] = $this->pedido->getByIdCompleteDataClient($id_pedido);
+				$view = 'pdf_cliente';
+				break;
+			case 'F':
+				$data['pedido'] = $this->pedido->getByIdCompleteDataProvider($id_pedido);
+				$view = 'pdf_fornecedor';
+		}
+
+	  	$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
+
+		$mpdf = new \Mpdf\Mpdf();
+
+		$html = $this->load->view('pedido/'.$view, $data, TRUE);
+
+		$mpdf->SetTitle('Pedido Nº '.$id_pedido);
+
+		$mpdf->SetFooter('{PAGENO}');
+
+		$mpdf->writeHTML($html);
+
+		$mpdf->Output('pedido-'.$id_pedido.'.pdf', 'I');
+	}
 
 }
