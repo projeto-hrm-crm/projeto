@@ -103,50 +103,57 @@ class Pedido extends CI_Controller
   		}
 
   	}
-	//
-  // 	/**
-	// * @author: Tiago Villalobos
-	// * Carrega o formulário de edição
-	// *
-	// * @param $id_pedido integer
-	// */
-	// public function edit($id_pedido)
-	// {
-	// 	if($this->input->post())
-	// 	{
-	// 		if($this->form_validation->run('pedido'))
-	// 		{
-  // 				$this->pedido->update($this->getOrderFromPostEdit($id_pedido));
-	//
-  // 				$this->andamento->update($this->getProgressFromPost($id_pedido));
-	//
-  // 				$this->pedido->removeProducts($id_pedido);
-  // 				$this->insertOrderProducts($id_pedido);
-  // 				$this->redirectSuccess('Pedido atualizado com sucesso!');
-	// 		}
-	// 		else
-	// 		{
-	// 			$this->redirectError('pedido/editar/'.$id_pedido);
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->setTitle('Edição de Pedido');
-	//
-	// 		$this->addScripts(array('pedido/main.js'));
-  // 			$this->loadFormDefaultScripts();
-	//
-	// 		$this->addData('pedido', $this->pedido->getById($id_pedido));
-	//
-	// 		$this->filterDataByTransaction();
-	//
-	//   		$this->addData('situacoes',       $this->andamento->getSituations());
-	//   		$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
-	//
-	// 		$this->loadView('editar');
-	// 	}
-	// }
-	//
+
+  	/**
+		* @author: Tiago Villalobos
+		* Carrega o formulário de edição
+		*
+		* @param $id_pedido integer
+	*/
+	public function edit($id_pedido)
+	{
+		if($this->input->post())
+		{
+			if($this->form_validation->run('pedido'))
+			{
+  				$this->pedido->update($this->getOrderFromPostEdit($id_pedido));
+
+  				$this->andamento->update($this->getProgressFromPost($id_pedido));
+
+  				$this->pedido->removeProducts($id_pedido);
+  				$this->insertOrderProducts($id_pedido);
+  				$this->session->set_flashdata('success', 'Pedido cadastrado com sucesso');
+				redirect('pedido');
+			}
+			else
+			{
+				$this->session->set_flashdata('error', 'Erro ao cadastrar o pedido');
+				$this->session->set_flashdata('old_data', $this->input->post());
+				redirect('pedido/editar/'.$id_pedido);
+			}
+		}
+		else
+		{
+
+			$data['title'] 			 = 'Edição de Pedido';
+			$data['pedido'] 		 = $this->pedido->getById($id_pedido);
+			$data['situacoes'] 		 = $this->andamento->getSituations();
+			$data['produtos'] 		 = $this->produto->get();
+			$data['clientes'] 		 = $this->cliente->get();
+			$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
+
+			$data['assets'] = array (
+				'js' => array (
+					'pedido/main.js'
+				),
+			);
+
+			// $this->filterDataByTransaction();
+
+			loadTemplate('includes/header', 'pedido/editar', 'includes/footer', $data);
+		}
+	}
+
 	// /**
 	// * @author: Tiago Villalobos
 	// * Formulário para edição de pedido do Fornecedor
@@ -206,32 +213,34 @@ class Pedido extends CI_Controller
 		* @author: Tiago Villalobos
 		* Realiza filtragem em alguns dados de acordo com o tipo de transação do pedido
 	*/
-	private function filterDataByTransaction()
-	{
-
-  		if($this->data['pedido']->transacao == 'V')
-  		{
-  			$this->addData('label',    'Cliente');
-  			$this->addData('clientes', $this->cliente->get());
-	  		$this->addData('produtos', $this->produto->get());
-  		}
-  		else
-  		{
-  			$this->addData('label',    'Fornecedor');
-  			$this->addData('clientes', $this->fornecedor->get());
-
-  			$id_provider;
-  			foreach($this->data['clientes'] as $cliente)
-  			{
-  				if($cliente->id_pessoa == $this->data['pedido']->id_pessoa)
-  				{
-  					$id_provider = $cliente->id_fornecedor;
-  				}
-  			}
-
-  			$this->addData('produtos', $this->produto->getByProvider($id_provider));
-  		}
-	}
+	// private function filterDataByTransaction()
+	// {
+	// 	echo '<pre>';
+	// 	print_r($transacao);
+	// 	exit;
+	//
+  	// 	if($this->data['pedido']->transacao == 'V')
+  	// 	{
+  	// 		$data['label'] 		= 'Cliente';
+	// 		$data['clientes'] 	= $this->cliente->get();
+	// 		$data['produtos'] 	= $this->produto->get();
+  	// 	}
+  	// 	else
+  	// 	{
+	// 		$data['label'] 		= 'Fornecedor';
+	// 		$data['clientes'] 	= $this->fornecedor->get();
+	//
+  	// 		$id_provider;
+  	// 		foreach($this->data['clientes'] as $cliente)
+  	// 		{
+  	// 			if($cliente->id_pessoa == $this->data['pedido']->id_pessoa)
+  	// 			{
+  	// 				$id_provider = $cliente->id_fornecedor;
+  	// 			}
+  	// 		}
+	// 		$data['produtos'] = $this->produto->getByProvider($id_provider);
+  	// 	}
+	// }
 
 	/**
 		* @author: Tiago Villalobos
@@ -263,23 +272,23 @@ class Pedido extends CI_Controller
 
         return $postData;
   	}
-	//
-  // 	/**
-	// * @author: Tiago Villalobos
-	// * Retorna os dados para edição de um pedido à um fornecedor
-	// * Apenas para utilização de usuários logados como fornecedor
-	// *
-	// * @param:  $id_pedido integer
-	// * @return: mixed
-	// */
-  // 	private function getOrderFromPostEditProvider($id_pedido)
-  // 	{
-	// 	return array(
-	// 		'id_pedido'  => $id_pedido,
-	// 		'descricao'  => $this->input->post('descricao'),
-	// 	);
-  // 	}
-	//
+
+  	/**
+		* @author: Tiago Villalobos
+		* Retorna os dados para edição de um pedido à um fornecedor
+		* Apenas para utilização de usuários logados como fornecedor
+		*
+		* @param:  $id_pedido integer
+		* @return: mixed
+	*/
+  	private function getOrderFromPostEditProvider($id_pedido)
+  	{
+		return array(
+			'id_pedido'  => $id_pedido,
+			'descricao'  => $this->input->post('descricao'),
+		);
+  	}
+
 
 	/**
 		* @author: Tiago Villalobos
