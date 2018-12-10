@@ -22,9 +22,25 @@
             <strong class="card-title">Itens de almoxarifado</strong>
           </div>
           <div class="card-body">
-            <a href="<?= site_url('almoxarifado/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar Novo Funcionário">
-              <i class="fa fa-check"></i> Novo Cadastro
-            </a><br />
+
+          <!--btn-->
+          <?php 
+          $type = "a";
+          $label = "<i class='fa fa-check'></i> Novo Cadastro";
+          $classes = ['btn', 'btn-primary', 'btn-sm'];
+          $attr = [
+            'id' => 'id',
+            'href' => "almoxarifado/cadastrar",
+            'title' => 'Cadastrar Almoxarifado'
+          ];
+          $button = $this->Button->verify('Almoxarifado', 'Cadastrar');
+          
+          if (!is_null($button))
+            $button->build($type, $label, $classes, $attr);
+          ?>
+          <!--btn -->
+            
+            <br />
             <br />
             <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
               <thead>
@@ -43,13 +59,38 @@
                         <td class="text-center"><?= $almoxarifado->quantidade; ?></td>
 
                         <td class="text-center"><?= $almoxarifado->valor; ?></td>
+                        
                         <td class="text-center">
-                          <a title="Atualizar funcionário" href="<?= site_url('almoxarifado/editar/'.$almoxarifado->id_almoxarifado)?>" class="btn btn-primary">
-                          <span class="fa fa-edit"></span></a>
-                          <button data-href="almoxarifado/excluir/<?php echo $almoxarifado->id_almoxarifado?>" class="btn btn-danger" title="Excluir entrada" data-toggle="modal" data-target="#modalRemover">
-                            <span class="fa fa-times"></span>
-                          </button>
-                         </td>
+                    <?php 
+                      $type = "a";
+                      $label = "<span class='fa fa-pencil-square-o'></span>";
+                      $classes = ['btn', 'btn-primary'];
+                      $attr = [
+                        'id' => 'id',
+                        'href' => site_url('almoxarifado/editar/'.$almoxarifado->id_almoxarifado),
+                      ];
+
+                      if(!is_null($edit_button))
+                      $edit_button->build($type, $label, $classes, $attr);
+                    ?>
+
+                    <?php 
+                      $type = "button";
+                      $label = "<span class='fa fa-times'></span>";
+                      $classes = ['btn', 'btn-danger'];
+                      $attr = [
+                        'id' => 'id',
+                        'data-href' => "almoxarifado/excluir/".$almoxarifado->id_almoxarifado,
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modalRemover'
+                      ];
+
+                      if (!is_null($delete_button))
+                        $delete_button->build($type, $label, $classes, $attr);
+                    ?>
+                    </td>
+
+
                        </tr>
                      <?php endforeach ?>
                     <?php endif;?>

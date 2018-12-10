@@ -40,6 +40,9 @@ class Almoxarifado extends CI_Controller
         ),
     );
 
+    $data['edit_button']    = $this->Button->verify('Almoxarifado', 'Editar');
+    $data['delete_button']  = $this->Button->verify('Almoxarifado', 'excluir');
+
     loadTemplate('includes/header', 'almoxarifado/index', 'includes/footer', $data);
   }
 
