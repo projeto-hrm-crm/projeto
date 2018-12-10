@@ -205,7 +205,7 @@ class Usuario_model extends CI_Model
           $url = substr($url, 1);
           $explodedUrl = explode('/', $url);
           $parsedUrl = [];
-          
+
           if(count($explodedUrl) >= 3){
             $parsedUrl = [$explodedUrl[0], $explodedUrl[1]];
             return implode('/', $parsedUrl);
