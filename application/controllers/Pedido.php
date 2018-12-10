@@ -122,12 +122,12 @@ class Pedido extends CI_Controller
 
   				$this->pedido->removeProducts($id_pedido);
   				$this->insertOrderProducts($id_pedido);
-  				$this->session->set_flashdata('success', 'Pedido cadastrado com sucesso');
+  				$this->session->set_flashdata('success', 'Pedido atualizado com sucesso');
 				redirect('pedido');
 			}
 			else
 			{
-				$this->session->set_flashdata('error', 'Erro ao cadastrar o pedido');
+				$this->session->set_flashdata('error', 'Erro ao atualizar o pedido');
 				$this->session->set_flashdata('old_data', $this->input->post());
 				redirect('pedido/editar/'.$id_pedido);
 			}
@@ -154,45 +154,53 @@ class Pedido extends CI_Controller
 		}
 	}
 
-	// /**
-	// * @author: Tiago Villalobos
-	// * Formulário para edição de pedido do Fornecedor
-	// * Para utilização apenas de usuários logados como fornecedor
-	// *
-	// * @param $id_pedido integer
-	// */
-	// public function editProvider($id_pedido)
-	// {
-	// 	if($this->input->post())
-	// 	{
-	// 		if($this->form_validation->run('pedido_fornecedor'))
-	// 		{
-  // 				$this->pedido->update($this->getOrderFromPostEditProvider($id_pedido));
-	//
-  // 				$this->andamento->update($this->getProgressFromPost($id_pedido));
-	//
-  // 				$this->redirectSuccess('Pedido atualizado com sucesso', 'fornecedor');
-	//
-	// 		}
-	// 		else
-	// 		{
-	// 			$this->redirectError('fornecedor/editar/'.$id_pedido);
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->setTitle('Edição de Pedido');
-	//
-	// 		$this->loadFormDefaultScripts();
-	//
-	//   		$this->addData('situacoes',       $this->andamento->getSituations());
-	//   		$this->addData('pedido',          $this->pedido->getById($id_pedido));
-	//   		$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
-	//
-	//   		$this->loadView('editar_fornecedor');
-	//
-	// 	}
-	// }
+	/**
+		* @author: Tiago Villalobos
+		* Formulário para edição de pedido do Fornecedor
+		* Para utilização apenas de usuários logados como fornecedor
+		*
+		* @param $id_pedido integer
+	*/
+	public function editProvider($id_pedido)
+	{
+		if($this->input->post())
+		{
+			if($this->form_validation->run('pedido_fornecedor'))
+			{
+  				$this->pedido->update($this->getOrderFromPostEditProvider($id_pedido));
+
+  				$this->andamento->update($this->getProgressFromPost($id_pedido));
+
+				$this->session->set_flashdata('success', 'Pedido atualizado com sucesso');
+
+			}
+			else
+			{
+				$this->session->set_flashdata('error', 'Erro ao atulizar o pedido');
+				$this->session->set_flashdata('old_data', $this->input->post());
+				redirect('fornecedor/editar/'.$id_pedido);
+			}
+		}
+		else
+		{
+
+			$data['title'] 			 = 'Edição de Pedido';
+			$data['pedido'] 		 = $this->pedido->getById($id_pedido);
+			$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
+			$data['situacoes'] 		 = $this->andamento->getSituations();
+			$data['produtos'] 		 = $this->produto->get();
+			$data['clientes'] 		 = $this->cliente->get();
+
+			$data['assets'] = array (
+				'js' => array (
+					'pedido/main.js'
+				),
+			);
+
+			loadTemplate('includes/header', 'pedido/editar_fornecedor', 'includes/footer', $data);
+
+		}
+	}
 
 	/**
 		* @author: Tiago Villalobos
@@ -384,10 +392,10 @@ class Pedido extends CI_Controller
 	// }
 	//
 	// /**
-	// * @author: Tiago Villalobos
-	// * Gera PDF para Fornecedor
-	// *
-	// * @param: $id_pedido integer
+	// 	* @author: Tiago Villalobos
+	// 	* Gera PDF para Fornecedor
+	// 	*
+	// 	* @param: $id_pedido integer
 	// */
 	// public function pdfProvider($id_pedido)
 	// {
