@@ -33,7 +33,7 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-lg-12">
-								<label for="id_pessoa" class="control-label mb-1" id="label_pessoa"><red>*</red>Cliente / Fornecedor</label>
+								<label for="id_pessoa" class="control-label mb-1" id="label_pessoa"><red>*</red><?php echo $label; ?></label>
 								<select name="id_pessoa" id="id_pessoa" class="form-control <?php echo isset($errors['id_pessoa']) ? 'is-invalid' : '' ?>">
 									<option value="">Selecione</option>
 									<?php foreach ($clientes as $cliente): ?>

@@ -148,7 +148,8 @@ class Pedido extends CI_Controller
 				),
 			);
 
-			// $this->filterDataByTransaction();
+
+		 $data = $this->filterDataByTransaction($data);
 
 			loadTemplate('includes/header', 'pedido/editar', 'includes/footer', $data);
 		}
@@ -221,34 +222,33 @@ class Pedido extends CI_Controller
 		* @author: Tiago Villalobos
 		* Realiza filtragem em alguns dados de acordo com o tipo de transação do pedido
 	*/
-	// private function filterDataByTransaction()
-	// {
-	// 	echo '<pre>';
-	// 	print_r($transacao);
-	// 	exit;
-	//
-  	// 	if($this->data['pedido']->transacao == 'V')
-  	// 	{
-  	// 		$data['label'] 		= 'Cliente';
-	// 		$data['clientes'] 	= $this->cliente->get();
-	// 		$data['produtos'] 	= $this->produto->get();
-  	// 	}
-  	// 	else
-  	// 	{
-	// 		$data['label'] 		= 'Fornecedor';
-	// 		$data['clientes'] 	= $this->fornecedor->get();
-	//
-  	// 		$id_provider;
-  	// 		foreach($this->data['clientes'] as $cliente)
-  	// 		{
-  	// 			if($cliente->id_pessoa == $this->data['pedido']->id_pessoa)
-  	// 			{
-  	// 				$id_provider = $cliente->id_fornecedor;
-  	// 			}
-  	// 		}
-	// 		$data['produtos'] = $this->produto->getByProvider($id_provider);
-  	// 	}
-	// }
+	private function filterDataByTransaction($data)
+	{
+
+  		if($data['pedido']->transacao == 'V')
+  		{
+  			$data['label'] 		= 'Cliente';
+			$data['clientes'] 	= $this->cliente->get();
+			$data['produtos'] 	= $this->produto->get();
+  		}
+  		else
+  		{
+			$data['label'] 		= 'Fornecedor';
+			$data['clientes'] 	= $this->fornecedor->get();
+
+  			$id_provider;
+  			foreach($data['clientes'] as $cliente)
+  			{
+  				if($cliente->id_pessoa == $data['pedido']->id_pessoa)
+  				{
+  					$id_provider = $cliente->id_fornecedor;
+  				}
+  			}
+			$data['produtos'] = $this->produto->getByProvider($id_provider);
+  		}
+
+		return $data;
+	}
 
 	/**
 		* @author: Tiago Villalobos
