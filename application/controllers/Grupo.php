@@ -13,7 +13,17 @@ class Grupo extends CI_Controller
 
   public function index()
   {
+    $data['grupos'] = $this->grupo->get();
+    $data['permissoes'] = $this->grupo->getPermissions();
+    $data['usuarios'] = $this->grupo->getUsersForGroups();
+    //  echo '<pre>';
+  //    echo print_r($data);
+  //   echo '</pre>';
     $data['title'] = 'Grupo';
+
+    $data['create_button']  = $this->Button->verify('Grupo', 'cadastrar');
+    $data['edit_button']    = $this->Button->verify('Grupo', 'Editar');
+    $data['list_button']  = $this->Button->verify('Grupo', 'listar');
 
     loadTemplate(
       'includes/header',
@@ -21,6 +31,17 @@ class Grupo extends CI_Controller
       'includes/footer',
       $data
     );
+  }
+
+  public function create(){
+
+  }
+  public function edit($id_grupo_acesso){
+
+  }
+
+  public function permissoes(){
+
   }
 
 

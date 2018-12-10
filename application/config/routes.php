@@ -243,6 +243,7 @@ $route['contato'] = 'Contato/index';
 
 //Rota Grupo
 $route['grupo']                 = 'Grupo/index';
-$route['grupo/cadastrar']       = 'grupo/create';
-$route['grupo/editar/(:num)']   = 'grupo/edit/$1';
-$route['grupo/excluir/(:num)']  = 'grupo/delete/$1';
+$route['grupo/cadastrar']       = 'Grupo/create';
+$route['grupo/permissoes']      = 'Grupo/permissoes';
+$route['grupo/editar/(:num)']   = 'Grupo/edit/$1';
+$route['grupo/excluir/(:num)']  = 'Grupo/delete/$1';

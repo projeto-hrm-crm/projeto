@@ -45,16 +45,33 @@ class Grupo_model extends CI_Model
         $menus = $this->db->get()->result_array();
 
         if ($menus > 0) {
-            foreach($menus as $key => $menu) {
+            foreach($menus as $sub => $menu) {
                 $this->db->select('*')
                          ->from('sub_menu')
-                         ->where('id_menu', $menu['id_menu']);
-
-                $menus[$key]['sub_menus'] = $this->db->get()->result();
+                         ->where('id_sub_menu = sub_menu.id_sub_menu');
+                $menus[$sub]['sub_menus'] = $this->db->get()->result();
             }
         }
 
         return $menus;
+    }
+
+    public function getUsersForGroups(){
+      $usuarios_por_grupo =  $this->db->select(
+         '*,
+         grupo_acesso.nome AS grupo_nome,
+         usuario.id_grupo_acesso AS id_grupo,
+         '
+      )->from('usuario')
+      ->join('grupo_acesso', 'usuario.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
+      ->join('pessoa', 'usuario.id_pessoa = pessoa.id_pessoa')
+      ->get();
+
+      if ($usuarios_por_grupo) {
+          return $usuarios_por_grupo->result();
+      }
+      return null;
+
     }
 
 }

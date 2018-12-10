@@ -112,8 +112,10 @@
             <div class="dropdown ml-3">
               <a href="<?=site_url('contato')?>" title="Contatos" aria-label="Aqui você acessa os seus contatos."><span class="fa fa-phone"></span> </a>
             </div>
-            <div class="dropdown ml-3">
-              <a href="<?=site_url('grupo')?>" title="Configuração dos Grupos de Acesso" aria-label="Aqui você configura os grupos de acesso e as permissões do sistema."><span class="fa fa-cog"></span> </a>
+            <div class="dropdown ml-4">
+              <a href="<?=site_url('grupo')?>" title="Configuração dos Grupos de Acesso" aria-label="Aqui você configura os grupos de acesso e as permissões do sistema.">
+                <i class="fa fa-cog"></i>
+              </a>
             </div>
           </div>
 
@@ -137,9 +139,6 @@
             <a href="#" class="dropdown-toggle" id="user-dropdown" data-toggle="dropdown" data-status="false">
               <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
             </a>
-
-
-
 
             <div class="user-menu dropdown-menu">
               <a class="nav-link" href="#">Olá, <?=$cur_name[0];?></a>
