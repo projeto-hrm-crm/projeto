@@ -37,7 +37,7 @@
             <div class="card-body">
               <div class="clearfix">
                 <div class="pt-5 pb-3 text-center col-sm-6">
-                  <i class="fa fa-group bg-flat-color-4 p-1 rounded font-2xl float-center text-light"><?= $grupo->nome ;?></i>
+                  <i class="fa fa-group bg-flat-color-4 p-1 rounded font-2xl float-center text-light"> <?= $grupo->nome ;?></i>
                 </div>
                 <div class="col-6">
                   <a href="<?= site_url('grupo/editar/').$grupo->id_grupo_acesso?>" class="mt-5 mr-3 btn btn-warning btn-sm float-right rounded-circle" title="Editar Grupo de Acesso">
@@ -48,11 +48,14 @@
               <div class="b-b-1 pt-3"></div>
               <hr>
               <p class="p-1 font-2xl mr-1 mb-3 text-center text-secondary"><?= $grupo->descricao ?></p>
-              <?php foreach ($grupos as $grupo) : ?>
+
+              <hr>
+              <?php foreach($permissoes as $permissao) : ?>
 
               <?php endforeach; ?>
+
               <hr>
-              <h6 class="p-1 font-1xl mr-1 mb-3 text-center text-secondary small"> Usuários no Grupo </h6>
+              <h6 class="p-1 font-1xl mr-1 mb-3 text-center text-secondary small"> Usuários no grupo </h6>
               <?php foreach ($usuarios as $usuario) : ?>
                 <?php if($usuario->id_grupo == $grupo->id_grupo_acesso) : ?>
                   <?php

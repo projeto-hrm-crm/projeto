@@ -40,30 +40,47 @@ class Grupo_model extends CI_Model
      */
     public function getPermissions()
     {
-        $this->db->select('*')
-                 ->from('menu');
-        $menus = $this->db->get()->result_array();
+      $this->db->select('*')
+               ->from('grupo_acesso')
+               ->join('grupo_acesso_modulo', 'grupo_acesso.id_grupo_acesso = grupo_acesso_modulo.id_grupo_acesso');
+      $groups = $this->db->get()->result();
 
-        if ($menus > 0) {
-            foreach($menus as $sub => $menu) {
-                $this->db->select('*')
-                         ->from('sub_menu')
-                         ->where('id_sub_menu = sub_menu.id_sub_menu');
-                $menus[$sub]['sub_menus'] = $this->db->get()->result();
-            }
+      echo "<pre>";
+      print_r($groups);
+
+
+
+      $this->db->select('sub_modulo.nome as sub_modulo, sub_menu.nome as sub_menu, sub_modulo.id_modulo as modulo')
+               ->from('menu')
+               ->join('sub_modulo', 'menu.id_sub_modulo = sub_modulo.id_sub_modulo')
+               ->join('sub_menu', 'menu.id_sub_menu = sub_menu.id_sub_menu');
+      $results = $this->db->get()->result();
+
+
+      foreach ($groups as $key => $group) {
+        foreach ($results as $result) {
+          if ($group->id_modulo == $result->modulo) {
+              $data[$key][$result->sub_modulo][] = $result->sub_menu;
+              $data[$key]['sub_modulo'] = $permission;
+          }
         }
+      }
 
-        return $menus;
+      print_r($data);exit;
+
+      return $permissions;
     }
 
     public function getUsersForGroups(){
       $usuarios_por_grupo =  $this->db->select(
          '*,
+         grupo_acesso_modulo.id_modulo,
          grupo_acesso.nome AS grupo_nome,
          usuario.id_grupo_acesso AS id_grupo,
          '
       )->from('usuario')
       ->join('grupo_acesso', 'usuario.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
+      ->join('grupo_acesso_modulo', 'grupo_acesso.id_grupo_acesso = grupo_acesso_modulo.id_grupo_acesso', 'left')
       ->join('pessoa', 'usuario.id_pessoa = pessoa.id_pessoa')
       ->get();
 

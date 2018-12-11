@@ -16,9 +16,9 @@ class Grupo extends CI_Controller
     $data['grupos'] = $this->grupo->get();
     $data['permissoes'] = $this->grupo->getPermissions();
     $data['usuarios'] = $this->grupo->getUsersForGroups();
-    //  echo '<pre>';
-  //    echo print_r($data);
-  //   echo '</pre>';
+    //echo '<pre>';
+    //echo print_r($data);exit;
+    //echo '</pre>';
     $data['title'] = 'Grupo';
 
     $data['create_button']  = $this->Button->verify('Grupo', 'cadastrar');
@@ -35,6 +35,21 @@ class Grupo extends CI_Controller
 
   public function create(){
 
+    $data['title'] = 'Cadastrar Grupo de Acesso';
+    $data['assets'] = array(
+      'js' => array(
+        'grupo/permissoes.js',
+        'validate.js',
+        'confirm.modal.js',
+      ),
+    );
+
+    loadTemplate(
+      'includes/header',
+      'grupo/cadastrar',
+      'includes/footer',
+      $data
+    );
   }
   public function edit($id_grupo_acesso){
 
