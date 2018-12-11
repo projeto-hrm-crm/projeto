@@ -34,6 +34,10 @@ class Processo_Seletivo extends CI_Controller
         ),
     );
 
+    $data['edit_button']    = $this->Button->verify('Processo_Seletivo', 'Editar');
+    $data['delete_button']  = $this->Button->verify('Processo_Seletivo', 'Excluir');
+    $data['info_button']  = $this->Button->verify('Processo_Seletivo', 'Listar');
+
     loadTemplate('includes/header', 'processo_seletivo/index', 'includes/footer', $data);
   }
 

@@ -22,10 +22,22 @@
                   </div>
 
              <div class="card-body">
-                    <a title="Cadastrar Processo Seletivo" href="<?= site_url('processo_seletivo/cadastrar')?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-check"></i> Novo Cadastro
-          </a><br />
-          <br />
+                <?php 
+                  $type = "a";
+                  $label = "<i class='fa fa-check'></i> Novo Cadastro";
+                  $classes = ['btn', 'btn-primary', 'btn-sm'];
+                  $attr = [
+                    'id' => 'id',
+                    'href' => "Processo_Seletivo/cadastrar",
+                    'title' => 'Cadastrar Processo Seletivo'
+                  ];
+                  $button = $this->Button->verify('Processo_Seletivo', 'Cadastrar');
+                  
+                  if (!is_null($button))
+                    $button->build($type, $label, $classes, $attr);
+                ?>
+            <br />
+              <br />
 
                <table id="bootstrap-data-table" class="table table-striped table-bordered datatable">
                      <thead>
@@ -48,21 +60,70 @@
 
                               <td class="text-center">
 
-                                 <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary">
-                                       <span class="fa fa-pencil-square-o"></span>
-                                   </a>
+                                <?php 
+                                    $type = "a";
+                                    $label = "<span class='fa fa-pencil-square-o'></span>";
+                                    $classes = ['btn', 'btn-primary'];
+                                    $attr = [
+                                      'id' => 'id',
+                                      'href' => site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo),
+                                    ];
 
-                                 <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
+                                    if(!is_null($edit_button))
+                                    $edit_button->build($type, $label, $classes, $attr);
+                                  ?>
+
+
+                              <!--  <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
                                        <span class="fa fa-clipboard"></span>
-                                 </a>
+                                  </a>   -->
+                                 <?php 
+                                    $type = "a";
+                                    $label = "<span class='fa fa-clipboard'></span>";
+                                    $classes = ['btn', 'btn-warning'];
+                                    $attr = [
+                                      'id' => 'id',
+                                      'href' => site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo),
+                                    ];
 
-                                 <a title="candidatos" href="<?=site_url('processo_seletivo/candidatos/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-secondary">
+                                    if(!is_null($edit_button))
+                                    $edit_button->build($type, $label, $classes, $attr);
+                                  ?>
+
+                              <!--   <a title="candidatos" href="<?=site_url('processo_seletivo/candidatos/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-secondary">
                                        <span class="fa fa-address-card"></span>
-                                  </a>
+                                  </a>  -->
 
-                                 <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger" data-toggle="modal" data-target="#modalRemover">
-                                   <span class="fa fa-times"></span>
-                                 </button>
+                                <?php 
+                                    $type = "a";
+                                    $label = "<span class='fa fa-address-card'></span>";
+                                    $classes = ['btn', 'btn-secondary'];
+                                    $attr = [
+                                      'id' => 'id',
+                                      'href' => "processo_seletivo/candidatos/",
+                                      'title' => 'Candidatos'
+                                    ];
+                                    $button = $this->Button->verify('Processo_Seletivo', 'Listar');
+                                    
+                                    if (!is_null($button))
+                                      $button->build($type, $label, $classes, $attr);
+                                  ?>
+
+                                <?php 
+                                  $type = "button";
+                                  $label = "<span class='fa fa-times'></span>";
+                                  $classes = ['btn', 'btn-danger'];
+                                  $attr = [
+                                    'id' => 'id',
+                                    'data-href' => "processo_seletivo/excluir/".$processo_seletivo->id_processo_seletivo,
+                                    'data-toggle' => 'modal',
+                                    'data-target' => '#modalRemover'
+                                  ];
+
+                                  if (!is_null($delete_button))
+                                    $delete_button->build($type, $label, $classes, $attr);
+                                ?>
+
                               </td>
                            </tr>
                        <?php endforeach ?>
