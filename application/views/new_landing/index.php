@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <title>Lambda ERP</title>
     <!-- Required meta tags -->
@@ -75,7 +75,7 @@
                                 <span class="ti-user gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">CRM</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">É hora de jogar as planilhas fora! Registre automaticamente suas ações, nunca esqueça de fazer follow-up e centralize tudo em um só lugar.</p>
                                     <hr>
 
                                     <table>
@@ -88,19 +88,31 @@
                                         <tbody>
                                             <tr style="padding-bottom: 2em;">
                                                 <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                <td>Agenda</td>
-                                            </tr>
-                                            <tr style="padding-bottom: 2em;">
-                                                <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Produto</td>
+                                               <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
                                                 <td>Cliente</td>
                                             </tr>
                                             <tr style="padding-bottom: 2em;">
                                                 <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Fornecedor</td>
+                                               <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
                                                 <td>SAC</td>
                                             </tr>
                                             <tr style="padding-bottom: 2em;">
                                                 <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
                                                 <td>Pedido</td>
+                                               <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Sugestão</td>
+                                            </tr>
+                                           <tr style="padding-bottom: 2em;">
+                                                <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Agenda</td>
+                                              <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Almoxarifado</td>
+                                            </tr>
+                                           <tr style="padding-bottom: 2em;">
+                                                <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                <td>Pedido Almoxarifado</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -118,7 +130,7 @@
                                 <span class="ti-book gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">HRM</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">Otimize seus processos, gerencie seus funcionaria de uma maneira fácil e ágil</p>
                                     <hr>
 
                                     <table>
@@ -131,20 +143,30 @@
                                             <tbody>
                                                 <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>Agenda</td>
+                                                    <td>Candidato</td>
+                                                   <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                    <td>Funcionario</td>
                                                 </tr>
+                                                
                                                 <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>Cliente</td>
+                                                    <td>Cargo</td>
+                                                   <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                    <td>Setor</td>
                                                 </tr>
-                                                <tr style="padding-bottom: 2em;">
+                                               
+                                               <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>SAC</td>
+                                                    <td>Vaga</td>
+                                                   <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
+                                                    <td>Processo Seletivo</td>
                                                 </tr>
-                                                <tr style="padding-bottom: 2em;">
+                                               
+                                               <tr style="padding-bottom: 2em;">
                                                     <td><span class="ti-check gradient-fill ti-1x mr-3"></span></td>
-                                                    <td>Pedido</td>
+                                                    <td>Remanejamento</td>
                                                 </tr>
+                                               
                                             </tbody>
                                         </table>
 
@@ -187,13 +209,9 @@
                     <div class="d-flex flex-column flex-lg-row">
                         <img src="<?php echo base_url();?>assets/new_landing/images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
-                            <h2>Lorem, ipsum dolor</h2>
-                            <p class="lead"> sit amet consectetur adipisicing elit. Molestiae laudantium aliquam vitae. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
+                            <h2>Controle de clientes</h2>
+                            <p class="lead">Gerencie seus clientes e conheça seu público!</p>
+                            <p>Todo o funcionamento do controle de cliente é muito simples e fácil. De maneira intuitiva o funcionário da sua empresa pode cadastrar novos clientes ou mesmo pesquisar a respeito dos nomes já cadastrados. Além disso você consegue restringir o acesso de cada colaborador no sistema, de modo que ele possa ver e usar apenas o que precisa.
                             </p>
                         </div>
                     </div>
@@ -201,14 +219,9 @@
                 <div class="tab-pane fade" id="schedule">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
-                            <h2>Lorem, ipsum dolor</h2>
-                            <p class="lead"> sit amet consectetur adipisicing elit. Molestiae laudantium aliquam vitae. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            <h2>Agendamento de tarefas</h2>
+                            <p class="lead">Nunca mais perca um compromisso!</p>
+                            <p>O Lambda possui um sistema de gestão de ativadas, atraves deste sistema você consegue agendar os compromissos do empreendedor, administrador ou qualquer profissional que necessite planejar, executar e acompanhar suas atividades diárias, semanais e mensais. Mais de um usuário pode agendar os seus compromissos neste programa e os resultados esperados são: o aumento da produtividade, a priorização das tarefas e maior eficácia gerencial dos objetivos pessoais, profissionais e empresarias.</p>
                         </div>
                         <img src="<?php echo base_url();?>assets/new_landing/images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
@@ -217,28 +230,18 @@
                     <div class="d-flex flex-column flex-lg-row">
                         <img src="<?php echo base_url();?>assets/new_landing/images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
-                            <h2>Lorem, ipsum dolor</h2>
-                            <p class="lead"> sit amet consectetur adipisicing elit. Molestiae laudantium aliquam vitae. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            <h2>Processo seletivo</h2>
+                            <p class="lead">Selecione novos funcionários</p>
+                            <p>Através do Lambda, a equipe de recursos humanos terá a possibilidade de criar processos seletivos para a contratação de novos funcionario de maneira simples e descomplicada, é possivel criar todas as etapas do processo e controlar as fases até encontrar os candidatos perfeitos para a contratação. </p>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="livechat">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
-                            <h2>Lorem, ipsum dolor</h2>
-                            <p class="lead"> sit amet consectetur adipisicing elit. Molestiae laudantium aliquam vitae. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            <h2>E muito mais!</h2>
+                            <p class="lead">Leve sua empresa a um novo level!</p>
+                            <p>O Lambda ainda conta com diversos recursos e funcionalidades para otimizar os processos de sua empresa, faça já o download e instação do sistemas e teste todos os módulos.</p>
                         </div>
                         <img src="<?php echo base_url();?>assets/new_landing/images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
@@ -259,22 +262,22 @@
                         <li class="media">
                             <div class="circle-icon mr-4">1</div>
                             <div class="media-body">
-                                <h5>Baixe o projeto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <h5>Baixe o sistema</h5>
+                                <p>Acesse ao sistema no GitHub no link <a href="https://github.com/projeto-hrm-crm/projeto" target="_blank">https://github.com/projeto-hrm-crm/projeto</a>, e baixei o sistema no seu computador.</p>
                             </div>
                         </li>
                         <li class="media my-4">
                             <div class="circle-icon mr-4">2</div>
                             <div class="media-body">
                                 <h5>Acesse a documentação</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
+                                <p>Leia a documentação no link <a href="https://github.com/projeto-hrm-crm/projeto/wiki" target="_blank">https://github.com/projeto-hrm-crm/projeto/wiki</a>, siga as orientações e os passo a passo para a configuração do seu sistema.</p>
                             </div>
                         </li>
                         <li class="media">
                             <div class="circle-icon mr-4">3</div>
                             <div class="media-body">
                                 <h5>Pronto!</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <p>Após instalado e configurado seu sistema, agora é so aproveitar as funcionalidades e otimizar o seu negócio!</p>
                             </div>
                         </li>
                     </ul>
@@ -316,29 +319,91 @@
 
             <div class="testimonials owl-carousel">
                 <div class="testimonials-single">
-                    <img src="<?php echo base_url();?>assets/new_landing/images/team/pedro.jpg" alt="client" class="client-img">
-                    <blockquote class="blockquote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam similique vero illo nulla praesentium exercitationem odio sequi repellat consectetur magni fugit error nemo, officia, doloribus hic eos itaque aperiam amet.</blockquote>
-                    <h5 class="mt-4 mb-2">Pedro Henrique Guimarães</h5>
-                    <p>Desenvolvedor</p>
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/ladislau.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Matheus Ladislau</h5>
+                    <p>Gerente de Projeto</p>
+                </div>
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/camila.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Camila Sales</h5>
+                    <p>DBA e Desenvolvedora</p>
                 </div>
                 <div class="testimonials-single">
-                    <img src="<?php echo base_url();?>assets/new_landing/images/team/camila.jpg" alt="client" class="client-img">
-                    <blockquote class="blockquote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam similique vero illo nulla praesentium exercitationem odio sequi repellat consectetur magni fugit error nemo, officia, doloribus hic eos itaque aperiam amet.</blockquote>
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/pedro.jpg" alt="client" class="client-img">
                     <h5 class="mt-4 mb-2">Pedro Henrique Guimarães</h5>
                     <p>Desenvolvedor</p>
                 </div>
+                
                 <div class="testimonials-single">
                     <img src="<?php echo base_url();?>assets/new_landing/images/team/rodrigo.jpg" alt="client" class="client-img">
-                    <blockquote class="blockquote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam similique vero illo nulla praesentium exercitationem odio sequi repellat consectetur magni fugit error nemo, officia, doloribus hic eos itaque aperiam amet.</blockquote>
-                    <h5 class="mt-4 mb-2">Pedro Henrique Guimarães</h5>
+                    <h5 class="mt-4 mb-2">Rodrigo Alves</h5>
                     <p>Desenvolvedor</p>
                 </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/tiago.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Tiago Villalobos</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/pigozzi.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Rafael Pigozzi</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/marcelo.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Marcelo Souza dos Anjos</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/mayra.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Mayra Dantas Bueno</h5>
+                    <p>Desenvolvedora</p>
+                </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/cadilhe.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Carlos Alberto Cadilhe</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/romeo.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Matheus Romeo</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               
                 <div class="testimonials-single">
-                    <img src="<?php echo base_url();?>assets/new_landing/images/team/ladislau.jpg" alt="client" class="client-img">
-                    <blockquote class="blockquote">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam similique vero illo nulla praesentium exercitationem odio sequi repellat consectetur magni fugit error nemo, officia, doloribus hic eos itaque aperiam amet.</blockquote>
-                    <h5 class="mt-4 mb-2">Pedro Henrique Guimarães</h5>
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/lucilene.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Lucilene Fidelis</h5>
                     <p>Desenvolvedor</p>
                 </div>
+               
+                
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/nikolas.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Níkolas Lencioni</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/diego.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Dhiego Henrique Balthazar</h5>
+                    <p>Desenvolvedor</p>
+                </div>
+               
+               <div class="testimonials-single">
+                    <img src="<?php echo base_url();?>assets/new_landing/images/team/peterson.jpg" alt="client" class="client-img">
+                    <h5 class="mt-4 mb-2">Peterson Munuera</h5>
+                    <p>Desenvolvedor</p>
+                </div>        
                 
             </div>
 
