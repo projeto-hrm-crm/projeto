@@ -60,6 +60,21 @@
           <a title="Voltar a todos os processos seletivos"  href="<?=site_url('processo_seletivo')?>" class="btn btn-primary btn-sm">
             VOLTAR PARA VISUALIZAÇÃO DE TODOS OS PROCESSOS SELETIVOS
           </a>
+
+        <!--  <?php 
+                  $type = "a";
+                  $label = "VOLTAR PARA VISUALIZAÇÃO DE TODOS OS PROCESSOS SELETIVOS";
+                  $classes = ['btn', 'btn-primary', 'btn-sm'];
+                  $attr = [
+                    'id' => 'id',
+                    'href' => site_url('processo_seletivo'),
+                    'title' => 'Voltar a todos os processos seletivos'
+                  ];
+                  $button = $this->Button->verify('Processo_Seletivo', 'Listar');
+                  
+                  if (!is_null($button))
+                    $button->build($type, $label, $classes, $attr);
+                ?>  -->
 		</a>
 		  
       </div>

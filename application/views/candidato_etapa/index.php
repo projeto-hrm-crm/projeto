@@ -64,7 +64,7 @@
 
                                     /*  $type = "a";
                                       $label = "<i class='fa fa-check'></i> Candidatar";
-                                      $classes = ['btn', 'bg-primary text-white'];
+                                      $classes = ['btn', 'bg-primary', 'text-white'];
                                       $attr = [
                                         'id' => 'id',
                                         'href' => site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo),

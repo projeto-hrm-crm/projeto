@@ -37,7 +37,7 @@
 	                        <!--    <?php
 	                                $type = "a";
                                     $label = "<i class='fa fa-clipboard'></i>";
-                                    $classes = ['btn', 'btn-warning procuraEtapa'];
+                                    $classes = ['btn', 'btn-warning', 'procuraEtapa'];
                                     $attr = [
                                       	'id' => 'id',
                                      	'onclick' => getEtapas($ps->id_processo_seletivo),
