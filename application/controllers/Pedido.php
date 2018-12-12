@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pedido extends PR_Controller
+class Pedido extends CI_Controller
 {
 	/**
-	* @author: Tiago Villalobos
-	* Construtor que recebe o nome do diretório aonde estão as views
+		* @author: Tiago Villalobos
+		* Construtor que recebe o nome do diretório aonde estão as views
 	*/
 	public function __construct()
 	{
@@ -13,58 +13,67 @@ class Pedido extends PR_Controller
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Listagem de pedidos realizados para clientes e fornecedores
-	* pedidos = clientes, compras = fornecedores
-	* Realiza um foreach para definir os produtos de cada pedido
+		* @author: Tiago Villalobos
+		* Listagem de pedidos realizados para clientes e fornecedores
+		* pedidos = clientes, compras = fornecedores
+		* Realiza um foreach para definir os produtos de cada pedido
 	*/
 	public function index()
 	{
-		$this->setTitle('Pedidos');
+		$data['title'] = 'Pedidos';
 
-		$this->addData('pedidos', $this->pedido->getFromClients());
-		$this->addData('compras', $this->pedido->getFromProviders());
+		$data['pedidos'] = $this->pedido->getFromClients();
+		$data['compras'] = $this->pedido->getFromProviders();
 
-		foreach($this->data['pedidos'] as $pedido)
+
+		foreach($data['pedidos'] as $pedido)
 		{
 			$pedido->produtos = $this->produto->getByOrder($pedido->id);
 		}
 
-		foreach($this->data['compras'] as $compra)
+		foreach($data['compras'] as $compra)
 		{
 			$compra->produtos = $this->produto->getByOrder($compra->id);
 		}
 
-       	$this->loadIndexDefaultScripts();
+		$data['assets'] = array(
+         'js' => array(
+           	'confirm.modal.js',
+         ),
+      );
 
-		$this->loadView('index');
+		loadTemplate('includes/header', 'pedido/index', 'includes/footer', $data);
+
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Listagem de pedidos realizados para Fornecedores
-	* Esta listagem será apresentada apenas para usuários logados como fornecedor
+		* @author: Tiago Villalobos
+		* Listagem de pedidos realizados para Fornecedores
+		* Esta listagem será apresentada apenas para usuários logados como fornecedor
 	*/
 	public function indexProvider()
 	{
-
-		$this->setTitle('Pedidos');
-		$this->addData('pedidos', $this->pedido->getFromProviders($this->session->userdata('user_login')));
+		$data['title'] = 'Pedidos';
+		$data['pedidos'] = $this->pedido->getFromProviders($this->session->userdata('user_login'));
 
 		foreach($this->data['pedidos'] as $pedido)
 		{
 			$pedido->produtos = $this->produto->getByOrder($pedido->id);
 		}
 
-		$this->loadIndexDefaultScripts();
+		$dados['assets'] = array(
+			'js' => array(
+				'confirm.modal.js'
+			),
+		);
 
-		$this->loadView('index_fornecedor');
+		loadTemplate('includes/header', 'pedido/index_fornecedor', 'includes/footer', $data);
+
 	}
 
-
 	/**
-	* @author: Tiago Villalobos
-	* Formulário para cadastro de pedidos
+		* @author: Tiago Villalobos
+		* Formulário para cadastro de pedidos
 	*/
   	public function create()
   	{
@@ -72,44 +81,46 @@ class Pedido extends PR_Controller
   		{
   			if($this->form_validation->run('pedido'))
   			{
-
   				$id_pedido = $this->pedido->insert($this->getOrderFromPost());
 
   				$this->andamento->insert($this->getProgressFromPost($id_pedido));
 
   				$this->insertOrderProducts($id_pedido);
 
-  				$this->redirectSuccess('Pedido cadastrado com sucesso');
-
+				$this->session->set_flashdata('success', 'Pedido cadastrado com sucesso');
   			}
   			else
   			{
-  				$this->redirectError('cadastrar');
+				$this->session->set_flashdata('error', 'Erro ao cadastrar o pedido');
   			}
+			redirect('pedido');
   		}
   		else
   		{
 
-  			$this->setTitle('Cadastrar Pedido');
-	  		$this->addData('produtos',  $this->produto->get());
-	  		$this->addData('clientes',  $this->cliente->get());
-	  		$this->addData('fornecedores', $this->fornecedor->get());
-	  		$this->addData('situacoes', $this->andamento->getSituations());
+  			$data['title'] 			= 'Cadastrar Pedido';
+	  		$data['produtos'] 		= $this->produto->get();
+	  		$data['clientes'] 		= $this->cliente->get();
+	  		$data['fornecedores'] 	= $this->fornecedor->get();
+	  		$data['situacoes'] 		= $this->andamento->getSituations();
 
-  			$this->addScripts(array('pedido/main.js'));
-  			$this->loadFormDefaultScripts();
+			$data['assets'] = array (
+				'js' => array (
+					'pedido/main.js'
+				),
+			);
 
-  			$this->loadView('cadastrar');
+  			loadTemplate('includes/header', 'pedido/cadastrar', 'includes/footer', $data);
 
   		}
 
   	}
 
   	/**
-	* @author: Tiago Villalobos
-	* Carrega o formulário de edição
-	*
-	* @param $id_pedido integer
+		* @author: Tiago Villalobos
+		* Carrega o formulário de edição
+		*
+		* @param $id_pedido integer
 	*/
 	public function edit($id_pedido)
 	{
@@ -123,37 +134,45 @@ class Pedido extends PR_Controller
 
   				$this->pedido->removeProducts($id_pedido);
   				$this->insertOrderProducts($id_pedido);
-  				$this->redirectSuccess('Pedido atualizado com sucesso!');
+  				$this->session->set_flashdata('success', 'Pedido atualizado com sucesso');
+				redirect('pedido');
 			}
 			else
 			{
-				$this->redirectError('pedido/editar/'.$id_pedido);
+				$this->session->set_flashdata('error', 'Erro ao atualizar o pedido');
+				$this->session->set_flashdata('old_data', $this->input->post());
+				redirect('pedido/editar/'.$id_pedido);
 			}
 		}
 		else
 		{
-			$this->setTitle('Edição de Pedido');
 
-			$this->addScripts(array('pedido/main.js'));
-  			$this->loadFormDefaultScripts();
+			$data['title'] 			 = 'Edição de Pedido';
+			$data['pedido'] 		 = $this->pedido->getById($id_pedido);
+			$data['situacoes'] 		 = $this->andamento->getSituations();
+			$data['produtos'] 		 = $this->produto->get();
+			$data['clientes'] 		 = $this->cliente->get();
+			$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
 
-			$this->addData('pedido', $this->pedido->getById($id_pedido));
+			$data['assets'] = array (
+				'js' => array (
+					'pedido/main.js'
+				),
+			);
 
-			$this->filterDataByTransaction();
 
-	  		$this->addData('situacoes',       $this->andamento->getSituations());
-	  		$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
+		 $data = $this->filterDataByTransaction($data);
 
-			$this->loadView('editar');
+			loadTemplate('includes/header', 'pedido/editar', 'includes/footer', $data);
 		}
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Formulário para edição de pedido do Fornecedor
-	* Para utilização apenas de usuários logados como fornecedor
-	*
-	* @param $id_pedido integer
+		* @author: Tiago Villalobos
+		* Formulário para edição de pedido do Fornecedor
+		* Para utilização apenas de usuários logados como fornecedor
+		*
+		* @param $id_pedido integer
 	*/
 	public function editProvider($id_pedido)
 	{
@@ -165,34 +184,42 @@ class Pedido extends PR_Controller
 
   				$this->andamento->update($this->getProgressFromPost($id_pedido));
 
-  				$this->redirectSuccess('Pedido atualizado com sucesso', 'fornecedor');
+				$this->session->set_flashdata('success', 'Pedido atualizado com sucesso');
 
 			}
 			else
 			{
-				$this->redirectError('fornecedor/editar/'.$id_pedido);
+				$this->session->set_flashdata('error', 'Erro ao atulizar o pedido');
+				$this->session->set_flashdata('old_data', $this->input->post());
+				redirect('fornecedor/editar/'.$id_pedido);
 			}
 		}
 		else
 		{
-			$this->setTitle('Edição de Pedido');
 
-			$this->loadFormDefaultScripts();
+			$data['title'] 			 = 'Edição de Pedido';
+			$data['pedido'] 		 = $this->pedido->getById($id_pedido);
+			$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
+			$data['situacoes'] 		 = $this->andamento->getSituations();
+			$data['produtos'] 		 = $this->produto->get();
+			$data['clientes'] 		 = $this->cliente->get();
 
-	  		$this->addData('situacoes',       $this->andamento->getSituations());
-	  		$this->addData('pedido',          $this->pedido->getById($id_pedido));
-	  		$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
+			$data['assets'] = array (
+				'js' => array (
+					'pedido/main.js'
+				),
+			);
 
-	  		$this->loadView('editar_fornecedor');
+			loadTemplate('includes/header', 'pedido/editar_fornecedor', 'includes/footer', $data);
 
 		}
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Remoção do pedido e dados relacionados
-	*
-	* @param: $id_pedido integer
+		* @author: Tiago Villalobos
+		* Remoção do pedido e dados relacionados
+		*
+		* @param: $id_pedido integer
 	*/
 	public function delete($id_pedido)
 	{
@@ -200,45 +227,47 @@ class Pedido extends PR_Controller
 		$this->pedido->removeProducts($id_pedido);
 		$this->pedido->remove($id_pedido);
 
-		$this->redirectSuccess('Pedido removido com sucesso!');
+		$this->session->set_flashdata('success', 'Pedido removido com sucesso!');
+
+		redirect('pedido');
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Realiza filtragem em alguns dados de acordo com o tipo de transação do pedido
+		* @author: Tiago Villalobos
+		* Realiza filtragem em alguns dados de acordo com o tipo de transação do pedido
 	*/
-	private function filterDataByTransaction()
+	private function filterDataByTransaction($data)
 	{
 
-  		if($this->data['pedido']->transacao == 'V')
+  		if($data['pedido']->transacao == 'V')
   		{
-  			$this->addData('label',    'Cliente');
-  			$this->addData('clientes', $this->cliente->get());
-	  		$this->addData('produtos', $this->produto->get());
+  			$data['label'] 		= 'Cliente';
+			$data['clientes'] 	= $this->cliente->get();
+			$data['produtos'] 	= $this->produto->get();
   		}
   		else
   		{
-  			$this->addData('label',    'Fornecedor');
-  			$this->addData('clientes', $this->fornecedor->get());
+			$data['label'] 		= 'Fornecedor';
+			$data['clientes'] 	= $this->fornecedor->get();
 
   			$id_provider;
-  			foreach($this->data['clientes'] as $cliente)
+  			foreach($data['clientes'] as $cliente)
   			{
-  				if($cliente->id_pessoa == $this->data['pedido']->id_pessoa)
+  				if($cliente->id_pessoa == $data['pedido']->id_pessoa)
   				{
   					$id_provider = $cliente->id_fornecedor;
   				}
   			}
-
-  			$this->addData('produtos', $this->produto->getByProvider($id_provider));
+			$data['produtos'] = $this->produto->getByProvider($id_provider);
   		}
+
+		return $data;
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Retorna os dados enviados por post referentes aos dados básicos do pedido
-	*
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna os dados enviados por post referentes aos dados básicos do pedido
+		* @return: mixed
 	*/
   	private function getOrderFromPost()
   	{
@@ -251,11 +280,11 @@ class Pedido extends PR_Controller
   	}
 
   	/**
-	* @author: Tiago Villalobos
-	* Retorna os dados para edição de um pedido
-	*
-	* @param:  $id_pedido integer
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna os dados para edição de um pedido
+		*
+		* @param:  $id_pedido integer
+		* @return: mixed
 	*/
   	private function getOrderFromPostEdit($id_pedido)
   	{
@@ -267,12 +296,12 @@ class Pedido extends PR_Controller
   	}
 
   	/**
-	* @author: Tiago Villalobos
-	* Retorna os dados para edição de um pedido à um fornecedor
-	* Apenas para utilização de usuários logados como fornecedor
-	*
-	* @param:  $id_pedido integer
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna os dados para edição de um pedido à um fornecedor
+		* Apenas para utilização de usuários logados como fornecedor
+		*
+		* @param:  $id_pedido integer
+		* @return: mixed
 	*/
   	private function getOrderFromPostEditProvider($id_pedido)
   	{
@@ -282,12 +311,13 @@ class Pedido extends PR_Controller
 		);
   	}
 
-  	/**
-	* @author: Tiago Villalobos
-	* Retorna dados do andamento do pedido para edição
-	*
-	* @param:  $id_pedido integer
-	* @return: mixed
+
+	/**
+		* @author: Tiago Villalobos
+		* Retorna dados do andamento do pedido para edição
+		*
+		* @param:  $id_pedido integer
+		* @return: mixed
 	*/
   	private function getProgressFromPost($id_pedido)
   	{
@@ -299,11 +329,11 @@ class Pedido extends PR_Controller
   	}
 
   	/**
-	* @author: Tiago Villalobos
-	* Insere dados relativos aos produtos e pedido na tabela de relação entre os mesmos
-	* utlizando um foreach para iterar sobre os posts
-	*
-	* @param: $id_pedido integer
+		* @author: Tiago Villalobos
+		* Insere dados relativos aos produtos e pedido na tabela de relação entre os mesmos
+		* utlizando um foreach para iterar sobre os posts
+		*
+		* @param: $id_pedido integer
 	*/
   	private function insertOrderProducts($id_pedido)
   	{
@@ -321,10 +351,10 @@ class Pedido extends PR_Controller
   	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Retorna JSON com fornecedores utilizado para adequação do formulário para cadastro de pedidos aos fornecedores
-	*
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna JSON com fornecedores utilizado para adequação do formulário para cadastro de pedidos aos fornecedores
+		*
+		* @return: mixed
 	*/
 	public function getProvidersJSON()
 	{
@@ -332,10 +362,10 @@ class Pedido extends PR_Controller
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Retorna JSON com clientes
-	*
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna JSON com clientes
+		*
+		* @return: mixed
 	*/
 	public function getClientsJSON()
 	{
@@ -343,10 +373,10 @@ class Pedido extends PR_Controller
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Retorna JSON com produtos
-	*
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna JSON com produtos
+		*
+		* @return: mixed
 	*/
 	public function getProductsJSON()
 	{
@@ -354,10 +384,10 @@ class Pedido extends PR_Controller
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Retorna JSON com produtos de um determinado fornecedor
-	*
-	* @return: mixed
+		* @author: Tiago Villalobos
+		* Retorna JSON com produtos de um determinado fornecedor
+		*
+		* @return: mixed
 	*/
 	public function getProductsByProviderJSON($id_fornecedor)
 	{
@@ -376,10 +406,10 @@ class Pedido extends PR_Controller
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Gera PDF para Fornecedor
-	*
-	* @param: $id_pedido integer
+		* @author: Tiago Villalobos
+		* Gera PDF para Fornecedor
+		*
+		* @param: $id_pedido integer
 	*/
 	public function pdfProvider($id_pedido)
 	{
@@ -387,31 +417,31 @@ class Pedido extends PR_Controller
 	}
 
 	/**
-	* @author: Tiago Villalobos
-	* Método geral para geração de pdf de pedidos
-	* Por meio do parâmetro type define-se qual tipo de pdf a ser gerado
-	* sendo 'C' para Cliente e 'F' para Fornecedor
-	*
-	* @param: $id_pedido integer
-	* @param: $type string
+		* @author: Tiago Villalobos
+		* Método geral para geração de pdf de pedidos
+		* Por meio do parâmetro type define-se qual tipo de pdf a ser gerado
+		* sendo 'C' para Cliente e 'F' para Fornecedor
+		*
+		* @param: $id_pedido integer
+		* @param: $type string
 	*/
 	private function pdf($id_pedido, $type)
 	{
 		switch ($type) {
 			case 'C':
-				$this->addData('pedido', $this->pedido->getByIdCompleteDataClient($id_pedido));
+				$data['pedido'] = $this->pedido->getByIdCompleteDataClient($id_pedido);
 				$view = 'pdf_cliente';
 				break;
 			case 'F':
-				$this->addData('pedido', $this->pedido->getByIdCompleteDataProvider($id_pedido));
+				$data['pedido'] = $this->pedido->getByIdCompleteDataProvider($id_pedido);
 				$view = 'pdf_fornecedor';
 		}
 
-	  	$this->addData('pedido_produtos', $this->produto->getByOrder($id_pedido));
+	  	$data['pedido_produtos'] = $this->produto->getByOrder($id_pedido);
 
 		$mpdf = new \Mpdf\Mpdf();
 
-		$html = $this->load->view($this->viewDirectory.'/'.$view, $this->data, TRUE);
+		$html = $this->load->view('pedido/'.$view, $data, TRUE);
 
 		$mpdf->SetTitle('Pedido Nº '.$id_pedido);
 

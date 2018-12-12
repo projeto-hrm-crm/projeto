@@ -33,8 +33,8 @@ class Pedido_model extends PR_Model
 
 		$this->db->insert('pedido_produto', $pedido_produto);
 		$this->setLog(
-			'', 
-			$pedido_produto['id_pedido'], 
+			'',
+			$pedido_produto['id_pedido'],
 			'Inseriu no pedido '.
 			$pedido_produto['id_pedido'].
 			' o produto '
@@ -43,7 +43,7 @@ class Pedido_model extends PR_Model
 		);
 	}
 
-	
+
 
 	/**
 	* @author: Tiago Villalobos
@@ -86,9 +86,7 @@ class Pedido_model extends PR_Model
 					andamento.situacao, andamento.data,  SUM(subtotal) AS total,
 					documento.numero AS documento, documento.tipo AS tipo_documento,
 					telefone.numero AS telefone,
-					endereco.logradouro, endereco.bairro, endereco.numero AS endereco_numero, endereco.complemento,
-					cidade.nome AS cidade,
-					estado.uf AS estado'
+					endereco.logradouro, endereco.bairro, endereco.numero AS endereco_numero, endereco.complemento'
 				)
 				->from("($sub_query) AS pedido", NULL, FALSE)
 				->join('cliente',   'pedido.id_pessoa = cliente.id_pessoa')
@@ -97,8 +95,6 @@ class Pedido_model extends PR_Model
 				->join('documento', 'documento.id_pessoa = cliente.id_pessoa')
 				->join('andamento', 'pedido.id_pedido = andamento.id_pedido')
 				->join('telefone',  'telefone.id_pessoa = cliente.id_pessoa')
-				->join('cidade',    'endereco.id_cidade = cidade.id_cidade')
-				->join('estado',    'estado.id_estado = cidade.id_estado')
 				->where('andamento.atual', TRUE)
 				->where('pedido.id_pedido', $id_pedido)
 				->group_by('andamento.situacao')
@@ -110,11 +106,11 @@ class Pedido_model extends PR_Model
 				->group_by('endereco.bairro')
 				->group_by('endereco.numero')
 				->group_by('endereco.complemento')
-				->group_by('cidade.nome')
-				->group_by('estado.uf')
 				->order_by('andamento.data', 'DESC')
-				->get()
-				->row();
+				->get();
+				echo $this->db->last_query();
+				exit;
+				// ->row();
 	}
 
 	/**
@@ -133,8 +129,6 @@ class Pedido_model extends PR_Model
 				documento.numero AS documento, documento.tipo AS tipo_documento,
 				telefone.numero AS telefone,
 				endereco.logradouro, endereco.bairro, endereco.complemento, endereco.numero AS endereco_numero,
-				cidade.nome AS cidade,
-				estado.uf AS estado,
 				andamento.situacao, andamento.data,
 				pedido.id_pedido, pedido.descricao')
 			->from('pedido')
@@ -142,8 +136,6 @@ class Pedido_model extends PR_Model
 			->join('documento', 'documento.id_pessoa = pedido.id_pessoa')
 			->join('telefone', 'telefone.id_pessoa = pedido.id_pessoa')
 			->join('endereco', 'endereco.id_pessoa = pedido.id_pessoa')
-			->join('cidade', 'endereco.id_cidade = cidade.id_cidade')
-			->join('estado', 'cidade.id_estado = estado.id_estado')
 			->join('andamento', 'andamento.id_pedido = pedido.id_pedido')
 			->where('andamento.atual', TRUE)
 			->where('pedido.id_pedido', $id_pedido)
@@ -247,7 +239,7 @@ class Pedido_model extends PR_Model
         ->update('pedido');
 
         $this->setLog($pedido['id_pedido'], $pedido['id_pedido']);
-       
+
     }
 
     /**
@@ -282,21 +274,21 @@ class Pedido_model extends PR_Model
 		->delete('pedido_produto');
 
         $this->setLog(
-			'', 
-			$id_pedido, 
+			'',
+			$id_pedido,
 			'Removeu os produtos do pedido '.$id_pedido
 		);
 	}
 
 	/**
 	 * @author Pedro Henrique Guimarães
-	 * 
+	 *
 	 * Verifica se existe determinado produto inserido em algum pedido
 	 * @param int $product_id
 	 * @return boolean
 	 */
 
-	 public function checkIfProductIssetInSomeOrder($product_id) 
+	 public function checkIfProductIssetInSomeOrder($product_id)
 	 {
 		 $this->db->select('id_produto')
 				   ->from('pedido_produto')
@@ -304,16 +296,16 @@ class Pedido_model extends PR_Model
 		$sql = $this->db->get();
 
 		if ($sql->num_rows() > 0)
-			return true; 
-		return false;	
+			return true;
+		return false;
 	 }
 
 	 /**
 	  * @author Pedro Henrique Guimarães
 	  *
-	  * Verifica o total de pedidos realizados pelo cliente logado 
+	  * Verifica o total de pedidos realizados pelo cliente logado
 	  *
-	  * @param int $customer_id 
+	  * @param int $customer_id
 	  * @return int
 	 */
 	public function getCustomerTotalOrders($customer_id)
