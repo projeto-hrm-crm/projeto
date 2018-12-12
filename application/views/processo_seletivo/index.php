@@ -28,7 +28,7 @@
                   $classes = ['btn', 'btn-primary', 'btn-sm'];
                   $attr = [
                     'id' => 'id',
-                    'href' => "Processo_Seletivo/cadastrar",
+                    'href' => "processo_seletivo/cadastrar",
                     'title' => 'Cadastrar Processo Seletivo'
                   ];
                   $button = $this->Button->verify('Processo_Seletivo', 'Cadastrar');

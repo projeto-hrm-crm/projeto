@@ -58,9 +58,21 @@
                               }
                               else
                               {
-                                  echo "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
-                                      <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
-                                    </a>";
+                                //  echo "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
+                                //      <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
+                                //    </a>";
+
+                                    $type = "a";
+                                    $label = "<span class='fa fa-clipboard'></span>";
+                                    $classes = ['btn', 'btn-warning'];
+                                    $attr = [
+                                      'id' => 'id',
+                                      'href' => site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo),
+                                    ];
+
+                                    if(!is_null($edit_button))
+                                    $edit_button->build($type, $label, $classes, $attr);
+                                  
                               }
                             }
                           ?>    
