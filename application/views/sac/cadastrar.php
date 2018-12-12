@@ -81,9 +81,18 @@
                   <a title="Cancelar Cadastro" href="<?=site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button title="Cadastrar SAC" type="submit" class="btn btn-primary btn-sm">
-                     <i class="fa fa-plus"></i> Cadastrar
-                  </button>
+                  <?php
+                   $type           = "button";
+                   $label          = "<span class='fa fa-plus'></span> Cadastrar SAC";
+                   $classes        = ['btn', 'btn-primary', 'btn-sm'];
+                   $attr           = [
+                     'title'       => 'Cadastrar SAC',
+                     'type'        => 'submit',
+                     'title'       => 'Cadastrar SAC'
+                   ];
+                    if (!is_null($create_button))
+                     $create_button->build($type, $label, $classes, $attr);
+                 ?>
 
                </div>
            <?php endif; ?>

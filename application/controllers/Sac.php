@@ -46,41 +46,13 @@ class Sac extends CI_Controller
             $data['sac'][$key]->id_cliente = $cliente[0]->nome;
         }
 
+      $data['create_button']      = $this->Button->verify('SAC', 'Cadastrar');
+      $data['edit_button']        = $this->Button->verify('SAC', 'Editar');
+      $data['iterate_button']     = $this->Button->verify('SAC', 'Iterar');
+      $data['reply_button']     = $this->Button->verify('SAC', 'Responder');
+
       loadTemplate('includes/header', 'sac/index', 'includes/footer', $data);
     }
-
-
-    // public function create()
-    // {
-    //   $user_id = $this->session->userdata('user_login');
-    //   if($this->input->post())
-    //   {
-    //
-    //       if($this->form_validation->run('sac'))
-    //       {
-    //           $this->sac->insert($this->getFromPost());
-    //
-    //           $this->redirectSuccess('SAC cadastrado com sucesso!');
-    //       }
-    //       else
-    //       {
-    //           $this->redirectError('cadastrar');
-    //       }
-    //   }
-    //   else
-    //   {
-    //     $this->setTitle('Cadastrar SAC');
-    //     $this->addData('produtos',  $this->produto->get());
-    //     $this->addData('clientes',  $this->cliente->get());
-    //     $this->addData('fornecedores', $this->fornecedor->get());
-    //     $this->addData('tipo',$this->usuario->getUserAccessGroup($user_id));
-    //
-    //     $this->loadFormDefaultScripts();
-    //     $this->loadFormDefaultScripts();
-    //     $this->loadView('cadastrar');
-    //    }
-    // }
-
 
 
     /**
@@ -168,7 +140,7 @@ class Sac extends CI_Controller
             $data['clientes']   = $this->cliente->get();
             $data['tipo']       = $typeUser;
             $data['produtos']   = $this->produto->get();
-
+            $data['create_button']    = $this->Button->verify('SAC', 'Cadastrar');
             loadTemplate('includes/header', 'sac/cadastrar', 'includes/footer', $data);
         }
 
@@ -225,7 +197,7 @@ class Sac extends CI_Controller
             $data['id']=$id;
             $data['sac']=$this->sac->find($id);
             $data['produtos']=$this->produto->get();
-
+            $data['edit_button']    = $this->Button->verify('SAC', 'Editar');
             loadTemplate('includes/header', 'sac/editar', 'includes/footer', $data);
         }
 

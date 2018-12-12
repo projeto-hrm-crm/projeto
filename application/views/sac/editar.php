@@ -42,10 +42,20 @@
                   <a title="Cancelar Atualização" href="<?= site_url('sac')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
-                  <button title="Atualizar SAC" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editar">
-                     <span class="fa fa-check"></span>
-                    Atualizar
-                 </button>
+                  <?php
+                   $type           = "button";
+                   $label          = "<span class='fa fa-check'></span> Atualizar SAC";
+                   $classes        = ['btn', 'btn-primary', 'btn-sm'];
+                   $attr           = [
+                     'title'       => 'Cadastrar SAC',
+                     'type'        => 'submit',
+                     'title'       => 'Cadastrar SAC',
+                     'data-toggle' => 'modal',
+                     'data-target' => 'modalAtualizar'
+                   ];
+                    if (!is_null($edit_button))
+                     $edit_button->build($type, $label, $classes, $attr);
+                 ?>
                </div>
 
          </div>
