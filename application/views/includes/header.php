@@ -45,31 +45,27 @@
 <body>
 <!-- Left Panel -->
 <aside id="left-panel" class="left-panel">
-  <nav class="navbar navbar-expand-sm navbar-default">
-
+  <nav class="navbar navbar-expand-sm navbar-default" aria-label="Barra de navegação">
     <div class="navbar-header">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" role="slider" aria-label="Clique para expandir o menu">
         <i class="fa fa-bars"></i>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>"><span title="λ">Lambda</span></a>
-      <a class="navbar-brand hidden" href="<?php echo base_url();?>">L</a>
+      <a class="navbar-brand" href="<?php echo base_url().'dashboard';?>" aria-label="Bem vindo ao Lambda, você está num sistema que se divide em HRM e CRM"><span alt="CRM e HRM Lambda" title="Lambda" role="banner">Lambda</span></a>
+      <a class="navbar-brand hidden" href="<?php echo base_url();?>" aria-label="Bem vindo ao Lambda, você está num sistema que se divide em HRM e CRM">L</a>
     </div>
 
-    <div id="main-menu" class="main-menu collapse navbar-collapse">
+    <div id="main-menu" class="main-menu collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navigation">
         <li class="active">
-          <a href="<?php echo base_url().'dashboard';?>"> <i class="menu-icon fa fa-dashboard"></i><span title="Principal">Principal </span></a>
+          <a href="<?php echo base_url().'dashboard';?>" aria-label="Aqui você tem acesso as informações que precisa."> <i class="menu-icon fa fa-dashboard"></i><span title="Principal" role="heading">Principal </span></a>
         </li>
-        <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
-          <?php foreach($menus as $key => $menu): ?>
-          <h3 class="menu-title"><?php echo $key;?> </h3><!-- /.menu-title -->
-            <?php foreach($menu as $m): ?>
-              <li class="menu_atual nome_menu <?php echo $m->sub_modulo ?>">
-                <a href="<?php echo base_url()."".$m->link;?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon <?php echo $m->icone;?>" title="<?php echo $m->sub_modulo;?>"></i> <?php echo $m->sub_modulo;?></a>
+        <h1 class="menu-title">Menu geral</h1><!-- /.menu-title -->
 
-              </li>
-            <?php endforeach;?>
-          <?php endforeach; ?>
+        <?php if (isset($menus) && !empty($menus) && count($menus) > 0): ?>
+          <?php foreach($menus as $key => $m): ?>
+            <li class="menu_atual nome_menu <?php echo $key ?>" role="menuitem">
+
+              <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false" aria-label="Acesse informações sobre <?php echo $key;?>"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
 
       <?php endif;?>
       </ul>
@@ -81,27 +77,27 @@
 
 <!-- Right Panel -->
 
-<div id="right-panel" class="right-panel">
+<div id="right-panel" class="right-panel" aria-label="Aqui você acessa as informações relevantes para você.">
 
   <!-- Header-->
-  <header id="header" class="header">
+  <header id="header" class="header" role="complementary" aria-label="Aqui você pode navegar entre opções de busca, visitar o seu perfil e ver suas notificações.">
 
     <div class="header-menu">
 
       <div class="col-sm-7">
-        <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+        <a id="menuToggle" class="menutoggle pull-left" aria-pressed="false" role="slider"><i class="fa fa fa-tasks" role="slider"></i></a>
         <div class="header-left">
-          <button class="search-trigger"><i class="fa fa-search"></i></button>
+          <button class="search-trigger" title="Botão de busca" role="search" aria-label="Aqui você pode fazer pesquisas no sistema."><i class="fa fa-search" aria-label="Botão de Busca"></i></button>
           <div class="form-inline">
             <form class="search-form">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-              <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+              <input class="form-control mr-sm-2" type="text" aria-label="Digite a informação que busca no sistema." placeholder="O que você procura?">
+              <button class="search-close" type="submit" aria-label="Clique para pesquisar."><i class="fa fa-close"></i></button>
             </form>
           </div>
 
             <div class="dropdown for-notification">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false">
-                <i class="fa fa-bell"></i>
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-status="false" title="Notificações" aria-label="Clicando aqui você verá as notificações do sistema" role="button">
+                <i class="fa fa-bell" aria-label="Notificações"></i>
                 <span class="count bg-danger"></span>
               </button>
               <div class="dropdown-menu notification-div" aria-labelledby="notification">
@@ -135,7 +131,7 @@
       <div class="col-sm-5">
         <div class="user-area dropdown float-right">
           <a href="#" class="dropdown-toggle" id="user-dropdown" data-toggle="dropdown" data-status="false">
-            <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" alt="User Avatar">
+            <img class="user-avatar rounded-circle" src="<?php echo $path_profile_image;?>" title="Essa é a sua foto de perfil <?=$this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome; ?>" alt="Essa é a sua foto de perfil <?=$this->usuario->getUserNameById($this->session->userdata('user_login'))[0]->nome; ?>" role="img">
           </a>
 
 
