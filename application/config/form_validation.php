@@ -390,6 +390,14 @@ $config = array(
         )
     ),
 
+    'grupo' => array(
+        array(
+            'field' => 'nome',
+            'label' => 'nome',
+            'rules' => 'required'
+        )
+    ),
+
     'habilidade' => array(
         array(
             'field' => 'nome',

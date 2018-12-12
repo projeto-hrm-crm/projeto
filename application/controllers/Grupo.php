@@ -14,16 +14,21 @@ class Grupo extends CI_Controller
   public function index()
   {
     $data['grupos'] = $this->grupo->get();
+    $data['modulos_grupos'] = $this->grupo->getModulesForGroups();
+    $data['acoes'] = $this->grupo->getActions();
+    $data['acoes_sub_modulos'] = $this->grupo->getActionsSubModules();
+    $data['acoes_grupos'] = $this->grupo->getActionsForGroups();
     $data['permissoes'] = $this->grupo->getPermissions();
     $data['usuarios'] = $this->grupo->getUsersForGroups();
-    //echo '<pre>';
-    //echo print_r($data);exit;
-    //echo '</pre>';
+
+    // echo '<pre>';
+    // echo print_r($data);exit;
+
     $data['title'] = 'Grupo';
 
-    $data['create_button']  = $this->Button->verify('Grupo', 'cadastrar');
+    $data['create_button']  = $this->Button->verify('Grupo', 'Cadastrar');
     $data['edit_button']    = $this->Button->verify('Grupo', 'Editar');
-    $data['list_button']  = $this->Button->verify('Grupo', 'listar');
+    $data['list_button']  = $this->Button->verify('Grupo', 'Listar');
 
     loadTemplate(
       'includes/header',
@@ -35,7 +40,27 @@ class Grupo extends CI_Controller
 
   public function create(){
 
+    $data = $this->input->post();
+
+    if($data) {
+
+      if($this->form_validation->run('grupo')) {
+
+        $this->grupo->insert($data);
+        $this->session->set_flashdata('success', 'Grupo cadastrado com sucesso!');
+        redirect('grupo/cadastrar');
+        redirect('grupo');
+      }
+      else {
+        $this->session->set_flashdata('danger', 'Não foi possivel cadastrar');
+        redirect('grupo/cadastrar');
+      }
+    }
+
     $data['title'] = 'Cadastrar Grupo de Acesso';
+    $data['modulos'] = $this->grupo->getModules();
+    //echo "<pre>";
+    //print_r($data);exit;
     $data['assets'] = array(
       'js' => array(
         'grupo/permissoes.js',

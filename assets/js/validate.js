@@ -429,6 +429,34 @@ jQuery(document).ready(function($) {
     },
   });
 
+  $("#form_grupo").validate({
+    rules: {
+      nome: {
+        required:true,
+        regex: /^[a-zA-Z0-9]+/,
+        maxlength:45,
+      },
+
+      descricao: {
+        required:true,
+        maxlength:255,
+      },
+
+    },
+
+    messages: {
+
+      nome:{
+        required: 'Insira o nome do grupo',
+        regex:    'Por favor, insira apenas letras e números.',
+      },
+
+      descricao:{
+        required: 'Adicione uma descrição',
+      },
+    },
+  });
+
   $('#form-vaga').validate({
 
     highlight:function(input)

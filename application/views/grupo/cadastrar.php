@@ -20,20 +20,28 @@
       <form action="<?php echo site_url('grupo/cadastrar'); ?>" method="POST" class="form-horizontal" id="form_grupo" novalidate="novalidate">
         <div class="card-body">
           <div class="row justify-content-center">
-            <div class="form-group col-12">
+            <div class="form-group col-6">
               <label class=" form-control-label"><red>*</red>Nome do grupo</label>
-              <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do grupo" class="form-control" required>
+              <input type="text" id="nome" name="nome" value = "<?php echo isset($old_data['nome']) ? $old_data['nome'] : null;?>" placeholder="Nome do Grupo" class="form-control" required>
+            </div>
+            <div class="form-group col-md-6 col-sm-6">
+              <label for="id_modulo" class="control-label mb-1"><red>*</red>Modulo</label>
+              <select name="id_modulo" id="id_modulo" class="form-control <?php echo isset($errors['id_modulo']) ? 'is-invalid' : '' ?>">
+                <option value="">Selecione um Módulo</option>
+                <?php foreach ($modulos as $modulo): ?>
+                  <option value="<?php echo $modulo->id_modulo ?>" <?php echo isset($old_data['id_modulo']) ? 'selected' : '' ?>>
+                    <?= $modulo->modulo_nome ?>
+                  </option>
+
+                <?php endforeach; ?>
+              </select>
+              <span class="invalid-feedback">Módulo inválido.</span>
             </div>
             <div class="form-group col-12">
               <label class=" form-control-label"><red>*</red>Descrição</label>
-              <textarea auto-resize placeholder="Descrição do grupo" id="descricao" name="descricao" class="form-control" required></textarea>
+              <textarea auto-resize placeholder="Descrição do Grupo" id="descricao" name="descricao" class="form-control" required></textarea>
             </div>
-            <div class="form-group col-12">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
-              </div>
-            </div>
+
           </div>
         </div>
         <div class="card-footer text-right">
