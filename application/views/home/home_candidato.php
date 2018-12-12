@@ -34,6 +34,24 @@
 		                    				class="btn btn-warning procuraEtapa" data-toggle="modal" data-target="#modalinfo" onclick="getEtapas(<?php echo $ps->id_processo_seletivo;?>)">
 	                                	<span class="fa fa-clipboard"></span>
 	                                </a>
+	                        <!--    <?php
+	                                $type = "a";
+                                    $label = "<i class='fa fa-clipboard'></i>";
+                                    $classes = ['btn', 'btn-warning procuraEtapa'];
+                                    $attr = [
+                                      	'id' => 'id',
+                                     	'onclick' => getEtapas($ps->id_processo_seletivo),
+                                     	'title' => 'Informacao',
+                                      	'data-toggle' => 'modal',
+                        				'data-target' => '#modalRemover'
+                                      ];
+
+                                      $button = $this->Button->verify('home_candidato', 'Informacao');
+
+                                      if(!is_null($button))
+                                      $edit_button->build($type, $label, $classes, $attr);
+                                ?>  -->
+
 
 		                    	</td>
 		                    	<?php }elseif($ps->avaliacao == "Aguardando"){ ?>

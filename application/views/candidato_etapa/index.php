@@ -49,32 +49,33 @@
                           <?php 
                               if(!empty($candidato->curriculum)){
                                 echo "<p>Cadastre seu Currirulum !</p>";
-                              }else{
-                              $data['id_candidato']=$this->candidato_etapa->selectCandidatoByIdUsuario($this->session->userdata('user_login'))[0]->id_candidato;
-                                $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$this->candidato_etapa->getIdEtapaByProcessoID($ps->id_processo_seletivo)->id_etapa);
-                              if($cadastrado!=null)
-                              {
-                                  echo "<p>Concorrendo</p>";
-                              }
-                              else
-                              {
-                                //  echo "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
-                                //      <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
-                                //    </a>";
+                              } else{
+                                  $data['id_candidato']=$this->candidato_etapa->selectCandidatoByIdUsuario($this->session->userdata('user_login'))[0]->id_candidato;
+                                  $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$this->candidato_etapa->getIdEtapaByProcessoID($ps->id_processo_seletivo)->id_etapa);
+                                  if($cadastrado!=null)
+                                  {
+                                    echo "<p>Concorrendo</p>";
+                                  }
+                                  else
+                                  {
+                                    echo "<a class='btn bg-primary text-white' href=".site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo).">
+                                        <p align='center' style='color: white; height: 10px; width: 80px'> Candidatar </p>
+                                      </a>";
 
-                                    $type = "a";
-                                    $label = "<span class='fa fa-clipboard'></span>";
-                                    $classes = ['btn', 'btn-warning'];
-                                    $attr = [
-                                      'id' => 'id',
-                                      'href' => site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo),
-                                    ];
+                                    /*  $type = "a";
+                                      $label = "<i class='fa fa-check'></i> Candidatar";
+                                      $classes = ['btn', 'bg-primary text-white'];
+                                      $attr = [
+                                        'id' => 'id',
+                                        'href' => site_url('candidato_etapa/cadastrar/'.$ps->id_processo_seletivo),
+                                        'title' => 'Candidatar'
+                                      ];
 
-                                    if(!is_null($edit_button))
-                                    $edit_button->build($type, $label, $classes, $attr);
-                                  
+                                      if(!is_null($edit_button))
+                                      $edit_button->build($type, $label, $classes, $attr);
+                                    */
+                                }
                               }
-                            }
                           ?>    
                         </td>
 

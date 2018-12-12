@@ -60,7 +60,11 @@
 
                               <td class="text-center">
 
-                                <?php 
+                               <a title="Editar" href="<?=site_url('processo_seletivo/editar/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-primary">
+                                       <span class="fa fa-pencil-square-o"></span>
+                                   </a>                          
+                                
+                            <!--     <?php 
                                     $type = "a";
                                     $label = "<span class='fa fa-pencil-square-o'></span>";
                                     $classes = ['btn', 'btn-primary'];
@@ -71,30 +75,29 @@
 
                                     if(!is_null($edit_button))
                                     $edit_button->build($type, $label, $classes, $attr);
-                                  ?>
+                                  ?>  -->
 
 
-                              <!--  <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
+                                <a title="Informação" href="<?=site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-warning">
                                        <span class="fa fa-clipboard"></span>
-                                  </a>   -->
-                                 <?php 
+                                  </a>   
+                              <!--   <?php 
                                     $type = "a";
                                     $label = "<span class='fa fa-clipboard'></span>";
                                     $classes = ['btn', 'btn-warning'];
                                     $attr = [
                                       'id' => 'id',
                                       'href' => site_url('processo_seletivo/info/'.$processo_seletivo->id_processo_seletivo),
-                                    ];
+                                    ]; 
+    
+                                    if(!is_null($info_button))
+                                    $info_button->build($type, $label, $classes, $attr);
+                                  ?> -->
 
-                                    if(!is_null($edit_button))
-                                    $edit_button->build($type, $label, $classes, $attr);
-                                  ?>
-
-                              <!--   <a title="candidatos" href="<?=site_url('processo_seletivo/candidatos/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-secondary">
+                                <a title="candidatos" href="<?=site_url('processo_seletivo/candidatos/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-secondary">
                                        <span class="fa fa-address-card"></span>
-                                  </a>  -->
-
-                                <?php 
+                                  </a>  
+                            <!--     <?php 
                                     $type = "a";
                                     $label = "<span class='fa fa-address-card'></span>";
                                     $classes = ['btn', 'btn-secondary'];
@@ -107,9 +110,14 @@
                                     
                                     if (!is_null($button))
                                       $button->build($type, $label, $classes, $attr);
-                                  ?>
+                                  ?>  -->
 
-                                <?php 
+                                  <button title="Excluir Processo" data-href="<?=site_url('processo_seletivo/excluir/'.$processo_seletivo->id_processo_seletivo);?>" class="btn btn-danger" data-toggle="modal" data-target="#modalRemover">
+                                   <span class="fa fa-times"></span>
+                                 </button>  
+
+
+                               <!--  <?php 
                                   $type = "button";
                                   $label = "<span class='fa fa-times'></span>";
                                   $classes = ['btn', 'btn-danger'];
@@ -122,7 +130,7 @@
 
                                   if (!is_null($delete_button))
                                     $delete_button->build($type, $label, $classes, $attr);
-                                ?>
+                                ?>   -->
 
                               </td>
                            </tr>
