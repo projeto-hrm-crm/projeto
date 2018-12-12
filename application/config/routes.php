@@ -80,7 +80,6 @@ $route['produto/alterar-imagem']     = 'Produto/produtoImage';
 //Rotas Log
 $route['log'] = 'Log/index';
 
-
 //Rotas Cidade
 $route['filtrar_cidades/(:num)'] = 'Cidade/filterByState/$1';
 
@@ -102,6 +101,7 @@ $route['funcionario/avaliacoes/(:num)'] = 'Funcionario/assessments/$1';
 $route['funcionario/avaliar/(:num)'] = 'Funcionario/evaluate/$1';
 $route['funcionario/avaliacao-editar/(:num)'] = 'Funcionario/evaluate_edit/$1';
 $route['funcionario/avaliacao-info/(:num)'] = 'Funcionario/evaluate_info/$1';
+$route['funcionario/cargos/(:num)'] = 'Funcionario/cargos/$1';
 
 /** LOGIN */
 $route['login'] = 'Login/index';
@@ -168,6 +168,9 @@ $route['candidato_etapa']                = 'CandidatoEtapa/index';
 $route['candidato_etapa/cadastrar/(:num)']      = 'CandidatoEtapa/create/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
+$route['candidato/avaliar/(:num)/(:any)'] = 'Processo_Seletivo/avaliar/$1/$2';
+
+
 //Rotas Pedido
 $route['pedido']                            = 'Pedido/index';
 $route['pedido/cadastrar']                  = 'Pedido/create';
@@ -187,6 +190,7 @@ $route['processo_seletivo'] = 'Processo_Seletivo/index';
 $route['processo_seletivo/cadastrar'] = 'Processo_Seletivo/create';
 $route['processo_seletivo/info/(:num)'] = 'Processo_Seletivo/info/$1';
 $route['processo_seletivo/editar/(:num)'] = 'Processo_Seletivo/edit/$1';
+$route['processo_seletivo/candidatos/(:num)'] = 'Processo_Seletivo/candidato_processo/$1';
 $route['processo_seletivo/excluir/(:num)'] = 'Processo_Seletivo/delete/$1';
 
 
@@ -197,6 +201,8 @@ $route['perfil/alterar-senha']      = 'Perfil/changePassword';
 $route['perfil/enviar-curriculum']  = 'Perfil/fileUpload';
 $route['perfil/alterar-imagem']     = 'Perfil/profileImage';
 
+//Rota de Configuração Novo Cliente
+$route['configuracao/novo']       = 'Config/new';
 //Rotas Habilidade
 $route['habilidade/cadastrar']        = 'Habilidade/create/';
 $route['habilidade/editar/(:num)']     = 'Habilidade/edit/$1';
@@ -207,16 +213,25 @@ $route['cliente/chart']               = 'Cliente/getChartData';
 $route['notifications']               = 'Usuario/getNotifications';
 $route['notifications/count']         = 'Usuario/getCount';
 $route['notifications/viewed/(:num)'] = 'Usuario/setViewed/$1';
+$route['config']                      = 'Config/index';
+$route['config/createProfile']        = 'Config/createProfile';
+$route['config/createCompany']        = 'Config/createCompany';
+$route['config/insertModules']        = 'Config/insertModules';
 
 $route['events/getUsers/(:num)']      = 'Agenda/getEventUsers/$1';
 
 
 $route['sac/ajaxCreate']              = 'Sac/ajaxCreate';
 $route['events']					  = 'agenda/get';
+$route['events/updateDate/(:num)']	  = 'agenda/updateDate/$1';
+
 $route['etapas/visualizar/(:num)'] 	  = 'Home/getEtapasProcesso/$1';
+
+$route['status/avancar/(:num)/(:num)'] = 'Processo_Seletivo/avancar/$1/$2';
 
 //Rotas Usuario
 $route['cadastro'] = 'Usuario/create';
+
 
 //Rotas Remanejamento
 
@@ -224,5 +239,7 @@ $route['remanejamento'] = 'Remanejamento/index';
 $route['remanejamento/cadastrar'] = 'Remanejamento/create';
 $route['remanejamento/editar/(:num)']     = 'Remanejamento/edit/$1';
 $route['remanejamento/excluir/(:num)']    = 'Remanejamento/delete/$1';
+$route['remanejamento/relatorio/(:num)']  = 'Remanejamento/relatorio/$1';
 
-
+//Rota Contato
+$route['contato'] = 'Contato';

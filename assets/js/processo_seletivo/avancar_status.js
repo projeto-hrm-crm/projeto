@@ -1,12 +1,26 @@
-function statusUp()
-{
-	var status
+jQuery().ready(function($){
 
-	$.ajax({
-        url: 'database/editar.php',
-        method: 'POST',
-        data: {'status': status,'id': id},
-        dataType: 'json'
-    });
-}
+	getStatus = function(id, status) {
 
+  		if(status >= 4){
+		   	alert("etapa finalizada");
+
+	    }else{
+	    	status++;
+		    
+			$.ajax({
+
+		            url: BASE_URL + "status/avancar/" + id + "/" + status,
+		            data: 'JSON',
+		            success: (value) => {
+
+	               		alert(value);
+		            },
+		            error: (error) => {
+		            	alert("não atualizado");
+		            }
+		    });
+	    }
+	}
+
+});

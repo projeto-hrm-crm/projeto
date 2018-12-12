@@ -10,7 +10,6 @@
   </nav>
   <div class="tab-content pl-3 pt-2" id="nav-tabContent">
     <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
       <!-- CRM -->
       <div class="col-md-4" role="presentation">
         <div class="card" role="content info" aria-label="Informações sobre os clientes cadastrados.">

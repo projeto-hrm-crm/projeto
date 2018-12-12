@@ -24,7 +24,17 @@ class Almoxarifado_model extends PR_Model
     * @return array: todos registro de almoxarifado cadastrados
     */
     public function get(){
-        return $this->db->get('almoxarifado')->result();
+        // return $this->db->get('almoxarifado')->result();
+
+        $almoxarifado = $this->db->select('*')
+          ->from('almoxarifado')
+          ->where('almoxarifado.deletado is NULL')
+          ->get();
+
+          if ($almoxarifado) {
+            return $almoxarifado->result();
+          }
+          return null;
     }
 
     /**
@@ -65,7 +75,7 @@ class Almoxarifado_model extends PR_Model
 
         $this->db
         ->where('id_almoxarifado', $id_almoxarifado)
-        ->delete('almoxarifado');
+        ->update('almoxarifado');
 
         $this->setLog($almoxarifado->nome, $almoxarifado->id_almoxarifado);
 

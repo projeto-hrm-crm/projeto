@@ -67,8 +67,6 @@
 
               <a href="<?php echo base_url()."".$m['link'];?>" class="" data-toggle="" aria-haspopup="true" aria-expanded="false" aria-label="Acesse informações sobre <?php echo $key;?>"> <i class="menu-icon <?php echo $m['icon'];?>" title="<?php echo $key;?>"></i><span title="<?php echo $key;?>"> <?php echo $key;?> </span></a>
 
-            </li>
-          <?php endforeach;?>
       <?php endif;?>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -106,6 +104,14 @@
                 <!-- LOADED FROM AJAX -->
               </div>
              </div>
+
+             <div class="dropdown for-contacts">
+               <button class="btn btn-secondary dropdown-toggle" type="button" id="contacts" data-status="false">
+                 <a href="<?=site_url('contato')?>"/>
+                 <span class="fa fa-phone"></span>
+               </button>
+
+              </div>
         </div>
       </div>
        <?php

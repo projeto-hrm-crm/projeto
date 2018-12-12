@@ -2,10 +2,10 @@
 class Perfil extends CI_Controller {
 
     public function __construct() {
-        parent::__construct();
-        $user_id = $this->session->userdata('user_login');
-        $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-        //$this->usuario->hasPermission($user_id, $currentUrl);
+      parent::__construct();
+      $access_group = $this->session->userdata('user_id_grupo_acesso');
+      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      $this->usuario->hasPermission($access_group, $currentUrl);
     }
 
     /**
@@ -14,7 +14,6 @@ class Perfil extends CI_Controller {
     *
     **/
     public function index(){
-
       $typeUser = $this->usuario->getUserAccessGroup($this->session->userdata('user_login'));
       $user_id = $this->session->userdata('user_login');
       $data['pessoa'] = $this->usuario->getUserNameById($this->session->userdata('user_login'));
@@ -154,12 +153,12 @@ class Perfil extends CI_Controller {
       }
 
        if (isset($_FILES['arquivo']))  {
-
          $arquivo    = $_FILES['arquivo'];
+         $image_name = generateImageName($arquivo['name']);
          $configuracao = array(
             'upload_path'   => './uploads/',
             'allowed_types' => 'pdf|doc|docs',
-            'file_name'     => $arquivo['name'],
+            'file_name'     => $image_name,
             'max_size'      => '999999'
          );
 
@@ -169,7 +168,7 @@ class Perfil extends CI_Controller {
          if ($this->upload->do_upload('arquivo')){
 
             $array = array(
-              'arquivo' => $arquivo['name'],
+              'arquivo' => $image_name,
               'id_pessoa' => $id_pessoa,
             );
 
@@ -211,10 +210,11 @@ class Perfil extends CI_Controller {
        if (isset($_FILES['arquivo']))  {
 
          $arquivo    = $_FILES['arquivo'];
+         $image_name = generateImageName($arquivo['name']);
          $configuracao = array(
             'upload_path'   => './uploads/profileImage/',
-            'allowed_types' => 'jpef|jpg|png',
-            'file_name'     => $arquivo['name'],
+            'allowed_types' => 'jpeg|jpg|png',
+            'file_name'     => $image_name,
             'max_size'      => '999999'
          );
 
@@ -222,17 +222,15 @@ class Perfil extends CI_Controller {
          $this->upload->initialize($configuracao);
 
          if ($this->upload->do_upload('arquivo')){
-
-            $size = getimagesize('./uploads/profileImage/'.$arquivo["name"]);
-
+            $size = getimagesize('./uploads/profileImage/'.$image_name);
             $largura = $size[0];
             $altura = $size[1];
 
 
             $config['image_library'] = 'gd2';
-            $config["source_image"] = './uploads/profileImage/'.$arquivo["name"];
-            $config['allowed_types'] = 'jpef|jpg|png';
-            $config['new_image'] = './uploads/profileImage/'.$arquivo['name'];
+            $config["source_image"] = './uploads/profileImage/'.$image_name;
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['new_image'] = './uploads/profileImage/'.$image_name;
             $config['create_thumb'] = false;
             $config['maintain_ratio'] = FALSE;
 
@@ -250,14 +248,13 @@ class Perfil extends CI_Controller {
             if ($this->image_lib->crop()){
 
                $array = array(
-                 'arquivo' => $arquivo['name'],
+                 'arquivo' => $image_name,
                  'id_pessoa' => $id_pessoa,
                );
 
 
 
                $this->pessoa->imageUpdate($array);
-
                $this->session->set_flashdata('success', 'Imagem de perfil atualizada com sucesso!');
                redirect('perfil');
             }
@@ -265,7 +262,7 @@ class Perfil extends CI_Controller {
          else{
             //echo $this->upload->display_errors();
             //exit;
-            $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho  e possuir a extensão jpg, jpeg ou png');
+            $this->session->set_flashdata('danger', 'Não foi possivel enviar o arquivo! O arquivo de ter no máximo 2mb de tamanho e possuir a extensão jpg, jpeg ou png');
             redirect('perfil/alterar-imagem');
          }
 
@@ -289,7 +286,7 @@ class Perfil extends CI_Controller {
       $data = $this->input->post();
 
       if ($data) {
-         
+
          if (($data['senha']==$data['senha-confirme']) and $data['senha'] and $data['senha-confirme']) {
             echo $this->usuario->changePassword([
                'senha' => $data['senha'],
@@ -298,12 +295,12 @@ class Perfil extends CI_Controller {
 
            $this->session->set_flashdata('success', 'Senha atualizada com sucesso!');
            redirect('perfil');
-            
+
          }else{
            $this->session->set_flashdata('danger', 'As senhas não conhecidem!');
            redirect('perfil/alterar-senha/');
          }
-         
+
       }
 
       $data['title'] = 'Alterar Senha';

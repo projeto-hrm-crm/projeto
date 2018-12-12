@@ -10,6 +10,42 @@
             defaultDate: Date(),
             navLinks: true,
             editable: true,
+            eventDrop: function(event, delta, revertFunc) {
+
+                $('#drop').modal('show');
+
+                var modalConfirm = function(callback){
+
+                    $("#confirmar").on("click", function(){
+                        callback(true);
+                        $("#drop").modal('hide');
+                    });
+
+                    $("#cancelar").on("click", function(){
+                        callback(false);
+                        $("#drop").modal('hide');
+                    });
+                }
+
+                modalConfirm(function(confirm){
+                    if(confirm){
+                        $.ajax({
+                            url: BASE_URL + "events/updateDate/" + event.id,
+                            type: 'post',
+                            data: {'date_start': event.start.format('YYYY-MM-DD HH:mm:ss'), 'date_end': event.end.format('YYYY-MM-DD HH:mm:ss')},
+                            success: (value) => {
+                                var value = JSON.parse(value);
+                            },
+                            error: (error) => {
+
+                            }
+                        });
+                    } else {
+                        window.location.href = "";
+                    }
+
+                });
+            },
             eventLimit: true,
             eventClick: function(event) {
                 $('.ocultar-btn').show();
@@ -35,7 +71,7 @@
                     $('.ocultar-btn-delete').hide();
                 }
 
-            
+
                 $('#visualizar').modal('show');
                 getUsers(event.id);
 

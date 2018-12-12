@@ -9,9 +9,9 @@ class CandidatoEtapa extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $user_id = $this->session->userdata('user_login');
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
     $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-    #$this->usuario->hasPermission($user_id, $currentUrl);
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
   /**
   * author: Matheus Ladislau
@@ -22,8 +22,10 @@ class CandidatoEtapa extends CI_Controller
   **/
   public function index()
   {
+    $id_usuario = $this->session->userdata('user_login');
     $data['title'] = 'Candidatar-se à Vaga';
     $data['processo_seletivo']=$this->etapa->getProcessoSeletivo();
+    $data['candidato'] = $this->candidato->getById($id_usuario);
     loadTemplate(
       'includes/header',
       'candidato_etapa/index',
@@ -54,6 +56,7 @@ class CandidatoEtapa extends CI_Controller
         $get_idEtapa= $this->candidato_etapa->getIdEtapaByProcessoID($id_processo_seletivo);
         $data['id_etapa']=$get_idEtapa->id_etapa;
         $data['id_candidato']=$usuario->id_candidato;
+        $data['avaliacao']= "Aguardando";
         $cadastrado=$this->candidato_etapa->find($data['id_candidato'],$data['id_etapa']);
         if($cadastrado!=null)
           $this->session->set_flashdata('danger',"Candidatura já realizada");

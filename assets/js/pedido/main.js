@@ -73,7 +73,7 @@ jQuery(document).ready(function($) {
                         width: '20%',
                         class: 'td-value'
                     }).data('default', selectedOption.data('value'))
-                    .text('R$ '+ selectedOption.data('value').replace('.', ','));
+                    .text('R$ '+ selectedOption.data('value').toString().replace('.', ','));
 
                 tr.append(tdValue);
 

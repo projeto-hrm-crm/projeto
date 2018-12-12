@@ -34,7 +34,7 @@ $seeds = array(
             'descricao'
           ),
           'values' => array(
-            'Regursos Humanos',
+            'Recursos Humanos',
             'RH',
             'Cuida das pessoinhas da empresa<3'
           ),
@@ -63,60 +63,70 @@ $seeds = array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Camilo Silva',
             'camilosilva@teste.com',
-            '1998-10-20'
+            '1998-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Pedro Silva',
             'pedrosilva@teste.com',
-            '1990-10-20'
+            '1990-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Matheus Santos',
             'matheussantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Rodrigo Santos',
             'rodrigosantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Fernando Santos',
             'fernandosantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         // --------------------------Candidato--------------------------------
@@ -124,60 +134,70 @@ $seeds = array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Camila Mota',
             'camilamota@teste.com',
-            '1998-10-20'
+            '1998-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Pietra Silva',
             'pietrasilva@teste.com',
-            '1990-10-20'
+            '1990-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Maitê Santos',
             'maitesantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Yasmyn Santos',
             'yasminsantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Carla Santos',
             'carlasantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
 
@@ -186,60 +206,70 @@ $seeds = array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Ederson Pia',
             'edersonpia@teste.com',
-            '1998-10-20'
+            '1998-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Luciana Santos',
             'luciansantos@teste.com',
-            '1990-10-20'
+            '1990-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Paloma Cabral',
             'palomacabral@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Carol Santos',
             'Carolsantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Amanda Santos',
             'amandasantos@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         // --------------------------Fornecedor--------------------------------
@@ -247,60 +277,70 @@ $seeds = array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'João Carlos',
             'joaocarlos@teste.com',
-            '1998-10-20'
+            '1998-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Diana Costa',
             'dianacoste@teste.com',
-            '1990-10-20'
+            '1990-10-20',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Amanda Ribeiro',
             'amandaribeiro@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Joaquim Costa',
             'joaquincosta@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'email',
-            'data_criacao'
+            'data_criacao',
+            'imagem'
           ),
           'values' => array(
             'Carlos Lopes',
             'carloslopes@teste.com',
-            '1996-11-23'
+            '1996-11-23',
+            '225088461.jpg'
           ),
         )
       )
@@ -511,11 +551,13 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'admin@admin.com',
             hash('sha256', 'admin'),
+            '1',
             '1',
             '1'
           ),
@@ -525,13 +567,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'pedrosilva@teste.com',
             hash('sha256','pedrosilva'),
             '4',
-            '2'
+            '2',
+            '1'
           ),
         ),
         array(
@@ -539,13 +583,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'matheussantos@teste.com',
             hash('sha256','matheussantos'),
             '4',
-            '3'
+            '3',
+            '1'
           ),
         ),
         array(
@@ -553,13 +599,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'rodrigosantos@teste.com',
             hash('sha256','rodrigosantos'),
             '4',
-            '4'
+            '4',
+            '1'
           ),
         ),
         array(
@@ -567,13 +615,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'fernandosantos@teste.com',
             hash('sha256','fernandosantos'),
             '4',
-            '5'
+            '5',
+            '1'
           ),
         ),
         // --------------------------Candidato--------------------------------
@@ -582,13 +632,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'camilamota@teste.com',
             hash('sha256','camilamota'),
             '5',
-            '6'
+            '6',
+            '1'
           ),
         ),
         array(
@@ -596,13 +648,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'pietrasilva@teste.com',
             hash('sha256','pietrasilva'),
             '5',
-            '7'
+            '7',
+            '1'
           ),
         ),
         array(
@@ -610,13 +664,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'maitesantos@teste.com',
             hash('sha256','maitesantos'),
             '5',
-            '8'
+            '8',
+            '1'
           ),
         ),
         array(
@@ -624,13 +680,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'yasminsantos@teste.com',
             hash('sha256','yasminsantos'),
             '5',
-            '9'
+            '9',
+            '1'
           ),
         ),
         array(
@@ -638,13 +696,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'carlasantos@teste.com',
             hash('sha256','carlasantos'),
             '5',
-            '10'
+            '10',
+            '1'
           ),
         ),
 
@@ -654,13 +714,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'edersonpia@teste.com',
             hash('sha256','edersonpia'),
             '6',
-            '11'
+            '11',
+            '1'
           ),
         ),
         array(
@@ -668,13 +730,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'luciansantos@teste.com',
             hash('sha256','luciansantos'),
             '6',
-            '12'
+            '12',
+            '1'
           ),
         ),
         array(
@@ -682,13 +746,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'palomacabral@teste.com',
             hash('sha256','palomacabral'),
             '6',
-            '13'
+            '13',
+            '1'
           ),
         ),
         array(
@@ -696,13 +762,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'carolsantos@teste.com',
             hash('sha256','carolsantos'),
             '6',
-            '14'
+            '14',
+            '1'
           ),
         ),
         array(
@@ -710,13 +778,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'amandasantos@teste.com',
             hash('sha256', 'amandasantos'),
             '6',
-            '15'
+            '15',
+            '1'
           ),
         ),
         // --------------------------Fornecedor--------------------------------
@@ -725,13 +795,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'joaocarlos@teste.com',
             hash('sha256','joaocarlos'),
             '3',
-            '16'
+            '16',
+            '1'
           ),
         ),
         array(
@@ -739,13 +811,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'dianacoste@teste.com',
             hash('sha256','dianacoste'),
             '3',
-            '17'
+            '17',
+            '1'
           ),
         ),
         array(
@@ -753,13 +827,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'amandaribeiro@teste.com',
             hash('sha256','amandaribeiro'),
             '3',
-            '18'
+            '18',
+            '1'
           ),
         ),
         array(
@@ -767,13 +843,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'joaquincosta@teste.com',
             hash('sha256','joaquincosta'),
             '3',
-            '19'
+            '19',
+            '1'
           ),
         ),
         array(
@@ -781,13 +859,15 @@ $seeds = array(
             'login',
             'senha',
             'id_grupo_acesso',
-            'id_pessoa'
+            'id_pessoa',
+            'empresa_id_empresa'
           ),
           'values' => array(
             'carloslopes@teste.com',
             hash('sha256','carloslopes'),
             '3',
-            '20'
+            '20',
+            '1'
           ),
         ),
       )
@@ -1159,6 +1239,14 @@ $seeds = array(
           ),
           'values' => array(
             '12'
+          ),
+        ),
+        array(
+          'fields' => array(
+            'id_pessoa'
+          ),
+          'values' => array(
+            '1'
           ),
         ),
         array(
@@ -2152,7 +2240,8 @@ $seeds = array(
             'recebimento',
             'id_fornecedor',
             'valor',
-            'descricao'
+            'descricao',
+            'imagem'
           ),
           'values' => array(
             '741',
@@ -2163,7 +2252,8 @@ $seeds = array(
             '2018-01-03',
             '1',
             '1,417.98',
-            'Prestação de serviço de imposto de renda'
+            'Prestação de serviço de imposto de renda',
+            '225088461.jpg'
           ),
         ),
         array(
@@ -2176,7 +2266,8 @@ $seeds = array(
             'recebimento',
             'id_fornecedor',
             'valor',
-            'descricao'
+            'descricao',
+            'imagem'
           ),
           'values' => array(
             '369',
@@ -2187,7 +2278,8 @@ $seeds = array(
             '2018-01-01',
             '4',
             '1.98',
-            'lapis de madeira'
+            'lapis de madeira',
+            '225088461.jpg'
           ),
         ),
         array(
@@ -2200,7 +2292,8 @@ $seeds = array(
             'recebimento',
             'id_fornecedor',
             'valor',
-            'descricao'
+            'descricao',
+            'imagem'
           ),
           'values' => array(
             '23494',
@@ -2211,7 +2304,8 @@ $seeds = array(
             '2018-01-03',
             '4',
             '117.98',
-            'lapiz de borracha'
+            'lapiz de borracha',
+            '225088461.jpg'
           ),
         ),
         array(
@@ -2224,7 +2318,8 @@ $seeds = array(
             'recebimento',
             'id_fornecedor',
             'valor',
-            'descricao'
+            'descricao',
+            'imagem'
           ),
           'values' => array(
             '2336494',
@@ -2235,7 +2330,8 @@ $seeds = array(
             '2018-01-03',
             '5',
             '117.98',
-            'caderno brochura'
+            'caderno brochura',
+            '225088461.jpg'
           ),
         ),
         array(
@@ -2248,7 +2344,8 @@ $seeds = array(
             'recebimento',
             'id_fornecedor',
             'valor',
-            'descricao'
+            'descricao',
+            'imagem'
           ),
           'values' => array(
             '2336494',
@@ -2259,7 +2356,8 @@ $seeds = array(
             '2018-01-03',
             '3',
             '15.98',
-            '500 folhas'
+            '500 folhas',
+            '225088461.jpg'
           ),
         ),
         array(
@@ -2272,7 +2370,8 @@ $seeds = array(
             'recebimento',
             'id_fornecedor',
             'valor',
-            'descricao'
+            'descricao',
+            'imagem'
           ),
           'values' => array(
             '233464364',
@@ -2283,7 +2382,8 @@ $seeds = array(
             '2018-01-03',
             '3',
             '15.98',
-            'colorido'
+            'colorido',
+            '225088461.jpg'
           ),
         ),
       )
@@ -2297,72 +2397,84 @@ $seeds = array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Contador',
             'Realiza a contabilidade da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Auxiliar Financeiro',
             'Auxilia nas tarefas financeiras da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Recrutador',
             'Realiza o rerutamento da empresa',
-            '317.98'
+            '317.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Agente Administrativo',
             'Realiza a prestação de contas da empresa',
-            '417.98'
+            '417.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Auxiliar de RH',
             'Realiza o controle do RH da empresa',
-            '287.98'
+            '287.98',
+            '48'
           ),
         ),
         array(
           'fields' => array(
             'nome',
             'descricao',
-            'salario'
+            'salario',
+            'carga_horaria_semanal'
           ),
           'values' => array(
             'Gerente Financeiro',
             'Realiza o controle financeiro da empresa',
-            '617.98'
+            '617.98',
+            '48'
           ),
         ),
       )
@@ -3193,19 +3305,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '1',
             '5',
             '1',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3213,19 +3321,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '2',
             '4',
             '2',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3233,19 +3337,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '3',
             '3',
             '2',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3253,19 +3353,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '4',
             '2',
             '3',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
         array(
@@ -3273,19 +3369,15 @@ $seeds = array(
             'id_cargo',
             'id_funcionario',
             'id_setor',
-            'status',
             'criado',
-            'atualizado',
-            'deletado'
+            'atualizado'
           ),
           'values' => array(
             '5',
             '1',
             '4',
-            '1',
             '2018-10-16 10:08:31',
-            '2018-10-16 10:08:31',
-            null
+            '2018-10-16 10:08:31'
           ),
         ),
       )

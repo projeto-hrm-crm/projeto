@@ -15,10 +15,11 @@ class Cliente extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
+ 
 
   /**
   * @author Camila Sales
@@ -40,6 +41,9 @@ class Cliente extends CI_Controller
     foreach ($data['clientes'] as $key => $cliente) {
       $data['clientes'][$key]->data_nascimento = switchDate($data['clientes'][$key]->data_nascimento);
     }
+
+    $data['edit_button']    = $this->Button->verify('Cliente', 'Editar');
+    $data['delete_button']  = $this->Button->verify('Cliente', 'excluir');
 
     loadTemplate('includes/header', 'cliente/index', 'includes/footer', $data);
   }
@@ -70,7 +74,8 @@ class Cliente extends CI_Controller
             'login'             => $data['email'],
             'senha'             => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
             'id_grupo_acesso'   => 4,
-            'id_pessoa'         => $id_pessoa
+            'id_pessoa'         => $id_pessoa,
+            'empresa_id_empresa'=> $this->session->userdata('user_id_empresa')
         ]);
 
         $this->endereco->insert([
@@ -134,7 +139,7 @@ class Cliente extends CI_Controller
 
         $this->pessoa->update(
               [
-                'id_pessoa' => $cliente[0]->id_pessoa, 
+                'id_pessoa' => $cliente[0]->id_pessoa,
                 'nome'      => $data['cliente']['nome'],
                 'email'     =>$data['cliente']['email']
               ]
@@ -145,9 +150,9 @@ class Cliente extends CI_Controller
             'cep'         => $this->input->post('cep'),
             'bairro'      => $this->input->post('bairro'),
             'logradouro'  => $this->input->post('logradouro'),
-            'numero'      => $this->input->post('numero'), 
+            'numero'      => $this->input->post('numero'),
             'complemento' => $this->input->post('complemento'),
-            'id_pessoa'   => $cliente[0]->id_pessoa, 
+            'id_pessoa'   => $cliente[0]->id_pessoa,
             'estado'        => $this->input->post('estado'),
             'cidade'        => $this->input->post('cidade')
           ]
@@ -157,14 +162,14 @@ class Cliente extends CI_Controller
         $this->documento->update(
           [
             'tipo'      => 'cpf',
-            'numero'    => $this->input->post('cpf') , 
+            'numero'    => $this->input->post('cpf') ,
             'id_pessoa' => $cliente[0]->id_pessoa
           ]
         );
 
         $this->telefone->update(
           [
-            'numero'    =>  $this->input->post('tel'),  
+            'numero'    =>  $this->input->post('tel'),
             'id_pessoa' =>  $cliente[0]->id_pessoa
           ]
         );

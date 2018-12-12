@@ -18,7 +18,10 @@
 function loadTemplate($header_path = "", $body_path = "", $footer_path = "", $data = null)
 {
     $ci = &get_instance();
-    $data['menus'] = $ci->menu->getUserMenu($ci->session->userdata('user_login'));
+    $data['menus'] = $ci->menu->getMenuByAccessGroup($ci->session->userdata('user_id_grupo_acesso'));
+    // echo "<pre>";
+    // print_r($data['menus']);exit;
+
 
     if (empty($header_path))
         die('Não há caminho especificado para o cabeçalho');

@@ -129,5 +129,8 @@ class ProcessoSeletivo_model extends CI_Model
     } catch (\Exception $e) {}
   }
 
-   
+
+  public function getEtapasProcesso($id){
+  }
+       
 }

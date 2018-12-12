@@ -9,9 +9,9 @@ class Home extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-      $user_id = $this->session->userdata('user_login');
-      $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
-      $this->usuario->hasPermission($user_id, $currentUrl);
+    $access_group = $this->session->userdata('user_id_grupo_acesso');
+    $currentUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+    $this->usuario->hasPermission($access_group, $currentUrl);
   }
 
 
@@ -52,6 +52,7 @@ class Home extends CI_Controller
     $data['title'] = 'Dashboard';
     $data['assets'] = [
       'js' => [
+         'home/resetLocalStorage.js',
          'chartjs.min.js',
          'cliente/home-charts.js',
          'cliente/home-sac.js',
@@ -129,6 +130,7 @@ class Home extends CI_Controller
     $data = [];
 
     $data['processo_seletivo']=$this->etapa->getProcessoSeletivoEtapa($user_id);
+    $data['candidato'] = $this->candidato->getById($user_id);
     return $data;
 
   }

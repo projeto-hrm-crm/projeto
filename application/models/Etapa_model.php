@@ -9,7 +9,8 @@ class Etapa_model extends CI_Model
     }
 
     public function get(){
-        $this->db->select('etapa.id_etapa, etapa.descricao');
+        $this->db->select('etapa.id_etapa, etapa.nome, etapa.descricao, etapa.status, etapa.id_processo_seletivo');
+
         return $this->db->get('etapa')->result();
     }
 
@@ -71,7 +72,7 @@ class Etapa_model extends CI_Model
   public function getProcessoSeletivoEtapa($user_id)
   {
     try {
-      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas, vaga.requisitos, ')
+      $query = $this->db->select('processo_seletivo.id_processo_seletivo, processo_seletivo.codigo, processo_seletivo.nome, processo_seletivo.id_vaga, processo_seletivo.data_inicio, processo_seletivo.descricao, processo_seletivo.data_fim, cargo.nome as nome_cargo, vaga.quantidade as vagas, vaga.requisitos, processo_seletivo_candidato.avaliacao')
       ->from('etapa')
       ->join('processo_seletivo', 'etapa.id_processo_seletivo = processo_seletivo.id_processo_seletivo')
       ->join('vaga', 'vaga.id_vaga = processo_seletivo.id_vaga')
@@ -107,5 +108,14 @@ class Etapa_model extends CI_Model
       }
     }
     catch (\Exception $e) {}
+  }
+
+  public function updateStatus($id, $status)
+  {
+    $this->db
+        ->set('status', $status)
+        ->where('id_etapa', $id)
+        ->update('etapa');
+
   }
 }

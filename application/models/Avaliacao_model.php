@@ -17,6 +17,7 @@ class Avaliacao_model extends PR_Model {
             'proatividade' => $data['proatividade'],
             'id_funcionario' => $data['id_funcionario'],
             'id_avaliador' => $data['id_avaliador'],
+            'observacao' => $data['observacao'],
             'data_avaliacao' => date("Y-m-d H:i:s")
         ]);
                 
@@ -69,6 +70,7 @@ class Avaliacao_model extends PR_Model {
         ->set('avaliacao.relacao_interpessoal', $data['relacao_interpessoal'])
         ->set('avaliacao.proatividade', $data['proatividade'])
         ->set('avaliacao.id_avaliador', $data['id_avaliador'])
+        ->set('avaliacao.observacao', $data['observacao'])
         ->where('avaliacao.id_avaliacao', $data['id_avaliacao'])
         ->update('avaliacao');
         

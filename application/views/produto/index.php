@@ -21,9 +21,21 @@
                     <strong class="card-title">Produtos</strong>
                 </div>
                 <div class="card-body">
-                    <a href="<?= site_url('produto/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar produto">
-                        <i class="fa fa-check"></i> Novo Cadastro
-                    </a><br><br>
+                    <?php 
+                      $type = "a";
+                      $label = "<i class='fa fa-check'></i> Novo Cadastro";
+                      $classes = ['btn', 'btn-primary', 'btn-sm'];
+                      $attr = [
+                        'id' => 'id',
+                        'href' => "produto/cadastrar",
+                        'title' => 'Cadastrar Cliente'
+                      ];
+                      $button = $this->Button->verify('Produto', 'Cadastrar');
+
+                      if (!is_null($button))
+                        $button->build($type, $label, $classes, $attr);
+                   
+                    ?><br><br>
                     <table class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
@@ -47,12 +59,34 @@
                                         <td><?= number_format(floatval($produto->valor)/100,2,',','.');?></td>
                                         <td><?= $produto->razao_social;?></td>
                                         <td>
-                                            <a href="produto/editar/<?php echo $produto->id_produto?>" class="btn btn-primary" title="Atualizar Produto">
-                                                <span class="fa fa-edit"></span>
-                                            </a>
-                                            <button data-href="produto/excluir/<?php echo $produto->id_produto?>" class="btn btn-danger" title="Excluir Produto" data-toggle="modal" data-target="#modalRemover">
-                                                <span class="fa fa-times"></span>
-                                            </button>
+                             
+                             
+                                            <?php 
+                                                $type = "a";
+                                                $label = " <span class='fa fa-edit'></span>";
+                                                $classes = ['btn', 'btn-primary'];
+                                                $attr = [
+                                                    'href' => 'produto/editar/'. $produto->id_produto,
+                                                    'title' => 'Atualizar Produto'
+                                                ];
+                                                $this->Button->build($type, $label, $classes, $attr, 'Produto', 'Editar');
+                                            ?>
+                                       
+                                    
+                                            <?php 
+                                              $type = "button";
+                                              $label = "<span class='fa fa-times'></span>";
+                                              $classes = ['btn', 'btn-danger'];
+                                              $attr = [
+                                                'id' => 'id',
+                                                'data-href' => "produto/excluir/".$produto->id_produto,
+                                                'data-toggle' => 'modal',
+                                                'data-target' => '#modalRemover'
+                                              ];
+
+                                              if (!is_null($delete_button))
+                                                $delete_button->build($type, $label, $classes, $attr);
+                                            ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

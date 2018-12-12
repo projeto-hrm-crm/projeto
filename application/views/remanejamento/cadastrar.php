@@ -52,7 +52,7 @@
                            <?php endforeach; ?>
                         </select>
                      </div>
-                    
+
                      <div class="form-group col-md-12 col-sm-12">
                         <label for="id_setor" class="form-control-label">Setor</label>
                         <select name="id_setor" class="form-control" id="setor">
@@ -65,7 +65,7 @@
                   </div>
                </div>
                <div class="card-footer text-right">
-                  <a title="Cancelar Cadastro" href="<?=site_url('sac')?>" class="btn btn-danger btn-sm">
+                  <a title="Cancelar Cadastro" href="<?=site_url('remanejamento')?>" class="btn btn-danger btn-sm">
                      <i class="fa fa-times"></i> Cancelar
                   </a>
                   <button title="Cadastrar SAC" type="submit" class="btn btn-primary btn-sm">
