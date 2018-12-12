@@ -21,8 +21,13 @@
                     <strong class="card-title">Processos Seletivos</strong>
                   </div>
 
+
              <div class="card-body">
-                <?php 
+
+                    <a title="Cadastrar Processo Seletivo" href="<?= site_url('processo_seletivo/cadastrar')?>" class="btn btn-primary btn-sm">
+            <i class="fa fa-check"></i> Novo Cadastro
+          </a>
+              <!--  <?php 
                   $type = "a";
                   $label = "<i class='fa fa-check'></i> Novo Cadastro";
                   $classes = ['btn', 'btn-primary', 'btn-sm'];
@@ -35,7 +40,7 @@
                   
                   if (!is_null($button))
                     $button->build($type, $label, $classes, $attr);
-                ?>
+                ?>  -->
             <br />
               <br />
 
