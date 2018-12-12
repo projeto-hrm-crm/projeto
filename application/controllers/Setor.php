@@ -31,6 +31,11 @@ class Setor extends CI_Controller
 
       }
     }
+
+    $data['create_button']    = $this->Button->verify('Setor', 'Cadastrar');
+    $data['edit_button']    = $this->Button->verify('Setor', 'Editar');
+    $data['delete_button']  = $this->Button->verify('Setor', 'excluir');
+
     loadTemplate('includes/header', 'setor/index', 'includes/footer', $data);
   }
 
@@ -79,8 +84,10 @@ class Setor extends CI_Controller
       }
 
     }else {
-      $data['title'] = 'Setor';
-      $data['setores'] = $this->setor->get();
+      $data['title']          = 'Setor';
+      $data['setores']        = $this->setor->get();
+      $data['create_button']  = $this->Button->verify('Setor', 'Cadastrar');
+
       loadTemplate('includes/header', 'setor/cadastrar', 'includes/footer', $data);
     }
 
@@ -175,9 +182,12 @@ public function edit($id_setor)
   }
 
   $data['title'] = 'Editar Setor';
-  
+
   $data['setor'] = $this->setor->getById($id_setor);
   $data['id_setor'] = $id_setor;
+
+  $data['edit_button']    = $this->Button->verify('Setor', 'Editar');
+
   loadTemplate('includes/header', 'setor/editar', 'includes/footer', $data);
 
 }

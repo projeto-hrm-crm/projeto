@@ -16,9 +16,21 @@
       </div>
 
       <div class="card-body">
-        <a href="<?= site_url('setor/cadastrar')?>" class="btn btn-primary btn-sm" title="Cadastrar setor">
-          <i class="fa fa-check"></i> Novo Cadastro
-        </a><br />
+        <?php
+          $type     = "a";
+          $label    = "<span class='fa fa-plus'></span> Novo Cadastro";
+          $classes  = ['btn', 'btn-primary', 'btn-sm'];
+          $attr     = [
+            'id'    => 'id',
+            'href'  => site_url('setor/cadastrar'),
+            'title'       => 'Cadastrar Setor',
+          ];
+
+          if(!is_null($create_button))
+          $edit_button->build($type, $label, $classes, $attr);
+        ?>
+
+        <br />
         <br />
 
         <table class="table table-striped table-bordered datatable">
@@ -37,12 +49,35 @@
                   <td><?= $setor->sigla; ?></td>
                   <td><?= $setor->descricao; ?></td>
                   <td>
-                    <a title="Atualizar Setor" href="<?= site_url('setor/editar/'.$setor->id_setor)?>" class="btn btn-primary">
-                      <span class="fa fa-edit btn-sm"></span>
-                    </a>
-                    <button data-href="<?= site_url('setor/excluir/'.$setor->id_setor)?>"  class="btn bg-danger text-white" data-toggle="modal" data-target="#modalRemover" title="Desativar Setor">
-                      <i class="fa fa-times btn-sm"></i>
-                    </button>
+                    <?php
+                      $type     = "a";
+                      $label    = "<span class='fa fa-pencil-square-o'></span>";
+                      $classes  = ['btn', 'btn-primary'];
+                      $attr     = [
+                        'id'    => 'id',
+                        'href'  => site_url('setor/editar/'.$setor->id_setor),
+                        'title'       => 'Atualizar Setor',
+                      ];
+
+                      if(!is_null($edit_button))
+                      $edit_button->build($type, $label, $classes, $attr);
+                    ?>
+
+                    <?php
+                      $type           = "button";
+                      $label          = "<span class='fa fa-times'></span>";
+                      $classes        = ['btn', 'btn-danger'];
+                      $attr           = [
+                        'id'          => 'id',
+                        'data-href'   => "setor/excluir/".$setor->id_setor,
+                        'data-toggle' => 'modal',
+                        'data-target' => '#modalRemover',
+                        'title'       => 'Desativar Setor'
+                      ];
+
+                      if (!is_null($delete_button))
+                        $delete_button->build($type, $label, $classes, $attr);
+                    ?>
                   </td>
                 </tr>
               <?php endforeach;?>
