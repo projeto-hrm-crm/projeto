@@ -74,10 +74,19 @@
                             <i class="fa fa-times"></i>
                             Cancelar
                         </a>
-                        <button title="Cadastrar Cargo" type="submit" class="btn btn-primary btn-sm">
-                            <i class="fa fa-plus"></i>
-                            Cadastrar
-                        </button>
+
+                        <?php
+                         $type           = "button";
+                         $label          = "<span class='fa fa-plus'></span> Cadastrar Cargo";
+                         $classes        = ['btn', 'btn-primary', 'btn-sm'];
+                         $attr           = [
+                           'title'       => 'Cadastrar Cargo',
+                           'type'        => 'submit',
+                           'title'       => 'Cadastrar Cargo'
+                         ];
+                          if (!is_null($create_button))
+                           $create_button->build($type, $label, $classes, $attr);
+                       ?>
                     </div>
                 </form>
             </div>

@@ -27,6 +27,11 @@ class Cargo extends CI_Controller
         'confirm.modal.js',
       ),
     );
+
+    $data['create_button']    = $this->Button->verify('Cargo', 'Cadastrar');
+    $data['edit_button']    = $this->Button->verify('Cargo', 'Editar');
+    $data['delete_button']  = $this->Button->verify('Cargo', 'excluir');
+
     loadTemplate('includes/header', 'cargo/index', 'includes/footer', $data);
   }
 
@@ -51,6 +56,8 @@ class Cargo extends CI_Controller
         'maskMoney.js',
       ),
     );
+
+    $data['create_button']    = $this->Button->verify('Cargo', 'Cadastrar');
     loadTemplate('includes/header', 'cargo/cadastrar', 'includes/footer', $data);
   }
 
@@ -81,6 +88,8 @@ class Cargo extends CI_Controller
         'maskMoney.js',
       ),
     );
+
+    $data['edit_button']    = $this->Button->verify('Cargo', 'Editar');
     loadTemplate('includes/header', 'cargo/editar', 'includes/footer', $data);
   }
 
