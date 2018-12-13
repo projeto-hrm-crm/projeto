@@ -19,6 +19,7 @@ jQuery().ready(function($){
 		                		<td> ${etapas[etapa].codigo} </td>
 		                		<td> ${etapas[etapa].etapa_nome} </td>
 		                		<td> ${etapas[etapa].descricao_etapa} </td>
+
 	                		</tr>
 	                		`
 	                	)

@@ -7,13 +7,13 @@
       <div class="row" style="margin-top: 5px;">
         <div class="col-md-12">
           <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success">
-            <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
-          </div>
+            <div class="alert alert-success">
+              <span class="glyphicon glyphicon-ok-sign"></span> <?= $this->session->flashdata('success') ?>
+            </div>
           <?php elseif ($this->session->flashdata('danger')) : ?>
-          <div class="alert alert-danger">
-            <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?>
-          </div>
+            <div class="alert alert-danger">
+              <span class="glyphicon glyphicon-remove-sign"></span> <?= $this->session->flashdata('danger') ?>
+            </div>
           <?php endif; ?>
         </div>
       </div>
@@ -32,16 +32,28 @@
               <label class=" form-control-label"><red>*</red>Descrição</label>
               <textarea auto-resize placeholder="Descrição do setor" id="descricao" name="descricao" class="form-control" required></textarea>
             </div>
-            </div>
           </div>
+        </div>
         <div class="card-footer text-right">
-
           <a title="Cancelar Cadastro" href="<?= site_url('setor')?>" class="btn btn-danger btn-sm">
             <i class="fa fa-times"></i> Cancelar
           </a>
-          <button title="Cadastrar Setor" type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-plus"></i> Cadastrar
-          </button>
+
+          <?php
+          $type           = "button";
+          $label          = "<span class='fa fa-plus'></span> Cadastrar Setor";
+          $classes        = ['btn', 'btn-primary', 'text-white', 'btn-sm'];
+          $attr           = [
+            'data-toggle' => 'modal',
+            'data-target' => '#editarSetor',
+            'title'       => 'Cadastrar Setor',
+            'type'        => 'submit',
+          ];
+
+          if (!is_null($create_button))
+          $create_button->build($type, $label, $classes, $attr);
+          ?>
+
         </div>
       </form>
     </div>

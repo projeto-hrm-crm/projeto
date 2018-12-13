@@ -174,7 +174,6 @@ class Usuario_model extends CI_Model
             return;
         if (!empty($url)) {
             $url = $this->getParsedUrl($url);
-
             $this->db->select('*')
                     ->from('grupo_acesso')
                     ->join('grupo_acesso_modulo', 'grupo_acesso_modulo.id_grupo_acesso = grupo_acesso.id_grupo_acesso')
@@ -205,9 +204,11 @@ class Usuario_model extends CI_Model
       if (!empty($url)) {
           $url = substr($url, 1);
           $explodedUrl = explode('/', $url);
+          $parsedUrl = [];
+
           if(count($explodedUrl) >= 3){
-            array_pop($explodedUrl);
-            return implode('/', $explodedUrl);
+            $parsedUrl = [$explodedUrl[0], $explodedUrl[1]];
+            return implode('/', $parsedUrl);
           }
           return $url;
       }

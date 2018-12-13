@@ -67,6 +67,9 @@ class Produto extends CI_Controller
               $produto->recebimento = switchDate($produto->recebimento);
 
           }
+         $dados['edit_button']    = $this->Button->verify('Cliente', 'Editar');
+         $dados['delete_button']  = $this->Button->verify('Cliente', 'excluir');
+       
           loadTemplate('includes/header', 'produto/index', 'includes/footer', $dados);
     }
 

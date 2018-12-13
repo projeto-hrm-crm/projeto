@@ -68,13 +68,23 @@ class CandidatoEtapa_model extends CI_Model
 
   public function selectCandidatoByIdUsuario($id_usuario)
   {
-    $this->db->select('*');
-    $this->db->from('usuario');
-    $this->db->join('candidato', 'candidato.id_pessoa = usuario.id_pessoa');
-    $this->db->where('usuario.id_usuario',$id_usuario);
-    $query=$this->db->get();
-    return $query->result();
+    try {
+      $query = $this->db->select('processo_seletivo_candidato.id_candidato, processo_seletivo_candidato.id_etapa, processo_seletivo_candidato.avaliacao, processo_seletivo_candidato.status')
+    ->from('processo_seletivo_candidato')
+    ->join('candidato', 'candidato.id_candidato = processo_seletivo_candidato.id_candidato')
+    ->join('pessoa', 'pessoa.id_pessoa = candidato.id_pessoa')
+    ->join('usuario', 'usuario.id_pessoa = pessoa.id_pessoa')
+    ->where('usuario.id_usuario',$id_usuario)
+    ->get();
+      if ($query)
+      {
+        return $query->result();
+      }else{
+        return 0;
+      }
+    } catch (\Exception $e) {}
   }
+  
 
 
   public function getIdEtapaByProcessoID($id_processo_seletivo){
@@ -95,8 +105,18 @@ class CandidatoEtapa_model extends CI_Model
 
   public function get($id){
     $this->db->select('*');
-    $this->db->from('processo_seletivo_candidato')->where('id_etapa',$id);
+    $this->db->from('processo_seletivo_candidato')
+    ->where('id_etapa',$id);
     $query=$this->db->get();
     return $query->result();
+  }
+
+    public function updateAvaliacao($id_candidato, $avaliacao)
+  {
+    $this->db
+        ->set('avaliacao', $avaliacao)
+        ->where('id_candidato', $id_candidato)
+        ->update('processo_seletivo_candidato');
+
   }
 }

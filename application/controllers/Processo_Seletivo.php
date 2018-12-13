@@ -201,11 +201,16 @@ class Processo_Seletivo extends CI_Controller
           'lib/data-table/datatables.min.js',
           'lib/data-table/dataTables.bootstrap.min.js',
           'datatable.js',
+          'processo_seletivo/candidato.js',
           'confirm.modal.js',
         ),
     );
     loadTemplate('includes/header', 'processo_seletivo/candidatos', 'includes/footer', $data);
   }
 
-
+    public function avaliar($id_candidato, $avaliacao)
+   {
+    $this->candidato_etapa->updateAvaliacao($id_candidato, $avaliacao);
+    
+  }
 }

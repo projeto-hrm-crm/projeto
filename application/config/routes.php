@@ -168,6 +168,9 @@ $route['candidato_etapa']                = 'CandidatoEtapa/index';
 $route['candidato_etapa/cadastrar/(:num)']      = 'CandidatoEtapa/create/$1';
 $route['candidato_etapa/excluir/(:num)'] = 'CandidatoEtapa/delete/$1';
 
+$route['candidato/avaliar/(:num)/(:any)'] = 'Processo_Seletivo/avaliar/$1/$2';
+
+
 //Rotas Pedido
 $route['pedido']                            = 'Pedido/index';
 $route['pedido/cadastrar']                  = 'Pedido/create';
