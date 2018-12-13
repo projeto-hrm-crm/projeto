@@ -182,7 +182,7 @@ class Usuario_model extends CI_Model
                     ->where('menu.link', $url)
                     ->where('grupo_acesso.id_grupo_acesso', $access_group);
             $result = $this->db->get();
-            
+
             if ($result->num_rows() == 0) {
                 redirect(base_url('dashboard'));
             }

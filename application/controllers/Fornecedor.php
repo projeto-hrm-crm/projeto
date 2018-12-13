@@ -102,7 +102,7 @@ class Fornecedor extends CI_Controller
   {
       return [
           'nome'        => $this->input->post('nome'),
-          'email'       => $this->input->post('email'),         
+          'email'       => $this->input->post('email'),
           'senha'       => substr(md5(date('r')), 0, 10), /*essa é a forma correta para todo e qualquer usuário. Gerar uma senha qualquer e depois ele muda. */
           'razao_social'=> $this->input->post('razao_social'),
           'cnpj'        => $this->input->post('cnpj'),
@@ -113,7 +113,8 @@ class Fornecedor extends CI_Controller
           'numero'      => $this->input->post('numero'),
           'complemento' => $this->input->post('complemento'),
           'estado'      => $this->input->post('estado'),
-          'cidade'      => $this->input->post('cidade')
+          'cidade'      => $this->input->post('cidade'),
+          'empresa_id_empresa'=> $this->session->userdata('user_id_empresa')
       ];
 
   }

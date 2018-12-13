@@ -64,7 +64,8 @@ class Fornecedor_model extends CI_Model
        'login'          => $data['email'],
        'senha'          => $data['senha'],
        'id_grupo_acesso'=> 3,
-       'id_pessoa'      => $id_pessoa
+       'id_pessoa'      => $id_pessoa,
+       'empresa_id_empresa'=>$data['empresa_id_empresa'],
     ]);
 
     $id_pessoa_juridica = $this->pessoa_juridica->insert([
@@ -81,6 +82,7 @@ class Fornecedor_model extends CI_Model
         'id_pessoa'     => $id_pessoa,
         'estado'        => $data['estado'],
         'cidade'        => $data['cidade']
+
     ]);
 
     $this->telefone->insert([
